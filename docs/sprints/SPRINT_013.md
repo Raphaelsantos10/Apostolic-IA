@@ -42,7 +42,13 @@ Supabase Auth e RLS criada na Sprint 012.
 - Perfil e preferências editáveis, previstos na Sprint 014.
 - Painel administrativo.
 
+## Evidências de validação
+
+- Migrações e testes SQL aprovados.
+- Typecheck e build aprovados.
+- Cadastro, confirmação, login, logout e recuperação verificados.
+- Exclusão autenticada e dados em cascata verificados.
+
 ## Próximo passo
 
-Instalar dependências, recriar o banco, executar testes, typecheck e build; em
-seguida validar os fluxos pelo navegador e pelo Mailpit local.
+Abrir, revisar e incorporar o Pull Request da Sprint 013.

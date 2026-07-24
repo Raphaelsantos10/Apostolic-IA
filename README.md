@@ -62,13 +62,11 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 013
 
-- Recriar o banco e executar os testes SQL.
-- Validar typecheck, build e fluxos pelo navegador.
-- Preparar o Pull Request.
+- Abrir e aprovar o Pull Request da Sprint 013.
 
 ## Próximo passo exato
 
-Executar a validação integrada da autenticação com Supabase e Mailpit locais.
+Abrir o Pull Request; autenticação, banco, typecheck e build foram validados.
 
 ## Como continuar em outro chat
 
@@ -119,6 +117,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 011](docs/sprints/SPRINT_011.md)
 - [Relatório da Sprint 012](docs/sprints/SPRINT_012.md)
 - [Relatório da Sprint 013](docs/sprints/SPRINT_013.md)
+- [Validação da Sprint 013](docs/validation/SPRINT_013_VALIDATION.md)
 - [Autenticação e gestão de conta](docs/development/AUTHENTICATION.md)
 - [Validação da Sprint 012](docs/validation/SPRINT_012_VALIDATION.md)
 - [Backend local e Supabase](docs/development/BACKEND.md)
