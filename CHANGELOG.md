@@ -7,9 +7,9 @@ Todas as alterações relevantes serão registadas neste arquivo.
 ### Added
 
 - Constituição Doutrinária Apostólica Batista Pentecostal.
-- Matriz doutrinária alinhada às fontes públicas do Rhema e Verbo da Vida.
+- Matriz doutrinária definida após consulta a fontes institucionais públicas.
 - Regras doutrinárias e de segurança para utilização futura pela IA.
-- Referência pública da grade curricular Rhema com 24 matérias.
+- Referências curriculares públicas consolidadas em áreas genéricas.
 - Registro central de continuidade e estado das sprints no README.
 - Relatório, validação, backup e procedimentos da Sprint 001.
 

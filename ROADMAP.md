@@ -8,8 +8,8 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | Sprint | Estado | Entrega |
 | --- | --- | --- | --- |
 | 000 | [x] Concluída | [x] Concluída | Repositório, roadmap, validação, backup e governança |
-| 001 | [~] Em andamento | [~] Em andamento | Constituição Doutrinária Apostólica Batista Pentecostal |
-| 002 | [ ] Planejada | [ ] Planejada | Requisitos do produto e escopo do MVP |
+| 001 | [x] Concluída | [~] Em andamento | Constituição Doutrinária Apostólica Batista Pentecostal |
+| 002 | [~] Em andamento | [ ] Planejada | Requisitos do produto e escopo do MVP |
 | 003 | [ ] Planejada | [ ] Planejada | Arquitetura, modelo de dados e decisões tecnológicas |
 | 004 | [ ] Planejada | [ ] Planejada | Política editorial, licenças bíblicas e propriedade intelectual |
 

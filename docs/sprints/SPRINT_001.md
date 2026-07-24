@@ -26,11 +26,10 @@ decisões futuras do Apostolic IA.
 - Limites de atuação da IA registrados.
 - Pontos sensíveis separados para decisão humana.
 - README transformado em registo central de continuidade.
-- Dez questões doutrinárias pesquisadas nas fontes públicas oficiais do Rhema
-  Brasil e do Ministério Verbo da Vida.
+- Dez questões doutrinárias pesquisadas em fontes institucionais públicas.
 - Posições não encontradas nas fontes mantidas explicitamente como pendentes.
-- Grade pública de 24 matérias do Rhema catalogada e mapeada preliminarmente
-  para as sprints futuras de conteúdo.
+- Áreas curriculares públicas catalogadas e mapeadas preliminarmente para as
+  sprints futuras de conteúdo.
 
 ## Critérios de aceite
 

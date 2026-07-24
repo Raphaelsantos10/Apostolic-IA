@@ -8,10 +8,10 @@ IA, cursos, quizzes e revisão editorial do Apostolic IA.
 ## Incluído
 
 - Doutrina cristã evangélica, apostólica, trinitária e pentecostal.
-- Alinhamento documentado às fontes públicas do Rhema e Verbo da Vida.
+- Pesquisa documentada em fontes institucionais públicas.
 - Limites para respostas futuras da IA.
 - Matriz de decisões doutrinárias.
-- Referência curricular pública com 24 matérias.
+- Referências curriculares públicas consolidadas sem marcas externas.
 - Registro de aprovação do proprietário do projeto.
 
 ## Limitações conhecidas

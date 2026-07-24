@@ -17,8 +17,10 @@ required_files=(
   "docs/BACKUP_RECOVERY.md"
   "docs/sprints/SPRINT_000.md"
   "docs/sprints/SPRINT_001.md"
+  "docs/sprints/SPRINT_002.md"
   "docs/doctrine/CONSTITUICAO_DOUTRINARIA.md"
-  "docs/research/RHEMA_GRADE_CURRICULAR.md"
+  "docs/research/REFERENCIAS_CURRICULARES_PUBLICAS.md"
+  "docs/requirements/MVP_SCOPE.md"
   "docs/validation/SPRINT_001_VALIDATION.md"
   "docs/backups/SPRINT_001_BACKUP_MANIFEST.md"
 )
@@ -48,9 +50,16 @@ if grep -RInE --exclude-dir=.git '^(<<<<<<<|=======|>>>>>>>)' .; then
   exit 1
 fi
 
-if ! grep -q "Sprint 001" README.md; then
-  echo "ERRO: README não registra a Sprint 001"
+if ! grep -q "Sprint 002" README.md; then
+  echo "ERRO: README não registra a Sprint 002"
   exit 1
 fi
 
-echo "Sprint 001 validada com sucesso."
+if grep -RInE --exclude-dir=.git \
+  '(Rhema|Verbo da Vida|Carisma Matriz|apostilasdeteologia)' \
+  README.md CHANGELOG.md RELEASE_NOTES.md docs; then
+  echo "ERRO: marca externa encontrada na documentação pública"
+  exit 1
+fi
+
+echo "Sprint 002 - estrutura inicial validada com sucesso."
