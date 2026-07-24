@@ -27,6 +27,14 @@ required_files=(
   "docs/sprints/SPRINT_009.md"
   "docs/sprints/SPRINT_010.md"
   "docs/sprints/SPRINT_011.md"
+  "docs/sprints/SPRINT_012.md"
+  "docs/validation/SPRINT_012_VALIDATION.md"
+  "docs/development/BACKEND.md"
+  "docs/security/RLS_MATRIX.md"
+  "supabase/config.toml"
+  "supabase/migrations/20260724170000_identity_and_rls.sql"
+  "supabase/tests/database/rls.test.sql"
+  "scripts/validate-sprint-012.sh"
   "docs/development/PWA.md"
   "apps/web/app/manifest.ts"
   "apps/web/app/pwa-register.tsx"
@@ -142,4 +150,5 @@ if grep -RInE --exclude-dir=.git \
   exit 1
 fi
 
-echo "Sprint 011 - aplicação web e PWA validadas com sucesso."
+bash scripts/validate-sprint-012.sh
+echo "Sprint 012 - backend e RLS validados com sucesso."
