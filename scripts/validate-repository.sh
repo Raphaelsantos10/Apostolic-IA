@@ -53,6 +53,8 @@ required_files=(
   "docs/validation/SPRINT_003_VALIDATION.md"
   "docs/validation/SPRINT_004_VALIDATION.md"
   "docs/validation/SPRINT_005_VALIDATION.md"
+  "docs/validation/SPRINT_006_VALIDATION.md"
+  "docs/backups/SPRINT_006_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_005_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_004_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_001_BACKUP_MANIFEST.md"

@@ -9,7 +9,7 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 005 - Jornada individual e arquitetura da informação.
 - **Sprint atual:** Sprint 006 - Design system claro, escuro e sépia.
 - **Branch atual:** `sprint/006-design-system-temas`.
-- **Estado:** em andamento; fundamentos visuais, temas e componentes em definição.
+- **Estado:** em andamento; design system e temas aprovados localmente e prontos para Pull Request.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -55,13 +55,13 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 006
 
-- Revisar cores, tokens e catálogo de componentes.
-- Executar validação final e preparar o Pull Request.
+- Abrir Pull Request e aguardar CI verde.
 - Incorporar a sprint à `main` antes de marcá-la como concluída.
+- Validar todos os componentes quando forem implementados.
 
 ## Próximo passo exato
 
-Revisar o design system e executar a validação da Sprint 006.
+Abrir o Pull Request da Sprint 006, confirmar o CI verde e incorporar à `main`.
 
 ## Como continuar em outro chat
 
@@ -133,9 +133,11 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 003](docs/validation/SPRINT_003_VALIDATION.md)
 - [Validação da Sprint 004](docs/validation/SPRINT_004_VALIDATION.md)
 - [Validação da Sprint 005](docs/validation/SPRINT_005_VALIDATION.md)
+- [Validação da Sprint 006](docs/validation/SPRINT_006_VALIDATION.md)
 - [Backup da Sprint 003](docs/backups/SPRINT_003_BACKUP_MANIFEST.md)
 - [Backup da Sprint 004](docs/backups/SPRINT_004_BACKUP_MANIFEST.md)
 - [Backup da Sprint 005](docs/backups/SPRINT_005_BACKUP_MANIFEST.md)
+- [Backup da Sprint 006](docs/backups/SPRINT_006_BACKUP_MANIFEST.md)
 
 ## Validar
 

@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - design system e temas aprovados localmente e prontos para Pull Request.
 
 ## Objetivo
 
@@ -44,5 +44,5 @@ a origem.
 
 ## Próximo passo
 
-Revisar tokens, temas e componentes; executar a validação e preparar o Pull
-Request.
+Abrir o Pull Request, confirmar o CI verde e incorporar a entrega à `main`.
+A sprint somente será marcada como concluída depois do merge.
