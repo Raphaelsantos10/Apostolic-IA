@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento - protótipo aberto e validado localmente, pronto para Pull Request.
+✅ Concluída - incorporada à `main` pelo Pull Request 9 em 24 de julho de 2026.
 
 ## Objetivo
 

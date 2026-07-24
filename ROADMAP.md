@@ -20,8 +20,8 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | 005 | [x] Concluída | [x] Concluída | Jornada individual e arquitetura da informação |
 | 006 | [x] Concluída | [x] Concluída | Design system claro, escuro e sépia |
 | 007 | [x] Concluída | [x] Concluída | Acessibilidade e WCAG 2.2 AA |
-| 008 | [~] Em andamento | [ ] Planejada | Protótipo responsivo para telemóvel, tablet e web |
-| 009 | [ ] Planejada | [ ] Planejada | Biblioteca visual e governança de imagens e mapas |
+| 008 | [x] Concluída | [x] Concluída | Protótipo responsivo para telemóvel, tablet e web |
+| 009 | [~] Em andamento | [ ] Planejada | Biblioteca visual e governança de imagens e mapas |
 
 ## Fase 3 — Fundação tecnológica
 

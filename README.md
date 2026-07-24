@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 007 - Acessibilidade e WCAG 2.2 AA.
-- **Sprint atual:** Sprint 008 - Protótipo responsivo para telemóvel, tablet e web.
-- **Branch atual:** `sprint/008-prototipo-responsivo`.
-- **Estado:** em andamento; protótipo aberto e validado localmente, pronto para Pull Request.
+- **Última sprint concluída:** Sprint 008 - Protótipo responsivo para telemóvel, tablet e web.
+- **Sprint atual:** Sprint 009 - Biblioteca visual e governança de imagens e mapas.
+- **Branch atual:** `sprint/009-biblioteca-visual`.
+- **Estado:** em andamento; governança visual aprovada documentalmente e pronta para Pull Request.
 - **Aplicação executável:** protótipo estático local; ainda não é um produto funcional.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -44,33 +44,34 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 005 | ✅ Concluída | Jornada individual e arquitetura da informação | [Relatório](docs/sprints/SPRINT_005.md) |
 | 006 | ✅ Concluída | Design system claro, escuro e sépia | [Relatório](docs/sprints/SPRINT_006.md) |
 | 007 | ✅ Concluída | Acessibilidade e WCAG 2.2 AA | [Relatório](docs/sprints/SPRINT_007.md) |
-| 008 | 🚧 Em andamento | Protótipo responsivo para telemóvel, tablet e web | [Relatório](docs/sprints/SPRINT_008.md) |
-| 009-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 008 | ✅ Concluída | Protótipo responsivo para telemóvel, tablet e web | [Relatório](docs/sprints/SPRINT_008.md) |
+| 009 | 🚧 Em andamento | Biblioteca visual e governança de imagens e mapas | [Relatório](docs/sprints/SPRINT_009.md) |
+| 010-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 008
+## Entregas atuais da Sprint 009
 
-- Protótipo estático navegável localmente.
-- Layout para telemóvel, tablet e web.
-- Temas claro, escuro, sépia e sistema.
-- Cinco destinos principais demonstrativos.
-- Estados honestos para recursos ainda planejados.
+- Política de ativos visuais.
+- Política de mapas e incerteza histórica.
+- Diretrizes de imagem e texto alternativo.
+- Checklist de entrada e aprovação.
+- Registro central da biblioteca visual.
 
-## Pendências da Sprint 008
+## Pendências da Sprint 009
 
 - Abrir Pull Request e aguardar CI verde.
 - Incorporar a sprint à `main` antes de marcá-la como concluída.
-- Realizar testes formais com tecnologias assistivas em sprints futuras.
+- Aplicar o processo a cada ativo visual futuro.
 
 ## Próximo passo exato
 
-Abrir o Pull Request da Sprint 008, confirmar o CI verde e incorporar à `main`.
+Abrir o Pull Request da Sprint 009, confirmar o CI verde e incorporar à `main`.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_008.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_009.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -109,6 +110,12 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 006](docs/sprints/SPRINT_006.md)
 - [Relatório da Sprint 007](docs/sprints/SPRINT_007.md)
 - [Relatório da Sprint 008](docs/sprints/SPRINT_008.md)
+- [Relatório da Sprint 009](docs/sprints/SPRINT_009.md)
+- [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
+- [Política de mapas](docs/visual/MAPS_POLICY.md)
+- [Diretrizes de imagem](docs/visual/IMAGE_GUIDELINES.md)
+- [Checklist de ativos](docs/visual/ASSET_INTAKE_CHECKLIST.md)
+- [Registro da biblioteca visual](assets/ASSET_REGISTER.md)
 - [Executar o protótipo responsivo](docs/ux/RESPONSIVE_PROTOTYPE.md)
 - [Política de acessibilidade](docs/accessibility/ACCESSIBILITY_POLICY.md)
 - [Matriz WCAG 2.2 AA](docs/accessibility/WCAG_22_AA_MATRIX.md)
@@ -145,12 +152,14 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 006](docs/validation/SPRINT_006_VALIDATION.md)
 - [Validação da Sprint 007](docs/validation/SPRINT_007_VALIDATION.md)
 - [Validação da Sprint 008](docs/validation/SPRINT_008_VALIDATION.md)
+- [Validação da Sprint 009](docs/validation/SPRINT_009_VALIDATION.md)
 - [Backup da Sprint 003](docs/backups/SPRINT_003_BACKUP_MANIFEST.md)
 - [Backup da Sprint 004](docs/backups/SPRINT_004_BACKUP_MANIFEST.md)
 - [Backup da Sprint 005](docs/backups/SPRINT_005_BACKUP_MANIFEST.md)
 - [Backup da Sprint 006](docs/backups/SPRINT_006_BACKUP_MANIFEST.md)
 - [Backup da Sprint 007](docs/backups/SPRINT_007_BACKUP_MANIFEST.md)
 - [Backup da Sprint 008](docs/backups/SPRINT_008_BACKUP_MANIFEST.md)
+- [Backup da Sprint 009](docs/backups/SPRINT_009_BACKUP_MANIFEST.md)
 
 ## Validar
 
