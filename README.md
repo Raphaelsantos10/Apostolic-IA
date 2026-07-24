@@ -4,11 +4,70 @@ Plataforma internacional de estudos bíblicos individuais com cursos, Bíblia em
 múltiplas traduções licenciadas, gamificação, acessibilidade e professor de IA
 alinhado à visão cristã apostólica, batista e pentecostal.
 
-## Estado
+## Estado atual do projeto
 
-O projeto está na **Sprint 000 — Fundação e governança**. Ainda não existe uma
-aplicação funcional. Funcionalidades somente serão anunciadas como concluídas
-depois de implementadas, testadas e incluídas numa release.
+- **Última sprint concluída:** Sprint 000 - Fundação e governança.
+- **Sprint atual:** Sprint 001 - Constituição Doutrinária Apostólica Batista Pentecostal.
+- **Branch atual:** `sprint/001-constituicao-doutrinaria`.
+- **Estado:** em andamento; minuta doutrinária aguardando aprovação humana.
+- **Aplicação executável:** ainda não existe.
+- **Última atualização:** 24 de julho de 2026.
+
+## Regra permanente de continuidade
+
+Este README é o ponto central para continuar o projeto, inclusive em outro chat.
+Ao iniciar, avançar ou encerrar uma sprint, deve ser atualizado com:
+
+- sprint e branch atuais;
+- entregas realizadas;
+- decisões aprovadas;
+- validações executadas;
+- limitações e pendências;
+- próximo passo exato;
+- link para o relatório detalhado da sprint.
+
+Uma sprint só pode ser marcada como **concluída** neste README e no roadmap
+depois de cumprir a [Definição de Pronto](docs/SPRINT_DELIVERY_POLICY.md), passar
+pelas validações, ser aprovada em Pull Request e incorporada à `main`.
+
+Trabalho parcial deve permanecer marcado como **em andamento**.
+
+## Controlo das sprints
+
+| Sprint | Estado | Entrega | Evidência |
+| --- | --- | --- | --- |
+| 000 | ✅ Concluída | Fundação, roadmap, validação, backup e governança | [Relatório](docs/sprints/SPRINT_000.md) |
+| 001 | 🚧 Em andamento | Constituição Doutrinária Apostólica Batista Pentecostal | [Relatório](docs/sprints/SPRINT_001.md) |
+| 002-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+
+## Entregas atuais da Sprint 001
+
+- Estrutura da Constituição Doutrinária criada.
+- Limites de utilização da doutrina pela IA definidos.
+- Decisões doutrinárias sensíveis separadas para aprovação humana.
+- Relatório da sprint iniciado.
+
+## Pendências da Sprint 001
+
+- Rever e aprovar cada artigo da minuta doutrinária.
+- Resolver as decisões registradas na seção "Pontos que exigem decisão humana".
+- Registrar nome, função e data do aprovador teológico.
+- Atualizar changelog, checksums e validação depois da aprovação.
+- Abrir Pull Request e incorporar a sprint à `main`.
+
+## Próximo passo exato
+
+Ler `docs/doctrine/CONSTITUICAO_DOUTRINARIA.md`, responder às decisões pendentes
+e registrar a aprovação humana antes de marcar a Sprint 001 como concluída.
+
+## Como continuar em outro chat
+
+Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
+
+> Continue o Apostolic IA a partir do estado registrado no README. Leia também
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_001.md e
+> CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
+> encerrar qualquer entrega.
 
 ## Princípios
 
@@ -20,7 +79,7 @@ depois de implementadas, testadas e incluídas numa release.
 - Acessibilidade, privacidade, segurança e sustentabilidade financeira são
   requisitos desde o início.
 
-## Plataformas planeadas
+## Plataformas planejadas
 
 - Web e PWA.
 - Android e tablets Android.
@@ -37,6 +96,8 @@ depois de implementadas, testadas e incluídas numa release.
 - [Instalação, atualização e rollback](docs/INSTALLATION_UPDATE_ROLLBACK.md)
 - [Backup e recuperação](docs/BACKUP_RECOVERY.md)
 - [Relatório da Sprint 000](docs/sprints/SPRINT_000.md)
+- [Relatório da Sprint 001](docs/sprints/SPRINT_001.md)
+- [Constituição Doutrinária](docs/doctrine/CONSTITUICAO_DOUTRINARIA.md)
 
 ## Validar
 
