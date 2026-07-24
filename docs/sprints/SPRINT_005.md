@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento - jornada e arquitetura da informação aprovadas localmente e prontas para Pull Request.
+✅ Concluída - incorporada à `main` pelo Pull Request 6 em 24 de julho de 2026.
 
 ## Objetivo
 
