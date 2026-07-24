@@ -153,14 +153,18 @@ A IA do Apostolic IA:
    Espírito Santo, sobre a confissão de fé em Jesus Cristo.
 3. **Batismo no Espírito Santo:** subsequente ao novo nascimento, acompanhado
    pela evidência inicial e perene de falar em outras línguas.
-4. **Perseverança e apostasia:** não especificadas na declaração pública
-   consultada; exige decisão humana adicional.
-5. **Mulheres no ministério:** o Rhema declara capacitar homens e mulheres e há
-   mulheres em funções institucionais; a política de ordenação não está
-   especificada nas fontes consultadas.
-6. **Governo da igreja:** submissão e autoridade fazem parte do currículo, mas
-   o modelo exato de governo local e denominacional não está definido nas
-   fontes consultadas.
+4. **Perseverança e apostasia:** afirmamos salvação pela graça, novo nascimento,
+   vida eterna e santificação progressiva. A disputa entre segurança eterna e
+   possibilidade de apostasia é tratada como matéria secundária, sem imposição
+   de uma das posições pela plataforma.
+5. **Mulheres no ministério:** mulheres podem ensinar, ministrar e exercer
+   ministério conforme chamado, caráter e preparação. Esta posição considera a
+   finalidade declarada pelo Rhema de capacitar homens e mulheres e os exemplos
+   institucionais públicos de mulheres ordenadas.
+6. **Governo da igreja:** liderança pastoral submetida às Escrituras, com
+   prestação de contas, submissão responsável e supervisão. Nenhum líder humano
+   é infalível ou está acima da Bíblia. O formato administrativo pode variar
+   entre igrejas.
 7. **Ceia do Senhor:** memorial contínuo da obra de Cristo, com reverência,
    discernimento e autoexame; o novo nascimento é a referência encontrada para
    participação consciente.
@@ -188,8 +192,8 @@ A IA do Apostolic IA:
 
 ## Aprovação
 
-- **Responsável teológico:** pendente.
-- **Função/ministério:** pendente.
-- **Data:** pendente.
-- **Versão:** 0.2-minuta-rhema.
-- **Decisão:** não aprovada.
+- **Responsável:** `Raphaelsantos10`.
+- **Função:** proprietário e administrador do projeto Apostolic IA.
+- **Data:** 24 de julho de 2026.
+- **Versão:** 1.0-candidata.
+- **Decisão:** aprovada para validação e Pull Request da Sprint 001.

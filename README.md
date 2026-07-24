@@ -9,8 +9,8 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 000 - Fundação e governança.
 - **Sprint atual:** Sprint 001 - Constituição Doutrinária Apostólica Batista Pentecostal.
 - **Branch atual:** `sprint/001-constituicao-doutrinaria`.
-- **Estado:** em andamento; minuta alinhada às fontes públicas do Rhema,
-  aguardando aprovação humana.
+- **Estado:** em andamento; conteúdo doutrinário aprovado e pronto para
+  validação e Pull Request.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -55,16 +55,13 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 ## Pendências da Sprint 001
 
 - Rever e aprovar cada artigo da minuta doutrinária.
-- Resolver os pontos não especificados pelas fontes: perseverança e apostasia,
-  ordenação feminina e modelo de governo e autoridade.
-- Registrar nome, função e data do aprovador teológico.
 - Atualizar changelog, checksums e validação depois da aprovação.
 - Abrir Pull Request e incorporar a sprint à `main`.
 
 ## Próximo passo exato
 
-Ler `docs/doctrine/CONSTITUICAO_DOUTRINARIA.md`, responder às decisões pendentes
-e registrar a aprovação humana antes de marcar a Sprint 001 como concluída.
+Executar a validação final, atualizar checksums, abrir o Pull Request e aguardar
+CI verde e merge antes de marcar a Sprint 001 como concluída.
 
 ## Como continuar em outro chat
 

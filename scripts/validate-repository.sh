@@ -7,11 +7,20 @@ required_files=(
   "CONTRIBUTING.md"
   "SECURITY.md"
   "CHANGELOG.md"
+  "RELEASE_NOTES.md"
+  "INSTALL.md"
+  "UPDATE.md"
+  "ROLLBACK.md"
   "docs/SPRINT_DELIVERY_POLICY.md"
   "docs/VALIDATION_POLICY.md"
   "docs/INSTALLATION_UPDATE_ROLLBACK.md"
   "docs/BACKUP_RECOVERY.md"
   "docs/sprints/SPRINT_000.md"
+  "docs/sprints/SPRINT_001.md"
+  "docs/doctrine/CONSTITUICAO_DOUTRINARIA.md"
+  "docs/research/RHEMA_GRADE_CURRICULAR.md"
+  "docs/validation/SPRINT_001_VALIDATION.md"
+  "docs/backups/SPRINT_001_BACKUP_MANIFEST.md"
 )
 
 for file in "${required_files[@]}"; do
@@ -39,4 +48,9 @@ if grep -RInE --exclude-dir=.git '^(<<<<<<<|=======|>>>>>>>)' .; then
   exit 1
 fi
 
-echo "Sprint 000 validada com sucesso."
+if ! grep -q "Sprint 001" README.md; then
+  echo "ERRO: README não registra a Sprint 001"
+  exit 1
+fi
+
+echo "Sprint 001 validada com sucesso."

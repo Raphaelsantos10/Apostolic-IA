@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - conteúdo aprovado e pronto para validação e Pull Request.
 
 ## Objetivo
 
@@ -52,14 +52,14 @@ decisões futuras do Apostolic IA.
 
 ## Aprovação humana
 
-- **Responsável:** pendente.
-- **Função/ministério:** pendente.
-- **Data:** pendente.
-- **Versão aprovada:** pendente.
-- **Observações:** pendente.
+- **Responsável:** `Raphaelsantos10`.
+- **Função:** proprietário e administrador do projeto.
+- **Data:** 24 de julho de 2026.
+- **Versão aprovada:** 1.0-candidata.
+- **Observações:** aprovação para validação e Pull Request. A conclusão depende
+  de CI verde e merge na `main`.
 
 ## Próximo passo
 
-Rever `docs/doctrine/CONSTITUICAO_DOUTRINARIA.md`, confirmar o alinhamento com
-as fontes Rhema e resolver os três grupos ainda não especificados: perseverança
-e apostasia, ordenação feminina e modelo de governo e autoridade.
+Executar a validação final, atualizar checksums, abrir o Pull Request e, depois
+do CI verde, incorporar a Sprint 001 à `main`.
