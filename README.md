@@ -10,7 +10,7 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Sprint atual:** Sprint 010 - Monorepo, ambientes, CI e base web/mobile.
 - **Branch atual:** `sprint/010-fundacao-tecnologica`.
 - **Estado:** em andamento; monorepo e bases web/mobile em validação.
-- **Aplicação executável:** bases tecnológicas web e mobile; produto funcional ainda não existe. protótipo estático local; ainda não é um produto funcional.
+- **Aplicação executável:** bases tecnológicas web e mobile; o produto funcional ainda está em desenvolvimento.
 - **Última atualização:** 24 de julho de 2026.
 
 ## Regra permanente de continuidade
