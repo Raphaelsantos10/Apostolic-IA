@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - governança visual aprovada documentalmente e pronta para Pull Request.
 
 ## Objetivo
 
@@ -42,5 +42,5 @@ publicados e removidos no Apostolic IA.
 
 ## Próximo passo
 
-Revisar políticas, checklist e registro; executar a validação e preparar o Pull
-Request.
+Abrir o Pull Request, confirmar o CI verde e incorporar a entrega à `main`.
+A sprint somente será marcada como concluída depois do merge.

@@ -9,7 +9,7 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 008 - Protótipo responsivo para telemóvel, tablet e web.
 - **Sprint atual:** Sprint 009 - Biblioteca visual e governança de imagens e mapas.
 - **Branch atual:** `sprint/009-biblioteca-visual`.
-- **Estado:** em andamento; governança e registro da biblioteca visual em definição.
+- **Estado:** em andamento; governança visual aprovada documentalmente e pronta para Pull Request.
 - **Aplicação executável:** protótipo estático local; ainda não é um produto funcional.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -58,13 +58,13 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 009
 
-- Revisar políticas, checklist e registro.
-- Executar validação final e preparar o Pull Request.
+- Abrir Pull Request e aguardar CI verde.
 - Incorporar a sprint à `main` antes de marcá-la como concluída.
+- Aplicar o processo a cada ativo visual futuro.
 
 ## Próximo passo exato
 
-Revisar a governança visual e validar a Sprint 009.
+Abrir o Pull Request da Sprint 009, confirmar o CI verde e incorporar à `main`.
 
 ## Como continuar em outro chat
 
@@ -152,12 +152,14 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 006](docs/validation/SPRINT_006_VALIDATION.md)
 - [Validação da Sprint 007](docs/validation/SPRINT_007_VALIDATION.md)
 - [Validação da Sprint 008](docs/validation/SPRINT_008_VALIDATION.md)
+- [Validação da Sprint 009](docs/validation/SPRINT_009_VALIDATION.md)
 - [Backup da Sprint 003](docs/backups/SPRINT_003_BACKUP_MANIFEST.md)
 - [Backup da Sprint 004](docs/backups/SPRINT_004_BACKUP_MANIFEST.md)
 - [Backup da Sprint 005](docs/backups/SPRINT_005_BACKUP_MANIFEST.md)
 - [Backup da Sprint 006](docs/backups/SPRINT_006_BACKUP_MANIFEST.md)
 - [Backup da Sprint 007](docs/backups/SPRINT_007_BACKUP_MANIFEST.md)
 - [Backup da Sprint 008](docs/backups/SPRINT_008_BACKUP_MANIFEST.md)
+- [Backup da Sprint 009](docs/backups/SPRINT_009_BACKUP_MANIFEST.md)
 
 ## Validar
 
