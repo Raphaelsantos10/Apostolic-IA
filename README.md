@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 010 - Monorepo, ambientes, CI e base web/mobile.
-- **Sprint atual:** Sprint 011 - Aplicação responsiva e PWA instalável.
-- **Branch atual:** `sprint/011-web-pwa`.
-- **Estado:** em andamento; aplicação web responsiva e PWA em validação.
-- **Aplicação executável:** base web instalável com navegação e offline inicial; conteúdos finais ainda não existem.
+- **Última sprint concluída:** Sprint 011 - Aplicação responsiva e PWA instalável.
+- **Sprint atual:** Sprint 012 - Backend, base de dados, autenticação e RLS.
+- **Branch atual:** `sprint/012-backend-auth-rls`.
+- **Estado:** em andamento; fundação local do backend e políticas RLS em validação.
+- **Aplicação executável:** PWA disponível; backend local preparado, ainda sem fluxos de conta na interface.
 - **Última atualização:** 24 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -47,26 +47,26 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 008 | ✅ Concluída | Protótipo responsivo para telemóvel, tablet e web | [Relatório](docs/sprints/SPRINT_008.md) |
 | 009 | ✅ Concluída | Biblioteca visual e governança de imagens e mapas | [Relatório](docs/sprints/SPRINT_009.md) |
 | 010 | ✅ Concluída | Monorepo, ambientes, CI e base web/mobile | [Relatório](docs/sprints/SPRINT_010.md) |
-| 011 | 🚧 Em andamento | Aplicação responsiva e PWA instalável | [Relatório](docs/sprints/SPRINT_011.md) |
-| 012-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 011 | ✅ Concluída | Aplicação responsiva e PWA instalável | [Relatório](docs/sprints/SPRINT_011.md) |
+| 012 | 🚧 Em andamento | Backend, base de dados, autenticação e RLS | [Relatório](docs/sprints/SPRINT_012.md) |
+| 013-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 011
+## Entregas atuais da Sprint 012
 
-- Shell web responsivo.
-- Navegação principal acessível.
-- Temas persistentes.
-- Manifesto e ícones próprios.
-- Service worker e página offline.
+- Configuração local do Supabase e PostgreSQL.
+- Migração de perfis e preferências ligada ao Supabase Auth.
+- RLS, privilégios mínimos e testes de isolamento.
+- Documentação operacional e matriz de segurança.
 
-## Pendências da Sprint 011
+## Pendências da Sprint 012
 
-- Executar instalação, typecheck e build.
-- Verificar instalação e modo offline localmente.
-- Finalizar validação e preparar o Pull Request.
+- Executar Supabase local com Docker Desktop.
+- Recriar o banco e executar os testes SQL.
+- Validar e preparar o Pull Request.
 
 ## Próximo passo exato
 
-Validar build, manifesto, responsividade e modo offline da PWA.
+Executar `supabase start`, `db reset` e `test db` antes do Pull Request.
 
 ## Como continuar em outro chat
 
@@ -115,6 +115,9 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 009](docs/sprints/SPRINT_009.md)
 - [Relatório da Sprint 010](docs/sprints/SPRINT_010.md)
 - [Relatório da Sprint 011](docs/sprints/SPRINT_011.md)
+- [Relatório da Sprint 012](docs/sprints/SPRINT_012.md)
+- [Backend local e Supabase](docs/development/BACKEND.md)
+- [Matriz de RLS](docs/security/RLS_MATRIX.md)
 - [PWA e modo offline](docs/development/PWA.md)
 - [Ambientes de desenvolvimento](docs/development/ENVIRONMENTS.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)

@@ -142,4 +142,5 @@ if grep -RInE --exclude-dir=.git \
   exit 1
 fi
 
-echo "Sprint 011 - aplicação web e PWA validadas com sucesso."
+bash scripts/validate-sprint-012.sh
+echo "Sprint 012 - backend e RLS validados com sucesso."

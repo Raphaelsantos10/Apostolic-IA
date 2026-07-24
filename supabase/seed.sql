@@ -1,0 +1,2 @@
+-- A Sprint 012 não distribui contas ou conteúdo fictício.
+-- Utilize o fluxo local de autenticação para criar utilizadores de desenvolvimento.

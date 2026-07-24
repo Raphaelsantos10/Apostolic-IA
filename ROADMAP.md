@@ -28,8 +28,8 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | Sprint | Estado | Entrega |
 | --- | --- | --- | --- |
 | 010 | [x] Concluída | [x] Concluída | Monorepo, ambientes, CI e base web/mobile |
-| 011 | [~] Em andamento | [ ] Planejada | Aplicação responsiva e PWA instalável |
-| 012 | [ ] Planejada | [ ] Planejada | Backend, base de dados, migrações, autenticação e RLS |
+| 011 | [x] Concluída | [x] Concluída | Aplicação responsiva e PWA instalável |
+| 012 | [~] Em andamento | [ ] Planejada | Backend, base de dados, migrações, autenticação e RLS |
 | 013 | [ ] Planejada | [ ] Planejada | Cadastro, login, recuperação e exclusão da conta |
 | 014 | [ ] Planejada | [ ] Planejada | Perfil, preferências, idioma e acessibilidade |
 | 015 | [ ] Planejada | [ ] Planejada | Onboarding e avaliação inicial |
