@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 006 - Design system claro, escuro e sépia.
-- **Sprint atual:** Sprint 007 - Acessibilidade e WCAG 2.2 AA.
-- **Branch atual:** `sprint/007-acessibilidade-wcag`.
-- **Estado:** em andamento; requisitos WCAG 2.2 AA aprovados documentalmente e prontos para Pull Request.
-- **Aplicação executável:** ainda não existe.
+- **Última sprint concluída:** Sprint 007 - Acessibilidade e WCAG 2.2 AA.
+- **Sprint atual:** Sprint 008 - Protótipo responsivo para telemóvel, tablet e web.
+- **Branch atual:** `sprint/008-prototipo-responsivo`.
+- **Estado:** em andamento; protótipo aberto e validado localmente, pronto para Pull Request.
+- **Aplicação executável:** protótipo estático local; ainda não é um produto funcional.
 - **Última atualização:** 24 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -43,33 +43,34 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 004 | ✅ Concluída | Política editorial, licenças bíblicas e propriedade intelectual | [Relatório](docs/sprints/SPRINT_004.md) |
 | 005 | ✅ Concluída | Jornada individual e arquitetura da informação | [Relatório](docs/sprints/SPRINT_005.md) |
 | 006 | ✅ Concluída | Design system claro, escuro e sépia | [Relatório](docs/sprints/SPRINT_006.md) |
-| 007 | 🚧 Em andamento | Acessibilidade e WCAG 2.2 AA | [Relatório](docs/sprints/SPRINT_007.md) |
-| 008-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 007 | ✅ Concluída | Acessibilidade e WCAG 2.2 AA | [Relatório](docs/sprints/SPRINT_007.md) |
+| 008 | 🚧 Em andamento | Protótipo responsivo para telemóvel, tablet e web | [Relatório](docs/sprints/SPRINT_008.md) |
+| 009-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 007
+## Entregas atuais da Sprint 008
 
-- Política de acessibilidade.
-- Matriz WCAG 2.2 A e AA.
-- Plano de testes automáticos e manuais.
-- Diretrizes de conteúdo acessível.
-- Severidade e bloqueio de defeitos.
+- Protótipo estático navegável localmente.
+- Layout para telemóvel, tablet e web.
+- Temas claro, escuro, sépia e sistema.
+- Cinco destinos principais demonstrativos.
+- Estados honestos para recursos ainda planejados.
 
-## Pendências da Sprint 007
+## Pendências da Sprint 008
 
 - Abrir Pull Request e aguardar CI verde.
 - Incorporar a sprint à `main` antes de marcá-la como concluída.
-- Auditar a conformidade quando existir aplicação executável.
+- Realizar testes formais com tecnologias assistivas em sprints futuras.
 
 ## Próximo passo exato
 
-Abrir o Pull Request da Sprint 007, confirmar o CI verde e incorporar à `main`.
+Abrir o Pull Request da Sprint 008, confirmar o CI verde e incorporar à `main`.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_007.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_008.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -107,6 +108,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 005](docs/sprints/SPRINT_005.md)
 - [Relatório da Sprint 006](docs/sprints/SPRINT_006.md)
 - [Relatório da Sprint 007](docs/sprints/SPRINT_007.md)
+- [Relatório da Sprint 008](docs/sprints/SPRINT_008.md)
+- [Executar o protótipo responsivo](docs/ux/RESPONSIVE_PROTOTYPE.md)
 - [Política de acessibilidade](docs/accessibility/ACCESSIBILITY_POLICY.md)
 - [Matriz WCAG 2.2 AA](docs/accessibility/WCAG_22_AA_MATRIX.md)
 - [Plano de testes de acessibilidade](docs/accessibility/TEST_PLAN.md)
@@ -141,11 +144,13 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 005](docs/validation/SPRINT_005_VALIDATION.md)
 - [Validação da Sprint 006](docs/validation/SPRINT_006_VALIDATION.md)
 - [Validação da Sprint 007](docs/validation/SPRINT_007_VALIDATION.md)
+- [Validação da Sprint 008](docs/validation/SPRINT_008_VALIDATION.md)
 - [Backup da Sprint 003](docs/backups/SPRINT_003_BACKUP_MANIFEST.md)
 - [Backup da Sprint 004](docs/backups/SPRINT_004_BACKUP_MANIFEST.md)
 - [Backup da Sprint 005](docs/backups/SPRINT_005_BACKUP_MANIFEST.md)
 - [Backup da Sprint 006](docs/backups/SPRINT_006_BACKUP_MANIFEST.md)
 - [Backup da Sprint 007](docs/backups/SPRINT_007_BACKUP_MANIFEST.md)
+- [Backup da Sprint 008](docs/backups/SPRINT_008_BACKUP_MANIFEST.md)
 
 ## Validar
 
