@@ -1,0 +1,29 @@
+# Manifesto de backup da Sprint 010
+
+Gerado em 24 de julho de 2026 antes do Pull Request.
+
+## Recuperação
+
+Após o merge, a versão será identificada pela tag `v0.10.0-sprint-010`.
+Antes do merge, a branch recuperável é:
+
+- `sprint/010-fundacao-tecnologica`
+
+## Checksums SHA-256
+
+```text
+83dcd34ce5edbfcf61c101a2fc65818959829b16d10b526de97e1f14e05640af *README.md
+bb8755b9633823d1171e37539b185b9305c615c7e9206a504cdfed91bf36e1af *ROADMAP.md
+265758c0c3a220a29fb0a8f87f1b4646f77753149a243856b3846dce64b3cba6 *CHANGELOG.md
+3e17a24af624e15365601f7ae814827ba1035d16f7a613bba13ee905ea3aaed1 *package.json
+603c764663f00be37a59a889c21590e9533c4f4b29dc54dee193ed2bdc4a83bb *pnpm-lock.yaml
+65f8ee664c2eccef8fd071e476cff80251cc78268f7bb09322f98cc27a7195d6 *pnpm-workspace.yaml
+a77ea69c766e47017bee9e42fda7c9637427c60db3a1981228021b355830f2fa *turbo.json
+b2241405301abad5a44f65cedf27d67b099c74610f9e5558c757d42709dea306 *apps/web/package.json
+39b15da95e3d36e9ba1430477b473f43f146be567d1a436eb31d699d9d699e4b *apps/mobile/package.json
+af61a84b3e89b9624b67dbc0efc619f734379531cd39d8bc51a0adb2f11cb63a *packages/domain/package.json
+6805d14b638b45273d5cc284c76958f9a7c8789f77fe1e1772a7bfa763cd88ee *packages/design-tokens/package.json
+eabcf561f4922a820be7a016c896ac0e91ff19ad0f3d3ce634fc7137be11e4f1 *docs/sprints/SPRINT_010.md
+5f798bd7f839c5442abd6bb931c815399c3066d29ed95bec7e58de522fe35336 *docs/development/ENVIRONMENTS.md
+db459e4db4b9273389514a9c3a0762380229ca6d9b74a766605bf9785840d5a6 *docs/validation/SPRINT_010_VALIDATION.md
+```

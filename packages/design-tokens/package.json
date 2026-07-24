@@ -1,0 +1,19 @@
+{
+  "name": "@apostolic-ia/design-tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tokens.json": "./src/tokens.json"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@apostolic-ia/config": "workspace:*",
+    "typescript": "6.0.3"
+  }
+}
