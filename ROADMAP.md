@@ -11,13 +11,13 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | 001 | [x] Concluída | [~] Em andamento | Constituição Doutrinária Apostólica Batista Pentecostal |
 | 002 | [x] Concluída | [ ] Planejada | Requisitos do produto e escopo do MVP |
 | 003 | [x] Concluída | [x] Concluída | Arquitetura, modelo de dados e decisões tecnológicas |
-| 004 | [~] Em andamento | [ ] Planejada | Política editorial, licenças bíblicas e propriedade intelectual |
+| 004 | [x] Concluída | [x] Concluída | Política editorial, licenças bíblicas e propriedade intelectual |
 
 ## Fase 2 — UX/UI
 
 | Sprint | Estado | Entrega |
 | --- | --- | --- | --- |
-| 005 | [ ] Planejada | [ ] Planejada | Jornada individual e arquitetura da informação |
+| 005 | [~] Em andamento | [ ] Planejada | Jornada individual e arquitetura da informação |
 | 006 | [ ] Planejada | [ ] Planejada | Design system claro, escuro e sépia |
 | 007 | [ ] Planejada | [ ] Planejada | Acessibilidade e WCAG 2.2 AA |
 | 008 | [ ] Planejada | [ ] Planejada | Protótipo responsivo para telemóvel, tablet e web |
