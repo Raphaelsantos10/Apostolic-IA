@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Protótipo local do Apostolic IA">
+    <title>Apostolic IA — Protótipo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Saltar para o conteúdo</a>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegação principal">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span class="brand-copy">
+            <strong>Apostolic IA</strong>
+            <small>Protótipo local</small>
+          </span>
+        </div>
+
+        <nav class="primary-nav">
+          <button class="nav-item is-active" type="button" data-view="home" aria-current="page">
+            <span aria-hidden="true">⌂</span><span>Início</span>
+          </button>
+          <button class="nav-item" type="button" data-view="courses">
+            <span aria-hidden="true">▤</span><span>Cursos</span>
+          </button>
+          <button class="nav-item" type="button" data-view="bible">
+            <span aria-hidden="true">▣</span><span>Bíblia</span>
+          </button>
+          <button class="nav-item" type="button" data-view="progress">
+            <span aria-hidden="true">◔</span><span>Progresso</span>
+          </button>
+          <button class="nav-item" type="button" data-view="more">
+            <span aria-hidden="true">•••</span><span>Mais</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-note">
+          <strong>Demonstração</strong>
+          <p>Sem conta, IA ou conteúdo protegido.</p>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Estudo individual</p>
+            <h1 id="view-title">Boa leitura</h1>
+          </div>
+          <label class="theme-control">
+            <span>Tema</span>
+            <select id="theme-select">
+              <option value="system">Sistema</option>
+              <option value="light">Claro</option>
+              <option value="dark">Escuro</option>
+              <option value="sepia">Sépia</option>
+            </select>
+          </label>
+        </header>
+
+        <main id="main-content" tabindex="-1">
+          <section class="view is-visible" data-view-panel="home" aria-labelledby="home-heading">
+            <div class="hero">
+              <div>
+                <p class="eyebrow">Próximo passo</p>
+                <h2 id="home-heading">Continue a sua jornada de estudo</h2>
+                <p>Uma experiência serena, progressiva e fundamentada para aprender no seu ritmo.</p>
+                <button class="button button-primary" type="button" data-demo-message="O estudo real será implementado numa sprint futura.">
+                  Começar demonstração
+                </button>
+              </div>
+              <div class="hero-progress" aria-label="Progresso demonstrativo: 2 de 7 etapas">
+                <span>2/7</span>
+                <small>etapas demonstrativas</small>
+              </div>
+            </div>
+
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Explorar</p>
+                <h2>Estudos em destaque</h2>
+              </div>
+              <button class="button button-quiet" type="button" data-view="courses">Ver cursos</button>
+            </div>
+
+            <div class="card-grid">
+              <article class="course-card">
+                <span class="badge">Demonstração</span>
+                <h3>Fundamentos da fé</h3>
+                <p>Conheça a estrutura planejada de uma jornada introdutória.</p>
+                <button class="text-link" type="button" data-demo-message="Conteúdo demonstrativo: nenhuma aula foi publicada.">Conhecer estrutura</button>
+              </article>
+              <article class="course-card">
+                <span class="badge">Planejado</span>
+                <h3>Vida cristã</h3>
+                <p>Conteúdo original sujeito a revisão doutrinária e editorial.</p>
+                <button class="text-link" type="button" data-demo-message="Este curso ainda está planejado.">Ver estado</button>
+              </article>
+              <article class="course-card">
+                <span class="badge">Planejado</span>
+                <h3>Panorama bíblico</h3>
+                <p>Uma futura visão estruturada das Escrituras com fontes autorizadas.</p>
+                <button class="text-link" type="button" data-demo-message="Este curso ainda está planejado.">Ver estado</button>
+              </article>
+            </div>
+          </section>
+
+          <section class="view" data-view-panel="courses" aria-labelledby="courses-heading" hidden>
+            <p class="eyebrow">Catálogo demonstrativo</p>
+            <h2 id="courses-heading">Cursos</h2>
+            <p class="lead">A estrutura abaixo testa organização e navegação. Não representa conteúdo publicado.</p>
+            <div class="list-panel">
+              <article><div><span class="badge">Estrutura</span><h3>Fundamentos da fé</h3><p>0 aulas publicadas</p></div><button class="button button-secondary" type="button" data-demo-message="O detalhe do curso será implementado futuramente.">Abrir</button></article>
+              <article><div><span class="badge">Planejado</span><h3>Vida cristã</h3><p>Aguardando produção e revisão</p></div><button class="button button-secondary" type="button" disabled>Indisponível</button></article>
+              <article><div><span class="badge">Planejado</span><h3>História da Igreja</h3><p>Aguardando produção e revisão</p></div><button class="button button-secondary" type="button" disabled>Indisponível</button></article>
+            </div>
+          </section>
+
+          <section class="view" data-view-panel="bible" aria-labelledby="bible-heading" hidden>
+            <div class="empty-state">
+              <span class="empty-icon" aria-hidden="true">▣</span>
+              <p class="eyebrow">Licenciamento obrigatório</p>
+              <h2 id="bible-heading">Bíblia planejada</h2>
+              <p>Nenhuma tradução protegida foi incorporada. Esta área será ativada somente após autorização documentada.</p>
+              <button class="button button-secondary" type="button" data-demo-message="Consulte a política de licenças bíblicas na documentação do projeto.">Entender o limite</button>
+            </div>
+          </section>
+
+          <section class="view" data-view-panel="progress" aria-labelledby="progress-heading" hidden>
+            <p class="eyebrow">Dados demonstrativos</p>
+            <h2 id="progress-heading">Progresso individual</h2>
+            <p class="lead">Os indicadores validam a futura apresentação; não são dados reais.</p>
+            <div class="metric-grid">
+              <article><strong>0</strong><span>Aulas concluídas</span></article>
+              <article><strong>0</strong><span>Revisões pendentes</span></article>
+              <article><strong>—</strong><span>Sequência diária</span></article>
+            </div>
+            <div class="empty-inline">
+              <h3>Ainda não existe progresso real</h3>
+              <p>Quando as aulas forem implementadas, esta área mostrará apenas dados autorizados do utilizador.</p>
+            </div>
+          </section>
+
+          <section class="view" data-view-panel="more" aria-labelledby="more-heading" hidden>
+            <p class="eyebrow">Preferências locais</p>
+            <h2 id="more-heading">Mais</h2>
+            <div class="settings-panel">
+              <div><h3>Aparência</h3><p>Use o seletor de tema no cabeçalho. A escolha fica apenas neste navegador.</p></div>
+              <div><h3>Acessibilidade</h3><p>O protótipo respeita redução de movimento, teclado e ampliação de texto.</p></div>
+              <div><h3>Privacidade</h3><p>Não existe conta, sincronização, telemetria ou envio de dados.</p></div>
+              <div><h3>Estado</h3><p>Protótipo da Sprint 008. Não é uma aplicação pronta.</p></div>
+            </div>
+          </section>
+        </main>
+
+        <div class="status-message" id="status-message" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Navegação principal móvel">
+      <button class="nav-item is-active" type="button" data-view="home" aria-current="page"><span aria-hidden="true">⌂</span><span>Início</span></button>
+      <button class="nav-item" type="button" data-view="courses"><span aria-hidden="true">▤</span><span>Cursos</span></button>
+      <button class="nav-item" type="button" data-view="bible"><span aria-hidden="true">▣</span><span>Bíblia</span></button>
+      <button class="nav-item" type="button" data-view="progress"><span aria-hidden="true">◔</span><span>Progresso</span></button>
+      <button class="nav-item" type="button" data-view="more"><span aria-hidden="true">•••</span><span>Mais</span></button>
+    </nav>
+  </body>
+</html>

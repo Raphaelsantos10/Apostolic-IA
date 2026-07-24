@@ -23,6 +23,11 @@ required_files=(
   "docs/sprints/SPRINT_005.md"
   "docs/sprints/SPRINT_006.md"
   "docs/sprints/SPRINT_007.md"
+  "docs/sprints/SPRINT_008.md"
+  "docs/ux/RESPONSIVE_PROTOTYPE.md"
+  "prototype/index.html"
+  "prototype/styles.css"
+  "prototype/app.js"
   "docs/accessibility/ACCESSIBILITY_POLICY.md"
   "docs/accessibility/WCAG_22_AA_MATRIX.md"
   "docs/accessibility/TEST_PLAN.md"
@@ -106,4 +111,4 @@ if grep -RInE --exclude-dir=.git \
   exit 1
 fi
 
-echo "Sprint 007 - acessibilidade e WCAG 2.2 AA validadas com sucesso."
+echo "Sprint 008 - protótipo responsivo validado com sucesso."

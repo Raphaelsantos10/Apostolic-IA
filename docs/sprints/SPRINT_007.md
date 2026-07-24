@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento - requisitos WCAG 2.2 AA aprovados documentalmente e prontos para Pull Request.
+✅ Concluída - incorporada à `main` pelo Pull Request 8 em 24 de julho de 2026.
 
 ## Objetivo
 
