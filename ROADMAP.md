@@ -5,160 +5,160 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 
 ## Fase 1 — Governança
 
-| Sprint | Entrega |
-| --- | --- |
-| 000 | Repositório, roadmap, validação, backup e governança |
-| 001 | Constituição Doutrinária Apostólica Batista Pentecostal |
-| 002 | Requisitos do produto e escopo do MVP |
-| 003 | Arquitetura, modelo de dados e decisões tecnológicas |
-| 004 | Política editorial, licenças bíblicas e propriedade intelectual |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 000 | [x] Concluída | [x] Concluída | Repositório, roadmap, validação, backup e governança |
+| 001 | [~] Em andamento | [~] Em andamento | Constituição Doutrinária Apostólica Batista Pentecostal |
+| 002 | [ ] Planejada | [ ] Planejada | Requisitos do produto e escopo do MVP |
+| 003 | [ ] Planejada | [ ] Planejada | Arquitetura, modelo de dados e decisões tecnológicas |
+| 004 | [ ] Planejada | [ ] Planejada | Política editorial, licenças bíblicas e propriedade intelectual |
 
 ## Fase 2 — UX/UI
 
-| Sprint | Entrega |
-| --- | --- |
-| 005 | Jornada individual e arquitetura da informação |
-| 006 | Design system claro, escuro e sépia |
-| 007 | Acessibilidade e WCAG 2.2 AA |
-| 008 | Protótipo responsivo para telemóvel, tablet e web |
-| 009 | Biblioteca visual e governança de imagens e mapas |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 005 | [ ] Planejada | [ ] Planejada | Jornada individual e arquitetura da informação |
+| 006 | [ ] Planejada | [ ] Planejada | Design system claro, escuro e sépia |
+| 007 | [ ] Planejada | [ ] Planejada | Acessibilidade e WCAG 2.2 AA |
+| 008 | [ ] Planejada | [ ] Planejada | Protótipo responsivo para telemóvel, tablet e web |
+| 009 | [ ] Planejada | [ ] Planejada | Biblioteca visual e governança de imagens e mapas |
 
 ## Fase 3 — Fundação tecnológica
 
-| Sprint | Entrega |
-| --- | --- |
-| 010 | Monorepo, ambientes, CI e base web/mobile |
-| 011 | Aplicação responsiva e PWA instalável |
-| 012 | Backend, base de dados, migrações, autenticação e RLS |
-| 013 | Cadastro, login, recuperação e exclusão da conta |
-| 014 | Perfil, preferências, idioma e acessibilidade |
-| 015 | Onboarding e avaliação inicial |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 010 | [ ] Planejada | [ ] Planejada | Monorepo, ambientes, CI e base web/mobile |
+| 011 | [ ] Planejada | [ ] Planejada | Aplicação responsiva e PWA instalável |
+| 012 | [ ] Planejada | [ ] Planejada | Backend, base de dados, migrações, autenticação e RLS |
+| 013 | [ ] Planejada | [ ] Planejada | Cadastro, login, recuperação e exclusão da conta |
+| 014 | [ ] Planejada | [ ] Planejada | Perfil, preferências, idioma e acessibilidade |
+| 015 | [ ] Planejada | [ ] Planejada | Onboarding e avaliação inicial |
 
 ## Fase 4 — Estudos
 
-| Sprint | Entrega |
-| --- | --- |
-| 016 | Catálogo de cursos e módulos |
-| 017 | Aulas em texto, imagem, áudio e vídeo |
-| 018 | Progresso, anotações, favoritos e sincronização |
-| 019 | Plano diário personalizado |
-| 020 | Quizzes, avaliações e certificados |
-| 021 | Revisão espaçada e diagnóstico de aprendizagem |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 016 | [ ] Planejada | [ ] Planejada | Catálogo de cursos e módulos |
+| 017 | [ ] Planejada | [ ] Planejada | Aulas em texto, imagem, áudio e vídeo |
+| 018 | [ ] Planejada | [ ] Planejada | Progresso, anotações, favoritos e sincronização |
+| 019 | [ ] Planejada | [ ] Planejada | Plano diário personalizado |
+| 020 | [ ] Planejada | [ ] Planejada | Quizzes, avaliações e certificados |
+| 021 | [ ] Planejada | [ ] Planejada | Revisão espaçada e diagnóstico de aprendizagem |
 
 ## Fase 5 — Bíblia
 
-| Sprint | Entrega |
-| --- | --- |
-| 022 | Arquitetura para traduções licenciadas |
-| 023 | Leitor bíblico e pesquisa |
-| 024 | Comparação de versões |
-| 025 | Referências cruzadas, destaques e anotações |
-| 026 | Áudio, leitura contínua e offline |
-| 027 | Mapas, linhas do tempo e contexto histórico |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 022 | [ ] Planejada | [ ] Planejada | Arquitetura para traduções licenciadas |
+| 023 | [ ] Planejada | [ ] Planejada | Leitor bíblico e pesquisa |
+| 024 | [ ] Planejada | [ ] Planejada | Comparação de versões |
+| 025 | [ ] Planejada | [ ] Planejada | Referências cruzadas, destaques e anotações |
+| 026 | [ ] Planejada | [ ] Planejada | Áudio, leitura contínua e offline |
+| 027 | [ ] Planejada | [ ] Planejada | Mapas, linhas do tempo e contexto histórico |
 
 ## Fase 6 — Gamificação
 
-| Sprint | Entrega |
-| --- | --- |
-| 028 | XP, níveis, metas e sequência diária |
-| 029 | Medalhas, missões e coleções |
-| 030 | Ordem Bíblica e Quem Sou Eu? |
-| 031 | Monte o Versículo e Descubra o Livro |
-| 032 | Mapas bíblicos e Viagens de Paulo |
-| 033 | Verdade ou Contexto e desafio de exegese |
-| 034 | Dificuldade adaptativa e revisão inteligente |
-| 035 | Auditoria pedagógica da gamificação |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 028 | [ ] Planejada | [ ] Planejada | XP, níveis, metas e sequência diária |
+| 029 | [ ] Planejada | [ ] Planejada | Medalhas, missões e coleções |
+| 030 | [ ] Planejada | [ ] Planejada | Ordem Bíblica e Quem Sou Eu? |
+| 031 | [ ] Planejada | [ ] Planejada | Monte o Versículo e Descubra o Livro |
+| 032 | [ ] Planejada | [ ] Planejada | Mapas bíblicos e Viagens de Paulo |
+| 033 | [ ] Planejada | [ ] Planejada | Verdade ou Contexto e desafio de exegese |
+| 034 | [ ] Planejada | [ ] Planejada | Dificuldade adaptativa e revisão inteligente |
+| 035 | [ ] Planejada | [ ] Planejada | Auditoria pedagógica da gamificação |
 
 ## Fase 7 — IA bíblica
 
-| Sprint | Entrega |
-| --- | --- |
-| 036 | Biblioteca aprovada e busca fundamentada |
-| 037 | Guardrails doutrinários e fontes |
-| 038 | Professor de IA por texto |
-| 039 | Memória pedagógica consentida |
-| 040 | Planos personalizados |
-| 041 | Quizzes assistidos por IA |
-| 042 | Testes adversariais teológicos |
-| 043 | Auditoria e denúncia de respostas |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 036 | [ ] Planejada | [ ] Planejada | Biblioteca aprovada e busca fundamentada |
+| 037 | [ ] Planejada | [ ] Planejada | Guardrails doutrinários e fontes |
+| 038 | [ ] Planejada | [ ] Planejada | Professor de IA por texto |
+| 039 | [ ] Planejada | [ ] Planejada | Memória pedagógica consentida |
+| 040 | [ ] Planejada | [ ] Planejada | Planos personalizados |
+| 041 | [ ] Planejada | [ ] Planejada | Quizzes assistidos por IA |
+| 042 | [ ] Planejada | [ ] Planejada | Testes adversariais teológicos |
+| 043 | [ ] Planejada | [ ] Planejada | Auditoria e denúncia de respostas |
 
 ## Fase 8 — Voz
 
-| Sprint | Entrega |
-| --- | --- |
-| 044 | Transcrição de voz |
-| 045 | Respostas faladas |
-| 046 | Conversação com interrupção |
-| 047 | Professor dentro das aulas |
-| 048 | Quizzes respondidos oralmente |
-| 049 | Legendas, transcrição e acessibilidade |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 044 | [ ] Planejada | [ ] Planejada | Transcrição de voz |
+| 045 | [ ] Planejada | [ ] Planejada | Respostas faladas |
+| 046 | [ ] Planejada | [ ] Planejada | Conversação com interrupção |
+| 047 | [ ] Planejada | [ ] Planejada | Professor dentro das aulas |
+| 048 | [ ] Planejada | [ ] Planejada | Quizzes respondidos oralmente |
+| 049 | [ ] Planejada | [ ] Planejada | Legendas, transcrição e acessibilidade |
 
 ## Fase 9 — Custos e vendas
 
-| Sprint | Entrega |
-| --- | --- |
-| 050 | Medição do custo de IA por utilizador |
-| 051 | Quotas, uso justo e proteção contra abuso |
-| 052 | Compra de módulos |
-| 053 | Assinaturas mensal e anual em euros |
-| 054 | Compras Android e iOS |
-| 055 | Renovação, cancelamento e restauração |
-| 056 | Sustentabilidade financeira |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 050 | [ ] Planejada | [ ] Planejada | Medição do custo de IA por utilizador |
+| 051 | [ ] Planejada | [ ] Planejada | Quotas, uso justo e proteção contra abuso |
+| 052 | [ ] Planejada | [ ] Planejada | Compra de módulos |
+| 053 | [ ] Planejada | [ ] Planejada | Assinaturas mensal e anual em euros |
+| 054 | [ ] Planejada | [ ] Planejada | Compras Android e iOS |
+| 055 | [ ] Planejada | [ ] Planejada | Renovação, cancelamento e restauração |
+| 056 | [ ] Planejada | [ ] Planejada | Sustentabilidade financeira |
 
 ## Fase 10 — Conteúdo teológico
 
-| Sprint | Entrega |
-| --- | --- |
-| 057 | Panorama do Antigo Testamento |
-| 058 | Panorama do Novo Testamento |
-| 059 | Doutrina de Deus |
-| 060 | Cristologia |
-| 061 | Pneumatologia |
-| 062 | Igreja Primitiva e Atos |
-| 063 | Dons e Ministérios |
-| 064 | Vida Cristã |
-| 065 | Escatologia |
-| 066 | História da Igreja |
-| 067 | Revisão teológica e pedagógica completa |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 057 | [ ] Planejada | [ ] Planejada | Panorama do Antigo Testamento |
+| 058 | [ ] Planejada | [ ] Planejada | Panorama do Novo Testamento |
+| 059 | [ ] Planejada | [ ] Planejada | Doutrina de Deus |
+| 060 | [ ] Planejada | [ ] Planejada | Cristologia |
+| 061 | [ ] Planejada | [ ] Planejada | Pneumatologia |
+| 062 | [ ] Planejada | [ ] Planejada | Igreja Primitiva e Atos |
+| 063 | [ ] Planejada | [ ] Planejada | Dons e Ministérios |
+| 064 | [ ] Planejada | [ ] Planejada | Vida Cristã |
+| 065 | [ ] Planejada | [ ] Planejada | Escatologia |
+| 066 | [ ] Planejada | [ ] Planejada | História da Igreja |
+| 067 | [ ] Planejada | [ ] Planejada | Revisão teológica e pedagógica completa |
 
 ## Fase 11 — Plataformas e países
 
-| Sprint | Entrega |
-| --- | --- |
-| 068 | Android e tablets |
-| 069 | iPhone e iPad |
-| 070 | Web e PWA |
-| 071 | Sincronização e offline |
-| 072 | Português de Portugal e do Brasil |
-| 073 | Base para espanhol e inglês |
-| 074 | Moedas, fusos e localização |
-| 075 | Matriz de dispositivos reais |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 068 | [ ] Planejada | [ ] Planejada | Android e tablets |
+| 069 | [ ] Planejada | [ ] Planejada | iPhone e iPad |
+| 070 | [ ] Planejada | [ ] Planejada | Web e PWA |
+| 071 | [ ] Planejada | [ ] Planejada | Sincronização e offline |
+| 072 | [ ] Planejada | [ ] Planejada | Português de Portugal e do Brasil |
+| 073 | [ ] Planejada | [ ] Planejada | Base para espanhol e inglês |
+| 074 | [ ] Planejada | [ ] Planejada | Moedas, fusos e localização |
+| 075 | [ ] Planejada | [ ] Planejada | Matriz de dispositivos reais |
 
 ## Fase 12 — Produção
 
-| Sprint | Entrega |
-| --- | --- |
-| 076 | Privacidade, consentimento e portabilidade |
-| 077 | Auditoria de RLS e isolamento |
-| 078 | Segredos, dependências, CodeQL e SBOM |
-| 079 | Backups automáticos |
-| 080 | Recuperação testada |
-| 081 | Observabilidade e alertas |
-| 082 | Desempenho e imagens |
-| 083 | Auditoria WCAG 2.2 AA |
-| 084 | Instalação em dispositivos limpos |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 076 | [ ] Planejada | [ ] Planejada | Privacidade, consentimento e portabilidade |
+| 077 | [ ] Planejada | [ ] Planejada | Auditoria de RLS e isolamento |
+| 078 | [ ] Planejada | [ ] Planejada | Segredos, dependências, CodeQL e SBOM |
+| 079 | [ ] Planejada | [ ] Planejada | Backups automáticos |
+| 080 | [ ] Planejada | [ ] Planejada | Recuperação testada |
+| 081 | [ ] Planejada | [ ] Planejada | Observabilidade e alertas |
+| 082 | [ ] Planejada | [ ] Planejada | Desempenho e imagens |
+| 083 | [ ] Planejada | [ ] Planejada | Auditoria WCAG 2.2 AA |
+| 084 | [ ] Planejada | [ ] Planejada | Instalação em dispositivos limpos |
 
 ## Fase 13 — Lançamento
 
-| Sprint | Entrega |
-| --- | --- |
-| 085 | Alpha interna |
-| 086 | Beta fechada |
-| 087 | Correções do piloto |
-| 088 | Aprovação teológica humana |
-| 089 | Validação financeira da IA |
-| 090 | Políticas das lojas e materiais comerciais |
-| 091 | Release Candidate |
-| 092 | Publicação controlada |
-| 093 | Lançamento v1.0.0 |
-| 094 | Monitorização pós-lançamento |
+| Sprint | Estado | Entrega |
+| --- | --- | --- | --- |
+| 085 | [ ] Planejada | [ ] Planejada | Alpha interna |
+| 086 | [ ] Planejada | [ ] Planejada | Beta fechada |
+| 087 | [ ] Planejada | [ ] Planejada | Correções do piloto |
+| 088 | [ ] Planejada | [ ] Planejada | Aprovação teológica humana |
+| 089 | [ ] Planejada | [ ] Planejada | Validação financeira da IA |
+| 090 | [ ] Planejada | [ ] Planejada | Políticas das lojas e materiais comerciais |
+| 091 | [ ] Planejada | [ ] Planejada | Release Candidate |
+| 092 | [ ] Planejada | [ ] Planejada | Publicação controlada |
+| 093 | [ ] Planejada | [ ] Planejada | Lançamento v1.0.0 |
+| 094 | [ ] Planejada | [ ] Planejada | Monitorização pós-lançamento |
