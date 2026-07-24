@@ -9,7 +9,7 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 007 - Acessibilidade e WCAG 2.2 AA.
 - **Sprint atual:** Sprint 008 - Protótipo responsivo para telemóvel, tablet e web.
 - **Branch atual:** `sprint/008-prototipo-responsivo`.
-- **Estado:** em andamento; primeiro protótipo local navegável em validação.
+- **Estado:** em andamento; protótipo aberto e validado localmente, pronto para Pull Request.
 - **Aplicação executável:** protótipo estático local, ainda não é produto funcional. ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -57,13 +57,13 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 008
 
-- Executar e revisar o protótipo em larguras diferentes.
-- Executar validação final e preparar o Pull Request.
+- Abrir Pull Request e aguardar CI verde.
 - Incorporar a sprint à `main` antes de marcá-la como concluída.
+- Realizar testes formais com tecnologias assistivas em sprints futuras.
 
 ## Próximo passo exato
 
-Abrir o protótipo local, revisar a navegação e validar a Sprint 008.
+Abrir o Pull Request da Sprint 008, confirmar o CI verde e incorporar à `main`.
 
 ## Como continuar em outro chat
 
@@ -144,11 +144,13 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 005](docs/validation/SPRINT_005_VALIDATION.md)
 - [Validação da Sprint 006](docs/validation/SPRINT_006_VALIDATION.md)
 - [Validação da Sprint 007](docs/validation/SPRINT_007_VALIDATION.md)
+- [Validação da Sprint 008](docs/validation/SPRINT_008_VALIDATION.md)
 - [Backup da Sprint 003](docs/backups/SPRINT_003_BACKUP_MANIFEST.md)
 - [Backup da Sprint 004](docs/backups/SPRINT_004_BACKUP_MANIFEST.md)
 - [Backup da Sprint 005](docs/backups/SPRINT_005_BACKUP_MANIFEST.md)
 - [Backup da Sprint 006](docs/backups/SPRINT_006_BACKUP_MANIFEST.md)
 - [Backup da Sprint 007](docs/backups/SPRINT_007_BACKUP_MANIFEST.md)
+- [Backup da Sprint 008](docs/backups/SPRINT_008_BACKUP_MANIFEST.md)
 
 ## Validar
 

@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - protótipo aberto e validado localmente, pronto para Pull Request.
 
 ## Objetivo
 
@@ -42,5 +42,5 @@ responsividade e temas antes da implementação tecnológica definitiva.
 
 ## Próximo passo
 
-Executar e revisar o protótipo em diferentes larguras, validar os arquivos e
-preparar o Pull Request.
+Abrir o Pull Request, confirmar o CI verde e incorporar a entrega à `main`.
+A sprint somente será marcada como concluída depois do merge.
