@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 009 - Biblioteca visual e governança de imagens e mapas.
-- **Sprint atual:** Sprint 010 - Monorepo, ambientes, CI e base web/mobile.
-- **Branch atual:** `sprint/010-fundacao-tecnologica`.
-- **Estado:** em andamento; instalação, tipos e builds aprovados, pronta para Pull Request.
-- **Aplicação executável:** bases tecnológicas web e mobile; o produto funcional ainda está em desenvolvimento.
+- **Última sprint concluída:** Sprint 010 - Monorepo, ambientes, CI e base web/mobile.
+- **Sprint atual:** Sprint 011 - Aplicação responsiva e PWA instalável.
+- **Branch atual:** `sprint/011-web-pwa`.
+- **Estado:** em andamento; aplicação web responsiva e PWA em validação.
+- **Aplicação executável:** base web instalável com navegação e offline inicial; conteúdos finais ainda não existem.
 - **Última atualização:** 24 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -46,33 +46,34 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 007 | ✅ Concluída | Acessibilidade e WCAG 2.2 AA | [Relatório](docs/sprints/SPRINT_007.md) |
 | 008 | ✅ Concluída | Protótipo responsivo para telemóvel, tablet e web | [Relatório](docs/sprints/SPRINT_008.md) |
 | 009 | ✅ Concluída | Biblioteca visual e governança de imagens e mapas | [Relatório](docs/sprints/SPRINT_009.md) |
-| 010 | 🚧 Em andamento | Monorepo, ambientes, CI e base web/mobile | [Relatório](docs/sprints/SPRINT_010.md) |
-| 011-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 010 | ✅ Concluída | Monorepo, ambientes, CI e base web/mobile | [Relatório](docs/sprints/SPRINT_010.md) |
+| 011 | 🚧 Em andamento | Aplicação responsiva e PWA instalável | [Relatório](docs/sprints/SPRINT_011.md) |
+| 012-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 010
+## Entregas atuais da Sprint 011
 
-- Monorepo pnpm com Turborepo.
-- Base web Next.js com App Router.
-- Base mobile Expo com Expo Router.
-- Pacotes compartilhados de domínio, configuração e tokens.
-- CI com typecheck e builds.
+- Shell web responsivo.
+- Navegação principal acessível.
+- Temas persistentes.
+- Manifesto e ícones próprios.
+- Service worker e página offline.
 
-## Pendências da Sprint 010
+## Pendências da Sprint 011
 
-- Abrir Pull Request e aguardar os dois workflows verdes.
-- Incorporar a sprint à `main` antes de marcá-la como concluída.
-- Instalar Node.js localmente antes do desenvolvimento das próximas sprints.
+- Executar instalação, typecheck e build.
+- Verificar instalação e modo offline localmente.
+- Finalizar validação e preparar o Pull Request.
 
 ## Próximo passo exato
 
-Abrir o Pull Request da Sprint 010, confirmar os workflows e incorporar à `main`.
+Validar build, manifesto, responsividade e modo offline da PWA.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_010.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_011.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -113,6 +114,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 008](docs/sprints/SPRINT_008.md)
 - [Relatório da Sprint 009](docs/sprints/SPRINT_009.md)
 - [Relatório da Sprint 010](docs/sprints/SPRINT_010.md)
+- [Relatório da Sprint 011](docs/sprints/SPRINT_011.md)
+- [PWA e modo offline](docs/development/PWA.md)
 - [Ambientes de desenvolvimento](docs/development/ENVIRONMENTS.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)

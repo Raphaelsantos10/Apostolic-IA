@@ -26,6 +26,14 @@ required_files=(
   "docs/sprints/SPRINT_008.md"
   "docs/sprints/SPRINT_009.md"
   "docs/sprints/SPRINT_010.md"
+  "docs/sprints/SPRINT_011.md"
+  "docs/development/PWA.md"
+  "apps/web/app/manifest.ts"
+  "apps/web/app/pwa-register.tsx"
+  "apps/web/app/offline/page.tsx"
+  "apps/web/public/sw.js"
+  "apps/web/public/icon.svg"
+  "apps/web/public/icon-maskable.svg"
   "docs/development/ENVIRONMENTS.md"
   "package.json"
   "pnpm-workspace.yaml"
@@ -134,4 +142,4 @@ if grep -RInE --exclude-dir=.git \
   exit 1
 fi
 
-echo "Sprint 010 - fundação tecnológica validada com sucesso."
+echo "Sprint 011 - aplicação web e PWA validadas com sucesso."
