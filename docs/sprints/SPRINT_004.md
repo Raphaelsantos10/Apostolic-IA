@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - políticas aprovadas localmente e prontas para Pull Request.
 
 ## Objetivo
 
@@ -66,5 +66,5 @@ implementação da plataforma.
 
 ## Próximo passo
 
-Revisar e aprovar as políticas iniciais, preencher o registro somente com
-ativos efetivamente autorizados e executar a validação da sprint.
+Abrir o Pull Request, confirmar o CI verde e incorporar a entrega à `main`.
+A sprint somente será marcada como concluída depois do merge.
