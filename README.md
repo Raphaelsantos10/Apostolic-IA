@@ -9,7 +9,7 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 004 - Política editorial, licenças bíblicas e propriedade intelectual.
 - **Sprint atual:** Sprint 005 - Jornada individual e arquitetura da informação.
 - **Branch atual:** `sprint/005-jornada-arquitetura-informacao`.
-- **Estado:** em andamento; jornada e navegação em definição.
+- **Estado:** em andamento; jornada e arquitetura da informação aprovadas localmente e prontas para Pull Request.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -54,13 +54,13 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 005
 
-- Revisar jornada, hierarquia e nomes de navegação.
-- Executar validação final e preparar o Pull Request.
+- Abrir Pull Request e aguardar CI verde.
 - Incorporar a sprint à `main` antes de marcá-la como concluída.
+- Validar futuramente a estrutura com utilizadores reais.
 
 ## Próximo passo exato
 
-Revisar a documentação de UX e executar a validação da Sprint 005.
+Abrir o Pull Request da Sprint 005, confirmar o CI verde e incorporar à `main`.
 
 ## Como continuar em outro chat
 
@@ -126,8 +126,10 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Decisões tecnológicas](docs/architecture/TECHNOLOGY_DECISIONS.md)
 - [Validação da Sprint 003](docs/validation/SPRINT_003_VALIDATION.md)
 - [Validação da Sprint 004](docs/validation/SPRINT_004_VALIDATION.md)
+- [Validação da Sprint 005](docs/validation/SPRINT_005_VALIDATION.md)
 - [Backup da Sprint 003](docs/backups/SPRINT_003_BACKUP_MANIFEST.md)
 - [Backup da Sprint 004](docs/backups/SPRINT_004_BACKUP_MANIFEST.md)
+- [Backup da Sprint 005](docs/backups/SPRINT_005_BACKUP_MANIFEST.md)
 
 ## Validar
 

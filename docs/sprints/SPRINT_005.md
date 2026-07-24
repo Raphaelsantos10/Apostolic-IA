@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - jornada e arquitetura da informação aprovadas localmente e prontas para Pull Request.
 
 ## Objetivo
 
@@ -43,5 +43,5 @@ e dos protótipos.
 
 ## Próximo passo
 
-Revisar a jornada e o mapa de navegação, executar a validação e preparar o Pull
-Request.
+Abrir o Pull Request, confirmar o CI verde e incorporar a entrega à `main`.
+A sprint somente será marcada como concluída depois do merge.
