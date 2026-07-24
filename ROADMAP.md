@@ -9,8 +9,8 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | --- | --- | --- | --- |
 | 000 | [x] Concluída | [x] Concluída | Repositório, roadmap, validação, backup e governança |
 | 001 | [x] Concluída | [~] Em andamento | Constituição Doutrinária Apostólica Batista Pentecostal |
-| 002 | [~] Em andamento | [ ] Planejada | Requisitos do produto e escopo do MVP |
-| 003 | [ ] Planejada | [ ] Planejada | Arquitetura, modelo de dados e decisões tecnológicas |
+| 002 | [x] Concluída | [ ] Planejada | Requisitos do produto e escopo do MVP |
+| 003 | [~] Em andamento | [ ] Planejada | Arquitetura, modelo de dados e decisões tecnológicas |
 | 004 | [ ] Planejada | [ ] Planejada | Política editorial, licenças bíblicas e propriedade intelectual |
 
 ## Fase 2 — UX/UI

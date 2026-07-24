@@ -6,11 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 001 - Constituição Doutrinária.
-- **Sprint atual:** Sprint 002 - Requisitos do produto e escopo do MVP.
-- **Branch atual:** `sprint/002-requisitos-mvp`.
-- **Estado:** em andamento; requisitos aprovados e prontos para validação e
-  Pull Request.
+- **Última sprint concluída:** Sprint 002 - Requisitos e escopo do MVP.
+- **Sprint atual:** Sprint 003 - Arquitetura, dados e decisões tecnológicas.
+- **Branch atual:** `sprint/003-arquitetura-tecnologia`.
+- **Estado:** em andamento; arquitetura inicial documentada.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -39,36 +38,35 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | --- | --- | --- | --- |
 | 000 | ✅ Concluída | Fundação, roadmap, validação, backup e governança | [Relatório](docs/sprints/SPRINT_000.md) |
 | 001 | ✅ Concluída | Constituição Doutrinária Apostólica Batista Pentecostal | [Relatório](docs/sprints/SPRINT_001.md) |
-| 002 | 🚧 Em andamento | Requisitos do produto e escopo do MVP | [Relatório](docs/sprints/SPRINT_002.md) |
-| 003-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 002 | ✅ Concluída | Requisitos do produto e escopo do MVP | [Relatório](docs/sprints/SPRINT_002.md) |
+| 003 | 🚧 Em andamento | Arquitetura, dados e decisões tecnológicas | [Relatório](docs/sprints/SPRINT_003.md) |
+| 004-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 002
+## Entregas atuais da Sprint 003
 
-- Escopo inicial do MVP documentado.
-- Seis experiências principais definidas.
-- Requisitos funcionais e não funcionais iniciais catalogados.
-- Limites de propriedade intelectual e identidade própria registrados.
-- Referências curriculares convertidas em áreas genéricas, sem marcas,
-  associações ou reprodução de conteúdo externo.
-- Decisões do primeiro MVP aprovadas.
-- Histórias de utilizador e critérios de aceite rastreáveis definidos.
+- Arquitetura lógica e limites dos componentes.
+- Estrutura futura do monorepo.
+- Modelo de dados conceitual.
+- Decisões de web, mobile, backend, dados, autenticação e IA.
+- Registros de decisão arquitetural.
 
-## Pendências da Sprint 002
+## Pendências da Sprint 003
 
-- Executar validação final e atualizar checksums.
-- Abrir Pull Request e aguardar CI verde.
-- Incorporar a sprint à `main` antes de marcá-la como concluída.
+- Rever riscos, alternativas e critérios de substituição tecnológica.
+- Confirmar que a arquitetura suporta o MVP sem antecipar implementação.
+- Preparar validação, release e Pull Request.
 
 ## Próximo passo exato
 
-Executar a validação final, abrir o Pull Request e aguardar CI verde e merge.
+Rever `docs/architecture/OVERVIEW.md`, `DATA_MODEL.md` e
+`TECHNOLOGY_DECISIONS.md`.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_002.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_003.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -101,6 +99,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 000](docs/sprints/SPRINT_000.md)
 - [Relatório da Sprint 001](docs/sprints/SPRINT_001.md)
 - [Relatório da Sprint 002](docs/sprints/SPRINT_002.md)
+- [Relatório da Sprint 003](docs/sprints/SPRINT_003.md)
 - [Constituição Doutrinária](docs/doctrine/CONSTITUICAO_DOUTRINARIA.md)
 - [Escopo do MVP](docs/requirements/MVP_SCOPE.md)
 - [Histórias de utilizador](docs/requirements/USER_STORIES.md)
@@ -108,6 +107,9 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Referências curriculares genéricas](docs/research/REFERENCIAS_CURRICULARES_PUBLICAS.md)
 - [Validação da Sprint 002](docs/validation/SPRINT_002_VALIDATION.md)
 - [Backup da Sprint 002](docs/backups/SPRINT_002_BACKUP_MANIFEST.md)
+- [Visão da arquitetura](docs/architecture/OVERVIEW.md)
+- [Modelo de dados](docs/architecture/DATA_MODEL.md)
+- [Decisões tecnológicas](docs/architecture/TECHNOLOGY_DECISIONS.md)
 
 ## Validar
 

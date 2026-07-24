@@ -18,11 +18,18 @@ required_files=(
   "docs/sprints/SPRINT_000.md"
   "docs/sprints/SPRINT_001.md"
   "docs/sprints/SPRINT_002.md"
+  "docs/sprints/SPRINT_003.md"
   "docs/doctrine/CONSTITUICAO_DOUTRINARIA.md"
   "docs/research/REFERENCIAS_CURRICULARES_PUBLICAS.md"
   "docs/requirements/MVP_SCOPE.md"
   "docs/requirements/USER_STORIES.md"
   "docs/requirements/ACCEPTANCE_MATRIX.md"
+  "docs/architecture/OVERVIEW.md"
+  "docs/architecture/DATA_MODEL.md"
+  "docs/architecture/TECHNOLOGY_DECISIONS.md"
+  "docs/architecture/adr/0001-monorepo-typescript.md"
+  "docs/architecture/adr/0002-postgresql-rls.md"
+  "docs/architecture/adr/0003-ai-server-boundary.md"
   "docs/validation/SPRINT_001_VALIDATION.md"
   "docs/validation/SPRINT_002_VALIDATION.md"
   "docs/backups/SPRINT_001_BACKUP_MANIFEST.md"
@@ -54,8 +61,8 @@ if grep -RInE --exclude-dir=.git '^(<<<<<<<|=======|>>>>>>>)' .; then
   exit 1
 fi
 
-if ! grep -q "Sprint 002" README.md; then
-  echo "ERRO: README não registra a Sprint 002"
+if ! grep -q "Sprint 003" README.md; then
+  echo "ERRO: README não registra a Sprint 003"
   exit 1
 fi
 
@@ -66,4 +73,4 @@ if grep -RInE --exclude-dir=.git \
   exit 1
 fi
 
-echo "Sprint 002 - estrutura inicial validada com sucesso."
+echo "Sprint 003 - arquitetura inicial validada com sucesso."
