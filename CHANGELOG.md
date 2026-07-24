@@ -6,6 +6,12 @@ Todas as alterações relevantes serão registadas neste arquivo.
 
 ### Added
 
+- Arquitetura lógica multiplataforma.
+- Decisões de web/PWA, mobile, backend e dados.
+- Modelo de dados conceitual.
+- Limites de confiança, RLS e operações privilegiadas.
+- Fronteira de servidor obrigatória para IA futura.
+- Registros de decisão arquitetural.
 - Escopo do MVP com seis experiências principais.
 - Requisitos funcionais e não funcionais.
 - Dezasseis histórias de utilizador priorizadas.

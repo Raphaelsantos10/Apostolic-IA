@@ -1,4 +1,4 @@
-# Rollback - Sprint 002
+# Rollback - Sprint 003
 
 Como a sprint é exclusivamente documental, o rollback consiste em restaurar
 os arquivos a partir do commit aprovado anterior por meio de um commit de

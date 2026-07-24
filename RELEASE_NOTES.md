@@ -1,27 +1,27 @@
-# Release notes - Sprint 002
+# Release notes - Sprint 003
 
 ## Entrega
 
-Requisitos do produto e escopo do primeiro MVP do Apostolic IA.
+Arquitetura, modelo de dados e decisões tecnológicas do Apostolic IA.
 
 ## Incluído
 
-- Seis experiências principais.
-- Demonstração local sem conta, pagamento ou IA em produção.
-- Curso demonstrativo original Fundamentos da Vida Cristã.
-- Público inicial a partir de 16 anos.
-- Interface inicial em português de Portugal.
-- Dezasseis histórias de utilizador.
-- Matriz de rastreabilidade e critérios observáveis.
-- Política de originalidade e ausência de marcas externas.
+- Monorepo TypeScript com aplicações web e mobile separadas.
+- Next.js para web/PWA e Expo para Android e iOS.
+- PostgreSQL/Supabase com RLS.
+- Modelo conceitual de identidade, conteúdo, avaliação e progresso.
+- Operações privilegiadas e IA atrás de serviços de servidor.
+- Conteúdo versionado, licenciado e sujeito a revisão.
+- Três registros de decisão arquitetural.
 
 ## Limitações conhecidas
 
 - Ainda não existe aplicação executável.
 - Não foram incluídos materiais didáticos ou traduções bíblicas licenciadas.
-- O conteúdo completo do curso ainda não foi produzido.
-- Arquitetura, design e implementação pertencem às próximas sprints.
-- Conta, pagamentos e IA permanecem fora do MVP inicial.
+- Ainda não existe aplicação executável.
+- Versões de dependências serão fixadas na Sprint 010.
+- Banco, autenticação, pagamentos e IA não foram implementados.
+- O modelo de dados ainda não é uma migração física.
 
 ## Compatibilidade
 
