@@ -9,7 +9,8 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 002 - Requisitos e escopo do MVP.
 - **Sprint atual:** Sprint 003 - Arquitetura, dados e decisões tecnológicas.
 - **Branch atual:** `sprint/003-arquitetura-tecnologia`.
-- **Estado:** em andamento; arquitetura inicial documentada.
+- **Estado:** em andamento; arquitetura aprovada e pronta para validação e
+  Pull Request.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -52,14 +53,13 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 003
 
-- Rever riscos, alternativas e critérios de substituição tecnológica.
-- Confirmar que a arquitetura suporta o MVP sem antecipar implementação.
-- Preparar validação, release e Pull Request.
+- Executar validação final e atualizar checksums.
+- Abrir Pull Request e aguardar CI verde.
+- Incorporar a sprint à `main` antes de marcá-la como concluída.
 
 ## Próximo passo exato
 
-Rever `docs/architecture/OVERVIEW.md`, `DATA_MODEL.md` e
-`TECHNOLOGY_DECISIONS.md`.
+Executar a validação final, abrir o Pull Request e aguardar CI verde e merge.
 
 ## Como continuar em outro chat
 
@@ -110,6 +110,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Visão da arquitetura](docs/architecture/OVERVIEW.md)
 - [Modelo de dados](docs/architecture/DATA_MODEL.md)
 - [Decisões tecnológicas](docs/architecture/TECHNOLOGY_DECISIONS.md)
+- [Validação da Sprint 003](docs/validation/SPRINT_003_VALIDATION.md)
+- [Backup da Sprint 003](docs/backups/SPRINT_003_BACKUP_MANIFEST.md)
 
 ## Validar
 

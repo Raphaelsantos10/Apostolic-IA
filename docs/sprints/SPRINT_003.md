@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - arquitetura aprovada e pronta para validação e Pull Request.
 
 ## Objetivo
 
@@ -42,4 +42,5 @@ implementação do monorepo, das aplicações e do backend.
 
 ## Próximo passo
 
-Rever arquitetura, modelo de dados e decisões antes da validação final.
+Executar validação final, abrir o Pull Request e incorporar a entrega à `main`
+depois do CI verde.

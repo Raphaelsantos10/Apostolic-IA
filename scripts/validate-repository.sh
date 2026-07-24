@@ -32,8 +32,10 @@ required_files=(
   "docs/architecture/adr/0003-ai-server-boundary.md"
   "docs/validation/SPRINT_001_VALIDATION.md"
   "docs/validation/SPRINT_002_VALIDATION.md"
+  "docs/validation/SPRINT_003_VALIDATION.md"
   "docs/backups/SPRINT_001_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_002_BACKUP_MANIFEST.md"
+  "docs/backups/SPRINT_003_BACKUP_MANIFEST.md"
 )
 
 for file in "${required_files[@]}"; do
