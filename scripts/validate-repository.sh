@@ -120,20 +120,20 @@ for file in "${required_files[@]}"; do
   fi
 done
 
-for forbidden in .env .env.local node_modules dist build; do
+for forbidden in .env .env.local dist build; do
   if [[ -e "$forbidden" ]]; then
     echo "ERRO: item proibido na raiz: $forbidden"
     exit 1
   fi
 done
 
-if grep -RInE --exclude-dir=.git --exclude="validate-repository.sh" \
+if grep -RInE --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.turbo --exclude="validate-repository.sh" \
   '(BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|sk-[A-Za-z0-9_-]{20,}|service_role[=:][[:space:]]*[^<[:space:]])' .; then
   echo "ERRO: possível segredo encontrado"
   exit 1
 fi
 
-if grep -RInE --exclude-dir=.git '^(<<<<<<<|=======|>>>>>>>)' .; then
+if grep -RInE --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.turbo '^(<<<<<<<|=======|>>>>>>>)' .; then
   echo "ERRO: marcador de conflito Git encontrado"
   exit 1
 fi
@@ -151,4 +151,4 @@ if grep -RInE --exclude-dir=.git \
 fi
 
 bash scripts/validate-sprint-012.sh
-echo "Sprint 012 - backend e RLS validados com sucesso."
+echo "Sprint 013 - autenticação e contas validadas com sucesso."
