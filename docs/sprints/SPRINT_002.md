@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - requisitos aprovados e prontos para validação e Pull Request.
 
 ## Objetivo
 
@@ -52,5 +52,5 @@ implementação.
 
 ## Próximo passo
 
-Rever as histórias de utilizador e confirmar que os critérios de aceite cobrem
-as seis experiências principais do MVP.
+Executar a validação final, abrir o Pull Request e incorporar a entrega à
+`main` depois do CI verde.

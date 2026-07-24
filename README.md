@@ -9,7 +9,8 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 001 - Constituição Doutrinária.
 - **Sprint atual:** Sprint 002 - Requisitos do produto e escopo do MVP.
 - **Branch atual:** `sprint/002-requisitos-mvp`.
-- **Estado:** em andamento; requisitos iniciais e limites do MVP em definição.
+- **Estado:** em andamento; requisitos aprovados e prontos para validação e
+  Pull Request.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -54,14 +55,13 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 002
 
-- Rever histórias de utilizador e matriz de rastreabilidade.
-- Confirmar que nenhuma funcionalidade futura foi apresentada como pronta.
-- Atualizar validação, release e continuidade antes do Pull Request.
+- Executar validação final e atualizar checksums.
+- Abrir Pull Request e aguardar CI verde.
+- Incorporar a sprint à `main` antes de marcá-la como concluída.
 
 ## Próximo passo exato
 
-Rever `docs/requirements/USER_STORIES.md` e
-`docs/requirements/ACCEPTANCE_MATRIX.md` antes de preparar a validação final.
+Executar a validação final, abrir o Pull Request e aguardar CI verde e merge.
 
 ## Como continuar em outro chat
 
@@ -106,6 +106,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Histórias de utilizador](docs/requirements/USER_STORIES.md)
 - [Matriz de aceite](docs/requirements/ACCEPTANCE_MATRIX.md)
 - [Referências curriculares genéricas](docs/research/REFERENCIAS_CURRICULARES_PUBLICAS.md)
+- [Validação da Sprint 002](docs/validation/SPRINT_002_VALIDATION.md)
+- [Backup da Sprint 002](docs/backups/SPRINT_002_BACKUP_MANIFEST.md)
 
 ## Validar
 

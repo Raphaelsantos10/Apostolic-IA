@@ -6,6 +6,12 @@ Todas as alterações relevantes serão registadas neste arquivo.
 
 ### Added
 
+- Escopo do MVP com seis experiências principais.
+- Requisitos funcionais e não funcionais.
+- Dezasseis histórias de utilizador priorizadas.
+- Matriz de rastreabilidade e critérios de aceite.
+- Política de conteúdo original sem marcas ou associações externas.
+- Público inicial, idioma e limites comerciais definidos.
 - Constituição Doutrinária Apostólica Batista Pentecostal.
 - Matriz doutrinária definida após consulta a fontes institucionais públicas.
 - Regras doutrinárias e de segurança para utilização futura pela IA.

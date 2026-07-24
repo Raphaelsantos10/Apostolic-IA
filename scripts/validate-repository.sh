@@ -24,7 +24,9 @@ required_files=(
   "docs/requirements/USER_STORIES.md"
   "docs/requirements/ACCEPTANCE_MATRIX.md"
   "docs/validation/SPRINT_001_VALIDATION.md"
+  "docs/validation/SPRINT_002_VALIDATION.md"
   "docs/backups/SPRINT_001_BACKUP_MANIFEST.md"
+  "docs/backups/SPRINT_002_BACKUP_MANIFEST.md"
 )
 
 for file in "${required_files[@]}"; do
