@@ -55,18 +55,16 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 - Configuração local do Supabase e PostgreSQL.
 - Migração de perfis e preferências ligada ao Supabase Auth.
-- RLS, privilégios mínimos e testes de isolamento.
+- RLS, privilégios mínimos e 7 testes de isolamento aprovados.
 - Documentação operacional e matriz de segurança.
 
 ## Pendências da Sprint 012
 
-- Executar Supabase local com Docker Desktop.
-- Recriar o banco e executar os testes SQL.
-- Validar e preparar o Pull Request.
+- Abrir e aprovar o Pull Request da Sprint 012.
 
 ## Próximo passo exato
 
-Executar `supabase start`, `db reset` e `test db` antes do Pull Request.
+Abrir o Pull Request da Sprint 012; banco recriado e 7 testes RLS aprovados.
 
 ## Como continuar em outro chat
 
@@ -116,6 +114,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 010](docs/sprints/SPRINT_010.md)
 - [Relatório da Sprint 011](docs/sprints/SPRINT_011.md)
 - [Relatório da Sprint 012](docs/sprints/SPRINT_012.md)
+- [Validação da Sprint 012](docs/validation/SPRINT_012_VALIDATION.md)
 - [Backend local e Supabase](docs/development/BACKEND.md)
 - [Matriz de RLS](docs/security/RLS_MATRIX.md)
 - [PWA e modo offline](docs/development/PWA.md)

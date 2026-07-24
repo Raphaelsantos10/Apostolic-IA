@@ -28,6 +28,7 @@ required_files=(
   "docs/sprints/SPRINT_010.md"
   "docs/sprints/SPRINT_011.md"
   "docs/sprints/SPRINT_012.md"
+  "docs/validation/SPRINT_012_VALIDATION.md"
   "docs/development/BACKEND.md"
   "docs/security/RLS_MATRIX.md"
   "supabase/config.toml"
