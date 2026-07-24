@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 003 - Arquitetura, dados e decisões tecnológicas.
-- **Sprint atual:** Sprint 004 - Política editorial, licenças bíblicas e propriedade intelectual.
-- **Branch atual:** `sprint/004-politica-editorial-licencas`.
-- **Estado:** em andamento; políticas aprovadas localmente e prontas para Pull Request.
+- **Última sprint concluída:** Sprint 004 - Política editorial, licenças bíblicas e propriedade intelectual.
+- **Sprint atual:** Sprint 005 - Jornada individual e arquitetura da informação.
+- **Branch atual:** `sprint/005-jornada-arquitetura-informacao`.
+- **Estado:** em andamento; jornada e navegação em definição.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -40,33 +40,34 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 001 | ✅ Concluída | Constituição Doutrinária Apostólica Batista Pentecostal | [Relatório](docs/sprints/SPRINT_001.md) |
 | 002 | ✅ Concluída | Requisitos do produto e escopo do MVP | [Relatório](docs/sprints/SPRINT_002.md) |
 | 003 | ✅ Concluída | Arquitetura, dados e decisões tecnológicas | [Relatório](docs/sprints/SPRINT_003.md) |
-| 004 | 🚧 Em andamento | Política editorial, licenças bíblicas e propriedade intelectual | [Relatório](docs/sprints/SPRINT_004.md) |
-| 005-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 004 | ✅ Concluída | Política editorial, licenças bíblicas e propriedade intelectual | [Relatório](docs/sprints/SPRINT_004.md) |
+| 005 | 🚧 Em andamento | Jornada individual e arquitetura da informação | [Relatório](docs/sprints/SPRINT_005.md) |
+| 006-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 004
+## Entregas atuais da Sprint 005
 
-- Política editorial e fluxo de aprovação.
-- Política de licenças bíblicas e bloqueio preventivo.
-- Política de propriedade intelectual e referências externas.
-- Registro de ativos e licenças.
-- Validação documental e manifesto de backup.
+- Jornada principal e primeira sessão.
+- Arquitetura da informação e hierarquia.
+- Navegação principal com cinco destinos.
+- Fluxos essenciais e estados de interface.
+- Regras responsivas e acessíveis.
 
-## Pendências da Sprint 004
+## Pendências da Sprint 005
 
-- Abrir Pull Request e aguardar CI verde.
+- Revisar jornada, hierarquia e nomes de navegação.
+- Executar validação final e preparar o Pull Request.
 - Incorporar a sprint à `main` antes de marcá-la como concluída.
-- Obter revisão jurídica profissional antes do lançamento comercial.
 
 ## Próximo passo exato
 
-Abrir o Pull Request da Sprint 004, confirmar o CI verde e incorporar à `main`.
+Revisar a documentação de UX e executar a validação da Sprint 005.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_004.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_005.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -101,6 +102,10 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 002](docs/sprints/SPRINT_002.md)
 - [Relatório da Sprint 003](docs/sprints/SPRINT_003.md)
 - [Relatório da Sprint 004](docs/sprints/SPRINT_004.md)
+- [Relatório da Sprint 005](docs/sprints/SPRINT_005.md)
+- [Jornada do utilizador](docs/ux/USER_JOURNEY.md)
+- [Arquitetura da informação](docs/ux/INFORMATION_ARCHITECTURE.md)
+- [Fluxos essenciais do MVP](docs/ux/MVP_FLOWS.md)
 - [Política editorial](docs/editorial/EDITORIAL_POLICY.md)
 - [Política de licenças bíblicas](docs/legal/BIBLE_LICENSING_POLICY.md)
 - [Política de propriedade intelectual](docs/legal/INTELLECTUAL_PROPERTY_POLICY.md)
