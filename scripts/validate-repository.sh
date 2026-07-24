@@ -24,6 +24,13 @@ required_files=(
   "docs/sprints/SPRINT_006.md"
   "docs/sprints/SPRINT_007.md"
   "docs/sprints/SPRINT_008.md"
+  "docs/sprints/SPRINT_009.md"
+  "docs/visual/VISUAL_ASSET_POLICY.md"
+  "docs/visual/MAPS_POLICY.md"
+  "docs/visual/IMAGE_GUIDELINES.md"
+  "docs/visual/ASSET_INTAKE_CHECKLIST.md"
+  "assets/README.md"
+  "assets/ASSET_REGISTER.md"
   "docs/ux/RESPONSIVE_PROTOTYPE.md"
   "prototype/index.html"
   "prototype/styles.css"
@@ -113,4 +120,4 @@ if grep -RInE --exclude-dir=.git \
   exit 1
 fi
 
-echo "Sprint 008 - protótipo responsivo validado com sucesso."
+echo "Sprint 009 - biblioteca visual e mapas validados com sucesso."
