@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 008 - Protótipo responsivo para telemóvel, tablet e web.
-- **Sprint atual:** Sprint 009 - Biblioteca visual e governança de imagens e mapas.
-- **Branch atual:** `sprint/009-biblioteca-visual`.
-- **Estado:** em andamento; governança visual aprovada documentalmente e pronta para Pull Request.
-- **Aplicação executável:** protótipo estático local; ainda não é um produto funcional.
+- **Última sprint concluída:** Sprint 009 - Biblioteca visual e governança de imagens e mapas.
+- **Sprint atual:** Sprint 010 - Monorepo, ambientes, CI e base web/mobile.
+- **Branch atual:** `sprint/010-fundacao-tecnologica`.
+- **Estado:** em andamento; monorepo e bases web/mobile em validação.
+- **Aplicação executável:** bases tecnológicas web e mobile; produto funcional ainda não existe. protótipo estático local; ainda não é um produto funcional.
 - **Última atualização:** 24 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -45,33 +45,34 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 006 | ✅ Concluída | Design system claro, escuro e sépia | [Relatório](docs/sprints/SPRINT_006.md) |
 | 007 | ✅ Concluída | Acessibilidade e WCAG 2.2 AA | [Relatório](docs/sprints/SPRINT_007.md) |
 | 008 | ✅ Concluída | Protótipo responsivo para telemóvel, tablet e web | [Relatório](docs/sprints/SPRINT_008.md) |
-| 009 | 🚧 Em andamento | Biblioteca visual e governança de imagens e mapas | [Relatório](docs/sprints/SPRINT_009.md) |
-| 010-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 009 | ✅ Concluída | Biblioteca visual e governança de imagens e mapas | [Relatório](docs/sprints/SPRINT_009.md) |
+| 010 | 🚧 Em andamento | Monorepo, ambientes, CI e base web/mobile | [Relatório](docs/sprints/SPRINT_010.md) |
+| 011-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 009
+## Entregas atuais da Sprint 010
 
-- Política de ativos visuais.
-- Política de mapas e incerteza histórica.
-- Diretrizes de imagem e texto alternativo.
-- Checklist de entrada e aprovação.
-- Registro central da biblioteca visual.
+- Monorepo pnpm com Turborepo.
+- Base web Next.js com App Router.
+- Base mobile Expo com Expo Router.
+- Pacotes compartilhados de domínio, configuração e tokens.
+- CI com typecheck e builds.
 
-## Pendências da Sprint 009
+## Pendências da Sprint 010
 
-- Abrir Pull Request e aguardar CI verde.
-- Incorporar a sprint à `main` antes de marcá-la como concluída.
-- Aplicar o processo a cada ativo visual futuro.
+- Instalar dependências e validar builds em ambiente limpo.
+- Abrir as bases localmente.
+- Finalizar validação e preparar o Pull Request.
 
 ## Próximo passo exato
 
-Abrir o Pull Request da Sprint 009, confirmar o CI verde e incorporar à `main`.
+Executar instalação, typecheck e build do monorepo.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_009.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_010.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -111,6 +112,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 007](docs/sprints/SPRINT_007.md)
 - [Relatório da Sprint 008](docs/sprints/SPRINT_008.md)
 - [Relatório da Sprint 009](docs/sprints/SPRINT_009.md)
+- [Relatório da Sprint 010](docs/sprints/SPRINT_010.md)
+- [Ambientes de desenvolvimento](docs/development/ENVIRONMENTS.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)
 - [Diretrizes de imagem](docs/visual/IMAGE_GUIDELINES.md)

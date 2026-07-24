@@ -25,6 +25,16 @@ required_files=(
   "docs/sprints/SPRINT_007.md"
   "docs/sprints/SPRINT_008.md"
   "docs/sprints/SPRINT_009.md"
+  "docs/sprints/SPRINT_010.md"
+  "docs/development/ENVIRONMENTS.md"
+  "package.json"
+  "pnpm-workspace.yaml"
+  "turbo.json"
+  "pnpm-lock.yaml"
+  "apps/web/package.json"
+  "apps/mobile/package.json"
+  "packages/domain/package.json"
+  "packages/design-tokens/package.json"
   "docs/visual/VISUAL_ASSET_POLICY.md"
   "docs/visual/MAPS_POLICY.md"
   "docs/visual/IMAGE_GUIDELINES.md"
@@ -122,4 +132,4 @@ if grep -RInE --exclude-dir=.git \
   exit 1
 fi
 
-echo "Sprint 009 - biblioteca visual e mapas validados com sucesso."
+echo "Sprint 010 - fundação tecnológica validada com sucesso."

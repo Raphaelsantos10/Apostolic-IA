@@ -21,13 +21,13 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | 006 | [x] Concluída | [x] Concluída | Design system claro, escuro e sépia |
 | 007 | [x] Concluída | [x] Concluída | Acessibilidade e WCAG 2.2 AA |
 | 008 | [x] Concluída | [x] Concluída | Protótipo responsivo para telemóvel, tablet e web |
-| 009 | [~] Em andamento | [ ] Planejada | Biblioteca visual e governança de imagens e mapas |
+| 009 | [x] Concluída | [x] Concluída | Biblioteca visual e governança de imagens e mapas |
 
 ## Fase 3 — Fundação tecnológica
 
 | Sprint | Estado | Entrega |
 | --- | --- | --- | --- |
-| 010 | [ ] Planejada | [ ] Planejada | Monorepo, ambientes, CI e base web/mobile |
+| 010 | [~] Em andamento | [ ] Planejada | Monorepo, ambientes, CI e base web/mobile |
 | 011 | [ ] Planejada | [ ] Planejada | Aplicação responsiva e PWA instalável |
 | 012 | [ ] Planejada | [ ] Planejada | Backend, base de dados, migrações, autenticação e RLS |
 | 013 | [ ] Planejada | [ ] Planejada | Cadastro, login, recuperação e exclusão da conta |

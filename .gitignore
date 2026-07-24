@@ -17,3 +17,7 @@ ios/Pods/
 *.jks
 *.p12
 *.mobileprovision
+.next/
+.turbo/
+.expo/
+web-build/

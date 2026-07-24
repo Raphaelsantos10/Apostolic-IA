@@ -1,0 +1,6 @@
+{
+  "name": "@apostolic-ia/config",
+  "version": "0.1.0",
+  "private": true,
+  "files": ["tsconfig.base.json", "tsconfig.expo.json", "tsconfig.next.json"]
+}

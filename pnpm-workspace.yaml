@@ -1,0 +1,11 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+autoInstallPeers: true
+sharedWorkspaceLockfile: true
+strictPeerDependencies: false
+
+allowBuilds:
+  "@swc/core": true
+  "sharp": true
