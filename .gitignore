@@ -23,3 +23,4 @@ ios/Pods/
 web-build/
 supabase/.temp/
 supabase/.branches/
+*.tsbuildinfo

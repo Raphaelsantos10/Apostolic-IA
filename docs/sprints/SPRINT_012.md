@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+✅ Concluída após testes locais, aprovação e incorporação do Pull Request.
 
 ## Objetivo
 
