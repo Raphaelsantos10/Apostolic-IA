@@ -9,7 +9,8 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 000 - Fundação e governança.
 - **Sprint atual:** Sprint 001 - Constituição Doutrinária Apostólica Batista Pentecostal.
 - **Branch atual:** `sprint/001-constituicao-doutrinaria`.
-- **Estado:** em andamento; minuta doutrinária aguardando aprovação humana.
+- **Estado:** em andamento; minuta alinhada às fontes públicas do Rhema,
+  aguardando aprovação humana.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -44,13 +45,16 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 - Estrutura da Constituição Doutrinária criada.
 - Limites de utilização da doutrina pela IA definidos.
-- Decisões doutrinárias sensíveis separadas para aprovação humana.
+- Dez questões doutrinárias pesquisadas nas fontes oficiais do Rhema Brasil e
+  do Ministério Verbo da Vida.
+- Posições não publicadas pelas fontes mantidas como pendentes.
 - Relatório da sprint iniciado.
 
 ## Pendências da Sprint 001
 
 - Rever e aprovar cada artigo da minuta doutrinária.
-- Resolver as decisões registradas na seção "Pontos que exigem decisão humana".
+- Resolver os pontos não especificados pelas fontes: perseverança e apostasia,
+  ordenação feminina e modelo de governo e autoridade.
 - Registrar nome, função e data do aprovador teológico.
 - Atualizar changelog, checksums e validação depois da aprovação.
 - Abrir Pull Request e incorporar a sprint à `main`.

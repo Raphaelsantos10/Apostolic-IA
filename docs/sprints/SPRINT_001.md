@@ -26,6 +26,9 @@ decisões futuras do Apostolic IA.
 - Limites de atuação da IA registrados.
 - Pontos sensíveis separados para decisão humana.
 - README transformado em registo central de continuidade.
+- Dez questões doutrinárias pesquisadas nas fontes públicas oficiais do Rhema
+  Brasil e do Ministério Verbo da Vida.
+- Posições não encontradas nas fontes mantidas explicitamente como pendentes.
 
 ## Critérios de aceite
 
@@ -55,5 +58,6 @@ decisões futuras do Apostolic IA.
 
 ## Próximo passo
 
-Rever `docs/doctrine/CONSTITUICAO_DOUTRINARIA.md` e resolver os pontos que
-exigem decisão humana.
+Rever `docs/doctrine/CONSTITUICAO_DOUTRINARIA.md`, confirmar o alinhamento com
+as fontes Rhema e resolver os três grupos ainda não especificados: perseverança
+e apostasia, ordenação feminina e modelo de governo e autoridade.
