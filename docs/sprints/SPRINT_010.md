@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - instalação, tipos e builds aprovados, pronta para Pull Request.
 
 ## Objetivo
 
@@ -52,5 +52,5 @@ decisões arquiteturais aprovadas.
 
 ## Próximo passo
 
-Instalar dependências, validar tipos e builds e abrir localmente as bases web e
-mobile antes da finalização.
+Abrir o Pull Request, confirmar os workflows verdes e incorporar a entrega à
+`main`. A sprint somente será marcada como concluída depois do merge.

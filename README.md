@@ -9,7 +9,7 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 009 - Biblioteca visual e governança de imagens e mapas.
 - **Sprint atual:** Sprint 010 - Monorepo, ambientes, CI e base web/mobile.
 - **Branch atual:** `sprint/010-fundacao-tecnologica`.
-- **Estado:** em andamento; monorepo e bases web/mobile em validação.
+- **Estado:** em andamento; instalação, tipos e builds aprovados, pronta para Pull Request.
 - **Aplicação executável:** bases tecnológicas web e mobile; o produto funcional ainda está em desenvolvimento.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -59,13 +59,13 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 010
 
-- Instalar dependências e validar builds em ambiente limpo.
-- Abrir as bases localmente.
-- Finalizar validação e preparar o Pull Request.
+- Abrir Pull Request e aguardar os dois workflows verdes.
+- Incorporar a sprint à `main` antes de marcá-la como concluída.
+- Instalar Node.js localmente antes do desenvolvimento das próximas sprints.
 
 ## Próximo passo exato
 
-Executar instalação, typecheck e build do monorepo.
+Abrir o Pull Request da Sprint 010, confirmar os workflows e incorporar à `main`.
 
 ## Como continuar em outro chat
 
@@ -156,6 +156,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 007](docs/validation/SPRINT_007_VALIDATION.md)
 - [Validação da Sprint 008](docs/validation/SPRINT_008_VALIDATION.md)
 - [Validação da Sprint 009](docs/validation/SPRINT_009_VALIDATION.md)
+- [Validação da Sprint 010](docs/validation/SPRINT_010_VALIDATION.md)
 - [Backup da Sprint 003](docs/backups/SPRINT_003_BACKUP_MANIFEST.md)
 - [Backup da Sprint 004](docs/backups/SPRINT_004_BACKUP_MANIFEST.md)
 - [Backup da Sprint 005](docs/backups/SPRINT_005_BACKUP_MANIFEST.md)
@@ -163,6 +164,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Backup da Sprint 007](docs/backups/SPRINT_007_BACKUP_MANIFEST.md)
 - [Backup da Sprint 008](docs/backups/SPRINT_008_BACKUP_MANIFEST.md)
 - [Backup da Sprint 009](docs/backups/SPRINT_009_BACKUP_MANIFEST.md)
+- [Backup da Sprint 010](docs/backups/SPRINT_010_BACKUP_MANIFEST.md)
 
 ## Validar
 
