@@ -19,6 +19,11 @@ required_files=(
   "docs/sprints/SPRINT_001.md"
   "docs/sprints/SPRINT_002.md"
   "docs/sprints/SPRINT_003.md"
+  "docs/sprints/SPRINT_004.md"
+  "docs/editorial/EDITORIAL_POLICY.md"
+  "docs/legal/BIBLE_LICENSING_POLICY.md"
+  "docs/legal/INTELLECTUAL_PROPERTY_POLICY.md"
+  "docs/legal/ASSET_LICENSE_REGISTER.md"
   "docs/doctrine/CONSTITUICAO_DOUTRINARIA.md"
   "docs/research/REFERENCIAS_CURRICULARES_PUBLICAS.md"
   "docs/requirements/MVP_SCOPE.md"
@@ -33,6 +38,8 @@ required_files=(
   "docs/validation/SPRINT_001_VALIDATION.md"
   "docs/validation/SPRINT_002_VALIDATION.md"
   "docs/validation/SPRINT_003_VALIDATION.md"
+  "docs/validation/SPRINT_004_VALIDATION.md"
+  "docs/backups/SPRINT_004_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_001_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_002_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_003_BACKUP_MANIFEST.md"
@@ -75,4 +82,4 @@ if grep -RInE --exclude-dir=.git \
   exit 1
 fi
 
-echo "Sprint 003 - arquitetura inicial validada com sucesso."
+echo "Sprint 004 - políticas editoriais e de direitos validadas com sucesso."

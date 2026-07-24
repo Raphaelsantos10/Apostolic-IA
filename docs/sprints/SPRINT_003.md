@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento - arquitetura aprovada e pronta para validação e Pull Request.
+✅ Concluída - incorporada à `main` pelo Pull Request 4 em 24 de julho de 2026.
 
 ## Objetivo
 
