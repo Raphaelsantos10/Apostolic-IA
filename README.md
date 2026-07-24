@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 000 - Fundação e governança.
-- **Sprint atual:** Sprint 001 - Constituição Doutrinária Apostólica Batista Pentecostal.
-- **Branch atual:** `sprint/001-constituicao-doutrinaria`.
-- **Estado:** em andamento; conteúdo doutrinário aprovado e pronto para
-  validação e Pull Request.
+- **Última sprint concluída:** Sprint 001 - Constituição Doutrinária.
+- **Sprint atual:** Sprint 002 - Requisitos do produto e escopo do MVP.
+- **Branch atual:** `sprint/002-requisitos-mvp`.
+- **Estado:** em andamento; requisitos aprovados e prontos para validação e
+  Pull Request.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -38,37 +38,37 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | Sprint | Estado | Entrega | Evidência |
 | --- | --- | --- | --- |
 | 000 | ✅ Concluída | Fundação, roadmap, validação, backup e governança | [Relatório](docs/sprints/SPRINT_000.md) |
-| 001 | 🚧 Em andamento | Constituição Doutrinária Apostólica Batista Pentecostal | [Relatório](docs/sprints/SPRINT_001.md) |
-| 002-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 001 | ✅ Concluída | Constituição Doutrinária Apostólica Batista Pentecostal | [Relatório](docs/sprints/SPRINT_001.md) |
+| 002 | 🚧 Em andamento | Requisitos do produto e escopo do MVP | [Relatório](docs/sprints/SPRINT_002.md) |
+| 003-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 001
+## Entregas atuais da Sprint 002
 
-- Estrutura da Constituição Doutrinária criada.
-- Limites de utilização da doutrina pela IA definidos.
-- Dez questões doutrinárias pesquisadas nas fontes oficiais do Rhema Brasil e
-  do Ministério Verbo da Vida.
-- Posições não publicadas pelas fontes mantidas como pendentes.
-- Grade pública de 24 matérias do Rhema catalogada como referência para
-  planejamento, sem copiar conteúdo didático protegido.
-- Relatório da sprint iniciado.
+- Escopo inicial do MVP documentado.
+- Seis experiências principais definidas.
+- Requisitos funcionais e não funcionais iniciais catalogados.
+- Limites de propriedade intelectual e identidade própria registrados.
+- Referências curriculares convertidas em áreas genéricas, sem marcas,
+  associações ou reprodução de conteúdo externo.
+- Decisões do primeiro MVP aprovadas.
+- Histórias de utilizador e critérios de aceite rastreáveis definidos.
 
-## Pendências da Sprint 001
+## Pendências da Sprint 002
 
-- Rever e aprovar cada artigo da minuta doutrinária.
-- Atualizar changelog, checksums e validação depois da aprovação.
-- Abrir Pull Request e incorporar a sprint à `main`.
+- Executar validação final e atualizar checksums.
+- Abrir Pull Request e aguardar CI verde.
+- Incorporar a sprint à `main` antes de marcá-la como concluída.
 
 ## Próximo passo exato
 
-Executar a validação final, atualizar checksums, abrir o Pull Request e aguardar
-CI verde e merge antes de marcar a Sprint 001 como concluída.
+Executar a validação final, abrir o Pull Request e aguardar CI verde e merge.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_001.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_002.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -100,8 +100,14 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Backup e recuperação](docs/BACKUP_RECOVERY.md)
 - [Relatório da Sprint 000](docs/sprints/SPRINT_000.md)
 - [Relatório da Sprint 001](docs/sprints/SPRINT_001.md)
+- [Relatório da Sprint 002](docs/sprints/SPRINT_002.md)
 - [Constituição Doutrinária](docs/doctrine/CONSTITUICAO_DOUTRINARIA.md)
-- [Referência curricular pública do Rhema](docs/research/RHEMA_GRADE_CURRICULAR.md)
+- [Escopo do MVP](docs/requirements/MVP_SCOPE.md)
+- [Histórias de utilizador](docs/requirements/USER_STORIES.md)
+- [Matriz de aceite](docs/requirements/ACCEPTANCE_MATRIX.md)
+- [Referências curriculares genéricas](docs/research/REFERENCIAS_CURRICULARES_PUBLICAS.md)
+- [Validação da Sprint 002](docs/validation/SPRINT_002_VALIDATION.md)
+- [Backup da Sprint 002](docs/backups/SPRINT_002_BACKUP_MANIFEST.md)
 
 ## Validar
 

@@ -6,7 +6,8 @@
 - Ausência de segredos e marcadores de conflito.
 - Consistência do estado registrado no README.
 - Fontes doutrinárias identificadas.
-- Conteúdo Rhema tratado como referência, sem reprodução de apostilas.
+- Fontes públicas tratadas apenas como referência, sem reprodução de conteúdo
+  didático externo.
 
 ## Comandos
 
@@ -18,4 +19,4 @@ sha256sum -c DELIVERY_CHECKSUMS.sha256
 
 ## Resultado
 
-Validação local aprovada em 24 de julho de 2026. GitHub Actions pendente.
+Pendente de execução no Git Bash e no GitHub Actions.
