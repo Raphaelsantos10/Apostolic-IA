@@ -18,6 +18,7 @@ implementação.
 - Limites de conteúdo, doutrina, IA e propriedade intelectual.
 - Critérios de aceite do produto.
 - Registro de decisões e pendências no README.
+- Histórias de utilizador e matriz de rastreabilidade.
 
 ## Fora do escopo
 
@@ -41,6 +42,15 @@ implementação.
 - Validação local e CI verdes.
 - Pull Request aprovado e incorporado à `main`.
 
+## Decisões aprovadas
+
+- Demonstração local sem conta.
+- Curso inicial: Fundamentos da Vida Cristã.
+- Público inicial a partir de 16 anos.
+- Planos apenas como “em breve”, sem preços.
+- Interface inicial em português de Portugal.
+
 ## Próximo passo
 
-Rever `docs/requirements/MVP_SCOPE.md` e responder às decisões abertas.
+Rever as histórias de utilizador e confirmar que os critérios de aceite cobrem
+as seis experiências principais do MVP.

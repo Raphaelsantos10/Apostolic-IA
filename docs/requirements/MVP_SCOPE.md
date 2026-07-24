@@ -16,6 +16,15 @@ de IA fundamentada em fases posteriores.
 O produto não substitui igreja local, pastor, aconselhamento profissional,
 formação acadêmica reconhecida ou acompanhamento humano.
 
+## Decisões aprovadas para o primeiro MVP
+
+- Funcionará como demonstração local, sem cadastro ou autenticação.
+- O primeiro curso original será **Fundamentos da Vida Cristã**.
+- O público inicial terá 16 anos ou mais.
+- A área de planos exibirá somente “em breve”, sem preços ou cobrança.
+- A primeira variante da interface será português de Portugal.
+- Português do Brasil será preparado em fase posterior.
+
 ## Problema principal
 
 Conteúdos bíblicos costumam estar dispersos, sem sequência, acompanhamento ou
@@ -124,10 +133,10 @@ responsiva e rastreável.
 - Fluxos essenciais funcionam por teclado.
 - Não existem marcas ou materiais externos sem autorização.
 
-## Decisões abertas
+## Decisões futuras
 
-1. O primeiro MVP exigirá conta ou funcionará como demonstração local?
-2. Qual será o primeiro curso original demonstrativo?
-3. O público inicial incluirá adolescentes de 12 a 15 anos?
-4. O MVP mostrará planos apenas como prévia ou ocultará preços?
-5. Qual variante de português será usada primeiro na interface?
+1. Momento adequado para exigir conta e sincronização.
+2. Política de consentimento para menores de 16 anos.
+3. Conteúdo e preços dos planos comerciais.
+4. Prioridade de português do Brasil, espanhol e inglês.
+5. Critérios para ativar IA fundamentada em produção.

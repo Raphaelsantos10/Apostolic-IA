@@ -49,18 +49,19 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 - Limites de propriedade intelectual e identidade própria registrados.
 - Referências curriculares convertidas em áreas genéricas, sem marcas,
   associações ou reprodução de conteúdo externo.
+- Decisões do primeiro MVP aprovadas.
+- Histórias de utilizador e critérios de aceite rastreáveis definidos.
 
 ## Pendências da Sprint 002
 
-- Rever prioridades obrigatórias, desejáveis e futuras.
-- Confirmar público inicial, idiomas e modelo comercial do MVP.
-- Definir critérios de aceite mensuráveis.
+- Rever histórias de utilizador e matriz de rastreabilidade.
+- Confirmar que nenhuma funcionalidade futura foi apresentada como pronta.
 - Atualizar validação, release e continuidade antes do Pull Request.
 
 ## Próximo passo exato
 
-Rever `docs/requirements/MVP_SCOPE.md` e confirmar as decisões de produto ainda
-abertas antes de encerrar os requisitos da Sprint 002.
+Rever `docs/requirements/USER_STORIES.md` e
+`docs/requirements/ACCEPTANCE_MATRIX.md` antes de preparar a validação final.
 
 ## Como continuar em outro chat
 
@@ -102,6 +103,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 002](docs/sprints/SPRINT_002.md)
 - [Constituição Doutrinária](docs/doctrine/CONSTITUICAO_DOUTRINARIA.md)
 - [Escopo do MVP](docs/requirements/MVP_SCOPE.md)
+- [Histórias de utilizador](docs/requirements/USER_STORIES.md)
+- [Matriz de aceite](docs/requirements/ACCEPTANCE_MATRIX.md)
 - [Referências curriculares genéricas](docs/research/REFERENCIAS_CURRICULARES_PUBLICAS.md)
 
 ## Validar

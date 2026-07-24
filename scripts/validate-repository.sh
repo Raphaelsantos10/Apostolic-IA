@@ -21,6 +21,8 @@ required_files=(
   "docs/doctrine/CONSTITUICAO_DOUTRINARIA.md"
   "docs/research/REFERENCIAS_CURRICULARES_PUBLICAS.md"
   "docs/requirements/MVP_SCOPE.md"
+  "docs/requirements/USER_STORIES.md"
+  "docs/requirements/ACCEPTANCE_MATRIX.md"
   "docs/validation/SPRINT_001_VALIDATION.md"
   "docs/backups/SPRINT_001_BACKUP_MANIFEST.md"
 )
