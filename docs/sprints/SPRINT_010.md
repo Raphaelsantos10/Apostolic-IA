@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento - instalação, tipos e builds aprovados, pronta para Pull Request.
+✅ Concluída - incorporada à `main` pelo Pull Request 11 em 24 de julho de 2026.
 
 ## Objetivo
 
