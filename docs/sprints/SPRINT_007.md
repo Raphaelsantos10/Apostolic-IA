@@ -2,7 +2,7 @@
 
 ## Estado
 
-🚧 Em andamento.
+🚧 Em andamento - requisitos WCAG 2.2 AA aprovados documentalmente e prontos para Pull Request.
 
 ## Objetivo
 
@@ -42,5 +42,5 @@ conformidade WCAG 2.2 nível AA.
 
 ## Próximo passo
 
-Revisar a matriz e o plano de testes, executar a validação documental e preparar
-o Pull Request.
+Abrir o Pull Request, confirmar o CI verde e incorporar a entrega à `main`.
+A sprint somente será marcada como concluída depois do merge.

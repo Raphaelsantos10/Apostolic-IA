@@ -9,7 +9,7 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 - **Última sprint concluída:** Sprint 006 - Design system claro, escuro e sépia.
 - **Sprint atual:** Sprint 007 - Acessibilidade e WCAG 2.2 AA.
 - **Branch atual:** `sprint/007-acessibilidade-wcag`.
-- **Estado:** em andamento; política, matriz e testes de acessibilidade em definição.
+- **Estado:** em andamento; requisitos WCAG 2.2 AA aprovados documentalmente e prontos para Pull Request.
 - **Aplicação executável:** ainda não existe.
 - **Última atualização:** 24 de julho de 2026.
 
@@ -56,13 +56,13 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 007
 
-- Revisar requisitos, evidências e matriz de testes.
-- Executar validação final e preparar o Pull Request.
+- Abrir Pull Request e aguardar CI verde.
 - Incorporar a sprint à `main` antes de marcá-la como concluída.
+- Auditar a conformidade quando existir aplicação executável.
 
 ## Próximo passo exato
 
-Revisar a documentação de acessibilidade e validar a Sprint 007.
+Abrir o Pull Request da Sprint 007, confirmar o CI verde e incorporar à `main`.
 
 ## Como continuar em outro chat
 
@@ -140,10 +140,12 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 004](docs/validation/SPRINT_004_VALIDATION.md)
 - [Validação da Sprint 005](docs/validation/SPRINT_005_VALIDATION.md)
 - [Validação da Sprint 006](docs/validation/SPRINT_006_VALIDATION.md)
+- [Validação da Sprint 007](docs/validation/SPRINT_007_VALIDATION.md)
 - [Backup da Sprint 003](docs/backups/SPRINT_003_BACKUP_MANIFEST.md)
 - [Backup da Sprint 004](docs/backups/SPRINT_004_BACKUP_MANIFEST.md)
 - [Backup da Sprint 005](docs/backups/SPRINT_005_BACKUP_MANIFEST.md)
 - [Backup da Sprint 006](docs/backups/SPRINT_006_BACKUP_MANIFEST.md)
+- [Backup da Sprint 007](docs/backups/SPRINT_007_BACKUP_MANIFEST.md)
 
 ## Validar
 
