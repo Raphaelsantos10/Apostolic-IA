@@ -6,9 +6,9 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 002 - Requisitos e escopo do MVP.
-- **Sprint atual:** Sprint 003 - Arquitetura, dados e decisões tecnológicas.
-- **Branch atual:** `sprint/003-arquitetura-tecnologia`.
+- **Última sprint concluída:** Sprint 003 - Arquitetura, dados e decisões tecnológicas.
+- **Sprint atual:** Sprint 004 - Política editorial, licenças bíblicas e propriedade intelectual.
+- **Branch atual:** `sprint/004-politica-editorial-licencas`.
 - **Estado:** em andamento; arquitetura aprovada e pronta para validação e
   Pull Request.
 - **Aplicação executável:** ainda não existe.
@@ -40,8 +40,9 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 000 | ✅ Concluída | Fundação, roadmap, validação, backup e governança | [Relatório](docs/sprints/SPRINT_000.md) |
 | 001 | ✅ Concluída | Constituição Doutrinária Apostólica Batista Pentecostal | [Relatório](docs/sprints/SPRINT_001.md) |
 | 002 | ✅ Concluída | Requisitos do produto e escopo do MVP | [Relatório](docs/sprints/SPRINT_002.md) |
-| 003 | 🚧 Em andamento | Arquitetura, dados e decisões tecnológicas | [Relatório](docs/sprints/SPRINT_003.md) |
-| 004-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 003 | ✅ Concluída | Arquitetura, dados e decisões tecnológicas | [Relatório](docs/sprints/SPRINT_003.md) |
+| 004 | 🚧 Em andamento | Política editorial, licenças bíblicas e propriedade intelectual | [Relatório](docs/sprints/SPRINT_004.md) |
+| 005-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
 ## Entregas atuais da Sprint 003
 
@@ -66,7 +67,7 @@ Executar a validação final, abrir o Pull Request e aguardar CI verde e merge.
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_003.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_004.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -100,6 +101,11 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 001](docs/sprints/SPRINT_001.md)
 - [Relatório da Sprint 002](docs/sprints/SPRINT_002.md)
 - [Relatório da Sprint 003](docs/sprints/SPRINT_003.md)
+- [Relatório da Sprint 004](docs/sprints/SPRINT_004.md)
+- [Política editorial](docs/editorial/EDITORIAL_POLICY.md)
+- [Política de licenças bíblicas](docs/legal/BIBLE_LICENSING_POLICY.md)
+- [Política de propriedade intelectual](docs/legal/INTELLECTUAL_PROPERTY_POLICY.md)
+- [Registro de ativos e licenças](docs/legal/ASSET_LICENSE_REGISTER.md)
 - [Constituição Doutrinária](docs/doctrine/CONSTITUICAO_DOUTRINARIA.md)
 - [Escopo do MVP](docs/requirements/MVP_SCOPE.md)
 - [Histórias de utilizador](docs/requirements/USER_STORIES.md)
