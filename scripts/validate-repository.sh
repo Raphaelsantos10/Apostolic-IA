@@ -21,6 +21,11 @@ required_files=(
   "docs/sprints/SPRINT_003.md"
   "docs/sprints/SPRINT_004.md"
   "docs/sprints/SPRINT_005.md"
+  "docs/sprints/SPRINT_006.md"
+  "docs/design/DESIGN_SYSTEM.md"
+  "docs/design/THEMES.md"
+  "docs/design/COMPONENTS.md"
+  "design/tokens.json"
   "docs/ux/USER_JOURNEY.md"
   "docs/ux/INFORMATION_ARCHITECTURE.md"
   "docs/ux/MVP_FLOWS.md"
@@ -48,6 +53,8 @@ required_files=(
   "docs/validation/SPRINT_003_VALIDATION.md"
   "docs/validation/SPRINT_004_VALIDATION.md"
   "docs/validation/SPRINT_005_VALIDATION.md"
+  "docs/validation/SPRINT_006_VALIDATION.md"
+  "docs/backups/SPRINT_006_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_005_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_004_BACKUP_MANIFEST.md"
   "docs/backups/SPRINT_001_BACKUP_MANIFEST.md"
@@ -92,4 +99,4 @@ if grep -RInE --exclude-dir=.git \
   exit 1
 fi
 
-echo "Sprint 005 - jornada e arquitetura da informação validadas com sucesso."
+echo "Sprint 006 - design system e temas validados com sucesso."
