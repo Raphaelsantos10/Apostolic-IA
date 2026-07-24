@@ -48,6 +48,8 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 - Dez questões doutrinárias pesquisadas nas fontes oficiais do Rhema Brasil e
   do Ministério Verbo da Vida.
 - Posições não publicadas pelas fontes mantidas como pendentes.
+- Grade pública de 24 matérias do Rhema catalogada como referência para
+  planejamento, sem copiar conteúdo didático protegido.
 - Relatório da sprint iniciado.
 
 ## Pendências da Sprint 001
@@ -102,6 +104,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 000](docs/sprints/SPRINT_000.md)
 - [Relatório da Sprint 001](docs/sprints/SPRINT_001.md)
 - [Constituição Doutrinária](docs/doctrine/CONSTITUICAO_DOUTRINARIA.md)
+- [Referência curricular pública do Rhema](docs/research/RHEMA_GRADE_CURRICULAR.md)
 
 ## Validar
 

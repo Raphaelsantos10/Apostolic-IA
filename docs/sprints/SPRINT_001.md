@@ -29,6 +29,8 @@ decisões futuras do Apostolic IA.
 - Dez questões doutrinárias pesquisadas nas fontes públicas oficiais do Rhema
   Brasil e do Ministério Verbo da Vida.
 - Posições não encontradas nas fontes mantidas explicitamente como pendentes.
+- Grade pública de 24 matérias do Rhema catalogada e mapeada preliminarmente
+  para as sprints futuras de conteúdo.
 
 ## Critérios de aceite
 
