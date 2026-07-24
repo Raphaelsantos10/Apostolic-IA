@@ -1,0 +1,19 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "sprint/**"
+
+permissions:
+  contents: read
+
+jobs:
+  repository:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Sprint 000 foundation
+        run: bash scripts/validate-repository.sh
