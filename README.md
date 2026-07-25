@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 012 - Backend, base de dados, autenticação e RLS.
-- **Sprint atual:** Sprint 013 - Cadastro, login, recuperação e exclusão da conta.
-- **Branch atual:** `sprint/013-contas-autenticacao`.
-- **Estado:** em andamento; fluxos de conta implementados e aguardando validação integrada.
-- **Aplicação executável:** PWA com backend local, cadastro, login, recuperação, sessão e exclusão de conta.
+- **Última sprint concluída:** Sprint 013 - Cadastro, login, recuperação e exclusão da conta.
+- **Sprint atual:** Sprint 014 - Perfil, preferências, idioma e acessibilidade.
+- **Branch atual:** `sprint/014-perfil-preferencias`.
+- **Estado:** em andamento; perfil e preferências persistentes em validação.
+- **Aplicação executável:** PWA autenticada com perfil, idioma, fuso e preferências de acessibilidade.
 - **Última atualização:** 25 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -49,31 +49,33 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 010 | ✅ Concluída | Monorepo, ambientes, CI e base web/mobile | [Relatório](docs/sprints/SPRINT_010.md) |
 | 011 | ✅ Concluída | Aplicação responsiva e PWA instalável | [Relatório](docs/sprints/SPRINT_011.md) |
 | 012 | ✅ Concluída | Backend, base de dados, autenticação e RLS | [Relatório](docs/sprints/SPRINT_012.md) |
-| 013 | 🚧 Em andamento | Cadastro, login, recuperação e exclusão da conta | [Relatório](docs/sprints/SPRINT_013.md) |
-| 014-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 013 | ✅ Concluída | Cadastro, login, recuperação e exclusão da conta | [Relatório](docs/sprints/SPRINT_013.md) |
+| 014 | 🚧 Em andamento | Perfil, preferências, idioma e acessibilidade | [Relatório](docs/sprints/SPRINT_014.md) |
+| 015-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 013
+## Entregas atuais da Sprint 014
 
-- Cadastro e confirmação de e-mail.
-- Login, renovação de sessão e logout.
-- Recuperação e atualização de senha.
-- Área protegida e exclusão segura da própria conta.
-- Testes de banco para criação e exclusão em cascata.
+- Edição de nome, idioma e fuso horário.
+- Tema, escala de texto, contraste e redução de movimento.
+- Preferências de comunicação e consentimento versionado.
+- Persistência segura sob RLS.
 
-## Pendências da Sprint 013
+## Pendências da Sprint 014
 
-- Abrir e aprovar o Pull Request da Sprint 013.
+- Executar testes SQL, typecheck e build.
+- Validar a interface local.
+- Preparar o Pull Request.
 
 ## Próximo passo exato
 
-Abrir o Pull Request; autenticação, banco, typecheck e build foram validados.
+Validar perfil e preferências no ambiente local.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_013.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_014.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -117,6 +119,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 011](docs/sprints/SPRINT_011.md)
 - [Relatório da Sprint 012](docs/sprints/SPRINT_012.md)
 - [Relatório da Sprint 013](docs/sprints/SPRINT_013.md)
+- [Relatório da Sprint 014](docs/sprints/SPRINT_014.md)
+- [Perfil e preferências](docs/development/PROFILE_PREFERENCES.md)
 - [Validação da Sprint 013](docs/validation/SPRINT_013_VALIDATION.md)
 - [Autenticação e gestão de conta](docs/development/AUTHENTICATION.md)
 - [Validação da Sprint 012](docs/validation/SPRINT_012_VALIDATION.md)

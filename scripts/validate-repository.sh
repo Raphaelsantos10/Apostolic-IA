@@ -151,4 +151,4 @@ if grep -RInE --exclude-dir=.git \
 fi
 
 bash scripts/validate-sprint-012.sh
-echo "Sprint 013 - autenticação e contas validadas com sucesso."
+echo "Sprint 014 - perfil e preferências validados com sucesso."

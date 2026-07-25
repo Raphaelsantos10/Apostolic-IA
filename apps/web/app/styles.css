@@ -284,3 +284,13 @@ h2 { line-height: 1.2; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; }
 }
+
+:root[data-high-contrast="true"] {
+  --border: currentColor;
+  --shadow: none;
+}
+:root[data-reduce-motion="true"] *, :root[data-reduce-motion="true"] *::before,
+:root[data-reduce-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
