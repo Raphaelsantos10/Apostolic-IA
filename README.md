@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 015 - Onboarding e avaliação inicial.
-- **Sprint atual:** Sprint 016 - Catálogo de cursos e módulos.
-- **Branch atual:** `sprint/016-catalogo-cursos-modulos`.
-- **Estado:** Sprint 016 em andamento; catálogo de cursos e módulos em implementação.
-- **Aplicação executável:** PWA autenticada com perfil, idioma, fuso e preferências de acessibilidade.
+- **Última sprint concluída:** Sprint 016 - Catálogo de cursos e módulos.
+- **Próxima sprint planejada:** Sprint 017 - Aulas em texto, imagem, áudio e vídeo.
+- **Branch atual:** `main`.
+- **Estado:** entre sprints; Sprint 016 incorporada e Sprint 017 planejada.
+- **Aplicação executável:** PWA com autenticação, perfil, onboarding e catálogo público controlado por RLS.
 - **Última atualização:** 25 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -52,24 +52,25 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 013 | ✅ Concluída | Cadastro, login, recuperação e exclusão da conta | [Relatório](docs/sprints/SPRINT_013.md) |
 | 014 | ✅ Concluída | Perfil, preferências, idioma e acessibilidade | [Relatório](docs/sprints/SPRINT_014.md) |
 | 015 | ✅ Concluída | Onboarding e avaliação inicial | [Relatório](docs/sprints/SPRINT_015.md) |
-| 016 | 🟡 Em andamento | Catálogo de cursos e módulos | [Relatório](docs/sprints/SPRINT_016.md) |\n| 017-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 016 | ✅ Concluída | Catálogo de cursos e módulos | [Relatório](docs/sprints/SPRINT_016.md) |\n| 017-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 015 incorporada por Pull Request.
-- Onboarding, avaliação inicial e recomendação validados.
-- Evidências registradas em `docs/validation/SPRINT_015_VALIDATION.md`.
+- Sprint 016 preparada para incorporação por Pull Request.
+- Catálogo, módulos, estados editoriais e RLS implementados.
+- Conteúdo local autoral e consulta pública validados.
+- Evidências registradas em `docs/validation/SPRINT_016_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Abrir o Draft Pull Request da Sprint 016 e implementar o catálogo de cursos e módulos.
+Após o merge, iniciar a Sprint 017 em Draft PR para implementar aulas em texto, imagem, áudio e vídeo.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_015.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_016.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -116,6 +117,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 014](docs/sprints/SPRINT_014.md)
 - [Relatório da Sprint 015](docs/sprints/SPRINT_015.md)
 - [Relatório da Sprint 016](docs/sprints/SPRINT_016.md)
+- [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
 - [Onboarding](docs/development/ONBOARDING.md)
 - [Validação da Sprint 014](docs/validation/SPRINT_014_VALIDATION.md)

@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento.
+Concluída; aguardando incorporação do Pull Request.
 
 ## Branch
 
@@ -25,13 +25,13 @@ Implementar a estrutura inicial do catálogo de cursos e módulos do Apostolic I
 
 ## Critérios de aceite
 
-- [ ] Cursos publicados aparecem no catálogo.
-- [ ] Cursos não publicados permanecem ocultos ao público.
-- [ ] Módulos respeitam a ordem editorial.
-- [ ] RLS impede alterações por utilizadores não autorizados.
-- [ ] Interface funciona em telemóvel, tablet e computador.
-- [ ] Testes, typecheck e build estão aprovados.
-- [ ] README e evidências estão atualizados.
+- [x] Cursos publicados aparecem no catálogo.
+- [x] Cursos não publicados permanecem ocultos ao público.
+- [x] Módulos respeitam a ordem editorial.
+- [x] RLS impede alterações por utilizadores não autorizados.
+- [x] Interface funciona em telemóvel, tablet e computador.
+- [x] Testes, typecheck e build estão aprovados.
+- [x] README e evidências estão atualizados.
 
 ## Decisões
 
@@ -40,8 +40,8 @@ marcas, apostilas, imagens e estruturas protegidas não serão copiados.
 
 ## Validação
 
-Será registrada em `docs/validation/SPRINT_016_VALIDATION.md`.
+Registrada em `docs/validation/SPRINT_016_VALIDATION.md`.
 
 ## Próximo passo
 
-Aplicar a migração, executar os testes de RLS e validar a interface do catálogo.
+Incorporar o Pull Request na `main` e iniciar a Sprint 017.

@@ -71,7 +71,7 @@ as $$
 $$;
 
 revoke all on function public.is_editor() from public;
-grant execute on function public.is_editor() to authenticated;
+grant execute on function public.is_editor() to anon, authenticated;
 
 alter table public.editorial_members enable row level security;
 alter table public.editorial_members force row level security;

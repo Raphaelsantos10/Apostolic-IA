@@ -38,6 +38,7 @@ required_files=(
   "supabase/tests/database/catalog.test.sql"
   "docs/development/COURSE_CATALOG.md"
   "docs/sprints/SPRINT_016.md"
+  "docs/validation/SPRINT_016_VALIDATION.md"
   "scripts/validate-sprint-012.sh"
   "docs/development/PWA.md"
   "apps/web/app/manifest.ts"

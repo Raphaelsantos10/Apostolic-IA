@@ -294,3 +294,47 @@ h2 { line-height: 1.2; }
   animation-duration: 0.01ms !important;
   transition-duration: 0.01ms !important;
 }
+
+
+.catalog-status {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--panel);
+}
+.catalog-error { border-color: #b42318; }
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.catalog-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+.catalog-card-heading { padding: 1.25rem; }
+.catalog-card-heading h2 { margin: 0.6rem 0 0.35rem; }
+.catalog-card-heading p,
+.catalog-modules p,
+.catalog-modules li span { color: var(--secondary); }
+.catalog-card-heading p { margin: 0; }
+.catalog-modules {
+  padding: 1.25rem;
+  border-top: 1px solid var(--border);
+  background: var(--muted);
+}
+.catalog-modules h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+.catalog-modules ol { display: grid; gap: 0.7rem; margin: 0; padding-left: 1.5rem; }
+.catalog-modules li { padding-left: 0.25rem; }
+.catalog-modules li strong,
+.catalog-modules li span { display: block; }
+.catalog-modules li span { margin-top: 0.15rem; font-size: 0.9rem; }
+
+@media (max-width: 64rem) {
+  .catalog-grid { grid-template-columns: 1fr; }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createClient } from "../lib/supabase/client";
 
 type ViewName = "home" | "courses" | "bible" | "progress" | "more";
 type ThemeName = "system" | "light" | "dark" | "sepia";
@@ -70,8 +71,8 @@ export function AppShell() {
         </div>
         <Navigation current={view} onNavigate={navigate} />
         <div className="sidebar-note">
-          <strong>Versão inicial</strong>
-          <p>Sem conta, Bíblia licenciada ou professor de IA.</p>
+          <strong>Desenvolvimento ativo</strong>
+          <p>Catálogo autoral com publicação controlada por RLS.</p>
         </div>
       </aside>
 
@@ -143,18 +144,18 @@ function HomeView({
     <>
       <section className="hero" aria-labelledby="home-title">
         <div>
-          <p className="eyebrow">Sprint 011 · Base web</p>
+          <p className="eyebrow">Sprint 016 · Catálogo</p>
           <h1 id="home-title">Continue a sua jornada de estudo</h1>
           <p className="lead">
-            A estrutura responsiva e instalável está ativa. Conteúdo real será
-            publicado somente após produção e aprovação.
+            O catálogo apresenta somente cursos e módulos publicados após revisão
+            editorial.
           </p>
           <button
             className="button button-primary"
             type="button"
             onClick={() => onNavigate("courses")}
           >
-            Explorar estrutura
+            Explorar cursos
           </button>
         </div>
         <div className="foundation-status" role="status">
@@ -181,26 +182,97 @@ function HomeView({
   );
 }
 
+type CatalogModule = {
+  id: string;
+  title: string;
+  summary: string;
+  position: number;
+};
+
+type CatalogCourse = {
+  id: string;
+  title: string;
+  summary: string;
+  level: "beginner" | "intermediate" | "advanced";
+  course_modules: CatalogModule[];
+};
+
+const levelLabels: Record<CatalogCourse["level"], string> = {
+  beginner: "Iniciante",
+  intermediate: "Intermédio",
+  advanced: "Avançado"
+};
+
 function CoursesView() {
+  const [courses, setCourses] = useState<CatalogCourse[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    const supabase = createClient();
+
+    void supabase
+      .from("courses")
+      .select("id,title,summary,level,course_modules(id,title,summary,position)")
+      .order("position")
+      .order("position", { referencedTable: "course_modules" })
+      .then(({ data, error: queryError }) => {
+        if (!active) return;
+        if (queryError) {
+          setError("Não foi possível carregar o catálogo.");
+        } else {
+          setCourses((data ?? []) as CatalogCourse[]);
+        }
+        setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <section aria-labelledby="courses-title">
-      <p className="eyebrow">Estrutura demonstrativa</p>
+      <p className="eyebrow">Conteúdo publicado</p>
       <h1 id="courses-title">Cursos</h1>
       <p className="lead">
-        Nenhuma aula foi publicada. Os cartões apresentam somente a arquitetura
-        planejada.
+        Conteúdo autoral organizado por curso e módulo. Materiais em rascunho ou
+        revisão não aparecem nesta página.
       </p>
-      <div className="course-list">
-        {["Fundamentos da fé", "Vida cristã", "Panorama bíblico"].map((name) => (
-          <article key={name}>
-            <div>
-              <span className="badge">Planejado</span>
-              <h2>{name}</h2>
-              <p>Aguardando produção e revisão humana.</p>
+
+      {loading && <p className="catalog-status" role="status">A carregar catálogo…</p>}
+      {error && <p className="catalog-status catalog-error" role="alert">{error}</p>}
+      {!loading && !error && courses.length === 0 && (
+        <div className="notice">
+          <h2>Nenhum curso publicado</h2>
+          <p>O conteúdo aparecerá após aprovação editorial.</p>
+        </div>
+      )}
+
+      <div className="catalog-grid">
+        {courses.map((course) => (
+          <article className="catalog-card" key={course.id}>
+            <div className="catalog-card-heading">
+              <span className="badge">{levelLabels[course.level]}</span>
+              <h2>{course.title}</h2>
+              <p>{course.summary}</p>
             </div>
-            <button className="button button-secondary" type="button" disabled>
-              Indisponível
-            </button>
+            <div className="catalog-modules">
+              <h3>Módulos publicados</h3>
+              {course.course_modules.length === 0 ? (
+                <p>Nenhum módulo publicado.</p>
+              ) : (
+                <ol>
+                  {course.course_modules.map((module) => (
+                    <li key={module.id}>
+                      <strong>{module.title}</strong>
+                      <span>{module.summary}</span>
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </div>
           </article>
         ))}
       </div>
