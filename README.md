@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 014 - Perfil, preferências, idioma e acessibilidade.
-- **Sprint atual:** Sprint 015 - Onboarding e avaliação inicial.
-- **Branch atual:** `sprint/015-onboarding-avaliacao`.
-- **Estado:** em andamento; onboarding e avaliação inicial em validação.
+- **Última sprint concluída:** Sprint 015 - Onboarding e avaliação inicial.
+- **Próxima sprint planejada:** Sprint 016 - Catálogo de cursos e módulos.
+- **Branch atual:** `main`.
+- **Estado:** entre sprints; Sprint 015 incorporada e Sprint 016 planejada.
 - **Aplicação executável:** PWA autenticada com perfil, idioma, fuso e preferências de acessibilidade.
 - **Última atualização:** 25 de julho de 2026.
 
@@ -51,23 +51,18 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 012 | ✅ Concluída | Backend, base de dados, autenticação e RLS | [Relatório](docs/sprints/SPRINT_012.md) |
 | 013 | ✅ Concluída | Cadastro, login, recuperação e exclusão da conta | [Relatório](docs/sprints/SPRINT_013.md) |
 | 014 | ✅ Concluída | Perfil, preferências, idioma e acessibilidade | [Relatório](docs/sprints/SPRINT_014.md) |
-| 015 | 🚧 Em andamento | Onboarding e avaliação inicial | [Relatório](docs/sprints/SPRINT_015.md) |
+| 015 | ✅ Concluída | Onboarding e avaliação inicial | [Relatório](docs/sprints/SPRINT_015.md) |
 | 016-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 015
+## Última entrega concluída
 
-- Objetivos, experiência e disponibilidade semanal.
-- Avaliação bíblica inicial.
-- Recomendação de plano e opção de adiar.
-- Persistência segura com RLS.
-
-## Pendências da Sprint 015
-
-- Abrir e aprovar o Pull Request da Sprint 015.
+- Sprint 015 incorporada por Pull Request.
+- Onboarding, avaliação inicial e recomendação validados.
+- Evidências registradas em `docs/validation/SPRINT_015_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Abrir o Pull Request; banco, testes, typecheck e build foram aprovados.
+Iniciar a Sprint 016 em Draft PR para implementar o catálogo de cursos e módulos.
 
 ## Como continuar em outro chat
 
