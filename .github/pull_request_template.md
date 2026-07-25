@@ -2,23 +2,49 @@
 
 - Número:
 - Objetivo:
-- Issue ou documento relacionado:
+- Documento:
+- Branch:
+- Estado após o merge:
 
-## Entrega
+## Escopo entregue
 
-- [ ] Escopo concluído
-- [ ] Validação local executada
+- 
+- 
+- 
+
+## Validação
+
+- [ ] Testes
+- [ ] Typecheck
+- [ ] Build
+- [ ] Banco e migrações
+- [ ] RLS e isolamento, quando aplicável
 - [ ] Documentação atualizada
-- [ ] Sem segredos ou arquivos proibidos
-- [ ] Instalação/atualização documentada
-- [ ] Backup e rollback avaliados
-- [ ] Limitações conhecidas registadas
-- [ ] Aprovação doutrinária, quando aplicável
+- [ ] README representa o estado após o merge
+- [ ] Segredos e arquivos gerados verificados
+- [ ] Aprovação doutrinária humana, quando aplicável
 
-## Evidência
+## Evidências reais
 
+```text
 Comandos executados e resultados:
+Sem saída registrada ainda.
+```
 
-## Riscos e rollback
+## Limitações conhecidas
 
-Descreva impacto, migrações e forma de restaurar a versão anterior.
+-
+
+## Riscos
+
+-
+
+## Rollback
+
+-
+
+## Declaração final
+
+- [ ] O conteúdo desta PR foi revisado.
+- [ ] O README ficará correto após o merge.
+- [ ] A próxima sprint está apenas planejada, não marcada como iniciada.

@@ -32,7 +32,7 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | 012 | [x] Concluída | [x] Concluída | Backend, base de dados, migrações, autenticação e RLS |
 | 013 | [x] Concluída | [x] Concluída | Cadastro, login, recuperação e exclusão da conta |
 | 014 | [x] Concluída | [x] Concluída | Perfil, preferências, idioma e acessibilidade |
-| 015 | [~] Em andamento | [ ] Planejada | Onboarding e avaliação inicial |
+| 015 | [x] Concluída | [x] Concluída | Onboarding e avaliação inicial |
 
 ## Fase 4 — Estudos
 
