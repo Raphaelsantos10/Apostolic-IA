@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 013 - Cadastro, login, recuperação e exclusão da conta.
-- **Sprint atual:** Sprint 014 - Perfil, preferências, idioma e acessibilidade.
-- **Branch atual:** `sprint/014-perfil-preferencias`.
-- **Estado:** em andamento; perfil e preferências persistentes em validação.
+- **Última sprint concluída:** Sprint 014 - Perfil, preferências, idioma e acessibilidade.
+- **Sprint atual:** Sprint 015 - Onboarding e avaliação inicial.
+- **Branch atual:** `sprint/015-onboarding-avaliacao`.
+- **Estado:** em andamento; onboarding e avaliação inicial em validação.
 - **Aplicação executável:** PWA autenticada com perfil, idioma, fuso e preferências de acessibilidade.
 - **Última atualização:** 25 de julho de 2026.
 
@@ -50,30 +50,32 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 011 | ✅ Concluída | Aplicação responsiva e PWA instalável | [Relatório](docs/sprints/SPRINT_011.md) |
 | 012 | ✅ Concluída | Backend, base de dados, autenticação e RLS | [Relatório](docs/sprints/SPRINT_012.md) |
 | 013 | ✅ Concluída | Cadastro, login, recuperação e exclusão da conta | [Relatório](docs/sprints/SPRINT_013.md) |
-| 014 | 🚧 Em andamento | Perfil, preferências, idioma e acessibilidade | [Relatório](docs/sprints/SPRINT_014.md) |
-| 015-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 014 | ✅ Concluída | Perfil, preferências, idioma e acessibilidade | [Relatório](docs/sprints/SPRINT_014.md) |
+| 015 | 🚧 Em andamento | Onboarding e avaliação inicial | [Relatório](docs/sprints/SPRINT_015.md) |
+| 016-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
-## Entregas atuais da Sprint 014
+## Entregas atuais da Sprint 015
 
-- Edição de nome, idioma e fuso horário.
-- Tema, escala de texto, contraste e redução de movimento.
-- Preferências de comunicação e consentimento versionado.
-- Persistência segura sob RLS.
+- Objetivos, experiência e disponibilidade semanal.
+- Avaliação bíblica inicial.
+- Recomendação de plano e opção de adiar.
+- Persistência segura com RLS.
 
-## Pendências da Sprint 014
+## Pendências da Sprint 015
 
-- Abrir e aprovar o Pull Request da Sprint 014.
+- Validar testes, build e fluxo local.
+- Preparar o Pull Request.
 
 ## Próximo passo exato
 
-Abrir o Pull Request; banco, testes, typecheck e build foram aprovados.
+Validar o onboarding no ambiente local.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_014.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_015.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -118,6 +120,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 012](docs/sprints/SPRINT_012.md)
 - [Relatório da Sprint 013](docs/sprints/SPRINT_013.md)
 - [Relatório da Sprint 014](docs/sprints/SPRINT_014.md)
+- [Relatório da Sprint 015](docs/sprints/SPRINT_015.md)
+- [Onboarding](docs/development/ONBOARDING.md)
 - [Validação da Sprint 014](docs/validation/SPRINT_014_VALIDATION.md)
 - [Perfil e preferências](docs/development/PROFILE_PREFERENCES.md)
 - [Validação da Sprint 013](docs/validation/SPRINT_013_VALIDATION.md)
