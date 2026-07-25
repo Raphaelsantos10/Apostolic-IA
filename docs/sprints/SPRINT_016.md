@@ -44,4 +44,4 @@ Será registrada em `docs/validation/SPRINT_016_VALIDATION.md`.
 
 ## Próximo passo
 
-Abrir o Draft Pull Request e iniciar o modelo de dados do catálogo.
+Aplicar a migração, executar os testes de RLS e validar a interface do catálogo.
