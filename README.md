@@ -7,9 +7,9 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 ## Estado atual do projeto
 
 - **Última sprint concluída:** Sprint 015 - Onboarding e avaliação inicial.
-- **Próxima sprint planejada:** Sprint 016 - Catálogo de cursos e módulos.
-- **Branch atual:** `main`.
-- **Estado:** entre sprints; Sprint 015 incorporada e Sprint 016 planejada.
+- **Sprint atual:** Sprint 016 - Catálogo de cursos e módulos.
+- **Branch atual:** `sprint/016-catalogo-cursos-modulos`.
+- **Estado:** Sprint 016 em andamento; catálogo de cursos e módulos em implementação.
 - **Aplicação executável:** PWA autenticada com perfil, idioma, fuso e preferências de acessibilidade.
 - **Última atualização:** 25 de julho de 2026.
 
@@ -52,7 +52,7 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 013 | ✅ Concluída | Cadastro, login, recuperação e exclusão da conta | [Relatório](docs/sprints/SPRINT_013.md) |
 | 014 | ✅ Concluída | Perfil, preferências, idioma e acessibilidade | [Relatório](docs/sprints/SPRINT_014.md) |
 | 015 | ✅ Concluída | Onboarding e avaliação inicial | [Relatório](docs/sprints/SPRINT_015.md) |
-| 016-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 016 | 🟡 Em andamento | Catálogo de cursos e módulos | [Relatório](docs/sprints/SPRINT_016.md) |\n| 017-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
@@ -62,7 +62,7 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Próximo passo exato
 
-Iniciar a Sprint 016 em Draft PR para implementar o catálogo de cursos e módulos.
+Abrir o Draft Pull Request da Sprint 016 e implementar o catálogo de cursos e módulos.
 
 ## Como continuar em outro chat
 
@@ -115,6 +115,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 013](docs/sprints/SPRINT_013.md)
 - [Relatório da Sprint 014](docs/sprints/SPRINT_014.md)
 - [Relatório da Sprint 015](docs/sprints/SPRINT_015.md)
+- [Relatório da Sprint 016](docs/sprints/SPRINT_016.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
 - [Onboarding](docs/development/ONBOARDING.md)
 - [Validação da Sprint 014](docs/validation/SPRINT_014_VALIDATION.md)
