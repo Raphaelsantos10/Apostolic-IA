@@ -39,7 +39,7 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | Sprint | Estado | Entrega |
 | --- | --- | --- | --- |
 | 016 | [x] Concluída | [x] Concluída | Catálogo de cursos e módulos |
-| 017 | [ ] Planejada | [ ] Planejada | Aulas em texto, imagem, áudio e vídeo |
+| 017 | [~] Em andamento | [~] Em andamento | Aulas em texto, imagem, áudio e vídeo |
 | 018 | [ ] Planejada | [ ] Planejada | Progresso, anotações, favoritos e sincronização |
 | 019 | [ ] Planejada | [ ] Planejada | Plano diário personalizado |
 | 020 | [ ] Planejada | [ ] Planejada | Quizzes, avaliações e certificados |
