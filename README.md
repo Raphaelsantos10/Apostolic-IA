@@ -63,12 +63,11 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 015
 
-- Validar testes, build e fluxo local.
-- Preparar o Pull Request.
+- Abrir e aprovar o Pull Request da Sprint 015.
 
 ## Próximo passo exato
 
-Validar o onboarding no ambiente local.
+Abrir o Pull Request; banco, testes, typecheck e build foram aprovados.
 
 ## Como continuar em outro chat
 
@@ -121,6 +120,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 013](docs/sprints/SPRINT_013.md)
 - [Relatório da Sprint 014](docs/sprints/SPRINT_014.md)
 - [Relatório da Sprint 015](docs/sprints/SPRINT_015.md)
+- [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
 - [Onboarding](docs/development/ONBOARDING.md)
 - [Validação da Sprint 014](docs/validation/SPRINT_014_VALIDATION.md)
 - [Perfil e preferências](docs/development/PROFILE_PREFERENCES.md)

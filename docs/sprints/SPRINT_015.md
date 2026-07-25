@@ -13,6 +13,12 @@
 - Opção de adiar e retomar.
 - Persistência por utilizador com RLS.
 
+## Evidências de validação
+
+- Migração e testes RLS aprovados.
+- Typecheck e build aprovados.
+- Avaliação e recomendação inicial verificadas.
+
 ## Próximo passo
 
-Validar migração, testes, build e fluxo local.
+Abrir, revisar e incorporar o Pull Request da Sprint 015.
