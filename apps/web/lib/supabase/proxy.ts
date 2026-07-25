@@ -25,7 +25,7 @@ export async function updateSession(request: NextRequest) {
     data: { user }
   } = await supabase.auth.getUser();
 
-  if (!user && request.nextUrl.pathname.startsWith("/conta")) {
+  if (!user && (request.nextUrl.pathname.startsWith("/conta") || request.nextUrl.pathname.startsWith("/onboarding"))) {
     const urlToLogin = request.nextUrl.clone();
     urlToLogin.pathname = "/entrar";
     urlToLogin.searchParams.set("mensagem", "Entre para acessar a sua conta.");
