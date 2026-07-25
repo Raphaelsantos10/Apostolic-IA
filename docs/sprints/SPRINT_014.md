@@ -22,6 +22,12 @@
 - Opções visuais são aplicadas sem recarregar a página.
 - Typecheck, build, testes SQL e validador são aprovados.
 
+## Evidências de validação
+
+- Banco recriado pelas migrações.
+- Testes SQL de perfil e preferências aprovados.
+- Typecheck, build e validador aprovados.
+
 ## Próximo passo
 
-Validar banco, build e interface local antes do Pull Request.
+Abrir, revisar e incorporar o Pull Request da Sprint 014.

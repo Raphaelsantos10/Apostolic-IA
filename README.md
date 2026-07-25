@@ -62,13 +62,11 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Pendências da Sprint 014
 
-- Executar testes SQL, typecheck e build.
-- Validar a interface local.
-- Preparar o Pull Request.
+- Abrir e aprovar o Pull Request da Sprint 014.
 
 ## Próximo passo exato
 
-Validar perfil e preferências no ambiente local.
+Abrir o Pull Request; banco, testes, typecheck e build foram aprovados.
 
 ## Como continuar em outro chat
 
@@ -120,6 +118,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 012](docs/sprints/SPRINT_012.md)
 - [Relatório da Sprint 013](docs/sprints/SPRINT_013.md)
 - [Relatório da Sprint 014](docs/sprints/SPRINT_014.md)
+- [Validação da Sprint 014](docs/validation/SPRINT_014_VALIDATION.md)
 - [Perfil e preferências](docs/development/PROFILE_PREFERENCES.md)
 - [Validação da Sprint 013](docs/validation/SPRINT_013_VALIDATION.md)
 - [Autenticação e gestão de conta](docs/development/AUTHENTICATION.md)
