@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 016 - Catálogo de cursos e módulos.
-- **Sprint atual:** Sprint 017 - Aulas em texto, imagem, áudio e vídeo.
-- **Branch atual:** `sprint/017-aulas-multimidia`.
-- **Estado:** Sprint 017 em andamento; estrutura de aulas multimédia em implementação.
-- **Aplicação executável:** PWA com autenticação, perfil, onboarding e catálogo público controlado por RLS.
+- **Última sprint concluída:** Sprint 017 - Aulas multimédia acessíveis.
+- **Próxima sprint planejada:** Sprint 018 - Núcleo de aprendizagem.
+- **Branch atual:** `main`.
+- **Estado:** entre sprints; Sprint 017 incorporada e Sprint 018 planejada no fluxo acelerado.
+- **Aplicação executável:** PWA com autenticação, catálogo e aulas textuais publicadas sob RLS.
 - **Última atualização:** 25 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -53,26 +53,27 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 014 | ✅ Concluída | Perfil, preferências, idioma e acessibilidade | [Relatório](docs/sprints/SPRINT_014.md) |
 | 015 | ✅ Concluída | Onboarding e avaliação inicial | [Relatório](docs/sprints/SPRINT_015.md) |
 | 016 | ✅ Concluída | Catálogo de cursos e módulos | [Relatório](docs/sprints/SPRINT_016.md) |
-| 017 | 🟡 Em andamento | Aulas em texto, imagem, áudio e vídeo | [Relatório](docs/sprints/SPRINT_017.md) |
-| 018-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 017 | ✅ Concluída | Aulas multimédia acessíveis | [Relatório](docs/sprints/SPRINT_017.md) |
+| 018-032 | ⬜ Planejadas | Entregas consolidadas no fluxo acelerado | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 016 preparada para incorporação por Pull Request.
-- Catálogo, módulos, estados editoriais e RLS implementados.
-- Conteúdo local autoral e consulta pública validados.
-- Evidências registradas em `docs/validation/SPRINT_016_VALIDATION.md`.
+- Sprint 017 preparada para incorporação por Pull Request.
+- Aulas, mídia acessível, licenças e RLS implementados.
+- Interface, banco, testes, typecheck e build validados.
+- Crescimento diário, leitura bíblica e comunidade registrados no roadmap.
+- Evidências em `docs/validation/SPRINT_017_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Implementar o modelo de dados e as políticas RLS das aulas multimédia.
+Após o merge, iniciar a Sprint 018 - Núcleo de aprendizagem no fluxo acelerado.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_016.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_017.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -130,6 +131,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 015](docs/sprints/SPRINT_015.md)
 - [Relatório da Sprint 016](docs/sprints/SPRINT_016.md)
 - [Relatório da Sprint 017](docs/sprints/SPRINT_017.md)
+- [Validação da Sprint 017](docs/validation/SPRINT_017_VALIDATION.md)
 - [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
 - [Onboarding](docs/development/ONBOARDING.md)

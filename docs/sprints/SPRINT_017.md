@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento.
+Concluída; aguardando incorporação do Pull Request.
 
 ## Branch
 
@@ -26,15 +26,15 @@ Implementar a estrutura de aulas multimédia vinculadas aos módulos publicados.
 
 ## Critérios de aceite
 
-- [ ] Somente aulas publicadas de módulos publicados ficam visíveis.
-- [ ] Texto é apresentado com estrutura semântica.
-- [ ] Imagens exigem texto alternativo e licença registrada.
-- [ ] Áudio possui transcrição.
-- [ ] Vídeo possui legendas e transcrição.
-- [ ] Ordem das aulas é preservada.
-- [ ] RLS bloqueia alterações não autorizadas.
-- [ ] Testes, typecheck e build estão aprovados.
-- [ ] README representa corretamente o estado após o merge.
+- [x] Somente aulas publicadas de módulos publicados ficam visíveis.
+- [x] Texto é apresentado com estrutura semântica.
+- [x] Imagens exigem texto alternativo e licença registrada.
+- [x] Áudio possui transcrição.
+- [x] Vídeo possui legendas e transcrição.
+- [x] Ordem das aulas é preservada.
+- [x] RLS bloqueia alterações não autorizadas.
+- [x] Testes, typecheck e build estão aprovados.
+- [x] README representa corretamente o estado após o merge.
 
 ## Propriedade intelectual
 
@@ -43,4 +43,4 @@ seminários existentes. Todo recurso externo exigirá licença documentada.
 
 ## Próximo passo
 
-Aplicar a migração, validar RLS e testar a apresentação das aulas publicadas.
+Incorporar o Pull Request na `main` e iniciar a Sprint 018.
