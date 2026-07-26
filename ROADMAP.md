@@ -41,7 +41,7 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | 016 | [x] Concluída | [x] Concluída | Catálogo de cursos e módulos |
 | 017 | [~] Em andamento | [~] Em andamento | Aulas em texto, imagem, áudio e vídeo |
 | 018 | [ ] Planejada | [ ] Planejada | Progresso, anotações, favoritos e sincronização |
-| 019 | [ ] Planejada | [ ] Planejada | Plano diário personalizado |
+| 019 | [ ] Planejada | [ ] Planejada | Plano diário personalizado e metas de estudo |
 | 020 | [ ] Planejada | [ ] Planejada | Quizzes, avaliações e certificados |
 | 021 | [ ] Planejada | [ ] Planejada | Revisão espaçada e diagnóstico de aprendizagem |
 
@@ -50,7 +50,7 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 | Sprint | Estado | Entrega |
 | --- | --- | --- | --- |
 | 022 | [ ] Planejada | [ ] Planejada | Arquitetura para traduções licenciadas |
-| 023 | [ ] Planejada | [ ] Planejada | Leitor bíblico e pesquisa |
+| 023 | [ ] Planejada | [ ] Planejada | Leitor, pesquisa, planos e metas de leitura bíblica |
 | 024 | [ ] Planejada | [ ] Planejada | Comparação de versões |
 | 025 | [ ] Planejada | [ ] Planejada | Referências cruzadas, destaques e anotações |
 | 026 | [ ] Planejada | [ ] Planejada | Áudio, leitura contínua e offline |
@@ -60,14 +60,14 @@ Definição de Pronto descrita em `docs/SPRINT_DELIVERY_POLICY.md`.
 
 | Sprint | Estado | Entrega |
 | --- | --- | --- | --- |
-| 028 | [ ] Planejada | [ ] Planejada | XP, níveis, metas e sequência diária |
-| 029 | [ ] Planejada | [ ] Planejada | Medalhas, missões e coleções |
-| 030 | [ ] Planejada | [ ] Planejada | Ordem Bíblica e Quem Sou Eu? |
-| 031 | [ ] Planejada | [ ] Planejada | Monte o Versículo e Descubra o Livro |
-| 032 | [ ] Planejada | [ ] Planejada | Mapas bíblicos e Viagens de Paulo |
-| 033 | [ ] Planejada | [ ] Planejada | Verdade ou Contexto e desafio de exegese |
+| 028 | [ ] Planejada | [ ] Planejada | Pontos, níveis, metas e sequência diária saudável |
+| 029 | [ ] Planejada | [ ] Planejada | Medalhas, missões, coleções e desafios cooperativos |
+| 030 | [ ] Planejada | [ ] Planejada | Comunidade, círculos de estudo e moderação |
+| 031 | [ ] Planejada | [ ] Planejada | Ligas, rankings opcionais e proteção antiabuso |
+| 032 | [ ] Planejada | [ ] Planejada | Jogos: Ordem Bíblica, versículos e livros |
+| 033 | [ ] Planejada | [ ] Planejada | Jogos: mapas, viagens e contexto bíblico |
 | 034 | [ ] Planejada | [ ] Planejada | Dificuldade adaptativa e revisão inteligente |
-| 035 | [ ] Planejada | [ ] Planejada | Auditoria pedagógica da gamificação |
+| 035 | [ ] Planejada | [ ] Planejada | Auditoria pedagógica, ética, privacidade e antiabuso |
 
 ## Fase 7 — IA bíblica
 

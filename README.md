@@ -86,6 +86,16 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - Acessibilidade, privacidade, segurança e sustentabilidade financeira são
   requisitos desde o início.
 
+## Decisões aprovadas para crescimento diário
+
+- O utilizador poderá definir metas diárias de estudo e leitura bíblica.
+- A sequência diária será saudável, configurável e sem medir espiritualidade.
+- Pontos representarão aprendizagem verificável, nunca fé ou chamado.
+- Comunidade, círculos de estudo, ligas e rankings serão opcionais e moderados.
+- O perfil será privado por padrão e práticas espirituais não entrarão em ranking.
+- A implementação seguirá as sprints 019, 023 e 028-035.
+- Detalhes: [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md).
+
 ## Plataformas planejadas
 
 - Web e PWA.
@@ -134,6 +144,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Ambientes de desenvolvimento](docs/development/ENVIRONMENTS.md)
 - [Catálogo de cursos e módulos](docs/development/COURSE_CATALOG.md)
 - [Aulas multimédia](docs/development/MULTIMEDIA_LESSONS.md)
+- [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)
 - [Diretrizes de imagem](docs/visual/IMAGE_GUIDELINES.md)

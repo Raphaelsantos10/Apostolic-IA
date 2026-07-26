@@ -41,6 +41,7 @@ required_files=(
   "docs/validation/SPRINT_016_VALIDATION.md"
   "docs/sprints/SPRINT_017.md"
   "docs/development/MULTIMEDIA_LESSONS.md"
+  "docs/product/DAILY_GROWTH_COMMUNITY.md"
   "supabase/migrations/20260725150000_multimedia_lessons.sql"
   "supabase/tests/database/lessons.test.sql"
   "scripts/validate-sprint-012.sh"
