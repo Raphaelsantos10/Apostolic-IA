@@ -351,3 +351,20 @@ h2 { line-height: 1.2; }
 .lesson-list summary .badge { margin-right: 0.5rem; }
 .lesson-list p { margin: 0.55rem 0 0; }
 .lesson-body { padding-top: 0.55rem; border-top: 1px solid var(--border); color: var(--text) !important; }
+
+
+.learning-tools { display: grid; gap: 0.75rem; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+.learning-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.learning-note { display: grid; gap: 0.35rem; font-weight: 700; }
+.learning-note textarea { width: 100%; min-height: 6rem; resize: vertical; padding: 0.65rem; border: 1px solid var(--border); border-radius: 0.55rem; background: var(--page); color: var(--text); font: inherit; }
+.learning-status, .learning-message { color: var(--secondary); }
+.lesson-quiz { display: grid; gap: 0.65rem; margin: 0; padding: 1rem; border: 1px solid var(--border); border-radius: 0.7rem; }
+.lesson-quiz label { display: flex; gap: 0.55rem; align-items: start; }
+.quiz-result { padding: 0.8rem; border-left: 0.3rem solid var(--focus); background: var(--muted); }
+.quiz-result.is-correct { border-left-color: var(--success); }
+.quiz-result p { margin: 0.25rem 0 0; }
+.daily-goal { display: grid; grid-template-columns: 1fr auto auto; gap: 1rem; align-items: end; margin: 1.5rem 0; padding: 1.2rem; border: 1px solid var(--border); border-radius: 0.8rem; background: var(--panel); }
+.daily-goal h2, .daily-goal p { margin: 0.2rem 0; }
+.daily-goal label { display: grid; gap: 0.35rem; }
+.daily-goal select { min-height: 2.75rem; padding: 0.5rem; border: 1px solid var(--border); border-radius: 0.55rem; background: var(--page); color: var(--text); }
+@media (max-width: 48rem) { .daily-goal { grid-template-columns: 1fr; align-items: stretch; } }

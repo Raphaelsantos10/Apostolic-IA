@@ -24,3 +24,5 @@ web-build/
 supabase/.temp/
 supabase/.branches/
 *.tsbuildinfo
+
+sprint-*-test-output.txt

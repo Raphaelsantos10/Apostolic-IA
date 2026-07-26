@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client";
+import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
 
 type ViewName = "home" | "courses" | "bible" | "progress" | "more";
 type ThemeName = "system" | "light" | "dark" | "sepia";
@@ -290,6 +291,7 @@ function CoursesView() {
                                 </summary>
                                 <p>{lesson.summary}</p>
                                 {lesson.body_text && <p className="lesson-body">{lesson.body_text}</p>}
+                                <LessonLearningTools lessonId={lesson.id} />
                               </details>
                             ))}
                         </div>
@@ -330,9 +332,10 @@ function ProgressView() {
         <article><strong>0</strong><span>Revisões</span></article>
         <article><strong>—</strong><span>Sequência</span></article>
       </div>
+      <DailyGoalPanel />
       <div className="notice">
-        <h2>Ainda não existem dados reais</h2>
-        <p>Sincronização e conta serão implementadas em sprints futuras.</p>
+        <h2>Aprendizagem privada</h2>
+        <p>Progresso, notas, favoritos, metas e revisões são protegidos por RLS.</p>
       </div>
     </section>
   );
