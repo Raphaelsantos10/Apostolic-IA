@@ -44,6 +44,7 @@ select is((select position from public.course_modules),1,
   'módulo preserva a ordem editorial');
 
 reset role;
+set local request.jwt.claim.sub='00000000-0000-0000-0000-000000000000';
 set local role anon;
 
 select is((select count(*)::integer from public.courses),1,

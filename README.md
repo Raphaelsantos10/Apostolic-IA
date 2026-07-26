@@ -133,6 +133,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [PWA e modo offline](docs/development/PWA.md)
 - [Ambientes de desenvolvimento](docs/development/ENVIRONMENTS.md)
 - [Catálogo de cursos e módulos](docs/development/COURSE_CATALOG.md)
+- [Aulas multimédia](docs/development/MULTIMEDIA_LESSONS.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)
 - [Diretrizes de imagem](docs/visual/IMAGE_GUIDELINES.md)

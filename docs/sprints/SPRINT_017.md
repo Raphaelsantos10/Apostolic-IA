@@ -43,4 +43,4 @@ seminários existentes. Todo recurso externo exigirá licença documentada.
 
 ## Próximo passo
 
-Abrir o Draft Pull Request e implementar o modelo de dados das aulas.
+Aplicar a migração, validar RLS e testar a apresentação das aulas publicadas.
