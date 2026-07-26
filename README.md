@@ -7,9 +7,9 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 ## Estado atual do projeto
 
 - **Última sprint concluída:** Sprint 017 - Aulas multimédia acessíveis.
-- **Próxima sprint planejada:** Sprint 018 - Núcleo de aprendizagem.
-- **Branch atual:** `main`.
-- **Estado:** entre sprints; Sprint 017 incorporada e Sprint 018 planejada no fluxo acelerado.
+- **Sprint atual:** Sprint 018 - Núcleo de aprendizagem.
+- **Branch atual:** `sprint/018-nucleo-aprendizagem`.
+- **Estado:** Sprint 018 em andamento no fluxo acelerado.
 - **Aplicação executável:** PWA com autenticação, catálogo e aulas textuais publicadas sob RLS.
 - **Última atualização:** 25 de julho de 2026.
 
@@ -54,7 +54,8 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 015 | ✅ Concluída | Onboarding e avaliação inicial | [Relatório](docs/sprints/SPRINT_015.md) |
 | 016 | ✅ Concluída | Catálogo de cursos e módulos | [Relatório](docs/sprints/SPRINT_016.md) |
 | 017 | ✅ Concluída | Aulas multimédia acessíveis | [Relatório](docs/sprints/SPRINT_017.md) |
-| 018-032 | ⬜ Planejadas | Entregas consolidadas no fluxo acelerado | [Roadmap](ROADMAP.md) |
+| 018 | 🟡 Em andamento | Núcleo de aprendizagem integrado | [Relatório](docs/sprints/SPRINT_018.md) |
+| 019-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
@@ -66,7 +67,7 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Próximo passo exato
 
-Após o merge, iniciar a Sprint 018 - Núcleo de aprendizagem no fluxo acelerado.
+Implementar progresso, notas, favoritos, metas, quizzes e revisão espaçada.
 
 ## Como continuar em outro chat
 
@@ -131,6 +132,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 015](docs/sprints/SPRINT_015.md)
 - [Relatório da Sprint 016](docs/sprints/SPRINT_016.md)
 - [Relatório da Sprint 017](docs/sprints/SPRINT_017.md)
+- [Relatório da Sprint 018](docs/sprints/SPRINT_018.md)
 - [Validação da Sprint 017](docs/validation/SPRINT_017_VALIDATION.md)
 - [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
