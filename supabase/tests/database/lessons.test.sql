@@ -41,6 +41,7 @@ select is((select count(*)::integer from public.lessons where kind='text'),2,
 select ok(public.is_editor(),'autor editorial é reconhecido');
 
 reset role;
+set local request.jwt.claim.sub='00000000-0000-0000-0000-000000000000';
 set local role anon;
 
 select is((select count(*)::integer from public.lessons),1,
