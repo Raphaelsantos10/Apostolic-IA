@@ -52,3 +52,22 @@ join (values
 ) as l(module_slug, slug, title, summary, body_text, position)
 on m.slug = l.module_slug
 on conflict (module_id, slug) do nothing;
+
+
+insert into public.quiz_questions
+  (lesson_id, prompt, options, correct_index, explanation, status, position, published_at)
+select l.id, q.prompt, q.options::jsonb, q.correct_index, q.explanation,
+  'published', q.position, now()
+from public.lessons l
+join (values
+  ('por-que-o-contexto-importa',
+   'O que deve ser observado numa leitura bíblica responsável?',
+   '["Somente uma frase isolada","Contexto literário, histórico e canônico","A opinião mais popular"]',
+   1,'Uma leitura responsável considera os contextos literário, histórico e canônico.',1),
+  ('crescimento-e-servico',
+   'Qual alternativa representa crescimento cristão no conteúdo da aula?',
+   '["Superioridade sobre outros","Amor, fidelidade e serviço","Competição espiritual"]',
+   1,'Crescimento cristão é demonstrado em amor, fidelidade, comunhão e serviço.',1)
+) as q(lesson_slug,prompt,options,correct_index,explanation,position)
+on l.slug=q.lesson_slug
+on conflict (lesson_id, position) do nothing;

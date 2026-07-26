@@ -6,12 +6,12 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 017 - Aulas multimédia acessíveis.
-- **Próxima sprint planejada:** Sprint 018 - Núcleo de aprendizagem.
-- **Branch atual:** `main`.
-- **Estado:** entre sprints; Sprint 017 incorporada e Sprint 018 planejada no fluxo acelerado.
-- **Aplicação executável:** PWA com autenticação, catálogo e aulas textuais publicadas sob RLS.
-- **Última atualização:** 25 de julho de 2026.
+- **Última sprint concluída:** Sprint 018 - Núcleo de aprendizagem.
+- **Próxima sprint:** Sprint 019 - Plataforma bíblica.
+- **Branch após o merge:** `main`.
+- **Estado:** Sprint 018 validada e preparada para incorporação pelo PR nº 20.
+- **Aplicação executável:** PWA com autenticação, catálogo, aulas, progresso, notas, favoritos, metas e quizzes protegidos por RLS.
+- **Última atualização:** 27 de julho de 2026.
 
 ## Regra permanente de continuidade
 
@@ -54,26 +54,27 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 015 | ✅ Concluída | Onboarding e avaliação inicial | [Relatório](docs/sprints/SPRINT_015.md) |
 | 016 | ✅ Concluída | Catálogo de cursos e módulos | [Relatório](docs/sprints/SPRINT_016.md) |
 | 017 | ✅ Concluída | Aulas multimédia acessíveis | [Relatório](docs/sprints/SPRINT_017.md) |
-| 018-032 | ⬜ Planejadas | Entregas consolidadas no fluxo acelerado | [Roadmap](ROADMAP.md) |
+| 018 | ✅ Concluída após merge | Núcleo de aprendizagem integrado | [Relatório](docs/sprints/SPRINT_018.md) |
+| 019-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 017 preparada para incorporação por Pull Request.
-- Aulas, mídia acessível, licenças e RLS implementados.
-- Interface, banco, testes, typecheck e build validados.
-- Crescimento diário, leitura bíblica e comunidade registrados no roadmap.
-- Evidências em `docs/validation/SPRINT_017_VALIDATION.md`.
+- Sprint 018 preparada para incorporação pelo Pull Request nº 20.
+- Progresso, notas, favoritos, meta diária, quizzes e revisão espaçada implementados.
+- Dados pessoais isolados por RLS.
+- Banco, testes, typecheck, build e repositório validados.
+- Evidências em `docs/validation/SPRINT_018_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Após o merge, iniciar a Sprint 018 - Núcleo de aprendizagem no fluxo acelerado.
+Incorporar o PR nº 20 na `main` e iniciar a Sprint 019 — Plataforma bíblica.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_017.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_018.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -131,6 +132,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 015](docs/sprints/SPRINT_015.md)
 - [Relatório da Sprint 016](docs/sprints/SPRINT_016.md)
 - [Relatório da Sprint 017](docs/sprints/SPRINT_017.md)
+- [Relatório da Sprint 018](docs/sprints/SPRINT_018.md)
 - [Validação da Sprint 017](docs/validation/SPRINT_017_VALIDATION.md)
 - [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
@@ -146,6 +148,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Ambientes de desenvolvimento](docs/development/ENVIRONMENTS.md)
 - [Catálogo de cursos e módulos](docs/development/COURSE_CATALOG.md)
 - [Aulas multimédia](docs/development/MULTIMEDIA_LESSONS.md)
+- [Núcleo de aprendizagem](docs/development/LEARNING_CORE.md)
 - [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)

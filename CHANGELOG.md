@@ -35,3 +35,12 @@ Todas as alterações relevantes serão registadas neste arquivo.
 - Validação inicial do repositório.
 - Procedimentos de instalação, atualização, backup e rollback.
 - Workflow inicial do GitHub Actions.
+
+
+## Sprint 018 — Núcleo de aprendizagem
+
+- Progresso de aulas, anotações privadas e favoritos.
+- Metas diárias configuráveis.
+- Quizzes com correção e explicação.
+- Revisão espaçada para respostas incorretas.
+- Isolamento dos dados pessoais por RLS.
