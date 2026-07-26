@@ -35,4 +35,4 @@ espiritual será usado em ranking.
 
 ## Próximo passo
 
-Implementar o modelo de dados integrado e suas políticas RLS.
+Validar o modelo de dados e implementar a interface integrada.

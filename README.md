@@ -148,6 +148,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Ambientes de desenvolvimento](docs/development/ENVIRONMENTS.md)
 - [Catálogo de cursos e módulos](docs/development/COURSE_CATALOG.md)
 - [Aulas multimédia](docs/development/MULTIMEDIA_LESSONS.md)
+- [Núcleo de aprendizagem](docs/development/LEARNING_CORE.md)
 - [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)
