@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 016 - Catálogo de cursos e módulos.
-- **Próxima sprint planejada:** Sprint 017 - Aulas em texto, imagem, áudio e vídeo.
+- **Última sprint concluída:** Sprint 017 - Aulas multimédia acessíveis.
+- **Próxima sprint planejada:** Sprint 018 - Núcleo de aprendizagem.
 - **Branch atual:** `main`.
-- **Estado:** entre sprints; Sprint 016 incorporada e Sprint 017 planejada.
-- **Aplicação executável:** PWA com autenticação, perfil, onboarding e catálogo público controlado por RLS.
+- **Estado:** entre sprints; Sprint 017 incorporada e Sprint 018 planejada no fluxo acelerado.
+- **Aplicação executável:** PWA com autenticação, catálogo e aulas textuais publicadas sob RLS.
 - **Última atualização:** 25 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -52,25 +52,28 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 013 | ✅ Concluída | Cadastro, login, recuperação e exclusão da conta | [Relatório](docs/sprints/SPRINT_013.md) |
 | 014 | ✅ Concluída | Perfil, preferências, idioma e acessibilidade | [Relatório](docs/sprints/SPRINT_014.md) |
 | 015 | ✅ Concluída | Onboarding e avaliação inicial | [Relatório](docs/sprints/SPRINT_015.md) |
-| 016 | ✅ Concluída | Catálogo de cursos e módulos | [Relatório](docs/sprints/SPRINT_016.md) |\n| 017-094 | ⬜ Planejadas | Entregas sequenciais | [Roadmap](ROADMAP.md) |
+| 016 | ✅ Concluída | Catálogo de cursos e módulos | [Relatório](docs/sprints/SPRINT_016.md) |
+| 017 | ✅ Concluída | Aulas multimédia acessíveis | [Relatório](docs/sprints/SPRINT_017.md) |
+| 018-032 | ⬜ Planejadas | Entregas consolidadas no fluxo acelerado | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 016 preparada para incorporação por Pull Request.
-- Catálogo, módulos, estados editoriais e RLS implementados.
-- Conteúdo local autoral e consulta pública validados.
-- Evidências registradas em `docs/validation/SPRINT_016_VALIDATION.md`.
+- Sprint 017 preparada para incorporação por Pull Request.
+- Aulas, mídia acessível, licenças e RLS implementados.
+- Interface, banco, testes, typecheck e build validados.
+- Crescimento diário, leitura bíblica e comunidade registrados no roadmap.
+- Evidências em `docs/validation/SPRINT_017_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Após o merge, iniciar a Sprint 017 em Draft PR para implementar aulas em texto, imagem, áudio e vídeo.
+Após o merge, iniciar a Sprint 018 - Núcleo de aprendizagem no fluxo acelerado.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_016.md e
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_017.md e
 > CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
 > encerrar qualquer entrega.
 
@@ -83,6 +86,16 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - Traduções, imagens, mapas, áudios e vídeos exigem licença documentada.
 - Acessibilidade, privacidade, segurança e sustentabilidade financeira são
   requisitos desde o início.
+
+## Decisões aprovadas para crescimento diário
+
+- O utilizador poderá definir metas diárias de estudo e leitura bíblica.
+- A sequência diária será saudável, configurável e sem medir espiritualidade.
+- Pontos representarão aprendizagem verificável, nunca fé ou chamado.
+- Comunidade, círculos de estudo, ligas e rankings serão opcionais e moderados.
+- O perfil será privado por padrão e práticas espirituais não entrarão em ranking.
+- A implementação seguirá as sprints 019, 023 e 028-035.
+- Detalhes: [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md).
 
 ## Plataformas planejadas
 
@@ -117,6 +130,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 014](docs/sprints/SPRINT_014.md)
 - [Relatório da Sprint 015](docs/sprints/SPRINT_015.md)
 - [Relatório da Sprint 016](docs/sprints/SPRINT_016.md)
+- [Relatório da Sprint 017](docs/sprints/SPRINT_017.md)
+- [Validação da Sprint 017](docs/validation/SPRINT_017_VALIDATION.md)
 - [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
 - [Onboarding](docs/development/ONBOARDING.md)
@@ -130,6 +145,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [PWA e modo offline](docs/development/PWA.md)
 - [Ambientes de desenvolvimento](docs/development/ENVIRONMENTS.md)
 - [Catálogo de cursos e módulos](docs/development/COURSE_CATALOG.md)
+- [Aulas multimédia](docs/development/MULTIMEDIA_LESSONS.md)
+- [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)
 - [Diretrizes de imagem](docs/visual/IMAGE_GUIDELINES.md)

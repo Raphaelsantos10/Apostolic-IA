@@ -1,4 +1,4 @@
-const CACHE_VERSION = "apostolic-ia-v0.11.0";
+const CACHE_VERSION = "apostolic-ia-v0.17.0";
 const APP_SHELL = ["/", "/offline", "/manifest.webmanifest", "/icon.svg"];
 
 self.addEventListener("install", (event) => {

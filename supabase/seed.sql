@@ -30,3 +30,25 @@ join (values
 ) as m(course_slug, slug, title, summary, position)
 on c.slug = m.course_slug
 on conflict (course_id, slug) do nothing;
+
+insert into public.lessons
+  (module_id, slug, title, summary, kind, body_text, status, position, published_at)
+select m.id, l.slug, l.title, l.summary, 'text', l.body_text,
+  'published', l.position, now()
+from public.course_modules m
+join (values
+  ('leitura-contextual', 'por-que-o-contexto-importa', 'Por que o contexto importa',
+   'Aprenda por que uma passagem deve ser lida dentro do seu contexto.',
+   'Uma leitura responsável observa o texto, o gênero literário, o contexto histórico e a mensagem bíblica completa.', 1),
+  ('autoridade-das-escrituras', 'biblia-fe-e-pratica', 'Bíblia, fé e prática',
+   'Uma introdução à autoridade das Escrituras na vida cristã.',
+   'A Bíblia orienta a fé e a prática cristã. Interpretações devem ser examinadas com humildade, contexto e responsabilidade.', 1),
+  ('carater-cristao', 'crescimento-e-servico', 'Crescimento e serviço',
+   'Caráter cristão demonstrado na comunhão e no serviço.',
+   'O crescimento cristão envolve amor, domínio próprio, fidelidade, comunhão e serviço ao próximo.', 1),
+  ('narrativa-biblica', 'criacao-redencao-esperanca', 'Criação, redenção e esperança',
+   'Uma visão inicial dos grandes movimentos da narrativa bíblica.',
+   'A narrativa bíblica apresenta criação, queda, promessa, redenção e esperança, culminando em Cristo.', 1)
+) as l(module_slug, slug, title, summary, body_text, position)
+on m.slug = l.module_slug
+on conflict (module_id, slug) do nothing;

@@ -182,11 +182,21 @@ function HomeView({
   );
 }
 
+type CatalogLesson = {
+  id: string;
+  title: string;
+  summary: string;
+  kind: "text" | "image" | "audio" | "video" | "mixed";
+  body_text: string | null;
+  position: number;
+};
+
 type CatalogModule = {
   id: string;
   title: string;
   summary: string;
   position: number;
+  lessons: CatalogLesson[];
 };
 
 type CatalogCourse = {
@@ -214,7 +224,7 @@ function CoursesView() {
 
     void supabase
       .from("courses")
-      .select("id,title,summary,level,course_modules(id,title,summary,position)")
+      .select("id,title,summary,level,course_modules(id,title,summary,position,lessons(id,title,summary,kind,body_text,position))")
       .order("position")
       .order("position", { referencedTable: "course_modules" })
       .then(({ data, error: queryError }) => {
@@ -268,6 +278,22 @@ function CoursesView() {
                     <li key={module.id}>
                       <strong>{module.title}</strong>
                       <span>{module.summary}</span>
+                      {module.lessons.length > 0 && (
+                        <div className="lesson-list">
+                          {[...module.lessons]
+                            .sort((a, b) => a.position - b.position)
+                            .map((lesson) => (
+                              <details key={lesson.id}>
+                                <summary>
+                                  <span className="badge">{lesson.kind === "text" ? "Texto" : lesson.kind}</span>
+                                  {lesson.title}
+                                </summary>
+                                <p>{lesson.summary}</p>
+                                {lesson.body_text && <p className="lesson-body">{lesson.body_text}</p>}
+                              </details>
+                            ))}
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ol>

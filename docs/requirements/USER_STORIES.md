@@ -150,3 +150,36 @@ Como estudante, quero sincronizar progresso entre dispositivos.
 - Prioridade: P2
 - Aceite futuro: cadastro, recuperação, exclusão e privacidade serão definidos
   nas sprints próprias. Não faz parte do primeiro MVP.
+
+
+## Crescimento diário e comunidade
+
+### US-017 - Definir uma meta diária
+
+Como estudante, quero escolher duração, frequência e dias de descanso para
+manter uma rotina saudável.
+
+- Prioridade: P1
+- Aceite: a meta pode ser alterada, pausada ou desativada sem punição.
+
+### US-018 - Cumprir uma meta de leitura bíblica
+
+Como estudante, quero acompanhar uma meta por trecho, capítulo, livro ou plano.
+
+- Prioridade: P1
+- Aceite: somente traduções autorizadas são exibidas e o progresso é privado.
+
+### US-019 - Participar de um círculo de estudo
+
+Como estudante, quero aprender e cooperar num grupo moderado.
+
+- Prioridade: P2
+- Aceite: participação opcional, perfil privado e mecanismos de denúncia.
+
+### US-020 - Participar de ligas opcionais
+
+Como estudante, quero comparar atividade pedagógica numa competição saudável.
+
+- Prioridade: P2
+- Aceite: limite diário, saída livre, nenhuma compra de vantagem e nenhuma
+medição pública de práticas espirituais.

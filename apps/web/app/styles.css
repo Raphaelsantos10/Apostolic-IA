@@ -338,3 +338,16 @@ h2 { line-height: 1.2; }
 @media (max-width: 64rem) {
   .catalog-grid { grid-template-columns: 1fr; }
 }
+
+
+.lesson-list { display: grid; gap: 0.5rem; margin-top: 0.75rem; }
+.lesson-list details {
+  padding: 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background: var(--panel);
+}
+.lesson-list summary { cursor: pointer; font-weight: 750; }
+.lesson-list summary .badge { margin-right: 0.5rem; }
+.lesson-list p { margin: 0.55rem 0 0; }
+.lesson-body { padding-top: 0.55rem; border-top: 1px solid var(--border); color: var(--text) !important; }

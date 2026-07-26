@@ -78,6 +78,11 @@ responsiva e rastreável.
 
 ### Desejável depois da fundação técnica
 
+- Meta diária pessoal de estudo.
+- Plano de leitura bíblica quando houver tradução licenciada.
+- Sequência saudável e configurável.
+- Comunidade e rankings somente após moderação, privacidade e antiabuso.
+
 - Conta e sincronização.
 - Preferências de idioma e acessibilidade.
 - PWA instalável.

@@ -52,3 +52,16 @@ criada apenas para um marco coerente e utilizável. Nem toda sprint gera release
 
 O Pull Request não pode ser incorporado com template vazio, validações vermelhas,
 README desatualizado ou decisões estruturais pendentes.
+
+
+## Fluxo acelerado
+
+- Uma sprint representa um incremento completo, não uma única tela ou campo.
+- Funcionalidades relacionadas são checklists internos da mesma sprint.
+- Durante o desenvolvimento executam-se apenas testes direcionados.
+- A validação completa ocorre uma vez, antes do merge.
+- Um pacote, um bloco de Git Bash e um Pull Request por sprint.
+- O GitHub CLI automatiza criação, atualização e abertura do Pull Request.
+- O utilizador envia somente erros ou evidências finais solicitadas.
+- Documentação acompanha o código e não cria sprint isolada sem necessidade.
+- Releases são reservadas para marcos utilizáveis.
