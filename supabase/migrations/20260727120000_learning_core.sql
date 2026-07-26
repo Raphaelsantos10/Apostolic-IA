@@ -169,7 +169,7 @@ grant select on public.quiz_attempts, public.review_items to authenticated;
 
 create or replace function public.submit_quiz_answer(
   p_question_id uuid,
-  p_selected_index smallint
+  p_selected_index integer
 )
 returns table (is_correct boolean, explanation text, next_review_at timestamptz)
 language plpgsql
@@ -238,7 +238,7 @@ begin
 end;
 $$;
 
-revoke all on function public.submit_quiz_answer(uuid, smallint) from public;
-grant execute on function public.submit_quiz_answer(uuid, smallint) to authenticated;
+revoke all on function public.submit_quiz_answer(uuid, integer) from public;
+grant execute on function public.submit_quiz_answer(uuid, integer) to authenticated;
 
 commit;
