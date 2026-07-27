@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardPreview } from "./dashboard-preview";
+import { DashboardFunctional } from "./dashboard-functional";
 
 export const metadata: Metadata = {
   title: "Dashboard | Apostolic IA",
@@ -7,6 +7,6 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardPreviewPage() {
-  return <DashboardPreview />;
+  return <DashboardFunctional />;
 }
 
