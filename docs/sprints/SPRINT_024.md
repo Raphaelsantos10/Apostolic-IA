@@ -32,7 +32,7 @@ Entregar um professor de IA fundamentado exclusivamente em conteúdo bíblico e 
 - [x] Chaves e chamadas de modelo permanecem no servidor.
 - [x] Quotas reduzem abuso e custos inesperados.
 - [x] Banco, testes, typecheck e build aprovados.
-- [ ] Inspeção visual aprovada.
+- [x] Inspeção visual aprovada.
 - [ ] Pull Request incorporado à `main`.
 
 ## Limites

@@ -21,7 +21,12 @@ grant select on public.ai_sources,public.ai_source_chunks to authenticated;
 grant select,insert,update,delete on public.ai_conversations,public.ai_messages,public.ai_feedback to authenticated;
 create or replace function public.search_approved_ai_sources(p_query text,p_limit integer default 5)
 returns table(chunk_id uuid,title text,reference_label text,content text,rank real) language sql stable security definer set search_path=''
-as $$select c.id,s.title,s.reference_label,c.content,ts_rank(c.search_vector,websearch_to_tsquery('portuguese',p_query)) from public.ai_source_chunks c join public.ai_sources s on s.id=c.source_id where s.approved and c.search_vector@@websearch_to_tsquery('portuguese',p_query) order by 5 desc limit least(greatest(p_limit,1),8)$$;
+as $$with query as(
+ select to_tsquery('portuguese',array_to_string(tsvector_to_array(to_tsvector('portuguese',p_query)),' | ')) value
+) select c.id,s.title,s.reference_label,c.content,ts_rank(c.search_vector,q.value)
+from public.ai_source_chunks c join public.ai_sources s on s.id=c.source_id cross join query q
+where s.approved and q.value<>''::tsquery and c.search_vector@@q.value
+order by 5 desc limit least(greatest(p_limit,1),8)$$;
 create or replace function public.ai_daily_quota_available() returns boolean language sql stable security definer set search_path=''
 as $$select (select count(*) from public.ai_messages where user_id=(select auth.uid()) and role='user' and created_at>=current_date)<30$$;
 revoke all on function public.search_approved_ai_sources(text,integer),public.ai_daily_quota_available() from public;
