@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento na branch `sprint/021-gamificacao-saudavel`.
+Concluída após validação e incorporação do PR nº 23.
 
 ## Objetivo
 
@@ -21,7 +21,7 @@ sequência, conquistas e missões, sem medir fé ou espiritualidade.
 - [x] Rankings e práticas espirituais ficam fora do escopo.
 - [x] Banco, seed e testes pgTAP aprovados.
 - [x] Typecheck, build e inspeção visual aprovados.
-- [ ] Pull Request aprovado e incorporado à `main`.
+- [x] Pull Request aprovado e incorporado à `main`.
 
 ## Entregas realizadas
 
@@ -44,4 +44,4 @@ Banco, 81 testes, typecheck, build e inspeção visual aprovados.
 
 ## Próximo passo
 
-Validar a Sprint 021 e preparar o Pull Request.
+Iniciar a Sprint 022 — Comunidade: círculos, moderação, ligas e rankings opcionais com proteção antiabuso.

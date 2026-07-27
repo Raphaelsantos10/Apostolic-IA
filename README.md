@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 020 - Experiência bíblica.
-- **Sprint atual:** Sprint 021 - Gamificação saudável.
-- **Branch atual:** `sprint/021-gamificacao-saudavel`.
-- **Estado:** Sprint 021 em andamento após incorporação da Sprint 020 pelo PR nº 22, merge `75baea0`.
+- **Última sprint concluída:** Sprint 021 - Gamificação saudável.
+- **Próxima sprint:** Sprint 022 - Comunidade.
+- **Branch após o merge:** `main`.
+- **Estado:** Sprint 021 validada e preparada para incorporação pelo PR nº 23.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -57,16 +57,16 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 018 | ✅ Concluída após merge | Núcleo de aprendizagem integrado | [Relatório](docs/sprints/SPRINT_018.md) |
 | 019 | ✅ Concluída após merge | Plataforma bíblica | [Relatório](docs/sprints/SPRINT_019.md) |
 | 020 | ✅ Concluída após merge | Experiência bíblica | [Relatório](docs/sprints/SPRINT_020.md) |
-| 021 | 🟡 Em andamento | Gamificação saudável | [Relatório](docs/sprints/SPRINT_021.md) |
+| 021 | ✅ Concluída após merge | Gamificação saudável | [Relatório](docs/sprints/SPRINT_021.md) |
 | 022-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 020 preparada para incorporação pelo Pull Request nº 22.
-- Áudio, offline, destaques, contexto, cronologia e mapa implementados.
-- Destaques privados protegidos por RLS.
-- Banco, 71 testes, typecheck, build e inspeção visual aprovados.
-- Evidências em `docs/validation/SPRINT_020_VALIDATION.md`.
+- Sprint 021 preparada para incorporação pelo Pull Request nº 23.
+- Pontos verificáveis, níveis, sequência, conquistas e missões implementados.
+- Dados de gamificação protegidos por RLS.
+- Banco, 81 testes, typecheck, build e inspeção visual aprovados.
+- Evidências em `docs/validation/SPRINT_021_VALIDATION.md`.
 
 ## Próximo passo exato
 
