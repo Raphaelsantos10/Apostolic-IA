@@ -26,8 +26,8 @@ Validação automatizada completa e aprovada em ambiente local com Docker e Supa
 
 ## Validação visual
 
-A inspeção final do leitor, pesquisa e responsividade no navegador deve ser confirmada antes do merge.
+A inspeção visual do leitor, pesquisa, planos de leitura e layout responsivo foi aprovada em 27 de julho de 2026.
 
 ## Resultado
 
-A implementação automatizada da Sprint 019 está aprovada. O Pull Request permanece em draft até a inspeção visual e aprovação final.
+A Sprint 019 foi aprovada nas validações automatizadas e na inspeção visual. O Pull Request está pronto para revisão final.
