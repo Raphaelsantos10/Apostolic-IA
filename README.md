@@ -7,9 +7,9 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 ## Estado atual do projeto
 
 - **Última sprint concluída:** Sprint 025 - Voz e acessibilidade oral.
-- **Próxima sprint:** Sprint 026 - Sustentabilidade.
-- **Branch após o merge:** `main`.
-- **Estado:** Sprint 025 validada e preparada para incorporação pelo PR nº 27.
+- **Sprint atual:** Sprint 026 - Sustentabilidade.
+- **Branch atual:** `sprint/026-sustentabilidade`.
+- **Estado:** Em andamento no Draft PR nº 28.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -62,7 +62,8 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 023 | ✅ Concluída após merge | Jogos bíblicos e revisão inteligente | [Relatório](docs/sprints/SPRINT_023.md) |
 | 024 | ✅ Concluída após merge | IA bíblica fundamentada e professor | [Relatório](docs/sprints/SPRINT_024.md) |
 | 025 | ✅ Concluída após merge | Voz e acessibilidade oral | [Relatório](docs/sprints/SPRINT_025.md) |
-| 026-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
+| 026 | 🟡 Em andamento | Sustentabilidade, preços e assinaturas | [Relatório](docs/sprints/SPRINT_026.md) |
+| 027-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
@@ -74,10 +75,15 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 - Limitação do microfone defeituoso documentada sem comprometer o fallback.
 - Evidências em `docs/validation/SPRINT_025_VALIDATION.md`.
 
+## Entrega atual
+
+- Planos Gratuito, Plus e Apoiador com preços regionais candidatos.
+- Quotas, entitlements, RLS, checkout web e webhook seguro.
+- Integrações nativas de lojas permanecem planejadas para a Sprint 028.
+
 ## Próximo passo exato
 
-Após incorporar o PR nº 27, criar a branch da Sprint 026 e iniciar custos,
-quotas, compras e assinaturas.
+Validar banco, testes, typecheck, build e interface do Draft PR nº 28.
 
 ## Como continuar em outro chat
 
@@ -150,6 +156,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 023](docs/sprints/SPRINT_023.md)
 - [Relatório da Sprint 024](docs/sprints/SPRINT_024.md)
 - [Relatório da Sprint 025](docs/sprints/SPRINT_025.md)
+- [Relatório da Sprint 026](docs/sprints/SPRINT_026.md)
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
 - [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 021](docs/validation/SPRINT_021_VALIDATION.md)
@@ -157,6 +164,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 023](docs/validation/SPRINT_023_VALIDATION.md)
 - [Validação da Sprint 024](docs/validation/SPRINT_024_VALIDATION.md)
 - [Validação da Sprint 025](docs/validation/SPRINT_025_VALIDATION.md)
+- [Validação da Sprint 026](docs/validation/SPRINT_026_VALIDATION.md)
 - [Validação da Sprint 017](docs/validation/SPRINT_017_VALIDATION.md)
 - [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
@@ -180,6 +188,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Jogos bíblicos](docs/development/BIBLE_GAMES.md)
 - [IA bíblica fundamentada](docs/development/GROUNDED_BIBLE_AI.md)
 - [Voz e acessibilidade oral](docs/development/VOICE_ACCESSIBILITY.md)
+- [Cobrança e assinaturas](docs/development/BILLING.md)
+- [Preços e sustentabilidade](docs/product/PRICING_SUSTAINABILITY.md)
 - [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)

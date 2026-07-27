@@ -51,7 +51,7 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 023 | [x] Concluída | Jogos bíblicos, revisão inteligente e dificuldade adaptativa |
 | 024 | [x] Concluída | IA bíblica: biblioteca aprovada, busca fundamentada, guardrails e professor |
 | 025 | [x] Concluída | Voz: transcrição, respostas faladas, quizzes orais e acessibilidade |
-| 026 | [ ] Planejada | Sustentabilidade: custos, quotas, compras e assinaturas |
+| 026 | [~] Em andamento | Sustentabilidade: custos, quotas, compras e assinaturas |
 | 027 | [ ] Planejada | Conteúdo teológico completo, pedagogia e aprovação humana |
 | 028 | [ ] Planejada | Android, iOS, PWA, idiomas, fusos e sincronização offline |
 | 029 | [ ] Planejada | Produção: privacidade, segurança, RLS, dependências e observabilidade |
