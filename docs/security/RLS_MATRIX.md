@@ -10,6 +10,7 @@
 | `community_posts` / `community_comments` | Sem acesso | Apenas membros; autor gere conteúdo visível próprio | Moderador oculta ou remove via função |
 | `community_reports` | Sem acesso | Denunciante vê a própria; moderador vê a fila do círculo | Ações geram auditoria |
 | `community_league_opt_ins` | Sem acesso | Utilizador gere somente a própria adesão | Sem adesão por padrão |
+| `game_profiles` / `game_sessions` / `game_answers` | Sem acesso | Titular lê somente os próprios dados | Correção no servidor |
 
 ## Regras obrigatórias
 

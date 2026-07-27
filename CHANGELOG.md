@@ -6,6 +6,8 @@ Todas as alterações relevantes serão registadas neste arquivo.
 
 ### Added
 
+- Jogos bíblicos com sessões privadas, revisão inteligente e dificuldade adaptativa.
+
 - Comunidade opcional com círculos, publicações, moderação, antiabuso e ligas.
 
 - Arquitetura lógica multiplataforma.
