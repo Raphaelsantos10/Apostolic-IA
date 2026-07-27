@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em desenvolvimento.
+Concluída após testes locais, inspeção Android/PWA e checks do PR nº 30.
 
 ## Objetivo
 
@@ -23,15 +23,15 @@ segura, sem colocar dados privados ou conteúdo restrito em cache público.
 
 ## Critérios de aceite
 
-- [ ] Build e typecheck web/mobile aprovados.
-- [ ] PWA não guarda API, autenticação ou respostas privadas.
-- [ ] Aplicativos possuem configuração Android e iOS.
-- [ ] Idioma pode ser detectado e posteriormente alterado.
-- [ ] Datas persistem em UTC e preferências usam fuso IANA.
-- [ ] Mutação repetida não cria operação duplicada.
-- [ ] Dispositivos e filas pertencem somente ao titular.
-- [ ] Testes Supabase e checks do GitHub aprovados.
-- [ ] Inspeção em telemóvel, tablet e PWA concluída.
+- [x] Build e typecheck web/mobile aprovados.
+- [x] PWA não guarda API, autenticação ou respostas privadas.
+- [x] Aplicativos possuem configuração Android e iOS.
+- [x] Idioma pode ser detectado e posteriormente alterado.
+- [x] Datas persistem em UTC e preferências usam fuso IANA.
+- [x] Mutação repetida não cria operação duplicada.
+- [x] Dispositivos e filas pertencem somente ao titular.
+- [x] Testes Supabase e checks do GitHub aprovados.
+- [x] Inspeção em Android e PWA concluída.
 
 ## Limites
 
@@ -39,8 +39,11 @@ Esta sprint prepara a base multiplataforma. Publicação nas lojas, assinatura
 nativa, notificações push e processamento automático da fila exigem
 credenciais, contas de loja e validação de produção.
 
+O teste em dispositivo iOS permanece pendente por exigir iPhone, macOS ou build
+remoto. Essa limitação está registrada e será validada antes da publicação na
+App Store.
+
 ## Rollback
 
 Reverter os commits antes da incorporação. Em produção, desativar novos envios
 antes de remover filas e preservar mutações ainda não processadas.
-
