@@ -21,15 +21,15 @@ Entregar jogos bíblicos pedagógicos, revisão inteligente e dificuldade adapta
 
 ## Critérios de aceite
 
-- [ ] Utilizador inicia e conclui uma sessão de jogo.
-- [ ] Perguntas utilizam somente conteúdo publicado e aprovado.
-- [ ] Respostas apresentam correção e explicação.
-- [ ] Erros alimentam uma fila privada de revisão.
-- [ ] Dificuldade adapta-se sem punir ou rotular o utilizador.
-- [ ] Pontos representam aprendizagem verificável.
-- [ ] Dados pessoais e tentativas possuem RLS.
-- [ ] Limites reduzem automação e abuso.
-- [ ] Banco, testes, typecheck e build aprovados.
+- [x] Utilizador inicia e conclui uma sessão de jogo.
+- [x] Perguntas utilizam somente conteúdo publicado e aprovado.
+- [x] Respostas apresentam correção e explicação.
+- [x] Erros alimentam uma fila privada de revisão.
+- [x] Dificuldade adapta-se sem punir ou rotular o utilizador.
+- [x] Pontos representam aprendizagem verificável.
+- [x] Dados pessoais e tentativas possuem RLS.
+- [x] Limites reduzem automação e abuso.
+- [x] Banco, testes, typecheck e build aprovados.
 - [ ] Inspeção visual aprovada.
 - [ ] Pull Request incorporado à `main`.
 
