@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 025 - Voz e acessibilidade oral.
-- **Sprint atual:** Sprint 026 - Sustentabilidade.
-- **Branch atual:** `sprint/026-sustentabilidade`.
-- **Estado:** Em andamento no Draft PR nº 28.
+- **Última sprint concluída:** Sprint 026 - Sustentabilidade.
+- **Próxima sprint:** Sprint 027 - Conteúdo teológico e pedagogia.
+- **Branch após o merge:** `main`.
+- **Estado:** Sprint 026 validada e preparada para incorporação pelo PR nº 28.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -62,7 +62,7 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 023 | ✅ Concluída após merge | Jogos bíblicos e revisão inteligente | [Relatório](docs/sprints/SPRINT_023.md) |
 | 024 | ✅ Concluída após merge | IA bíblica fundamentada e professor | [Relatório](docs/sprints/SPRINT_024.md) |
 | 025 | ✅ Concluída após merge | Voz e acessibilidade oral | [Relatório](docs/sprints/SPRINT_025.md) |
-| 026 | 🟡 Em andamento | Sustentabilidade, preços e assinaturas | [Relatório](docs/sprints/SPRINT_026.md) |
+| 026 | ✅ Concluída após merge | Sustentabilidade, preços e assinaturas | [Relatório](docs/sprints/SPRINT_026.md) |
 | 027-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
@@ -75,15 +75,18 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 - Limitação do microfone defeituoso documentada sem comprometer o fallback.
 - Evidências em `docs/validation/SPRINT_025_VALIDATION.md`.
 
-## Entrega atual
+## Última entrega concluída
 
 - Planos Gratuito, Plus e Apoiador com preços regionais candidatos.
 - Quotas, entitlements, RLS, checkout web e webhook seguro.
 - Integrações nativas de lojas permanecem planejadas para a Sprint 028.
+- Banco com 121 testes, typecheck, build, inspeção visual e checks aprovados.
+- Evidências em `docs/validation/SPRINT_026_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Validar banco, testes, typecheck, build e interface do Draft PR nº 28.
+Após incorporar o PR nº 28, criar a branch da Sprint 027 e iniciar conteúdo
+teológico completo, pedagogia e aprovação humana.
 
 ## Como continuar em outro chat
 

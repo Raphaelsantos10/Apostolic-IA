@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento no Draft PR nº 28.
+Concluída após validação e incorporação do PR nº 28.
 
 ## Objetivo
 
@@ -31,9 +31,9 @@ checkout web seguro e entitlements privados.
 - [x] Checkout sem segredo falha de forma segura.
 - [x] Webhook valida assinatura e evita repetição.
 - [x] Testes de preços, typecheck e build web aprovados.
-- [ ] Banco e RLS aprovados em ambiente Supabase local.
-- [ ] Inspeção visual aprovada.
-- [ ] Checks e merge do PR nº 28 aprovados.
+- [x] Banco e RLS aprovados em ambiente Supabase local.
+- [x] Inspeção visual aprovada.
+- [x] Checks e merge do PR nº 28 aprovados.
 
 ## Limites
 
@@ -45,3 +45,7 @@ entitlements e checkout web.
 
 Reverter código e migração antes de produção. Em ambiente com cobranças reais,
 cancelar produtos no provedor não deve apagar histórico ou acesso já pago.
+
+## Próximo passo
+
+Iniciar a Sprint 027 - Conteúdo teológico completo, pedagogia e aprovação humana.
