@@ -35,9 +35,12 @@ reset role;
 set local role authenticated;
 set local request.jwt.claim.sub='dddddddd-dddd-4ddd-8ddd-dddddddddddd';
 select is((select count(*)::integer from public.verse_highlights),0,'outra conta não vê destaque');
-select throws_ok(
-  $$delete from public.verse_highlights$$,
-  '42501', null, 'outra conta não remove destaque'
+delete from public.verse_highlights;
+reset role;
+select is(
+  (select count(*)::integer from public.verse_highlights),
+  1,
+  'outra conta não remove destaque'
 );
 
 select * from finish();
