@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useCallback, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client";
 
 type Circle = { id:string; name:string; description:string; visibility:"public"|"private" };
@@ -14,31 +14,42 @@ export function CommunityPanel() {
   const [message,setMessage]=useState("");
   const [status,setStatus]=useState("A carregar comunidade…");
 
-  const load=useCallback(async()=>{
-    const supabase=createClient();
-    const {data:auth}=await supabase.auth.getUser();
-    if(!auth.user){setStatus("Entre na sua conta para participar.");return;}
-    setUserId(auth.user.id);
-    const {data,error}=await supabase.from("community_circles")
-      .select("id,name,description,visibility").order("created_at");
-    if(error){setStatus("Não foi possível carregar os círculos.");return;}
-    const next=(data??[]) as Circle[];
-    setCircles(next);
-    const circleId=selected||next[0]?.id||"";
-    setSelected(circleId);
-    if(circleId){
-      const response=await supabase.from("community_posts")
-        .select("id,circle_id,body,created_at").eq("circle_id",circleId).order("created_at",{ascending:false});
-      if(response.error){
-        setStatus("Não foi possível carregar as publicações.");
-        return;
-      }
-      setPosts((response.data??[]) as Post[]);
-    }
-    setStatus("");
-  },[selected]);
+  useEffect(()=>{
+    let active=true;
+    const loadCircles=async()=>{
+      const supabase=createClient();
+      const {data:auth}=await supabase.auth.getUser();
+      if(!active)return;
+      if(!auth.user){setStatus("Entre na sua conta para participar.");return;}
+      setUserId(auth.user.id);
+      const {data,error}=await supabase.from("community_circles")
+        .select("id,name,description,visibility").order("created_at");
+      if(!active)return;
+      if(error){setStatus("Não foi possível carregar os círculos.");return;}
+      const next=(data??[]) as Circle[];
+      setCircles(next);
+      setSelected((current)=>current||next[0]?.id||"");
+      setStatus("");
+    };
+    void loadCircles();
+    return()=>{active=false;};
+  },[]);
 
-  useEffect(()=>{void load();},[load]);
+  useEffect(()=>{
+    let active=true;
+    const loadPosts=async()=>{
+      if(!selected){setPosts([]);return;}
+      const response=await createClient().from("community_posts")
+        .select("id,circle_id,body,created_at").eq("circle_id",selected)
+        .order("created_at",{ascending:false});
+      if(!active)return;
+      if(response.error){setStatus("Não foi possível carregar as publicações.");return;}
+      setPosts((response.data??[]) as Post[]);
+      setMessage("");
+    };
+    void loadPosts();
+    return()=>{active=false;};
+  },[selected]);
 
   async function createCircle(event:FormEvent<HTMLFormElement>){
     event.preventDefault();
@@ -49,12 +60,14 @@ export function CommunityPanel() {
     const {data,error}=await supabase.from("community_circles").insert({
       owner_id:userId,name:String(form.get("name")),description:String(form.get("description")),
       visibility:String(form.get("visibility"))
-    }).select("id").single();
+    }).select("id,name,description,visibility").single();
     if(error){setStatus("Revise os dados do círculo.");return;}
-    await supabase.from("community_circle_members").insert({circle_id:data.id,user_id:userId,role:"owner"});
+    const membership=await supabase.from("community_circle_members")
+      .insert({circle_id:data.id,user_id:userId,role:"owner"});
+    if(membership.error){setStatus("O círculo foi criado, mas a adesão falhou.");return;}
     formElement.reset();
+    setCircles((current)=>[...current.filter((circle)=>circle.id!==data.id),data as Circle]);
     setSelected(data.id);
-    await load();
   }
 
   async function publish(event:FormEvent<HTMLFormElement>){
