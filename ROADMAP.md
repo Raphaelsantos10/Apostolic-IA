@@ -46,7 +46,7 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 018 | [x] Concluída | Núcleo de aprendizagem: progresso, anotações, favoritos, sincronização, metas, quizzes e revisão espaçada |
 | 019 | [x] Concluída | Plataforma bíblica: licenças, leitor, pesquisa, versões, planos e metas de leitura |
 | 020 | [x] Concluída | Experiência bíblica: áudio, offline, destaques, mapas, linhas do tempo e contexto |
-| 021 | [ ] Planejada | Gamificação saudável: pontos, níveis, metas, sequência, conquistas e missões |
+| 021 | [x] Concluída | Gamificação saudável: pontos, níveis, metas, sequência, conquistas e missões |
 | 022 | [ ] Planejada | Comunidade: círculos, moderação, ligas, rankings opcionais e antiabuso |
 | 023 | [ ] Planejada | Jogos bíblicos, revisão inteligente e dificuldade adaptativa |
 | 024 | [ ] Planejada | IA bíblica: biblioteca aprovada, busca fundamentada, guardrails e professor |

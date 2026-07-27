@@ -510,3 +510,45 @@ h2 { line-height: 1.2; }
   .exploration-grid { grid-template-columns: 1fr; }
   .exploration-grid > article:last-child { grid-column: auto; }
 }
+
+.gamification {
+  margin: 1.5rem 0;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--panel);
+}
+.gamification-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.gamification-heading h2, .gamification-heading p { margin: 0.2rem 0; }
+.gamification-heading p:not(.eyebrow) { color: var(--secondary); }
+.level-emblem {
+  display: grid;
+  min-width: 8rem;
+  justify-items: center;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--muted);
+}
+.level-emblem span { color: var(--action); font-size: 2rem; font-weight: 900; }
+.gamification-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin: 1rem 0; }
+.gamification-metrics article { display: grid; padding: 1rem; border-radius: 0.7rem; background: var(--muted); }
+.gamification-metrics strong { font-size: 1.6rem; }
+.gamification-metrics span, .level-progress small { color: var(--secondary); }
+.level-progress { display: grid; gap: 0.4rem; }
+.level-progress > div, .mission-list article > div { display: flex; justify-content: space-between; gap: 1rem; }
+.level-progress progress, .mission-list progress { width: 100%; accent-color: var(--action); }
+.gamification-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
+.gamification-grid h3 { margin-top: 0; }
+.mission-list { display: grid; gap: 0.7rem; }
+.mission-list article { padding: 0.8rem; border: 1px solid var(--border); border-radius: 0.7rem; }
+.mission-list p { margin: 0.25rem 0; color: var(--secondary); }
+.achievement-list { display: grid; gap: 0.7rem; margin: 0; padding: 0; list-style: none; }
+.achievement-list li { display: flex; gap: 0.7rem; align-items: center; padding: 0.8rem; border-radius: 0.7rem; background: var(--muted); }
+.achievement-list li > span { display: grid; width: 2.2rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--action); color: var(--on-action); }
+.achievement-list div { display: grid; }
+.achievement-list small { color: var(--secondary); }
+@media (max-width: 48rem) {
+  .gamification-heading { align-items: stretch; flex-direction: column; }
+  .gamification-metrics, .gamification-grid { grid-template-columns: 1fr; }
+}
