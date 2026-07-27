@@ -138,3 +138,61 @@ join public.bible_books b on b.abbreviation=d.abbreviation
 join public.bible_versions v on v.id=b.version_id and v.code='VDA'
 where p.slug='jornada-demonstrativa'
 on conflict (plan_id, day_number) do nothing;
+
+update public.bible_licenses
+set allows_audio=true, allows_offline=true
+where code='demonstracao-autoral-interna';
+
+insert into public.bible_context_notes (
+  book_id, chapter, title, body, source_label, status, published_at
+)
+select b.id, 1, c.title, c.body, 'Conteúdo demonstrativo autoral',
+  'published', now()
+from public.bible_books b
+join (values
+  ('LDP','Contexto literário demonstrativo',
+   'Este livro fictício exemplifica como gênero, contexto e mensagem completa ajudam a leitura responsável.'),
+  ('LDS','Contexto histórico demonstrativo',
+   'Este conteúdo autoral serve apenas para validar recursos de contexto sem reproduzir uma tradução bíblica.')
+) as c(abbreviation,title,body) on c.abbreviation=b.abbreviation
+join public.bible_versions v on v.id=b.version_id and v.code='VDA'
+where not exists (
+  select 1 from public.bible_context_notes n
+  where n.book_id=b.id and n.chapter=1 and n.title=c.title
+);
+
+insert into public.bible_timeline_events (
+  version_id,title,description,period_label,sort_year,reference_label,status,published_at
+)
+select v.id,e.title,e.description,e.period_label,e.sort_year,e.reference_label,
+  'published',now()
+from public.bible_versions v
+cross join (values
+  ('Início demonstrativo','Marco fictício para validar a ordenação cronológica.',
+   'Período demonstrativo A',-100,'LDP 1'),
+  ('Esperança demonstrativa','Segundo marco fictício da experiência bíblica.',
+   'Período demonstrativo B',100,'LDS 1')
+) as e(title,description,period_label,sort_year,reference_label)
+where v.code='VDA'
+and not exists (
+  select 1 from public.bible_timeline_events t
+  where t.version_id=v.id and t.title=e.title
+);
+
+insert into public.bible_map_locations (
+  version_id,name,description,latitude,longitude,reference_label,status,published_at
+)
+select v.id,l.name,l.description,l.latitude,l.longitude,l.reference_label,
+  'published',now()
+from public.bible_versions v
+cross join (values
+  ('Local demonstrativo Norte','Coordenada fictícia para validar a visualização geográfica.',
+   40.00000::numeric,-8.00000::numeric,'LDP 1'),
+  ('Local demonstrativo Sul','Segundo ponto fictício, sem afirmar geografia bíblica real.',
+   38.00000::numeric,-7.00000::numeric,'LDS 1')
+) as l(name,description,latitude,longitude,reference_label)
+where v.code='VDA'
+and not exists (
+  select 1 from public.bible_map_locations m
+  where m.version_id=v.id and m.name=l.name
+);

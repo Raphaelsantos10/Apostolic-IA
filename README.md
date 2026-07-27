@@ -6,11 +6,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 019 - Plataforma bíblica.
-- **Próxima sprint:** Sprint 020 - Experiência bíblica.
+- **Última sprint concluída:** Sprint 020 - Experiência bíblica.
+- **Próxima sprint:** Sprint 021 - Gamificação saudável.
 - **Branch após o merge:** `main`.
-- **Estado:** Sprint 019 validada e preparada para incorporação pelo PR nº 21.
-- **Aplicação executável:** PWA com autenticação, aprendizagem e plataforma bíblica demonstrativa com leitor, pesquisa, planos e progresso protegidos por RLS.
+- **Estado:** Sprint 020 validada e preparada para incorporação pelo PR nº 22.
+- **Aplicação executável:** PWA com autenticação, aprendizagem e experiência bíblica demonstrativa com leitor, pesquisa, áudio, offline, destaques, contexto, cronologia, mapas, planos e progresso protegidos por RLS.
 - **Última atualização:** 27 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -56,20 +56,21 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 017 | ✅ Concluída | Aulas multimédia acessíveis | [Relatório](docs/sprints/SPRINT_017.md) |
 | 018 | ✅ Concluída após merge | Núcleo de aprendizagem integrado | [Relatório](docs/sprints/SPRINT_018.md) |
 | 019 | ✅ Concluída após merge | Plataforma bíblica | [Relatório](docs/sprints/SPRINT_019.md) |
-| 020-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
+| 020 | ✅ Concluída após merge | Experiência bíblica | [Relatório](docs/sprints/SPRINT_020.md) |
+| 021-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 019 preparada para incorporação pelo Pull Request nº 21.
-- Licenças, versões, leitor, pesquisa, planos e metas de leitura implementados.
-- Planos e progresso de leitura protegidos por RLS.
-- Banco, 59 testes, typecheck, build e inspeção visual aprovados.
-- Evidências em `docs/validation/SPRINT_019_VALIDATION.md`.
+- Sprint 020 preparada para incorporação pelo Pull Request nº 22.
+- Áudio, offline, destaques, contexto, cronologia e mapa implementados.
+- Destaques privados protegidos por RLS.
+- Banco, 71 testes, typecheck, build e inspeção visual aprovados.
+- Evidências em `docs/validation/SPRINT_020_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Validar banco, testes, typecheck e build da Sprint 019; registrar as evidências
-e abrir o Pull Request para incorporação à `main`.
+Validar banco, RLS, áudio, offline, destaques, contexto, cronologia e mapa da
+Sprint 020; registrar evidências e abrir o Pull Request.
 
 ## Como continuar em outro chat
 
@@ -136,7 +137,9 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 017](docs/sprints/SPRINT_017.md)
 - [Relatório da Sprint 018](docs/sprints/SPRINT_018.md)
 - [Relatório da Sprint 019](docs/sprints/SPRINT_019.md)
+- [Relatório da Sprint 020](docs/sprints/SPRINT_020.md)
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
+- [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 017](docs/validation/SPRINT_017_VALIDATION.md)
 - [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
@@ -154,6 +157,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Aulas multimédia](docs/development/MULTIMEDIA_LESSONS.md)
 - [Núcleo de aprendizagem](docs/development/LEARNING_CORE.md)
 - [Plataforma bíblica](docs/development/BIBLE_PLATFORM.md)
+- [Experiência bíblica](docs/development/BIBLE_EXPERIENCE.md)
 - [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)
