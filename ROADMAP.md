@@ -49,7 +49,7 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 021 | [x] Concluída | Gamificação saudável: pontos, níveis, metas, sequência, conquistas e missões |
 | 022 | [x] Concluída | Comunidade: círculos, moderação, ligas, rankings opcionais e antiabuso |
 | 023 | [x] Concluída | Jogos bíblicos, revisão inteligente e dificuldade adaptativa |
-| 024 | [~] Em andamento | IA bíblica: biblioteca aprovada, busca fundamentada, guardrails e professor |
+| 024 | [x] Concluída | IA bíblica: biblioteca aprovada, busca fundamentada, guardrails e professor |
 | 025 | [ ] Planejada | Voz: transcrição, respostas faladas, quizzes orais e acessibilidade |
 | 026 | [ ] Planejada | Sustentabilidade: custos, quotas, compras e assinaturas |
 | 027 | [ ] Planejada | Conteúdo teológico completo, pedagogia e aprovação humana |

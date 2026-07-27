@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento na branch `sprint/024-ia-biblica`.
+Concluída após validação e incorporação do PR nº 26.
 
 ## Objetivo
 
@@ -33,7 +33,7 @@ Entregar um professor de IA fundamentado exclusivamente em conteúdo bíblico e 
 - [x] Quotas reduzem abuso e custos inesperados.
 - [x] Banco, testes, typecheck e build aprovados.
 - [x] Inspeção visual aprovada.
-- [ ] Pull Request incorporado à `main`.
+- [x] Pull Request incorporado à `main`.
 
 ## Limites
 
@@ -41,4 +41,4 @@ A IA auxilia estudo e compreensão. Não cria doutrina, não profetiza, não ofe
 
 ## Próximo passo
 
-Implementar dados, RLS, recuperação fundamentada, guardrails, testes e interface da Sprint 024.
+Iniciar a Sprint 025 — Voz: transcrição, respostas faladas, quizzes orais e acessibilidade.

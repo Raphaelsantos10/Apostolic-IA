@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 023 - Jogos bíblicos e revisão inteligente.
-- **Sprint atual:** Sprint 024 - IA bíblica fundamentada.
-- **Branch atual:** `sprint/024-ia-biblica`.
-- **Estado:** Sprint 024 em andamento após incorporação da Sprint 023 pelo PR nº 25, merge `6173878`.
+- **Última sprint concluída:** Sprint 024 - IA bíblica fundamentada.
+- **Próxima sprint:** Sprint 025 - Voz e acessibilidade oral.
+- **Branch após o merge:** `main`.
+- **Estado:** Sprint 024 validada e preparada para incorporação pelo PR nº 26.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -60,20 +60,20 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 021 | ✅ Concluída após merge | Gamificação saudável | [Relatório](docs/sprints/SPRINT_021.md) |
 | 022 | ✅ Concluída após merge | Comunidade segura e opcional | [Relatório](docs/sprints/SPRINT_022.md) |
 | 023 | ✅ Concluída após merge | Jogos bíblicos e revisão inteligente | [Relatório](docs/sprints/SPRINT_023.md) |
-| 024 | 🟡 Em andamento | IA bíblica fundamentada e professor | [Relatório](docs/sprints/SPRINT_024.md) |
+| 024 | ✅ Concluída após merge | IA bíblica fundamentada e professor | [Relatório](docs/sprints/SPRINT_024.md) |
 | 025-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 023 preparada para incorporação pelo Pull Request nº 25.
-- Jogos bíblicos, revisão inteligente e dificuldade adaptativa implementados.
-- Sessões, respostas e perfil adaptativo protegidos por RLS.
-- Banco, 103 testes, typecheck, build e inspeção visual aprovados.
-- Evidências em `docs/validation/SPRINT_023_VALIDATION.md`.
+- Sprint 024 preparada para incorporação pelo Pull Request nº 26.
+- Biblioteca aprovada, recuperação fundamentada e citações implementadas.
+- Guardrails, recusa segura, histórico privado e quotas implementados.
+- Banco, 111 testes, typecheck, build e inspeção visual aprovados.
+- Evidências em `docs/validation/SPRINT_024_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Implementar biblioteca aprovada, recuperação fundamentada, citações, guardrails doutrinários, histórico privado, quotas e interface do professor de IA.
+Após incorporar o PR nº 26, criar a branch `sprint/025-voz-acessibilidade` e iniciar transcrição, respostas faladas, quizzes orais e acessibilidade.
 
 ## Como continuar em outro chat
 
