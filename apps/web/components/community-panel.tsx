@@ -29,6 +29,10 @@ export function CommunityPanel() {
     if(circleId){
       const response=await supabase.from("community_posts")
         .select("id,circle_id,body,created_at").eq("circle_id",circleId).order("created_at",{ascending:false});
+      if(response.error){
+        setStatus("Não foi possível carregar as publicações.");
+        return;
+      }
       setPosts((response.data??[]) as Post[]);
     }
     setStatus("");
@@ -39,7 +43,8 @@ export function CommunityPanel() {
   async function createCircle(event:FormEvent<HTMLFormElement>){
     event.preventDefault();
     if(!userId)return;
-    const form=new FormData(event.currentTarget);
+    const formElement=event.currentTarget;
+    const form=new FormData(formElement);
     const supabase=createClient();
     const {data,error}=await supabase.from("community_circles").insert({
       owner_id:userId,name:String(form.get("name")),description:String(form.get("description")),
@@ -47,7 +52,7 @@ export function CommunityPanel() {
     }).select("id").single();
     if(error){setStatus("Revise os dados do círculo.");return;}
     await supabase.from("community_circle_members").insert({circle_id:data.id,user_id:userId,role:"owner"});
-    event.currentTarget.reset();
+    formElement.reset();
     setSelected(data.id);
     await load();
   }
@@ -55,12 +60,16 @@ export function CommunityPanel() {
   async function publish(event:FormEvent<HTMLFormElement>){
     event.preventDefault();
     if(!userId||!selected)return;
-    const form=new FormData(event.currentTarget);
-    const {error}=await createClient().from("community_posts").insert({
+    const formElement=event.currentTarget;
+    const form=new FormData(formElement);
+    const {data,error}=await createClient().from("community_posts").insert({
       circle_id:selected,author_id:userId,body:String(form.get("body"))
-    });
+    }).select("id,circle_id,body,created_at").single();
     setMessage(error?"Não foi possível publicar. Aguarde e tente novamente.":"Publicação enviada.");
-    if(!error){event.currentTarget.reset();await load();}
+    if(!error&&data){
+      formElement.reset();
+      setPosts((current)=>[data as Post,...current.filter((post)=>post.id!==data.id)]);
+    }
   }
 
   if(!userId&&status) return <div className="notice"><h2>Comunidade opcional</h2><p>{status} <a href="/entrar">Entrar</a></p></div>;

@@ -10,7 +10,7 @@ Data: 27 de julho de 2026.
 | Export mobile web | Aprovada | Expo; 3 rotas estáticas |
 | `git diff --check` | Aprovada | sem erros de whitespace |
 | Migração e pgTAP | Aprovada | banco restaurado; 11 arquivos e 95 testes aprovados |
-| Inspeção visual autenticada | Pendente | requer Supabase local com utilizadores de teste |
+| Inspeção visual autenticada | Aprovada | círculos, publicação e persistência validados em 27 de julho de 2026 |
 
 ## Cobertura
 

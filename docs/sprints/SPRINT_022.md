@@ -31,7 +31,7 @@ Entregar uma comunidade segura, voluntária e moderada para aprendizagem e comun
 - [x] Ligas e rankings exigem adesão explícita.
 - [x] Práticas espirituais não entram em ranking.
 - [x] Banco, testes, typecheck e build aprovados.
-- [ ] Inspeção visual aprovada.
+- [x] Inspeção visual aprovada.
 - [ ] Pull Request incorporado à `main`.
 
 ## Privacidade
