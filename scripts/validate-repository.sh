@@ -33,6 +33,13 @@ required_files=(
   "docs/development/BILLING.md"
   "docs/product/PRICING_SUSTAINABILITY.md"
   "docs/validation/SPRINT_026_VALIDATION.md"
+  "docs/sprints/SPRINT_027.md"
+  "scripts/validate-sprint-027.sh"
+  "docs/product/TEOLOGIA_CURRICULO.md"
+  "docs/editorial/TEOLOGIA_APROVACAO.md"
+  "docs/validation/SPRINT_027_VALIDATION.md"
+  "supabase/migrations/20260727270000_theological_approval.sql"
+  "supabase/tests/database/theological-approval.test.sql"
   "docs/sprints/SPRINT_025.md"
   "docs/development/VOICE_ACCESSIBILITY.md"
   "docs/validation/SPRINT_025_VALIDATION.md"
@@ -175,4 +182,5 @@ fi
 bash scripts/validate-sprint-012.sh
 bash scripts/validate-sprint-025.sh
 bash scripts/validate-sprint-026.sh
+bash scripts/validate-sprint-027.sh
 echo "Sprint 015 - onboarding validado com sucesso."
