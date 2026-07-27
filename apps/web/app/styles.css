@@ -421,3 +421,92 @@ h2 { line-height: 1.2; }
   .bible-controls { grid-template-columns: 1fr; }
   .bible-search form > div { align-items: stretch; flex-direction: column; }
 }
+
+.bible-experience { margin-top: 2rem; }
+.bible-experience .section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.bible-experience h2 { margin: 0.2rem 0; }
+.experience-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.highlight-panel {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--panel);
+}
+.highlight-panel h3 { margin: 0 0 0.7rem; }
+.highlight-panel > div { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.verse-chip {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999rem;
+  background: var(--page);
+  cursor: pointer;
+}
+.verse-chip.is-highlighted {
+  border-color: #b7791f;
+  background: #fff1a8;
+  color: #3f2f00;
+}
+.exploration-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.exploration-grid > article {
+  min-width: 0;
+  padding: 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--panel);
+}
+.exploration-grid h3 { margin-top: 0; }
+.context-note + .context-note { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.context-note p, .timeline-list p, .map-disclaimer { color: var(--secondary); }
+.context-note small, .timeline-list small { color: var(--secondary); }
+.timeline-list { display: grid; gap: 1rem; margin: 0; padding-left: 1.3rem; }
+.timeline-list li { padding-left: 0.25rem; }
+.timeline-list li::marker { color: var(--action); font-weight: 800; }
+.timeline-list span, .timeline-list strong { display: block; }
+.timeline-list span { color: var(--action); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; }
+.timeline-list p { margin: 0.3rem 0; }
+.context-map {
+  position: relative;
+  min-height: 15rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  background:
+    radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--action) 18%, transparent), transparent 22%),
+    radial-gradient(circle at 72% 65%, color-mix(in srgb, var(--success) 18%, transparent), transparent 25%),
+    var(--muted);
+}
+.map-point {
+  position: absolute;
+  display: grid;
+  max-width: 8rem;
+  transform: translate(-50%, -50%);
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: help;
+  text-align: center;
+}
+.map-point span { color: var(--action); font-size: 1.6rem; line-height: 1; }
+.map-point strong { padding: 0.2rem 0.35rem; border-radius: 0.3rem; background: var(--panel); font-size: 0.72rem; }
+.map-disclaimer { margin-bottom: 0; font-size: 0.82rem; }
+@media (max-width: 70rem) {
+  .exploration-grid { grid-template-columns: 1fr 1fr; }
+  .exploration-grid > article:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 48rem) {
+  .bible-experience .section-heading { align-items: stretch; flex-direction: column; }
+  .experience-actions { display: grid; grid-template-columns: 1fr; }
+  .exploration-grid { grid-template-columns: 1fr; }
+  .exploration-grid > article:last-child { grid-column: auto; }
+}

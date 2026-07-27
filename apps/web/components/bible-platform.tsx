@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { createClient } from "../lib/supabase/client";
+import { BibleExperience } from "./bible-experience";
 
 type BibleVersion = {
   id: string;
@@ -242,6 +243,19 @@ export function BiblePlatform() {
           )}
         </aside>
       </div>
+
+      {selectedVersion && selectedBook && (
+        <BibleExperience
+          versionId={selectedVersion.id}
+          bookId={selectedBook.id}
+          bookName={selectedBook.name}
+          chapter={chapter}
+          verses={verses}
+          userId={userId}
+          allowsAudio={Boolean(selectedVersion.bible_licenses?.allows_audio)}
+          allowsOffline={Boolean(selectedVersion.bible_licenses?.allows_offline)}
+        />
+      )}
 
       <section className="reading-plans" aria-labelledby="plans-title">
         <p className="eyebrow">Rotina configurável</p>
