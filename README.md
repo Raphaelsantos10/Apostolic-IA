@@ -7,9 +7,9 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 ## Estado atual do projeto
 
 - **Última sprint concluída:** Sprint 021 - Gamificação saudável.
-- **Próxima sprint:** Sprint 022 - Comunidade.
-- **Branch após o merge:** `main`.
-- **Estado:** Sprint 021 validada e preparada para incorporação pelo PR nº 23.
+- **Sprint atual:** Sprint 022 - Comunidade.
+- **Branch atual:** `sprint/022-comunidade`.
+- **Estado:** Sprint 022 em andamento após incorporação da Sprint 021 pelo PR nº 23, merge `cef55ff`.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -58,7 +58,8 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 019 | ✅ Concluída após merge | Plataforma bíblica | [Relatório](docs/sprints/SPRINT_019.md) |
 | 020 | ✅ Concluída após merge | Experiência bíblica | [Relatório](docs/sprints/SPRINT_020.md) |
 | 021 | ✅ Concluída após merge | Gamificação saudável | [Relatório](docs/sprints/SPRINT_021.md) |
-| 022-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
+| 022 | 🟡 Em andamento | Comunidade segura e opcional | [Relatório](docs/sprints/SPRINT_022.md) |
+| 023-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
@@ -140,6 +141,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 019](docs/sprints/SPRINT_019.md)
 - [Relatório da Sprint 020](docs/sprints/SPRINT_020.md)
 - [Relatório da Sprint 021](docs/sprints/SPRINT_021.md)
+- [Relatório da Sprint 022](docs/sprints/SPRINT_022.md)
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
 - [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 021](docs/validation/SPRINT_021_VALIDATION.md)
