@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 022 - Comunidade.
-- **Sprint atual:** Sprint 023 - Jogos bíblicos e revisão inteligente.
-- **Branch atual:** `sprint/023-jogos-revisao-inteligente`.
-- **Estado:** Sprint 023 em andamento após incorporação da Sprint 022 pelo PR nº 24, merge `75531bc`.
+- **Última sprint concluída:** Sprint 023 - Jogos bíblicos e revisão inteligente.
+- **Próxima sprint:** Sprint 024 - IA bíblica fundamentada.
+- **Branch após o merge:** `main`.
+- **Estado:** Sprint 023 validada e preparada para incorporação pelo PR nº 25.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -59,20 +59,20 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 020 | ✅ Concluída após merge | Experiência bíblica | [Relatório](docs/sprints/SPRINT_020.md) |
 | 021 | ✅ Concluída após merge | Gamificação saudável | [Relatório](docs/sprints/SPRINT_021.md) |
 | 022 | ✅ Concluída após merge | Comunidade segura e opcional | [Relatório](docs/sprints/SPRINT_022.md) |
-| 023 | 🟡 Em andamento | Jogos bíblicos e revisão inteligente | [Relatório](docs/sprints/SPRINT_023.md) |
+| 023 | ✅ Concluída após merge | Jogos bíblicos e revisão inteligente | [Relatório](docs/sprints/SPRINT_023.md) |
 | 024-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 022 preparada para incorporação pelo Pull Request nº 24.
-- Círculos, membros, publicações, comentários e moderação implementados.
-- Antiabuso, ligas opcionais e privacidade por RLS implementados.
-- Banco, 95 testes, typecheck, build e inspeção visual aprovados.
-- Evidências em `docs/validation/SPRINT_022_VALIDATION.md`.
+- Sprint 023 preparada para incorporação pelo Pull Request nº 25.
+- Jogos bíblicos, revisão inteligente e dificuldade adaptativa implementados.
+- Sessões, respostas e perfil adaptativo protegidos por RLS.
+- Banco, 103 testes, typecheck, build e inspeção visual aprovados.
+- Evidências em `docs/validation/SPRINT_023_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Implementar jogos bíblicos, sessões, tentativas, revisão inteligente, dificuldade adaptativa, RLS, testes e interface responsiva da Sprint 023.
+Após incorporar o PR nº 25, criar a branch `sprint/024-ia-biblica` e iniciar biblioteca aprovada, busca fundamentada, guardrails e professor de IA.
 
 ## Como continuar em outro chat
 

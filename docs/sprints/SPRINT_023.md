@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento na branch `sprint/023-jogos-revisao-inteligente`.
+Concluída após validação e incorporação do PR nº 25.
 
 ## Objetivo
 
@@ -30,8 +30,8 @@ Entregar jogos bíblicos pedagógicos, revisão inteligente e dificuldade adapta
 - [x] Dados pessoais e tentativas possuem RLS.
 - [x] Limites reduzem automação e abuso.
 - [x] Banco, testes, typecheck e build aprovados.
-- [ ] Inspeção visual aprovada.
-- [ ] Pull Request incorporado à `main`.
+- [x] Inspeção visual aprovada.
+- [x] Pull Request incorporado à `main`.
 
 ## Segurança pedagógica
 
@@ -39,4 +39,4 @@ O jogo reforça aprendizagem e revisão. Não mede fé, chamado, espiritualidade
 
 ## Próximo passo
 
-Implementar banco, RLS, motor adaptativo, testes e interface da Sprint 023.
+Iniciar a Sprint 024 — IA bíblica: biblioteca aprovada, busca fundamentada, guardrails e professor.

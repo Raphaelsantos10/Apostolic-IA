@@ -48,7 +48,7 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 020 | [x] Concluída | Experiência bíblica: áudio, offline, destaques, mapas, linhas do tempo e contexto |
 | 021 | [x] Concluída | Gamificação saudável: pontos, níveis, metas, sequência, conquistas e missões |
 | 022 | [x] Concluída | Comunidade: círculos, moderação, ligas, rankings opcionais e antiabuso |
-| 023 | [~] Em andamento | Jogos bíblicos, revisão inteligente e dificuldade adaptativa |
+| 023 | [x] Concluída | Jogos bíblicos, revisão inteligente e dificuldade adaptativa |
 | 024 | [ ] Planejada | IA bíblica: biblioteca aprovada, busca fundamentada, guardrails e professor |
 | 025 | [ ] Planejada | Voz: transcrição, respostas faladas, quizzes orais e acessibilidade |
 | 026 | [ ] Planejada | Sustentabilidade: custos, quotas, compras e assinaturas |
