@@ -211,3 +211,22 @@ values
 ('responder-tres-quizzes','Praticar com quizzes','Acerte três perguntas para revisar o conteúdo.','quiz_correct',3),
 ('ler-dois-dias','Continuar um plano','Conclua dois dias de um plano de leitura.','reading_day_completed',2)
 on conflict(id) do nothing;
+
+-- Biblioteca inicial aprovada para a recuperação fundamentada da Sprint 024.
+insert into public.ai_sources(title,reference_label,kind,approved,approved_at)
+select l.title,'Aula: '||l.title,'lesson',true,now()
+from public.lessons l
+where l.status='published' and l.body_text is not null
+  and not exists (
+    select 1 from public.ai_sources s where s.reference_label='Aula: '||l.title
+  );
+
+insert into public.ai_source_chunks(source_id,content)
+select s.id,l.body_text
+from public.ai_sources s
+join public.lessons l on s.reference_label='Aula: '||l.title
+where s.approved
+  and not exists (
+    select 1 from public.ai_source_chunks c
+    where c.source_id=s.id and c.content=l.body_text
+  );

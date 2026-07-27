@@ -1,0 +1,44 @@
+# Sprint 024 — IA bíblica fundamentada
+
+## Estado
+
+Concluída após validação e incorporação do PR nº 26.
+
+## Objetivo
+
+Entregar um professor de IA fundamentado exclusivamente em conteúdo bíblico e teológico aprovado, com citações verificáveis, limites doutrinários e privacidade.
+
+## Escopo
+
+- biblioteca de fontes aprovadas;
+- fragmentos pesquisáveis e referências;
+- recuperação fundamentada antes da resposta;
+- citações obrigatórias;
+- guardrails doutrinários e de segurança;
+- histórico privado de conversas;
+- feedback e sinalização de respostas;
+- quotas e limites antiabuso;
+- interface responsiva e acessível;
+- fronteira segura para integração futura com modelo externo.
+
+## Critérios de aceite
+
+- [x] Somente fontes aprovadas podem fundamentar respostas.
+- [x] Respostas apresentam referências verificáveis.
+- [x] Ausência de fonte produz recusa segura.
+- [x] Guardrails impedem criação de doutrina e autoridade indevida.
+- [x] Professor não substitui Bíblia, igreja, pastor ou ajuda profissional.
+- [x] Histórico e feedback pertencem somente ao titular por RLS.
+- [x] Chaves e chamadas de modelo permanecem no servidor.
+- [x] Quotas reduzem abuso e custos inesperados.
+- [x] Banco, testes, typecheck e build aprovados.
+- [x] Inspeção visual aprovada.
+- [x] Pull Request incorporado à `main`.
+
+## Limites
+
+A IA auxilia estudo e compreensão. Não cria doutrina, não profetiza, não oferece aconselhamento profissional e deve declarar incerteza quando não houver fundamento aprovado.
+
+## Próximo passo
+
+Iniciar a Sprint 025 — Voz: transcrição, respostas faladas, quizzes orais e acessibilidade.

@@ -6,6 +6,8 @@ Todas as alterações relevantes serão registadas neste arquivo.
 
 ### Added
 
+- Professor de IA com recuperação aprovada, citações, guardrails, RLS e quotas.
+
 - Jogos bíblicos com sessões privadas, revisão inteligente e dificuldade adaptativa.
 
 - Comunidade opcional com círculos, publicações, moderação, antiabuso e ligas.
