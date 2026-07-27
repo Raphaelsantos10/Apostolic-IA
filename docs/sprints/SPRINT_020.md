@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento na branch `sprint/020-experiencia-biblica`.
+Concluída após validação e incorporação do PR nº 22.
 
 ## Objetivo
 
@@ -33,7 +33,7 @@ e acessibilidade.
 - [x] Migração, seed e testes pgTAP aprovados localmente.
 - [x] Typecheck, build e validação final aprovados.
 - [x] Inspeção visual aprovada.
-- [ ] Pull Request aprovado e incorporado à `main`.
+- [x] Pull Request aprovado e incorporado à `main`.
 
 ## Entregas realizadas
 
@@ -65,5 +65,4 @@ Banco restaurado, 71 testes aprovados, typecheck, build, validação do reposit�
 
 ## Próximo passo
 
-Executar validação completa, registrar evidências e abrir o Pull Request da
-Sprint 020.
+Iniciar a Sprint 021 — Gamificação saudável: pontos de aprendizagem, níveis, metas, sequência, conquistas e missões.
