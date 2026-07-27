@@ -7,9 +7,9 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 ## Estado atual do projeto
 
 - **Última sprint concluída:** Sprint 024 - IA bíblica fundamentada.
-- **Próxima sprint:** Sprint 025 - Voz e acessibilidade oral.
-- **Branch após o merge:** `main`.
-- **Estado:** Sprint 024 validada e preparada para incorporação pelo PR nº 26.
+- **Sprint atual:** Sprint 025 - Voz e acessibilidade oral.
+- **Branch atual:** `sprint/025-voz-acessibilidade`.
+- **Estado:** Em andamento no Draft PR nº 27.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -61,7 +61,8 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 022 | ✅ Concluída após merge | Comunidade segura e opcional | [Relatório](docs/sprints/SPRINT_022.md) |
 | 023 | ✅ Concluída após merge | Jogos bíblicos e revisão inteligente | [Relatório](docs/sprints/SPRINT_023.md) |
 | 024 | ✅ Concluída após merge | IA bíblica fundamentada e professor | [Relatório](docs/sprints/SPRINT_024.md) |
-| 025-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
+| 025 | 🟡 Em andamento | Voz e acessibilidade oral | [Relatório](docs/sprints/SPRINT_025.md) |
+| 026-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
@@ -71,9 +72,17 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 - Banco, 111 testes, typecheck, build e inspeção visual aprovados.
 - Evidências em `docs/validation/SPRINT_024_VALIDATION.md`.
 
+## Entrega atual
+
+- Ditado progressivo com consentimento explícito e transcrição editável.
+- Respostas faladas com controles de reprodução.
+- Quizzes com leitura e resposta oral confirmável.
+- Preferências locais de voz e velocidade, privacidade e fallback textual.
+- Validações ainda pendentes; a sprint permanece em andamento.
+
 ## Próximo passo exato
 
-Após incorporar o PR nº 26, criar a branch `sprint/025-voz-acessibilidade` e iniciar transcrição, respostas faladas, quizzes orais e acessibilidade.
+Executar testes, typecheck, build, inspeção visual e checks do Draft PR nº 27.
 
 ## Como continuar em outro chat
 
@@ -145,12 +154,14 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 022](docs/sprints/SPRINT_022.md)
 - [Relatório da Sprint 023](docs/sprints/SPRINT_023.md)
 - [Relatório da Sprint 024](docs/sprints/SPRINT_024.md)
+- [Relatório da Sprint 025](docs/sprints/SPRINT_025.md)
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
 - [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 021](docs/validation/SPRINT_021_VALIDATION.md)
 - [Validação da Sprint 022](docs/validation/SPRINT_022_VALIDATION.md)
 - [Validação da Sprint 023](docs/validation/SPRINT_023_VALIDATION.md)
 - [Validação da Sprint 024](docs/validation/SPRINT_024_VALIDATION.md)
+- [Validação da Sprint 025](docs/validation/SPRINT_025_VALIDATION.md)
 - [Validação da Sprint 017](docs/validation/SPRINT_017_VALIDATION.md)
 - [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
@@ -173,6 +184,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Comunidade segura](docs/development/COMMUNITY.md)
 - [Jogos bíblicos](docs/development/BIBLE_GAMES.md)
 - [IA bíblica fundamentada](docs/development/GROUNDED_BIBLE_AI.md)
+- [Voz e acessibilidade oral](docs/development/VOICE_ACCESSIBILITY.md)
 - [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)
