@@ -196,3 +196,18 @@ and not exists (
   select 1 from public.bible_map_locations m
   where m.version_id=v.id and m.name=l.name
 );
+
+insert into public.achievement_definitions(
+  id,title,description,icon,points_threshold,streak_threshold
+) values
+('primeiros-passos','Primeiros passos','Concluiu a primeira atividade de aprendizagem.','★',10,null),
+('aprendiz-dedicado','Aprendiz dedicado','Alcançou 100 pontos de aprendizagem verificável.','◆',100,null),
+('constancia-tres-dias','Constância saudável','Estudou em três dias consecutivos.','◉',null,3)
+on conflict(id) do nothing;
+
+insert into public.mission_definitions(id,title,description,activity_kind,target_count)
+values
+('concluir-uma-aula','Concluir uma aula','Conclua uma aula publicada no seu ritmo.','lesson_completed',1),
+('responder-tres-quizzes','Praticar com quizzes','Acerte três perguntas para revisar o conteúdo.','quiz_correct',3),
+('ler-dois-dias','Continuar um plano','Conclua dois dias de um plano de leitura.','reading_day_completed',2)
+on conflict(id) do nothing;

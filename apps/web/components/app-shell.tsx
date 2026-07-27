@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client";
 import { BiblePlatform } from "./bible-platform";
+import { HealthyGamificationPanel } from "./healthy-gamification";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
 
 type ViewName = "home" | "courses" | "bible" | "progress" | "more";
@@ -322,6 +323,7 @@ function ProgressView() {
         <article><strong>—</strong><span>Sequência</span></article>
       </div>
       <DailyGoalPanel />
+      <HealthyGamificationPanel />
       <div className="notice">
         <h2>Aprendizagem privada</h2>
         <p>Progresso, notas, favoritos, metas e revisões são protegidos por RLS.</p>
