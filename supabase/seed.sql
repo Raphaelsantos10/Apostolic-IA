@@ -1,5 +1,8 @@
 -- A Sprint 012 não distribui contas ou conteúdo fictício.
 -- Utilize o fluxo local de autenticação para criar utilizadores de desenvolvimento.
+-- O modo abaixo permite restaurar o catálogo demonstrativo já publicado.
+-- Produção e clientes não configuram esta opção.
+select set_config('apostolic.seed_mode', 'on', false);
 
 insert into public.courses (slug, title, summary, level, status, position, published_at)
 values

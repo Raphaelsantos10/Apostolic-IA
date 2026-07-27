@@ -1,0 +1,30 @@
+{
+  "code": "TEO-FUN-001-M01-Q01",
+  "status": "draft",
+  "version": 1,
+  "questions": [
+    {
+      "prompt": "Segundo 2 Timóteo 3:16-17, qual é uma finalidade das Escrituras?",
+      "options": [
+        "Substituir toda responsabilidade pastoral",
+        "Preparar a pessoa de Deus para toda boa obra",
+        "Eliminar a necessidade de considerar o contexto",
+        "Confirmar qualquer opinião pessoal"
+      ],
+      "correctIndex": 1,
+      "explanation": "O texto relaciona as Escrituras ao ensino, correção e preparo para toda boa obra."
+    },
+    {
+      "prompt": "Qual prática ajuda a evitar o uso indevido de um versículo?",
+      "options": [
+        "Ignorar o gênero literário",
+        "Ler somente uma frase",
+        "Considerar o contexto e o conjunto das Escrituras",
+        "Aceitar a interpretação mais popular"
+      ],
+      "correctIndex": 2,
+      "explanation": "A interpretação responsável considera os contextos literário, histórico e canônico."
+    }
+  ]
+}
+

@@ -23,10 +23,30 @@ insert into public.courses(slug,title,summary,level,status,position,published_at
 values
 ('fundamentos-biblicos','Fundamentos Bíblicos',
  'Introdução autoral aos fundamentos para o estudo das Escrituras.',
- 'beginner','published',1,now()),
+ 'beginner','approved',1,null),
 ('curso-em-revisao','Curso em revisão',
  'Conteúdo reservado à equipa editorial enquanto passa por revisão.',
  'intermediate','review',2,null);
+
+insert into public.course_reviews(
+  course_id, content_version, review_kind, reviewer_id, decision, notes
+)
+select
+  id, content_version, review_kind,
+  '66666666-6666-4666-8666-666666666666', 'approved',
+  'Parecer de teste aprovado.'
+from public.courses
+cross join (
+  values
+    ('doctrinal'::public.theological_review_kind),
+    ('pedagogical'::public.theological_review_kind),
+    ('editorial'::public.theological_review_kind)
+) as reviews(review_kind)
+where slug='fundamentos-biblicos';
+
+update public.courses
+set status='published', published_at=now()
+where slug='fundamentos-biblicos';
 
 select is((select count(*)::integer from public.courses),2,
   'editor visualiza cursos publicados e em revisão');
