@@ -7,9 +7,9 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 ## Estado atual do projeto
 
 - **Última sprint concluída:** Sprint 022 - Comunidade.
-- **Próxima sprint:** Sprint 023 - Jogos bíblicos e revisão inteligente.
-- **Branch após o merge:** `main`.
-- **Estado:** Sprint 022 validada e preparada para incorporação pelo PR nº 24.
+- **Sprint atual:** Sprint 023 - Jogos bíblicos e revisão inteligente.
+- **Branch atual:** `sprint/023-jogos-revisao-inteligente`.
+- **Estado:** Sprint 023 em andamento após incorporação da Sprint 022 pelo PR nº 24, merge `75531bc`.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -59,7 +59,8 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 020 | ✅ Concluída após merge | Experiência bíblica | [Relatório](docs/sprints/SPRINT_020.md) |
 | 021 | ✅ Concluída após merge | Gamificação saudável | [Relatório](docs/sprints/SPRINT_021.md) |
 | 022 | ✅ Concluída após merge | Comunidade segura e opcional | [Relatório](docs/sprints/SPRINT_022.md) |
-| 023-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
+| 023 | 🟡 Em andamento | Jogos bíblicos e revisão inteligente | [Relatório](docs/sprints/SPRINT_023.md) |
+| 024-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
@@ -71,7 +72,7 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Próximo passo exato
 
-Após incorporar o PR nº 24, criar a branch `sprint/023-jogos-revisao-inteligente` e iniciar jogos bíblicos, revisão inteligente e dificuldade adaptativa.
+Implementar jogos bíblicos, sessões, tentativas, revisão inteligente, dificuldade adaptativa, RLS, testes e interface responsiva da Sprint 023.
 
 ## Como continuar em outro chat
 
@@ -141,6 +142,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 020](docs/sprints/SPRINT_020.md)
 - [Relatório da Sprint 021](docs/sprints/SPRINT_021.md)
 - [Relatório da Sprint 022](docs/sprints/SPRINT_022.md)
+- [Relatório da Sprint 023](docs/sprints/SPRINT_023.md)
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
 - [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 021](docs/validation/SPRINT_021_VALIDATION.md)
