@@ -1,0 +1,16 @@
+begin;
+create extension if not exists pgtap with schema extensions;
+select plan(10);
+select has_table('public','billing_plans','planos');
+select has_table('public','billing_prices','preços');
+select has_table('public','billing_subscriptions','assinaturas');
+select has_table('public','billing_webhook_events','eventos');
+select is((select ai_daily_limit from public.billing_plans where code='free'),10,'quota gratuita');
+select is((select currency from public.billing_prices where plan_code='plus' and region='PT'),'EUR','Portugal em EUR');
+select is((select currency from public.billing_prices where plan_code='plus' and region='BR'),'BRL','Brasil em BRL');
+set local role anon;
+select lives_ok($$select * from public.billing_plans$$,'planos públicos');
+select throws_ok($$insert into public.billing_plans(code,name,description,ai_daily_limit) values('x','x','x',1)$$,'42501',null,'catálogo protegido');
+select throws_ok($$select * from public.billing_subscriptions$$,'42501',null,'assinaturas privadas para anónimo');
+select * from finish();
+rollback;

@@ -29,6 +29,10 @@ required_files=(
   "docs/sprints/SPRINT_011.md"
   "docs/sprints/SPRINT_012.md"
   "docs/validation/SPRINT_012_VALIDATION.md"
+  "docs/sprints/SPRINT_026.md"
+  "docs/development/BILLING.md"
+  "docs/product/PRICING_SUSTAINABILITY.md"
+  "docs/validation/SPRINT_026_VALIDATION.md"
   "docs/sprints/SPRINT_025.md"
   "docs/development/VOICE_ACCESSIBILITY.md"
   "docs/validation/SPRINT_025_VALIDATION.md"
@@ -170,4 +174,5 @@ fi
 
 bash scripts/validate-sprint-012.sh
 bash scripts/validate-sprint-025.sh
+bash scripts/validate-sprint-026.sh
 echo "Sprint 015 - onboarding validado com sucesso."

@@ -8,6 +8,7 @@ import { CommunityPanel } from "./community-panel";
 import { BibleGame } from "./bible-game";
 import { BibleTeacher } from "./bible-teacher";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
+import { PricingPanel } from "./pricing-panel";
 
 type ViewName = "home" | "courses" | "bible" | "teacher" | "games" | "community" | "progress" | "more";
 type ThemeName = "system" | "light" | "dark" | "sepia";
@@ -352,6 +353,7 @@ function MoreView() {
         <article><h2>Offline</h2><p>Somente o shell visitado possui suporte inicial.</p></article>
         <article><h2>Privacidade</h2><p>Não há conta, telemetria própria ou envio de conteúdo.</p></article>
       </div>
+      <PricingPanel />
     </section>
   );
 }

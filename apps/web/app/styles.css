@@ -611,3 +611,45 @@ h2 { line-height: 1.2; }
 @media (max-width: 48rem) {
   .community-layout { grid-template-columns: 1fr; }
 }
+
+.pricing { margin-top: 2.5rem; }
+.pricing-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--panel);
+}
+.pricing-controls > label { display: grid; gap: 0.35rem; font-weight: 750; }
+.pricing-controls select {
+  min-height: 2.75rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  background: var(--page);
+  color: var(--text);
+}
+.pricing-controls fieldset { display: flex; gap: 1rem; min-height: 2.75rem; align-items: center; border: 1px solid var(--border); border-radius: 0.55rem; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.pricing-grid article {
+  display: grid;
+  gap: 0.65rem;
+  align-content: start;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--panel);
+}
+.pricing-grid article.is-featured { border: 2px solid var(--action); box-shadow: var(--shadow); }
+.pricing-grid h2,.pricing-grid p { margin: 0; }
+.pricing-grid p,.pricing-grid article > span,.pricing-note { color: var(--secondary); }
+.pricing-grid .price { margin-top: 0.5rem; font-size: clamp(1.8rem,4vw,2.5rem); }
+.pricing-grid .saving { color: var(--success); font-weight: 800; }
+.pricing-grid ul { display: grid; gap: 0.45rem; min-height: 8rem; padding-left: 1.2rem; }
+.pricing-message { padding: 0.8rem; border-left: 0.3rem solid var(--focus); background: var(--muted); }
+.pricing-note { font-size: 0.9rem; }
+@media (max-width: 64rem) { .pricing-grid { grid-template-columns: 1fr; } .pricing-grid ul { min-height: 0; } }
