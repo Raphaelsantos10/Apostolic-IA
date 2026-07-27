@@ -110,7 +110,7 @@ risco.
 - Sprint 023: leitor, planos e metas de leitura bíblica.
 - Sprint 028: pontos, níveis e sequência saudável.
 - Sprint 029: medalhas, missões e desafios cooperativos.
-- Sprint 030: comunidade, círculos e moderação.
-- Sprint 031: ligas e rankings opcionais.
+- Sprint 022: comunidade, círculos e moderação.
+- Sprint 022: ligas e rankings opcionais.
 - Sprints 032-034: jogos e adaptação pedagógica.
 - Sprint 035: auditoria pedagógica, ética, privacidade e antiabuso.
