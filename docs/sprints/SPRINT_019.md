@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento na branch `sprint/019-plataforma-biblica`.
+Concluída após validação e incorporação do PR nº 21.
 
 ## Objetivo
 
@@ -32,7 +32,7 @@ protegida sem autorização.
 - [x] O seed não distribui tradução bíblica protegida.
 - [x] Migração, seed e testes pgTAP aprovados localmente.
 - [x] Typecheck, build e validação final aprovados.
-- [ ] Pull Request aprovado e incorporado à `main`.
+- [x] Pull Request aprovado e incorporado à `main`.
 
 ## Entregas realizadas
 
@@ -64,5 +64,4 @@ Evidências: `docs/validation/SPRINT_019_VALIDATION.md`.
 
 ## Próximo passo
 
-Executar a validação completa, registrar evidências, atualizar o relatório e
-abrir o Pull Request da Sprint 019.
+Iniciar a Sprint 020 — Experiência bíblica: áudio, offline, destaques, mapas, linhas do tempo e contexto.

@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 018 - Núcleo de aprendizagem.
-- **Sprint atual:** Sprint 019 - Plataforma bíblica.
-- **Branch atual:** `sprint/019-plataforma-biblica`.
-- **Estado:** Sprint 019 em andamento após incorporação da Sprint 018 pelo PR nº 20, merge `a933461`.
+- **Última sprint concluída:** Sprint 019 - Plataforma bíblica.
+- **Próxima sprint:** Sprint 020 - Experiência bíblica.
+- **Branch após o merge:** `main`.
+- **Estado:** Sprint 019 validada e preparada para incorporação pelo PR nº 21.
 - **Aplicação executável:** PWA com autenticação, aprendizagem e plataforma bíblica demonstrativa com leitor, pesquisa, planos e progresso protegidos por RLS.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -55,16 +55,16 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 016 | ✅ Concluída | Catálogo de cursos e módulos | [Relatório](docs/sprints/SPRINT_016.md) |
 | 017 | ✅ Concluída | Aulas multimédia acessíveis | [Relatório](docs/sprints/SPRINT_017.md) |
 | 018 | ✅ Concluída após merge | Núcleo de aprendizagem integrado | [Relatório](docs/sprints/SPRINT_018.md) |
-| 019 | 🟡 Em andamento | Plataforma bíblica | [Relatório](docs/sprints/SPRINT_019.md) |
+| 019 | ✅ Concluída após merge | Plataforma bíblica | [Relatório](docs/sprints/SPRINT_019.md) |
 | 020-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 018 incorporada pelo Pull Request nº 20, merge `a933461`.
-- Progresso, notas, favoritos, meta diária, quizzes e revisão espaçada implementados.
-- Dados pessoais isolados por RLS.
-- Banco, testes, typecheck, build e repositório validados.
-- Evidências em `docs/validation/SPRINT_018_VALIDATION.md`.
+- Sprint 019 preparada para incorporação pelo Pull Request nº 21.
+- Licenças, versões, leitor, pesquisa, planos e metas de leitura implementados.
+- Planos e progresso de leitura protegidos por RLS.
+- Banco, 59 testes, typecheck, build e inspeção visual aprovados.
+- Evidências em `docs/validation/SPRINT_019_VALIDATION.md`.
 
 ## Próximo passo exato
 
