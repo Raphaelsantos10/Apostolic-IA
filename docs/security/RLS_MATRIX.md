@@ -11,6 +11,8 @@
 | `community_reports` | Sem acesso | Denunciante vê a própria; moderador vê a fila do círculo | Ações geram auditoria |
 | `community_league_opt_ins` | Sem acesso | Utilizador gere somente a própria adesão | Sem adesão por padrão |
 | `game_profiles` / `game_sessions` / `game_answers` | Sem acesso | Titular lê somente os próprios dados | Correção no servidor |
+| `ai_sources` / `ai_source_chunks` | Sem acesso | Lê somente fontes aprovadas | Aprovação editorial futura |
+| `ai_conversations` / `ai_messages` / `ai_feedback` | Sem acesso | Titular gere somente os próprios dados | Chamada externa no servidor |
 
 ## Regras obrigatórias
 

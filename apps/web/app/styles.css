@@ -568,6 +568,7 @@ h2 { line-height: 1.2; }
 .community-post { padding: 1rem; margin-top: 0.75rem; }
 .community-post p { margin-top: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .bible-game{display:grid;gap:1rem;max-width:52rem}.bible-game article{padding:1.25rem;border:1px solid var(--border);border-radius:.9rem;background:var(--surface)}.game-options{display:grid;gap:.7rem}.game-options button{padding:1rem;border:1px solid var(--border);border-radius:.7rem;background:var(--muted);color:inherit;text-align:left;font:inherit;cursor:pointer}.game-options button:hover,.game-options button:focus-visible{outline:2px solid var(--accent)}.game-feedback{padding:1rem;border-left:4px solid var(--accent);background:var(--muted)}
+.bible-teacher{display:grid;gap:1rem;max-width:55rem}.bible-teacher form{display:grid;gap:.75rem}.bible-teacher textarea{min-height:8rem;padding:1rem;border:1px solid var(--border);border-radius:.7rem;background:var(--surface);color:inherit;font:inherit}.bible-teacher article{padding:1.25rem;border:1px solid var(--border);border-radius:.9rem;background:var(--surface)}
 @media (max-width: 48rem) {
   .community-layout { grid-template-columns: 1fr; }
 }

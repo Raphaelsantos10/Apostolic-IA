@@ -23,15 +23,15 @@ Entregar um professor de IA fundamentado exclusivamente em conteúdo bíblico e 
 
 ## Critérios de aceite
 
-- [ ] Somente fontes aprovadas podem fundamentar respostas.
-- [ ] Respostas apresentam referências verificáveis.
-- [ ] Ausência de fonte produz recusa segura.
-- [ ] Guardrails impedem criação de doutrina e autoridade indevida.
-- [ ] Professor não substitui Bíblia, igreja, pastor ou ajuda profissional.
-- [ ] Histórico e feedback pertencem somente ao titular por RLS.
-- [ ] Chaves e chamadas de modelo permanecem no servidor.
-- [ ] Quotas reduzem abuso e custos inesperados.
-- [ ] Banco, testes, typecheck e build aprovados.
+- [x] Somente fontes aprovadas podem fundamentar respostas.
+- [x] Respostas apresentam referências verificáveis.
+- [x] Ausência de fonte produz recusa segura.
+- [x] Guardrails impedem criação de doutrina e autoridade indevida.
+- [x] Professor não substitui Bíblia, igreja, pastor ou ajuda profissional.
+- [x] Histórico e feedback pertencem somente ao titular por RLS.
+- [x] Chaves e chamadas de modelo permanecem no servidor.
+- [x] Quotas reduzem abuso e custos inesperados.
+- [x] Banco, testes, typecheck e build aprovados.
 - [ ] Inspeção visual aprovada.
 - [ ] Pull Request incorporado à `main`.
 

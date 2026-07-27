@@ -6,9 +6,10 @@ import { BiblePlatform } from "./bible-platform";
 import { HealthyGamificationPanel } from "./healthy-gamification";
 import { CommunityPanel } from "./community-panel";
 import { BibleGame } from "./bible-game";
+import { BibleTeacher } from "./bible-teacher";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
 
-type ViewName = "home" | "courses" | "bible" | "games" | "community" | "progress" | "more";
+type ViewName = "home" | "courses" | "bible" | "teacher" | "games" | "community" | "progress" | "more";
 type ThemeName = "system" | "light" | "dark" | "sepia";
 
 const views: ReadonlyArray<{
@@ -20,6 +21,7 @@ const views: ReadonlyArray<{
   { id: "home", label: "Início", symbol: "⌂", title: "Boa leitura" },
   { id: "courses", label: "Cursos", symbol: "▤", title: "Explore os cursos" },
   { id: "bible", label: "Bíblia", symbol: "▣", title: "Recursos bíblicos" },
+  { id: "teacher", label: "Professor IA", symbol: "✦", title: "Professor de IA bíblica" },
   { id: "games", label: "Jogos", symbol: "◇", title: "Jogos bíblicos" },
   { id: "community", label: "Comunidade", symbol: "◌", title: "Círculos de estudo" },
   { id: "progress", label: "Progresso", symbol: "◔", title: "O seu progresso" },
@@ -107,6 +109,7 @@ export function AppShell() {
           {view === "home" && <HomeView onNavigate={navigate} />}
           {view === "courses" && <CoursesView />}
           {view === "bible" && <BibleView />}
+          {view === "teacher" && <BibleTeacher />}
           {view === "games" && <BibleGame />}
           {view === "community" && <CommunityPanel />}
           {view === "progress" && <ProgressView />}
