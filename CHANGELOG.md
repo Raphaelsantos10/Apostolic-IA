@@ -6,6 +6,8 @@ Todas as alterações relevantes serão registadas neste arquivo.
 
 ### Added
 
+- Comunidade opcional com círculos, publicações, moderação, antiabuso e ligas.
+
 - Arquitetura lógica multiplataforma.
 - Decisões de web/PWA, mobile, backend e dados.
 - Modelo de dados conceitual.

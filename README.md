@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 021 - Gamificação saudável.
-- **Próxima sprint:** Sprint 022 - Comunidade.
+- **Última sprint concluída:** Sprint 022 - Comunidade.
+- **Próxima sprint:** Sprint 023 - Jogos bíblicos e revisão inteligente.
 - **Branch após o merge:** `main`.
-- **Estado:** Sprint 021 validada e preparada para incorporação pelo PR nº 23.
+- **Estado:** Sprint 022 validada e preparada para incorporação pelo PR nº 24.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -58,20 +58,20 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 019 | ✅ Concluída após merge | Plataforma bíblica | [Relatório](docs/sprints/SPRINT_019.md) |
 | 020 | ✅ Concluída após merge | Experiência bíblica | [Relatório](docs/sprints/SPRINT_020.md) |
 | 021 | ✅ Concluída após merge | Gamificação saudável | [Relatório](docs/sprints/SPRINT_021.md) |
-| 022-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
+| 022 | ✅ Concluída após merge | Comunidade segura e opcional | [Relatório](docs/sprints/SPRINT_022.md) |
+| 023-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Sprint 021 preparada para incorporação pelo Pull Request nº 23.
-- Pontos verificáveis, níveis, sequência, conquistas e missões implementados.
-- Dados de gamificação protegidos por RLS.
-- Banco, 81 testes, typecheck, build e inspeção visual aprovados.
-- Evidências em `docs/validation/SPRINT_021_VALIDATION.md`.
+- Sprint 022 preparada para incorporação pelo Pull Request nº 24.
+- Círculos, membros, publicações, comentários e moderação implementados.
+- Antiabuso, ligas opcionais e privacidade por RLS implementados.
+- Banco, 95 testes, typecheck, build e inspeção visual aprovados.
+- Evidências em `docs/validation/SPRINT_022_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Validar banco, RLS, pontos, níveis, sequência, conquistas e missões da Sprint
-021; registrar evidências e abrir o Pull Request.
+Após incorporar o PR nº 24, criar a branch `sprint/023-jogos-revisao-inteligente` e iniciar jogos bíblicos, revisão inteligente e dificuldade adaptativa.
 
 ## Como continuar em outro chat
 
@@ -140,9 +140,11 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 019](docs/sprints/SPRINT_019.md)
 - [Relatório da Sprint 020](docs/sprints/SPRINT_020.md)
 - [Relatório da Sprint 021](docs/sprints/SPRINT_021.md)
+- [Relatório da Sprint 022](docs/sprints/SPRINT_022.md)
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
 - [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 021](docs/validation/SPRINT_021_VALIDATION.md)
+- [Validação da Sprint 022](docs/validation/SPRINT_022_VALIDATION.md)
 - [Validação da Sprint 017](docs/validation/SPRINT_017_VALIDATION.md)
 - [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
@@ -162,6 +164,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Plataforma bíblica](docs/development/BIBLE_PLATFORM.md)
 - [Experiência bíblica](docs/development/BIBLE_EXPERIENCE.md)
 - [Gamificação saudável](docs/development/HEALTHY_GAMIFICATION.md)
+- [Comunidade segura](docs/development/COMMUNITY.md)
 - [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)

@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client";
 import { BiblePlatform } from "./bible-platform";
 import { HealthyGamificationPanel } from "./healthy-gamification";
+import { CommunityPanel } from "./community-panel";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
 
-type ViewName = "home" | "courses" | "bible" | "progress" | "more";
+type ViewName = "home" | "courses" | "bible" | "community" | "progress" | "more";
 type ThemeName = "system" | "light" | "dark" | "sepia";
 
 const views: ReadonlyArray<{
@@ -18,6 +19,7 @@ const views: ReadonlyArray<{
   { id: "home", label: "Início", symbol: "⌂", title: "Boa leitura" },
   { id: "courses", label: "Cursos", symbol: "▤", title: "Explore os cursos" },
   { id: "bible", label: "Bíblia", symbol: "▣", title: "Recursos bíblicos" },
+  { id: "community", label: "Comunidade", symbol: "◌", title: "Círculos de estudo" },
   { id: "progress", label: "Progresso", symbol: "◔", title: "O seu progresso" },
   { id: "more", label: "Mais", symbol: "•••", title: "Preferências e ajuda" }
 ];
@@ -103,6 +105,7 @@ export function AppShell() {
           {view === "home" && <HomeView onNavigate={navigate} />}
           {view === "courses" && <CoursesView />}
           {view === "bible" && <BibleView />}
+          {view === "community" && <CommunityPanel />}
           {view === "progress" && <ProgressView />}
           {view === "more" && <MoreView />}
         </main>
