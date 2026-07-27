@@ -368,3 +368,56 @@ h2 { line-height: 1.2; }
 .daily-goal label { display: grid; gap: 0.35rem; }
 .daily-goal select { min-height: 2.75rem; padding: 0.5rem; border: 1px solid var(--border); border-radius: 0.55rem; background: var(--page); color: var(--text); }
 @media (max-width: 48rem) { .daily-goal { grid-template-columns: 1fr; align-items: stretch; } }
+
+.license-notice {
+  display: grid;
+  gap: 0.2rem;
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border-left: 0.35rem solid var(--focus);
+  border-radius: 0.7rem;
+  background: var(--muted);
+}
+.license-notice span, .edition-note { color: var(--secondary); }
+.bible-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(18rem, 1fr); gap: 1.25rem; }
+.bible-reader, .bible-search, .plan-grid article {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  background: var(--panel);
+}
+.bible-controls { display: grid; grid-template-columns: 1.2fr 1.5fr 0.7fr; gap: 0.75rem; }
+.bible-controls label, .bible-search label { display: grid; gap: 0.3rem; font-weight: 750; }
+.bible-controls select, .bible-search input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  background: var(--page);
+  color: var(--text);
+  font: inherit;
+}
+.bible-reader h2, .bible-search h2 { margin: 1rem 0 0.7rem; }
+.verse-list { font-family: Georgia, "Times New Roman", serif; font-size: 1.15rem; line-height: 1.8; }
+.verse-list p { margin: 0.45rem 0; }
+.verse-list sup { color: var(--action); font-family: system-ui, sans-serif; font-weight: 800; }
+.bible-search form > div { display: flex; gap: 0.5rem; margin-top: 0.4rem; }
+.search-results { display: grid; gap: 0.7rem; padding-left: 1.25rem; }
+.search-results li span { display: block; color: var(--secondary); }
+.reading-plans { margin-top: 2rem; }
+.reading-plans h2 { margin-top: 0.2rem; }
+.plan-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.plan-grid h3 { margin: 0.7rem 0 0.25rem; }
+.plan-grid p { color: var(--secondary); }
+.plan-grid ol { display: grid; gap: 0.5rem; padding: 0; list-style: none; }
+.plan-grid li label { display: flex; gap: 0.6rem; align-items: start; }
+.plan-grid li span { display: grid; color: var(--secondary); }
+.plan-grid li strong { color: var(--text); }
+@media (max-width: 64rem) {
+  .bible-layout, .plan-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 48rem) {
+  .bible-controls { grid-template-columns: 1fr; }
+  .bible-search form > div { align-items: stretch; flex-direction: column; }
+}

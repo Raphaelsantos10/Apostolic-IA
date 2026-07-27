@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client";
+import { BiblePlatform } from "./bible-platform";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
 
 type ViewName = "home" | "courses" | "bible" | "progress" | "more";
@@ -308,19 +309,7 @@ function CoursesView() {
   );
 }
 
-function BibleView() {
-  return (
-    <section className="empty-state" aria-labelledby="bible-title">
-      <span className="empty-icon" aria-hidden="true">▣</span>
-      <p className="eyebrow">Licenciamento obrigatório</p>
-      <h1 id="bible-title">Bíblia planejada</h1>
-      <p>
-        Nenhuma tradução protegida foi incorporada. O leitor será ativado
-        somente após autorização documentada.
-      </p>
-    </section>
-  );
-}
+function BibleView() { return <BiblePlatform />; }
 
 function ProgressView() {
   return (
