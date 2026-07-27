@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento na branch `sprint/022-comunidade`.
+Concluída após validação e incorporação do PR nº 24.
 
 ## Objetivo
 
@@ -32,7 +32,7 @@ Entregar uma comunidade segura, voluntária e moderada para aprendizagem e comun
 - [x] Práticas espirituais não entram em ranking.
 - [x] Banco, testes, typecheck e build aprovados.
 - [x] Inspeção visual aprovada.
-- [ ] Pull Request incorporado à `main`.
+- [x] Pull Request incorporado à `main`.
 
 ## Privacidade
 
@@ -40,5 +40,4 @@ Perfis e participação são privados por padrão. Nenhuma oração, fé, chamad
 
 ## Próximo passo
 
-Executar banco local, testes, typecheck, build e inspeção visual; registrar as
-evidências finais antes de preparar a incorporação do Draft PR nº 24.
+Iniciar a Sprint 023 — Jogos bíblicos, revisão inteligente e dificuldade adaptativa.
