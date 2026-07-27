@@ -8,6 +8,13 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "plugins": ["expo-router"],
+    "ios": {
+      "bundleIdentifier": "com.apostolicia.app",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.apostolicia.app"
+    },
     "experiments": {
       "typedRoutes": true
     },

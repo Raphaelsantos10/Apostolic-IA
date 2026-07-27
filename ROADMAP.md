@@ -52,8 +52,8 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 024 | [x] Concluída | IA bíblica: biblioteca aprovada, busca fundamentada, guardrails e professor |
 | 025 | [x] Concluída | Voz: transcrição, respostas faladas, quizzes orais e acessibilidade |
 | 026 | [x] Concluída | Sustentabilidade: custos, quotas, compras e assinaturas |
-| 027 | [~] Em andamento | Conteúdo teológico completo, pedagogia e aprovação humana |
-| 028 | [ ] Planejada | Android, iOS, PWA, idiomas, fusos e sincronização offline |
+| 027 | [x] Concluída | Conteúdo teológico completo, pedagogia e aprovação humana |
+| 028 | [x] Concluída | Android, iOS, PWA, idiomas, fusos e sincronização offline |
 | 029 | [ ] Planejada | Produção: privacidade, segurança, RLS, dependências e observabilidade |
 | 030 | [ ] Planejada | Resiliência: backups, recuperação, desempenho e auditoria WCAG |
 | 031 | [ ] Planejada | Alpha, beta, piloto, correções e Release Candidate |
