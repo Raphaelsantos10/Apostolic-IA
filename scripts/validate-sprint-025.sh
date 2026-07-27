@@ -22,5 +22,4 @@ grep -q "SpeechPlayer" apps/web/components/bible-teacher.tsx
 grep -q "Confirmar resposta transcrita" apps/web/components/bible-game.tsx
 grep -q "consent: false" apps/web/components/voice-accessibility.tsx
 
-pnpm --filter @apostolic-ia/web test
-echo "Sprint 025 - testes de voz aprovados."
+echo "Sprint 025 - estrutura de voz validada estaticamente."

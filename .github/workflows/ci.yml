@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Test voice accessibility
+        run: pnpm --filter @apostolic-ia/web test
+
       - name: Typecheck
         run: pnpm typecheck
 
