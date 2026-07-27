@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento no Draft PR nº 27.
+Concluída após validação e incorporação do PR nº 27.
 
 ## Objetivo
 
@@ -45,9 +45,9 @@ experiência textual completa, a autonomia do utilizador e a privacidade.
 - [x] Testes unitários aprovados.
 - [x] Typecheck aprovado.
 - [x] Build aprovado.
-- [ ] Inspeção visual em telemóvel e desktop aprovada.
-- [ ] Checks do Pull Request aprovados.
-- [ ] Pull Request aprovado e incorporado à `main`.
+- [x] Inspeção visual em telemóvel e desktop aprovada.
+- [x] Checks do Pull Request aprovados.
+- [x] Pull Request aprovado e incorporado à `main`.
 
 ## Privacidade
 
@@ -61,6 +61,12 @@ Reconhecimento e síntese dependem do navegador, sistema operativo, idioma e
 vozes instaladas. A Web Speech API não possui suporte uniforme; por isso o texto
 é sempre a interface canónica.
 
+O teste manual de transcrição real ficou bloqueado pelo defeito no microfone do
+notebook usado na inspeção. A gravação comprovou o consentimento, os estados de
+captura, a falha segura e o fallback textual. O fluxo positivo permanece coberto
+pela implementação progressiva e deve ser repetido futuramente com microfone
+funcional, sem bloquear utilizadores sem voz.
+
 ## Rollback
 
 Reverter os commits da Sprint 025 remove os componentes e testes de voz sem
@@ -68,5 +74,4 @@ alterar dados existentes, pois não há migração de banco nesta entrega.
 
 ## Próximo passo
 
-Executar testes, typecheck, build e inspeção visual; anexar evidências ao Draft
-PR nº 27 antes de solicitar revisão.
+Iniciar a Sprint 026 - Sustentabilidade: custos, quotas, compras e assinaturas.

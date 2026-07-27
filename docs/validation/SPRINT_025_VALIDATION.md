@@ -2,7 +2,7 @@
 
 Data: 27 de julho de 2026.
 
-Estado: em andamento.
+Estado: aprovada.
 
 | Validação | Estado |
 | --- | --- |
@@ -10,9 +10,11 @@ Estado: em andamento.
 | Typecheck | Aprovado - 4 pacotes |
 | Build web | Aprovado - 16 rotas |
 | Build mobile web | Aprovado - 3 rotas estáticas |
-| Inspeção visual desktop | Pendente |
-| Inspeção visual telemóvel | Pendente |
-| Checks do Draft PR nº 27 | Pendente |
+| Inspeção visual desktop | Aprovada por gravação |
+| Inspeção visual telemóvel | Aprovada - Samsung Galaxy S20 Ultra emulado |
+| Fallback sem microfone funcional | Aprovado |
+| Transcrição real por microfone | Bloqueada por defeito no hardware; limitação registada |
+| Checks do PR nº 27 | Aprovados - 3 checks |
 
 ## Cenários funcionais
 
@@ -36,6 +38,18 @@ EXPO_NO_TELEMETRY=1 pnpm --filter @apostolic-ia/mobile build
 bash scripts/validate-repository.sh
 ```
 
-O navegador de inspeção remota bloqueou o acesso ao servidor local
-`127.0.0.1`. Por esse motivo, nenhuma aprovação visual foi registada nesta
-etapa.
+## Inspeção visual
+
+As gravações de 27 de julho de 2026 comprovaram:
+
+- interface desktop no tema escuro sem cortes ou sobreposições;
+- consentimento, início e interrupção da captura;
+- mensagem de falha compreensível e fallback textual funcional;
+- resposta visível com controles de ouvir, pausar e parar;
+- preferências de voz e velocidade;
+- Professor IA e Jogos em viewport Samsung Galaxy S20 Ultra;
+- campos, alternativas, resposta oral e navegação móvel sem rolagem horizontal.
+
+O microfone defeituoso do notebook impediu uma transcrição real bem-sucedida.
+Essa limitação de hardware não foi registada como aprovação do cenário positivo;
+o comportamento de falha e a continuidade textual foram comprovados.

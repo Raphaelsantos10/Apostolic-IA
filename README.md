@@ -6,10 +6,10 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 024 - IA bíblica fundamentada.
-- **Sprint atual:** Sprint 025 - Voz e acessibilidade oral.
-- **Branch atual:** `sprint/025-voz-acessibilidade`.
-- **Estado:** Em andamento no Draft PR nº 27.
+- **Última sprint concluída:** Sprint 025 - Voz e acessibilidade oral.
+- **Próxima sprint:** Sprint 026 - Sustentabilidade.
+- **Branch após o merge:** `main`.
+- **Estado:** Sprint 025 validada e preparada para incorporação pelo PR nº 27.
 - **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
 - **Última atualização:** 27 de julho de 2026.
 
@@ -61,28 +61,23 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 022 | ✅ Concluída após merge | Comunidade segura e opcional | [Relatório](docs/sprints/SPRINT_022.md) |
 | 023 | ✅ Concluída após merge | Jogos bíblicos e revisão inteligente | [Relatório](docs/sprints/SPRINT_023.md) |
 | 024 | ✅ Concluída após merge | IA bíblica fundamentada e professor | [Relatório](docs/sprints/SPRINT_024.md) |
-| 025 | 🟡 Em andamento | Voz e acessibilidade oral | [Relatório](docs/sprints/SPRINT_025.md) |
+| 025 | ✅ Concluída após merge | Voz e acessibilidade oral | [Relatório](docs/sprints/SPRINT_025.md) |
 | 026-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
-
-- Sprint 024 preparada para incorporação pelo Pull Request nº 26.
-- Biblioteca aprovada, recuperação fundamentada e citações implementadas.
-- Guardrails, recusa segura, histórico privado e quotas implementados.
-- Banco, 111 testes, typecheck, build e inspeção visual aprovados.
-- Evidências em `docs/validation/SPRINT_024_VALIDATION.md`.
-
-## Entrega atual
 
 - Ditado progressivo com consentimento explícito e transcrição editável.
 - Respostas faladas com controles de reprodução.
 - Quizzes com leitura e resposta oral confirmável.
 - Preferências locais de voz e velocidade, privacidade e fallback textual.
-- Validações ainda pendentes; a sprint permanece em andamento.
+- Quatro testes, typecheck, builds, inspeções desktop/móvel e checks aprovados.
+- Limitação do microfone defeituoso documentada sem comprometer o fallback.
+- Evidências em `docs/validation/SPRINT_025_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Executar testes, typecheck, build, inspeção visual e checks do Draft PR nº 27.
+Após incorporar o PR nº 27, criar a branch da Sprint 026 e iniciar custos,
+quotas, compras e assinaturas.
 
 ## Como continuar em outro chat
 
