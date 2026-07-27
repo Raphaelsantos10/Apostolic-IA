@@ -552,3 +552,21 @@ h2 { line-height: 1.2; }
   .gamification-heading { align-items: stretch; flex-direction: column; }
   .gamification-metrics, .gamification-grid { grid-template-columns: 1fr; }
 }
+
+.community { display: grid; gap: 1.25rem; }
+.community-layout { display: grid; grid-template-columns: minmax(14rem,0.7fr) minmax(0,2fr); gap: 1rem; align-items: start; }
+.circle-list,.community-feed,.community-post { border: 1px solid var(--border); border-radius: 0.9rem; background: var(--surface); }
+.circle-list,.community-feed { padding: 1rem; }
+.circle-list h2 { margin-top: 0; }
+.circle-list > button { width: 100%; display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.8rem; border: 0; border-radius: 0.65rem; color: inherit; background: transparent; text-align: left; cursor: pointer; }
+.circle-list > button.is-active { background: var(--muted); outline: 2px solid var(--accent); }
+.circle-list small,.community-post small,.community-form small { color: var(--secondary); }
+.community-form { display: grid; gap: 0.75rem; margin-bottom: 1rem; }
+.community-form label { display: grid; gap: 0.35rem; font-weight: 700; }
+.community-form input,.community-form textarea,.community-form select { width: 100%; padding: 0.7rem; border: 1px solid var(--border); border-radius: 0.55rem; color: inherit; background: var(--background); font: inherit; }
+.community-form textarea { min-height: 6rem; resize: vertical; }
+.community-post { padding: 1rem; margin-top: 0.75rem; }
+.community-post p { margin-top: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 48rem) {
+  .community-layout { grid-template-columns: 1fr; }
+}

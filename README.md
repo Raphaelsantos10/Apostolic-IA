@@ -71,8 +71,8 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Próximo passo exato
 
-Validar banco, RLS, pontos, níveis, sequência, conquistas e missões da Sprint
-021; registrar evidências e abrir o Pull Request.
+Validar banco, RLS, círculos, publicações, comentários, denúncias, moderação,
+antiabuso e ligas opcionais da Sprint 022; registrar evidências no Draft PR nº 24.
 
 ## Como continuar em outro chat
 
@@ -145,6 +145,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
 - [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 021](docs/validation/SPRINT_021_VALIDATION.md)
+- [Validação da Sprint 022](docs/validation/SPRINT_022_VALIDATION.md)
 - [Validação da Sprint 017](docs/validation/SPRINT_017_VALIDATION.md)
 - [Validação da Sprint 016](docs/validation/SPRINT_016_VALIDATION.md)
 - [Validação da Sprint 015](docs/validation/SPRINT_015_VALIDATION.md)
@@ -164,6 +165,7 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Plataforma bíblica](docs/development/BIBLE_PLATFORM.md)
 - [Experiência bíblica](docs/development/BIBLE_EXPERIENCE.md)
 - [Gamificação saudável](docs/development/HEALTHY_GAMIFICATION.md)
+- [Comunidade segura](docs/development/COMMUNITY.md)
 - [Crescimento diário e comunidade](docs/product/DAILY_GROWTH_COMMUNITY.md)
 - [Política de ativos visuais](docs/visual/VISUAL_ASSET_POLICY.md)
 - [Política de mapas](docs/visual/MAPS_POLICY.md)

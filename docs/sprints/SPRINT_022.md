@@ -22,15 +22,15 @@ Entregar uma comunidade segura, voluntária e moderada para aprendizagem e comun
 
 ## Critérios de aceite
 
-- [ ] Utilizador pode criar e participar de círculos.
-- [ ] Conteúdo privado aparece somente aos membros.
-- [ ] Publicações e comentários possuem RLS.
-- [ ] Denúncias chegam à fila de moderação.
-- [ ] Moderadores podem ocultar conteúdo denunciado.
-- [ ] Limites reduzem spam e abuso.
-- [ ] Ligas e rankings exigem adesão explícita.
-- [ ] Práticas espirituais não entram em ranking.
-- [ ] Banco, testes, typecheck e build aprovados.
+- [x] Utilizador pode criar e participar de círculos.
+- [x] Conteúdo privado aparece somente aos membros.
+- [x] Publicações e comentários possuem RLS.
+- [x] Denúncias chegam à fila de moderação.
+- [x] Moderadores podem ocultar conteúdo denunciado.
+- [x] Limites reduzem spam e abuso.
+- [x] Ligas e rankings exigem adesão explícita.
+- [x] Práticas espirituais não entram em ranking.
+- [x] Banco, testes, typecheck e build aprovados.
 - [ ] Inspeção visual aprovada.
 - [ ] Pull Request incorporado à `main`.
 
@@ -40,4 +40,5 @@ Perfis e participação são privados por padrão. Nenhuma oração, fé, chamad
 
 ## Próximo passo
 
-Implementar banco, RLS, interface, moderação e testes da Sprint 022.
+Executar banco local, testes, typecheck, build e inspeção visual; registrar as
+evidências finais antes de preparar a incorporação do Draft PR nº 24.
