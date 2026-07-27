@@ -19,8 +19,8 @@ sequência, conquistas e missões, sem medir fé ou espiritualidade.
 - [x] Missões mostram progresso real.
 - [x] Dados pessoais são privados por RLS.
 - [x] Rankings e práticas espirituais ficam fora do escopo.
-- [ ] Banco, seed e testes pgTAP aprovados.
-- [ ] Typecheck, build e inspeção visual aprovados.
+- [x] Banco, seed e testes pgTAP aprovados.
+- [x] Typecheck, build e inspeção visual aprovados.
 - [ ] Pull Request aprovado e incorporado à `main`.
 
 ## Entregas realizadas
@@ -34,7 +34,7 @@ sequência, conquistas e missões, sem medir fé ou espiritualidade.
 
 ## Validação
 
-Pendente da execução final.
+Banco, 81 testes, typecheck, build e inspeção visual aprovados.
 
 ## Limitações conhecidas
 
