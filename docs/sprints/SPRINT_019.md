@@ -30,8 +30,8 @@ protegida sem autorização.
 - [x] Utilizador autenticado pode iniciar plano e concluir dias.
 - [x] Plano, meta e progresso pertencem somente ao titular por RLS.
 - [x] O seed não distribui tradução bíblica protegida.
-- [ ] Migração, seed e testes pgTAP aprovados localmente.
-- [ ] Typecheck, build e validação final aprovados.
+- [x] Migração, seed e testes pgTAP aprovados localmente.
+- [x] Typecheck, build e validação final aprovados.
 - [ ] Pull Request aprovado e incorporado à `main`.
 
 ## Entregas realizadas
