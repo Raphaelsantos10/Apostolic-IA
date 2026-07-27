@@ -30,9 +30,9 @@ e acessibilidade.
 - [x] Cronologia possui período, ordem e referência.
 - [x] Mapa possui coordenadas, descrição e aviso de precisão.
 - [x] Interface é navegável por teclado e responsiva.
-- [ ] Migração, seed e testes pgTAP aprovados localmente.
-- [ ] Typecheck, build e validação final aprovados.
-- [ ] Inspeção visual aprovada.
+- [x] Migração, seed e testes pgTAP aprovados localmente.
+- [x] Typecheck, build e validação final aprovados.
+- [x] Inspeção visual aprovada.
 - [ ] Pull Request aprovado e incorporado à `main`.
 
 ## Entregas realizadas
@@ -46,7 +46,7 @@ e acessibilidade.
 
 ## Validação
 
-Pendente da execução final prevista pela política de entrega.
+Banco restaurado, 71 testes aprovados, typecheck, build, validação do repositório e inspeção visual aprovados. Evidências em `docs/validation/SPRINT_020_VALIDATION.md`.
 
 ## Limitações conhecidas
 
