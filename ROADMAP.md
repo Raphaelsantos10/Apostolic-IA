@@ -44,7 +44,7 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 016 | [x] Concluída | Catálogo de cursos e módulos |
 | 017 | [x] Concluída | Aulas multimédia acessíveis |
 | 018 | [x] Concluída | Núcleo de aprendizagem: progresso, anotações, favoritos, sincronização, metas, quizzes e revisão espaçada |
-| 019 | [ ] Planejada | Plataforma bíblica: licenças, leitor, pesquisa, versões, planos e metas de leitura |
+| 019 | [~] Em andamento | Plataforma bíblica: licenças, leitor, pesquisa, versões, planos e metas de leitura |
 | 020 | [ ] Planejada | Experiência bíblica: áudio, offline, destaques, mapas, linhas do tempo e contexto |
 | 021 | [ ] Planejada | Gamificação saudável: pontos, níveis, metas, sequência, conquistas e missões |
 | 022 | [ ] Planejada | Comunidade: círculos, moderação, ligas, rankings opcionais e antiabuso |
