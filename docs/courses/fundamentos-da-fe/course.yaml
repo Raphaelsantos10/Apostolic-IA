@@ -1,0 +1,43 @@
+code: TEO-FUN-001
+slug: fundamentos-da-fe
+title: Fundamentos da Fé Cristã
+product_kind: seminary
+status: draft
+version: 1
+level: beginner
+language: pt
+estimated_hours: 40
+prerequisites: []
+doctrinal_basis: docs/doctrine/CONSTITUICAO_DOUTRINARIA.md
+modules:
+  - code: TEO-FUN-001-M01
+    slug: biblia-autoridade-e-contexto
+    title: Bíblia, autoridade e contexto
+  - code: TEO-FUN-001-M02
+    slug: deus-criacao-e-humanidade
+    title: Deus, criação e humanidade
+  - code: TEO-FUN-001-M03
+    slug: cristo-e-redencao
+    title: Cristo e redenção
+  - code: TEO-FUN-001-M04
+    slug: graca-fe-e-salvacao
+    title: Graça, fé e salvação
+  - code: TEO-FUN-001-M05
+    slug: espirito-santo-e-vida-crista
+    title: Espírito Santo e vida cristã
+  - code: TEO-FUN-001-M06
+    slug: identidade-e-autoridade
+    title: Identidade e autoridade do cristão
+  - code: TEO-FUN-001-M07
+    slug: oracao-e-comunhao
+    title: Oração e comunhão com Deus
+  - code: TEO-FUN-001-M08
+    slug: igreja-discipulado-e-servico
+    title: Igreja, discipulado e serviço
+  - code: TEO-FUN-001-M09
+    slug: fe-carater-e-santidade
+    title: Fé, caráter e santidade
+  - code: TEO-FUN-001-M10
+    slug: missao-e-esperanca
+    title: Missão e esperança cristã
+

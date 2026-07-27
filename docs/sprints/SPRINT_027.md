@@ -20,6 +20,9 @@ teológico seja publicado sem aprovação humana.
 - pareceres doutrinário, pedagógico e editorial;
 - autoria separada de aprovação;
 - histórico de decisões e bloqueio de publicação;
+- política de originalidade e limites da IA teológica;
+- modelos padronizados de curso e aula;
+- curso piloto Fundamentos da Fé Cristã mantido como rascunho;
 - testes de banco, RLS e validação do repositório.
 
 ## Critérios de aceite
@@ -32,6 +35,9 @@ teológico seja publicado sem aprovação humana.
 - [ ] Autor não aprova o próprio conteúdo.
 - [ ] Rejeição ou nova versão bloqueia a publicação.
 - [ ] Conteúdo não publicado permanece protegido por RLS.
+- [ ] Políticas de originalidade e IA estão documentadas.
+- [ ] Templates de curso e aula estão disponíveis.
+- [ ] Curso piloto possui metadados, primeira aula, quiz e fontes.
 - [ ] Testes de banco e validação do repositório passam.
 - [ ] Inspeção humana final é registrada.
 
