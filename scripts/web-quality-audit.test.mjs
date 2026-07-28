@@ -54,6 +54,31 @@ test("detecta identificadores duplicados", () => {
   );
 });
 
+test("não usa script, estilo ou SVG como nome acessível", () => {
+  const result = auditHtml(`<!doctype html>
+    <html lang="pt-PT">
+      <head><title>Teste</title></head>
+      <body>
+        <main>
+          <h1>Teste</h1>
+          <button><script>nome falso</script ></button>
+          <button><style>nome falso</style></button>
+          <button><svg><title>nome falso</title></svg></button>
+          <a href="/seguro">&amp;lt;Texto&amp;gt;</a>
+        </main>
+      </body>
+    </html>`);
+
+  assert.equal(
+    result.violations.filter(({ id }) => id === "button-name").length,
+    3
+  );
+  assert.equal(
+    result.violations.some(({ id }) => id === "link-name"),
+    false
+  );
+});
+
 test("mede página e aplica orçamento de resposta", async () => {
   const times = [0, 100, 100, 220, 220, 370];
   const result = await auditPage("http://localhost:3000/", {

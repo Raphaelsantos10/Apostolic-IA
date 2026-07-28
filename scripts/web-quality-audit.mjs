@@ -2,24 +2,66 @@ import { PERFORMANCE_BUDGETS } from "../apps/web/lib/resilience.mjs";
 import { pathToFileURL } from "node:url";
 import { resolve } from "node:path";
 
-function decodeBasicEntities(value) {
-  return value
-    .replaceAll("&nbsp;", " ")
-    .replaceAll("&amp;", "&")
-    .replaceAll("&lt;", "<")
-    .replaceAll("&gt;", ">")
-    .replaceAll("&quot;", "\"")
-    .replaceAll("&#39;", "'");
-}
-
 function visibleText(value) {
-  return decodeBasicEntities(
-    value
-      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
-      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
-      .replace(/<svg\b[^>]*>[\s\S]*?<\/svg>/gi, "")
-      .replace(/<[^>]+>/g, " ")
-  )
+  const ignoredElements = new Set(["script", "style", "svg"]);
+  let insideTag = false;
+  let tagBuffer = "";
+  let ignoredElement = "";
+  let ignoredDepth = 0;
+  let text = "";
+
+  const processTag = () => {
+    const normalized = tagBuffer.trim().toLowerCase();
+    if (!normalized || normalized.startsWith("!") || normalized.startsWith("?")) {
+      return;
+    }
+
+    const closing = normalized.startsWith("/");
+    const withoutSlash = closing ? normalized.slice(1).trimStart() : normalized;
+    let name = "";
+    for (const character of withoutSlash) {
+      if (" \t\r\n/".includes(character)) break;
+      name += character;
+    }
+
+    if (!ignoredElements.has(name)) return;
+    const selfClosing = normalized.endsWith("/");
+
+    if (closing && ignoredElement === name) {
+      ignoredDepth -= 1;
+      if (ignoredDepth === 0) ignoredElement = "";
+      return;
+    }
+    if (!closing && !selfClosing && (!ignoredElement || ignoredElement === name)) {
+      ignoredElement = name;
+      ignoredDepth += 1;
+    }
+  };
+
+  for (const character of value) {
+    if (!insideTag && character === "<") {
+      insideTag = true;
+      tagBuffer = "";
+      continue;
+    }
+    if (insideTag && character === ">") {
+      processTag();
+      insideTag = false;
+      tagBuffer = "";
+      text += " ";
+      continue;
+    }
+    if (insideTag) {
+      tagBuffer += character;
+      continue;
+    }
+    if (!ignoredElement) text += character;
+  }
+
+  return text
+    .replaceAll("&nbsp;", " ")
+    .replaceAll("&#160;", " ")
+    .replaceAll("&#xA0;", " ")
     .replace(/\s+/g, " ")
     .trim();
 }
