@@ -6,14 +6,15 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 031 - Resiliência, desempenho e acessibilidade.
-- **Sprint atual:** Sprint 032 - Alpha, beta, piloto, correções e Release Candidate.
-- **Branch atual:** `sprint/032-alpha-beta-piloto`.
-- **Base aprovada:** `main` no commit `6ebdc54`, merge do PR nº 43.
-- **Estado:** Sprint 032 iniciada; integração e validação de piloto em andamento.
+- **Último incremento incorporado:** Sprint 032 - integração Alpha técnica.
+- **Sprint atual:** Sprint 033 - Player de estudo guiado.
+- **Branch atual:** `sprint/033-player-estudo-guiado`.
+- **Base aprovada:** `main` no commit `18a3b6a`, merge do PR nº 44.
+- **Estado:** Sprint 033 iniciada; player do módulo piloto em desenvolvimento.
 - **Aplicação executável:** web/PWA com autenticação, aprendizagem, Bíblia,
-  gamificação saudável e dashboard aprovado em `/dashboard-preview`; a
-  integração completa da jornada e a paridade mobile ainda serão validadas.
+  gamificação saudável e dashboard aprovado promovido para `/dashboard`; Alpha
+  integral, beta, piloto pedagógico, Release Candidate e paridade mobile ainda
+  não foram aprovados.
 - **Última atualização:** 28 de julho de 2026.
 
 ## Regra permanente de continuidade
@@ -71,34 +72,36 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 029 | ✅ Concluída após merge | Dashboard e gamificação saudável | [Relatório](docs/sprints/SPRINT_029.md) |
 | 030 | ✅ Concluída após merge | Segurança e observabilidade | [Relatório](docs/sprints/SPRINT_030.md) |
 | 031 | ✅ Concluída após merge | Resiliência, desempenho e acessibilidade | [Relatório](docs/sprints/SPRINT_031.md) |
-| 032 | 🔄 Em andamento | Alpha, beta, piloto e Release Candidate | [Relatório](docs/sprints/SPRINT_032.md) |
-| 033 | ⬜ Planejada | Publicação controlada e lançamento v1.0.0 | [Roadmap](ROADMAP.md) |
+| 032 | ✅ Incremento incorporado | Integração Alpha técnica, sem lançamento público | [Relatório](docs/sprints/SPRINT_032.md) |
+| 033 | 🔄 Em andamento | Player guiado para um módulo piloto publicado | [Relatório](docs/sprints/SPRINT_033.md) |
 
-## Última entrega concluída
+## Último incremento incorporado
 
-- Endpoint público mínimo de saúde com `no-store` e `x-request-id`.
-- Manifesto SHA-256 e restauração isolada comprovada.
-- 54 tabelas, 54 políticas RLS e um utilizador local restaurados sem divergência.
-- Auditoria web aprovada nas cinco rotas cobertas, com maior mediana de 73,2 ms.
-- Teclado, zoom a 200%, reflow a 320 CSS px e Narrador do Windows aprovados.
-- CodeQL, validação do repositório e build aprovados no PR nº 43.
-- Evidências em `docs/validation/SPRINT_031_VALIDATION.md`.
+- Dashboard aprovado promovido para a jornada autenticada em `/dashboard`.
+- Menu funcional mantido no mesmo shell visual em desktop e mobile.
+- Catálogo publicado ligado a aula, quiz, notas, favoritos e progresso real.
+- Progresso recarregado ao regressar de Cursos.
+- Sistema de estudo interativo registado como épico futuro governado.
+- 149 testes de banco, validações do repositório, build e CodeQL aprovados.
+- PR nº 44 incorporado no commit `18a3b6a`.
+- Alpha integral, beta, piloto pedagógico e Release Candidate permanecem
+  pendentes e não houve lançamento público.
 
 ## Próximo passo exato
 
-Executar a Sprint 032 como incremento integrado: promover o dashboard aprovado
-para a jornada autenticada, tornar funcionais apenas os destinos existentes,
-validar um curso piloto autoral de ponta a ponta e preparar Alpha, beta,
-piloto controlado e Release Candidate.
+Executar a Sprint 033: transformar somente o pequeno percurso publicado de
+“Fundamentos Bíblicos” num player guiado, com uma etapa em foco, retomada,
+leitura, prática, revisão e progresso. Os demais cursos continuam identificados
+como demonstrações técnicas.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_031.md,
-> docs/validation/SPRINT_031_VALIDATION.md,
-> docs/doctrine/CONSTITUICAO_DOUTRINARIA.md e docs/sprints/SPRINT_032.md.
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_032.md,
+> docs/validation/SPRINT_032_VALIDATION.md,
+> docs/doctrine/CONSTITUICAO_DOUTRINARIA.md e docs/sprints/SPRINT_033.md.
 > Preserve o dashboard e a visão doutrinária aprovados. Não declare o catálogo
 > completo antes da produção e aprovação humana de cada curso.
 
@@ -172,6 +175,8 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 031](docs/sprints/SPRINT_031.md)
 - [Relatório da Sprint 032](docs/sprints/SPRINT_032.md)
 - [Validação da Sprint 032](docs/validation/SPRINT_032_VALIDATION.md)
+- [Relatório da Sprint 033](docs/sprints/SPRINT_033.md)
+- [Validação da Sprint 033](docs/validation/SPRINT_033_VALIDATION.md)
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
 - [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 021](docs/validation/SPRINT_021_VALIDATION.md)

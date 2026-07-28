@@ -35,7 +35,8 @@ for file in "${required_files[@]}"; do
 done
 
 grep -q "Sprint 032" README.md
-grep -q "sprint/032-alpha-beta-piloto" README.md
+grep -q "PR nº 44" README.md
+grep -q "18a3b6a" README.md
 grep -q "Alpha, beta, piloto" docs/sprints/SPRINT_032.md
 grep -q "Release Candidate" docs/sprints/SPRINT_032.md
 grep -q "não redesenhar o dashboard aprovado" docs/sprints/SPRINT_032.md
