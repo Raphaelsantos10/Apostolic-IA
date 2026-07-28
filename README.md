@@ -6,11 +6,13 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Último incremento incorporado:** Sprint 032 - integração Alpha técnica.
-- **Sprint atual:** Sprint 033 - Player de estudo guiado.
-- **Branch atual:** `sprint/033-player-estudo-guiado`.
-- **Base aprovada:** `main` no commit `18a3b6a`, merge do PR nº 44.
-- **Estado:** Sprint 033 iniciada; player do módulo piloto em desenvolvimento.
+- **Última sprint concluída após merge:** Sprint 033 - Player de estudo guiado.
+- **Próxima sprint:** Sprint 034 - Primeiro módulo completo, Bíblia guiada e
+  multimédia acessível.
+- **Branch após incorporação:** `main`.
+- **Entrega aprovada:** PR nº 45, preparado para incorporação após checks finais.
+- **Estado:** player do módulo piloto validado; produção curricular completa
+  continua pendente.
 - **Aplicação executável:** web/PWA com autenticação, aprendizagem, Bíblia,
   gamificação saudável e dashboard aprovado promovido para `/dashboard`; Alpha
   integral, beta, piloto pedagógico, Release Candidate e paridade mobile ainda
@@ -73,35 +75,36 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 030 | ✅ Concluída após merge | Segurança e observabilidade | [Relatório](docs/sprints/SPRINT_030.md) |
 | 031 | ✅ Concluída após merge | Resiliência, desempenho e acessibilidade | [Relatório](docs/sprints/SPRINT_031.md) |
 | 032 | ✅ Incremento incorporado | Integração Alpha técnica, sem lançamento público | [Relatório](docs/sprints/SPRINT_032.md) |
-| 033 | 🔄 Em andamento | Player guiado para um módulo piloto publicado | [Relatório](docs/sprints/SPRINT_033.md) |
+| 033 | ✅ Concluída após merge | Player guiado para um módulo piloto publicado | [Relatório](docs/sprints/SPRINT_033.md) |
+| 034 | ⬜ Planejada | Primeiro módulo completo, Bíblia guiada e multimédia | [Roadmap](ROADMAP.md) |
 
-## Último incremento incorporado
+## Última entrega concluída
 
-- Dashboard aprovado promovido para a jornada autenticada em `/dashboard`.
-- Menu funcional mantido no mesmo shell visual em desktop e mobile.
-- Catálogo publicado ligado a aula, quiz, notas, favoritos e progresso real.
-- Progresso recarregado ao regressar de Cursos.
-- Sistema de estudo interativo registado como épico futuro governado.
-- 149 testes de banco, validações do repositório, build e CodeQL aprovados.
-- PR nº 44 incorporado no commit `18a3b6a`.
+- Player guiado com Visão geral, Aprender, Praticar e Revisar.
+- Retomada automática na primeira aula ainda não concluída.
+- Notas, favoritos, quiz, conclusão e progresso integrados.
+- Dashboard aprovado preservado em desktop e largura móvel.
+- 39 testes web e 149 testes de banco aprovados.
+- Typecheck, build web/mobile, validações do repositório e CodeQL aprovados.
+- Nenhum conteúdo teológico novo foi publicado nesta sprint.
 - Alpha integral, beta, piloto pedagógico e Release Candidate permanecem
-  pendentes e não houve lançamento público.
+  pendentes; não houve lançamento público.
 
 ## Próximo passo exato
 
-Executar a Sprint 033: transformar somente o pequeno percurso publicado de
-“Fundamentos Bíblicos” num player guiado, com uma etapa em foco, retomada,
-leitura, prática, revisão e progresso. Os demais cursos continuam identificados
-como demonstrações técnicas.
+Iniciar a Sprint 034 para produzir e aprovar o primeiro módulo piloto completo,
+com 6 a 8 aulas autorais, Bíblia guiada e recursos multimédia acessíveis. A
+expansão para os demais módulos depende da validação desse primeiro percurso.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_032.md,
-> docs/validation/SPRINT_032_VALIDATION.md,
-> docs/doctrine/CONSTITUICAO_DOUTRINARIA.md e docs/sprints/SPRINT_033.md.
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_033.md,
+> docs/validation/SPRINT_033_VALIDATION.md,
+> docs/doctrine/CONSTITUICAO_DOUTRINARIA.md e
+> docs/product/INTERACTIVE_STUDY_SYSTEM.md.
 > Preserve o dashboard e a visão doutrinária aprovados. Não declare o catálogo
 > completo antes da produção e aprovação humana de cada curso.
 

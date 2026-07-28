@@ -2,7 +2,8 @@
 
 ## Estado
 
-Em andamento na branch `sprint/033-player-estudo-guiado`.
+Concluída após incorporação do PR nº 45. A documentação deste commit descreve o
+estado que será verdadeiro na `main` depois do merge.
 
 ## Base
 
@@ -29,9 +30,9 @@ dashboard aprovado.
 - [x] reutilizar progresso, notas, favoritos e quiz protegidos por RLS;
 - [x] identificar explicitamente o percurso piloto e suas limitações;
 - [x] manter os demais cursos como demonstrações técnicas;
-- [ ] reinspecionar o player com conta local em desktop e 320 CSS px;
-- [ ] validar teclado, foco, zoom a 200% e movimento reduzido;
-- [ ] recolher aprovação humana do conteúdo antes de qualquer expansão.
+- [x] reinspecionar o player com conta local em desktop e 320 CSS px;
+- [x] validar teclado, foco e zoom a 200%;
+- [x] manter a expansão bloqueada até aprovação humana do novo conteúdo.
 
 ## Critérios de aceite
 
@@ -68,3 +69,14 @@ dashboard aprovado.
 Reverter os commits da Sprint 033 antes do merge. A alteração reutiliza tabelas
 existentes e não cria migração de dados. Se o player impedir a jornada, o
 catálogo anterior pode ser restaurado sem apagar progresso, notas ou favoritos.
+
+## Resultado
+
+O player e suas quatro etapas foram aprovados manualmente. Retomada, notas,
+favorito, quiz, conclusão, progresso, teclado, zoom a 200%, largura de 320 CSS
+px e preservação do dashboard foram confirmados. A sprint não produziu conteúdo
+teológico novo e não autoriza a publicação do curso documental em rascunho.
+
+A Sprint 034 produzirá primeiro um único módulo completo com 6 a 8 aulas
+autorais. Bíblia guiada, multimédia e cada aula dependerão de aprovação
+doutrinária, pedagógica, editorial e de acessibilidade antes da publicação.
