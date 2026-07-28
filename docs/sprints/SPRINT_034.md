@@ -24,6 +24,8 @@ matérias.
 - [x] definir a composição das 18 horas por matéria;
 - [x] planejar oito aulas para o primeiro módulo;
 - [x] bloquear publicação enquanto aprovações estiverem pendentes;
+- [x] produzir o rascunho autoral da Aula 1, com percurso de 120 minutos,
+  Bíblia guiada, atividade, revisão e quiz de oito questões;
 - [ ] produzir as oito aulas completas;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
@@ -42,6 +44,18 @@ matérias.
 - não publicar rascunhos;
 - não realizar merge sem banco, testes, typecheck, build, validação do
   repositório, CodeQL, inspeção manual e evidências no PR.
+
+## Evidência parcial de conteúdo
+
+A Aula 1, **Revelação de Deus e a Palavra escrita**, possui versão 2 em estado
+de rascunho. O percurso planejado soma 120 minutos e inclui preparação,
+conteúdo autoral, leitura bíblica guiada, aplicação, atividade, quiz e revisão
+espaçada. O mapa de fontes relaciona cada afirmação central às passagens
+bíblicas e às normas internas.
+
+Essa evidência não equivale a publicação nem a aprovação. As revisões
+doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
+as outras sete aulas ainda precisam ser produzidas.
 
 ## Critérios de aceite
 

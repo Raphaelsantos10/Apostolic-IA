@@ -13,6 +13,17 @@ Em andamento. Este documento não representa aprovação final.
 - publicação bloqueada enquanto aprovações humanas estiverem pendentes;
 - estado honesto registrado no README e na documentação.
 
+## Evidências do rascunho da Aula 1
+
+- versão 2 em estado `draft`;
+- duração planejada de 120 minutos;
+- percurso com preparação, conteúdo, Bíblia guiada, prática, quiz e revisão;
+- oito questões originais com explicação;
+- mapa de fontes e alegações registrado;
+- nenhuma reprodução de material proprietário;
+- publicação bloqueada;
+- quatro aprovações humanas ainda pendentes.
+
 ## Gates pendentes para encerramento
 
 - [ ] oito aulas produzidas e revisadas;
