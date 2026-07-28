@@ -57,5 +57,5 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 029 | [x] Concluída | Dashboard funcional e gamificação saudável em modos Acadêmico e Aventura |
 | 030 | [x] Concluída | Produção: privacidade, segurança, RLS, dependências e observabilidade |
 | 031 | [x] Concluída | Resiliência: backups, recuperação, desempenho e auditoria WCAG |
-| 032 | [ ] Planejada | Alpha, beta, piloto, correções e Release Candidate |
+| 032 | [~] Em andamento | Alpha, beta, piloto, correções e Release Candidate |
 | 033 | [ ] Planejada | Publicação controlada, lançamento v1.0.0 e monitorização |
