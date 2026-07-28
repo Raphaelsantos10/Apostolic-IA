@@ -19,3 +19,10 @@ jobs:
         run: bash scripts/validate-repository.sh
       - name: Validate Sprint 030 security
         run: bash scripts/validate-sprint-030.sh
+      - name: Test resilience scripts
+        run: >-
+          node --test
+          scripts/backup-manifest.test.mjs
+          scripts/web-quality-audit.test.mjs
+      - name: Validate Sprint 031 resilience
+        run: bash scripts/validate-sprint-031.sh

@@ -42,6 +42,18 @@ Análise estática e testes no navegador devem detectar parte dos problemas de
 semântica, nomes e contraste. Aprovação automática significa apenas que nenhuma
 falha coberta foi detectada; não comprova conformidade integral.
 
+`scripts/web-quality-audit.mjs` verifica no HTML servido:
+
+- idioma do documento, título, `main` e título principal;
+- texto alternativo em imagens;
+- nomes acessíveis em botões, ligações e campos;
+- identificadores duplicados;
+- resposta HTTP e orçamento de tempo do servidor.
+
+A ferramenta não calcula contraste visual, ordem real de foco, anúncios de
+leitor de tela, reflow, LCP, INP ou CLS. Esses pontos continuam manuais ou
+dependentes de auditoria em navegador.
+
 ## Testes com pessoas
 
 Antes do lançamento, incluir pessoas com diferentes formas de visão, audição,
@@ -53,3 +65,6 @@ remuneração, privacidade e segurança devem ser tratados com respeito.
 Cada execução registra versão, URL ou tela, plataforma, tecnologia assistiva,
 passos, resultado, critério relacionado, captura ou log quando apropriado,
 responsável e data.
+
+O roteiro de execução da Sprint 031 está em
+`docs/accessibility/WCAG_22_AA_AUDIT.md`.

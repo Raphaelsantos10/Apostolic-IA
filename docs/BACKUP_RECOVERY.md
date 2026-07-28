@@ -25,5 +25,21 @@ Um backup só é válido depois de uma restauração de teste em ambiente isolad
 
 ## Objetivos iniciais
 
-RPO e RTO serão definidos antes da primeira versão com dados reais. Nenhuma
-promessa comercial de recuperação será publicada antes de ser testada.
+Durante o piloto controlado, os objetivos internos são:
+
+- RPO de até 24 horas para dados persistentes;
+- RTO de até 8 horas para restauração do serviço essencial;
+- manifesto SHA-256 em cada conjunto de backup;
+- exercício de restauração antes de cada release.
+
+Esses valores são objetivos operacionais, não promessas comerciais. Só podem
+ser revistos depois de medições reais documentadas.
+
+## Integridade
+
+`scripts/backup-manifest.mjs` gera e verifica um manifesto versionado com
+tamanho e SHA-256 de cada ficheiro. O manifesto confirma integridade, mas não
+substitui criptografia, controlo de acesso, retenção ou restauração testada.
+
+O procedimento completo está em
+`docs/resilience/BACKUP_RESTORE_RUNBOOK.md`.
