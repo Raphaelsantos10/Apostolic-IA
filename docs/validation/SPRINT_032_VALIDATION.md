@@ -100,6 +100,14 @@ publicado por esta alteração. O piloto funcional utiliza somente o pequeno
 conteúdo autoral já publicado no ambiente de desenvolvimento; ele não equivale
 ao seminário completo nem substitui as aprovações humanas de conteúdo.
 
+A primeira gravação do incremento confirmou aula concluída, favorito, anotação,
+quiz, revisão e resumo privado. A inspeção também identificou dois estados
+transitórios que exigem nova confirmação:
+
+- o dashboard deve recarregar o progresso ao regressar de Cursos;
+- a meta diária deve anunciar carregamento, sem pedir login durante a leitura
+  da sessão.
+
 ## Beta e piloto
 
 - [ ] grupo e consentimento registados;

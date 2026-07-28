@@ -245,21 +245,35 @@ export function LessonLearningTools({
 
 export function DailyGoalPanel() {
   const [userId, setUserId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   const [minutes, setMinutes] = useState(10);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    let active = true;
     const load = async () => {
       const supabase = createClient();
       const { data: authData } = await supabase.auth.getUser();
-      if (!authData.user) return;
+      if (!active) return;
+      if (!authData.user) {
+        setLoading(false);
+        return;
+      }
       setUserId(authData.user.id);
       const { data } = await supabase.from("daily_goals").select("daily_minutes").maybeSingle();
+      if (!active) return;
       if (data?.daily_minutes) setMinutes(data.daily_minutes as number);
+      setLoading(false);
     };
     void load();
+    return () => {
+      active = false;
+    };
   }, []);
 
+  if (loading) {
+    return <p className="catalog-status" role="status">A carregar meta diária…</p>;
+  }
   if (!userId) {
     return <div className="notice"><h2>Meta diária</h2><p><a href="/entrar">Entre na conta</a> para configurar a sua meta.</p></div>;
   }

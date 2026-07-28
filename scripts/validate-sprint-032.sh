@@ -53,6 +53,8 @@ grep -q 'AppViewContent' apps/web/app/dashboard-preview/dashboard-functional.tsx
 grep -q 'Piloto funcional' apps/web/components/app-shell.tsx
 grep -q 'LearningProgressSummary' apps/web/components/app-shell.tsx
 grep -q 'formação teológica completa' apps/web/components/app-shell.tsx
+grep -q '\[preview, initialSection\]' apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -q 'A carregar meta diária' apps/web/components/learning-tools.tsx
 if grep -q 'appViewHref' apps/web/app/dashboard-preview/dashboard-functional.tsx; then
   echo "ERRO: o dashboard ainda aponta para o shell visual antigo."
   exit 1

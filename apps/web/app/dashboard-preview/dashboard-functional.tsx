@@ -458,7 +458,7 @@ export function DashboardFunctional({
     return () => {
       active = false;
     };
-  }, [preview]);
+  }, [preview, initialSection]);
 
   const selectMode = (nextMode: LearningMode) => {
     setMode(nextMode);
