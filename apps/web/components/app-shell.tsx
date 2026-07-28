@@ -110,14 +110,7 @@ export function AppShell({
         </header>
 
         <main id="main-content" tabIndex={-1}>
-          {view === "home" && <HomeView onNavigate={navigate} />}
-          {view === "courses" && <CoursesView />}
-          {view === "bible" && <BibleView />}
-          {view === "teacher" && <BibleTeacher />}
-          {view === "games" && <BibleGame />}
-          {view === "community" && <CommunityPanel />}
-          {view === "progress" && <ProgressView />}
-          {view === "more" && <MoreView />}
+          <AppViewContent view={view} onNavigate={navigate} />
         </main>
       </div>
 
@@ -126,6 +119,23 @@ export function AppShell({
       </nav>
     </div>
   );
+}
+
+export function AppViewContent({
+  view,
+  onNavigate = () => undefined
+}: Readonly<{
+  view: ViewName;
+  onNavigate?: (view: ViewName) => void;
+}>) {
+  if (view === "home") return <HomeView onNavigate={onNavigate} />;
+  if (view === "courses") return <CoursesView />;
+  if (view === "bible") return <BibleView />;
+  if (view === "teacher") return <BibleTeacher />;
+  if (view === "games") return <BibleGame />;
+  if (view === "community") return <CommunityPanel />;
+  if (view === "progress") return <ProgressView />;
+  return <MoreView />;
 }
 
 function Navigation({

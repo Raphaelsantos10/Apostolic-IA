@@ -34,6 +34,7 @@ encontrados e preparar um primeiro Release Candidate recuperável.
 - [ ] Integrar perfil, preferências e onboarding à jornada principal.
 - [x] Promover o dashboard aprovado para a experiência autenticada.
 - [x] Ligar o menu somente a destinos reais e acessíveis.
+- [x] Manter os destinos funcionais dentro do shell visual aprovado.
 - [ ] Validar curso, módulo, aula, quiz, progresso, notas e favoritos.
 - [ ] Validar leitor bíblico, plano de leitura e modo offline.
 - [ ] Validar o professor de IA somente com fontes aprovadas e incerteza

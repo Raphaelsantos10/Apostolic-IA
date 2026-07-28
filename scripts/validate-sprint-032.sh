@@ -14,6 +14,7 @@ required_files=(
   "apps/web/app/dashboard-preview/page.tsx"
   "apps/web/app/dashboard-preview/dashboard-functional.tsx"
   "apps/web/app/dashboard/page.tsx"
+  "apps/web/components/dashboard-profile-panel.tsx"
   "apps/web/lib/app-navigation.mjs"
   "apps/web/lib/app-navigation.test.mjs"
   "apps/web/lib/visual-motion.mjs"
@@ -44,6 +45,11 @@ grep -q 'data-motion' apps/web/app/layout.tsx
 grep -q 'prefers-reduced-motion' apps/web/app/styles.css
 grep -q 'redirect("/dashboard")' apps/web/app/auth/actions.ts
 grep -q 'DashboardFunctional' apps/web/app/dashboard/page.tsx
-grep -q 'appViewHref' apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -q 'dashboardSectionHref' apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -q 'AppViewContent' apps/web/app/dashboard-preview/dashboard-functional.tsx
+if grep -q 'appViewHref' apps/web/app/dashboard-preview/dashboard-functional.tsx; then
+  echo "ERRO: o dashboard ainda aponta para o shell visual antigo."
+  exit 1
+fi
 
 echo "Sprint 032 - continuidade, escopo e gates de piloto validados."

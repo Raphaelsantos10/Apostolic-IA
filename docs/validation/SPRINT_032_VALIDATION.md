@@ -64,6 +64,14 @@ Inspeção manual realizada sobre o commit `126df4c`:
 Os cinco checks do Pull Request passaram nesse commit. O incremento Alpha de
 navegação deve repetir CodeQL e todos os checks antes de qualquer merge.
 
+## Correção de continuidade visual
+
+- [x] vídeo de inspeção identificou alternância para o shell antigo;
+- [x] rotas funcionais foram integradas ao shell do dashboard aprovado;
+- [x] perfil e preferências permanecem no dashboard após guardar;
+- [ ] correção reinspecionada manualmente em desktop e mobile;
+- [ ] CodeQL e checks do Pull Request aprovados no commit da correção.
+
 ## Beta e piloto
 
 - [ ] grupo e consentimento registados;

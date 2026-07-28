@@ -665,3 +665,46 @@ h2 { line-height: 1.2; }
 .pricing-message { padding: 0.8rem; border-left: 0.3rem solid var(--focus); background: var(--muted); }
 .pricing-note { font-size: 0.9rem; }
 @media (max-width: 64rem) { .pricing-grid { grid-template-columns: 1fr; } .pricing-grid ul { min-height: 0; } }
+
+.dashboard-profile-panel { display: grid; gap: 1rem; }
+.dashboard-profile-panel h1,
+.dashboard-profile-panel h2,
+.dashboard-profile-panel p { margin: 0; }
+.dashboard-profile-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 52rem;
+}
+.dashboard-field { display: grid; gap: 0.4rem; font-weight: 700; }
+.dashboard-field input,
+.dashboard-field select {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  color: var(--text);
+  background: var(--page);
+  font: inherit;
+}
+.dashboard-checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.dashboard-profile-message {
+  padding: 0.85rem;
+  border-left: 0.3rem solid var(--success);
+  background: var(--muted);
+}
+.dashboard-profile-error { border-left-color: #e86a6a; }
+.dashboard-profile-preferences {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 48rem) {
+  .dashboard-profile-form { grid-template-columns: 1fr; }
+}

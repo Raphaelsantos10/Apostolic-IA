@@ -9,6 +9,17 @@ export const APP_VIEWS = Object.freeze([
   "more"
 ]);
 
+export const DASHBOARD_SECTIONS = Object.freeze([
+  "dashboard",
+  "courses",
+  "bible",
+  "teacher",
+  "games",
+  "community",
+  "progress",
+  "profile"
+]);
+
 export function resolveAppView(value) {
   if (typeof value !== "string") return "home";
   return APP_VIEWS.includes(value) ? value : "home";
@@ -16,6 +27,18 @@ export function resolveAppView(value) {
 
 export function appViewHref(view) {
   return `/?view=${encodeURIComponent(resolveAppView(view))}`;
+}
+
+export function resolveDashboardSection(value) {
+  if (typeof value !== "string") return "dashboard";
+  return DASHBOARD_SECTIONS.includes(value) ? value : "dashboard";
+}
+
+export function dashboardSectionHref(section) {
+  const resolved = resolveDashboardSection(section);
+  return resolved === "dashboard"
+    ? "/dashboard"
+    : `/dashboard?section=${encodeURIComponent(resolved)}`;
 }
 
 export function isProtectedAppPath(pathname) {

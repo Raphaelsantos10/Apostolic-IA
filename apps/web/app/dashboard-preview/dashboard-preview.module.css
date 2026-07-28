@@ -312,6 +312,27 @@
 .missionProgress div { height: 0.35rem; margin-top: 0.45rem; border-radius: 1rem; overflow: hidden; background: #263954; }
 .missionProgress div span { display: block; width: 60%; height: 100%; background: #3ab577; }
 .secondaryButton { padding: 0.7rem 1rem; border-radius: 0.55rem; color: var(--gold-bright); background: transparent; border: 1px solid var(--gold); }
+.sectionView {
+  --page: var(--navy-950);
+  --panel: var(--navy-900);
+  --surface: var(--navy-900);
+  --muted: var(--navy-850);
+  --secondary: #a9b6c9;
+  --border: rgb(169 182 201 / 20%);
+  --action: var(--gold-bright);
+  --accent: var(--gold-bright);
+  --on-action: #07111f;
+  --focus: var(--gold-bright);
+  --success: #3ab577;
+  --shadow: 0 18px 48px rgb(0 0 0 / 18%);
+  margin-top: 1rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid rgb(169 182 201 / 16%);
+  border-radius: 1rem;
+  background: linear-gradient(145deg, rgb(21 40 68 / 92%), rgb(11 24 41 / 94%));
+  box-shadow: var(--shadow);
+}
+.sectionView > section { margin: 0; }
 .mobileNav { display: none; }
 
 @media (max-width: 1100px) {

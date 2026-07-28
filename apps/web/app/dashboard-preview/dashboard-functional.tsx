@@ -1,8 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { appViewHref } from "../../lib/app-navigation.mjs";
+import { useEffect, useState, type ReactNode } from "react";
+import { AppViewContent } from "../../components/app-shell";
+import {
+  dashboardSectionHref,
+  type AppView,
+  type DashboardSection
+} from "../../lib/app-navigation.mjs";
 import { createClient } from "../../lib/supabase/client";
 import styles from "./dashboard-preview.module.css";
 
@@ -165,14 +170,14 @@ const emptyData: DashboardData = {
 };
 
 const navigation = [
-  { icon: "⌂", label: "Dashboard", href: "/dashboard" },
-  { icon: "▤", label: "Estudos", href: null },
-  { icon: "▣", label: "Cursos", href: appViewHref("courses") },
-  { icon: "▥", label: "Bíblia", href: appViewHref("bible") },
-  { icon: "✦", label: "Professor IA", href: appViewHref("teacher") },
-  { icon: "◇", label: "Jogos", href: appViewHref("games") },
-  { icon: "◌", label: "Comunidade", href: appViewHref("community") },
-  { icon: "◔", label: "Progresso", href: appViewHref("progress") }
+  { icon: "⌂", label: "Dashboard", section: "dashboard" },
+  { icon: "▤", label: "Estudos", section: null },
+  { icon: "▣", label: "Cursos", section: "courses" },
+  { icon: "▥", label: "Bíblia", section: "bible" },
+  { icon: "✦", label: "Professor IA", section: "teacher" },
+  { icon: "◇", label: "Jogos", section: "games" },
+  { icon: "◌", label: "Comunidade", section: "community" },
+  { icon: "◔", label: "Progresso", section: "progress" }
 ] as const;
 
 const tones = ["blue", "gold", "violet"] as const;
@@ -342,14 +347,23 @@ function buildDashboardData(
 }
 
 export function DashboardFunctional({
-  preview = false
-}: Readonly<{ preview?: boolean }>) {
+  preview = false,
+  initialSection = "dashboard",
+  profilePanel = null
+}: Readonly<{
+  preview?: boolean;
+  initialSection?: DashboardSection;
+  profilePanel?: ReactNode;
+}>) {
   const [mode, setMode] = useState<LearningMode>("adventure");
   const [dashboard, setDashboard] = useState<DashboardData>(
     preview ? demoData : emptyData
   );
   const [syncState, setSyncState] = useState<SyncState>("loading");
   const adventure = mode === "adventure";
+  const activeSection: DashboardSection = preview
+    ? "dashboard"
+    : initialSection;
 
   useEffect(() => {
     const storedMode = window.localStorage.getItem("apostolic-learning-mode");
@@ -461,7 +475,7 @@ export function DashboardFunctional({
       : syncState === "ready"
         ? "Progresso privado sincronizado com a sua conta."
         : syncState === "error"
-          ? "Não foi possível sincronizar. Exibindo uma demonstração segura."
+          ? "Não foi possível sincronizar. Exibindo um estado vazio seguro."
           : "Dados de demonstração. Entre na sua conta para ver o progresso real.";
 
   return (
@@ -480,13 +494,19 @@ export function DashboardFunctional({
         </div>
         <nav aria-label="Navegação do dashboard">
           <ul className={styles.navList}>
-            {navigation.map(({ icon, label, href }, index) => (
+            {navigation.map(({ icon, label, section }) => (
               <li key={label}>
-                {href ? (
+                {section ? (
                   <Link
-                    className={index === 0 ? styles.activeNav : styles.navButton}
-                    href={href}
-                    aria-current={index === 0 ? "page" : undefined}
+                    className={
+                      activeSection === section
+                        ? styles.activeNav
+                        : styles.navButton
+                    }
+                    href={dashboardSectionHref(section)}
+                    aria-current={
+                      activeSection === section ? "page" : undefined
+                    }
                   >
                     <span aria-hidden="true">{icon}</span>
                     {label}
@@ -541,7 +561,7 @@ export function DashboardFunctional({
             </div>
             <Link
               className={styles.profile}
-              href="/perfil"
+              href={dashboardSectionHref("profile")}
               aria-label="Abrir perfil"
             >
               {initials || "A"}
@@ -558,6 +578,8 @@ export function DashboardFunctional({
           <div><strong>{syncMessage}</strong></div>
         </div>
 
+        {activeSection === "dashboard" ? (
+          <>
         <section className={styles.stats} aria-label="Resumo do progresso">
           <article className={styles.progressCard}>
             <div
@@ -578,7 +600,10 @@ export function DashboardFunctional({
                 {dashboard.completedLessons} de {dashboard.totalLessons} aulas
               </h2>
               <p>O progresso é o mesmo nos modos Acadêmico e Aventura.</p>
-              <Link className={styles.primaryButton} href={appViewHref("progress")}>
+              <Link
+                className={styles.primaryButton}
+                href={dashboardSectionHref("progress")}
+              >
                 Ver progresso
               </Link>
             </div>
@@ -589,7 +614,10 @@ export function DashboardFunctional({
             <span className={styles.lessonIcon} aria-hidden="true">▤</span>
             <h2>{dashboard.nextStudy.title}</h2>
             <p>{dashboard.nextStudy.detail}</p>
-            <Link className={styles.primaryButton} href={appViewHref("courses")}>
+            <Link
+              className={styles.primaryButton}
+              href={dashboardSectionHref("courses")}
+            >
               Continuar estudando
             </Link>
           </article>
@@ -624,7 +652,10 @@ export function DashboardFunctional({
                 <p className={styles.eyebrow}>Continue aprendendo</p>
                 <h2 id="courses-heading">Cursos em andamento</h2>
               </div>
-              <Link className={styles.textButton} href={appViewHref("courses")}>
+              <Link
+                className={styles.textButton}
+                href={dashboardSectionHref("courses")}
+              >
                 Ver todos
               </Link>
             </div>
@@ -654,7 +685,9 @@ export function DashboardFunctional({
                       </div>
                       <div className={styles.courseMeta}>
                         <span>{course.progress}% concluído</span>
-                        <Link href={appViewHref("courses")}>Continuar</Link>
+                        <Link href={dashboardSectionHref("courses")}>
+                          Continuar
+                        </Link>
                       </div>
                     </div>
                   </article>
@@ -729,22 +762,43 @@ export function DashboardFunctional({
                 />
               </div>
             </div>
-            <Link className={styles.secondaryButton} href={appViewHref("progress")}>
+            <Link
+              className={styles.secondaryButton}
+              href={dashboardSectionHref("progress")}
+            >
               Abrir missão
             </Link>
+          </section>
+        )}
+          </>
+        ) : (
+          <section
+            className={styles.sectionView}
+            aria-label="Área funcional do dashboard"
+          >
+            {activeSection === "profile" ? (
+              profilePanel
+            ) : (
+              <AppViewContent view={activeSection as AppView} />
+            )}
           </section>
         )}
       </main>
 
       <nav className={styles.mobileNav} aria-label="Navegação móvel">
         {navigation
-          .filter(({ href }) => Boolean(href))
+          .filter(({ section }) => Boolean(section))
           .slice(0, 5)
-          .map(({ icon, label, href }, index) => (
+          .map(({ icon, label, section }) => (
             <Link
-              className={index === 0 ? styles.mobileActive : ""}
-              href={href ?? "/dashboard"}
+              className={
+                activeSection === section ? styles.mobileActive : ""
+              }
+              href={dashboardSectionHref(section ?? "dashboard")}
               key={label}
+              aria-current={
+                activeSection === section ? "page" : undefined
+              }
             >
               <span aria-hidden="true">{icon}</span>
               <small>{label === "Dashboard" ? "Início" : label}</small>
