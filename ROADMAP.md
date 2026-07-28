@@ -59,7 +59,7 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 031 | [x] Concluída | Resiliência: backups, recuperação, desempenho e auditoria WCAG |
 | 032 | [x] Incremento incorporado | Integração Alpha técnica; gates de beta, piloto e Release Candidate continuam pendentes |
 | 033 | [x] Concluída após merge | Player de estudo guiado para um módulo piloto publicado |
-| 034 | [ ] Planejada | Primeiro módulo piloto completo com 6 a 8 aulas, Bíblia guiada e conteúdo multimodal acessível |
+| 034 | [~] Em andamento | Primeiro módulo piloto completo com 8 aulas, 18 horas, Bíblia guiada e conteúdo multimodal acessível |
 | 035 | [ ] Planejada | Professor IA contextual e fluxo de dúvidas |
 | 036 | [ ] Planejada | Avaliação adaptativa e revisão personalizada |
 | 037 | [ ] Planejada | Microcredenciais auditáveis e privadas por padrão |

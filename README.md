@@ -7,12 +7,11 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 ## Estado atual do projeto
 
 - **Última sprint concluída após merge:** Sprint 033 - Player de estudo guiado.
-- **Próxima sprint:** Sprint 034 - Primeiro módulo completo, Bíblia guiada e
-  multimédia acessível.
-- **Branch após incorporação:** `main`.
-- **Entrega aprovada:** PR nº 45, preparado para incorporação após checks finais.
-- **Estado:** player do módulo piloto validado; produção curricular completa
-  continua pendente.
+- **Sprint atual:** Sprint 034 - Primeiro módulo teológico completo.
+- **Branch atual:** `sprint/034-modulo-piloto-completo`.
+- **Pull Request:** PR nº 46, em rascunho.
+- **Estado:** matriz de 24 matérias e meta acadêmica de 432 horas formalizadas;
+  primeiro módulo em produção, ainda não publicado.
 - **Aplicação executável:** web/PWA com autenticação, aprendizagem, Bíblia,
   gamificação saudável e dashboard aprovado promovido para `/dashboard`; Alpha
   integral, beta, piloto pedagógico, Release Candidate e paridade mobile ainda
