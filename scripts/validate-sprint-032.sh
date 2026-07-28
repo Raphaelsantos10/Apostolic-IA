@@ -11,6 +11,7 @@ required_files=(
   "docs/sprints/SPRINT_032.md"
   "docs/validation/SPRINT_032_VALIDATION.md"
   "docs/design/MOTION_SYSTEM.md"
+  "docs/product/INTERACTIVE_STUDY_SYSTEM.md"
   "apps/web/app/dashboard-preview/page.tsx"
   "apps/web/app/dashboard-preview/dashboard-functional.tsx"
   "apps/web/app/dashboard/page.tsx"
@@ -41,6 +42,9 @@ grep -q "não redesenhar o dashboard aprovado" docs/sprints/SPRINT_032.md
 grep -q "a IA não cria doutrina" docs/sprints/SPRINT_032.md
 grep -q "não declarar todos os cursos como prontos" docs/sprints/SPRINT_032.md
 grep -q "Sprint 033" docs/validation/SPRINT_032_VALIDATION.md
+grep -q "Sistema de estudo interativo" docs/product/INTERACTIVE_STUDY_SYSTEM.md
+grep -q "A IA não cria doutrina" docs/product/INTERACTIVE_STUDY_SYSTEM.md
+grep -q "não autoriza publicação" ROADMAP.md
 grep -q "prefers-reduced-motion" docs/design/MOTION_SYSTEM.md
 grep -q "NEXT_PUBLIC_APOSTOLIC_ENHANCED_MOTION" docs/design/MOTION_SYSTEM.md
 grep -q '"standard": 200' packages/design-tokens/src/tokens.json

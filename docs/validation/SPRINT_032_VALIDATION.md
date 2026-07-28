@@ -108,6 +108,19 @@ transitórios que exigem nova confirmação:
 - a meta diária deve anunciar carregamento, sem pedir login durante a leitura
   da sessão.
 
+## Épico de estudo interativo
+
+- [x] visão traduzida para requisitos autorais e verificáveis;
+- [x] Bíblia guiada, multimédia, IA, domínio, credenciais e comunidade separados
+  em fases;
+- [x] lançamento público reposicionado depois do piloto pedagógico;
+- [x] afirmação incorreta de conteúdo teológico completo removida do roadmap;
+- [x] proteções doutrinárias, legais, de privacidade e acessibilidade registadas.
+
+O registo do épico não implementa nem aprova suas funcionalidades. A Sprint 032
+continua limitada ao Alpha técnico, às correções atuais e à preparação honesta
+do piloto.
+
 ## Beta e piloto
 
 - [ ] grupo e consentimento registados;
