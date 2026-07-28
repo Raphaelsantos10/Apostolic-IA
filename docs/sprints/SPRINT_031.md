@@ -2,7 +2,7 @@
 
 ## Estado
 
-Em andamento. Draft PR 43.
+Validação concluída. PR 43 pronto para merge.
 
 ## Objetivo
 
@@ -26,12 +26,13 @@ WCAG 2.2 AA, preservando o dashboard aprovado e a visão teológica.
 - [x] Auditoria automática da semântica HTML e nomes acessíveis.
 - [x] Roteiro WCAG 2.2 AA com limitações explícitas.
 
-## Critérios restantes
+## Validação final
 
-- [ ] Auditoria automatizada executada contra build local.
-- [ ] Inspeção manual por teclado, zoom e leitor de tela.
-- [ ] Exercício real de backup e restauração isolada.
-- [ ] Evidências finais, checks e transição.
+- [x] Auditoria automatizada executada contra build local.
+- [x] Inspeção manual por teclado, zoom e leitor de tela.
+- [x] Exercício real de backup e restauração isolada.
+- [x] Evidências finais e checks registados.
+- [x] Transição para a Sprint 032 preparada.
 
 ## Restrições
 

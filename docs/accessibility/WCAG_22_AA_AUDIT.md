@@ -45,6 +45,17 @@ Para cada fluxo representativo:
 - contraste insuficiente confirmado;
 - áudio sem transcrição ou vídeo sem legendas aplicáveis.
 
+## Resultado da Sprint 031
+
+A execução local terminou com `passed: true` nas rotas `/`, `/entrar`,
+`/criar-conta`, `/dashboard-preview` e `/offline`. A maior mediana observada
+foi 73,2 ms, abaixo do orçamento de 800 ms.
+
+A inspeção manual aprovou teclado e foco, zoom a 200%, reflow a 320 CSS px e
+um fluxo representativo com o Narrador do Windows. O menu do dashboard ainda
+contém destinos de produto planeados; a validação considerou os controlos já
+funcionais e não declarou funcionalidades futuras como entregues.
+
 ## Declaração honesta
 
 A aprovação do script não comprova conformidade WCAG 2.2 AA. A conformidade

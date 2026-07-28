@@ -38,6 +38,18 @@ node scripts/backup-manifest.mjs verify \
 6. Registar início, fim, RPO observado, RTO observado e divergências.
 7. Destruir com segurança o ambiente temporário após guardar a evidência.
 
+### Papel administrativo no Supabase local
+
+Um dump completo pode incluir funções de infraestrutura, como Realtime, que
+configuram parâmetros reservados do PostgreSQL. No ambiente local, confirmar
+`rolsuper` e `rolcanlogin` antes de usar `supabase_admin` exclusivamente na
+base temporária. Não elevar o papel da aplicação, não reutilizar esse
+procedimento em produção e não contornar os controlos do fornecedor.
+
+Se a restauração parcial falhar, eliminar somente a base temporária, verificar
+novamente o manifesto e repetir num destino vazio. Registar a mensagem original
+e a correção aplicada; não ignorar erros de `pg_restore`.
+
 ## Aprovação
 
 O exercício falha se qualquer checksum divergir, se dados essenciais estiverem
