@@ -20,10 +20,15 @@ WCAG 2.2 AA, preservando o dashboard aprovado e a visão teológica.
 - [x] Objetivos internos de RPO e RTO.
 - [x] Orçamentos de desempenho testáveis.
 
-## Próximos incrementos
+## Segundo incremento
 
-- [ ] Medição automatizada das páginas críticas.
-- [ ] Auditoria automática de acessibilidade.
+- [x] Medição automatizada do tempo de resposta das páginas críticas.
+- [x] Auditoria automática da semântica HTML e nomes acessíveis.
+- [x] Roteiro WCAG 2.2 AA com limitações explícitas.
+
+## Critérios restantes
+
+- [ ] Auditoria automatizada executada contra build local.
 - [ ] Inspeção manual por teclado, zoom e leitor de tela.
 - [ ] Exercício real de backup e restauração isolada.
 - [ ] Evidências finais, checks e transição.

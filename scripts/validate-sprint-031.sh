@@ -8,10 +8,13 @@ required_files=(
   "docs/resilience/BACKUP_RESTORE_RUNBOOK.md"
   "docs/resilience/HEALTH_CHECKS.md"
   "docs/resilience/PERFORMANCE_BUDGETS.md"
+  "docs/accessibility/WCAG_22_AA_AUDIT.md"
   "docs/sprints/SPRINT_031.md"
   "docs/validation/SPRINT_031_VALIDATION.md"
   "scripts/backup-manifest.mjs"
   "scripts/backup-manifest.test.mjs"
+  "scripts/web-quality-audit.mjs"
+  "scripts/web-quality-audit.test.mjs"
 )
 
 for file in "${required_files[@]}"; do
@@ -27,5 +30,7 @@ grep -q "sha256" scripts/backup-manifest.mjs
 grep -q "RPO de até 24 horas" docs/BACKUP_RECOVERY.md
 grep -q "RTO de até 8 horas" docs/BACKUP_RECOVERY.md
 grep -q "não alterar a identidade visual" docs/sprints/SPRINT_031.md
+grep -q "auditHtml" scripts/web-quality-audit.mjs
+grep -q "não comprova conformidade" docs/accessibility/WCAG_22_AA_AUDIT.md
 
-echo "Sprint 031 - primeiro incremento de resiliência validado."
+echo "Sprint 031 - resiliência e auditoria de qualidade validadas."
