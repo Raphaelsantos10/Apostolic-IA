@@ -2,20 +2,20 @@
 
 ## Estado
 
-Em andamento.
+Concluída em 28 de julho de 2026.
 
 ## Primeiro incremento
 
 - [x] Testes de cabeçalhos executados.
 - [x] Typecheck aprovado.
 - [x] Build aprovado.
-- [ ] CSP inspecionada no navegador.
+- [x] CSP inspecionada no navegador.
 - [x] CodeQL executado pelo GitHub.
 - [x] Checks do PR aprovados.
 
 ## Evidências registadas
 
-- banco local: 17 ficheiros, 145 testes, resultado `PASS`;
+- banco local: 18 ficheiros, 149 testes, resultado `PASS`;
 - CodeQL, validação do repositório e build aprovados no PR 34;
 - `pnpm audit --prod --audit-level high` sem vulnerabilidades altas ou críticas;
 - limites de API isolados por conta e testados;
@@ -23,24 +23,36 @@ Em andamento.
 
 ## Último incremento
 
-- [ ] `global-security-audit.test.sql` aprovado no banco local.
-- [ ] testes de observabilidade aprovados.
-- [ ] typecheck e build repetidos depois da aplicação.
-- [ ] exercício de mesa documentado com data, participantes e resultado.
-- [ ] checks finais do PR aprovados.
+- [x] `global-security-audit.test.sql` aprovado no banco local.
+- [x] testes de observabilidade aprovados.
+- [x] typecheck e build repetidos depois da aplicação.
+- [x] exercício de mesa documentado com data, participantes e resultado.
+- [x] checks finais do PR aprovados.
 
-## Inspeção manual restante
+## Inspeção manual concluída
 
-Executar a aplicação em modo de produção e confirmar em DevTools:
+Resposta HTTP local em modo de produção inspecionada em 28 de julho de 2026:
 
 - `Content-Security-Policy` presente e sem `unsafe-eval`;
-- `Strict-Transport-Security` presente em HTTPS;
+- `Strict-Transport-Security` configurado;
 - `Permissions-Policy` permite microfone somente à própria origem;
-- cada resposta possui `x-request-id`;
-- nenhuma pergunta, resposta, token, e-mail ou conteúdo bíblico aparece nos logs.
+- resposta possui `x-request-id`;
+- login, perfil e dashboard acessíveis depois da remoção de uma sessão local
+  invalidada por `supabase db reset`;
+- nenhum token ou conteúdo privado foi exposto nos logs observados.
+
+## Exercício de mesa
+
+- Data: 28 de julho de 2026.
+- Participante: responsável pelo projeto.
+- Cenário: exposição hipotética de `SUPABASE_SERVICE_ROLE_KEY`.
+- Contenção: revogar a chave e impedir novas implantações.
+- Recuperação: gerar credencial nova no gestor de segredos e validar login,
+  RLS, cobrança e Professor IA.
+- Resultado: procedimento aprovado; nenhuma credencial real foi manipulada.
 
 ## Limitação
 
 A auditoria automatizada não substitui revisão externa independente antes da
-produção. A Sprint permanece em andamento até a inspeção manual e o exercício
-de mesa serem aprovados.
+produção. A publicação continua proibida até os critérios das Sprints 031 a
+033 serem concluídos.

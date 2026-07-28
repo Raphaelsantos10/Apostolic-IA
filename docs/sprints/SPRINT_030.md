@@ -2,7 +2,8 @@
 
 ## Estado
 
-Em andamento. Nenhuma publicação em produção está autorizada.
+Concluída em 28 de julho de 2026. A conclusão desta sprint não autoriza
+publicação em produção, que permanece reservada à Sprint 033.
 
 ## Objetivo
 
@@ -34,10 +35,10 @@ verificáveis, documentação honesta e defesa em profundidade.
 
 ## Critérios finais
 
-- [ ] Testes locais do último incremento aprovados.
-- [ ] Exercício de mesa do plano de incidentes registado.
-- [ ] CSP e cabeçalhos inspecionados no navegador.
-- [ ] Checks finais do PR aprovados.
+- [x] Testes locais do último incremento aprovados.
+- [x] Exercício de mesa do plano de incidentes registado.
+- [x] CSP e cabeçalhos inspecionados no navegador.
+- [x] Checks finais do PR aprovados.
 
 ## Rollback
 
