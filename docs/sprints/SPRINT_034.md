@@ -28,6 +28,8 @@ matérias.
   Bíblia guiada, atividade, revisão e quiz de oito questões;
 - [x] produzir o rascunho autoral da Aula 2, com percurso de 135 minutos,
   comparação bíblica, oficina, revisão e quiz de oito questões;
+- [x] produzir o rascunho autoral da Aula 3, com percurso de 135 minutos,
+  reconhecimento canônico, transmissão, variantes e quiz de oito questões;
 - [ ] produzir as oito aulas completas;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
@@ -61,9 +63,15 @@ Lucas 1, Jeremias 36 e Romanos 16. A aula preserva a procedência divina das
 Escrituras e a participação real dos autores, sem antecipar a Aula 3 sobre
 cânon e transmissão.
 
+A Aula 3, **Cânon, transmissão e confiança no texto**, possui versão 1 em
+estado de rascunho. Seu percurso soma 135 minutos e distingue inspiração,
+reconhecimento, transmissão, manuscrito, edição e tradução. Variantes são
+tratadas com transparência, e a enumeração institucional do cânon permanece
+pendente de decisão doutrinária explícita.
+
 Essas evidências não equivalem a publicação nem a aprovação. As revisões
 doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
-as outras seis aulas ainda precisam ser produzidas.
+as outras cinco aulas ainda precisam ser produzidas.
 
 ## Critérios de aceite
 

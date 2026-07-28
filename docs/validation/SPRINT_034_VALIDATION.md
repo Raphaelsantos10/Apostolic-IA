@@ -35,6 +35,19 @@ Em andamento. Este documento não representa aprovação final.
 - publicação bloqueada;
 - quatro aprovações humanas ainda pendentes.
 
+## Evidências do rascunho da Aula 3
+
+- versão 1 em estado `draft`;
+- duração planejada de 135 minutos;
+- percurso com cânon, transmissão, variantes, Bíblia guiada, oficina e revisão;
+- oito questões originais com explicação;
+- mapa de alegações, limites e fontes históricas pendentes registrado;
+- enumeração institucional do cânon não inventada pela IA;
+- nenhuma reprodução de material proprietário;
+- publicação bloqueada;
+- revisões doutrinária, histórica, pedagógica, editorial e de acessibilidade
+  ainda pendentes.
+
 ## Gates pendentes para encerramento
 
 - [ ] oito aulas produzidas e revisadas;
