@@ -16,15 +16,15 @@ foi registada ainda.
 
 ## Validação automática
 
-- [ ] testes dirigidos dos incrementos aprovados;
-- [ ] teste do modo padrão, enriquecido e redução de movimento;
+- [x] testes dirigidos dos incrementos aprovados;
+- [x] teste do modo padrão, enriquecido e redução de movimento;
 - [ ] testes completos do banco aprovados;
-- [ ] typecheck aprovado;
-- [ ] build web e export mobile aprovados;
-- [ ] `scripts/validate-repository.sh` aprovado;
-- [ ] `scripts/validate-sprint-032.sh` aprovado;
-- [ ] CodeQL aprovado;
-- [ ] checks do Pull Request aprovados.
+- [x] typecheck aprovado;
+- [x] build web e export mobile aprovados;
+- [x] `scripts/validate-repository.sh` aprovado;
+- [x] `scripts/validate-sprint-032.sh` aprovado;
+- [ ] CodeQL aprovado no incremento Alpha atual;
+- [ ] checks do Pull Request aprovados no incremento Alpha atual.
 
 ## Jornada Alpha
 
@@ -44,10 +44,25 @@ foi registada ainda.
 - [ ] aprovação pedagógica;
 - [ ] aprovação editorial e de originalidade;
 - [ ] aprovação de acessibilidade;
-- [ ] inspeção por teclado e foco;
-- [ ] zoom a 200% e reflow a 320 CSS px;
+- [x] inspeção por teclado e foco;
+- [x] zoom a 200% e reflow a 320 CSS px;
 - [ ] leitor de tela em fluxo representativo;
-- [ ] inspeção visual web e mobile.
+- [x] inspeção visual web em largura desktop e mobile.
+
+## Evidência do sistema de movimento
+
+Inspeção manual realizada sobre o commit `126df4c`:
+
+- movimento padrão: aprovado;
+- movimento enriquecido: aprovado;
+- movimento reduzido: aprovado;
+- teclado: aprovado;
+- zoom a 200%: aprovado;
+- largura de 320 CSS px: aprovada;
+- dashboard aprovado: preservado.
+
+Os cinco checks do Pull Request passaram nesse commit. O incremento Alpha de
+navegação deve repetir CodeQL e todos os checks antes de qualquer merge.
 
 ## Beta e piloto
 

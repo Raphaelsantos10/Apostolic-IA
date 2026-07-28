@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { AppView } from "../lib/app-navigation.mjs";
 import { createClient } from "../lib/supabase/client";
 import { BiblePlatform } from "./bible-platform";
 import { HealthyGamificationPanel } from "./healthy-gamification";
@@ -10,7 +11,7 @@ import { BibleTeacher } from "./bible-teacher";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
 import { PricingPanel } from "./pricing-panel";
 
-type ViewName = "home" | "courses" | "bible" | "teacher" | "games" | "community" | "progress" | "more";
+type ViewName = AppView;
 type ThemeName = "system" | "light" | "dark" | "sepia";
 
 const views: ReadonlyArray<{
@@ -36,8 +37,10 @@ function resolveTheme(theme: ThemeName): Exclude<ThemeName, "system"> {
     : "light";
 }
 
-export function AppShell() {
-  const [view, setView] = useState<ViewName>("home");
+export function AppShell({
+  initialView = "home"
+}: Readonly<{ initialView?: ViewName }>) {
+  const [view, setView] = useState<ViewName>(initialView);
   const [theme, setTheme] = useState<ThemeName>("system");
   const [ready, setReady] = useState(false);
 

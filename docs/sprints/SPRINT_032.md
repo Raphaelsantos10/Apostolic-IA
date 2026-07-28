@@ -32,8 +32,8 @@ encontrados e preparar um primeiro Release Candidate recuperável.
 
 - [ ] Validar cadastro, login, encerramento e renovação segura da sessão.
 - [ ] Integrar perfil, preferências e onboarding à jornada principal.
-- [ ] Promover o dashboard aprovado para a experiência autenticada.
-- [ ] Ligar o menu somente a destinos reais e acessíveis.
+- [x] Promover o dashboard aprovado para a experiência autenticada.
+- [x] Ligar o menu somente a destinos reais e acessíveis.
 - [ ] Validar curso, módulo, aula, quiz, progresso, notas e favoritos.
 - [ ] Validar leitor bíblico, plano de leitura e modo offline.
 - [ ] Validar o professor de IA somente com fontes aprovadas e incerteza

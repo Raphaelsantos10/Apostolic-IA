@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { appViewHref } from "../../lib/app-navigation.mjs";
 import { createClient } from "../../lib/supabase/client";
 import styles from "./dashboard-preview.module.css";
 
@@ -147,15 +149,30 @@ const demoData: DashboardData = {
   }
 };
 
+const emptyData: DashboardData = {
+  name: "Estudante",
+  completedLessons: 0,
+  totalLessons: 0,
+  overallProgress: 0,
+  currentStreak: 0,
+  nextStudy: {
+    title: "Catálogo em preparação",
+    detail: "Conteúdos aparecem somente após publicação e aprovação humana"
+  },
+  courses: [],
+  activities: [],
+  mission: null
+};
+
 const navigation = [
-  ["⌂", "Dashboard"],
-  ["▤", "Estudos"],
-  ["▣", "Cursos"],
-  ["▥", "Bíblia"],
-  ["✦", "Professor IA"],
-  ["◇", "Jogos"],
-  ["◌", "Comunidade"],
-  ["◔", "Progresso"]
+  { icon: "⌂", label: "Dashboard", href: "/dashboard" },
+  { icon: "▤", label: "Estudos", href: null },
+  { icon: "▣", label: "Cursos", href: appViewHref("courses") },
+  { icon: "▥", label: "Bíblia", href: appViewHref("bible") },
+  { icon: "✦", label: "Professor IA", href: appViewHref("teacher") },
+  { icon: "◇", label: "Jogos", href: appViewHref("games") },
+  { icon: "◌", label: "Comunidade", href: appViewHref("community") },
+  { icon: "◔", label: "Progresso", href: appViewHref("progress") }
 ] as const;
 
 const tones = ["blue", "gold", "violet"] as const;
@@ -324,9 +341,13 @@ function buildDashboardData(
   };
 }
 
-export function DashboardFunctional() {
+export function DashboardFunctional({
+  preview = false
+}: Readonly<{ preview?: boolean }>) {
   const [mode, setMode] = useState<LearningMode>("adventure");
-  const [dashboard, setDashboard] = useState<DashboardData>(demoData);
+  const [dashboard, setDashboard] = useState<DashboardData>(
+    preview ? demoData : emptyData
+  );
   const [syncState, setSyncState] = useState<SyncState>("loading");
   const adventure = mode === "adventure";
 
@@ -346,7 +367,10 @@ export function DashboardFunctional() {
           await supabase.auth.getUser();
         if (authError) throw authError;
         if (!authData.user) {
-          if (active) setSyncState("demo");
+          if (active) {
+            setDashboard(preview ? demoData : emptyData);
+            setSyncState(preview ? "demo" : "error");
+          }
           return;
         }
 
@@ -410,14 +434,17 @@ export function DashboardFunctional() {
         );
         setSyncState("ready");
       } catch {
-        if (active) setSyncState("error");
+        if (active) {
+          setDashboard(preview ? demoData : emptyData);
+          setSyncState(preview ? "demo" : "error");
+        }
       }
     };
     void load();
     return () => {
       active = false;
     };
-  }, []);
+  }, [preview]);
 
   const selectMode = (nextMode: LearningMode) => {
     setMode(nextMode);
@@ -453,16 +480,29 @@ export function DashboardFunctional() {
         </div>
         <nav aria-label="Navegação do dashboard">
           <ul className={styles.navList}>
-            {navigation.map(([icon, label], index) => (
+            {navigation.map(({ icon, label, href }, index) => (
               <li key={label}>
-                <button
-                  className={index === 0 ? styles.activeNav : styles.navButton}
-                  type="button"
-                  aria-current={index === 0 ? "page" : undefined}
-                >
-                  <span aria-hidden="true">{icon}</span>
-                  {label}
-                </button>
+                {href ? (
+                  <Link
+                    className={index === 0 ? styles.activeNav : styles.navButton}
+                    href={href}
+                    aria-current={index === 0 ? "page" : undefined}
+                  >
+                    <span aria-hidden="true">{icon}</span>
+                    {label}
+                  </Link>
+                ) : (
+                  <button
+                    aria-disabled="true"
+                    className={styles.disabledNav}
+                    disabled
+                    title="Destino em preparação"
+                    type="button"
+                  >
+                    <span aria-hidden="true">{icon}</span>
+                    {label}
+                  </button>
+                )}
               </li>
             ))}
           </ul>
@@ -499,13 +539,13 @@ export function DashboardFunctional() {
                 Acadêmico
               </button>
             </div>
-            <button
+            <Link
               className={styles.profile}
-              type="button"
+              href="/perfil"
               aria-label="Abrir perfil"
             >
               {initials || "A"}
-            </button>
+            </Link>
           </div>
         </header>
 
@@ -538,9 +578,9 @@ export function DashboardFunctional() {
                 {dashboard.completedLessons} de {dashboard.totalLessons} aulas
               </h2>
               <p>O progresso é o mesmo nos modos Acadêmico e Aventura.</p>
-              <button className={styles.primaryButton} type="button">
+              <Link className={styles.primaryButton} href={appViewHref("progress")}>
                 Ver progresso
-              </button>
+              </Link>
             </div>
           </article>
 
@@ -549,9 +589,9 @@ export function DashboardFunctional() {
             <span className={styles.lessonIcon} aria-hidden="true">▤</span>
             <h2>{dashboard.nextStudy.title}</h2>
             <p>{dashboard.nextStudy.detail}</p>
-            <button className={styles.primaryButton} type="button">
+            <Link className={styles.primaryButton} href={appViewHref("courses")}>
               Continuar estudando
-            </button>
+            </Link>
           </article>
 
           <article className={styles.verseCard}>
@@ -584,9 +624,9 @@ export function DashboardFunctional() {
                 <p className={styles.eyebrow}>Continue aprendendo</p>
                 <h2 id="courses-heading">Cursos em andamento</h2>
               </div>
-              <button className={styles.textButton} type="button">
+              <Link className={styles.textButton} href={appViewHref("courses")}>
                 Ver todos
-              </button>
+              </Link>
             </div>
 
             {dashboard.courses.length === 0 ? (
@@ -614,7 +654,7 @@ export function DashboardFunctional() {
                       </div>
                       <div className={styles.courseMeta}>
                         <span>{course.progress}% concluído</span>
-                        <button type="button">Continuar</button>
+                        <Link href={appViewHref("courses")}>Continuar</Link>
                       </div>
                     </div>
                   </article>
@@ -689,24 +729,27 @@ export function DashboardFunctional() {
                 />
               </div>
             </div>
-            <button className={styles.secondaryButton} type="button">
+            <Link className={styles.secondaryButton} href={appViewHref("progress")}>
               Abrir missão
-            </button>
+            </Link>
           </section>
         )}
       </main>
 
       <nav className={styles.mobileNav} aria-label="Navegação móvel">
-        {navigation.slice(0, 5).map(([icon, label], index) => (
-          <button
-            className={index === 0 ? styles.mobileActive : ""}
-            type="button"
-            key={label}
-          >
-            <span aria-hidden="true">{icon}</span>
-            <small>{label === "Dashboard" ? "Início" : label}</small>
-          </button>
-        ))}
+        {navigation
+          .filter(({ href }) => Boolean(href))
+          .slice(0, 5)
+          .map(({ icon, label, href }, index) => (
+            <Link
+              className={index === 0 ? styles.mobileActive : ""}
+              href={href ?? "/dashboard"}
+              key={label}
+            >
+              <span aria-hidden="true">{icon}</span>
+              <small>{label === "Dashboard" ? "Início" : label}</small>
+            </Link>
+          ))}
       </nav>
     </div>
   );
