@@ -22,9 +22,23 @@ insert into auth.users (
     '{"display_name":"Utilizador B"}', now(), now()
   );
 
-select is((select count(*)::integer from public.profiles), 2,
+select is((
+  select count(*)::integer
+  from public.profiles
+  where id in (
+    '11111111-1111-4111-8111-111111111111',
+    '22222222-2222-4222-8222-222222222222'
+  )
+), 2,
   'o gatilho cria os perfis');
-select is((select count(*)::integer from public.preferences), 2,
+select is((
+  select count(*)::integer
+  from public.preferences
+  where user_id in (
+    '11111111-1111-4111-8111-111111111111',
+    '22222222-2222-4222-8222-222222222222'
+  )
+), 2,
   'o gatilho cria as preferências');
 
 set local role authenticated;
