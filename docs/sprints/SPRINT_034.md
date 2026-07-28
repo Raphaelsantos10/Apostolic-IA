@@ -26,6 +26,8 @@ matérias.
 - [x] bloquear publicação enquanto aprovações estiverem pendentes;
 - [x] produzir o rascunho autoral da Aula 1, com percurso de 120 minutos,
   Bíblia guiada, atividade, revisão e quiz de oito questões;
+- [x] produzir o rascunho autoral da Aula 2, com percurso de 135 minutos,
+  comparação bíblica, oficina, revisão e quiz de oito questões;
 - [ ] produzir as oito aulas completas;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
@@ -53,9 +55,15 @@ conteúdo autoral, leitura bíblica guiada, aplicação, atividade, quiz e revis
 espaçada. O mapa de fontes relaciona cada afirmação central às passagens
 bíblicas e às normas internas.
 
-Essa evidência não equivale a publicação nem a aprovação. As revisões
+A Aula 2, **Inspiração divina e autoria humana**, possui versão 1 em estado de
+rascunho. Seu percurso soma 135 minutos e examina 2 Timóteo 3, 2 Pedro 1,
+Lucas 1, Jeremias 36 e Romanos 16. A aula preserva a procedência divina das
+Escrituras e a participação real dos autores, sem antecipar a Aula 3 sobre
+cânon e transmissão.
+
+Essas evidências não equivalem a publicação nem a aprovação. As revisões
 doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
-as outras sete aulas ainda precisam ser produzidas.
+as outras seis aulas ainda precisam ser produzidas.
 
 ## Critérios de aceite
 

@@ -24,6 +24,17 @@ Em andamento. Este documento não representa aprovação final.
 - publicação bloqueada;
 - quatro aprovações humanas ainda pendentes.
 
+## Evidências do rascunho da Aula 2
+
+- versão 1 em estado `draft`;
+- duração planejada de 135 minutos;
+- percurso com retomada, conteúdo, Bíblia guiada, oficina, quiz e revisão;
+- oito questões originais com explicação;
+- mapa de fontes, alegações e limites registrado;
+- nenhuma reprodução de material proprietário;
+- publicação bloqueada;
+- quatro aprovações humanas ainda pendentes.
+
 ## Gates pendentes para encerramento
 
 - [ ] oito aulas produzidas e revisadas;

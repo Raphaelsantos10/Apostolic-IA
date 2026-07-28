@@ -1,0 +1,95 @@
+{
+  "code": "TEO-FUN-001-M01-Q02",
+  "status": "draft",
+  "version": 1,
+  "questions": [
+    {
+      "prompt": "O que a inspiração bíblica afirma em primeiro lugar?",
+      "options": [
+        "Que todo leitor interpreta sem erro",
+        "Que as Escrituras procedem de Deus",
+        "Que os autores não participaram da escrita",
+        "Que toda ideia religiosa é divina"
+      ],
+      "correctIndex": 1,
+      "explanation": "Em 2 Timóteo 3, a inspiração está ligada à procedência divina das Escrituras e à sua finalidade formativa."
+    },
+    {
+      "prompt": "Qual finalidade aparece em 2 Timóteo 3:16-17?",
+      "options": [
+        "Satisfazer curiosidade sem aplicação",
+        "Dispensar a fé em Cristo",
+        "Preparar a pessoa de Deus para toda boa obra",
+        "Tornar todo professor infalível"
+      ],
+      "correctIndex": 2,
+      "explanation": "O texto relaciona ensino, correção e formação ao preparo da pessoa de Deus para toda boa obra."
+    },
+    {
+      "prompt": "Como 2 Pedro 1:20-21 relaciona Deus e os autores humanos?",
+      "options": [
+        "A mensagem nasce da vontade autônoma dos autores",
+        "Pessoas falam da parte de Deus movidas pelo Espírito",
+        "O Espírito elimina toda participação humana",
+        "Somente a popularidade confirma a mensagem"
+      ],
+      "correctIndex": 1,
+      "explanation": "A passagem nega uma origem humana autônoma e afirma pessoas reais falando sob a ação do Espírito."
+    },
+    {
+      "prompt": "O que Lucas 1:1-4 demonstra sobre a composição de seu relato?",
+      "options": [
+        "Pesquisa e organização cuidadosa",
+        "Ausência completa de fontes",
+        "Desprezo por testemunhas",
+        "Ditado mecânico declarado"
+      ],
+      "correctIndex": 0,
+      "explanation": "Lucas menciona relatos, testemunhas, investigação e organização orientada a um propósito."
+    },
+    {
+      "prompt": "Qual situação aparece em Jeremias 36?",
+      "options": [
+        "Um texto sem qualquer participação humana",
+        "Uma mensagem que não pode ser reescrita",
+        "Jeremias dita e Baruque registra a mensagem",
+        "Uma pesquisa histórica conduzida por Lucas"
+      ],
+      "correctIndex": 2,
+      "explanation": "O capítulo apresenta palavra divina, profeta, secretário, leitura, destruição do rolo e nova redação."
+    },
+    {
+      "prompt": "Por que reconhecer gêneros literários respeita a inspiração?",
+      "options": [
+        "Porque permite ignorar o conteúdo",
+        "Porque recebe a mensagem segundo a forma em que foi comunicada",
+        "Porque transforma toda passagem em símbolo",
+        "Porque coloca o leitor acima do texto"
+      ],
+      "correctIndex": 1,
+      "explanation": "Deus comunicou por formas literárias reais; observar suas características ajuda a compreender o sentido."
+    },
+    {
+      "prompt": "Qual afirmação é coerente com a posição do Apostolic IA?",
+      "options": [
+        "Uma resposta de IA pode ampliar o cânon",
+        "Toda tradução é infalível em cada escolha",
+        "A IA auxilia, mas não cria doutrina nem fala em nome de Deus",
+        "A inspiração impede a revisão humana do conteúdo do curso"
+      ],
+      "correctIndex": 2,
+      "explanation": "A autoridade pertence às Escrituras; conteúdo produzido com IA permanece sujeito às fontes aprovadas e à revisão humana."
+    },
+    {
+      "prompt": "Qual conclusão deve ser evitada?",
+      "options": [
+        "Autores bíblicos escreveram em situações históricas",
+        "Pesquisa e ação divina são necessariamente incompatíveis",
+        "A diversidade de gêneros exige atenção",
+        "Interpretações humanas podem precisar de correção"
+      ],
+      "correctIndex": 1,
+      "explanation": "Lucas apresenta investigação cuidadosa sem criar oposição entre processo humano e origem divina."
+    }
+  ]
+}
