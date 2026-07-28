@@ -21,7 +21,7 @@ done
 grep -q "Sprint 033 - Player de estudo guiado" docs/sprints/SPRINT_033.md
 grep -q "PR nº 45" docs/sprints/SPRINT_033.md
 grep -q "6 a 8 aulas autorais" docs/sprints/SPRINT_033.md
-grep -q "Alpha integral, beta, piloto pedagógico" README.md
+grep -q "Alpha integral, beta, piloto pedagógico" docs/validation/SPRINT_033_VALIDATION.md
 grep -q "GuidedStudyPlayer" apps/web/components/app-shell.tsx
 grep -q "Piloto funcional - conteúdo publicado" apps/web/components/guided-study-player.tsx
 grep -q "Bíblia permanece a autoridade final" apps/web/components/guided-study-player.tsx
