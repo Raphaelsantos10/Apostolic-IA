@@ -2,7 +2,9 @@
 
 ## Estado
 
-Em andamento na branch `sprint/032-alpha-beta-piloto`.
+Incremento técnico incorporado à `main` pelo PR nº 44 no commit `18a3b6a`.
+Alpha integral, beta, piloto pedagógico e Release Candidate não foram aprovados
+por este merge e continuam como gates futuros.
 
 ## Base
 
@@ -112,3 +114,11 @@ encontrados e preparar um primeiro Release Candidate recuperável.
 Reverter os commits desta sprint antes do merge. Mudanças de dados devem ter
 migração reversível ou procedimento documentado. O Release Candidate não será
 publicado automaticamente e a Sprint 033 permanece como gate de lançamento.
+
+## Resultado após o merge
+
+O incremento incorporado integrou dashboard, navegação e jornada técnica do
+curso piloto, além de registar o épico de estudo interativo. O merge não
+equivale a lançamento público, aprovação do seminário completo ou conclusão do
+piloto pedagógico. As caixas ainda abertas permanecem como limitações e serão
+tratadas progressivamente nas Sprints 033 a 040.

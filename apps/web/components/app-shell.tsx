@@ -8,6 +8,7 @@ import { HealthyGamificationPanel } from "./healthy-gamification";
 import { CommunityPanel } from "./community-panel";
 import { BibleGame } from "./bible-game";
 import { BibleTeacher } from "./bible-teacher";
+import { GuidedStudyPlayer } from "./guided-study-player";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
 import { LearningProgressSummary } from "./learning-progress-summary";
 import { PricingPanel } from "./pricing-panel";
@@ -327,7 +328,12 @@ function CoursesView() {
             progressRows
           );
           return (
-          <article className="catalog-card" key={course.id}>
+          <article
+            className={`catalog-card${
+              course.slug === "fundamentos-biblicos" ? " is-guided" : ""
+            }`}
+            key={course.id}
+          >
             <div className="catalog-card-heading">
               <div className="catalog-badges">
                 <span className="badge">{levelLabels[course.level]}</span>
@@ -351,41 +357,58 @@ function CoursesView() {
                 />
               </div>
             </div>
-            <div className="catalog-modules">
-              <h3>Módulos publicados</h3>
-              {course.course_modules.length === 0 ? (
-                <p>Nenhum módulo publicado.</p>
-              ) : (
-                <ol>
-                  {course.course_modules.map((module) => (
-                    <li key={module.id}>
-                      <strong>{module.title}</strong>
-                      <span>{module.summary}</span>
-                      {module.lessons.length > 0 && (
-                        <div className="lesson-list">
-                          {[...module.lessons]
-                            .sort((a, b) => a.position - b.position)
-                            .map((lesson) => (
-                              <details key={lesson.id}>
-                                <summary>
-                                  <span className="badge">{lesson.kind === "text" ? "Texto" : lesson.kind}</span>
-                                  {lesson.title}
-                                </summary>
-                                <p>{lesson.summary}</p>
-                                {lesson.body_text && <p className="lesson-body">{lesson.body_text}</p>}
-                                <LessonLearningTools
-                                  lessonId={lesson.id}
-                                  onProgressChange={updateProgress}
-                                />
-                              </details>
-                            ))}
-                        </div>
-                      )}
-                    </li>
-                  ))}
-                </ol>
-              )}
-            </div>
+            {course.slug === "fundamentos-biblicos" ? (
+              <GuidedStudyPlayer
+                courseTitle={course.title}
+                modules={course.course_modules}
+                progressRows={progressRows}
+                onProgressChange={updateProgress}
+              />
+            ) : (
+              <div className="catalog-modules">
+                <h3>Módulos publicados</h3>
+                {course.course_modules.length === 0 ? (
+                  <p>Nenhum módulo publicado.</p>
+                ) : (
+                  <ol>
+                    {course.course_modules.map((module) => (
+                      <li key={module.id}>
+                        <strong>{module.title}</strong>
+                        <span>{module.summary}</span>
+                        {module.lessons.length > 0 && (
+                          <div className="lesson-list">
+                            {[...module.lessons]
+                              .sort((a, b) => a.position - b.position)
+                              .map((lesson) => (
+                                <details key={lesson.id}>
+                                  <summary>
+                                    <span className="badge">
+                                      {lesson.kind === "text"
+                                        ? "Texto"
+                                        : lesson.kind}
+                                    </span>
+                                    {lesson.title}
+                                  </summary>
+                                  <p>{lesson.summary}</p>
+                                  {lesson.body_text && (
+                                    <p className="lesson-body">
+                                      {lesson.body_text}
+                                    </p>
+                                  )}
+                                  <LessonLearningTools
+                                    lessonId={lesson.id}
+                                    onProgressChange={updateProgress}
+                                  />
+                                </details>
+                              ))}
+                          </div>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </div>
+            )}
           </article>
           );
         })}

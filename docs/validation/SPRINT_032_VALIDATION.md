@@ -2,8 +2,8 @@
 
 ## Estado
 
-Em preparação. Nenhuma aprovação de Alpha, beta, piloto ou Release Candidate
-foi registada ainda.
+Incremento técnico incorporado pelo PR nº 44. Nenhuma aprovação integral de
+Alpha, beta, piloto pedagógico ou Release Candidate foi registada.
 
 ## Baseline confirmada
 
@@ -153,3 +153,12 @@ do piloto.
 Alpha, beta e piloto não equivalem a lançamento público. A aprovação automática
 não constitui certificação integral WCAG, SLA comercial ou aprovação
 doutrinária. A Sprint 033 continua responsável pela publicação controlada.
+
+## Fecho administrativo
+
+- PR nº 44 incorporado à `main` no commit `18a3b6a`;
+- 18 arquivos e 149 testes de banco aprovados antes do merge;
+- validação do repositório, typecheck, build e CodeQL aprovados;
+- navegação, teclado, zoom e largura móvel reinspecionados;
+- pendências desta matriz não foram convertidas em aprovações implícitas;
+- não houve Release Candidate nem lançamento público.
