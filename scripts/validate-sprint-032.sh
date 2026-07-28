@@ -15,8 +15,11 @@ required_files=(
   "apps/web/app/dashboard-preview/dashboard-functional.tsx"
   "apps/web/app/dashboard/page.tsx"
   "apps/web/components/dashboard-profile-panel.tsx"
+  "apps/web/components/learning-progress-summary.tsx"
   "apps/web/lib/app-navigation.mjs"
   "apps/web/lib/app-navigation.test.mjs"
+  "apps/web/lib/course-progress.mjs"
+  "apps/web/lib/course-progress.test.mjs"
   "apps/web/lib/visual-motion.mjs"
   "apps/web/lib/visual-motion.test.mjs"
   "apps/mobile/package.json"
@@ -47,6 +50,9 @@ grep -q 'redirect("/dashboard")' apps/web/app/auth/actions.ts
 grep -q 'DashboardFunctional' apps/web/app/dashboard/page.tsx
 grep -q 'dashboardSectionHref' apps/web/app/dashboard-preview/dashboard-functional.tsx
 grep -q 'AppViewContent' apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -q 'Piloto funcional' apps/web/components/app-shell.tsx
+grep -q 'LearningProgressSummary' apps/web/components/app-shell.tsx
+grep -q 'formação teológica completa' apps/web/components/app-shell.tsx
 if grep -q 'appViewHref' apps/web/app/dashboard-preview/dashboard-functional.tsx; then
   echo "ERRO: o dashboard ainda aponta para o shell visual antigo."
   exit 1

@@ -36,6 +36,8 @@ encontrados e preparar um primeiro Release Candidate recuperável.
 - [x] Ligar o menu somente a destinos reais e acessíveis.
 - [x] Manter os destinos funcionais dentro do shell visual aprovado.
 - [x] Reinspecionar navegação, perfil e preferências após a unificação visual.
+- [x] Conectar o catálogo publicado a notas, favoritos, quiz e progresso real.
+- [x] Identificar explicitamente piloto funcional e demonstrações técnicas.
 - [ ] Validar curso, módulo, aula, quiz, progresso, notas e favoritos.
 - [ ] Validar leitor bíblico, plano de leitura e modo offline.
 - [ ] Validar o professor de IA somente com fontes aprovadas e incerteza

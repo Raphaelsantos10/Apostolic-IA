@@ -84,6 +84,22 @@ incluindo CodeQL e build, também foram aprovados. Estas evidências confirmam o
 incremento de navegação; não constituem aprovação integral do Alpha, beta,
 piloto ou Release Candidate.
 
+## Incremento do curso piloto
+
+- [x] catálogo publicado integrado a módulo, aula e ferramentas privadas;
+- [x] progresso por curso e resumo geral calculados com dados reais;
+- [x] quiz, notas e favoritos apresentam retorno acessível de sucesso ou erro;
+- [x] “Fundamentos Bíblicos” identificado como piloto funcional;
+- [x] demais cursos identificados como demonstrações técnicas;
+- [ ] jornada reinspecionada manualmente com uma conta de teste;
+- [ ] testes de banco repetidos depois do incremento;
+- [ ] CodeQL e checks aprovados no commit do incremento.
+
+O curso documental “Fundamentos da Fé Cristã” permanece em rascunho e não foi
+publicado por esta alteração. O piloto funcional utiliza somente o pequeno
+conteúdo autoral já publicado no ambiente de desenvolvimento; ele não equivale
+ao seminário completo nem substitui as aprovações humanas de conteúdo.
+
 ## Beta e piloto
 
 - [ ] grupo e consentimento registados;
