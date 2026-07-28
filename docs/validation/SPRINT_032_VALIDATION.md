@@ -18,13 +18,13 @@ foi registada ainda.
 
 - [x] testes dirigidos dos incrementos aprovados;
 - [x] teste do modo padrão, enriquecido e redução de movimento;
-- [ ] testes completos do banco aprovados;
+- [x] testes completos do banco aprovados;
 - [x] typecheck aprovado;
 - [x] build web e export mobile aprovados;
 - [x] `scripts/validate-repository.sh` aprovado;
 - [x] `scripts/validate-sprint-032.sh` aprovado;
-- [ ] CodeQL aprovado no incremento Alpha atual;
-- [ ] checks do Pull Request aprovados no incremento Alpha atual.
+- [x] CodeQL aprovado no incremento Alpha atual;
+- [x] checks do Pull Request aprovados no incremento Alpha atual.
 
 ## Jornada Alpha
 
@@ -69,8 +69,20 @@ navegação deve repetir CodeQL e todos os checks antes de qualquer merge.
 - [x] vídeo de inspeção identificou alternância para o shell antigo;
 - [x] rotas funcionais foram integradas ao shell do dashboard aprovado;
 - [x] perfil e preferências permanecem no dashboard após guardar;
-- [ ] correção reinspecionada manualmente em desktop e mobile;
-- [ ] CodeQL e checks do Pull Request aprovados no commit da correção.
+- [x] correção reinspecionada manualmente em desktop e mobile;
+- [x] CodeQL e checks do Pull Request aprovados no commit da correção.
+
+Inspeção manual realizada depois do commit `7a0c0ab`:
+
+- dashboard preservado durante toda a navegação;
+- Cursos, Bíblia, Professor IA, Jogos, Comunidade e Progresso aprovados;
+- perfil e preferências aprovados sem retorno ao shell antigo;
+- teclado, zoom a 200% e largura móvel de 320 CSS px aprovados.
+
+O banco local aprovou 18 arquivos e 149 testes. Os cinco checks do Pull Request,
+incluindo CodeQL e build, também foram aprovados. Estas evidências confirmam o
+incremento de navegação; não constituem aprovação integral do Alpha, beta,
+piloto ou Release Candidate.
 
 ## Beta e piloto
 
