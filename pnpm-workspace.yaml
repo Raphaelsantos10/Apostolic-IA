@@ -6,6 +6,11 @@ autoInstallPeers: true
 sharedWorkspaceLockfile: true
 strictPeerDependencies: false
 
+overrides:
+  sharp: "0.35.3"
+  postcss: "8.5.23"
+  uuid: "11.1.1"
+
 allowBuilds:
   "@swc/core": true
   "sharp": true
