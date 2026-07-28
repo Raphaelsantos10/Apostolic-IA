@@ -40,6 +40,21 @@ required_files=(
   "docs/validation/SPRINT_027_VALIDATION.md"
   "supabase/migrations/20260727270000_theological_approval.sql"
   "supabase/tests/database/theological-approval.test.sql"
+  "docs/sprints/SPRINT_028.md"
+  "scripts/validate-sprint-028.sh"
+  "docs/validation/SPRINT_028_VALIDATION.md"
+  "docs/sprints/SPRINT_029.md"
+  "scripts/validate-sprint-029.sh"
+  "docs/validation/SPRINT_029_VALIDATION.md"
+  "docs/sprints/SPRINT_030.md"
+  "scripts/validate-sprint-030.sh"
+  "docs/validation/SPRINT_030_VALIDATION.md"
+  "docs/sprints/SPRINT_031.md"
+  "scripts/validate-sprint-031.sh"
+  "docs/validation/SPRINT_031_VALIDATION.md"
+  "docs/sprints/SPRINT_032.md"
+  "scripts/validate-sprint-032.sh"
+  "docs/validation/SPRINT_032_VALIDATION.md"
   "docs/sprints/SPRINT_025.md"
   "docs/development/VOICE_ACCESSIBILITY.md"
   "docs/validation/SPRINT_025_VALIDATION.md"
@@ -183,4 +198,9 @@ bash scripts/validate-sprint-012.sh
 bash scripts/validate-sprint-025.sh
 bash scripts/validate-sprint-026.sh
 bash scripts/validate-sprint-027.sh
+bash scripts/validate-sprint-028.sh
+bash scripts/validate-sprint-029.sh
+bash scripts/validate-sprint-030.sh
+bash scripts/validate-sprint-031.sh
+bash scripts/validate-sprint-032.sh
 echo "Sprint 015 - onboarding validado com sucesso."

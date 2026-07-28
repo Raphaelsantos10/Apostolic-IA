@@ -14,6 +14,8 @@
   border-radius: 1rem;
   background: var(--panel);
   box-shadow: var(--shadow);
+  animation: auth-card-enter var(--motion-duration-slow)
+    var(--motion-easing-emphasized) both;
 }
 .auth-brand {
   display: inline-flex;
@@ -21,7 +23,11 @@
   gap: 0.7rem;
   color: var(--text);
   text-decoration: none;
+  transition:
+    color var(--motion-duration-fast) var(--motion-easing-standard),
+    transform var(--motion-duration-fast) var(--motion-easing-standard);
 }
+.auth-brand:hover { color: var(--action); transform: translateY(calc(-1 * var(--motion-distance-small))); }
 .auth-brand span {
   display: grid;
   width: 2.5rem;
@@ -45,10 +51,14 @@
   background: var(--page);
   color: var(--text);
   font: inherit;
+  transition:
+    border-color var(--motion-duration-fast) var(--motion-easing-standard),
+    box-shadow var(--motion-duration-fast) var(--motion-easing-standard);
 }
 .field input:focus-visible {
   outline: 0.2rem solid var(--focus);
   outline-offset: 0.1rem;
+  box-shadow: 0 0 0 0.35rem color-mix(in srgb, var(--focus) 14%, transparent);
 }
 .checkbox-field {
   display: grid;
@@ -64,6 +74,8 @@
   border-left: 0.3rem solid var(--success);
   border-radius: 0.5rem;
   background: var(--muted);
+  animation: auth-message-enter var(--motion-duration-standard)
+    var(--motion-easing-emphasized) both;
 }
 .auth-error { border-left-color: #b42318; }
 .danger-zone {
@@ -81,3 +93,26 @@
   background: var(--muted);
 }
 .account-details p { margin: 0; overflow-wrap: anywhere; }
+
+:root[data-motion="enhanced"] .auth-card > :not(.auth-brand) {
+  animation: auth-content-enter var(--motion-duration-slow)
+    var(--motion-easing-emphasized) both;
+}
+:root[data-motion="enhanced"] .auth-card > :nth-child(3) { animation-delay: 40ms; }
+:root[data-motion="enhanced"] .auth-card > :nth-child(4) { animation-delay: 80ms; }
+:root[data-motion="enhanced"] .auth-card > :nth-child(n + 5) { animation-delay: 120ms; }
+
+@keyframes auth-card-enter {
+  from { opacity: 0; transform: translateY(var(--motion-distance-medium)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes auth-content-enter {
+  from { opacity: 0; transform: translateY(var(--motion-distance-small)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes auth-message-enter {
+  from { opacity: 0; transform: translateX(calc(-1 * var(--motion-distance-small))); }
+  to { opacity: 1; transform: translateX(0); }
+}

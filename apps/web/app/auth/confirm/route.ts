@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
       token_hash: tokenHash
     });
     if (!error) {
-      return NextResponse.redirect(new URL("/conta", request.url));
+      return NextResponse.redirect(new URL("/onboarding", request.url));
     }
   }
 

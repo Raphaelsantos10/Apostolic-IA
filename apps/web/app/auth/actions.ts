@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
+import { resolveAppOrigin } from "../../lib/request-security.mjs";
 import { createClient } from "../../lib/supabase/server";
 
 function value(formData: FormData, field: string) {
@@ -35,7 +36,16 @@ export async function signUp(formData: FormData) {
     go("/criar-conta", "erro", "É necessário aceitar os termos e a privacidade.");
   }
 
-  const origin = (await headers()).get("origin") ?? "http://localhost:3000";
+  const requestOrigin =
+    (await headers()).get("origin") ?? "http://localhost:3000";
+  const origin = resolveAppOrigin({
+    configured: process.env.APP_BASE_URL,
+    requestUrl: requestOrigin,
+    production: process.env.NODE_ENV === "production"
+  });
+  if (!origin) {
+    go("/criar-conta", "erro", "A origem segura da aplicação não está configurada.");
+  }
   const supabase = await createClient();
   const { error } = await supabase.auth.signUp({
     email,
@@ -72,7 +82,7 @@ export async function signIn(formData: FormData) {
     go("/entrar", "erro", "E-mail ou senha inválidos.");
   }
 
-  redirect("/conta");
+  redirect("/dashboard");
 }
 
 export async function signOut() {
@@ -87,7 +97,16 @@ export async function requestPasswordReset(formData: FormData) {
     go("/recuperar-senha", "erro", "Informe um e-mail válido.");
   }
 
-  const origin = (await headers()).get("origin") ?? "http://localhost:3000";
+  const requestOrigin =
+    (await headers()).get("origin") ?? "http://localhost:3000";
+  const origin = resolveAppOrigin({
+    configured: process.env.APP_BASE_URL,
+    requestUrl: requestOrigin,
+    production: process.env.NODE_ENV === "production"
+  });
+  if (!origin) {
+    go("/recuperar-senha", "erro", "A origem segura da aplicação não está configurada.");
+  }
   const supabase = await createClient();
   await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${origin}/auth/callback?next=/atualizar-senha`

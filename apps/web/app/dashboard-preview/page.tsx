@@ -7,6 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardPreviewPage() {
-  return <DashboardFunctional />;
+  return <DashboardFunctional preview />;
 }
-

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { AppView } from "../lib/app-navigation.mjs";
 import { createClient } from "../lib/supabase/client";
 import { BiblePlatform } from "./bible-platform";
 import { HealthyGamificationPanel } from "./healthy-gamification";
@@ -8,9 +9,14 @@ import { CommunityPanel } from "./community-panel";
 import { BibleGame } from "./bible-game";
 import { BibleTeacher } from "./bible-teacher";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
+import { LearningProgressSummary } from "./learning-progress-summary";
 import { PricingPanel } from "./pricing-panel";
+import {
+  calculateCourseProgress,
+  type LearningProgressRow
+} from "../lib/course-progress.mjs";
 
-type ViewName = "home" | "courses" | "bible" | "teacher" | "games" | "community" | "progress" | "more";
+type ViewName = AppView;
 type ThemeName = "system" | "light" | "dark" | "sepia";
 
 const views: ReadonlyArray<{
@@ -36,8 +42,10 @@ function resolveTheme(theme: ThemeName): Exclude<ThemeName, "system"> {
     : "light";
 }
 
-export function AppShell() {
-  const [view, setView] = useState<ViewName>("home");
+export function AppShell({
+  initialView = "home"
+}: Readonly<{ initialView?: ViewName }>) {
+  const [view, setView] = useState<ViewName>(initialView);
   const [theme, setTheme] = useState<ThemeName>("system");
   const [ready, setReady] = useState(false);
 
@@ -107,14 +115,7 @@ export function AppShell() {
         </header>
 
         <main id="main-content" tabIndex={-1}>
-          {view === "home" && <HomeView onNavigate={navigate} />}
-          {view === "courses" && <CoursesView />}
-          {view === "bible" && <BibleView />}
-          {view === "teacher" && <BibleTeacher />}
-          {view === "games" && <BibleGame />}
-          {view === "community" && <CommunityPanel />}
-          {view === "progress" && <ProgressView />}
-          {view === "more" && <MoreView />}
+          <AppViewContent view={view} onNavigate={navigate} />
         </main>
       </div>
 
@@ -123,6 +124,23 @@ export function AppShell() {
       </nav>
     </div>
   );
+}
+
+export function AppViewContent({
+  view,
+  onNavigate = () => undefined
+}: Readonly<{
+  view: ViewName;
+  onNavigate?: (view: ViewName) => void;
+}>) {
+  if (view === "home") return <HomeView onNavigate={onNavigate} />;
+  if (view === "courses") return <CoursesView />;
+  if (view === "bible") return <BibleView />;
+  if (view === "teacher") return <BibleTeacher />;
+  if (view === "games") return <BibleGame />;
+  if (view === "community") return <CommunityPanel />;
+  if (view === "progress") return <ProgressView />;
+  return <MoreView />;
 }
 
 function Navigation({
@@ -214,6 +232,7 @@ type CatalogModule = {
 
 type CatalogCourse = {
   id: string;
+  slug: string;
   title: string;
   summary: string;
   level: "beginner" | "intermediate" | "advanced";
@@ -228,40 +247,66 @@ const levelLabels: Record<CatalogCourse["level"], string> = {
 
 function CoursesView() {
   const [courses, setCourses] = useState<CatalogCourse[]>([]);
+  const [progressRows, setProgressRows] = useState<LearningProgressRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let active = true;
-    const supabase = createClient();
+    const load = async () => {
+      const supabase = createClient();
+      const [catalogResponse, authResponse] = await Promise.all([
+        supabase
+          .from("courses")
+          .select("id,slug,title,summary,level,course_modules(id,title,summary,position,lessons(id,title,summary,kind,body_text,position))")
+          .order("position")
+          .order("position", { referencedTable: "course_modules" }),
+        supabase.auth.getUser()
+      ]);
+      const progressResponse = authResponse.data.user
+        ? await supabase
+            .from("lesson_progress")
+            .select("lesson_id,status,percent")
+        : { data: [], error: null };
 
-    void supabase
-      .from("courses")
-      .select("id,title,summary,level,course_modules(id,title,summary,position,lessons(id,title,summary,kind,body_text,position))")
-      .order("position")
-      .order("position", { referencedTable: "course_modules" })
-      .then(({ data, error: queryError }) => {
-        if (!active) return;
-        if (queryError) {
-          setError("Não foi possível carregar o catálogo.");
-        } else {
-          setCourses((data ?? []) as CatalogCourse[]);
-        }
-        setLoading(false);
-      });
+      if (!active) return;
+      if (catalogResponse.error || progressResponse.error) {
+        setError("Não foi possível carregar a jornada do curso.");
+      } else {
+        setCourses((catalogResponse.data ?? []) as CatalogCourse[]);
+        setProgressRows(
+          (progressResponse.data ?? []) as LearningProgressRow[]
+        );
+      }
+      setLoading(false);
+    };
+
+    void load();
 
     return () => {
       active = false;
     };
   }, []);
 
+  const updateProgress = (
+    lessonId: string,
+    status: string,
+    percent: number
+  ) => {
+    setProgressRows((current) => [
+      ...current.filter((row) => row.lesson_id !== lessonId),
+      { lesson_id: lessonId, status, percent }
+    ]);
+  };
+
   return (
     <section aria-labelledby="courses-title">
       <p className="eyebrow">Conteúdo publicado</p>
       <h1 id="courses-title">Cursos</h1>
       <p className="lead">
-        Conteúdo autoral organizado por curso e módulo. Materiais em rascunho ou
-        revisão não aparecem nesta página.
+        O percurso “Fundamentos Bíblicos” valida a jornada de módulo, aula,
+        quiz e progresso. Os demais itens são demonstrações técnicas e não
+        representam a formação teológica completa.
       </p>
 
       {loading && <p className="catalog-status" role="status">A carregar catálogo…</p>}
@@ -274,12 +319,37 @@ function CoursesView() {
       )}
 
       <div className="catalog-grid">
-        {courses.map((course) => (
+        {courses.map((course) => {
+          const courseProgress = calculateCourseProgress(
+            course.course_modules.flatMap((module) =>
+              module.lessons.map((lesson) => lesson.id)
+            ),
+            progressRows
+          );
+          return (
           <article className="catalog-card" key={course.id}>
             <div className="catalog-card-heading">
-              <span className="badge">{levelLabels[course.level]}</span>
+              <div className="catalog-badges">
+                <span className="badge">{levelLabels[course.level]}</span>
+                <span className="badge">
+                  {course.slug === "fundamentos-biblicos"
+                    ? "Piloto funcional"
+                    : "Demonstração técnica"}
+                </span>
+              </div>
               <h2>{course.title}</h2>
               <p>{course.summary}</p>
+              <div className="course-progress-summary">
+                <div>
+                  <strong>Progresso neste curso</strong>
+                  <span>{courseProgress}%</span>
+                </div>
+                <progress
+                  max="100"
+                  value={courseProgress}
+                  aria-label={`${courseProgress}% concluído em ${course.title}`}
+                />
+              </div>
             </div>
             <div className="catalog-modules">
               <h3>Módulos publicados</h3>
@@ -303,7 +373,10 @@ function CoursesView() {
                                 </summary>
                                 <p>{lesson.summary}</p>
                                 {lesson.body_text && <p className="lesson-body">{lesson.body_text}</p>}
-                                <LessonLearningTools lessonId={lesson.id} />
+                                <LessonLearningTools
+                                  lessonId={lesson.id}
+                                  onProgressChange={updateProgress}
+                                />
                               </details>
                             ))}
                         </div>
@@ -314,7 +387,8 @@ function CoursesView() {
               )}
             </div>
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
@@ -325,13 +399,9 @@ function BibleView() { return <BiblePlatform />; }
 function ProgressView() {
   return (
     <section aria-labelledby="progress-title">
-      <p className="eyebrow">Estado local futuro</p>
+      <p className="eyebrow">Dados privados sincronizados</p>
       <h1 id="progress-title">Progresso</h1>
-      <div className="metric-grid">
-        <article><strong>0</strong><span>Aulas concluídas</span></article>
-        <article><strong>0</strong><span>Revisões</span></article>
-        <article><strong>—</strong><span>Sequência</span></article>
-      </div>
+      <LearningProgressSummary />
       <DailyGoalPanel />
       <HealthyGamificationPanel />
       <div className="notice">

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { resolveMotionMode } from "../lib/visual-motion.mjs";
 import { PwaRegister } from "./pwa-register";
 import "./styles.css";
 
@@ -31,8 +32,12 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const motionMode = resolveMotionMode(
+    process.env.NEXT_PUBLIC_APOSTOLIC_ENHANCED_MOTION
+  );
+
   return (
-    <html lang="pt-PT">
+    <html data-motion={motionMode} lang="pt-PT">
       <body>
         {children}
         <PwaRegister />

@@ -48,6 +48,8 @@ escuras usam também borda e diferença de superfície.
 - Nenhuma informação depende de animação.
 - Movimento automático deve poder parar.
 - `prefers-reduced-motion` elimina efeitos não essenciais.
+- O contrato técnico e os limites de adoção estão em
+  [`MOTION_SYSTEM.md`](MOTION_SYSTEM.md).
 
 ## Conteúdo
 

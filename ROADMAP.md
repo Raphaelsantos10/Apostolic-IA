@@ -52,10 +52,21 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 024 | [x] Concluída | IA bíblica: biblioteca aprovada, busca fundamentada, guardrails e professor |
 | 025 | [x] Concluída | Voz: transcrição, respostas faladas, quizzes orais e acessibilidade |
 | 026 | [x] Concluída | Sustentabilidade: custos, quotas, compras e assinaturas |
-| 027 | [x] Concluída | Conteúdo teológico completo, pedagogia e aprovação humana |
+| 027 | [x] Concluída | Estrutura curricular, piloto em rascunho e aprovação humana |
 | 028 | [x] Concluída | Android, iOS, PWA, idiomas, fusos e sincronização offline |
 | 029 | [x] Concluída | Dashboard funcional e gamificação saudável em modos Acadêmico e Aventura |
 | 030 | [x] Concluída | Produção: privacidade, segurança, RLS, dependências e observabilidade |
 | 031 | [x] Concluída | Resiliência: backups, recuperação, desempenho e auditoria WCAG |
-| 032 | [ ] Planejada | Alpha, beta, piloto, correções e Release Candidate |
-| 033 | [ ] Planejada | Publicação controlada, lançamento v1.0.0 e monitorização |
+| 032 | [~] Em andamento | Alpha, beta, piloto, correções e Release Candidate |
+| 033 | [ ] Planejada | Player de estudo guiado para um módulo piloto aprovado |
+| 034 | [ ] Planejada | Bíblia guiada e conteúdo multimodal acessível |
+| 035 | [ ] Planejada | Professor IA contextual e fluxo de dúvidas |
+| 036 | [ ] Planejada | Avaliação adaptativa e revisão personalizada |
+| 037 | [ ] Planejada | Microcredenciais auditáveis e privadas por padrão |
+| 038 | [ ] Planejada | Comunidade de ajuda, reputação temática e moderação |
+| 039 | [ ] Planejada | Experiência pública moderna e refinamento multiplataforma |
+| 040 | [ ] Planejada | Piloto pedagógico, publicação controlada e lançamento |
+
+As Sprints 033 a 040 implementam progressivamente o épico descrito em
+`docs/product/INTERACTIVE_STUDY_SYSTEM.md`. A numeração é uma direção de
+planeamento e não autoriza publicação sem os gates de cada sprint.

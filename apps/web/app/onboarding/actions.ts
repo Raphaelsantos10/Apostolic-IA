@@ -47,5 +47,5 @@ export async function skipOnboarding() {
     user_id: auth.user.id,
     status: "skipped"
   });
-  redirect("/conta?mensagem=Onboarding%20adiado.%20Pode%20retomar%20quando%20quiser.");
+  redirect("/dashboard");
 }

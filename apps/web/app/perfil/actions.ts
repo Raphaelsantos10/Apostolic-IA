@@ -11,20 +11,28 @@ function text(data: FormData, field: string) {
   return String(data.get(field) ?? "").trim();
 }
 
-function fail(message: string): never {
-  redirect(`/perfil?erro=${encodeURIComponent(message)}`);
+function returnPath(data: FormData) {
+  return text(data, "returnTo") === "/dashboard?section=profile"
+    ? "/dashboard?section=profile"
+    : "/perfil";
+}
+
+function go(path: string, key: "erro" | "mensagem", message: string): never {
+  const separator = path.includes("?") ? "&" : "?";
+  redirect(`${path}${separator}${key}=${encodeURIComponent(message)}`);
 }
 
 export async function updateProfile(data: FormData) {
+  const path = returnPath(data);
   const displayName = text(data, "displayName");
   const locale = text(data, "locale");
   const timezone = text(data, "timezone");
 
   if (displayName.length < 2 || displayName.length > 80) {
-    fail("O nome deve ter entre 2 e 80 caracteres.");
+    go(path, "erro", "O nome deve ter entre 2 e 80 caracteres.");
   }
   if (!locales.has(locale) || !timezones.has(timezone)) {
-    fail("Idioma ou fuso horário inválido.");
+    go(path, "erro", "Idioma ou fuso horário inválido.");
   }
 
   const supabase = await createClient();
@@ -36,16 +44,17 @@ export async function updateProfile(data: FormData) {
     .update({ display_name: displayName, locale, timezone })
     .eq("id", auth.user.id);
 
-  if (error) fail("Não foi possível atualizar o perfil.");
-  redirect("/perfil?mensagem=Perfil%20atualizado.");
+  if (error) go(path, "erro", "Não foi possível atualizar o perfil.");
+  go(path, "mensagem", "Perfil atualizado.");
 }
 
 export async function updatePreferences(data: FormData) {
+  const path = returnPath(data);
   const theme = text(data, "theme");
   const textScale = Number(text(data, "textScale"));
 
   if (!themes.has(theme) || !Number.isInteger(textScale) || textScale < 80 || textScale > 200) {
-    fail("Preferências inválidas.");
+    go(path, "erro", "Preferências inválidas.");
   }
 
   const supabase = await createClient();
@@ -65,6 +74,6 @@ export async function updatePreferences(data: FormData) {
     })
     .eq("user_id", auth.user.id);
 
-  if (error) fail("Não foi possível atualizar as preferências.");
-  redirect("/perfil?mensagem=Preferências%20atualizadas.");
+  if (error) go(path, "erro", "Não foi possível atualizar as preferências.");
+  go(path, "mensagem", "Preferências atualizadas.");
 }

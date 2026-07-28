@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { isProtectedAppPath } from "../app-navigation.mjs";
 import { getSupabaseEnv } from "./env";
 
 export async function updateSession(
@@ -28,7 +29,7 @@ export async function updateSession(
     data: { user }
   } = await supabase.auth.getUser();
 
-  if (!user && (request.nextUrl.pathname.startsWith("/conta") || request.nextUrl.pathname.startsWith("/onboarding"))) {
+  if (!user && isProtectedAppPath(request.nextUrl.pathname)) {
     const urlToLogin = request.nextUrl.clone();
     urlToLogin.pathname = "/entrar";
     urlToLogin.searchParams.set("mensagem", "Entre para acessar a sua conta.");

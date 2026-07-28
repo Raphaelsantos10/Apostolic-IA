@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "../../../lib/supabase/server";
 import { deleteAccount, signOut } from "../../auth/actions";
@@ -33,6 +34,10 @@ export default async function AccountPage({
         <p><strong>Idioma:</strong> {profile?.locale ?? "pt-PT"}</p>
         <p><strong>Fuso:</strong> {profile?.timezone ?? "Europe/Lisbon"}</p>
       </div>
+      <p className="auth-actions">
+        <Link className="button button-primary" href="/dashboard">Abrir dashboard</Link>
+        <Link className="button button-secondary" href="/perfil">Editar perfil</Link>
+      </p>
       <form className="auth-form" action={signOut}>
         <button className="button button-secondary" type="submit">Sair da conta</button>
       </form>

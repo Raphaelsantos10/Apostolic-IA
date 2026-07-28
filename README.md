@@ -6,12 +6,15 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 
 ## Estado atual do projeto
 
-- **Última sprint concluída:** Sprint 026 - Sustentabilidade.
-- **Próxima sprint:** Sprint 027 - Conteúdo teológico e pedagogia.
-- **Branch após o merge:** `main`.
-- **Estado:** Sprint 026 validada e preparada para incorporação pelo PR nº 28.
-- **Aplicação executável:** PWA com autenticação, aprendizagem, experiência bíblica e gamificação saudável com pontos verificáveis, níveis, sequência, conquistas e missões privadas.
-- **Última atualização:** 27 de julho de 2026.
+- **Última sprint concluída:** Sprint 031 - Resiliência, desempenho e acessibilidade.
+- **Sprint atual:** Sprint 032 - Alpha, beta, piloto, correções e Release Candidate.
+- **Branch atual:** `sprint/032-alpha-beta-piloto`.
+- **Base aprovada:** `main` no commit `6ebdc54`, merge do PR nº 43.
+- **Estado:** Sprint 032 iniciada; integração e validação de piloto em andamento.
+- **Aplicação executável:** web/PWA com autenticação, aprendizagem, Bíblia,
+  gamificação saudável e dashboard aprovado em `/dashboard-preview`; a
+  integração completa da jornada e a paridade mobile ainda serão validadas.
+- **Última atualização:** 28 de julho de 2026.
 
 ## Regra permanente de continuidade
 
@@ -63,39 +66,41 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 024 | ✅ Concluída após merge | IA bíblica fundamentada e professor | [Relatório](docs/sprints/SPRINT_024.md) |
 | 025 | ✅ Concluída após merge | Voz e acessibilidade oral | [Relatório](docs/sprints/SPRINT_025.md) |
 | 026 | ✅ Concluída após merge | Sustentabilidade, preços e assinaturas | [Relatório](docs/sprints/SPRINT_026.md) |
-| 027-032 | ⬜ Planejadas | Entregas consolidadas | [Roadmap](ROADMAP.md) |
+| 027 | ✅ Concluída após merge | Currículo, conteúdo piloto e aprovação humana | [Relatório](docs/sprints/SPRINT_027.md) |
+| 028 | ✅ Concluída após merge | Plataformas e sincronização offline | [Relatório](docs/sprints/SPRINT_028.md) |
+| 029 | ✅ Concluída após merge | Dashboard e gamificação saudável | [Relatório](docs/sprints/SPRINT_029.md) |
+| 030 | ✅ Concluída após merge | Segurança e observabilidade | [Relatório](docs/sprints/SPRINT_030.md) |
+| 031 | ✅ Concluída após merge | Resiliência, desempenho e acessibilidade | [Relatório](docs/sprints/SPRINT_031.md) |
+| 032 | 🔄 Em andamento | Alpha, beta, piloto e Release Candidate | [Relatório](docs/sprints/SPRINT_032.md) |
+| 033 | ⬜ Planejada | Publicação controlada e lançamento v1.0.0 | [Roadmap](ROADMAP.md) |
 
 ## Última entrega concluída
 
-- Ditado progressivo com consentimento explícito e transcrição editável.
-- Respostas faladas com controles de reprodução.
-- Quizzes com leitura e resposta oral confirmável.
-- Preferências locais de voz e velocidade, privacidade e fallback textual.
-- Quatro testes, typecheck, builds, inspeções desktop/móvel e checks aprovados.
-- Limitação do microfone defeituoso documentada sem comprometer o fallback.
-- Evidências em `docs/validation/SPRINT_025_VALIDATION.md`.
-
-## Última entrega concluída
-
-- Planos Gratuito, Plus e Apoiador com preços regionais candidatos.
-- Quotas, entitlements, RLS, checkout web e webhook seguro.
-- Integrações nativas de lojas permanecem planejadas para a Sprint 028.
-- Banco com 121 testes, typecheck, build, inspeção visual e checks aprovados.
-- Evidências em `docs/validation/SPRINT_026_VALIDATION.md`.
+- Endpoint público mínimo de saúde com `no-store` e `x-request-id`.
+- Manifesto SHA-256 e restauração isolada comprovada.
+- 54 tabelas, 54 políticas RLS e um utilizador local restaurados sem divergência.
+- Auditoria web aprovada nas cinco rotas cobertas, com maior mediana de 73,2 ms.
+- Teclado, zoom a 200%, reflow a 320 CSS px e Narrador do Windows aprovados.
+- CodeQL, validação do repositório e build aprovados no PR nº 43.
+- Evidências em `docs/validation/SPRINT_031_VALIDATION.md`.
 
 ## Próximo passo exato
 
-Após incorporar o PR nº 28, criar a branch da Sprint 027 e iniciar conteúdo
-teológico completo, pedagogia e aprovação humana.
+Executar a Sprint 032 como incremento integrado: promover o dashboard aprovado
+para a jornada autenticada, tornar funcionais apenas os destinos existentes,
+validar um curso piloto autoral de ponta a ponta e preparar Alpha, beta,
+piloto controlado e Release Candidate.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_018.md e
-> CHANGELOG.md. Respeite a ordem das sprints e atualize o README antes de
-> encerrar qualquer entrega.
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_031.md,
+> docs/validation/SPRINT_031_VALIDATION.md,
+> docs/doctrine/CONSTITUICAO_DOUTRINARIA.md e docs/sprints/SPRINT_032.md.
+> Preserve o dashboard e a visão doutrinária aprovados. Não declare o catálogo
+> completo antes da produção e aprovação humana de cada curso.
 
 ## Princípios
 
@@ -160,6 +165,13 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Relatório da Sprint 024](docs/sprints/SPRINT_024.md)
 - [Relatório da Sprint 025](docs/sprints/SPRINT_025.md)
 - [Relatório da Sprint 026](docs/sprints/SPRINT_026.md)
+- [Relatório da Sprint 027](docs/sprints/SPRINT_027.md)
+- [Relatório da Sprint 028](docs/sprints/SPRINT_028.md)
+- [Relatório da Sprint 029](docs/sprints/SPRINT_029.md)
+- [Relatório da Sprint 030](docs/sprints/SPRINT_030.md)
+- [Relatório da Sprint 031](docs/sprints/SPRINT_031.md)
+- [Relatório da Sprint 032](docs/sprints/SPRINT_032.md)
+- [Validação da Sprint 032](docs/validation/SPRINT_032_VALIDATION.md)
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
 - [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 021](docs/validation/SPRINT_021_VALIDATION.md)
