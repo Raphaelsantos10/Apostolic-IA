@@ -79,6 +79,25 @@ test("não usa script, estilo ou SVG como nome acessível", () => {
   );
 });
 
+test("reconhece campo aninhado diretamente em label", () => {
+  const result = auditHtml(`<!doctype html>
+    <html lang="pt-PT">
+      <head><title>Conta</title></head>
+      <body>
+        <main>
+          <h1>Entrar</h1>
+          <label>E-mail<input name="email" type="email"></label>
+          <label>Senha<input name="password" type="password"></label>
+        </main>
+      </body>
+    </html>`);
+
+  assert.equal(
+    result.violations.some(({ id }) => id === "input-name"),
+    false
+  );
+});
+
 test("mede página e aplica orçamento de resposta", async () => {
   const times = [0, 100, 100, 220, 220, 370];
   const result = await auditPage("http://localhost:3000/", {

@@ -103,11 +103,33 @@ function collectSingleElements(html, tagName) {
   ].map((match) => match[1] ?? "");
 }
 
+function collectSingleElementMatches(html, tagName) {
+  return [
+    ...html.matchAll(new RegExp(`<${tagName}\\b([^>]*)>`, "gi"))
+  ].map((match) => ({
+    attributes: match[1] ?? "",
+    index: match.index ?? -1
+  }));
+}
+
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function hasAssociatedLabel(html, attributes) {
+function isNestedInLabel(html, elementIndex) {
+  if (elementIndex < 0) return false;
+  const lowerHtml = html.toLowerCase();
+  const before = lowerHtml.slice(0, elementIndex);
+  const opening = before.lastIndexOf("<label");
+  const previousClosing = before.lastIndexOf("</label");
+  if (opening < 0 || opening < previousClosing) return false;
+
+  const closing = lowerHtml.indexOf("</label", elementIndex);
+  const nextOpening = lowerHtml.indexOf("<label", elementIndex);
+  return closing >= 0 && (nextOpening < 0 || closing < nextOpening);
+}
+
+function hasAssociatedLabel(html, attributes, elementIndex) {
   if (
     attributeValue(attributes, "aria-label") ||
     attributeValue(attributes, "aria-labelledby") ||
@@ -115,6 +137,7 @@ function hasAssociatedLabel(html, attributes) {
   ) {
     return true;
   }
+  if (isNestedInLabel(html, elementIndex)) return true;
   const id = attributeValue(attributes, "id");
   if (!id) return false;
   return new RegExp(
@@ -161,10 +184,11 @@ export function auditHtml(html) {
     }
   }
 
-  for (const attributes of collectSingleElements(html, "input")) {
+  for (const input of collectSingleElementMatches(html, "input")) {
+    const attributes = input.attributes;
     if (
       attributeValue(attributes, "type").toLowerCase() !== "hidden" &&
-      !hasAssociatedLabel(html, attributes)
+      !hasAssociatedLabel(html, attributes, input.index)
     ) {
       add("input-name", "Campo sem rótulo associado.");
     }
