@@ -12,6 +12,13 @@
   --success: #18794e;
   --shadow: 0 1rem 2.5rem rgb(23 32 51 / 9%);
   --sidebar: 17rem;
+  --motion-duration-fast: 120ms;
+  --motion-duration-standard: 200ms;
+  --motion-duration-slow: 320ms;
+  --motion-distance-small: 0.25rem;
+  --motion-distance-medium: 0.75rem;
+  --motion-easing-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-easing-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root[data-theme="dark"] {
@@ -282,7 +289,12 @@ h2 { line-height: 1.2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 :root[data-high-contrast="true"] {

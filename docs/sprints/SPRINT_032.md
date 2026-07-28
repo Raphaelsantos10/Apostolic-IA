@@ -23,6 +23,8 @@ encontrados e preparar um primeiro Release Candidate recuperável.
 
 - [x] Atualizar o README para o estado posterior à Sprint 031.
 - [x] Registar objetivo, riscos, validação e rollback da Sprint 032.
+- [x] Registar referências de modernidade como critérios, sem copiar terceiros.
+- [x] Criar tokens de movimento, redução de movimento e ativação gradual.
 - [ ] Inventariar rotas, integrações, conteúdo realmente publicado e PRs
   automáticos sem os misturar com esta sprint.
 

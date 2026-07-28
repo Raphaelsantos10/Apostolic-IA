@@ -11,11 +11,13 @@ foi registada ainda.
 - Sprint 031 concluída e PR nº 43 incorporado;
 - README corrigido como primeiro commit da Sprint 032;
 - dashboard aprovado preservado em `/dashboard-preview`;
+- sistema inicial de movimento acessível protegido por ativação gradual;
 - catálogo teológico completo ainda não foi declarado como disponível.
 
 ## Validação automática
 
 - [ ] testes dirigidos dos incrementos aprovados;
+- [ ] teste do modo padrão, enriquecido e redução de movimento;
 - [ ] testes completos do banco aprovados;
 - [ ] typecheck aprovado;
 - [ ] build web e export mobile aprovados;
