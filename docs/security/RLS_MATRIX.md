@@ -13,6 +13,7 @@
 | `game_profiles` / `game_sessions` / `game_answers` | Sem acesso | Titular lê somente os próprios dados | Correção no servidor |
 | `ai_sources` / `ai_source_chunks` | Sem acesso | Lê somente fontes aprovadas | Aprovação editorial futura |
 | `ai_conversations` / `ai_messages` / `ai_feedback` | Sem acesso | Titular gere somente os próprios dados | Chamada externa no servidor |
+| `api_rate_limits` | Sem acesso | Sem acesso direto; usa função limitada ao próprio `auth.uid()` | Limpeza operacional futura |
 
 ## Regras obrigatórias
 
@@ -29,6 +30,8 @@
 - elevação direta do estado da conta;
 - acesso anónimo a dados pessoais;
 - perfil sem vínculo com `auth.users`.
+- abuso de APIs por chamadas simultâneas da mesma conta;
+- leitura ou alteração direta dos contadores de limitação.
 
 ## Comunidade e antiabuso
 
@@ -42,3 +45,4 @@
 
 - moderação global administrativa;
 - auditoria independente antes da produção.
+- limitação distribuída adicional para tráfego anónimo na infraestrutura de borda.

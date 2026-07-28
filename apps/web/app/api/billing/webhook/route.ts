@@ -1,24 +1,27 @@
-import { createHmac, timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import { createAdminClient } from "../../../../lib/supabase/admin";
-
-function validSignature(payload:string,header:string,secret:string){
-  const parts=Object.fromEntries(header.split(",").map((item)=>item.split("=")));
-  if(!parts.t||!parts.v1)return false;
-  if(Math.abs(Date.now()/1000-Number(parts.t))>300)return false;
-  const expected=createHmac("sha256",secret).update(`${parts.t}.${payload}`).digest("hex");
-  const received=String(parts.v1);
-  return expected.length===received.length&&timingSafeEqual(Buffer.from(expected),Buffer.from(received));
-}
+import { readTextBody } from "../../../../lib/request-security.mjs";
+import { verifyStripeSignature } from "../../../../lib/stripe-webhook.mjs";
 
 export async function POST(request:Request){
   const secret=process.env.STRIPE_WEBHOOK_SECRET;
   const signature=request.headers.get("stripe-signature");
-  const payload=await request.text();
-  if(!secret||!signature||!validSignature(payload,signature,secret)){
+  const bodyResult=await readTextBody(request,1_000_000);
+  if(!bodyResult.ok)return NextResponse.json({error:"Evento demasiado grande."},{status:413});
+  const payload=bodyResult.value;
+  if(!secret||!signature||!verifyStripeSignature(payload,signature,secret)){
     return NextResponse.json({error:"Assinatura inválida."},{status:400});
   }
-  const event=JSON.parse(payload);
+  let event:Record<string,any>;
+  try{
+    event=JSON.parse(payload) as Record<string,any>;
+  }catch{
+    return NextResponse.json({error:"Evento inválido."},{status:400});
+  }
+  if(!event||typeof event!=="object"||typeof event.id!=="string"||
+    event.id.length<3||event.id.length>255||typeof event.type!=="string"){
+    return NextResponse.json({error:"Evento inválido."},{status:400});
+  }
   const admin=createAdminClient();
   const {error:eventError}=await admin.from("billing_webhook_events").insert({provider:"stripe",event_id:event.id});
   if(eventError?.code==="23505")return NextResponse.json({received:true,duplicate:true});
