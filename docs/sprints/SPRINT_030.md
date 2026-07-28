@@ -20,16 +20,24 @@ verificáveis, documentação honesta e defesa em profundidade.
 - Dependabot para pacotes e GitHub Actions;
 - base de segurança operacional documentada.
 
-## Critérios restantes
+## Entregas dos incrementos seguintes
 
-- [ ] Auditoria integral de RLS.
-- [ ] Limites contra abuso em APIs autenticadas.
-- [ ] Revisão de webhooks e idempotência.
-- [ ] Inventário de segredos por ambiente.
-- [ ] Logs e observabilidade sem dados privados.
-- [ ] Auditoria de dependências sem falhas críticas.
-- [ ] Plano de incidentes testado.
-- [ ] Checks e inspeção final aprovados.
+- limite transacional por conta nas APIs de IA e cobrança;
+- tamanho máximo e validação estrita do corpo dos pedidos;
+- origem canónica para redirecionamentos de cobrança;
+- assinatura do webhook validada antes do processamento;
+- auditoria de catálogo para RLS, `FORCE RLS` e funções privilegiadas;
+- correlação por `x-request-id` sem conteúdo privado nos eventos de erro;
+- inventário de segredos, responsabilidades e regras de rotação;
+- plano de resposta a incidentes com exercício de mesa;
+- dependências de produção atualizadas sem vulnerabilidades altas ou críticas.
+
+## Critérios finais
+
+- [ ] Testes locais do último incremento aprovados.
+- [ ] Exercício de mesa do plano de incidentes registado.
+- [ ] CSP e cabeçalhos inspecionados no navegador.
+- [ ] Checks finais do PR aprovados.
 
 ## Rollback
 

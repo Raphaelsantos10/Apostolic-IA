@@ -44,5 +44,15 @@
 ## Pendências
 
 - moderação global administrativa;
-- auditoria independente antes da produção.
+- auditoria externa independente antes da produção;
 - limitação distribuída adicional para tráfego anónimo na infraestrutura de borda.
+
+## Auditoria automatizada
+
+`supabase/tests/database/global-security-audit.test.sql` consulta o catálogo do
+PostgreSQL e falha se uma tabela da aplicação em `public` não usar RLS e
+`FORCE RLS`. O mesmo teste falha se uma função `SECURITY DEFINER` da aplicação
+não declarar `search_path` ou continuar executável pelo papel `PUBLIC`.
+
+Objetos pertencentes a extensões são excluídos pelo vínculo em `pg_depend`, para
+que a auditoria cubra somente objetos controlados pelo projeto.
