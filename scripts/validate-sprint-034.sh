@@ -37,6 +37,7 @@ required_files=(
   "docs/reviews/module-01/2026-07-29-pedagogical-abd8b90.json"
   "docs/reviews/module-01/2026-07-29-editorial.json"
   "docs/reviews/module-01/2026-07-29-accessibility.json"
+  "docs/reviews/module-01/2026-07-30-doctrinal-2f9e307.json"
   "docs/sprints/SPRINT_034.md"
   "docs/validation/SPRINT_034_VALIDATION.md"
   "docs/validation/MODULE_01_PEDAGOGICAL_PILOT.md"
@@ -356,6 +357,43 @@ if (
   )
 ) {
   throw new Error("Condições do parecer pedagógico corrigido ausentes.");
+}
+
+const latestDoctrinal = JSON.parse(
+  readFileSync(
+    "docs/reviews/module-01/2026-07-30-doctrinal-2f9e307.json",
+    "utf8"
+  )
+);
+
+if (
+  latestDoctrinal.schema !== "apostolic-ia.module-review.v2" ||
+  latestDoctrinal.template !== false ||
+  latestDoctrinal.module?.contentCommit !== "2f9e307" ||
+  latestDoctrinal.review?.type !== "doctrinal" ||
+  latestDoctrinal.review?.decision !== "approved" ||
+  latestDoctrinal.declarations?.humanReviewer !== true ||
+  latestDoctrinal.declarations?.reviewedFrozenContent !== true ||
+  latestDoctrinal.declarations?.bibleFinalAuthority !== true ||
+  latestDoctrinal.declarations?.independenceDeclared !== false ||
+  latestDoctrinal.automaticPublicationAuthorized !== false
+) {
+  throw new Error("Parecer doutrinário do commit 2f9e307 inválido.");
+}
+
+if (
+  !latestDoctrinal.review?.checklist?.some(
+    (item) =>
+      item.id === "continuation_of_gifts" && item.result === "compliant"
+  ) ||
+  !latestDoctrinal.review?.blockers?.includes(
+    "revisão histórica e textual especializada"
+  ) ||
+  !latestDoctrinal.review?.observations?.includes(
+    "não autoriza publicação ou merge"
+  )
+) {
+  throw new Error("Limites da aprovação doutrinária do commit 2f9e307 ausentes.");
 }
 NODE
 

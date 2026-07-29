@@ -18,6 +18,31 @@
 | `2026-07-29-pedagogical.json` | `changes-requested` |
 | `2026-07-29-editorial.json` | `rejected` |
 | `2026-07-29-accessibility.json` | `rejected` |
+| `2026-07-30-doctrinal-2f9e307.json` | `approved` com condicionantes |
+
+## Nova rodada doutrinária — commit `2f9e307`
+
+O responsável humano aprovou em 30 de julho de 2026 o pacote atualizado da
+Aula 3, que passou a afirmar explicitamente:
+
+- a atuação presente do Espírito Santo;
+- a continuidade dos dons espirituais;
+- o exame bíblico de profecias, sonhos, impressões e orientações;
+- que dons atuais não ampliam o cânon nem corrigem as Escrituras;
+- que a IA não cria doutrina, profecia ou direção pessoal em nome de Deus.
+
+O registro canônico está em
+`2026-07-30-doctrinal-2f9e307.json`. A decisão é interpretada como
+**aprovação doutrinária com condicionantes**, pois:
+
+- o responsável participa do projeto e sua independência institucional não foi
+  comprovada;
+- o parecer não representa aprovação oficial de nenhuma denominação ou
+  organização externa;
+- a revisão histórica e textual especializada da Aula 3 continua pendente;
+- a lista canônica institucional, as licenças, a originalidade, a
+  acessibilidade e o piloto continuam em gates próprios;
+- publicação automática e merge permanecem não autorizados.
 
 ## Segunda rodada pedagógica
 

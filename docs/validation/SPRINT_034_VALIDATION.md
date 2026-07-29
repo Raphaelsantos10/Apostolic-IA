@@ -229,3 +229,16 @@ e de acessibilidade, seguidas de nova versão e nova rodada de pareceres.
 - matriz de afirmações e perguntas preparada para o revisor;
 - bibliografia completa e parecer histórico-textual permanecem pendentes;
 - publicação continua bloqueada.
+
+## Aprovação doutrinária do commit `2f9e307`
+
+- pacote atualizado da Aula 3 submetido ao responsável humano;
+- aprovação explícita recebida em 30 de julho de 2026;
+- continuidade dos dons espirituais e atuação presente do Espírito Santo
+  confirmadas;
+- discernimento bíblico e cânon fechado preservados;
+- decisão registrada como aprovação doutrinária com condicionantes;
+- nenhuma aprovação denominacional oficial declarada;
+- independência institucional do revisor não comprovada;
+- revisão histórica e textual especializada continua pendente;
+- publicação automática e merge permanecem bloqueados.

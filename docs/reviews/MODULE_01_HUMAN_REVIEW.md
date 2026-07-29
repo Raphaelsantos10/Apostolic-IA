@@ -258,3 +258,23 @@ parecer. Portanto:
 - próximo gate pedagógico: piloto controlado e relatório;
 - publicação automática: não autorizada;
 - independência e competência: ainda sujeitas à verificação institucional.
+
+## Parecer doutrinário da rodada `2f9e307`
+
+O responsável humano aprovou em 30 de julho de 2026 o pacote atualizado da
+Aula 3 correspondente ao commit remoto `2f9e307`. O parecer confirma:
+
+- Bíblia como autoridade final;
+- centralidade de Cristo e do evangelho;
+- visão apostólica submetida às Escrituras;
+- atuação presente do Espírito Santo e continuidade dos dons espirituais;
+- discernimento bíblico de profecias, sonhos, impressões e orientações;
+- cânon fechado, sem nova Escritura produzida por dons atuais;
+- proibição de atribuir à IA doutrina, profecia ou direção divina.
+
+A decisão é **aprovado com condicionantes**. O registro não é endosso oficial
+de nenhuma denominação ou organização externa, não comprova independência
+institucional do revisor e não substitui a revisão histórica e textual
+especializada da Aula 3.
+Parecer editorial, licenças, originalidade, acessibilidade e piloto continuam
+pendentes. Publicação e merge do PR nº 46 permanecem bloqueados.
