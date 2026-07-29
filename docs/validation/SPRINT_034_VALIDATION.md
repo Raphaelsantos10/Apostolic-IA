@@ -74,6 +74,20 @@ Em andamento. Este documento não representa aprovação final.
 - revisões doutrinária, histórica, pedagógica, editorial e de acessibilidade
   pendentes.
 
+## Evidências do rascunho da Aula 6
+
+- versão 1 em estado `draft`;
+- duração planejada de 150 minutos;
+- percurso sobre centralidade de Cristo e história da redenção;
+- distinção entre promessa, cumprimento, tipologia, tema e aplicação;
+- Bíblia guiada, oficina cristocêntrica e quiz original com oito questões;
+- limites contra alegorização, anacronismo, antissemitismo e personalismo;
+- mapa de fontes e alegações registrado;
+- nenhuma reprodução de material proprietário;
+- publicação bloqueada;
+- revisões doutrinária, bíblica, pedagógica, editorial e de acessibilidade
+  pendentes.
+
 ## Gates pendentes para encerramento
 
 - [ ] oito aulas produzidas e revisadas;

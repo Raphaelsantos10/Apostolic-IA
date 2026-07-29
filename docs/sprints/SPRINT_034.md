@@ -34,6 +34,8 @@ matérias.
   autoridade, suficiência, clareza, necessidade e quiz de oito questões;
 - [x] produzir o rascunho autoral da Aula 5, com percurso de 135 minutos,
   contextos histórico, literário e bíblico e quiz de oito questões;
+- [x] produzir o rascunho autoral da Aula 6, com percurso de 150 minutos,
+  leitura cristocêntrica responsável e quiz de oito questões;
 - [ ] produzir as oito aulas completas;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
@@ -85,9 +87,15 @@ gêneros, descrição e prescrição, investigação histórica, história da re
 aplicação. A aula proíbe contexto inventado, etimologias improvisadas e
 alegorização cristocêntrica sem controle.
 
+A Aula 6, **Leitura cristocêntrica e interpretação responsável**, possui versão
+1 em estado de rascunho. Seu percurso soma 150 minutos e distingue promessa,
+cumprimento, tipologia, tema e aplicação. A aula preserva o sentido histórico do
+Antigo Testamento, rejeita alegorização arbitrária e submete a visão apostólica
+ao testemunho bíblico.
+
 Essas evidências não equivalem a publicação nem a aprovação. As revisões
 doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
-as outras três aulas ainda precisam ser produzidas.
+as outras duas aulas ainda precisam ser produzidas.
 
 ## Critérios de aceite
 

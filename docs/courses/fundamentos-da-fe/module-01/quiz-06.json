@@ -1,0 +1,95 @@
+{
+  "code": "TEO-FUN-001-M01-Q06",
+  "status": "draft",
+  "version": 1,
+  "questions": [
+    {
+      "prompt": "O que caracteriza uma leitura cristocêntrica responsável?",
+      "options": [
+        "Mencionar Jesus sem estudar a passagem",
+        "Relacionar o sentido da passagem à história que culmina em Cristo",
+        "Transformar cada objeto em símbolo",
+        "Ignorar o Antigo Testamento"
+      ],
+      "correctIndex": 1,
+      "explanation": "A centralidade de Cristo respeita o contexto e acompanha o desenvolvimento da história redentora."
+    },
+    {
+      "prompt": "Qual pergunta deve preceder a aplicação de uma promessa?",
+      "options": [
+        "Como ela pode garantir meu objetivo pessoal?",
+        "Quem a recebeu e onde ela aparece na história das alianças?",
+        "Qual frase pode ser retirada do parágrafo?",
+        "Como ocultar suas condições?"
+      ],
+      "correctIndex": 1,
+      "explanation": "Destinatário, situação, aliança, condições e cumprimento precisam ser examinados."
+    },
+    {
+      "prompt": "O que distingue tipologia de alegorização arbitrária?",
+      "options": [
+        "A tipologia depende somente da criatividade",
+        "A tipologia possui correspondência histórica e sustentação canônica",
+        "A alegoria sempre é citada pelo Novo Testamento",
+        "Não existe diferença"
+      ],
+      "correctIndex": 1,
+      "explanation": "A tipologia acompanha realidades históricas e desenvolvimento redentor; alegorização inventa equivalências sem controle."
+    },
+    {
+      "prompt": "Como estudar o uso do Antigo Testamento no Novo?",
+      "options": [
+        "Ler apenas a frase citada",
+        "Observar as duas unidades, palavras, temas e argumento",
+        "Supor que toda semelhança seja profecia",
+        "Ignorar o contexto anterior"
+      ],
+      "correctIndex": 1,
+      "explanation": "A relação precisa ser demonstrada pela passagem anterior, pela unidade posterior e pelo argumento do autor."
+    },
+    {
+      "prompt": "Qual é um risco de reduzir Davi e Golias a uma mensagem motivacional?",
+      "options": [
+        "Perceber a confiança no Senhor",
+        "Observar Davi como representante do povo",
+        "Colocar o sucesso individual no centro e apagar a narrativa",
+        "Ler o episódio no desenvolvimento da realeza"
+      ],
+      "correctIndex": 2,
+      "explanation": "A aplicação dos 'gigantes pessoais' pode esconder o conflito, o rei representante e a libertação concedida por Deus."
+    },
+    {
+      "prompt": "Qual limite acompanha a relação entre Israel, igreja e promessas?",
+      "options": [
+        "Slogans resolvem todas as questões",
+        "A história de Israel pode ser apagada",
+        "Conclusões exigem exegese, respeito e decisão confessional",
+        "Hostilidade étnica pode ser justificada"
+      ],
+      "correctIndex": 2,
+      "explanation": "O tema exige estudo de continuidade e novidade, rejeição do antissemitismo e revisão humana."
+    },
+    {
+      "prompt": "Como a visão apostólica da plataforma é regulada?",
+      "options": [
+        "Pela infalibilidade de líderes atuais",
+        "Pelo testemunho profético e apostólico preservado nas Escrituras",
+        "Por experiências sem exame",
+        "Pelo título ministerial mais elevado"
+      ],
+      "correctIndex": 1,
+      "explanation": "Toda liderança contemporânea permanece sujeita ao testemunho bíblico."
+    },
+    {
+      "prompt": "O que fazer quando uma conexão com Cristo não pode ser demonstrada?",
+      "options": [
+        "Inventar um símbolo pastoral",
+        "Apresentá-la como revelação",
+        "Declarar o limite e não criar a conexão",
+        "Usar a IA para produzir certeza"
+      ],
+      "correctIndex": 2,
+      "explanation": "A honestidade interpretativa recusa conexões sem evidência e registra questões pendentes."
+    }
+  ]
+}
