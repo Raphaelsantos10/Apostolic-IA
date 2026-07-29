@@ -38,7 +38,9 @@ matérias.
   leitura cristocêntrica responsável e quiz de oito questões;
 - [x] produzir o rascunho autoral da Aula 7, com percurso de 135 minutos,
   aplicação fiel, proteção pastoral e quiz de oito questões;
-- [ ] produzir as oito aulas completas;
+- [x] produzir o rascunho autoral da Aula 8, com percurso de 135 minutos,
+  projeto integrador e avaliação final de 16 questões;
+- [x] produzir os rascunhos das oito aulas;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
 - [ ] adicionar recursos multimédia acessíveis e licenciados;
@@ -101,9 +103,15 @@ implicação e aplicação. A aula trata graça, obediência, mandamento, sabedo
 consciência, abuso espiritual, limites da IA e gamificação academicamente
 honesta.
 
+A Aula 8, **Integração, revisão e avaliação final**, possui versão 1 em estado
+de rascunho. Seu percurso soma 135 minutos, revisa as sete aulas, consolida um
+método em oito passos, propõe projeto com rubrica, cinco casos de discernimento,
+avaliação original de 16 questões e recuperação sem punição gamificada.
+
 Essas evidências não equivalem a publicação nem a aprovação. As revisões
 doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
-a Aula 8 ainda precisa ser produzida.
+o módulo ainda depende de revisão integral, licenças, recursos multimédia,
+integração ao player, testes com usuários e aprovações humanas.
 
 ## Critérios de aceite
 

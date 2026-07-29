@@ -26,6 +26,9 @@ required_files=(
   "docs/courses/fundamentos-da-fe/module-01/lesson-07.md"
   "docs/courses/fundamentos-da-fe/module-01/quiz-07.json"
   "docs/courses/fundamentos-da-fe/module-01/sources-07.md"
+  "docs/courses/fundamentos-da-fe/module-01/lesson-08.md"
+  "docs/courses/fundamentos-da-fe/module-01/quiz-08.json"
+  "docs/courses/fundamentos-da-fe/module-01/sources-08.md"
   "docs/sprints/SPRINT_034.md"
   "docs/validation/SPRINT_034_VALIDATION.md"
 )
@@ -187,6 +190,26 @@ grep -Fq "accessibility: pending" \
   docs/courses/fundamentos-da-fe/module-01/lesson-07.md
 grep -Fq "não reproduz material proprietário" \
   docs/courses/fundamentos-da-fe/module-01/sources-07.md
+grep -Fq "title: Integração, revisão e avaliação final" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq "version: 1" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq "status: draft" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq "estimated_minutes: 135" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq "publication_allowed: false" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq "doctrinal: pending" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq "pedagogical: pending" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq "editorial: pending" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq "accessibility: pending" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq "não reproduz material proprietário" \
+  docs/courses/fundamentos-da-fe/module-01/sources-08.md
 
 node --input-type=module <<'NODE'
 import { readFileSync } from "node:fs";
@@ -195,37 +218,50 @@ const quizzes = [
   {
     lesson: 1,
     path: "docs/courses/fundamentos-da-fe/module-01/quiz-01.json",
-    minimumVersion: 2
+    minimumVersion: 2,
+    expectedQuestions: 8
   },
   {
     lesson: 2,
     path: "docs/courses/fundamentos-da-fe/module-01/quiz-02.json",
-    minimumVersion: 1
+    minimumVersion: 1,
+    expectedQuestions: 8
   },
   {
     lesson: 3,
     path: "docs/courses/fundamentos-da-fe/module-01/quiz-03.json",
-    minimumVersion: 1
+    minimumVersion: 1,
+    expectedQuestions: 8
   },
   {
     lesson: 4,
     path: "docs/courses/fundamentos-da-fe/module-01/quiz-04.json",
-    minimumVersion: 1
+    minimumVersion: 1,
+    expectedQuestions: 8
   },
   {
     lesson: 5,
     path: "docs/courses/fundamentos-da-fe/module-01/quiz-05.json",
-    minimumVersion: 1
+    minimumVersion: 1,
+    expectedQuestions: 8
   },
   {
     lesson: 6,
     path: "docs/courses/fundamentos-da-fe/module-01/quiz-06.json",
-    minimumVersion: 1
+    minimumVersion: 1,
+    expectedQuestions: 8
   },
   {
     lesson: 7,
     path: "docs/courses/fundamentos-da-fe/module-01/quiz-07.json",
-    minimumVersion: 1
+    minimumVersion: 1,
+    expectedQuestions: 8
+  },
+  {
+    lesson: 8,
+    path: "docs/courses/fundamentos-da-fe/module-01/quiz-08.json",
+    minimumVersion: 1,
+    expectedQuestions: 16
   }
 ];
 
@@ -236,8 +272,13 @@ for (const item of quizzes) {
     throw new Error(`Quiz da Aula ${item.lesson} possui versão ou estado inválido.`);
   }
 
-  if (!Array.isArray(quiz.questions) || quiz.questions.length !== 8) {
-    throw new Error(`Quiz da Aula ${item.lesson} deve conter oito questões.`);
+  if (
+    !Array.isArray(quiz.questions) ||
+    quiz.questions.length !== item.expectedQuestions
+  ) {
+    throw new Error(
+      `Quiz da Aula ${item.lesson} deve conter ${item.expectedQuestions} questões.`
+    );
   }
 
   for (const [index, question] of quiz.questions.entries()) {
@@ -266,4 +307,4 @@ grep -q "Em andamento" docs/sprints/SPRINT_034.md
 grep -q "não representa aprovação final" \
   docs/validation/SPRINT_034_VALIDATION.md
 
-echo "Sprint 034 - matriz, carga horária e rascunhos das Aulas 1 a 7 validados."
+echo "Sprint 034 - matriz, carga horária e rascunhos das Aulas 1 a 8 validados."

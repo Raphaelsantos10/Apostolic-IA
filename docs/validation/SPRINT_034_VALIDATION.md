@@ -103,6 +103,31 @@ Em andamento. Este documento não representa aprovação final.
 - revisões doutrinária, bíblica, pastoral, pedagógica, editorial e de
   acessibilidade pendentes.
 
+## Evidências do rascunho da Aula 8
+
+- versão 1 em estado `draft`;
+- duração planejada de 135 minutos;
+- síntese das Aulas 1 a 7 em método integrado de oito passos;
+- Bíblia guiada, cinco casos de discernimento e projeto de 600 a 900 palavras;
+- rubrica original de 100 pontos;
+- avaliação final original com 16 questões e explicações;
+- faixas de domínio e recuperação registradas como proposta pedagógica;
+- recuperação sem humilhação nem punição gamificada;
+- mapa de fontes, alegações, originalidade e limites registrado;
+- nenhuma reprodução de material proprietário;
+- publicação bloqueada;
+- revisões doutrinária, bíblica, pastoral, pedagógica, editorial e de
+  acessibilidade pendentes.
+
+## Estado do módulo após os rascunhos
+
+- oito aulas possuem rascunhos autorais;
+- a carga planejada soma 18 horas;
+- todas as aulas permanecem com `publication_allowed: false`;
+- produção documental não equivale a conteúdo publicado;
+- revisão integral, licenças, multimédia, integração e piloto continuam
+  pendentes.
+
 ## Gates pendentes para encerramento
 
 - [ ] oito aulas produzidas e revisadas;
