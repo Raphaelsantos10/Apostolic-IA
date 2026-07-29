@@ -47,7 +47,12 @@ matérias.
 - [x] definir composição da nota e recuperação sem penalização;
 - [x] preparar protocolo para validar as 18 horas no piloto;
 - [x] obter nova revisão pedagógica da iteração corrigida no commit `abd8b90`;
+- [x] definir o piloto com referências bíblicas sem reprodução de tradução;
+- [x] registrar proveniência, assistência de IA e limites de originalidade;
+- [x] criar registro de fontes, direitos e aceite de acessibilidade;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
+- [ ] completar bibliografias acadêmicas e confessionais verificáveis;
+- [ ] executar e registrar verificação humana de similaridade;
 - [ ] produzir quizzes, atividades e avaliação final;
 - [ ] adicionar recursos multimédia acessíveis e licenciados;
 - [ ] obter aprovações humanas;

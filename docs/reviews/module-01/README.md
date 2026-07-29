@@ -97,6 +97,19 @@ não encerra sozinha o gate institucional.
 - documentar uso de IA e verificações humanas;
 - concluir revisão histórica e textual especializada da Aula 3.
 
+### Controles preparados após a segunda revisão pedagógica
+
+- modo do piloto definido como referências bíblicas sem texto integral;
+- proveniência e uso de IA documentados;
+- materiais externos não aprovados explicitamente excluídos como fonte textual;
+- registro de fontes e direitos criado;
+- protocolo de verificação humana de similaridade definido;
+- critérios executáveis de acessibilidade definidos.
+
+Esses controles reduzem incerteza, mas não substituem bibliografias,
+licenciamento de recursos futuros, relatório de similaridade, implementação,
+testes reais ou novos pareceres humanos.
+
 ### Governança da revisão
 
 - verificar independência e conflito de interesse do responsável;

@@ -204,3 +204,18 @@ e de acessibilidade, seguidas de nova versão e nova rodada de pareceres.
 - publicação automática permanece não autorizada;
 - gates editorial, jurídico, doutrinário, bíblico-pastoral, de acessibilidade e
   licenciamento permanecem independentes.
+
+## Controles editoriais e de acessibilidade
+
+- piloto definido como `references_only`, sem texto bíblico integral;
+- nenhuma tradução protegida selecionada ou licenciada;
+- pesquisa, comparação, áudio, ligação externa e offline bíblico bloqueados;
+- assistência de IA documentada sem atribuir autoria doutrinária à ferramenta;
+- PDFs, vídeos e materiais proprietários de terceiros excluídos como fontes
+  textuais aprovadas;
+- verificação humana de similaridade definida, mas ainda não executada;
+- bibliografias especializadas continuam pendentes;
+- matriz de acessibilidade criada para teclado, leitor de tela, zoom, 320 CSS
+  px, movimento reduzido, pausa e retomada;
+- nenhuma conformidade WCAG ou aprovação editorial foi declarada;
+- publicação e merge permanecem bloqueados.

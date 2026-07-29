@@ -12,6 +12,23 @@ approvals:
   editorial: pending
   accessibility: pending
 publication_allowed: false
+bible_use:
+  mode: references_only
+  full_text_embedded: false
+  protected_translation_selected: false
+  external_bible_links_enabled: false
+  offline_bible_text_included: false
+  license_required_before_full_text: true
+editorial_controls:
+  provenance: docs/editorial/MODULE_01_PROVENANCE.md
+  source_and_rights_register: docs/legal/MODULE_01_SOURCE_AND_RIGHTS_REGISTER.md
+  similarity_review_status: pending_human_review
+accessibility:
+  status: implementation_and_testing_pending
+  assessment_timer_required: false
+  pause_resume_required: true
+  additional_time_penalty: false
+  acceptance_plan: docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md
 assessment:
   status: draft_after_pedagogical_review
   project_weight_percent: 60

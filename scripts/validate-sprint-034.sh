@@ -40,6 +40,9 @@ required_files=(
   "docs/sprints/SPRINT_034.md"
   "docs/validation/SPRINT_034_VALIDATION.md"
   "docs/validation/MODULE_01_PEDAGOGICAL_PILOT.md"
+  "docs/editorial/MODULE_01_PROVENANCE.md"
+  "docs/legal/MODULE_01_SOURCE_AND_RIGHTS_REGISTER.md"
+  "docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md"
 )
 
 for file in "${required_files[@]}"; do
@@ -227,6 +230,28 @@ grep -Fq 'passing_score_percent: 80' \
   docs/courses/fundamentos-da-fe/module-01/plan.yaml
 grep -Fq 'minimum_component_score_percent: 70' \
   docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'mode: references_only' \
+  docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'full_text_embedded: false' \
+  docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'protected_translation_selected: false' \
+  docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'assessment_timer_required: false' \
+  docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'additional_time_penalty: false' \
+  docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'OpenAI ChatGPT/Codex' \
+  docs/editorial/MODULE_01_PROVENANCE.md
+grep -Fq 'Nenhuma ferramenta automática ou comparação humana documentada' \
+  docs/editorial/MODULE_01_PROVENANCE.md
+grep -Fq 'somente referências bíblicas' \
+  docs/legal/MODULE_01_SOURCE_AND_RIGHTS_REGISTER.md
+grep -Fq 'BIB-TEXT-001' \
+  docs/legal/MODULE_01_SOURCE_AND_RIGHTS_REGISTER.md
+grep -Fq 'implementation_and_testing_pending' \
+  docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md
+grep -Fq 'não comprova conformidade WCAG 2.2 AA' \
+  docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md
 grep -Fq 'nota final = (projeto × 0,60) + (avaliação final × 0,40)' \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
 grep -Fq 'Excelente | 20' \
