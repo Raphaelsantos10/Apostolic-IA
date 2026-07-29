@@ -46,12 +46,14 @@ matérias.
 - [x] ampliar a rubrica com quatro níveis e descritores observáveis;
 - [x] definir composição da nota e recuperação sem penalização;
 - [x] preparar protocolo para validar as 18 horas no piloto;
+- [x] obter nova revisão pedagógica da iteração corrigida no commit `abd8b90`;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
 - [ ] adicionar recursos multimédia acessíveis e licenciados;
 - [ ] obter aprovações humanas;
 - [ ] executar o piloto cronometrado e registrar evidências;
-- [ ] obter nova revisão da iteração corrigida;
+- [ ] obter nova revisão editorial, jurídica, doutrinária e de acessibilidade
+  quando aplicável à iteração corrigida;
 - [ ] integrar o conteúdo aprovado ao player;
 - [ ] executar inspeção manual e todos os gates técnicos.
 

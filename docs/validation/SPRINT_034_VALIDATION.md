@@ -191,3 +191,16 @@ e de acessibilidade, seguidas de nova versão e nova rodada de pareceres.
 - faixa de 15 a 21 horas definida somente como critério de análise da mediana;
 - publicação permanece bloqueada;
 - nova revisão humana permanece obrigatória.
+
+## Segunda revisão pedagógica
+
+- parecer humano registrado para o commit `abd8b90`;
+- decisão técnica do formulário: `approved`;
+- decisão consolidada: **aprovado com condições**;
+- todas as verificações pedagógicas marcadas como conformes;
+- execução e análise do piloto permanecem obrigatórias;
+- 18 horas continuam planejadas, não validadas empiricamente;
+- alteração material posterior exige nova revisão;
+- publicação automática permanece não autorizada;
+- gates editorial, jurídico, doutrinário, bíblico-pastoral, de acessibilidade e
+  licenciamento permanecem independentes.

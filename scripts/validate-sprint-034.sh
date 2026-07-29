@@ -34,6 +34,7 @@ required_files=(
   "docs/reviews/module-01/README.md"
   "docs/reviews/module-01/2026-07-29-doctrinal.json"
   "docs/reviews/module-01/2026-07-29-pedagogical.json"
+  "docs/reviews/module-01/2026-07-29-pedagogical-abd8b90.json"
   "docs/reviews/module-01/2026-07-29-editorial.json"
   "docs/reviews/module-01/2026-07-29-accessibility.json"
   "docs/sprints/SPRINT_034.md"
@@ -281,6 +282,32 @@ for (const [type, decision] of expected) {
   if (review.automaticPublicationAuthorized !== false) {
     throw new Error(`Publicação automática indevidamente autorizada em ${path}`);
   }
+}
+
+const correctedPedagogical = JSON.parse(
+  readFileSync(
+    "docs/reviews/module-01/2026-07-29-pedagogical-abd8b90.json",
+    "utf8"
+  )
+);
+
+if (
+  correctedPedagogical.schema !== "apostolic-ia.module-review.v1" ||
+  correctedPedagogical.module?.contentCommit !== "abd8b90" ||
+  correctedPedagogical.review?.type !== "pedagogical" ||
+  correctedPedagogical.review?.decision !== "approved" ||
+  correctedPedagogical.automaticPublicationAuthorized !== false
+) {
+  throw new Error("Parecer pedagógico corrigido inválido.");
+}
+
+if (
+  !correctedPedagogical.review?.blockers?.includes("piloto pedagógico") ||
+  !correctedPedagogical.review?.observations?.includes(
+    "Aprovado com condições"
+  )
+) {
+  throw new Error("Condições do parecer pedagógico corrigido ausentes.");
 }
 NODE
 

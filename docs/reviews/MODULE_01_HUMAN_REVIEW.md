@@ -235,13 +235,26 @@ exige nova rodada de revisão.
 ## Iteração de correção
 
 A rubrica, a composição da nota, a recuperação e o protocolo do piloto foram
-reformulados depois dos pareceres acima. Essas mudanças não alteram a decisão
-registrada para o commit `22b38c3`, mas criam uma nova versão que ainda não foi
-revisada. Portanto:
+reformulados depois dos pareceres acima e congelados no commit `abd8b90`. A
+segunda revisão pedagógica humana registrou decisão `approved`, interpretada
+como **aprovado com condições** devido aos bloqueadores expressos no próprio
+parecer. Portanto:
 
 - os pareceres recebidos permanecem como histórico auditável;
 - nenhuma aprovação do commit `22b38c3` é transferida automaticamente;
-- a nova versão deve ser congelada em outro commit;
-- o novo commit deve receber nova revisão pedagógica e verificação dos demais
-  revisores quanto ao impacto da alteração;
+- o commit `abd8b90` está pedagogicamente aprovado para avançar ao piloto;
+- as 18 horas permanecem como hipótese até medição com participantes reais;
+- alteração material posterior a `abd8b90` exige nova revisão pedagógica;
+- os demais revisores ainda devem avaliar o impacto da alteração;
 - publicação e merge continuam bloqueados.
+
+## Parecer pedagógico da segunda rodada
+
+- responsável informado: Raphael Soares, Pastor, ICM;
+- relação declarada: independente;
+- commit revisado: `abd8b90`;
+- decisão: **aprovado com condições**;
+- rubrica, composição 60/40, mínimos 80/70 e recuperação: conformes;
+- próximo gate pedagógico: piloto controlado e relatório;
+- publicação automática: não autorizada;
+- independência e competência: ainda sujeitas à verificação institucional.

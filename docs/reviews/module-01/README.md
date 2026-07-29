@@ -19,6 +19,28 @@
 | `2026-07-29-editorial.json` | `rejected` |
 | `2026-07-29-accessibility.json` | `rejected` |
 
+## Segunda rodada pedagógica
+
+O arquivo `2026-07-29-pedagogical-abd8b90.json` registra a revisão humana da
+iteração corrigida:
+
+- conteúdo revisado: commit `abd8b90`;
+- decisão técnica: `approved`;
+- interpretação documental: **aprovado com condições**;
+- condição principal: executar e analisar o piloto pedagógico antes de validar
+  definitivamente a carga de 18 horas;
+- publicação automática: não autorizada;
+- alteração material posterior exige nova revisão pedagógica.
+
+A exportação recebida ainda continha `22b38c3` no campo `contentCommit`, mas o
+responsável confirmou que o parecer revisado se refere a `abd8b90`. O novo
+arquivo corrige somente esse identificador. O checklist, a decisão, os
+bloqueadores, as observações e as declarações humanas foram preservados.
+
+O parecer pedagógico anterior permanece como histórico da primeira rodada. A
+nova aprovação não encerra os gates editorial, jurídico, doutrinário,
+bíblico-pastoral, de acessibilidade, licenciamento ou piloto.
+
 ## Consolidação pedagógica
 
 Foram entregues duas exportações pedagógicas:
@@ -95,9 +117,9 @@ não encerra sozinha o gate institucional.
 
 `changes_required`
 
-O módulo continua bloqueado. Depois das correções, um novo commit de conteúdo
-deve receber nova rodada de pareceres antes da integração restrita ou do
-piloto.
+O módulo continua bloqueado. A correção pedagógica recebeu aprovação
+condicionada para avançar ao piloto, mas os demais pareceres rejeitados ou
+pendentes ainda precisam ser resolvidos antes de qualquer publicação ou merge.
 
 ## Correção pedagógica preparada
 
@@ -109,6 +131,6 @@ Após estes pareceres, foi preparada uma nova iteração com:
 - recuperação que substitui a nota anterior sem penalização;
 - protocolo controlado para validar a carga de 18 horas.
 
-Essas mudanças são posteriores ao commit revisado `22b38c3`. Elas respondem
-aos bloqueadores, mas ainda não foram aprovadas. O próximo parecer deve citar o
-novo commit de correção.
+Essas mudanças são posteriores ao commit revisado `22b38c3`. O parecer
+pedagógico da segunda rodada aprovou com condições o commit `abd8b90`. A carga
+de 18 horas continua sendo hipótese até a execução e análise do piloto.
