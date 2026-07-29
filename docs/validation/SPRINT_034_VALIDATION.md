@@ -48,6 +48,18 @@ Em andamento. Este documento não representa aprovação final.
 - revisões doutrinária, histórica, pedagógica, editorial e de acessibilidade
   ainda pendentes.
 
+## Evidências do rascunho da Aula 4
+
+- versão 1 em estado `draft`;
+- duração planejada de 135 minutos;
+- percurso sobre autoridade, suficiência, clareza e necessidade;
+- Bíblia guiada, oficina pastoral e quiz original com oito questões;
+- limites contra anti-intelectualismo, coerção e nova doutrina registrados;
+- mapa de fontes e alegações registrado;
+- nenhuma reprodução de material proprietário;
+- publicação bloqueada;
+- revisões doutrinária, pedagógica, editorial e de acessibilidade pendentes.
+
 ## Gates pendentes para encerramento
 
 - [ ] oito aulas produzidas e revisadas;

@@ -1,0 +1,95 @@
+{
+  "code": "TEO-FUN-001-M01-Q04",
+  "status": "draft",
+  "version": 1,
+  "questions": [
+    {
+      "prompt": "O que significa autoridade bíblica nesta aula?",
+      "options": [
+        "Toda interpretação de um líder é infalível",
+        "A Escritura governa a fé, a doutrina e a prática",
+        "A Bíblia responde tecnicamente a todas as áreas profissionais",
+        "Uma tradição recebe autoridade por ser antiga"
+      ],
+      "correctIndex": 1,
+      "explanation": "A autoridade pertence à Escritura; intérpretes, tradições e tecnologias permanecem sujeitos a exame."
+    },
+    {
+      "prompt": "Qual definição expressa melhor a suficiência das Escrituras?",
+      "options": [
+        "A Bíblia substitui medicina, ciência e conhecimento profissional",
+        "Nenhum recurso auxiliar pode ser usado",
+        "A Escritura é suficiente para o propósito redentor e formativo dado por Deus",
+        "Cada assunto humano aparece detalhado em suas páginas"
+      ],
+      "correctIndex": 2,
+      "explanation": "Suficiência está relacionada ao propósito da Escritura e não a transforma em enciclopédia de todas as áreas."
+    },
+    {
+      "prompt": "O que a clareza das Escrituras não significa?",
+      "options": [
+        "A mensagem necessária pode ser compreendida",
+        "Leitura e explicação podem caminhar juntas",
+        "Toda passagem é igualmente simples e ninguém discordará",
+        "O leitor pode crescer em responsabilidade"
+      ],
+      "correctIndex": 2,
+      "explanation": "A clareza geral não elimina textos difíceis, estudo, ensino, contexto ou divergências secundárias."
+    },
+    {
+      "prompt": "Como a aula descreve a iluminação do Espírito?",
+      "options": [
+        "Uma licença para ignorar o contexto",
+        "Nova inspiração que corrige a Bíblia",
+        "Ação que ajuda a receber e obedecer à verdade",
+        "Infalibilidade automática de toda impressão"
+      ],
+      "correctIndex": 2,
+      "explanation": "A iluminação acompanha estudo e humildade; não transforma interpretação humana em nova revelação."
+    },
+    {
+      "prompt": "O que Atos 17:10-12 ensina sobre receber uma mensagem?",
+      "options": [
+        "Receber com disposição e examinar pelas Escrituras",
+        "Rejeitar qualquer professor",
+        "Aceitar toda citação sem contexto",
+        "Confiar apenas na popularidade"
+      ],
+      "correctIndex": 0,
+      "explanation": "A passagem sustenta abertura ao ensino e verificação responsável, sem oposição entre as duas atitudes."
+    },
+    {
+      "prompt": "Qual afirmação sobre a necessidade das Escrituras é adequada?",
+      "options": [
+        "Nada verdadeiro pode ser percebido na criação",
+        "Todos precisam usar o mesmo formato impresso",
+        "Dependemos da Palavra revelada para conhecer o evangelho e ordenar a fé",
+        "A leitura individual elimina ensino e missão"
+      ],
+      "correctIndex": 2,
+      "explanation": "A criação testemunha sobre Deus, mas o conteúdo do evangelho depende da revelação especial anunciada e preservada."
+    },
+    {
+      "prompt": "Qual uso da autoridade bíblica é recusado pela aula?",
+      "options": [
+        "Examinar crenças e práticas",
+        "Demonstrar uma conclusão pelo contexto",
+        "Justificar coerção e impedir perguntas legítimas",
+        "Submeter líderes à prestação de contas"
+      ],
+      "correctIndex": 2,
+      "explanation": "Autoridade bíblica não legitima manipulação, encobrimento de abuso ou poder pessoal sem limites."
+    },
+    {
+      "prompt": "Qual é o limite correto do Professor IA?",
+      "options": [
+        "Criar nova doutrina quando faltar fonte",
+        "Apresentar suas respostas como palavras de Deus",
+        "Auxiliar o estudo com fontes e declarar seus limites",
+        "Substituir revisão doutrinária e pastoral"
+      ],
+      "correctIndex": 2,
+      "explanation": "A IA pode apoiar busca e organização, mas permanece subordinada às fontes aprovadas e à revisão humana."
+    }
+  ]
+}

@@ -30,6 +30,8 @@ matérias.
   comparação bíblica, oficina, revisão e quiz de oito questões;
 - [x] produzir o rascunho autoral da Aula 3, com percurso de 135 minutos,
   reconhecimento canônico, transmissão, variantes e quiz de oito questões;
+- [x] produzir o rascunho autoral da Aula 4, com percurso de 135 minutos,
+  autoridade, suficiência, clareza, necessidade e quiz de oito questões;
 - [ ] produzir as oito aulas completas;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
@@ -69,9 +71,15 @@ reconhecimento, transmissão, manuscrito, edição e tradução. Variantes são
 tratadas com transparência, e a enumeração institucional do cânon permanece
 pendente de decisão doutrinária explícita.
 
+A Aula 4, **Autoridade, suficiência, clareza e necessidade**, possui versão 1
+em estado de rascunho. Seu percurso soma 135 minutos e define os quatro
+atributos com limites pastorais. A aula não trata a Bíblia como enciclopédia,
+não transforma iluminação em nova inspiração e não permite usar autoridade
+bíblica para coerção ou para impedir perguntas legítimas.
+
 Essas evidências não equivalem a publicação nem a aprovação. As revisões
 doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
-as outras cinco aulas ainda precisam ser produzidas.
+as outras quatro aulas ainda precisam ser produzidas.
 
 ## Critérios de aceite
 
