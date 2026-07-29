@@ -110,6 +110,16 @@ Esses controles reduzem incerteza, mas não substituem bibliografias,
 licenciamento de recursos futuros, relatório de similaridade, implementação,
 testes reais ou novos pareceres humanos.
 
+### Próxima rodada
+
+O plano ordenado dos gates e o modelo de parecer estão em:
+
+- `FINAL_GATE_PLAN_C95E252.md`;
+- `final-review-template-v2.json`.
+
+O modelo é apenas um formulário vazio. Ele não constitui parecer, não concede
+aprovação e mantém a publicação automática desautorizada.
+
 ### Governança da revisão
 
 - verificar independência e conflito de interesse do responsável;

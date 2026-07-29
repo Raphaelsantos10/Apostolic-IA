@@ -43,6 +43,8 @@ required_files=(
   "docs/editorial/MODULE_01_PROVENANCE.md"
   "docs/legal/MODULE_01_SOURCE_AND_RIGHTS_REGISTER.md"
   "docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md"
+  "docs/reviews/module-01/FINAL_GATE_PLAN_C95E252.md"
+  "docs/reviews/module-01/final-review-template-v2.json"
 )
 
 for file in "${required_files[@]}"; do
@@ -252,6 +254,10 @@ grep -Fq 'implementation_and_testing_pending' \
   docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md
 grep -Fq 'conformidade WCAG 2.2 AA' \
   docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md
+grep -Fq 'O autor não pode aprovar o próprio conteúdo' \
+  docs/reviews/module-01/FINAL_GATE_PLAN_C95E252.md
+grep -Fq 'O PR nº 46 permanece em rascunho' \
+  docs/reviews/module-01/FINAL_GATE_PLAN_C95E252.md
 grep -Fq 'nota final = (projeto × 0,60) + (avaliação final × 0,40)' \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
 grep -Fq 'Excelente | 20' \
@@ -431,5 +437,28 @@ NODE
 grep -q "Em andamento" docs/sprints/SPRINT_034.md
 grep -q "não representa aprovação final" \
   docs/validation/SPRINT_034_VALIDATION.md
+
+node --input-type=module <<'NODE'
+import { readFileSync } from "node:fs";
+
+const template = JSON.parse(
+  readFileSync(
+    "docs/reviews/module-01/final-review-template-v2.json",
+    "utf8"
+  )
+);
+
+if (
+  template.schema !== "apostolic-ia.module-review.v2" ||
+  template.template !== true ||
+  template.module?.contentCommit !== "abd8b90" ||
+  template.module?.controlsCommit !== "c95e252" ||
+  template.review?.decision !== "pending" ||
+  template.declarations?.humanReviewer !== false ||
+  template.automaticPublicationAuthorized !== false
+) {
+  throw new Error("Modelo dos pareceres finais da Sprint 034 inválido.");
+}
+NODE
 
 echo "Sprint 034 - matriz, carga horária e rascunhos das Aulas 1 a 8 validados."

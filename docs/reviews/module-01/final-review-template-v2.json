@@ -1,0 +1,36 @@
+{
+  "schema": "apostolic-ia.module-review.v2",
+  "template": true,
+  "generatedAt": null,
+  "module": {
+    "code": "TEO-ESC-001",
+    "title": "Escrituras: Autoridade, Inspiração e Leitura Responsável",
+    "contentCommit": "abd8b90",
+    "controlsCommit": "c95e252",
+    "plannedHours": 18
+  },
+  "reviewer": {
+    "name": "",
+    "qualification": "",
+    "organization": "",
+    "relationship": "",
+    "conflicts": ""
+  },
+  "review": {
+    "type": "",
+    "date": "",
+    "decision": "pending",
+    "checklist": [],
+    "evidence": [],
+    "blockers": "",
+    "observations": ""
+  },
+  "declarations": {
+    "humanReviewer": false,
+    "reviewedFrozenContent": false,
+    "reviewedControlPackage": false,
+    "bibleFinalAuthority": false,
+    "independenceDeclared": false
+  },
+  "automaticPublicationAuthorized": false
+}

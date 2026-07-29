@@ -50,6 +50,7 @@ matérias.
 - [x] definir o piloto com referências bíblicas sem reprodução de tradução;
 - [x] registrar proveniência, assistência de IA e limites de originalidade;
 - [x] criar registro de fontes, direitos e aceite de acessibilidade;
+- [x] preparar plano e formulário versionado para os gates finais;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] completar bibliografias acadêmicas e confessionais verificáveis;
 - [ ] executar e registrar verificação humana de similaridade;
