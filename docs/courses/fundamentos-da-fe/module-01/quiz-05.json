@@ -1,0 +1,95 @@
+{
+  "code": "TEO-FUN-001-M01-Q05",
+  "status": "draft",
+  "version": 1,
+  "questions": [
+    {
+      "prompt": "O que faz parte do contexto imediato?",
+      "options": [
+        "Somente o título editorial da página",
+        "Frases anteriores, posteriores e desenvolvimento do argumento",
+        "Qualquer opinião moderna sobre o tema",
+        "A aparência gráfica de uma tradução"
+      ],
+      "correctIndex": 1,
+      "explanation": "O contexto imediato acompanha a unidade literária e os elementos que conectam o raciocínio."
+    },
+    {
+      "prompt": "Por que Filipenses 4:13 deve ser lido com os versículos próximos?",
+      "options": [
+        "Para transformar a frase em promessa de qualquer sucesso",
+        "Para compreender contentamento, circunstâncias e participação na missão",
+        "Para eliminar toda aplicação atual",
+        "Para substituir o texto por informação histórica"
+      ],
+      "correctIndex": 1,
+      "explanation": "O parágrafo relaciona força recebida, contentamento em condições diferentes e apoio da comunidade."
+    },
+    {
+      "prompt": "Qual afirmação sobre gênero literário é correta?",
+      "options": [
+        "Todos os gêneros devem ser lidos da mesma maneira",
+        "Gênero orienta as perguntas e expectativas do leitor",
+        "Poesia não comunica verdade",
+        "Narrativa sempre apresenta um mandamento"
+      ],
+      "correctIndex": 1,
+      "explanation": "Narrativa, poesia, sabedoria, carta e outros gêneros comunicam por formas diferentes."
+    },
+    {
+      "prompt": "Como avaliar uma prática narrada em Atos?",
+      "options": [
+        "Repeti-la automaticamente em todos os detalhes",
+        "Ignorá-la por ser narrativa",
+        "Observar avaliação, repetição, explicação e confirmação no conjunto bíblico",
+        "Transformá-la em doutrina por popularidade"
+      ],
+      "correctIndex": 2,
+      "explanation": "Descrição e prescrição precisam ser distinguidas com ajuda do narrador, do resultado e de outras passagens."
+    },
+    {
+      "prompt": "Qual cuidado deve acompanhar uma informação cultural?",
+      "options": [
+        "Usá-la sem fonte se parecer convincente",
+        "Verificar período, lugar, fontes e grau de certeza",
+        "Dar-lhe autoridade igual à Escritura",
+        "Inventar detalhes quando faltarem dados"
+      ],
+      "correctIndex": 1,
+      "explanation": "Reconstruções históricas auxiliam a leitura, mas precisam ser verificáveis e apresentar seus limites."
+    },
+    {
+      "prompt": "O que caracteriza uma leitura cristocêntrica responsável?",
+      "options": [
+        "Transformar cada objeto em símbolo secreto",
+        "Ignorar o assunto original da passagem",
+        "Relacionar a passagem à história redentora e a Cristo respeitando seu sentido",
+        "Ler somente o Novo Testamento"
+      ],
+      "correctIndex": 2,
+      "explanation": "A centralidade de Cristo opera no conjunto da história bíblica sem apagar gênero, contexto ou intenção."
+    },
+    {
+      "prompt": "Como a visão apostólica do projeto é delimitada?",
+      "options": [
+        "Qualquer líder atual torna suas palavras infalíveis",
+        "O testemunho profético e apostólico preservado nas Escrituras examina toda liderança",
+        "Títulos ministeriais substituem o contexto",
+        "Experiências criam doutrina acima da Bíblia"
+      ],
+      "correctIndex": 1,
+      "explanation": "A plataforma se submete ao testemunho bíblico; nenhuma liderança moderna está acima dele."
+    },
+    {
+      "prompt": "Qual é um limite correto para o Professor IA?",
+      "options": [
+        "Inventar um costume antigo para explicar o texto",
+        "Escolher uma etimologia pela semelhança sonora",
+        "Organizar perguntas e declarar quando a informação não está confirmada",
+        "Transformar hipótese em posição oficial"
+      ],
+      "correctIndex": 2,
+      "explanation": "A IA pode auxiliar a investigação, mas deve fundamentar informações e declarar incertezas."
+    }
+  ]
+}

@@ -32,6 +32,8 @@ matérias.
   reconhecimento canônico, transmissão, variantes e quiz de oito questões;
 - [x] produzir o rascunho autoral da Aula 4, com percurso de 135 minutos,
   autoridade, suficiência, clareza, necessidade e quiz de oito questões;
+- [x] produzir o rascunho autoral da Aula 5, com percurso de 135 minutos,
+  contextos histórico, literário e bíblico e quiz de oito questões;
 - [ ] produzir as oito aulas completas;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
@@ -77,9 +79,15 @@ atributos com limites pastorais. A aula não trata a Bíblia como enciclopédia,
 não transforma iluminação em nova inspiração e não permite usar autoridade
 bíblica para coerção ou para impedir perguntas legítimas.
 
+A Aula 5, **Contexto histórico, literário e bíblico**, possui versão 1 em
+estado de rascunho. Seu percurso soma 135 minutos e trabalha unidade literária,
+gêneros, descrição e prescrição, investigação histórica, história da redenção e
+aplicação. A aula proíbe contexto inventado, etimologias improvisadas e
+alegorização cristocêntrica sem controle.
+
 Essas evidências não equivalem a publicação nem a aprovação. As revisões
 doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
-as outras quatro aulas ainda precisam ser produzidas.
+as outras três aulas ainda precisam ser produzidas.
 
 ## Critérios de aceite
 

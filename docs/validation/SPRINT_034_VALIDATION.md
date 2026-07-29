@@ -60,6 +60,20 @@ Em andamento. Este documento não representa aprovação final.
 - publicação bloqueada;
 - revisões doutrinária, pedagógica, editorial e de acessibilidade pendentes.
 
+## Evidências do rascunho da Aula 5
+
+- versão 1 em estado `draft`;
+- duração planejada de 135 minutos;
+- percurso sobre contextos literário, histórico e bíblico;
+- distinção entre gênero, descrição, princípio, mandamento e aplicação;
+- Bíblia guiada, oficina contextual e quiz original com oito questões;
+- limites contra contexto inventado, etimologias improvisadas e alegorização;
+- mapa de fontes e alegações registrado;
+- nenhuma reprodução de material proprietário;
+- publicação bloqueada;
+- revisões doutrinária, histórica, pedagógica, editorial e de acessibilidade
+  pendentes.
+
 ## Gates pendentes para encerramento
 
 - [ ] oito aulas produzidas e revisadas;
