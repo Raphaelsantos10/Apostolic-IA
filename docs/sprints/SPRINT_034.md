@@ -109,15 +109,16 @@ de rascunho. Seu percurso soma 135 minutos, revisa as sete aulas, consolida um
 método em oito passos, propõe projeto com rubrica, cinco casos de discernimento,
 avaliação original de 16 questões e recuperação sem punição gamificada.
 
-Essas evidências não equivalem a publicação nem a aprovação. As revisões
-doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
-o módulo ainda depende de revisão integral, licenças, recursos multimédia,
-integração ao player, testes com usuários e aprovações humanas.
+Essas evidências não equivalem a publicação. O parecer doutrinário foi
+aprovado com condicionantes; o parecer pedagógico solicitou alterações; o
+parecer editorial e o gate de acessibilidade rejeitaram a versão. O módulo
+ainda depende de correções, licenças, recursos multimédia, integração ao
+player, testes com usuários e uma nova rodada de pareceres.
 
 O pacote `docs/reviews/MODULE_01_HUMAN_REVIEW.md` congela o conteúdo-base no
 commit `22b38c3`, define três pareceres humanos formais, mantém acessibilidade
-como gate separado e registra todas as decisões como pendentes. Ele não
-autoriza publicação ou merge.
+como gate separado e registra as decisões recebidas. Os arquivos canônicos
+estão em `docs/reviews/module-01/`. Eles não autorizam publicação ou merge.
 
 ## Critérios de aceite
 

@@ -30,6 +30,11 @@ required_files=(
   "docs/courses/fundamentos-da-fe/module-01/quiz-08.json"
   "docs/courses/fundamentos-da-fe/module-01/sources-08.md"
   "docs/reviews/MODULE_01_HUMAN_REVIEW.md"
+  "docs/reviews/module-01/README.md"
+  "docs/reviews/module-01/2026-07-29-doctrinal.json"
+  "docs/reviews/module-01/2026-07-29-pedagogical.json"
+  "docs/reviews/module-01/2026-07-29-editorial.json"
+  "docs/reviews/module-01/2026-07-29-accessibility.json"
   "docs/sprints/SPRINT_034.md"
   "docs/validation/SPRINT_034_VALIDATION.md"
 )
@@ -211,22 +216,53 @@ grep -Fq "accessibility: pending" \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
 grep -Fq "não reproduz material proprietário" \
   docs/courses/fundamentos-da-fe/module-01/sources-08.md
-grep -Fq 'awaiting_human_review' \
+grep -Fq 'changes_required' \
   docs/reviews/MODULE_01_HUMAN_REVIEW.md
 grep -Fq 'conteúdo-base: commit `22b38c3`' \
   docs/reviews/MODULE_01_HUMAN_REVIEW.md
 grep -Fq "O autor não pode aprovar o próprio conteúdo" \
   docs/reviews/MODULE_01_HUMAN_REVIEW.md
-grep -Fq "parecer doutrinário: **pendente**" \
+grep -Fq "parecer doutrinário, bíblico e pastoral: **aprovado com condicionantes**" \
   docs/reviews/MODULE_01_HUMAN_REVIEW.md
-grep -Fq "parecer pedagógico: **pendente**" \
+grep -Fq "parecer pedagógico: **alterações solicitadas**" \
   docs/reviews/MODULE_01_HUMAN_REVIEW.md
-grep -Fq "parecer editorial: **pendente**" \
+grep -Fq "parecer editorial, originalidade e licenças: **rejeitado**" \
   docs/reviews/MODULE_01_HUMAN_REVIEW.md
-grep -Fq "gate de acessibilidade: **pendente**" \
+grep -Fq "gate de acessibilidade: **rejeitado**" \
+  docs/reviews/MODULE_01_HUMAN_REVIEW.md
+grep -Fq "independência e competência específica dos pareceres: **a verificar**" \
   docs/reviews/MODULE_01_HUMAN_REVIEW.md
 grep -Fq "publicação: **bloqueada**" \
   docs/reviews/MODULE_01_HUMAN_REVIEW.md
+
+node --input-type=module <<'NODE'
+import { readFileSync } from "node:fs";
+
+const expected = new Map([
+  ["doctrinal", "approved"],
+  ["pedagogical", "changes-requested"],
+  ["editorial", "rejected"],
+  ["accessibility", "rejected"]
+]);
+
+for (const [type, decision] of expected) {
+  const path = `docs/reviews/module-01/2026-07-29-${type}.json`;
+  const review = JSON.parse(readFileSync(path, "utf8"));
+
+  if (review.schema !== "apostolic-ia.module-review.v1") {
+    throw new Error(`Schema inválido em ${path}`);
+  }
+  if (review.module?.contentCommit !== "22b38c3") {
+    throw new Error(`Commit revisado inválido em ${path}`);
+  }
+  if (review.review?.type !== type || review.review?.decision !== decision) {
+    throw new Error(`Decisão inválida em ${path}`);
+  }
+  if (review.automaticPublicationAuthorized !== false) {
+    throw new Error(`Publicação automática indevidamente autorizada em ${path}`);
+  }
+}
+NODE
 
 node --input-type=module <<'NODE'
 import { readFileSync } from "node:fs";

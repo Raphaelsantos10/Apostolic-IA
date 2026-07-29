@@ -2,7 +2,7 @@
 
 ## Estado
 
-`awaiting_human_review`
+`changes_required`
 
 Este documento organiza a revisão do módulo **Escrituras: Autoridade,
 Inspiração e Leitura Responsável**. Ele não concede aprovação, não publica
@@ -151,14 +151,18 @@ obrigatório de publicação, com evidência própria.
 
 | Aula | Tema | Doutrinária | Pedagógica | Editorial | Acessibilidade |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | Revelação e Palavra escrita | Pendente | Pendente | Pendente | Pendente |
-| 2 | Inspiração e autoria humana | Pendente | Pendente | Pendente | Pendente |
-| 3 | Cânon e transmissão | Pendente | Pendente | Pendente | Pendente |
-| 4 | Autoridade e suficiência | Pendente | Pendente | Pendente | Pendente |
-| 5 | Contextos de interpretação | Pendente | Pendente | Pendente | Pendente |
-| 6 | Leitura cristocêntrica | Pendente | Pendente | Pendente | Pendente |
-| 7 | Aplicação fiel | Pendente | Pendente | Pendente | Pendente |
-| 8 | Integração e avaliação | Pendente | Pendente | Pendente | Pendente |
+| 1 | Revelação e Palavra escrita | Aprovado | Alterações | Rejeitado | Rejeitado |
+| 2 | Inspiração e autoria humana | Aprovado | Alterações | Rejeitado | Rejeitado |
+| 3 | Cânon e transmissão | Aprovado* | Alterações | Rejeitado | Rejeitado |
+| 4 | Autoridade e suficiência | Aprovado | Alterações | Rejeitado | Rejeitado |
+| 5 | Contextos de interpretação | Aprovado | Alterações | Rejeitado | Rejeitado |
+| 6 | Leitura cristocêntrica | Aprovado | Alterações | Rejeitado | Rejeitado |
+| 7 | Aplicação fiel | Aprovado | Alterações | Rejeitado | Rejeitado |
+| 8 | Integração e avaliação | Aprovado | Alterações | Rejeitado | Rejeitado |
+
+\* A aprovação doutrinária exige, antes da publicação, revisão histórica e
+textual especializada da Aula 3 e aprovação explícita da lista canônica
+institucional.
 
 ## Registro de cada parecer
 
@@ -205,11 +209,25 @@ do merge.
 
 ## Decisão atual
 
-- parecer doutrinário: **pendente**;
-- parecer pedagógico: **pendente**;
-- parecer editorial: **pendente**;
-- gate de acessibilidade: **pendente**;
-- licenças: **pendentes**;
-- integração ao player: **pendente**;
+Pareceres humanos recebidos em 29 de julho de 2026 para o conteúdo-base do
+commit `22b38c3`:
+
+- parecer doutrinário, bíblico e pastoral: **aprovado com condicionantes**;
+- parecer pedagógico: **alterações solicitadas**;
+- parecer editorial, originalidade e licenças: **rejeitado**;
+- gate de acessibilidade: **rejeitado**;
+- independência e competência específica dos pareceres: **a verificar**;
+- licenças e bibliografias: **pendentes**;
+- integração acessível ao player e piloto cronometrado: **pendentes**;
 - publicação: **bloqueada**;
-- merge do PR nº 46: **não autorizado por este documento**.
+- merge do PR nº 46: **não autorizado por estes pareceres**.
+
+Foram recebidas duas exportações pedagógicas. A decisão final
+`changes-requested` foi confirmada pelo responsável humano. O arquivo canônico
+preserva os bloqueadores e as observações pedagógicas da exportação coerente,
+sem incorporar por engano os textos dos pareceres editorial e de
+acessibilidade.
+
+Os arquivos canônicos e o registro de consolidação estão em
+`docs/reviews/module-01/`. Alteração material posterior ao commit `22b38c3`
+exige nova rodada de revisão.

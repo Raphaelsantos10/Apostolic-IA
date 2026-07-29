@@ -1,0 +1,81 @@
+{
+  "schema": "apostolic-ia.module-review.v1",
+  "generatedAt": "2026-07-29T16:20:39.702Z",
+  "module": {
+    "code": "TEO-ESC-001",
+    "title": "Escrituras: Autoridade, Inspiração e Leitura Responsável",
+    "contentCommit": "22b38c3",
+    "plannedHours": 18
+  },
+  "reviewer": {
+    "name": "Raphael dos Santos Soares",
+    "qualification": "Pastor",
+    "organization": "ICM",
+    "relationship": "independent"
+  },
+  "review": {
+    "type": "pedagogical",
+    "date": "2026-07-29",
+    "decision": "changes-requested",
+    "checklist": [
+      {
+        "id": "measurable_objectives",
+        "result": "compliant",
+        "label": "Os objetivos são claros e mensuráveis."
+      },
+      {
+        "id": "learning_progression",
+        "result": "compliant",
+        "label": "As oito aulas possuem progressão coerente."
+      },
+      {
+        "id": "workload",
+        "result": "compliant",
+        "label": "A carga planejada de 18 horas é plausível."
+      },
+      {
+        "id": "guided_readings",
+        "result": "compliant",
+        "label": "As leituras guiadas promovem observação e compreensão."
+      },
+      {
+        "id": "activities_alignment",
+        "result": "compliant",
+        "label": "As atividades praticam as competências ensinadas."
+      },
+      {
+        "id": "quiz_quality",
+        "result": "compliant",
+        "label": "Os quizzes avaliam os objetivos sem pegadinhas."
+      },
+      {
+        "id": "final_assessment",
+        "result": "compliant",
+        "label": "A avaliação final cobre o módulo proporcionalmente."
+      },
+      {
+        "id": "rubric",
+        "result": "needs-correction",
+        "label": "A rubrica do projeto possui critérios observáveis."
+      },
+      {
+        "id": "recovery",
+        "result": "compliant",
+        "label": "A recuperação promove nova aprendizagem sem humilhação."
+      },
+      {
+        "id": "gamification",
+        "result": "compliant",
+        "label": "A gamificação mede progresso acadêmico, não espiritualidade."
+      }
+    ],
+    "blockers": "A rubrica do projeto integrador ainda não possui descritores de desempenho que expliquem objetivamente o que caracteriza resultado excelente, adequado, parcial ou insuficiente em cada critério. As faixas de aprovação e recuperação são apresentadas como proposta de rascunho e ainda dependem de aprovação pedagógica. A carga de 18 horas foi corretamente calculada no planejamento, mas ainda não foi validada com estudantes no piloto",
+    "observations": "O módulo apresenta progressão pedagógica coerente. A Aula 1 introduz revelação e autoridade; a Aula 2 desenvolve inspiração e autoria humana; a Aula 3 distingue cânon e transmissão; a Aula 4 trabalha os atributos das Escrituras; a Aula 5 ensina contexto; a Aula 6 desenvolve leitura cristocêntrica; a Aula 7 trata da aplicação; e a Aula 8 integra e avalia as competências.\n\nOs objetivos são geralmente claros e vinculados às atividades. As leituras guiadas promovem observação, comparação, contextualização e compreensão. Os quizzes das páginas 97–110 apresentam perguntas diretas, sem pegadinhas relevantes. Os gabaritos comentados das páginas 115–122 explicam as respostas e podem apoiar a recuperação.\n\nA avaliação final das páginas 111–113 contém 16 questões e cobre adequadamente os principais eixos do módulo. A recuperação proposta nas páginas 92–93 promove nova aprendizagem: o estudante identifica o erro, relê a seção correspondente, explica por que a alternativa estava errada, pratica com outra passagem e realiza nova tentativa.\n\nA rubrica da página 91 precisa ser ampliada. Para cada critério, recomenda-se criar quatro níveis de desempenho, com descritores observáveis. Também deve ser esclarecido como o projeto integrador e a avaliação objetiva participam da nota final.\n\nRecomenda-se executar um piloto cronometrado com estudantes do público-alvo para confirmar as 18 horas, a clareza das instruções, o nível de dificuldade e a quantidade de leitura. Depois do piloto, devem ser registradas as alterações realizadas e a nova versão do conteúdo."
+  },
+  "declarations": {
+    "humanReviewer": true,
+    "reviewedContent": true,
+    "bibleFinalAuthority": true
+  },
+  "automaticPublicationAuthorized": false
+}

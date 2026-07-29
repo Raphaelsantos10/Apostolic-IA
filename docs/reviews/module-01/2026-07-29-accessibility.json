@@ -1,0 +1,91 @@
+{
+  "schema": "apostolic-ia.module-review.v1",
+  "generatedAt": "2026-07-29T16:16:56.574Z",
+  "module": {
+    "code": "TEO-ESC-001",
+    "title": "Escrituras: Autoridade, Inspiração e Leitura Responsável",
+    "contentCommit": "22b38c3",
+    "plannedHours": 18
+  },
+  "reviewer": {
+    "name": "Raphael dos Santos Soares",
+    "qualification": "Pastor",
+    "organization": "ICM",
+    "relationship": "independent"
+  },
+  "review": {
+    "type": "accessibility",
+    "date": "2026-07-29",
+    "decision": "rejected",
+    "checklist": [
+      {
+        "id": "heading_structure",
+        "result": "compliant",
+        "label": "A estrutura de títulos é lógica."
+      },
+      {
+        "id": "table_headers",
+        "result": "compliant",
+        "label": "Tabelas possuem cabeçalhos compreensíveis."
+      },
+      {
+        "id": "not_color_only",
+        "result": "compliant",
+        "label": "Instruções não dependem apenas de cor, som ou posição."
+      },
+      {
+        "id": "plain_language",
+        "result": "compliant",
+        "label": "A linguagem é clara e termos difíceis são explicados."
+      },
+      {
+        "id": "transcripts",
+        "result": "needs-correction",
+        "label": "Áudios possuem ou terão transcrição."
+      },
+      {
+        "id": "captions",
+        "result": "needs-correction",
+        "label": "Vídeos possuem ou terão legendas."
+      },
+      {
+        "id": "alt_text",
+        "result": "needs-correction",
+        "label": "Imagens possuem ou terão alternativas textuais."
+      },
+      {
+        "id": "keyboard",
+        "result": "needs-correction",
+        "label": "Avaliações funcionam com teclado."
+      },
+      {
+        "id": "screen_reader",
+        "result": "needs-correction",
+        "label": "Conteúdo e avaliações são compreensíveis por leitor de tela."
+      },
+      {
+        "id": "responsive_zoom",
+        "result": "needs-correction",
+        "label": "Zoom a 200% e largura de 320 CSS px permanecem utilizáveis."
+      },
+      {
+        "id": "reduced_motion",
+        "result": "needs-correction",
+        "label": "Movimento reduzido não remove conteúdo."
+      },
+      {
+        "id": "timing",
+        "result": "needs-correction",
+        "label": "Pausas e tempo adicional não penalizam o aluno."
+      }
+    ],
+    "blockers": "O PDF não possui marcação estrutural suficiente para comprovar navegação adequada por leitor de tela. A implementação das aulas e avaliações na plataforma não foi disponibilizada para testes com teclado, leitor de tela, zoom de 200% ou largura de 320 CSS px. Áudios, vídeos, imagens e demais recursos multimédia ainda não foram produzidos; portanto, transcrições, legendas, audiodescrição e textos alternativos também não podem ser verificados. Não foi apresentada política que garanta pausas, tempo adicional e retomada de avaliações sem penalização.",
+    "observations": "A organização visual do PDF é lógica: as aulas possuem pergunta central, objetivos, percurso, conteúdo, atividades, resumo, glossário, revisão, fontes e aprovações pendentes. As tabelas apresentam cabeçalhos compreensíveis, e as instruções não dependem exclusivamente de cor, som ou posição. A linguagem é geralmente clara e os termos técnicos são apoiados por glossários e resumos.\n\nApesar dessas qualidades, o arquivo PDF está identificado tecnicamente como não tagueado. Isso impede considerá-lo plenamente acessível para leitores de tela. Deve ser criada uma versão com estrutura semântica de títulos, ordem de leitura correta, listas e tabelas marcadas, idioma definido, marcadores de navegação e metadados acessíveis.\n\nA conformidade da plataforma somente poderá ser aprovada depois de testes reais. Todas as ações devem funcionar por teclado, com foco visível e ordem lógica. Quizzes e avaliação final precisam permitir seleção, revisão, envio, leitura do erro e nova tentativa sem depender de arrastar, cor ou tempo rígido.\n\nA interface deverá permanecer utilizável com zoom de 200% e em largura de 320 CSS px, sem perda de conteúdo ou rolagem horizontal desnecessária. Conteúdo animado deverá respeitar a preferência de movimento reduzido sem esconder informações.\n\nÁudios devem possuir transcrição revisada. Vídeos devem possuir legendas sincronizadas e, quando necessário, audiodescrição. Imagens pedagógicas, mapas e diagramas devem possuir alternativas textuais equivalentes.\n\nOs tempos indicados nas aulas devem ser tratados como estimativas, não limites compulsórios. Recomenda-se permitir pausa, retomada, extensão de tempo e desativação de contagem regressiva como adaptação, sem perda de pontos, sequência ou acesso à recuperação. A aprovação final deve incluir testes com usuários que utilizem teclado e leitores de tela."
+  },
+  "declarations": {
+    "humanReviewer": true,
+    "reviewedContent": true,
+    "bibleFinalAuthority": true
+  },
+  "automaticPublicationAuthorized": false
+}

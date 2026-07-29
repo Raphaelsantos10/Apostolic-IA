@@ -135,8 +135,14 @@ Em andamento. Este documento não representa aprovação final.
 - acessibilidade preservada como gate obrigatório separado;
 - independência entre autor e revisor exigida;
 - matrizes doutrinária, pedagógica, editorial e de acessibilidade registradas;
-- nomes, decisões e assinaturas não foram inventados;
-- todas as decisões permanecem pendentes;
+- parecer doutrinário aprovado com condicionantes;
+- parecer pedagógico com alterações solicitadas;
+- parecer editorial rejeitado;
+- gate de acessibilidade rejeitado;
+- independência e competência específica do responsável ainda sujeitas a
+  verificação institucional;
+- divergência entre duas exportações pedagógicas consolidada após confirmação
+  humana da decisão `changes-requested`;
 - publicação e merge permanecem bloqueados.
 
 ## Evidências técnicas informadas antes da revisão
@@ -169,5 +175,6 @@ final candidato a merge.
 
 ## Resultado
 
-Pendente. A Sprint 034 não deve ser marcada como concluída nem incorporada até
-todos os gates acima estarem aprovados.
+Alterações obrigatórias. A Sprint 034 não deve ser marcada como concluída nem
+incorporada. O módulo precisa de correções pedagógicas, editoriais, jurídicas
+e de acessibilidade, seguidas de nova versão e nova rodada de pareceres.
