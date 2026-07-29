@@ -40,11 +40,21 @@ Cremos que o Espírito Santo convence do pecado, regenera, habita, santifica,
 capacita e guia os crentes. O batismo no Espírito Santo é recebido
 subsequentemente ao novo nascimento e é acompanhado pela evidência inicial e
 perene de falar em outras línguas conforme o Espírito concede. Cremos na
-atualidade dos dons espirituais, exercidos com ordem, discernimento, amor e
-submissão às Escrituras.
+atualidade e continuidade dos dons espirituais. O Espírito Santo continua
+distribuindo dons para edificação da Igreja, serviço cristão e testemunho de
+Jesus Cristo. Esses dons devem ser exercidos com amor, ordem, humildade,
+discernimento, prestação de contas e submissão às Escrituras.
+
+Profecias, sonhos, impressões, palavras de conhecimento e orientações
+espirituais devem ser examinados biblicamente pela comunidade da fé. Não
+possuem autoridade para ampliar o cânon, corrigir as Escrituras, criar nova
+doutrina ou contradizer a Palavra de Deus. Reconhecer esses limites não
+significa negar os dons atuais, mas praticá-los de maneira bíblica e
+cristocêntrica.
 
 Referências para revisão: João 14:16-17; João 16:8-13; Atos 1:8;
-1 Coríntios 12-14; Gálatas 5:22-25.
+Romanos 12:3-8; 1 Coríntios 12-14; Efésios 4:7-16;
+1 Tessalonicenses 5:19-22; 1 João 4:1; Gálatas 5:22-25.
 
 ## 5. Humanidade, pecado e dignidade
 

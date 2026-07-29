@@ -121,6 +121,14 @@ grep -Fq "editorial: pending" \
   docs/courses/fundamentos-da-fe/module-01/lesson-03.md
 grep -Fq "accessibility: pending" \
   docs/courses/fundamentos-da-fe/module-01/lesson-03.md
+grep -Fq "continuidade dos dons espirituais" \
+  docs/doctrine/CONSTITUICAO_DOUTRINARIA.md
+grep -Fq "Cânon fechado e dons espirituais atuais" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-03.md
+grep -Fq "Dons atuais não ampliam o cânon nem substituem as Escrituras" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-03.md
+grep -Fq "1 Tessalonicenses 5:19-22" \
+  docs/courses/fundamentos-da-fe/module-01/sources-03.md
 grep -Fq "não reproduz material proprietário" \
   docs/courses/fundamentos-da-fe/module-01/sources-03.md
 grep -Fq "não enumera oficialmente o cânon do projeto" \

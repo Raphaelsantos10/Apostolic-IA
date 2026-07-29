@@ -337,6 +337,24 @@ Use linguagem respeitosa. Não ridicularize dúvidas sinceras.
 O Apostolic IA confessa as Escrituras do Antigo e do Novo Testamento como
 inspiradas por Deus e autoridade final para fé, doutrina e prática.
 
+### Cânon fechado e dons espirituais atuais
+
+O reconhecimento do cânon não significa que o Espírito Santo deixou de agir.
+O Apostolic IA crê na atuação presente do Espírito Santo e na continuidade dos
+dons espirituais para edificação da Igreja, serviço cristão e testemunho de
+Jesus Cristo.
+
+As Escrituras orientam a não desprezar profecias e, ao mesmo tempo, a examinar
+todas as coisas. Por isso, profecias, sonhos, impressões e orientações
+espirituais devem ser avaliados biblicamente, com discernimento comunitário,
+ordem, humildade e responsabilidade pastoral. Nenhuma manifestação atual pode
+ampliar o cânon, corrigir as Escrituras, criar nova doutrina ou receber a mesma
+autoridade da Palavra de Deus.
+
+Esse limite não é uma negação dos dons. É uma proteção bíblica para que os dons
+sejam exercidos de modo cristocêntrico, edificante e submetido à autoridade
+final das Escrituras.
+
 Neste rascunho, essa posição exige:
 
 - reconhecer o processo histórico sem reduzir autoridade a decisões humanas;
@@ -345,6 +363,8 @@ Neste rascunho, essa posição exige:
 - não inventar certeza quando a evidência está em discussão;
 - não tratar notas, comentários ou respostas de IA como Escritura;
 - submeter a lista institucional de livros a aprovação doutrinária explícita;
+- reconhecer os dons espirituais atuais sem tratá-los como nova Escritura;
+- examinar profecias e orientações espirituais à luz da Bíblia;
 - respeitar pessoas de outras tradições sem misturar posições no produto.
 
 A IA pode organizar referências aprovadas, mas não decide o cânon, não
@@ -371,6 +391,8 @@ mais convincente.
 - Os textos foram copiados à mão antes da impressão.
 - Cópias apresentam variantes, que devem ser comparadas com transparência.
 - Manuscrito, edição, tradução e Bíblia de estudo não são a mesma coisa.
+- O Espírito Santo continua agindo e concedendo dons à Igreja.
+- Dons atuais não ampliam o cânon nem substituem as Escrituras.
 - Confiança responsável une fé, evidência, humildade e disposição para revisão.
 
 ## Glossário

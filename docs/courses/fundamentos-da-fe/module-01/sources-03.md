@@ -15,13 +15,16 @@ Este rascunho não reproduz material proprietário de terceiros.
 - João 20:30-31 — seleção e propósito do testemunho escrito
 - Lucas 1:1-4 — testemunhas, pesquisa e organização
 - Jeremias 36 — escrita, cópia destruída e nova redação
+- 1 Coríntios 12-14 — continuidade, finalidade e ordem dos dons espirituais
+- 1 Tessalonicenses 5:19-22 — não desprezar profecias e examinar todas as coisas
+- 1 João 4:1 — discernimento de manifestações espirituais
 
 As referências são indicadas sem reprodução integral. A tradução exibida no
 produto deverá estar autorizada para o território e para o modo de uso.
 
 ## Fontes internas de governo
 
-- `docs/doctrine/CONSTITUICAO_DOUTRINARIA.md`, seções 1, 12 e 13
+- `docs/doctrine/CONSTITUICAO_DOUTRINARIA.md`, seções 1, 4, 12 e 13
 - `docs/editorial/TEOLOGIA_APROVACAO.md`
 - `docs/editorial/AI_CONTENT_POLICY.md`
 - `docs/editorial/CONTENT_ORIGINALITY_POLICY.md`
@@ -56,6 +59,8 @@ lidas e registradas com capítulos e páginas efetivamente consultados.
 | Jesus recebeu e interpretou as Escrituras de Israel | Lucas 24:44-49 | Bíblica |
 | Cartas circularam entre comunidades | Colossenses 4:15-16 | Bíblica |
 | Escritos apostólicos eram tratados com autoridade | 2 Pedro 3:14-18 | Bíblica |
+| Os dons espirituais permanecem atuais e devem ser examinados | 1 Coríntios 12-14; 1 Tessalonicenses 5:19-22; 1 João 4:1 | Bíblica e confessional |
+| Dons atuais não ampliam o cânon nem substituem as Escrituras | Constituição, seções 1, 4 e 13 | Governança |
 | O reconhecimento ocorreu progressivamente | Dossiê de fontes candidatas | Revisão histórica pendente |
 | A cópia manual produziu variantes | Fontes institucionais registradas | Revisão textual pendente |
 | Variantes devem ser comparadas, não escondidas | Política editorial | Governança |
