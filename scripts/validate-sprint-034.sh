@@ -45,6 +45,7 @@ required_files=(
   "docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md"
   "docs/reviews/module-01/FINAL_GATE_PLAN_C95E252.md"
   "docs/reviews/module-01/final-review-template-v2.json"
+  "docs/research/MODULE_01_AULA_03_SOURCE_DOSSIER.md"
 )
 
 for file in "${required_files[@]}"; do
@@ -258,6 +259,14 @@ grep -Fq 'O autor não pode aprovar o próprio conteúdo' \
   docs/reviews/module-01/FINAL_GATE_PLAN_C95E252.md
 grep -Fq 'O PR nº 46 permanece em rascunho' \
   docs/reviews/module-01/FINAL_GATE_PLAN_C95E252.md
+grep -Fq 'candidate_sources_registered_specialist_review_pending' \
+  docs/research/MODULE_01_AULA_03_SOURCE_DOSSIER.md
+grep -Fq 'Obra candidata não é fonte efetivamente utilizada' \
+  docs/research/MODULE_01_AULA_03_SOURCE_DOSSIER.md
+grep -Fq 'specialist_review: pending' \
+  docs/research/MODULE_01_AULA_03_SOURCE_DOSSIER.md
+grep -Fq 'MODULE_01_AULA_03_SOURCE_DOSSIER.md' \
+  docs/courses/fundamentos-da-fe/module-01/sources-03.md
 grep -Fq 'nota final = (projeto × 0,60) + (avaliação final × 0,40)' \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
 grep -Fq 'Excelente | 20' \

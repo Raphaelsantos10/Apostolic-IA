@@ -44,6 +44,11 @@ páginas ou localização, finalidade, notas utilizadas e licença. Afirmações
 históricas específicas devem apontar para evidência, não apenas para resumos
 populares.
 
+Um primeiro registro de fontes institucionais consultadas e obras candidatas
+está em `docs/research/MODULE_01_AULA_03_SOURCE_DOSSIER.md`. O dossiê não
+conclui a bibliografia: obras candidatas ainda precisam ser obtidas legalmente,
+lidas e registradas com capítulos e páginas efetivamente consultados.
+
 ## Matriz de afirmações
 
 | Afirmação | Base | Estado |
@@ -51,8 +56,8 @@ populares.
 | Jesus recebeu e interpretou as Escrituras de Israel | Lucas 24:44-49 | Bíblica |
 | Cartas circularam entre comunidades | Colossenses 4:15-16 | Bíblica |
 | Escritos apostólicos eram tratados com autoridade | 2 Pedro 3:14-18 | Bíblica |
-| O reconhecimento ocorreu progressivamente | Bibliografia pendente | Revisão histórica |
-| A cópia manual produziu variantes | Bibliografia pendente | Revisão textual |
+| O reconhecimento ocorreu progressivamente | Dossiê de fontes candidatas | Revisão histórica pendente |
+| A cópia manual produziu variantes | Fontes institucionais registradas | Revisão textual pendente |
 | Variantes devem ser comparadas, não escondidas | Política editorial | Governança |
 | A lista institucional precisa de aprovação explícita | Constituição, seção 12 | Pendente |
 

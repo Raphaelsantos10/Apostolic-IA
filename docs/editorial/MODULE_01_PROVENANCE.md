@@ -90,10 +90,12 @@ ficar fora do repositório público quando contiver material protegido.
 
 ## Bibliografias
 
-As bibliografias acadêmicas e confessionais continuam incompletas. Nenhuma
-entrada deve ser inventada. Cada fonte futura deverá informar autor, obra,
-edição, editora ou instituição, ano, páginas ou localização consultada,
-finalidade, notas utilizadas e situação de licença.
+As bibliografias acadêmicas e confessionais continuam incompletas. A Aula 3
+possui um dossiê inicial que separa páginas institucionais consultadas de obras
+apenas candidatas à aquisição. Nenhuma entrada deve ser inventada. Cada fonte
+efetivamente utilizada deverá informar autor, obra, edição, editora ou
+instituição, ano, páginas ou localização consultada, finalidade, notas
+utilizadas e situação de licença.
 
 ## Gate
 

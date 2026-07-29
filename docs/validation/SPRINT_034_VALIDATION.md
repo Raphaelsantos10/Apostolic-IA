@@ -219,3 +219,13 @@ e de acessibilidade, seguidas de nova versão e nova rodada de pareceres.
   px, movimento reduzido, pausa e retomada;
 - nenhuma conformidade WCAG ou aprovação editorial foi declarada;
 - publicação e merge permanecem bloqueados.
+
+## Pesquisa histórica e textual da Aula 3
+
+- fontes institucionais de manuscritos e edições críticas registradas;
+- metadados de quatro obras candidatas confirmados em páginas oficiais;
+- páginas institucionais consultadas separadas de livros ainda não adquiridos;
+- nenhuma página de livro, citação ou parecer especializado inventado;
+- matriz de afirmações e perguntas preparada para o revisor;
+- bibliografia completa e parecer histórico-textual permanecem pendentes;
+- publicação continua bloqueada.

@@ -51,6 +51,7 @@ matérias.
 - [x] registrar proveniência, assistência de IA e limites de originalidade;
 - [x] criar registro de fontes, direitos e aceite de acessibilidade;
 - [x] preparar plano e formulário versionado para os gates finais;
+- [x] registrar fontes institucionais e obras candidatas para a Aula 3;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] completar bibliografias acadêmicas e confessionais verificáveis;
 - [ ] executar e registrar verificação humana de similaridade;
