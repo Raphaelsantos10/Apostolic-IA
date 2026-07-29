@@ -1,0 +1,95 @@
+{
+  "code": "TEO-FUN-001-M01-Q07",
+  "status": "draft",
+  "version": 1,
+  "questions": [
+    {
+      "prompt": "Qual relação correta existe entre significado e aplicação?",
+      "options": [
+        "A aplicação substitui o significado",
+        "A aplicação deriva do significado compreendido no contexto",
+        "O significado muda conforme a preferência",
+        "Qualquer aplicação emocional é válida"
+      ],
+      "correctIndex": 1,
+      "explanation": "A resposta atual deve nascer da ideia central e respeitar contexto, evangelho e propósito da passagem."
+    },
+    {
+      "prompt": "O que caracteriza o moralismo?",
+      "options": [
+        "Obediência como resposta à graça",
+        "Dependência do Espírito",
+        "Desempenho usado para conquistar aceitação ou superioridade",
+        "Arrependimento e fé"
+      ],
+      "correctIndex": 2,
+      "explanation": "Moralismo separa comportamento da graça e pode produzir orgulho, comparação ou desespero."
+    },
+    {
+      "prompt": "Como questões de consciência devem ser tratadas?",
+      "options": [
+        "Toda preferência deve virar doutrina",
+        "Liberdade dispensa amor ao próximo",
+        "Com discernimento, amor, edificação e sem imposição indevida",
+        "Somente pela pontuação da plataforma"
+      ],
+      "correctIndex": 2,
+      "explanation": "Romanos 14 e 1 Coríntios 8–10 unem consciência, liberdade, amor e responsabilidade comunitária."
+    },
+    {
+      "prompt": "Por que uma narrativa não é prescrição automática?",
+      "options": [
+        "Porque narrativas não possuem verdade",
+        "Porque todo comportamento narrado é aprovado",
+        "Porque é necessário observar avaliação, contexto e ensino canônico",
+        "Porque somente cartas podem ser aplicadas"
+      ],
+      "correctIndex": 2,
+      "explanation": "Relatar uma ação não significa ordená-la; o texto e o conjunto das Escrituras precisam avaliá-la."
+    },
+    {
+      "prompt": "Qual frase apresenta risco de controle espiritual?",
+      "options": [
+        "Vamos examinar juntos a passagem",
+        "Esta é uma decisão prudencial",
+        "Deus mandou você tomar esta decisão porque eu disse",
+        "Procure conselho e preserve sua responsabilidade"
+      ],
+      "correctIndex": 2,
+      "explanation": "Usar o nome de Deus para controlar decisão alheia ultrapassa a autoridade do conselheiro."
+    },
+    {
+      "prompt": "O que a gamificação pode medir de modo honesto?",
+      "options": [
+        "Valor diante de Deus",
+        "Unção ministerial",
+        "Atividades acadêmicas e hábitos de estudo",
+        "Superioridade espiritual"
+      ],
+      "correctIndex": 2,
+      "explanation": "Pontos e sequências registram progresso acadêmico, não santidade ou valor pessoal."
+    },
+    {
+      "prompt": "Qual é um limite obrigatório do Professor IA?",
+      "options": [
+        "Pode decidir vocação em nome de Deus",
+        "Pode criar doutrina quando faltar fonte",
+        "Deve declarar incerteza e encaminhar decisões sensíveis",
+        "Pode substituir cuidado pastoral e profissional"
+      ],
+      "correctIndex": 2,
+      "explanation": "A IA auxilia o estudo, mas não entrega revelações pessoais nem substitui responsabilidades humanas."
+    },
+    {
+      "prompt": "Qual aplicação é mais fiel?",
+      "options": [
+        "A que promete resultado ausente do texto",
+        "A que favorece o poder do intérprete",
+        "A que apresenta base, ação, limite e modo de revisão",
+        "A que impede perguntas"
+      ],
+      "correctIndex": 2,
+      "explanation": "Aplicação fiel é demonstrável, proporcional, humilde e aberta à revisão."
+    }
+  ]
+}

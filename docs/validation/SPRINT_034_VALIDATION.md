@@ -88,6 +88,21 @@ Em andamento. Este documento não representa aprovação final.
 - revisões doutrinária, bíblica, pedagógica, editorial e de acessibilidade
   pendentes.
 
+## Evidências do rascunho da Aula 7
+
+- versão 1 em estado `draft`;
+- duração planejada de 135 minutos;
+- percurso sobre significado, princípio, implicação e aplicação;
+- distinção entre mandamento, sabedoria, consciência e descrição;
+- Bíblia guiada, oficina de aplicação e quiz original com oito questões;
+- limites contra moralismo, coerção, abuso espiritual e promessas indevidas;
+- limites explícitos da IA e da gamificação registrados;
+- mapa de fontes e alegações registrado;
+- nenhuma reprodução de material proprietário;
+- publicação bloqueada;
+- revisões doutrinária, bíblica, pastoral, pedagógica, editorial e de
+  acessibilidade pendentes.
+
 ## Gates pendentes para encerramento
 
 - [ ] oito aulas produzidas e revisadas;

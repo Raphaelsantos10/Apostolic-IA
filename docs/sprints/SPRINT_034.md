@@ -36,6 +36,8 @@ matérias.
   contextos histórico, literário e bíblico e quiz de oito questões;
 - [x] produzir o rascunho autoral da Aula 6, com percurso de 150 minutos,
   leitura cristocêntrica responsável e quiz de oito questões;
+- [x] produzir o rascunho autoral da Aula 7, com percurso de 135 minutos,
+  aplicação fiel, proteção pastoral e quiz de oito questões;
 - [ ] produzir as oito aulas completas;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
@@ -93,9 +95,15 @@ cumprimento, tipologia, tema e aplicação. A aula preserva o sentido histórico
 Antigo Testamento, rejeita alegorização arbitrária e submete a visão apostólica
 ao testemunho bíblico.
 
+A Aula 7, **Aplicação fiel sem distorcer o texto**, possui versão 1 em estado
+de rascunho. Seu percurso soma 135 minutos e distingue significado, princípio,
+implicação e aplicação. A aula trata graça, obediência, mandamento, sabedoria,
+consciência, abuso espiritual, limites da IA e gamificação academicamente
+honesta.
+
 Essas evidências não equivalem a publicação nem a aprovação. As revisões
 doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
-as outras duas aulas ainda precisam ser produzidas.
+a Aula 8 ainda precisa ser produzida.
 
 ## Critérios de aceite
 
