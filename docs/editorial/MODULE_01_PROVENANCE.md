@@ -54,9 +54,9 @@ tradução protegida.
 
 ## Materiais externos fornecidos como referência
 
-PDFs, vídeos, páginas do Scribd e materiais associados a Rhema, Carisma,
-igrejas, seminários ou terceiros não são fontes textuais aprovadas para este
-módulo. Eles podem indicar temas para pesquisa, mas:
+PDFs, vídeos, plataformas, instituições de ensino, igrejas, seminários ou
+materiais de terceiros não são fontes textuais aprovadas para este módulo.
+Eles podem indicar temas para pesquisa, mas:
 
 - não podem ser copiados;
 - não podem ser reescritos apenas com troca de palavras;

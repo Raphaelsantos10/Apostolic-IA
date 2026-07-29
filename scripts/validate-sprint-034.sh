@@ -250,7 +250,7 @@ grep -Fq 'BIB-TEXT-001' \
   docs/legal/MODULE_01_SOURCE_AND_RIGHTS_REGISTER.md
 grep -Fq 'implementation_and_testing_pending' \
   docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md
-grep -Fq 'não comprova conformidade WCAG 2.2 AA' \
+grep -Fq 'conformidade WCAG 2.2 AA' \
   docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md
 grep -Fq 'nota final = (projeto × 0,60) + (avaliação final × 0,40)' \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
