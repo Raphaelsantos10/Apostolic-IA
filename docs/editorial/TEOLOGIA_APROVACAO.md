@@ -19,6 +19,17 @@ O autor não pode aprovar o próprio conteúdo em nenhuma dessas funções. Uma
 rejeição bloqueia a publicação até nova versão e novos pareceres. Alteração
 material em conteúdo aprovado invalida os pareceres anteriores.
 
+## Gate de acessibilidade
+
+O banco registra os três pareceres acima. Além deles, publicação exige
+verificação de acessibilidade com evidência própria. O parecer editorial
+verifica se recursos e licenças contemplam acessibilidade, enquanto o gate
+confirma a experiência real com teclado, leitor de tela, zoom a 200%, largura de
+320 CSS px, movimento reduzido, transcrições, legendas e alternativas textuais.
+
+Falha nesse gate mantém a publicação bloqueada mesmo quando os três pareceres
+estiverem aprovados.
+
 ## Evidências
 
 Cada parecer registra responsável, função, decisão, observações, versão do
@@ -33,4 +44,3 @@ arquivamento e reversão devem permanecer auditáveis.
 - não produzir profecias personalizadas ou alegações de revelação divina;
 - encaminhar aconselhamento sensível a liderança e profissionais competentes;
 - manter conteúdo não aprovado invisível ao público.
-

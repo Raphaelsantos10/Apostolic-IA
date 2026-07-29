@@ -41,6 +41,7 @@ matérias.
 - [x] produzir o rascunho autoral da Aula 8, com percurso de 135 minutos,
   projeto integrador e avaliação final de 16 questões;
 - [x] produzir os rascunhos das oito aulas;
+- [x] preparar pacote formal de revisão humana sem conceder aprovações;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] produzir quizzes, atividades e avaliação final;
 - [ ] adicionar recursos multimédia acessíveis e licenciados;
@@ -112,6 +113,11 @@ Essas evidências não equivalem a publicação nem a aprovação. As revisões
 doutrinária, pedagógica, editorial e de acessibilidade permanecem pendentes, e
 o módulo ainda depende de revisão integral, licenças, recursos multimédia,
 integração ao player, testes com usuários e aprovações humanas.
+
+O pacote `docs/reviews/MODULE_01_HUMAN_REVIEW.md` congela o conteúdo-base no
+commit `22b38c3`, define três pareceres humanos formais, mantém acessibilidade
+como gate separado e registra todas as decisões como pendentes. Ele não
+autoriza publicação ou merge.
 
 ## Critérios de aceite
 

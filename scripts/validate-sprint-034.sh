@@ -29,6 +29,7 @@ required_files=(
   "docs/courses/fundamentos-da-fe/module-01/lesson-08.md"
   "docs/courses/fundamentos-da-fe/module-01/quiz-08.json"
   "docs/courses/fundamentos-da-fe/module-01/sources-08.md"
+  "docs/reviews/MODULE_01_HUMAN_REVIEW.md"
   "docs/sprints/SPRINT_034.md"
   "docs/validation/SPRINT_034_VALIDATION.md"
 )
@@ -210,6 +211,22 @@ grep -Fq "accessibility: pending" \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
 grep -Fq "não reproduz material proprietário" \
   docs/courses/fundamentos-da-fe/module-01/sources-08.md
+grep -Fq 'awaiting_human_review' \
+  docs/reviews/MODULE_01_HUMAN_REVIEW.md
+grep -Fq 'conteúdo-base: commit `22b38c3`' \
+  docs/reviews/MODULE_01_HUMAN_REVIEW.md
+grep -Fq "O autor não pode aprovar o próprio conteúdo" \
+  docs/reviews/MODULE_01_HUMAN_REVIEW.md
+grep -Fq "parecer doutrinário: **pendente**" \
+  docs/reviews/MODULE_01_HUMAN_REVIEW.md
+grep -Fq "parecer pedagógico: **pendente**" \
+  docs/reviews/MODULE_01_HUMAN_REVIEW.md
+grep -Fq "parecer editorial: **pendente**" \
+  docs/reviews/MODULE_01_HUMAN_REVIEW.md
+grep -Fq "gate de acessibilidade: **pendente**" \
+  docs/reviews/MODULE_01_HUMAN_REVIEW.md
+grep -Fq "publicação: **bloqueada**" \
+  docs/reviews/MODULE_01_HUMAN_REVIEW.md
 
 node --input-type=module <<'NODE'
 import { readFileSync } from "node:fs";

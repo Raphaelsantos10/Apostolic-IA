@@ -128,6 +128,27 @@ Em andamento. Este documento não representa aprovação final.
 - revisão integral, licenças, multimédia, integração e piloto continuam
   pendentes.
 
+## Pacote de revisão humana
+
+- conteúdo-base congelado no commit `22b38c3`;
+- três pareceres formais definidos de acordo com o modelo do banco;
+- acessibilidade preservada como gate obrigatório separado;
+- independência entre autor e revisor exigida;
+- matrizes doutrinária, pedagógica, editorial e de acessibilidade registradas;
+- nomes, decisões e assinaturas não foram inventados;
+- todas as decisões permanecem pendentes;
+- publicação e merge permanecem bloqueados.
+
+## Evidências técnicas informadas antes da revisão
+
+- testes de banco: 18 arquivos e 149 testes, resultado `PASS`;
+- typecheck e builds web/mobile aprovados;
+- validações do repositório e da Sprint 034 aprovadas;
+- cinco checks do PR nº 46 aprovados, incluindo CodeQL.
+
+As evidências deverão ser repetidas após qualquer correção material e no estado
+final candidato a merge.
+
 ## Gates pendentes para encerramento
 
 - [ ] oito aulas produzidas e revisadas;
