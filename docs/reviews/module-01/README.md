@@ -98,3 +98,17 @@ não encerra sozinha o gate institucional.
 O módulo continua bloqueado. Depois das correções, um novo commit de conteúdo
 deve receber nova rodada de pareceres antes da integração restrita ou do
 piloto.
+
+## Correção pedagógica preparada
+
+Após estes pareceres, foi preparada uma nova iteração com:
+
+- rubrica de quatro níveis e descritores observáveis;
+- nota final composta por 60% de projeto e 40% de avaliação objetiva;
+- mínimos por componente e gates de segurança acadêmica;
+- recuperação que substitui a nota anterior sem penalização;
+- protocolo controlado para validar a carga de 18 horas.
+
+Essas mudanças são posteriores ao commit revisado `22b38c3`. Elas respondem
+aos bloqueadores, mas ainda não foram aprovadas. O próximo parecer deve citar o
+novo commit de correção.

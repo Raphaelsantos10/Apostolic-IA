@@ -178,3 +178,16 @@ final candidato a merge.
 Alterações obrigatórias. A Sprint 034 não deve ser marcada como concluída nem
 incorporada. O módulo precisa de correções pedagógicas, editoriais, jurídicas
 e de acessibilidade, seguidas de nova versão e nova rodada de pareceres.
+
+## Evidências da correção pedagógica
+
+- rubrica separada com sete critérios, quatro níveis e descritores observáveis;
+- projeto integrador definido como 60% da nota;
+- avaliação final definida como 40% da nota;
+- nota mínima geral de 80 e mínimo de 70 por componente;
+- gates para fidelidade bíblica, proteção pastoral e originalidade;
+- recuperação sem penalização e com substituição da nota anterior;
+- protocolo do piloto criado sem declarar participantes ou resultados;
+- faixa de 15 a 21 horas definida somente como critério de análise da mediana;
+- publicação permanece bloqueada;
+- nova revisão humana permanece obrigatória.

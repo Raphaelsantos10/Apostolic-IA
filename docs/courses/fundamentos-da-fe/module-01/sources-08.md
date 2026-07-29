@@ -2,8 +2,8 @@
 
 ## Estado
 
-Mapa de fontes da versão 1, ainda em revisão. Nenhum parecer humano foi
-concedido e a publicação permanece bloqueada.
+Mapa de fontes da versão 2, corrigida após o parecer pedagógico. A versão ainda
+não recebeu nova revisão humana e a publicação permanece bloqueada.
 Este rascunho não reproduz material proprietário de terceiros.
 
 ## Fontes primárias
@@ -59,7 +59,11 @@ proprietária pode ser copiada, reescrita de perto ou ocultada como fonte.
 - as 16 questões foram redigidas originalmente para esta matriz;
 - alternativas evitam copiar bancos de questões;
 - explicações serão revisadas por especialistas;
-- faixas de aprovação e recuperação são propostas, não decisão final;
+- composição de 60% para o projeto e 40% para a avaliação foi registrada para
+  nova revisão pedagógica;
+- rubrica de quatro níveis possui descritores observáveis e pontuação definida;
+- faixas de aprovação e recuperação permanecem sujeitas ao piloto e à nova
+  revisão;
 - versões alternativas deverão avaliar os mesmos objetivos sem repetir apenas
   a ordem das respostas;
 - nenhum resultado acadêmico mede santidade ou valor espiritual.

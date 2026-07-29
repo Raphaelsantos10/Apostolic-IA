@@ -12,6 +12,24 @@ approvals:
   editorial: pending
   accessibility: pending
 publication_allowed: false
+assessment:
+  status: draft_after_pedagogical_review
+  project_weight_percent: 60
+  final_assessment_weight_percent: 40
+  passing_score_percent: 80
+  minimum_component_score_percent: 70
+  recovery:
+    penalty: false
+    replaces_previous_component_score: true
+    equivalent_evidence_required: true
+  rubric: docs/courses/fundamentos-da-fe/module-01/assessment-rubric.md
+pilot:
+  status: pending
+  target_hours: 18
+  acceptable_median_hours:
+    minimum: 15
+    maximum: 21
+  protocol: docs/validation/MODULE_01_PEDAGOGICAL_PILOT.md
 lessons:
   - number: 1
     slug: revelacao-e-palavra

@@ -29,6 +29,7 @@ required_files=(
   "docs/courses/fundamentos-da-fe/module-01/lesson-08.md"
   "docs/courses/fundamentos-da-fe/module-01/quiz-08.json"
   "docs/courses/fundamentos-da-fe/module-01/sources-08.md"
+  "docs/courses/fundamentos-da-fe/module-01/assessment-rubric.md"
   "docs/reviews/MODULE_01_HUMAN_REVIEW.md"
   "docs/reviews/module-01/README.md"
   "docs/reviews/module-01/2026-07-29-doctrinal.json"
@@ -37,6 +38,7 @@ required_files=(
   "docs/reviews/module-01/2026-07-29-accessibility.json"
   "docs/sprints/SPRINT_034.md"
   "docs/validation/SPRINT_034_VALIDATION.md"
+  "docs/validation/MODULE_01_PEDAGOGICAL_PILOT.md"
 )
 
 for file in "${required_files[@]}"; do
@@ -198,7 +200,7 @@ grep -Fq "não reproduz material proprietário" \
   docs/courses/fundamentos-da-fe/module-01/sources-07.md
 grep -Fq "title: Integração, revisão e avaliação final" \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
-grep -Fq "version: 1" \
+grep -Fq "version: 2" \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
 grep -Fq "status: draft" \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
@@ -216,6 +218,24 @@ grep -Fq "accessibility: pending" \
   docs/courses/fundamentos-da-fe/module-01/lesson-08.md
 grep -Fq "não reproduz material proprietário" \
   docs/courses/fundamentos-da-fe/module-01/sources-08.md
+grep -Fq 'project_weight_percent: 60' \
+  docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'final_assessment_weight_percent: 40' \
+  docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'passing_score_percent: 80' \
+  docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'minimum_component_score_percent: 70' \
+  docs/courses/fundamentos-da-fe/module-01/plan.yaml
+grep -Fq 'nota final = (projeto × 0,60) + (avaliação final × 0,40)' \
+  docs/courses/fundamentos-da-fe/module-01/lesson-08.md
+grep -Fq 'Excelente | 20' \
+  docs/courses/fundamentos-da-fe/module-01/assessment-rubric.md
+grep -Fq 'Nível insuficiente em integração bíblica e cristocêntrica' \
+  docs/courses/fundamentos-da-fe/module-01/assessment-rubric.md
+grep -Fq 'protocol_ready_pilot_pending' \
+  docs/validation/MODULE_01_PEDAGOGICAL_PILOT.md
+grep -Fq 'mediana do tempo ativo total estiver entre 15 e 21 horas' \
+  docs/validation/MODULE_01_PEDAGOGICAL_PILOT.md
 grep -Fq 'changes_required' \
   docs/reviews/MODULE_01_HUMAN_REVIEW.md
 grep -Fq 'conteúdo-base: commit `22b38c3`' \

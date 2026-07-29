@@ -231,3 +231,17 @@ acessibilidade.
 Os arquivos canônicos e o registro de consolidação estão em
 `docs/reviews/module-01/`. Alteração material posterior ao commit `22b38c3`
 exige nova rodada de revisão.
+
+## Iteração de correção
+
+A rubrica, a composição da nota, a recuperação e o protocolo do piloto foram
+reformulados depois dos pareceres acima. Essas mudanças não alteram a decisão
+registrada para o commit `22b38c3`, mas criam uma nova versão que ainda não foi
+revisada. Portanto:
+
+- os pareceres recebidos permanecem como histórico auditável;
+- nenhuma aprovação do commit `22b38c3` é transferida automaticamente;
+- a nova versão deve ser congelada em outro commit;
+- o novo commit deve receber nova revisão pedagógica e verificação dos demais
+  revisores quanto ao impacto da alteração;
+- publicação e merge continuam bloqueados.

@@ -1,7 +1,7 @@
 ---
 code: TEO-FUN-001-M01-A08
 title: Integração, revisão e avaliação final
-version: 1
+version: 2
 status: draft
 level: beginner
 estimated_minutes: 135
@@ -306,7 +306,11 @@ o piloto. Produza um estudo de 600 a 900 palavras com esta estrutura:
 
 ### Rubrica do projeto
 
-| Critério | Pontos |
+O projeto vale 100 pontos e é corrigido pela rubrica observável em
+`assessment-rubric.md`. Cada critério possui quatro níveis: **excelente**,
+**adequado**, **parcial** e **insuficiente**.
+
+| Critério | Pontos máximos |
 | --- | ---: |
 | Delimitação, observação e gênero | 15 |
 | Contexto e argumento | 15 |
@@ -316,6 +320,11 @@ o piloto. Produza um estudo de 600 a 900 palavras com esta estrutura:
 | Fontes, honestidade e originalidade | 10 |
 | Clareza e acessibilidade | 10 |
 | **Total** | **100** |
+
+O tutor deve indicar o nível alcançado, citar evidência presente no trabalho e
+registrar uma orientação concreta de melhoria. Preferência estilística,
+eloquência, concordância pessoal ou desempenho gamificado não substituem os
+descritores.
 
 O projeto é rascunho acadêmico. Não autoriza o aluno a publicar doutrina em
 nome da plataforma.
@@ -331,14 +340,34 @@ responder:
 - marque dúvidas para revisão;
 - leia as explicações depois da entrega.
 
-### Critério pedagógico proposto
+### Composição da nota
 
-- **80% a 100%:** domínio esperado para avançar, sujeito ao projeto;
-- **60% a 79%:** recuperação dirigida e nova tentativa;
-- **abaixo de 60%:** retomada das aulas relacionadas e acompanhamento humano.
+| Componente | Peso | Cálculo |
+| --- | ---: | --- |
+| Projeto integrador | 60% | Pontuação da rubrica em escala de 0 a 100 |
+| Avaliação final | 40% | 16 questões, cada uma valendo 6,25 pontos |
 
-Essas faixas são proposta de rascunho. A equipe pedagógica deverá aprová-las
-antes do piloto.
+`nota final = (projeto × 0,60) + (avaliação final × 0,40)`
+
+Para avançar, o estudante deve:
+
+- alcançar nota final igual ou superior a 80;
+- obter pelo menos 70 em cada componente;
+- não permanecer em nível insuficiente nos critérios de integração bíblica e
+  cristocêntrica, aplicação e proteção pastoral, ou fontes e originalidade.
+
+Esses critérios medem aprendizagem acadêmica, não santidade, chamado,
+espiritualidade ou valor pessoal.
+
+### Faixas de decisão
+
+- **80 a 100, com mínimos atendidos:** domínio esperado para avançar;
+- **60 a 79,99 ou componente abaixo de 70:** recuperação dirigida;
+- **abaixo de 60:** retomada orientada dos eixos frágeis antes de nova
+  evidência.
+
+Esta versão responde ao parecer pedagógico, mas ainda depende de nova revisão
+humana e validação no piloto antes de se tornar política publicada.
 
 ## 7. Correção, recuperação e próximos passos
 
@@ -359,10 +388,14 @@ antes do piloto.
 3. escreva por que a alternativa escolhida estava errada;
 4. refaça um exercício curto com nova passagem;
 5. converse com tutor quando houver dúvida doutrinária ou pastoral;
-6. realize nova tentativa com questões equivalentes, não apenas memorizadas.
+6. realize nova tentativa com questões equivalentes, não apenas memorizadas;
+7. quando o projeto estiver abaixo do mínimo, revise somente os critérios
+   indicados e entregue nova versão com histórico das alterações.
 
 Recuperação não deve retirar pontos de sequência, expor o aluno ou criar
-competição. Seu objetivo é aprendizagem real.
+competição. Seu objetivo é aprendizagem real. A nova evidência substitui a
+pontuação anterior do componente, sem teto artificial e sem desconto. Pausa,
+retomada, tempo adicional e recurso assistivo não reduzem a nota.
 
 ## Confissão e limites do módulo
 
