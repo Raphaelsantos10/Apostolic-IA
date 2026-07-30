@@ -54,6 +54,19 @@ Nenhuma mídia integra o módulo atual. Antes de adicionar:
 | Offline e reconexão | PWA e plataforma representativa | Pendente |
 | Transcrição, legenda e alternativa | Quando cada mídia existir | Não aplicável nesta versão |
 
+## Controles implementados para nova inspeção
+
+- foco visível inclui botões, ligações, seletores, campos, áreas de texto e
+  regiões focadas programaticamente;
+- o resultado do quiz recebe foco e é anunciado como estado após a correção;
+- o quiz informa explicitamente que não possui limite de tempo;
+- pausa, revisão da aula e nova tentativa não reduzem pontuação por tempo;
+- alternativas continuam como controles de rádio agrupados em `fieldset`;
+- movimento reduzido permanece respeitado pela preferência do sistema.
+
+Esses controles preparam a nova inspeção, mas ainda precisam de testes reais
+com teclado, leitor de tela, zoom de 200% e largura de 320 CSS px.
+
 ## Critério de aprovação
 
 O gate somente poderá ser aprovado quando:

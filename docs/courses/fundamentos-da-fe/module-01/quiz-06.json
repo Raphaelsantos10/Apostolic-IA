@@ -1,18 +1,18 @@
 {
   "code": "TEO-FUN-001-M01-Q06",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "questions": [
     {
-      "prompt": "O que caracteriza uma leitura cristocêntrica responsável?",
+      "prompt": "Qual abordagem mantém Cristo no centro sem apagar o sentido original da passagem?",
       "options": [
-        "Mencionar Jesus sem estudar a passagem",
-        "Relacionar o sentido da passagem à história que culmina em Cristo",
-        "Transformar cada objeto em símbolo",
-        "Ignorar o Antigo Testamento"
+        "Acrescentar o nome de Jesus depois de ignorar o argumento do autor",
+        "Compreender a passagem em seu contexto e relacioná-la ao desenvolvimento da história redentora",
+        "Converter personagens e objetos em símbolos secretos",
+        "Descartar a contribuição do Antigo Testamento"
       ],
       "correctIndex": 1,
-      "explanation": "A centralidade de Cristo respeita o contexto e acompanha o desenvolvimento da história redentora."
+      "explanation": "A leitura cristocêntrica começa pelo sentido contextual e acompanha, com evidência bíblica, o desenvolvimento da história redentora que culmina em Cristo."
     },
     {
       "prompt": "Qual pergunta deve preceder a aplicação de uma promessa?",

@@ -253,3 +253,19 @@ e de acessibilidade, seguidas de nova versão e nova rodada de pareceres.
 - outros escritos limitados a estudo histórico, sem autoridade doutrinária;
 - continuidade dos dons espirituais preservada sob a autoridade bíblica;
 - revisão histórico-textual, licenciamento e publicação continuam pendentes.
+
+## Controles editoriais e de acessibilidade — nova iteração
+
+- auditoria editorial automatizada adicionada sem consultar corpus protegido;
+- duplicações extensas exatas e perguntas repetidas passam a bloquear a
+  validação;
+- enunciado repetido entre as Aulas 5 e 6 corrigido na versão 2 do Quiz 6;
+- limites da auditoria documentados sem alegação de originalidade jurídica;
+- foco visível ampliado para campos e regiões programaticamente focadas;
+- resultado do quiz passa a receber foco e anúncio após correção;
+- ausência de limite de tempo e pausa sem penalização informadas ao aluno;
+- revisão humana de similaridade e testes reais de acessibilidade permanecem
+  obrigatórios;
+- a alteração editorial do Quiz 6 deverá ser incluída na próxima revisão
+  pedagógica e doutrinária do conteúdo congelado;
+- publicação e merge continuam bloqueados.

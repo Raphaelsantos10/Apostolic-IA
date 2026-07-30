@@ -48,6 +48,8 @@ required_files=(
   "docs/reviews/module-01/final-review-template-v2.json"
   "docs/research/MODULE_01_AULA_03_SOURCE_DOSSIER.md"
   "docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md"
+  "docs/editorial/MODULE_01_AUTOMATED_AUDIT.md"
+  "scripts/audit-module-01-editorial.mjs"
 )
 
 for file in "${required_files[@]}"; do
@@ -115,6 +117,17 @@ grep -Fq "estimated_minutes: 135" \
   docs/courses/fundamentos-da-fe/module-01/lesson-03.md
 grep -Fq "publication_allowed: false" \
   docs/courses/fundamentos-da-fe/module-01/lesson-03.md
+node scripts/audit-module-01-editorial.mjs >/dev/null
+grep -Fq "humanSimilarityReviewRequired" \
+  scripts/audit-module-01-editorial.mjs
+grep -Fq "não comprova originalidade jurídica" \
+  docs/editorial/MODULE_01_AUTOMATED_AUDIT.md
+grep -Fq 'role="status"' \
+  apps/web/components/learning-tools.tsx
+grep -Fq "Sem limite de tempo" \
+  apps/web/components/learning-tools.tsx
+grep -Fq "testes reais" \
+  docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md
 grep -Fq "doctrinal: pending" \
   docs/courses/fundamentos-da-fe/module-01/lesson-03.md
 grep -Fq "pedagogical: pending" \
@@ -267,7 +280,7 @@ grep -Fq 'additional_time_penalty: false' \
   docs/courses/fundamentos-da-fe/module-01/plan.yaml
 grep -Fq 'OpenAI ChatGPT/Codex' \
   docs/editorial/MODULE_01_PROVENANCE.md
-grep -Fq 'Nenhuma ferramenta automática ou comparação humana documentada' \
+grep -Fq 'Nenhuma comparação humana documentada' \
   docs/editorial/MODULE_01_PROVENANCE.md
 grep -Fq 'somente referências bíblicas' \
   docs/legal/MODULE_01_SOURCE_AND_RIGHTS_REGISTER.md
@@ -447,7 +460,7 @@ const quizzes = [
   {
     lesson: 6,
     path: "docs/courses/fundamentos-da-fe/module-01/quiz-06.json",
-    minimumVersion: 1,
+    minimumVersion: 2,
     expectedQuestions: 8
   },
   {

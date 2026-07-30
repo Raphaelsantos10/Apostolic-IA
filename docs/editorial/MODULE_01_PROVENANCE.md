@@ -75,7 +75,13 @@ Eles podem indicar temas para pesquisa, mas:
 
 ## Verificação de similaridade
 
-Nenhuma ferramenta automática ou comparação humana documentada com um corpus
+O controle interno `scripts/audit-module-01-editorial.mjs` verifica duplicações
+exatas extensas, unicidade dos enunciados, alternativas repetidas, bloqueios de
+publicação e referências externas não aprovadas. Seu escopo e limites estão em
+`docs/editorial/MODULE_01_AUTOMATED_AUDIT.md`.
+
+Esse controle não consulta corpus externo protegido e não comprova
+originalidade jurídica. Nenhuma comparação humana documentada com um corpus
 externo foi concluída. Antes da aprovação editorial, uma pessoa competente deve:
 
 1. selecionar legalmente as obras de comparação;

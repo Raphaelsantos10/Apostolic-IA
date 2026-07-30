@@ -78,7 +78,8 @@ body {
 }
 button, select { font: inherit; }
 button { color: inherit; }
-button:focus-visible, select:focus-visible, a:focus-visible {
+button:focus-visible, select:focus-visible, input:focus-visible,
+textarea:focus-visible, a:focus-visible, [tabindex="-1"]:focus-visible {
   outline: 0.2rem solid var(--focus);
   outline-offset: 0.2rem;
 }
@@ -527,6 +528,7 @@ h2 { line-height: 1.2; }
 .lesson-quiz label { display: flex; gap: 0.55rem; align-items: start; }
 .quiz-result { padding: 0.8rem; border-left: 0.3rem solid var(--focus); background: var(--muted); }
 .quiz-result.is-correct { border-left-color: var(--success); }
+.quiz-result:focus { outline: 0.2rem solid var(--focus); outline-offset: 0.2rem; }
 .quiz-result p { margin: 0.25rem 0 0; }
 .daily-goal { display: grid; grid-template-columns: 1fr auto auto; gap: 1rem; align-items: end; margin: 1.5rem 0; padding: 1.2rem; border: 1px solid var(--border); border-radius: 0.8rem; background: var(--panel); }
 .daily-goal h2, .daily-goal p { margin: 0.2rem 0; }
