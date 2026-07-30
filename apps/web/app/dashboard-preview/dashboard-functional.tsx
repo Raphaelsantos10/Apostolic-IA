@@ -9,6 +9,7 @@ import {
   type DashboardSection
 } from "../../lib/app-navigation.mjs";
 import { createClient } from "../../lib/supabase/client";
+import { StudyExperience } from "../../components/study-experience";
 import styles from "./dashboard-preview.module.css";
 
 type LearningMode = "adventure" | "academic";
@@ -361,6 +362,9 @@ export function DashboardFunctional({
   );
   const [syncState, setSyncState] = useState<SyncState>("loading");
   const adventure = mode === "adventure";
+  const visualExperience =
+    preview ||
+    process.env.NEXT_PUBLIC_STUDY_EXPERIENCE_V2 === "enabled";
   const activeSection: DashboardSection = preview
     ? "dashboard"
     : initialSection;
@@ -578,7 +582,14 @@ export function DashboardFunctional({
           <div><strong>{syncMessage}</strong></div>
         </div>
 
-        {activeSection === "dashboard" ? (
+        {activeSection === "dashboard" ? visualExperience ? (
+          <StudyExperience
+            progress={dashboard.overallProgress}
+            streak={dashboard.currentStreak}
+            completedLessons={dashboard.completedLessons}
+            totalLessons={dashboard.totalLessons}
+          />
+        ) : (
           <>
         <section className={styles.stats} aria-label="Resumo do progresso">
           <article className={styles.progressCard}>
