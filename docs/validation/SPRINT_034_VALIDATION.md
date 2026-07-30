@@ -269,3 +269,16 @@ e de acessibilidade, seguidas de nova versão e nova rodada de pareceres.
 - a alteração editorial do Quiz 6 deverá ser incluída na próxima revisão
   pedagógica e doutrinária do conteúdo congelado;
 - publicação e merge continuam bloqueados.
+
+## Prévia local das oito aulas
+
+- pacote interno gerado diretamente dos oito Markdown e oito quizzes;
+- API de revisão desabilitada por padrão;
+- acesso limitado a `localhost` e `127.0.0.1` quando
+  `MODULE_01_REVIEW_MODE=enabled`;
+- conteúdo permanece `draft` e `publication_allowed: false`;
+- respostas e posição da revisão ficam somente no armazenamento local;
+- nenhum certificado, venda, acesso público ou publicação é autorizado;
+- primeira capa autoral integrada para avaliação visual;
+- plano das 24 capas registrado sem declarar as 23 restantes como prontas;
+- avaliação humana e gates finais permanecem obrigatórios antes do merge.

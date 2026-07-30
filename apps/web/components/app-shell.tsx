@@ -11,6 +11,7 @@ import { BibleTeacher } from "./bible-teacher";
 import { GuidedStudyPlayer } from "./guided-study-player";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
 import { LearningProgressSummary } from "./learning-progress-summary";
+import { ModuleReviewPlayer } from "./module-review-player";
 import { PricingPanel } from "./pricing-panel";
 import {
   calculateCourseProgress,
@@ -309,6 +310,8 @@ function CoursesView() {
         quiz e progresso. Os demais itens são demonstrações técnicas e não
         representam a formação teológica completa.
       </p>
+
+      <ModuleReviewPlayer />
 
       {loading && <p className="catalog-status" role="status">A carregar catálogo…</p>}
       {error && <p className="catalog-status catalog-error" role="alert">{error}</p>}

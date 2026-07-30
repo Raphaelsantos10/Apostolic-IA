@@ -52,6 +52,9 @@ matérias.
 - [x] criar registro de fontes, direitos e aceite de acessibilidade;
 - [x] preparar plano e formulário versionado para os gates finais;
 - [x] registrar fontes institucionais e obras candidatas para a Aula 3;
+- [x] integrar as oito aulas e todos os quizzes numa prévia exclusivamente
+  local, protegida por variável de ambiente e sem alterar o estado editorial;
+- [x] criar a primeira capa autoral do módulo e o plano visual das 24 matérias;
 - [ ] adicionar Bíblia guiada com fontes autorizadas;
 - [ ] completar bibliografias acadêmicas e confessionais verificáveis;
 - [ ] executar e registrar verificação humana de similaridade;
@@ -61,7 +64,7 @@ matérias.
 - [ ] executar o piloto cronometrado e registrar evidências;
 - [ ] obter nova revisão editorial, jurídica, doutrinária e de acessibilidade
   quando aplicável à iteração corrigida;
-- [ ] integrar o conteúdo aprovado ao player;
+- [ ] integrar o conteúdo aprovado ao player público;
 - [ ] executar inspeção manual e todos os gates técnicos.
 
 ## Restrições
@@ -72,6 +75,8 @@ matérias.
 - não copiar nem parafrasear disfarçadamente materiais proprietários;
 - não declarar 432 horas disponíveis antes da produção completa;
 - não publicar rascunhos;
+- a prévia local exige `MODULE_01_REVIEW_MODE=enabled`, responde somente em
+  `localhost` ou `127.0.0.1` e não concede certificado, venda ou acesso público;
 - não realizar merge sem banco, testes, typecheck, build, validação do
   repositório, CodeQL, inspeção manual e evidências no PR.
 

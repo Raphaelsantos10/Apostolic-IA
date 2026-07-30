@@ -49,7 +49,14 @@ required_files=(
   "docs/research/MODULE_01_AULA_03_SOURCE_DOSSIER.md"
   "docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md"
   "docs/editorial/MODULE_01_AUTOMATED_AUDIT.md"
+  "docs/product/MODULE_COVER_SYSTEM.md"
+  "docs/development/MODULE_01_LOCAL_REVIEW.md"
+  "apps/web/content-review/module-01.json"
+  "apps/web/components/module-review-player.tsx"
+  "apps/web/app/api/review/module-01/route.ts"
+  "apps/web/public/course-covers/modulo-01-fundamentos-da-fe.webp"
   "scripts/audit-module-01-editorial.mjs"
+  "scripts/build-module-01-review.mjs"
 )
 
 for file in "${required_files[@]}"; do
@@ -118,6 +125,19 @@ grep -Fq "estimated_minutes: 135" \
 grep -Fq "publication_allowed: false" \
   docs/courses/fundamentos-da-fe/module-01/lesson-03.md
 node scripts/audit-module-01-editorial.mjs >/dev/null
+node scripts/build-module-01-review.mjs --check
+grep -Fq 'MODULE_01_REVIEW_MODE === "enabled"' \
+  apps/web/app/api/review/module-01/route.ts
+grep -Fq 'publicationAllowed: false' \
+  apps/web/components/module-review-player.tsx
+grep -Fq 'Rascunho — não publicado' \
+  apps/web/components/module-review-player.tsx
+grep -Fq 'MODULE_01_REVIEW_MODE=disabled' .env.example
+grep -Fq '24 capas autorais' ROADMAP.md
+grep -Fq 'Cada uma das 24 matérias' \
+  docs/product/MODULE_COVER_SYSTEM.md
+grep -Fq 'MODULE_01_REVIEW_MODE=enabled' \
+  docs/development/MODULE_01_LOCAL_REVIEW.md
 grep -Fq "humanSimilarityReviewRequired" \
   scripts/audit-module-01-editorial.mjs
 grep -Fq "não comprova originalidade jurídica" \
