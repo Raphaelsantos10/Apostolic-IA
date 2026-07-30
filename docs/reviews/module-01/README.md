@@ -44,6 +44,21 @@ O registro canônico está em
   acessibilidade e o piloto continuam em gates próprios;
 - publicação automática e merge permanecem não autorizados.
 
+## Decisão canônica posterior
+
+Em 30 de julho de 2026, o proprietário aprovou explicitamente o cânon
+protestante de 66 livros:
+
+- 39 livros no Antigo Testamento;
+- 27 livros no Novo Testamento.
+
+A decisão está registrada em
+`docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md` e resolve o bloqueador de
+enumeração doutrinária da lista institucional. Ela não altera o registro
+histórico do parecer `2f9e307`, não substitui revisão histórico-textual
+especializada, não seleciona uma tradução licenciada e não autoriza publicação
+ou merge.
+
 ## Segunda rodada pedagógica
 
 O arquivo `2026-07-29-pedagogical-abd8b90.json` registra a revisão humana da

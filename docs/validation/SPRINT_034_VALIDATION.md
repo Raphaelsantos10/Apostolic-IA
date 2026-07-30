@@ -242,3 +242,14 @@ e de acessibilidade, seguidas de nova versão e nova rodada de pareceres.
 - independência institucional do revisor não comprovada;
 - revisão histórica e textual especializada continua pendente;
 - publicação automática e merge permanecem bloqueados.
+
+## Política do cânon protestante
+
+- proprietário aprovou explicitamente 66 livros em 30 de julho de 2026;
+- Antigo Testamento definido com 39 livros;
+- Novo Testamento definido com 27 livros;
+- nomes e agrupamentos documentados em política própria;
+- Aula 3 atualizada para a versão 2, ainda em estado `draft`;
+- outros escritos limitados a estudo histórico, sem autoridade doutrinária;
+- continuidade dos dons espirituais preservada sob a autoridade bíblica;
+- revisão histórico-textual, licenciamento e publicação continuam pendentes.

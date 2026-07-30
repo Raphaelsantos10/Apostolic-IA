@@ -47,6 +47,7 @@ required_files=(
   "docs/reviews/module-01/FINAL_GATE_PLAN_C95E252.md"
   "docs/reviews/module-01/final-review-template-v2.json"
   "docs/research/MODULE_01_AULA_03_SOURCE_DOSSIER.md"
+  "docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md"
 )
 
 for file in "${required_files[@]}"; do
@@ -106,7 +107,7 @@ grep -Fq "não reproduz material proprietário" \
   docs/courses/fundamentos-da-fe/module-01/sources-02.md
 grep -Fq "title: Cânon, transmissão e confiança no texto" \
   docs/courses/fundamentos-da-fe/module-01/lesson-03.md
-grep -Fq "version: 1" \
+grep -Fq "version: 2" \
   docs/courses/fundamentos-da-fe/module-01/lesson-03.md
 grep -Fq "status: draft" \
   docs/courses/fundamentos-da-fe/module-01/lesson-03.md
@@ -132,8 +133,20 @@ grep -Fq "1 Tessalonicenses 5:19-22" \
   docs/courses/fundamentos-da-fe/module-01/sources-03.md
 grep -Fq "não reproduz material proprietário" \
   docs/courses/fundamentos-da-fe/module-01/sources-03.md
-grep -Fq "não enumera oficialmente o cânon do projeto" \
+grep -Fq "enumera o cânon oficial" \
   docs/courses/fundamentos-da-fe/module-01/sources-03.md
+grep -Fq "39 livros no Antigo Testamento" \
+  docs/doctrine/CONSTITUICAO_DOUTRINARIA.md
+grep -Fq "27 livros no Novo Testamento" \
+  docs/doctrine/CONSTITUICAO_DOUTRINARIA.md
+grep -Fq "Gênesis, Êxodo, Levítico, Números e Deuteronômio" \
+  docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md
+grep -Fq "Mateus, Marcos, Lucas e João" \
+  docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md
+grep -Fq "não substitui a revisão histórico-textual especializada da Aula 3" \
+  docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md
+grep -Fq "publication_allowed: false" \
+  docs/courses/fundamentos-da-fe/module-01/lesson-03.md
 grep -Fq "title: Autoridade, suficiência, clareza e necessidade" \
   docs/courses/fundamentos-da-fe/module-01/lesson-04.md
 grep -Fq "version: 1" \

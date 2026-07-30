@@ -1,7 +1,7 @@
 ---
 code: TEO-FUN-001-M01-A03
 title: Cânon, transmissão e confiança no texto
-version: 1
+version: 2
 status: draft
 level: beginner
 estimated_minutes: 135
@@ -115,22 +115,26 @@ história de Deus com Israel. A igreja não começou sem Bíblia: recebeu as
 Escrituras já usadas pelo povo judeu e as leu à luz da pessoa e da obra de
 Cristo.
 
-### Limites que exigem precisão
+### Posição canônica do Apostolic IA
 
 Tradições cristãs não apresentam hoje listas idênticas para todos os livros do
-Antigo Testamento. A Constituição Doutrinária do projeto confessa Antigo e Novo
-Testamento, mas ainda não enumera formalmente cada livro.
+Antigo Testamento. O Apostolic IA reconhece essa diferença histórica e adota,
+por decisão doutrinária documentada, o cânon protestante de **66 livros**:
 
-Esta aula, portanto:
+- **39 livros no Antigo Testamento**;
+- **27 livros no Novo Testamento**.
 
-- não deve fingir que não existem diferenças históricas;
-- não deve apresentar livros adicionais de outra tradição como posição oficial;
-- não deve definir a lista institucional sem decisão doutrinária documentada;
-- deve preparar uma política de cânon para aprovação humana posterior.
+A lista completa está em
+`docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md`. Ela compreende, no Antigo
+Testamento, o Pentateuco, os livros históricos, poéticos e sapienciais, os
+profetas maiores e os profetas menores. No Novo Testamento, compreende os
+Evangelhos, Atos dos Apóstolos, as cartas paulinas, as cartas gerais e
+Apocalipse.
 
-Para uma plataforma batista e pentecostal, a lista protestante é a referência
-esperada, mas sua enumeração precisa ser registrada e aprovada, não inferida
-silenciosamente pela IA.
+Outros escritos religiosos podem ser estudados como documentos históricos,
+literários ou religiosos, mas não são apresentados como Escritura inspirada nem
+utilizados para estabelecer doutrina oficial. Essa distinção deve ser ensinada
+com clareza e respeito.
 
 ## 3. Reconhecimento dos livros
 
@@ -362,7 +366,7 @@ Neste rascunho, essa posição exige:
 - apresentar variantes relevantes com transparência;
 - não inventar certeza quando a evidência está em discussão;
 - não tratar notas, comentários ou respostas de IA como Escritura;
-- submeter a lista institucional de livros a aprovação doutrinária explícita;
+- aplicar a lista institucional de 66 livros aprovada pelo proprietário;
 - reconhecer os dons espirituais atuais sem tratá-los como nova Escritura;
 - examinar profecias e orientações espirituais à luz da Bíblia;
 - respeitar pessoas de outras tradições sem misturar posições no produto.
@@ -380,6 +384,7 @@ mais convincente.
 - Não use uma nota textual para assustar ou humilhar o estudante.
 - Não confunda a escolha de uma tradução com troca de autoridade final.
 - Não apresente a lista de outra tradição como posição oficial do projeto.
+- Não trate escritos externos aos 66 livros como Escritura inspirada.
 - Não permita que a IA atribua a Deus uma reconstrução sem fontes.
 - Dúvidas históricas sérias merecem evidência e acompanhamento, não censura.
 

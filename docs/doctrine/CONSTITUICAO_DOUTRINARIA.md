@@ -13,6 +13,13 @@ e constituem a autoridade final para fé, doutrina e prática cristã. O ensino
 deve considerar contexto literário, histórico e canônico, evitando textos
 isolados como prova de afirmações que o contexto não sustenta.
 
+O Apostolic IA adota o cânon protestante de **66 livros**, composto por
+**39 livros no Antigo Testamento** e **27 livros no Novo Testamento**. A
+enumeração oficial e seus limites estão registrados em
+`docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md`. Outros escritos podem ser
+estudados historicamente, mas não são tratados como Escritura inspirada nem
+como fonte de doutrina oficial.
+
 Referências para revisão: 2 Timóteo 3:16-17; 2 Pedro 1:20-21; Salmo 119:105;
 Atos 17:11.
 
@@ -192,3 +199,13 @@ A IA do Apostolic IA:
 - **Data:** 24 de julho de 2026.
 - **Versão:** 1.0-candidata.
 - **Decisão:** aprovada para validação e Pull Request da Sprint 001.
+
+### Emenda sobre o cânon
+
+- **Responsável:** `Raphaelsantos10`.
+- **Função:** proprietário e administrador do projeto Apostolic IA.
+- **Data:** 30 de julho de 2026.
+- **Decisão:** aprovado o cânon protestante de 66 livros, com 39 livros no
+  Antigo Testamento e 27 livros no Novo Testamento.
+- **Limite:** a decisão doutrinária não substitui revisão histórica e textual
+  especializada nem licencia uma tradução bíblica.

@@ -25,6 +25,7 @@ produto deverá estar autorizada para o território e para o modo de uso.
 ## Fontes internas de governo
 
 - `docs/doctrine/CONSTITUICAO_DOUTRINARIA.md`, seções 1, 4, 12 e 13
+- `docs/doctrine/CANON_PROTESTANTE_66_LIVROS.md`
 - `docs/editorial/TEOLOGIA_APROVACAO.md`
 - `docs/editorial/AI_CONTENT_POLICY.md`
 - `docs/editorial/CONTENT_ORIGINALITY_POLICY.md`
@@ -64,11 +65,12 @@ lidas e registradas com capítulos e páginas efetivamente consultados.
 | O reconhecimento ocorreu progressivamente | Dossiê de fontes candidatas | Revisão histórica pendente |
 | A cópia manual produziu variantes | Fontes institucionais registradas | Revisão textual pendente |
 | Variantes devem ser comparadas, não escondidas | Política editorial | Governança |
-| A lista institucional precisa de aprovação explícita | Constituição, seção 12 | Pendente |
+| O projeto adota 39 livros no Antigo Testamento e 27 no Novo Testamento | Política do cânon protestante de 66 livros | Doutrinária aprovada |
 
 ## Limites da aula
 
-- não enumera oficialmente o cânon do projeto;
+- enumera o cânon oficial sem transformar a decisão doutrinária em conclusão
+  histórico-textual;
 - não resolve debates históricos num resumo;
 - não oferece números de manuscritos sem fonte e data;
 - não afirma que toda variante seja irrelevante;
