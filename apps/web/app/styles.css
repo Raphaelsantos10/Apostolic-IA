@@ -78,7 +78,8 @@ body {
 }
 button, select { font: inherit; }
 button { color: inherit; }
-button:focus-visible, select:focus-visible, a:focus-visible {
+button:focus-visible, select:focus-visible, input:focus-visible,
+textarea:focus-visible, a:focus-visible, [tabindex="-1"]:focus-visible {
   outline: 0.2rem solid var(--focus);
   outline-offset: 0.2rem;
 }
@@ -527,7 +528,143 @@ h2 { line-height: 1.2; }
 .lesson-quiz label { display: flex; gap: 0.55rem; align-items: start; }
 .quiz-result { padding: 0.8rem; border-left: 0.3rem solid var(--focus); background: var(--muted); }
 .quiz-result.is-correct { border-left-color: var(--success); }
+.quiz-result:focus { outline: 0.2rem solid var(--focus); outline-offset: 0.2rem; }
 .quiz-result p { margin: 0.25rem 0 0; }
+.module-review {
+  margin: 2rem 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--focus) 45%, var(--border));
+  border-radius: 1rem;
+  background: var(--panel);
+}
+.module-review-cover {
+  min-height: 18rem;
+  display: flex;
+  align-items: end;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+}
+.module-review-cover > div {
+  max-width: 42rem;
+  padding: 1.25rem;
+  border-radius: 0.8rem;
+  background: rgb(2 18 34 / 82%);
+  backdrop-filter: blur(0.35rem);
+}
+.module-review-cover h2 { margin: 0.4rem 0; color: #fff; }
+.module-review-cover p { margin: 0.35rem 0; }
+.module-review-warning {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  border-block: 1px solid var(--border);
+  background: color-mix(in srgb, var(--focus) 10%, var(--panel));
+}
+.module-review-layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, 20rem) minmax(0, 1fr);
+  min-height: 40rem;
+}
+.module-review-layout > aside {
+  padding: 1rem;
+  border-right: 1px solid var(--border);
+  background: var(--muted);
+}
+.module-review-lessons {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.module-review-lessons button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  padding: 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 0.65rem;
+  background: transparent;
+  text-align: left;
+}
+.module-review-lessons button > span:first-child {
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+.module-review-lessons button > span:last-child {
+  display: grid;
+  gap: 0.2rem;
+}
+.module-review-lessons button.is-active {
+  border-color: var(--focus);
+  background: var(--panel);
+}
+.module-review-lessons button.is-active > span:first-child {
+  border-color: var(--focus);
+  background: var(--focus);
+  color: #071526;
+}
+.module-review-stage { min-width: 0; padding: clamp(1rem, 3vw, 2rem); }
+.module-review-stage details {
+  margin: 1.5rem 0;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+.module-review-stage summary {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+.module-review-copy {
+  max-height: 34rem;
+  overflow: auto;
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+.module-review-quiz { display: grid; gap: 1rem; margin-top: 2rem; }
+.module-review-quiz fieldset {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+.module-review-quiz legend { padding: 0 0.4rem; font-weight: 700; }
+.module-review-quiz label { display: flex; gap: 0.6rem; align-items: start; }
+.module-review-quiz .button { justify-self: start; }
+.module-review-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 58rem) {
+  .module-review-layout { grid-template-columns: 1fr; }
+  .module-review-layout > aside {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .module-review-lessons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 32rem) {
+  .module-review-cover { min-height: 14rem; }
+  .module-review-lessons { grid-template-columns: 1fr; }
+  .module-review-navigation { flex-direction: column; }
+  .module-review-navigation .button { width: 100%; }
+}
 .daily-goal { display: grid; grid-template-columns: 1fr auto auto; gap: 1rem; align-items: end; margin: 1.5rem 0; padding: 1.2rem; border: 1px solid var(--border); border-radius: 0.8rem; background: var(--panel); }
 .daily-goal h2, .daily-goal p { margin: 0.2rem 0; }
 .daily-goal label { display: grid; gap: 0.35rem; }

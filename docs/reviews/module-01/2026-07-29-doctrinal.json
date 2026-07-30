@@ -1,0 +1,81 @@
+{
+  "schema": "apostolic-ia.module-review.v1",
+  "generatedAt": "2026-07-29T16:23:59.625Z",
+  "module": {
+    "code": "TEO-ESC-001",
+    "title": "Escrituras: Autoridade, Inspiração e Leitura Responsável",
+    "contentCommit": "22b38c3",
+    "plannedHours": 18
+  },
+  "reviewer": {
+    "name": "Raphael dos Santos Soares",
+    "qualification": "Pastor",
+    "organization": "ICM",
+    "relationship": "independent"
+  },
+  "review": {
+    "type": "doctrinal",
+    "date": "2026-07-29",
+    "decision": "approved",
+    "checklist": [
+      {
+        "id": "bible_final_authority",
+        "result": "compliant",
+        "label": "A Bíblia permanece a autoridade final."
+      },
+      {
+        "id": "christ_centered",
+        "result": "compliant",
+        "label": "Cristo e o evangelho governam o módulo."
+      },
+      {
+        "id": "inspiration_authorship",
+        "result": "compliant",
+        "label": "Inspiração e autoria humana são apresentadas sem contradição."
+      },
+      {
+        "id": "canon_transmission",
+        "result": "compliant",
+        "label": "Cânon, transmissão, edição e tradução não são confundidos."
+      },
+      {
+        "id": "sufficiency_limits",
+        "result": "compliant",
+        "label": "Autoridade e suficiência não sustentam anti-intelectualismo."
+      },
+      {
+        "id": "responsible_christ_centered_reading",
+        "result": "compliant",
+        "label": "A leitura cristocêntrica evita alegoria arbitrária."
+      },
+      {
+        "id": "spirit_scripture",
+        "result": "compliant",
+        "label": "Iluminação do Espírito não é apresentada como nova Escritura."
+      },
+      {
+        "id": "apostolic_under_scripture",
+        "result": "compliant",
+        "label": "A visão apostólica permanece submetida às Escrituras."
+      },
+      {
+        "id": "pastoral_safeguards",
+        "result": "compliant",
+        "label": "Aplicações evitam coerção, abuso espiritual e culpa indevida."
+      },
+      {
+        "id": "ai_limits",
+        "result": "compliant",
+        "label": "A IA não cria doutrina, profecia ou direção pessoal em nome de Deus."
+      }
+    ],
+    "blockers": "Não foram identificados erros doutrinários, bíblicos ou pastorais bloqueadores no conteúdo examinado. Entretanto, o módulo ainda não deve ser publicado nesta versão. Permanecem pendentes a bibliografia doutrinária, histórica e textual detalhada; a revisão histórica e textual especializada da Aula 3; a aprovação explícita da lista canônica institucional; a comprovação da licença da tradução bíblica para o território e o modo de uso; e os pareceres pedagógico, editorial, de originalidade e de acessibilidade. Qualquer alteração material posterior ao commit 22b38c3 deverá resultar em nova revisão.",
+    "observations": "Após a leitura das oito aulas, atividades, sete quizzes, avaliação final, gabaritos e mapas de fontes, concluo que o Módulo 1 apresenta coerência doutrinária, bíblica e pastoral.\n\nA autoridade final das Escrituras é afirmada de maneira consistente. Tradição, experiência, razão, liderança e inteligência artificial permanecem submetidas ao testemunho bíblico. O módulo também esclarece que a autoridade da Bíblia não torna o intérprete, professor, pastor ou sistema de IA infalível.\n\nCristo e o evangelho governam o desenvolvimento do conteúdo. A Aula 1 apresenta a revelação especial culminando no Filho. As Aulas 4 e 6 relacionam interpretação e aplicação à pessoa e à obra de Cristo. A leitura cristocêntrica respeita o contexto histórico, literário e canônico, distinguindo promessa, cumprimento, tipologia, tema e aplicação. O conteúdo rejeita a transformação arbitrária de objetos, números ou detalhes narrativos em símbolos ocultos.\n\nA Aula 2 apresenta inspiração divina e autoria humana sem contradição. Deus comunica por autores reais, utilizando linguagem, pesquisa, circunstâncias, gêneros literários e participação humana, sem reduzir a inspiração a ditado mecânico. O módulo também ensina corretamente que inspiração das Escrituras não significa infalibilidade de toda interpretação, tradução, pregação ou resposta de IA.\n\nA Aula 3 distingue adequadamente inspiração, reconhecimento canônico, transmissão manuscrita, edição e tradução. Não ensina que concílios criaram a autoridade dos livros por votação nem que uma variante textual equivale a nova doutrina. Contudo, as afirmações históricas e textuais dessa aula devem receber documentação acadêmica especializada antes da publicação, conforme reconhecido nas páginas 37–39.\n\nA Aula 4 descreve autoridade, suficiência, clareza e necessidade sem transformar a Bíblia em enciclopédia técnica. O conteúdo não utiliza suficiência para rejeitar ciência, medicina, saúde mental, profissionais competentes ou estudo acadêmico. A iluminação do Espírito é apresentada como auxílio para compreender, receber e obedecer à verdade, e não como nova Escritura, nova doutrina ou autorização para ignorar o contexto.\n\nA visão apostólica permanece submetida ao testemunho profético e apostólico preservado nas Escrituras. Nenhum líder contemporâneo, ministério, experiência espiritual ou sistema tecnológico é colocado acima da Bíblia.\n\nAs Aulas 4 e 7 apresentam salvaguardas pastorais relevantes. O módulo rejeita coerção, manipulação, humilhação, culpa indevida, encobrimento de abuso, diagnósticos espirituais improvisados e uso do nome de Deus para controlar decisões pessoais. Também afirma que perdão e submissão cristã não obrigam uma pessoa a permanecer em situação de violência, exploração ou perigo.\n\nOs limites da IA são claros e repetidos ao longo do módulo: a IA pode auxiliar pesquisa, organização, comparação e formulação de perguntas, mas não cria doutrina, não amplia o cânon, não produz profecia, não fala em nome de Deus e não decide casamento, vocação ou outras questões pessoais sensíveis.\n\nOs quizzes e a avaliação final são coerentes com esses ensinamentos. Os gabaritos comentados não apresentam contradições doutrinárias materiais identificadas.\n\nAntes da publicação, devem ser concluídas e registradas as bibliografias obrigatórias, contendo autor, obra, edição, editora ou instituição, ano, páginas consultadas, finalidade e situação de licença. A tradução bíblica escolhida para exibição também deverá possuir autorização documentada para o território, a plataforma e o modo de uso.\n\nRecomenda-se manter o módulo bloqueado para publicação até a conclusão dos demais pareceres humanos e dos requisitos de licenciamento. Esta avaliação refere-se exclusivamente ao conteúdo-base do commit 22b38c3."
+  },
+  "declarations": {
+    "humanReviewer": true,
+    "reviewedContent": true,
+    "bibleFinalAuthority": true
+  },
+  "automaticPublicationAuthorized": false
+}

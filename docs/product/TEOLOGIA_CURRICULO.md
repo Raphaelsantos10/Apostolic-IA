@@ -16,54 +16,50 @@ avaliações devem ser autorais e possuir referências verificáveis.
 - percurso normal: 24 meses;
 - percurso intensivo: mínimo recomendado de 12 meses;
 - percurso flexível: até 36 meses;
-- carga total candidata: 420 horas;
+- carga total planejada: 432 horas;
+- 24 matérias de aproximadamente 18 horas cada;
+- 6 a 8 aulas aprofundadas por matéria;
 - dedicação normal: aproximadamente 5 horas semanais.
 
-## Matriz de formação
+As 432 horas são uma meta curricular do Apostolic IA. Elas incluem conteúdo
+principal, leitura bíblica guiada, recursos multimédia, reflexão, atividades,
+quizzes, revisão e avaliação. Não representam horas de vídeo contínuo.
 
-### Etapa 1 — Fundamentos bíblicos e cristãos
+## Matriz oficial de 24 matérias
 
-1. A Bíblia e sua autoridade
-2. Panorama da história bíblica
-3. Deus, criação e humanidade
-4. Jesus Cristo e a redenção
-5. Graça, fé e salvação
-6. Identidade e autoridade do cristão
-7. Oração e comunhão com Deus
-8. Alianças bíblicas
+### Ano 1 — Fundamentos bíblicos e formação cristã
 
-### Etapa 2 — Vida no Espírito e maturidade
+1. Escrituras: Autoridade, Inspiração e Leitura Responsável
+2. Hermenêutica e Exegese Bíblica
+3. Panorama do Antigo Testamento
+4. Panorama do Novo Testamento
+5. Deus e a Trindade
+6. Jesus Cristo e a Redenção
+7. Espírito Santo e Sua Obra
+8. Humanidade, Pecado e Dignidade
+9. Salvação pela Graça Mediante a Fé
+10. Santificação e Caráter Cristão
+11. Igreja, Batismo e Ceia do Senhor
+12. Vida Cristã e Discipulado
 
-1. Pessoa e obra do Espírito Santo
-2. Batismo no Espírito Santo
-3. Discernimento e direção do Espírito
-4. Dons e manifestações espirituais
-5. Fruto do Espírito e caráter
-6. Santidade e formação cristã
-7. Cura, sofrimento e esperança
-8. Família e relacionamentos cristãos
+### Ano 2 — Ministério, missão e maturidade
 
-### Etapa 3 — Bíblia, interpretação e doutrina
+13. Aliança, Reino e História da Redenção
+14. Romanos e Gálatas
+15. Atos e a Missão Apostólica
+16. Identidade e Autoridade em Cristo
+17. Direção, Fruto e Dons do Espírito
+18. Fé, Cura, Sofrimento e Cuidado
+19. Evangelismo, Missões e Formação de Discípulos
+20. Pregação e Ensino da Palavra
+21. Ministério Prático, Liderança e Ética
+22. Família Cristã e Cuidado Comunitário
+23. História da Igreja e Movimentos Evangélicos
+24. Escatologia e Esperança Cristã
 
-1. Hermenêutica responsável
-2. Antigo Testamento
-3. Evangelhos e vida de Jesus
-4. Atos e expansão da Igreja
-5. Epístolas paulinas
-6. Epístolas gerais e Apocalipse
-7. História da Igreja
-8. Doutrinas essenciais e escatologia
-
-### Etapa 4 — Ministério e missão
-
-1. Evangelismo e missões
-2. Discipulado
-3. Pregação e ensino bíblico
-4. Liderança servidora
-5. Igreja local e formação de obreiros
-6. Cuidado pastoral e seus limites
-7. Apologética cristã
-8. Projeto ministerial supervisionado
+Esta matriz é autoral. A proximidade temática com outros cursos cristãos não
+autoriza copiar textos, títulos distintivos, sequências, atividades, imagens,
+áudios, vídeos ou avaliações de terceiros.
 
 ## Estrutura mínima de cada disciplina
 
@@ -71,9 +67,29 @@ Cada disciplina contém objetivos, competências, textos bíblicos principais,
 contexto histórico e literário, aulas acessíveis, referências, reflexão,
 atividade prática, quiz, revisão espaçada, avaliação final e bibliografia.
 
+Cada matéria terá como referência 18 horas:
+
+- 8 horas de conteúdo principal;
+- 3 horas de leitura bíblica guiada;
+- 1,5 hora de áudio, vídeo ou recursos visuais acessíveis;
+- 2 horas de reflexão e atividade prática;
+- 2 horas de quizzes e avaliação;
+- 1,5 hora de revisão e integração.
+
+Blocos no player devem durar aproximadamente 20 a 40 minutos, com pausas e
+retomada. A estimativa acadêmica conta toda a aprendizagem, não apenas o tempo
+de tela.
+
 Cada afirmação doutrinária deve ser classificada como essencial, posição
 denominacional, matéria secundária ou conteúdo ainda não aprovado. A plataforma
 não transforma desempenho, pontos ou pagamento em medida de fé ou chamado.
+
+## Estado honesto
+
+A matriz e a carga horária estão planejadas. O player técnico está disponível,
+mas as 24 matérias e suas aulas ainda não estão produzidas nem aprovadas. A
+Sprint 034 limita-se ao primeiro módulo; os demais serão produzidos em
+incrementos posteriores, sempre com aprovação humana.
 
 ## Cursos ministeriais independentes
 

@@ -1,0 +1,84 @@
+{
+  "schema": "apostolic-ia.module-review.v2",
+  "template": false,
+  "generatedAt": "2026-07-30",
+  "module": {
+    "code": "TEO-ESC-001",
+    "title": "Escrituras: Autoridade, Inspiração e Leitura Responsável",
+    "contentCommit": "2f9e307",
+    "controlsCommit": "c95e252",
+    "plannedHours": 18
+  },
+  "reviewer": {
+    "name": "Raphael dos Santos Soares",
+    "qualification": "Pastor",
+    "organization": "ICM",
+    "relationship": "proprietário do projeto e revisor humano",
+    "conflicts": "Participação no projeto declarada; independência institucional não comprovada."
+  },
+  "review": {
+    "type": "doctrinal",
+    "date": "2026-07-30",
+    "decision": "approved",
+    "checklist": [
+      {
+        "id": "bible_final_authority",
+        "result": "compliant",
+        "label": "A Bíblia permanece a autoridade final para fé, doutrina e prática."
+      },
+      {
+        "id": "christ_centered",
+        "result": "compliant",
+        "label": "Cristo e o evangelho governam o módulo."
+      },
+      {
+        "id": "apostolic_under_scripture",
+        "result": "compliant",
+        "label": "A visão apostólica permanece submetida às Escrituras."
+      },
+      {
+        "id": "continuation_of_gifts",
+        "result": "compliant",
+        "label": "O conteúdo afirma a atuação presente do Espírito Santo e a continuidade dos dons espirituais."
+      },
+      {
+        "id": "prophetic_discernment",
+        "result": "compliant",
+        "label": "Profecias, sonhos, impressões e orientações são examinados biblicamente."
+      },
+      {
+        "id": "closed_canon",
+        "result": "compliant",
+        "label": "Dons atuais não ampliam o cânon, corrigem as Escrituras nem criam doutrina contrária à Palavra."
+      },
+      {
+        "id": "ai_limits",
+        "result": "compliant",
+        "label": "A IA não cria doutrina, profecia nem direção pessoal em nome de Deus."
+      },
+      {
+        "id": "scripture_evidence",
+        "result": "compliant",
+        "label": "A formulação sobre os dons possui referências bíblicas e limites pastorais explícitos."
+      }
+    ],
+    "evidence": [
+      "Apostolic-IA-Aula-03-Pacote-de-Revisao-2f9e307.pdf",
+      "docs/doctrine/CONSTITUICAO_DOUTRINARIA.md",
+      "docs/courses/fundamentos-da-fe/module-01/lesson-03.md",
+      "docs/courses/fundamentos-da-fe/module-01/sources-03.md",
+      "docs/research/MODULE_01_AULA_03_SOURCE_DOSSIER.md",
+      "PR nº 46: cinco checks aprovados, incluindo CodeQL, validação e build"
+    ],
+    "blockers": "A aprovação doutrinária não encerra a revisão histórica e textual especializada da Aula 3, a definição institucional documentada do cânon protestante de 66 livros, a verificação editorial e de originalidade, o licenciamento da tradução bíblica, a validação de acessibilidade, o piloto pedagógico nem a verificação institucional da competência e independência dos revisores.",
+    "observations": "O responsável declarou explicitamente \"EU APROVO\" após receber o pacote atualizado da Aula 3 referente ao commit 2f9e307. A aprovação confirma a formulação bíblica, cristocêntrica, apostólica e pentecostal, incluindo a atuação presente do Espírito Santo, a continuidade dos dons e o discernimento de manifestações à luz das Escrituras. Este registro não constitui aprovação oficial ou endosso institucional de nenhuma denominação ou organização externa. Também não substitui parecer histórico-textual especializado, não transfere aprovação para alterações materiais posteriores e não autoriza publicação ou merge."
+  },
+  "declarations": {
+    "humanReviewer": true,
+    "reviewedFrozenContent": true,
+    "reviewedControlPackage": false,
+    "bibleFinalAuthority": true,
+    "independenceDeclared": false
+  },
+  "automaticPublicationAuthorized": false
+}

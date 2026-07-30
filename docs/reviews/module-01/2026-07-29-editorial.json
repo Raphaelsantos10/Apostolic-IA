@@ -1,0 +1,81 @@
+{
+  "schema": "apostolic-ia.module-review.v1",
+  "generatedAt": "2026-07-29T16:14:51.176Z",
+  "module": {
+    "code": "TEO-ESC-001",
+    "title": "Escrituras: Autoridade, Inspiração e Leitura Responsável",
+    "contentCommit": "22b38c3",
+    "plannedHours": 18
+  },
+  "reviewer": {
+    "name": "Raphael dos Santos Soares",
+    "qualification": "Pastor",
+    "organization": "ICM",
+    "relationship": "independent"
+  },
+  "review": {
+    "type": "editorial",
+    "date": "2026-07-29",
+    "decision": "rejected",
+    "checklist": [
+      {
+        "id": "original_writing",
+        "result": "compliant",
+        "label": "A redação é autoral e consistente."
+      },
+      {
+        "id": "no_disguised_copy",
+        "result": "needs-correction",
+        "label": "Não existe cópia nem paráfrase disfarçada."
+      },
+      {
+        "id": "source_traceability",
+        "result": "compliant",
+        "label": "Afirmações históricas e técnicas possuem fonte ou marcador de revisão."
+      },
+      {
+        "id": "citations",
+        "result": "needs-correction",
+        "label": "As citações identificam autor, obra, edição, localização e licença."
+      },
+      {
+        "id": "bible_license",
+        "result": "needs-correction",
+        "label": "A tradução bíblica está licenciada para território e modo de uso."
+      },
+      {
+        "id": "media_license",
+        "result": "compliant",
+        "label": "Imagens, áudio e vídeo possuem licença registrada."
+      },
+      {
+        "id": "fact_inference_confession",
+        "result": "compliant",
+        "label": "Fato, inferência e posição confessional são distinguidos."
+      },
+      {
+        "id": "terminology",
+        "result": "compliant",
+        "label": "A terminologia é consistente nas oito aulas."
+      },
+      {
+        "id": "legal_links",
+        "result": "compliant",
+        "label": "Referências não direcionam para material pirateado."
+      },
+      {
+        "id": "ai_policy",
+        "result": "needs-correction",
+        "label": "As políticas de originalidade e conteúdo assistido por IA foram cumpridas."
+      }
+    ],
+    "blockers": "A tradução bíblica que será exibida no produto ainda não possui licença territorial e digital registrada. As bibliografias obrigatórias das oito aulas permanecem incompletas e não apresentam autor, título, edição, editora, ano, páginas consultadas e situação de licença. Não foi apresentado relatório ou registro editorial suficiente para comprovar a inexistência de cópia ou paráfrase disfarçada. Também falta documentar quais trechos foram produzidos ou revisados com auxílio de inteligência artificial e quais verificações humanas foram realizadas.",
+    "observations": "A redação apresenta consistência de estrutura, terminologia e tom ao longo das oito aulas. O PDF afirma repetidamente que as aulas, atividades, quizzes, rubrica e avaliação foram redigidos originalmente. Não foram encontradas reproduções integrais de tradução bíblica, textos extensos atribuídos a terceiros ou referências explícitas a materiais pirateados.\n\nEntretanto, uma declaração interna de originalidade não substitui verificação editorial. Antes da aprovação, deve ser produzido um registro de proveniência contendo: responsáveis pela redação e revisão; ferramentas de IA utilizadas; prompts ou descrição do uso relevante; fontes efetivamente consultadas; trechos reformulados; e resultado da verificação de similaridade.\n\nAs páginas 17, 26–27, 37–39, 48–49 e as seções equivalentes das demais aulas informam que a bibliografia ainda será selecionada. Esses registros precisam ser concluídos antes da publicação. A Aula 3 requer atenção especial porque suas afirmações sobre reconhecimento canônico, manuscritos, variantes e crítica textual dependem de fontes históricas e acadêmicas especializadas.\n\nO aviso editorial da página 124 confirma que a tradução bíblica para exibição ainda precisa ser licenciada. Deve ser registrado o nome da tradução, titular dos direitos, território, plataforma, formato de exibição, limites de reprodução, prazo e comprovação da autorização.\n\nO status “Conforme” para imagens, áudio e vídeo aplica-se somente ao PDF atual, pois ele declara não incorporar esses recursos. Qualquer mídia adicionada futuramente exigirá autoria ou licença, crédito, localização do comprovante e revisão de acessibilidade."
+  },
+  "declarations": {
+    "humanReviewer": true,
+    "reviewedContent": true,
+    "bibleFinalAuthority": true
+  },
+  "automaticPublicationAuthorized": false
+}

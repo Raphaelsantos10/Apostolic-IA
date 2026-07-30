@@ -1,0 +1,95 @@
+{
+  "code": "TEO-FUN-001-M01-Q03",
+  "status": "draft",
+  "version": 1,
+  "questions": [
+    {
+      "prompt": "O que significa cânon bíblico nesta aula?",
+      "options": [
+        "Qualquer livro religioso antigo",
+        "A coleção de escritos reconhecidos como Escritura",
+        "Somente uma tradução moderna",
+        "Uma lista criada por inteligência artificial"
+      ],
+      "correctIndex": 1,
+      "explanation": "Cânon designa a coleção recebida como norma, distinguindo Escritura de outros escritos úteis."
+    },
+    {
+      "prompt": "Qual distinção está correta?",
+      "options": [
+        "Inspiração e tradução são exatamente o mesmo processo",
+        "Cânon trata da coleção; transmissão trata da cópia e preservação do texto",
+        "Reconhecimento cria a origem divina de um livro",
+        "Uma Bíblia de estudo é um manuscrito original"
+      ],
+      "correctIndex": 1,
+      "explanation": "A aula separa inspiração, cânon, reconhecimento, transmissão, edição e tradução."
+    },
+    {
+      "prompt": "O que Colossenses 4:16 mostra?",
+      "options": [
+        "Cartas eram lidas e compartilhadas entre comunidades",
+        "Todas as cartas antigas eram Escritura",
+        "Uma lista completa do cânon já estava impressa",
+        "As igrejas não participavam da leitura"
+      ],
+      "correctIndex": 0,
+      "explanation": "A passagem evidencia circulação e leitura de cartas sem, sozinha, fornecer uma lista canônica completa."
+    },
+    {
+      "prompt": "Qual descrição do reconhecimento canônico é mais responsável?",
+      "options": [
+        "Um único encontro inventou todos os livros",
+        "A coleção caiu pronta sem processo histórico",
+        "Comunidades reconheceram progressivamente escritos recebidos como Escritura",
+        "Popularidade tardia era o único critério"
+      ],
+      "correctIndex": 2,
+      "explanation": "O processo envolveu recepção, uso, discussão e registro histórico, sem criar por votação a autoridade divina."
+    },
+    {
+      "prompt": "Por que aparecem variantes entre manuscritos?",
+      "options": [
+        "Porque toda cópia foi produzida por máquina",
+        "Porque a cópia manual pode introduzir diferenças",
+        "Porque nenhuma palavra pode ser conhecida",
+        "Porque traduções modernas são os manuscritos"
+      ],
+      "correctIndex": 1,
+      "explanation": "Repetições, saltos, ortografia e outras ações de copistas podem produzir diferenças entre testemunhos."
+    },
+    {
+      "prompt": "O que faz a crítica textual?",
+      "options": [
+        "Escolhe a leitura mais conveniente para uma doutrina",
+        "Ignora testemunhos diferentes",
+        "Compara testemunhos e avalia a leitura mais bem sustentada",
+        "Transforma comentários em Escritura"
+      ],
+      "correctIndex": 2,
+      "explanation": "A crítica textual compara evidências externas e internas de maneira documentada e revisável."
+    },
+    {
+      "prompt": "Como uma nota textual deve ser tratada?",
+      "options": [
+        "Como prova automática de fraude",
+        "Como informação editorial a ser examinada com transparência",
+        "Como nova revelação",
+        "Como razão para esconder a variante"
+      ],
+      "correctIndex": 1,
+      "explanation": "Notas podem tornar o processo editorial transparente e orientar investigação responsável."
+    },
+    {
+      "prompt": "Qual limite institucional permanece pendente?",
+      "options": [
+        "A Bíblia deixar de ser autoridade final",
+        "A IA escolher novos livros",
+        "A enumeração formal da lista de livros na política do projeto",
+        "A eliminação da revisão humana"
+      ],
+      "correctIndex": 2,
+      "explanation": "A Constituição confessa Antigo e Novo Testamento, mas a lista institucional ainda precisa de registro e aprovação explícitos."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+code: TEO-ESC-001
+slug: escrituras-autoridade-inspiracao-leitura
+title: "Escrituras: Autoridade, Inspiração e Leitura Responsável"
+status: planning
+language: pt
+estimated_hours: 18
+lesson_count: 8
+doctrinal_basis: docs/doctrine/CONSTITUICAO_DOUTRINARIA.md
+approvals:
+  doctrinal: pending
+  pedagogical: pending
+  editorial: pending
+  accessibility: pending
+publication_allowed: false
+bible_use:
+  mode: references_only
+  full_text_embedded: false
+  protected_translation_selected: false
+  external_bible_links_enabled: false
+  offline_bible_text_included: false
+  license_required_before_full_text: true
+editorial_controls:
+  provenance: docs/editorial/MODULE_01_PROVENANCE.md
+  source_and_rights_register: docs/legal/MODULE_01_SOURCE_AND_RIGHTS_REGISTER.md
+  similarity_review_status: pending_human_review
+accessibility:
+  status: implementation_and_testing_pending
+  assessment_timer_required: false
+  pause_resume_required: true
+  additional_time_penalty: false
+  acceptance_plan: docs/accessibility/MODULE_01_ACCESSIBILITY_ACCEPTANCE.md
+assessment:
+  status: draft_after_pedagogical_review
+  project_weight_percent: 60
+  final_assessment_weight_percent: 40
+  passing_score_percent: 80
+  minimum_component_score_percent: 70
+  recovery:
+    penalty: false
+    replaces_previous_component_score: true
+    equivalent_evidence_required: true
+  rubric: docs/courses/fundamentos-da-fe/module-01/assessment-rubric.md
+pilot:
+  status: pending
+  target_hours: 18
+  acceptable_median_hours:
+    minimum: 15
+    maximum: 21
+  protocol: docs/validation/MODULE_01_PEDAGOGICAL_PILOT.md
+lessons:
+  - number: 1
+    slug: revelacao-e-palavra
+    title: Revelação de Deus e a Palavra escrita
+    estimated_hours: 2
+  - number: 2
+    slug: inspiracao-e-autoria
+    title: Inspiração divina e autoria humana
+    estimated_hours: 2.25
+  - number: 3
+    slug: canon-e-transmissao
+    title: Cânon, transmissão e confiança no texto
+    estimated_hours: 2.25
+  - number: 4
+    slug: autoridade-suficiencia-clareza
+    title: Autoridade, suficiência, clareza e necessidade
+    estimated_hours: 2.25
+  - number: 5
+    slug: contexto-historico-literario
+    title: Contexto histórico, literário e bíblico
+    estimated_hours: 2.25
+  - number: 6
+    slug: leitura-cristocentrica-responsavel
+    title: Leitura cristocêntrica e interpretação responsável
+    estimated_hours: 2.5
+  - number: 7
+    slug: aplicacao-sem-distorcao
+    title: Aplicação fiel sem distorcer o texto
+    estimated_hours: 2.25
+  - number: 8
+    slug: integracao-e-avaliacao
+    title: Integração, revisão e avaliação final
+    estimated_hours: 2.25

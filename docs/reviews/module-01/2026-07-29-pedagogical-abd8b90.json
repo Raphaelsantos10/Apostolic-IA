@@ -1,0 +1,81 @@
+{
+  "schema": "apostolic-ia.module-review.v1",
+  "generatedAt": "2026-07-29T18:23:49.395Z",
+  "module": {
+    "code": "TEO-ESC-001",
+    "title": "Escrituras: Autoridade, Inspiração e Leitura Responsável",
+    "contentCommit": "abd8b90",
+    "plannedHours": 18
+  },
+  "reviewer": {
+    "name": "Raphael Soares",
+    "qualification": "Pastor",
+    "organization": "ICM",
+    "relationship": "independent"
+  },
+  "review": {
+    "type": "pedagogical",
+    "date": "2026-07-29",
+    "decision": "approved",
+    "checklist": [
+      {
+        "id": "measurable_objectives",
+        "result": "compliant",
+        "label": "Os objetivos são claros e mensuráveis."
+      },
+      {
+        "id": "learning_progression",
+        "result": "compliant",
+        "label": "As oito aulas possuem progressão coerente."
+      },
+      {
+        "id": "workload",
+        "result": "compliant",
+        "label": "A carga planejada de 18 horas é plausível."
+      },
+      {
+        "id": "guided_readings",
+        "result": "compliant",
+        "label": "As leituras guiadas promovem observação e compreensão."
+      },
+      {
+        "id": "activities_alignment",
+        "result": "compliant",
+        "label": "As atividades praticam as competências ensinadas."
+      },
+      {
+        "id": "quiz_quality",
+        "result": "compliant",
+        "label": "Os quizzes avaliam os objetivos sem pegadinhas."
+      },
+      {
+        "id": "final_assessment",
+        "result": "compliant",
+        "label": "A avaliação final cobre o módulo proporcionalmente."
+      },
+      {
+        "id": "rubric",
+        "result": "compliant",
+        "label": "A rubrica do projeto possui critérios observáveis."
+      },
+      {
+        "id": "recovery",
+        "result": "compliant",
+        "label": "A recuperação promove nova aprendizagem sem humilhação."
+      },
+      {
+        "id": "gamification",
+        "result": "compliant",
+        "label": "A gamificação mede progresso acadêmico, não espiritualidade."
+      }
+    ],
+    "blockers": "Executar o piloto pedagógico previsto nas páginas 101–103 com participantes reais antes de declarar a carga de 18 horas como validada ou liberar o módulo para publicação. O relatório deverá registrar tempo ativo por aula, taxa de conclusão, abandonos, dificuldades, acessibilidade, recuperação e concordância entre os avaliadores da rubrica.\n\nCorrigir eventuais instruções, descritores ou distribuições de tempo que apresentem desvio no piloto. Qualquer alteração material posterior ao commit abd8b90 deverá ser submetida a nova revisão pedagógica.\n\nA aprovação pedagógica permanece condicionada aos pareceres doutrinário, bíblico-pastoral, editorial, jurídico e de acessibilidade, bem como ao licenciamento da tradução bíblica e dos recursos que vierem a ser incorporados.",
+    "observations": "Executar o piloto pedagógico previsto nas páginas 101–103 com participantes reais antes de declarar a carga de 18 horas como validada ou liberar o módulo para publicação. O relatório deverá registrar tempo ativo por aula, taxa de conclusão, abandonos, dificuldades, acessibilidade, recuperação e concordância entre os avaliadores da rubrica.\n\nCorrigir eventuais instruções, descritores ou distribuições de tempo que apresentem desvio no piloto. Qualquer alteração material posterior ao commit abd8b90 deverá ser submetida a nova revisão pedagógica.\n\nA aprovação pedagógica permanece condicionada aos pareceres doutrinário, bíblico-pastoral, editorial, jurídico e de acessibilidade, bem como ao licenciamento da tradução bíblica e dos recursos que vierem a ser incorporados.\n\nObservações adicionais\n\nCopie e cole:\n\nO commit abd8b90 responde satisfatoriamente às correções pedagógicas anteriormente solicitadas. As oito aulas apresentam progressão coerente: revelação, inspiração, cânon, atributos das Escrituras, contexto, leitura cristocêntrica, aplicação responsável e integração final.\n\nOs objetivos utilizam ações observáveis e estão relacionados às leituras guiadas, oficinas, quizzes e ao projeto integrador. As atividades promovem observação, comparação, interpretação, aplicação e registro de fontes. Os quizzes apresentam alternativas compreensíveis e explicações úteis, sem pegadinhas relevantes.\n\nA carga total planejada corresponde a 1.080 minutos, ou 18 horas, sendo plausível como hipótese para o piloto. O documento age corretamente ao não declarar essas 18 horas como já executadas ou certificadas. A confirmação deverá ocorrer por medição com estudantes do público-alvo.\n\nA rubrica das páginas 97–100 possui sete critérios, quatro níveis e descritores observáveis. Ela orienta o avaliador a registrar nível, pontuação, evidência encontrada e melhoria concreta. Os critérios de integração cristocêntrica, proteção pastoral e originalidade possuem gate de segurança adequado. Recomenda-se verificar no piloto se dois avaliadores independentes alcançam concordância suficiente.\n\nA composição da nota está clara: projeto integrador com peso de 60% e avaliação final com peso de 40%. Para avançar, o estudante precisa alcançar nota final mínima de 80, obter pelo menos 70 em cada componente e não permanecer em nível insuficiente nos critérios protegidos.\n\nA recuperação é pedagogicamente adequada. O estudante identifica os erros, revisita os conteúdos correspondentes, explica sua compreensão, realiza atividade equivalente e apresenta nova evidência. A nova pontuação substitui a anterior sem teto, desconto, perda de sequência ou exposição pública. Pausas, retomada, tempo adicional e recursos assistivos não reduzem a nota.\n\nO módulo distingue corretamente aprendizagem acadêmica de espiritualidade. Pontuação, sequência, conclusão de atividades e avaliação não medem santidade, chamado, unção, maturidade pastoral ou valor diante de Deus.\n\nO protocolo do piloto apresenta participantes, consentimento, pseudonimização, instrumentação, critérios de sucesso, regras de decisão e relatório final. Também prevê testes de teclado, foco, leitor de tela, zoom de 200%, largura de 320 CSS px, pausa e retomada.\n\nNão foi identificado bloqueio pedagógico que impeça o avanço ao piloto. A recomendação é “Aprovado com condições”, ficando a publicação bloqueada até a execução do piloto, análise do relatório e conclusão dos demais pareceres obrigatórios."
+  },
+  "declarations": {
+    "humanReviewer": true,
+    "reviewedContent": true,
+    "bibleFinalAuthority": true
+  },
+  "automaticPublicationAuthorized": false
+}

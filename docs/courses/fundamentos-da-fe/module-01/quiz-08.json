@@ -1,0 +1,185 @@
+{
+  "code": "TEO-FUN-001-M01-Q08",
+  "status": "draft",
+  "version": 1,
+  "assessmentType": "module-final",
+  "proposedPassingScore": 80,
+  "questions": [
+    {
+      "prompt": "Qual afirmação integra corretamente revelação e Escritura?",
+      "options": [
+        "Experiência pessoal possui a mesma autoridade da Bíblia",
+        "A criação torna desnecessário o evangelho escrito",
+        "Deus se revela, e a Escritura exerce autoridade normativa para a fé",
+        "Razão humana produz nova revelação inspirada"
+      ],
+      "correctIndex": 2,
+      "explanation": "Criação e consciência testemunham sobre Deus, mas a Escritura permanece a autoridade normativa e apresenta o evangelho."
+    },
+    {
+      "prompt": "Como inspiração divina e autoria humana se relacionam?",
+      "options": [
+        "A autoria humana elimina a procedência divina",
+        "Deus comunica por autores reais, com linguagem e circunstâncias próprias",
+        "Os autores escreveram mecanicamente sem contexto",
+        "Somente as ideias, e nunca as palavras, possuem importância"
+      ],
+      "correctIndex": 1,
+      "explanation": "A inspiração preserva a procedência divina sem apagar a participação histórica e literária dos autores."
+    },
+    {
+      "prompt": "Qual distinção é necessária ao estudar a formação da Bíblia?",
+      "options": [
+        "Inspiração, reconhecimento, transmissão e tradução são processos idênticos",
+        "Toda variante textual cria nova doutrina",
+        "Reconhecimento canônico e transmissão devem ser distinguidos da inspiração",
+        "A tradução moderna altera automaticamente o cânon"
+      ],
+      "correctIndex": 2,
+      "explanation": "Os processos se relacionam, mas não devem ser confundidos."
+    },
+    {
+      "prompt": "O que significa suficiência das Escrituras neste módulo?",
+      "options": [
+        "A Bíblia substitui toda ciência e competência profissional",
+        "A Escritura é suficiente para seu propósito salvífico e formativo",
+        "Nenhuma interpretação exige estudo",
+        "Todo assunto contemporâneo recebe instrução técnica detalhada"
+      ],
+      "correctIndex": 1,
+      "explanation": "Suficiência não transforma a Bíblia em enciclopédia técnica de todas as áreas."
+    },
+    {
+      "prompt": "Qual é a primeira unidade de controle para interpretar uma frase?",
+      "options": [
+        "Uma palavra isolada",
+        "A opinião do leitor",
+        "A unidade literária e seu argumento",
+        "Uma publicação popular"
+      ],
+      "correctIndex": 2,
+      "explanation": "Frases pertencem a unidades, livros e contextos que orientam seu sentido."
+    },
+    {
+      "prompt": "Como uma afirmação histórica deve ser tratada?",
+      "options": [
+        "Como certa quando parece plausível",
+        "Com fonte verificável e grau de certeza declarado",
+        "Como revelação quando não houver evidência",
+        "Sem distinguir fato e hipótese"
+      ],
+      "correctIndex": 1,
+      "explanation": "Contexto histórico não deve ser inventado; fontes e limites precisam ser registrados."
+    },
+    {
+      "prompt": "O que caracteriza conexão cristocêntrica responsável?",
+      "options": [
+        "Transformar cada detalhe em símbolo oculto",
+        "Ignorar o sentido histórico",
+        "Demonstrar a relação pela história redentora e pelo testemunho bíblico",
+        "Mencionar Jesus sem explicar a passagem"
+      ],
+      "correctIndex": 2,
+      "explanation": "A centralidade de Cristo respeita o texto e distingue promessa, tipo, tema e aplicação."
+    },
+    {
+      "prompt": "Quando uma possível tipologia não possui sustentação textual ou canônica, o aluno deve:",
+      "options": [
+        "Apresentá-la como doutrina",
+        "Inventar detalhes para fortalecê-la",
+        "Declarar o limite e não afirmar a conexão como certa",
+        "Pedir à IA que produza uma revelação"
+      ],
+      "correctIndex": 2,
+      "explanation": "Honestidade interpretativa é melhor que certeza fabricada."
+    },
+    {
+      "prompt": "Qual sequência descreve uma aplicação responsável?",
+      "options": [
+        "Preferência, versículo isolado e imposição",
+        "Significado, princípio, implicação e resposta concreta",
+        "Emoção, promessa e resultado garantido",
+        "Pontuação, comparação e autoridade"
+      ],
+      "correctIndex": 1,
+      "explanation": "Aplicação nasce do significado e passa por implicações coerentes."
+    },
+    {
+      "prompt": "Como uma questão de consciência deve ser conduzida?",
+      "options": [
+        "Como regra universal baseada na preferência do líder",
+        "Com liberdade, amor, edificação e responsabilidade",
+        "Sem considerar pessoas vulneráveis",
+        "Pela escolha do aluno com maior sequência"
+      ],
+      "correctIndex": 1,
+      "explanation": "Consciência cristã não elimina amor nem autoriza imposição indevida."
+    },
+    {
+      "prompt": "Qual afirmação sobre sofrimento é pastoralmente responsável?",
+      "options": [
+        "Todo sofrimento prova falta de fé",
+        "Perdão obriga permanência em situação perigosa",
+        "Diagnósticos exigem humildade, proteção e competência adequada",
+        "Buscar ajuda profissional demonstra incredulidade"
+      ],
+      "correctIndex": 2,
+      "explanation": "A Bíblia não autoriza diagnósticos automáticos nem a ocultação de abuso ou crime."
+    },
+    {
+      "prompt": "Qual é o papel legítimo do Professor IA?",
+      "options": [
+        "Criar doutrina quando as fontes discordam",
+        "Decidir casamento e vocação em nome de Deus",
+        "Auxiliar pesquisa rastreável e declarar limites",
+        "Substituir igreja, pastor e profissionais"
+      ],
+      "correctIndex": 2,
+      "explanation": "A IA serve ao estudo sob limites bíblicos e humanos; não possui autoridade espiritual."
+    },
+    {
+      "prompt": "O que a gamificação pode avaliar honestamente?",
+      "options": [
+        "Santidade e valor diante de Deus",
+        "Unção e superioridade ministerial",
+        "Conclusões, revisões e hábitos acadêmicos",
+        "Certeza doutrinária automática"
+      ],
+      "correctIndex": 2,
+      "explanation": "Indicadores acadêmicos não medem maturidade espiritual."
+    },
+    {
+      "prompt": "Ao compartilhar um estudo, o aluno deve:",
+      "options": [
+        "Ocultar as fontes para parecer original",
+        "Tratar toda inferência como fato",
+        "Distinguir texto, inferência e posição confessional",
+        "Impedir perguntas para preservar autoridade"
+      ],
+      "correctIndex": 2,
+      "explanation": "Rastreabilidade, clareza e abertura à correção fazem parte da fidelidade."
+    },
+    {
+      "prompt": "O que deve ocorrer quando o resultado da avaliação fica entre 60% e 79%, segundo a proposta?",
+      "options": [
+        "Aprovação automática",
+        "Exposição pública do aluno",
+        "Recuperação dirigida e nova tentativa",
+        "Perda definitiva do curso"
+      ],
+      "correctIndex": 2,
+      "explanation": "A recuperação busca aprendizagem real e ainda depende de aprovação pedagógica."
+    },
+    {
+      "prompt": "Qual declaração representa honestamente o estado deste módulo?",
+      "options": [
+        "Está publicado porque oito arquivos existem",
+        "Possui oito rascunhos, mas ainda depende de revisão, licenças, integração e aprovações",
+        "A IA já concedeu aprovação doutrinária",
+        "As 18 horas já estão disponíveis ao público"
+      ],
+      "correctIndex": 1,
+      "explanation": "Produção documental não equivale a conteúdo publicado ou validado para estudantes."
+    }
+  ]
+}

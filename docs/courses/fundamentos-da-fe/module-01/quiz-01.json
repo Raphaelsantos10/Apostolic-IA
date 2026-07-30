@@ -1,30 +1,95 @@
 {
   "code": "TEO-FUN-001-M01-Q01",
   "status": "draft",
-  "version": 1,
+  "version": 2,
   "questions": [
     {
-      "prompt": "Segundo 2 Timóteo 3:16-17, qual é uma finalidade das Escrituras?",
+      "prompt": "O que melhor descreve a revelação geral?",
       "options": [
-        "Substituir toda responsabilidade pastoral",
-        "Preparar a pessoa de Deus para toda boa obra",
-        "Eliminar a necessidade de considerar o contexto",
-        "Confirmar qualquer opinião pessoal"
+        "Uma doutrina criada pela observação individual",
+        "O testemunho de Deus percebido por meio da criação",
+        "Uma nova mensagem que corrige as Escrituras",
+        "O conteúdo completo do evangelho deduzido sem palavras"
       ],
       "correctIndex": 1,
-      "explanation": "O texto relaciona as Escrituras ao ensino, correção e preparo para toda boa obra."
+      "explanation": "Salmo 19 e Romanos 1 relacionam a criação ao testemunho sobre o Criador, sem transformar toda conclusão humana em doutrina."
     },
     {
-      "prompt": "Qual prática ajuda a evitar o uso indevido de um versículo?",
+      "prompt": "Qual é um limite da revelação geral apresentado na aula?",
       "options": [
-        "Ignorar o gênero literário",
-        "Ler somente uma frase",
-        "Considerar o contexto e o conjunto das Escrituras",
-        "Aceitar a interpretação mais popular"
+        "Ela não comunica nada verdadeiro sobre Deus",
+        "Ela torna desnecessária a leitura bíblica",
+        "Ela não apresenta sozinha o conteúdo histórico da redenção em Cristo",
+        "Ela existe somente para pessoas religiosas"
       ],
       "correctIndex": 2,
-      "explanation": "A interpretação responsável considera os contextos literário, histórico e canônico."
+      "explanation": "A criação testemunha sobre Deus, mas a encarnação, a cruz e a ressurreição são conhecidas pela revelação especial."
+    },
+    {
+      "prompt": "Segundo Hebreus 1:1-3, onde a revelação redentora encontra sua culminação?",
+      "options": [
+        "Na opinião da maioria",
+        "No Filho",
+        "Na natureza sem interpretação",
+        "Em qualquer tradição religiosa"
+      ],
+      "correctIndex": 1,
+      "explanation": "Hebreus apresenta continuidade com os profetas e culminação no Filho, Jesus Cristo."
+    },
+    {
+      "prompt": "O que 2 Timóteo 3:16-17 associa às Escrituras?",
+      "options": [
+        "Origem divina e formação para toda boa obra",
+        "Dispensa de estudo e contexto",
+        "Infalibilidade de todo professor",
+        "Substituição da comunidade cristã"
+      ],
+      "correctIndex": 0,
+      "explanation": "A passagem apresenta as Escrituras como procedentes de Deus e úteis para formar a pessoa de Deus."
+    },
+    {
+      "prompt": "Como 2 Pedro 1:20-21 preserva inspiração e autoria humana?",
+      "options": [
+        "Afirma que os autores inventaram a mensagem",
+        "Nega qualquer participação humana",
+        "Mostra pessoas falando da parte de Deus movidas pelo Espírito",
+        "Ensina que contexto e linguagem não importam"
+      ],
+      "correctIndex": 2,
+      "explanation": "Deus dirige a mensagem e pessoas reais falam; inspiração não apaga os autores humanos."
+    },
+    {
+      "prompt": "Qual afirmação distingue corretamente Escritura e interpretação?",
+      "options": [
+        "Toda interpretação sincera possui autoridade final",
+        "A Escritura é autoridade final e interpretações humanas devem ser examinadas",
+        "Somente líderes podem compreender qualquer passagem",
+        "A popularidade torna uma interpretação verdadeira"
+      ],
+      "correctIndex": 1,
+      "explanation": "A autoridade pertence ao texto bíblico; o intérprete deve demonstrar sua conclusão com contexto e humildade."
+    },
+    {
+      "prompt": "Como o Apostolic IA deve tratar uma resposta produzida por IA?",
+      "options": [
+        "Como nova revelação divina",
+        "Como profecia personalizada",
+        "Como auxílio sujeito às Escrituras e à revisão humana",
+        "Como autoridade superior à liderança responsável"
+      ],
+      "correctIndex": 2,
+      "explanation": "A IA auxilia estudo e organização, mas não cria doutrina, não fala em nome de Deus e não publica sem revisão."
+    },
+    {
+      "prompt": "Qual prática reduz o risco de usar um versículo indevidamente?",
+      "options": [
+        "Ignorar o gênero literário",
+        "Ler somente a frase desejada",
+        "Considerar contexto, argumento e conjunto das Escrituras",
+        "Escolher primeiro a conclusão e depois procurar um texto"
+      ],
+      "correctIndex": 2,
+      "explanation": "A interpretação responsável observa contexto literário e histórico, argumento, gênero e relação canônica."
     }
   ]
 }
-

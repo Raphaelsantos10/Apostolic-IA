@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createClient } from "../lib/supabase/client";
 
 type QuizQuestion = {
@@ -33,6 +33,13 @@ export function LessonLearningTools({
   const [selected, setSelected] = useState<number | null>(null);
   const [result, setResult] = useState<QuizResult | null>(null);
   const [message, setMessage] = useState("");
+  const resultRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (result) {
+      window.requestAnimationFrame(() => resultRef.current?.focus());
+    }
+  }, [result]);
 
   useEffect(() => {
     let active = true;
@@ -201,6 +208,10 @@ export function LessonLearningTools({
       {question && (
         <fieldset className="lesson-quiz">
           <legend>Verifique a aprendizagem</legend>
+          <p id={`quiz-${question.id}-timing`}>
+            Sem limite de tempo. Pode pausar, rever a aula e tentar novamente
+            sem perder pontos por utilizar mais tempo.
+          </p>
           <p>{question.prompt}</p>
           {question.options.map((option, index) => (
             <label key={option}>
@@ -225,7 +236,12 @@ export function LessonLearningTools({
             {operation === "quiz" ? "A corrigir…" : "Corrigir resposta"}
           </button>
           {result && (
-            <div className={result.is_correct ? "quiz-result is-correct" : "quiz-result"}>
+            <div
+              className={result.is_correct ? "quiz-result is-correct" : "quiz-result"}
+              ref={resultRef}
+              role="status"
+              tabIndex={-1}
+            >
               <strong>{result.is_correct ? "Resposta correta" : "Revise este ponto"}</strong>
               <p>{result.explanation}</p>
               <p>
