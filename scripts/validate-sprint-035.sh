@@ -20,6 +20,10 @@ grep -Fq "prefers-reduced-motion" apps/web/app/dashboard-preview/study-experienc
 grep -Fq "Bíblia: autoridade final" apps/web/components/study-experience.tsx
 grep -Fq "nunca crescimento espiritual" apps/web/components/study-experience.tsx
 grep -Fq "@rive-app/react-webgl2" apps/web/package.json
+grep -Fq 'LUMI_ARTBOARD = "Lumi"' apps/web/components/rive-study-flame.tsx
+grep -Fq 'LUMI_STATE_MACHINE = "lumi-ui"' apps/web/components/rive-study-flame.tsx
+grep -Fq "NEXT_PUBLIC_RIVE_LUMI_URL" apps/web/components/study-motion.tsx
+test -f apps/web/public/characters/lumi/poster.webp
 grep -Fq "@lottiefiles/dotlottie-react" apps/web/package.json
 
 echo "Sprint 035 - experiência visual e movimento responsável validados."

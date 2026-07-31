@@ -2,7 +2,10 @@
 
 import { useRive } from "@rive-app/react-webgl2";
 
-export function RiveStudyFlame({
+export const LUMI_ARTBOARD = "Lumi";
+export const LUMI_STATE_MACHINE = "lumi-ui";
+
+export function RiveLumi({
   src,
   paused
 }: Readonly<{
@@ -12,7 +15,8 @@ export function RiveStudyFlame({
   const { RiveComponent } = useRive({
     src,
     autoplay: !paused,
-    stateMachines: "Study flame"
+    artboard: LUMI_ARTBOARD,
+    stateMachines: LUMI_STATE_MACHINE
   });
 
   return (
@@ -22,3 +26,9 @@ export function RiveStudyFlame({
     />
   );
 }
+
+/**
+ * Compatibilidade temporária para consumidores anteriores da Sprint 035.
+ * Remover somente depois de existir um ativo Lumi aprovado em produção.
+ */
+export const RiveStudyFlame = RiveLumi;

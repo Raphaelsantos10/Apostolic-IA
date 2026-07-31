@@ -40,7 +40,7 @@ Nenhuma animação:
 
 ## Pendências
 
-- criar e aprovar o ficheiro Rive autoral `Study flame`;
+- redesenhar e aprovar o ficheiro Rive autoral da personagem `Lumi`;
 - realizar inspeção visual humana em desktop, 320 px e zoom de 200%;
 - testar teclado, leitor de ecrã e movimento reduzido em navegador real;
 - medir o custo dos chunks Rive e dotLottie;
