@@ -24,6 +24,8 @@ grep -Fq 'LUMI_ARTBOARD = "Lumi"' apps/web/components/rive-study-flame.tsx
 grep -Fq 'LUMI_STATE_MACHINE = "lumi-ui"' apps/web/components/rive-study-flame.tsx
 grep -Fq "NEXT_PUBLIC_RIVE_LUMI_URL" apps/web/components/study-motion.tsx
 test -f apps/web/public/characters/lumi/poster.webp
+grep -Fq 'activeSection === "courses" && visualExperience' apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -Fq '/dashboard-preview?section=' apps/web/app/dashboard-preview/dashboard-functional.tsx
 grep -Fq "@lottiefiles/dotlottie-react" apps/web/package.json
 
 echo "Sprint 035 - experiência visual e movimento responsável validados."

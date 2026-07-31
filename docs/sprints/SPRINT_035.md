@@ -23,6 +23,10 @@ e limites honestos de gamificação.
 - rollout por `NEXT_PUBLIC_STUDY_EXPERIENCE_V2`;
 - `/dashboard-preview` apresenta o incremento sem substituir o dashboard
   aprovado em produção.
+- o dashboard inicial mantém a visão geral; a experiência detalhada de estudo
+  fica dentro de `Cursos`, em vez de substituir a página inicial;
+- a prévia permite revisar as duas camadas por
+  `/dashboard-preview` e `/dashboard-preview?section=courses`.
 
 ## Uso responsável das animações
 

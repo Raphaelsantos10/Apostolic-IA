@@ -10,6 +10,7 @@ import {
 } from "../../lib/app-navigation.mjs";
 import { createClient } from "../../lib/supabase/client";
 import { StudyExperience } from "../../components/study-experience";
+import { StudyFlame } from "../../components/study-motion";
 import styles from "./dashboard-preview.module.css";
 
 type LearningMode = "adventure" | "academic";
@@ -365,9 +366,13 @@ export function DashboardFunctional({
   const visualExperience =
     preview ||
     process.env.NEXT_PUBLIC_STUDY_EXPERIENCE_V2 === "enabled";
-  const activeSection: DashboardSection = preview
-    ? "dashboard"
-    : initialSection;
+  const activeSection: DashboardSection = initialSection;
+  const sectionHref = (section: DashboardSection) => {
+    if (!preview) return dashboardSectionHref(section);
+    return section === "dashboard"
+      ? "/dashboard-preview"
+      : `/dashboard-preview?section=${encodeURIComponent(section)}`;
+  };
 
   useEffect(() => {
     const storedMode = window.localStorage.getItem("apostolic-learning-mode");
@@ -507,7 +512,7 @@ export function DashboardFunctional({
                         ? styles.activeNav
                         : styles.navButton
                     }
-                    href={dashboardSectionHref(section)}
+                    href={sectionHref(section)}
                     aria-current={
                       activeSection === section ? "page" : undefined
                     }
@@ -565,7 +570,7 @@ export function DashboardFunctional({
             </div>
             <Link
               className={styles.profile}
-              href={dashboardSectionHref("profile")}
+              href={sectionHref("profile")}
               aria-label="Abrir perfil"
             >
               {initials || "A"}
@@ -582,14 +587,7 @@ export function DashboardFunctional({
           <div><strong>{syncMessage}</strong></div>
         </div>
 
-        {activeSection === "dashboard" ? visualExperience ? (
-          <StudyExperience
-            progress={dashboard.overallProgress}
-            streak={dashboard.currentStreak}
-            completedLessons={dashboard.completedLessons}
-            totalLessons={dashboard.totalLessons}
-          />
-        ) : (
+        {activeSection === "dashboard" ? (
           <>
         <section className={styles.stats} aria-label="Resumo do progresso">
           <article className={styles.progressCard}>
@@ -613,7 +611,7 @@ export function DashboardFunctional({
               <p>O progresso é o mesmo nos modos Acadêmico e Aventura.</p>
               <Link
                 className={styles.primaryButton}
-                href={dashboardSectionHref("progress")}
+                href={sectionHref("progress")}
               >
                 Ver progresso
               </Link>
@@ -627,7 +625,7 @@ export function DashboardFunctional({
             <p>{dashboard.nextStudy.detail}</p>
             <Link
               className={styles.primaryButton}
-              href={dashboardSectionHref("courses")}
+              href={sectionHref("courses")}
             >
               Continuar estudando
             </Link>
@@ -643,7 +641,7 @@ export function DashboardFunctional({
 
           {adventure && (
             <article className={styles.streakCard}>
-              <span className={styles.flame} aria-hidden="true">🔥</span>
+              <StudyFlame />
               <div>
                 <p className={styles.cardLabel}>Sequência de estudo</p>
                 <h2>{dashboard.currentStreak} dias</h2>
@@ -665,7 +663,7 @@ export function DashboardFunctional({
               </div>
               <Link
                 className={styles.textButton}
-                href={dashboardSectionHref("courses")}
+                href={sectionHref("courses")}
               >
                 Ver todos
               </Link>
@@ -696,7 +694,7 @@ export function DashboardFunctional({
                       </div>
                       <div className={styles.courseMeta}>
                         <span>{course.progress}% concluído</span>
-                        <Link href={dashboardSectionHref("courses")}>
+                        <Link href={sectionHref("courses")}>
                           Continuar
                         </Link>
                       </div>
@@ -775,7 +773,7 @@ export function DashboardFunctional({
             </div>
             <Link
               className={styles.secondaryButton}
-              href={dashboardSectionHref("progress")}
+              href={sectionHref("progress")}
             >
               Abrir missão
             </Link>
@@ -787,7 +785,14 @@ export function DashboardFunctional({
             className={styles.sectionView}
             aria-label="Área funcional do dashboard"
           >
-            {activeSection === "profile" ? (
+            {activeSection === "courses" && visualExperience ? (
+              <StudyExperience
+                progress={dashboard.overallProgress}
+                streak={dashboard.currentStreak}
+                completedLessons={dashboard.completedLessons}
+                totalLessons={dashboard.totalLessons}
+              />
+            ) : activeSection === "profile" ? (
               profilePanel
             ) : (
               <AppViewContent view={activeSection as AppView} />
@@ -805,7 +810,7 @@ export function DashboardFunctional({
               className={
                 activeSection === section ? styles.mobileActive : ""
               }
-              href={dashboardSectionHref(section ?? "dashboard")}
+              href={sectionHref(section ?? "dashboard")}
               key={label}
               aria-current={
                 activeSection === section ? "page" : undefined
