@@ -9,6 +9,7 @@ required_files=(
   "apps/web/public/animations/achievement-spark.json"
   "docs/sprints/SPRINT_035.md"
   "docs/validation/SPRINT_035_VALIDATION.md"
+  "docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md"
 )
 
 for file in "${required_files[@]}"; do
@@ -26,6 +27,8 @@ grep -Fq "NEXT_PUBLIC_RIVE_LUMI_URL" apps/web/components/study-motion.tsx
 test -f apps/web/public/characters/lumi/poster.webp
 grep -Fq 'activeSection === "courses" && visualExperience' apps/web/app/dashboard-preview/dashboard-functional.tsx
 grep -Fq '/dashboard-preview?section=' apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -Fq "O dashboard é sempre a página inicial autenticada" docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md
+grep -Fq "A chama mede somente constância de estudo" docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md
 grep -Fq "@lottiefiles/dotlottie-react" apps/web/package.json
 
 echo "Sprint 035 - experiência visual e movimento responsável validados."

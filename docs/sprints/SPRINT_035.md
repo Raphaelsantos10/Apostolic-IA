@@ -9,6 +9,10 @@ Transformar a referência visual aprovada numa experiência original da
 Apostolic IA, preservando conteúdo, segurança, acessibilidade, progresso real
 e limites honestos de gamificação.
 
+A referência passa a orientar todo o produto conforme
+`docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md`. A Sprint 035 entrega a
+fundação e não declara login, Bíblia, comunidade ou mobile já redesenhados.
+
 ## Primeiro incremento
 
 - nova área de estudos em azul-marinho e dourado;
