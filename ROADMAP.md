@@ -60,14 +60,18 @@ representa um incremento completo, com checklist interno para suas funcionalidad
 | 032 | [x] Incremento incorporado | Integração Alpha técnica; gates de beta, piloto e Release Candidate continuam pendentes |
 | 033 | [x] Concluída após merge | Player de estudo guiado para um módulo piloto publicado |
 | 034 | [~] Em andamento | Primeiro módulo piloto completo com 8 aulas, 18 horas, Bíblia guiada e conteúdo multimodal acessível |
-| 035 | [ ] Planejada | Experiência visual, 24 capas autorais e refinamento web/PWA/mobile |
-| 036 | [ ] Planejada | Professor IA contextual e fluxo de dúvidas |
-| 037 | [ ] Planejada | Avaliação adaptativa e revisão personalizada |
-| 038 | [ ] Planejada | Microcredenciais auditáveis e privadas por padrão |
-| 039 | [ ] Planejada | Comunidade de ajuda, reputação temática e moderação |
-| 040 | [ ] Planejada | Experiência pública moderna e refinamento multiplataforma |
+| 035 | [~] Em andamento | Shell visual, dashboard inicial, Área de Estudos separada, Lumi, movimento responsável e 24 capas autorais |
+| 036 | [ ] Planejada | Login, conta, perfil e Professor IA contextual na identidade unificada |
+| 037 | [ ] Planejada | Cursos, avaliação adaptativa, revisão personalizada e estados de Lumi |
+| 038 | [ ] Planejada | Bíblia, planos, microcredenciais auditáveis e privadas por padrão |
+| 039 | [ ] Planejada | Comunidade de ajuda, moderação e experiência mobile representativa |
+| 040 | [ ] Planejada | Site público moderno, PWA e refinamento visual multiplataforma |
 | 041 | [ ] Planejada | Piloto pedagógico, publicação controlada e lançamento |
 
 As Sprints 033 a 041 implementam progressivamente o épico descrito em
 `docs/product/INTERACTIVE_STUDY_SYSTEM.md`. A numeração é uma direção de
 planeamento e não autoriza publicação sem os gates de cada sprint.
+
+A identidade e a distribuição das experiências entre site, conta, dashboard,
+estudo, Bíblia, comunidade e mobile são definidas em
+`docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md`.

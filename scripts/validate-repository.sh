@@ -208,4 +208,5 @@ bash scripts/validate-sprint-031.sh
 bash scripts/validate-sprint-032.sh
 bash scripts/validate-sprint-033.sh
 bash scripts/validate-sprint-034.sh
+bash scripts/validate-sprint-035.sh
 echo "Sprint 015 - onboarding validado com sucesso."

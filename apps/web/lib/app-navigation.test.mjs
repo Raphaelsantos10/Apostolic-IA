@@ -34,6 +34,10 @@ test("mantém as áreas funcionais dentro do dashboard novo", () => {
     "/dashboard?section=courses"
   );
   assert.equal(
+    dashboardSectionHref("study"),
+    "/dashboard?section=study"
+  );
+  assert.equal(
     dashboardSectionHref("destino-inexistente"),
     "/dashboard"
   );

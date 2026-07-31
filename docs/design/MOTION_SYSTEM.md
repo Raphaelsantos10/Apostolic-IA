@@ -63,3 +63,30 @@ Antes de aplicar movimento a curso, quiz, progresso, Bíblia ou IA:
 - verificar desempenho em dispositivo mobile representativo;
 - obter aprovação visual e de acessibilidade;
 - manter rollback por `feature flag`.
+
+## Contrato da personagem Lumi
+
+Lumi é uma guia pedagógica autoral. A personagem não representa o Espírito
+Santo, não profetiza, não interpreta a vontade de Deus e não substitui Bíblia,
+professor, pastor ou revisão humana.
+
+O ativo Rive aprovado deve ser hospedado pelo próprio projeto em
+`/characters/lumi/lumi.riv` e respeitar este contrato:
+
+| Elemento | Nome |
+| --- | --- |
+| Artboard | `Lumi` |
+| State machine | `lumi-ui` |
+| Estado numérico | `mode` |
+| Saudação | `triggerWave` |
+| Celebração | `triggerChest` |
+| Movimento reduzido | `reducedMotion` |
+
+O primeiro corte animado é limitado a `idle`, `wave` e `celebrate`. Enquanto o
+arquivo `.riv` não existir ou não estiver autorizado, a aplicação apresenta o
+poster estático `/characters/lumi/poster.webp`. O poster também é obrigatório
+quando o sistema ou a conta solicitarem redução de movimento.
+
+`NEXT_PUBLIC_RIVE_LUMI_URL` habilita o arquivo Rive autorizado. A variável
+anterior `NEXT_PUBLIC_RIVE_STUDY_FLAME_URL` permanece apenas como compatibilidade
+temporária.

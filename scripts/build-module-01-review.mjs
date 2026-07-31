@@ -18,8 +18,9 @@ function frontmatterValue(frontmatter, key) {
 }
 
 function parseLesson(markdown, number) {
-  const match = markdown.match(
-    /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/
+  const normalizedMarkdown = markdown.replace(/\r\n?/g, "\n");
+  const match = normalizedMarkdown.match(
+    /^---\n([\s\S]*?)\n---\n([\s\S]*)$/
   );
   if (!match) throw new Error(`Frontmatter ausente na Aula ${number}.`);
 

@@ -35,31 +35,54 @@ type AnswerState = {
   checked: boolean;
 };
 
+type ReviewLoadState =
+  | "loading"
+  | "ready"
+  | "unavailable"
+  | "offline"
+  | "error";
+
 const storageKey = "apostolic-module-01-private-review";
 
 export function ModuleReviewPlayer() {
   const [module, setModule] = useState<ReviewModule | null>(null);
   const [activeLesson, setActiveLesson] = useState(0);
   const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
-  const [unavailable, setUnavailable] = useState(false);
+  const [loadState, setLoadState] = useState<ReviewLoadState>("loading");
+  const [reloadKey, setReloadKey] = useState(0);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     let active = true;
 
     const load = async () => {
+      setLoadState("loading");
+      if (!window.navigator.onLine) {
+        setLoadState("offline");
+        return;
+      }
+
       const response = await fetch("/api/review/module-01", {
         cache: "no-store"
       }).catch(() => null);
 
       if (!active) return;
-      if (!response?.ok) {
-        setUnavailable(true);
+      if (!response) {
+        setLoadState("error");
+        return;
+      }
+      if (response.status === 404) {
+        setLoadState("unavailable");
+        return;
+      }
+      if (!response.ok) {
+        setLoadState("error");
         return;
       }
 
       const data = (await response.json()) as ReviewModule;
       setModule(data);
+      setLoadState("ready");
 
       const stored = window.localStorage.getItem(storageKey);
       if (stored) {
@@ -85,7 +108,7 @@ export function ModuleReviewPlayer() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [reloadKey]);
 
   useEffect(() => {
     if (!module) return;
@@ -95,7 +118,58 @@ export function ModuleReviewPlayer() {
     );
   }, [activeLesson, answers, module]);
 
-  if (unavailable || !module) return null;
+  if (loadState !== "ready" || !module) {
+    const stateCopy = {
+      loading: {
+        title: "A carregar a revisão",
+        description: "A verificar o pacote local das oito aulas e quizzes."
+      },
+      unavailable: {
+        title: "Revisão local desativada",
+        description:
+          "Ative MODULE_01_REVIEW_MODE=enabled no ambiente local para avaliar o rascunho."
+      },
+      offline: {
+        title: "Conteúdo de revisão indisponível offline",
+        description:
+          "O rascunho protegido não é guardado para acesso offline. Volte a ligar-se e tente novamente."
+      },
+      error: {
+        title: "Não foi possível carregar a revisão",
+        description:
+          "O restante da Área de Estudos continua disponível. Tente novamente sem publicar o rascunho."
+      },
+      ready: {
+        title: "",
+        description: ""
+      }
+    }[loadState];
+
+    return (
+      <section
+        className="module-review-state"
+        aria-live="polite"
+        aria-busy={loadState === "loading"}
+      >
+        <span aria-hidden="true">
+          {loadState === "loading" ? "◌" : loadState === "offline" ? "⌁" : "i"}
+        </span>
+        <div>
+          <strong>{stateCopy.title}</strong>
+          <p>{stateCopy.description}</p>
+        </div>
+        {(loadState === "offline" || loadState === "error") && (
+          <button
+            className="button button-secondary"
+            type="button"
+            onClick={() => setReloadKey((current) => current + 1)}
+          >
+            Tentar novamente
+          </button>
+        )}
+      </section>
+    );
+  }
 
   const lesson = module.lessons[activeLesson] ?? module.lessons[0]!;
   const answered = lesson.quiz.filter(
