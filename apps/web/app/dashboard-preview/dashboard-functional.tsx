@@ -493,6 +493,7 @@ export function DashboardFunctional({
   const [searchQuery, setSearchQuery] = useState("");
   const [profileOpen, setProfileOpen] = useState(false);
   const [devotionalOpen, setDevotionalOpen] = useState(false);
+  const [lumiMessageOpen, setLumiMessageOpen] = useState(false);
   const discoveryCarousel = useRef<HTMLDivElement>(null);
   const coursesCarousel = useRef<HTMLDivElement>(null);
   const [dashboard, setDashboard] = useState<DashboardData>(
@@ -844,16 +845,47 @@ export function DashboardFunctional({
           <>
         <section className={styles.stats} aria-label="Resumo do progresso">
           <article className={styles.nextCard}>
-            <div className={styles.heroLumi} aria-hidden="true">
+            <Image
+              alt=""
+              className={styles.heroBackdrop}
+              fill
+              priority
+              sizes="(max-width: 780px) 100vw, calc(100vw - 248px)"
+              src={adventure
+                ? "/dashboard-hero-adventure-v2.webp"
+                : "/dashboard-hero-journey.webp"}
+            />
+            <button
+              className={styles.heroLumi}
+              type="button"
+              aria-label={lumiMessageOpen
+                ? "Fechar mensagem da Lumi"
+                : "Ouvir o versículo do dia com a Lumi"}
+              aria-expanded={lumiMessageOpen}
+              onClick={() => setLumiMessageOpen((open) => !open)}
+            >
               <span className={styles.lumiAura} />
               <Image
-                alt=""
+                alt={adventure
+                  ? "Lumi em pose de exploradora, segurando uma Bíblia aberta"
+                  : "Lumi, guia de estudos da Apostolic IA"}
                 height={615}
                 priority
-                src="/characters/lumi/hero-cutout.png"
+                src={adventure
+                  ? "/characters/lumi/adventure-guide.png"
+                  : "/characters/lumi/hero-cutout.png"}
                 width={410}
               />
-            </div>
+              <span className={styles.lumiHint}>Clique na Lumi</span>
+            </button>
+            {lumiMessageOpen && (
+              <aside className={styles.lumiMessage} aria-live="polite">
+                <span className={styles.lumiMessageLabel}>Lumi diz</span>
+                <blockquote>“{dailyDevotional.verse}”</blockquote>
+                <cite>{dailyDevotional.reference}</cite>
+                <Link href={sectionHref("bible")}>Ler na Bíblia →</Link>
+              </aside>
+            )}
             <div className={styles.heroContent}>
               <p className={styles.cardLabel}>
                 {adventure ? "Sua jornada continua" : "Plano acadêmico"}

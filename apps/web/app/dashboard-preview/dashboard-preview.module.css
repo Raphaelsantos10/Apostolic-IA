@@ -266,32 +266,40 @@
   overflow: hidden;
   display: flex;
   align-items: end;
-  background:
-    linear-gradient(90deg, rgb(3 18 34 / 97%) 0%, rgb(3 18 34 / 78%) 42%, rgb(3 18 34 / 18%) 76%, rgb(3 18 34 / 48%) 100%),
-    url("/dashboard-hero-adventure.webp") center 48% / cover;
-  transition: background-position 700ms ease, border-color 300ms ease;
+  background: #10233e;
+  transition: border-color 300ms ease;
+}
+.heroBackdrop {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
 }
 .nextCard::before {
   content: "";
   position: absolute;
-  z-index: 0;
-  inset: -10%;
+  z-index: 1;
+  inset: 0;
   background:
-    radial-gradient(circle at 65% 52%, rgb(255 209 102 / 24%), transparent 15rem),
-    linear-gradient(120deg, transparent 44%, rgb(138 108 255 / 16%));
+    radial-gradient(circle at 76% 52%, rgb(255 209 102 / 18%), transparent 15rem),
+    linear-gradient(90deg, rgb(3 18 34 / 95%) 0%, rgb(3 18 34 / 76%) 40%, rgb(3 18 34 / 12%) 72%, rgb(3 18 34 / 20%) 100%);
+  pointer-events: none;
 }
 .academicMode .nextCard {
-  background:
-    linear-gradient(90deg, rgb(4 19 32 / 98%) 0%, rgb(8 27 44 / 86%) 48%, rgb(8 27 44 / 40%) 76%, rgb(4 19 32 / 64%) 100%),
-    url("/dashboard-hero-journey.webp") 72% 50% / cover;
+  background: #0b1d30;
   border-color: rgb(139 185 223 / 32%);
 }
+.academicMode .heroBackdrop { object-position: 72% 50%; }
 .academicMode .nextCard::before {
   background:
-    linear-gradient(110deg, transparent 50%, rgb(137 185 223 / 14%)),
+    linear-gradient(90deg, rgb(4 19 32 / 96%) 0%, rgb(8 27 44 / 80%) 48%, rgb(8 27 44 / 22%) 76%, rgb(4 19 32 / 42%) 100%),
     repeating-linear-gradient(90deg, transparent 0 5rem, rgb(185 216 241 / 2%) 5rem calc(5rem + 1px));
 }
-.heroContent { position: relative; z-index: 2; max-width: min(38rem, 72%); }
+.heroContent { position: relative; z-index: 3; max-width: min(38rem, 72%); }
+.page:not(.academicMode) .heroContent { max-width: min(34rem, 52%); }
 .heroContent h2 {
   max-width: 16ch;
   margin: 0.35rem 0;
@@ -302,17 +310,23 @@
 .heroContent p:not(.cardLabel) { margin-bottom: 1.25rem; color: #d7dfeb; }
 .heroLumi {
   position: absolute;
-  z-index: 1;
-  top: 50%;
-  right: clamp(9rem, 25vw, 25rem);
+  z-index: 3;
+  top: 56%;
+  right: clamp(1.25rem, 4vw, 4rem);
   bottom: auto;
-  width: clamp(11rem, 20vw, 18rem);
+  width: clamp(12rem, 22vw, 20rem);
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
   transform: translateY(-50%);
-  pointer-events: none;
+  cursor: pointer;
   filter: drop-shadow(0 1.6rem 2.4rem rgb(0 0 0 / 42%));
-  transition: right 600ms ease, filter 350ms ease;
+  transition: right 600ms ease, filter 350ms ease, scale 220ms ease;
 }
-.academicMode .heroLumi { right: clamp(1.5rem, 9vw, 9rem); width: clamp(12rem, 24vw, 22rem); filter: drop-shadow(0 1.6rem 2.4rem rgb(0 0 0 / 48%)) saturate(0.86); }
+.heroLumi:hover,
+.heroLumi:focus-visible { filter: drop-shadow(0 1.8rem 2.8rem rgb(255 209 102 / 32%)); outline: none; scale: 1.035; }
+.academicMode .heroLumi { top: 50%; right: clamp(1.5rem, 9vw, 9rem); width: clamp(12rem, 24vw, 22rem); filter: drop-shadow(0 1.6rem 2.4rem rgb(0 0 0 / 48%)) saturate(0.86); }
 .heroLumi img {
   position: relative;
   z-index: 1;
@@ -327,6 +341,41 @@
   background: radial-gradient(circle, rgb(244 198 102 / 38%), rgb(45 106 171 / 12%) 46%, transparent 72%);
   filter: blur(1rem);
 }
+.lumiHint {
+  position: absolute;
+  z-index: 2;
+  right: 50%;
+  bottom: 0.2rem;
+  translate: 50% 0;
+  width: max-content;
+  padding: 0.32rem 0.58rem;
+  border: 1px solid rgb(255 209 102 / 42%);
+  border-radius: 999px;
+  color: #fff4cc;
+  background: rgb(5 20 38 / 78%);
+  font-size: 0.64rem;
+  font-weight: 800;
+  backdrop-filter: blur(8px);
+}
+.lumiMessage {
+  position: absolute;
+  z-index: 4;
+  top: 1.2rem;
+  right: clamp(15rem, 25vw, 23rem);
+  width: min(18rem, 32vw);
+  padding: 0.9rem 1rem;
+  border: 1px solid rgb(255 209 102 / 48%);
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  color: var(--text);
+  background: rgb(7 23 42 / 92%);
+  box-shadow: 0 1rem 3rem rgb(0 0 0 / 38%);
+  backdrop-filter: blur(14px);
+}
+.lumiMessage::after { content: ""; position: absolute; right: -0.55rem; bottom: 1rem; width: 1rem; height: 1rem; background: rgb(7 23 42 / 92%); clip-path: polygon(0 0, 0 100%, 100% 100%); rotate: -45deg; }
+.lumiMessageLabel { color: var(--gold-bright); font-size: 0.65rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+.lumiMessage blockquote { margin: 0.45rem 0; font-family: Georgia, "Times New Roman", serif; font-size: 0.9rem; line-height: 1.45; }
+.lumiMessage cite { color: var(--gold-bright); font-size: 0.7rem; font-style: normal; }
+.lumiMessage a { display: block; margin-top: 0.6rem; color: #fff; font-size: 0.7rem; font-weight: 800; text-decoration: none; }
 .modeExperienceBadge {
   display: inline-flex;
   margin: 0.5rem 0 0.2rem;
@@ -579,8 +628,11 @@
   .profile { display: none; }
   .stats { grid-template-columns: 1fr; }
   .nextCard { min-height: 25rem; }
-  .heroContent { position: relative; z-index: 2; max-width: 72%; }
-  .heroLumi { right: -3rem; width: min(21rem, 48vw); opacity: 0.82; }
+  .heroContent { position: relative; z-index: 3; max-width: 60%; }
+  .heroLumi { right: 0.25rem; width: min(18rem, 44vw); opacity: 1; }
+  .academicMode .heroLumi { right: -1rem; }
+  .lumiMessage { top: 1rem; right: 1rem; width: min(18rem, calc(100% - 2rem)); }
+  .lumiMessage::after { display: none; }
   .liveClock { display: none; }
   .dashboardSearch input { width: min(15rem, 54vw); }
   .courseGrid { grid-auto-columns: minmax(16rem, 86%); }
@@ -623,7 +675,8 @@
   .progressRing { width: 5rem; height: 5rem; }
   .progressRing::before { width: 3.65rem; height: 3.65rem; }
   .heroContent { max-width: 88%; }
-  .heroLumi { right: -6rem; width: 18rem; opacity: 0.42; }
+  .heroLumi { top: 35%; right: -2rem; width: 13rem; opacity: 0.58; }
+  .lumiHint { display: none; }
 }
 
 @supports (animation-timeline: view()) {
