@@ -18,7 +18,7 @@ export async function DashboardProfilePanel({
   const [{ data: profile }, { data: preferences }] = await Promise.all([
     supabase
       .from("profiles")
-      .select("display_name, locale, timezone")
+      .select("display_name, locale, timezone, avatar_url")
       .eq("id", auth.user.id)
       .single(),
     supabase
@@ -62,6 +62,18 @@ export async function DashboardProfilePanel({
             maxLength={80}
             required
           />
+        </label>
+        <label className="dashboard-field dashboard-avatar-field">
+          <span>Fotografia do perfil</span>
+          {profile?.avatar_url ? (
+            <img src={profile.avatar_url} alt="Fotografia atual do perfil" />
+          ) : (
+            <span className="dashboard-avatar-placeholder" aria-hidden="true">
+              {(profile?.display_name ?? "A").slice(0, 1).toUpperCase()}
+            </span>
+          )}
+          <input name="avatar" type="file" accept="image/jpeg,image/png,image/webp" />
+          <small>JPG, PNG ou WebP, até 2 MB.</small>
         </label>
         <label className="dashboard-field">
           <span>Idioma</span>

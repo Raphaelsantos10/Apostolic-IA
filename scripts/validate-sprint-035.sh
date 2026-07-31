@@ -44,6 +44,13 @@ grep -Fq "scrollReveal" apps/web/app/dashboard-preview/dashboard-functional.tsx
 grep -Fq "scroll-snap-type" apps/web/app/dashboard-preview/dashboard-preview.module.css
 grep -Fq "animation-timeline: view()" apps/web/app/dashboard-preview/dashboard-preview.module.css
 grep -Fq "prefers-reduced-motion: reduce" apps/web/app/dashboard-preview/dashboard-preview.module.css
+grep -Fq "setInterval(() => setNow(new Date()), 1000)" apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -Fq "Pesquisar no dashboard" apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -Fq "profileDropdown" apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -Fq "identity?.display_name" apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -Fq "progress-orbit" apps/web/app/dashboard-preview/dashboard-preview.module.css
+grep -Fq "community_profile_cards" apps/web/components/community-panel.tsx
+test -f supabase/migrations/20260731113000_profile_avatar_and_community_cards.sql
 grep -Fq "O dashboard é sempre a página inicial autenticada" docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md
 grep -Fq "A chama mede somente constância de estudo" docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md
 grep -Fq "@lottiefiles/dotlottie-react" apps/web/package.json

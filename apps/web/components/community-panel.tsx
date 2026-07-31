@@ -4,7 +4,8 @@ import { FormEvent, useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client";
 
 type Circle = { id:string; name:string; description:string; visibility:"public"|"private" };
-type Post = { id:string; circle_id:string; body:string; created_at:string };
+type Post = { id:string; circle_id:string; author_id:string; body:string; created_at:string };
+type ProfileCard = { id:string; display_name:string|null; avatar_url:string|null };
 
 export function CommunityPanel() {
   const [userId,setUserId]=useState<string|null>(null);
@@ -12,6 +13,8 @@ export function CommunityPanel() {
   const [posts,setPosts]=useState<Post[]>([]);
   const [selected,setSelected]=useState<string>("");
   const [message,setMessage]=useState("");
+  const [profiles,setProfiles]=useState<Record<string,ProfileCard>>({});
+  const [ownProfile,setOwnProfile]=useState<ProfileCard|null>(null);
   const [status,setStatus]=useState("A carregar comunidade…");
 
   useEffect(()=>{
@@ -22,6 +25,9 @@ export function CommunityPanel() {
       if(!active)return;
       if(!auth.user){setStatus("Entre na sua conta para participar.");return;}
       setUserId(auth.user.id);
+      const ownProfileResponse=await supabase.from("profiles")
+        .select("id,display_name,avatar_url").eq("id",auth.user.id).maybeSingle();
+      if(ownProfileResponse.data)setOwnProfile(ownProfileResponse.data as ProfileCard);
       const {data,error}=await supabase.from("community_circles")
         .select("id,name,description,visibility").order("created_at");
       if(!active)return;
@@ -40,11 +46,20 @@ export function CommunityPanel() {
     const loadPosts=async()=>{
       if(!selected){setPosts([]);return;}
       const response=await createClient().from("community_posts")
-        .select("id,circle_id,body,created_at").eq("circle_id",selected)
+        .select("id,circle_id,author_id,body,created_at").eq("circle_id",selected)
         .order("created_at",{ascending:false});
       if(!active)return;
       if(response.error){setStatus("Não foi possível carregar as publicações.");return;}
-      setPosts((response.data??[]) as Post[]);
+      const nextPosts=(response.data??[]) as Post[];
+      setPosts(nextPosts);
+      const authorIds=[...new Set(nextPosts.map((post)=>post.author_id))];
+      if(authorIds.length){
+        const cards=await createClient().from("community_profile_cards")
+          .select("id,display_name,avatar_url").in("id",authorIds);
+        if(!cards.error)setProfiles(Object.fromEntries(
+          ((cards.data??[]) as ProfileCard[]).map((profile)=>[profile.id,profile])
+        ));
+      }
       setMessage("");
     };
     void loadPosts();
@@ -77,7 +92,7 @@ export function CommunityPanel() {
     const form=new FormData(formElement);
     const {data,error}=await createClient().from("community_posts").insert({
       circle_id:selected,author_id:userId,body:String(form.get("body"))
-    }).select("id,circle_id,body,created_at").single();
+    }).select("id,circle_id,author_id,body,created_at").single();
     setMessage(error?"Não foi possível publicar. Aguarde e tente novamente.":"Publicação enviada.");
     if(!error&&data){
       formElement.reset();
@@ -87,19 +102,28 @@ export function CommunityPanel() {
 
   if(!userId&&status) return <div className="notice"><h2>Comunidade opcional</h2><p>{status} <a href="/entrar">Entrar</a></p></div>;
 
-  return <section className="community" aria-labelledby="community-title">
-    <header>
-      <p className="eyebrow">Comunidade segura e voluntária</p>
-      <h1 id="community-title">Círculos de estudo</h1>
-      <p className="lead">Participe no seu ritmo. Perfis são privados e práticas espirituais nunca entram em rankings.</p>
+  const selectedCircle=circles.find((circle)=>circle.id===selected);
+
+  return <section className="community community-modern" aria-labelledby="community-title">
+    <header className="community-hero">
+      <div>
+        <p className="eyebrow">Comunidade segura e voluntária</p>
+        <h1 id="community-title">Aprender também é caminhar juntos</h1>
+        <p className="lead">Perguntas, reflexões e círculos moderados. Sem rankings espirituais e com privacidade por padrão.</p>
+      </div>
+      <div className="community-stats" aria-label="Resumo da comunidade">
+        <span><strong>{circles.length}</strong> círculos</span>
+        <span><strong>{posts.length}</strong> publicações</span>
+      </div>
     </header>
     {status&&<p role="status">{status}</p>}
     <div className="community-layout">
       <aside className="circle-list" aria-label="Seus círculos">
-        <h2>Círculos</h2>
+        <div className="community-section-title"><span aria-hidden="true">◌</span><h2>Seus círculos</h2></div>
         {circles.map(circle=><button key={circle.id} type="button"
           className={selected===circle.id?"is-active":""} onClick={()=>setSelected(circle.id)}>
-          <strong>{circle.name}</strong><small>{circle.visibility==="private"?"Privado":"Público"}</small>
+          <span className="circle-avatar" aria-hidden="true">{circle.name.slice(0,1).toUpperCase()}</span>
+          <span><strong>{circle.name}</strong><small>{circle.visibility==="private"?"Privado":"Público"}</small></span>
         </button>)}
         <details>
           <summary>Criar círculo</summary>
@@ -112,17 +136,29 @@ export function CommunityPanel() {
         </details>
       </aside>
       <div className="community-feed">
-        <form onSubmit={publish} className="community-form">
-          <label htmlFor="community-post">Nova publicação</label>
-          <textarea id="community-post" name="body" required maxLength={2000}
-            placeholder="Partilhe uma pergunta ou reflexão respeitosa." disabled={!selected}/>
-          <button className="button button-primary" disabled={!selected}>Publicar</button>
+        <header className="feed-header">
+          <div><p className="eyebrow">Círculo atual</p><h2>{selectedCircle?.name??"Comunidade"}</h2></div>
+          <span>{selectedCircle?.visibility==="private"?"◉ Privado":"◎ Público"}</span>
+        </header>
+        <form onSubmit={publish} className="community-form community-composer">
+          <span className="community-user-avatar" style={ownProfile?.avatar_url?{backgroundImage:`url("${ownProfile.avatar_url}")`}:undefined}>
+            {ownProfile?.avatar_url?"":(ownProfile?.display_name??"A").slice(0,1).toUpperCase()}
+          </span>
+          <label htmlFor="community-post"><span className="sr-only">Nova publicação</span>
+            <textarea id="community-post" name="body" required maxLength={2000}
+              placeholder="Partilhe uma pergunta ou reflexão respeitosa." disabled={!selected}/>
+          </label>
+          <div className="composer-actions">
+            <span>Texto • até 2.000 caracteres</span>
+            <button className="button button-primary" disabled={!selected}>Publicar</button>
+          </div>
           {message&&<small role="status">{message}</small>}
         </form>
         {posts.length===0?<div className="notice"><h2>Nenhuma publicação</h2><p>Inicie uma conversa edificante neste círculo.</p></div>:
-          posts.map(post=><article className="community-post" key={post.id}>
-            <p>{post.body}</p><small>{new Intl.DateTimeFormat("pt-PT",{dateStyle:"medium"}).format(new Date(post.created_at))}</small>
-          </article>)}
+          posts.map(post=>{const author=profiles[post.author_id];return <article className="community-post" key={post.id}>
+            <header><span className="community-user-avatar" style={author?.avatar_url?{backgroundImage:`url("${author.avatar_url}")`}:undefined}>{author?.avatar_url?"":(author?.display_name??"M").slice(0,1).toUpperCase()}</span><span><strong>{author?.display_name??"Membro da comunidade"}</strong><small>{new Intl.DateTimeFormat("pt-PT",{dateStyle:"medium",timeStyle:"short"}).format(new Date(post.created_at))}</small></span></header>
+            <p>{post.body}</p><footer><button type="button">♡ Apoiar</button><button type="button">◌ Responder</button><button type="button">◇ Guardar</button></footer>
+          </article>})}
       </div>
     </div>
   </section>;

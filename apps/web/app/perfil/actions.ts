@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { createClient } from "../../lib/supabase/server";
 
 const locales = new Set(["pt-PT", "pt-BR"]);
@@ -27,6 +28,7 @@ export async function updateProfile(data: FormData) {
   const displayName = text(data, "displayName");
   const locale = text(data, "locale");
   const timezone = text(data, "timezone");
+  const avatar = data.get("avatar");
 
   if (displayName.length < 2 || displayName.length > 80) {
     go(path, "erro", "O nome deve ter entre 2 e 80 caracteres.");
@@ -39,12 +41,38 @@ export async function updateProfile(data: FormData) {
   const { data: auth } = await supabase.auth.getUser();
   if (!auth.user) redirect("/entrar");
 
+  let avatarUrl: string | undefined;
+  if (avatar instanceof File && avatar.size > 0) {
+    const allowedTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
+    if (!allowedTypes.has(avatar.type) || avatar.size > 2 * 1024 * 1024) {
+      go(path, "erro", "A fotografia deve ser JPG, PNG ou WebP e ter até 2 MB.");
+    }
+    const extension = avatar.type === "image/png"
+      ? "png"
+      : avatar.type === "image/webp"
+        ? "webp"
+        : "jpg";
+    const avatarPath = `${auth.user.id}/avatar.${extension}`;
+    const upload = await supabase.storage
+      .from("profile-avatars")
+      .upload(avatarPath, avatar, { cacheControl: "3600", upsert: true });
+    if (upload.error) go(path, "erro", "Não foi possível guardar a fotografia.");
+    const publicUrl = supabase.storage.from("profile-avatars").getPublicUrl(avatarPath);
+    avatarUrl = `${publicUrl.data.publicUrl}?v=${Date.now()}`;
+  }
+
   const { error } = await supabase
     .from("profiles")
-    .update({ display_name: displayName, locale, timezone })
+    .update({
+      display_name: displayName,
+      locale,
+      timezone,
+      ...(avatarUrl ? { avatar_url: avatarUrl } : {})
+    })
     .eq("id", auth.user.id);
 
   if (error) go(path, "erro", "Não foi possível atualizar o perfil.");
+  revalidatePath("/dashboard");
   go(path, "mensagem", "Perfil atualizado.");
 }
 

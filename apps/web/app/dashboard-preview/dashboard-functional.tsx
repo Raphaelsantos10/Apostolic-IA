@@ -40,6 +40,7 @@ type DashboardMission = {
 
 type DashboardData = {
   name: string;
+  avatarUrl: string | null;
   completedLessons: number;
   totalLessons: number;
   overallProgress: number;
@@ -120,6 +121,7 @@ const demoCourses: DashboardCourse[] = [
 
 const demoData: DashboardData = {
   name: "Estudante",
+  avatarUrl: null,
   completedLessons: 18,
   totalLessons: 24,
   overallProgress: 75,
@@ -159,6 +161,7 @@ const demoData: DashboardData = {
 
 const emptyData: DashboardData = {
   name: "Estudante",
+  avatarUrl: null,
   completedLessons: 0,
   totalLessons: 0,
   overallProgress: 0,
@@ -204,6 +207,20 @@ const mobileNavigation = [
 ] satisfies ReadonlyArray<{
   icon: string;
   label: string;
+  section: DashboardSection;
+}>;
+
+const searchDestinations = [
+  { label: "Dashboard", detail: "Resumo da sua jornada", section: "dashboard" },
+  { label: "Estudos", detail: "Retomar aulas e atividades", section: "study" },
+  { label: "Cursos", detail: "Explorar o catálogo", section: "courses" },
+  { label: "Bíblia", detail: "Leitura e pesquisa bíblica", section: "bible" },
+  { label: "Professor IA", detail: "Perguntas com fontes", section: "teacher" },
+  { label: "Comunidade", detail: "Círculos e publicações", section: "community" },
+  { label: "Progresso", detail: "Atividades e constância", section: "progress" }
+] satisfies ReadonlyArray<{
+  label: string;
+  detail: string;
   section: DashboardSection;
 }>;
 
@@ -260,6 +277,7 @@ function eventCopy(kind: PointEvent["activity_kind"]) {
 
 function buildDashboardData(
   name: string,
+  avatarUrl: string | null,
   catalog: CatalogCourse[],
   progressRows: ProgressRow[],
   profile: GamificationProfile | null,
@@ -350,6 +368,7 @@ function buildDashboardData(
 
   return {
     name,
+    avatarUrl,
     completedLessons,
     totalLessons,
     overallProgress,
@@ -383,6 +402,9 @@ export function DashboardFunctional({
   profilePanel?: ReactNode;
 }>) {
   const [mode, setMode] = useState<LearningMode>("adventure");
+  const [now, setNow] = useState(() => new Date());
+  const [searchQuery, setSearchQuery] = useState("");
+  const [profileOpen, setProfileOpen] = useState(false);
   const [dashboard, setDashboard] = useState<DashboardData>(
     preview ? demoData : emptyData
   );
@@ -407,6 +429,11 @@ export function DashboardFunctional({
   }, []);
 
   useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
     let active = true;
     const load = async () => {
       try {
@@ -426,6 +453,7 @@ export function DashboardFunctional({
         if (syncResponse.error) throw syncResponse.error;
         const [
           courseResponse,
+          identityResponse,
           progressResponse,
           profileResponse,
           eventResponse,
@@ -437,6 +465,11 @@ export function DashboardFunctional({
               "id,title,position,course_modules(id,title,position,lessons(id,title,position))"
             )
             .order("position"),
+          supabase
+            .from("profiles")
+            .select("display_name,avatar_url")
+            .eq("id", authData.user.id)
+            .maybeSingle(),
           supabase
             .from("lesson_progress")
             .select("lesson_id,status,percent,updated_at")
@@ -465,14 +498,27 @@ export function DashboardFunctional({
         if (firstError) throw firstError;
         if (!active) return;
 
+        const legacyIdentity = identityResponse.error
+          ? await supabase
+              .from("profiles")
+              .select("display_name")
+              .eq("id", authData.user.id)
+              .maybeSingle()
+          : null;
+        const identity = identityResponse.data ?? legacyIdentity?.data;
+
         setDashboard(
           buildDashboardData(
             displayName(
-              authData.user.user_metadata as
-                | Record<string, unknown>
-                | undefined,
+              {
+                display_name:
+                  identity?.display_name ??
+                  (authData.user.user_metadata as Record<string, unknown> | undefined)
+                    ?.display_name
+              },
               authData.user.email
             ),
+            identityResponse.data?.avatar_url ?? null,
             (courseResponse.data ?? []) as unknown as CatalogCourse[],
             (progressResponse.data ?? []) as ProgressRow[],
             profileResponse.data as GamificationProfile | null,
@@ -503,6 +549,28 @@ export function DashboardFunctional({
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase())
     .join("");
+  const firstName = dashboard.name.trim().split(/\s+/)[0] || "Estudante";
+  const greeting = now.getHours() < 12
+    ? "Bom dia"
+    : now.getHours() < 18
+      ? "Boa tarde"
+      : "Boa noite";
+  const formattedDate = new Intl.DateTimeFormat("pt-PT", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long"
+  }).format(now);
+  const formattedTime = new Intl.DateTimeFormat("pt-PT", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  }).format(now);
+  const searchResults = searchQuery.trim()
+    ? searchDestinations.filter((item) =>
+        `${item.label} ${item.detail}`.toLocaleLowerCase("pt")
+          .includes(searchQuery.trim().toLocaleLowerCase("pt"))
+      )
+    : [];
   const syncMessage =
     syncState === "loading"
       ? "A sincronizar o seu progresso…"
@@ -570,11 +638,31 @@ export function DashboardFunctional({
       <main className={styles.main} id="dashboard-content">
         <header className={styles.header}>
           <div>
-            <p className={styles.eyebrow}>Jornada de aprendizagem</p>
-            <h1>Bem-vindo de volta, {dashboard.name}!</h1>
+            <p className={styles.liveDate}>{formattedDate}</p>
+            <h1>{greeting}, {firstName}!</h1>
             <p>Continue o seu estudo no ritmo que faz sentido para você.</p>
           </div>
           <div className={styles.headerActions}>
+            <div className={styles.dashboardSearch} role="search">
+              <span aria-hidden="true">⌕</span>
+              <input
+                aria-label="Pesquisar no dashboard"
+                placeholder="Pesquisar"
+                type="search"
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+              />
+              {searchQuery && (
+                <div className={styles.searchResults}>
+                  {searchResults.length ? searchResults.map((item) => (
+                    <Link href={sectionHref(item.section)} key={item.section}>
+                      <strong>{item.label}</strong>
+                      <small>{item.detail}</small>
+                    </Link>
+                  )) : <p>Nenhum destino encontrado.</p>}
+                </div>
+              )}
+            </div>
             <div className={styles.modeSwitch} aria-label="Modo de aprendizagem">
               <button
                 className={adventure ? styles.selectedMode : ""}
@@ -593,13 +681,35 @@ export function DashboardFunctional({
                 Acadêmico
               </button>
             </div>
-            <Link
-              className={styles.profile}
-              href={sectionHref("profile")}
-              aria-label="Abrir perfil"
-            >
-              {initials || "A"}
-            </Link>
+            <time className={styles.liveClock} dateTime={now.toISOString()}>
+              {formattedTime}
+            </time>
+            <div className={styles.profileMenu}>
+              <button
+                className={styles.profile}
+                type="button"
+                aria-label="Abrir menu do perfil"
+                aria-expanded={profileOpen}
+                onClick={() => setProfileOpen((open) => !open)}
+                style={dashboard.avatarUrl ? {
+                  backgroundImage: `url("${dashboard.avatarUrl}")`
+                } : undefined}
+              >
+                {dashboard.avatarUrl ? <span className={styles.srOnly}>Perfil</span> : initials || "A"}
+              </button>
+              {profileOpen && (
+                <div className={styles.profileDropdown}>
+                  <div>
+                    <strong>{dashboard.name}</strong>
+                    <small>Perfil pessoal</small>
+                  </div>
+                  <Link href={sectionHref("profile")}>Editar perfil e fotografia</Link>
+                  <Link href={sectionHref("progress")}>Ver o meu progresso</Link>
+                  <Link href={sectionHref("community")}>Abrir comunidade</Link>
+                  <a href="/conta">Conta e segurança</a>
+                </div>
+              )}
+            </div>
           </div>
         </header>
 
@@ -627,7 +737,9 @@ export function DashboardFunctional({
               />
             </div>
             <div className={styles.heroContent}>
-              <p className={styles.cardLabel}>Sua jornada continua</p>
+              <p className={styles.cardLabel}>
+                {adventure ? "Sua jornada continua" : "Plano acadêmico"}
+              </p>
               <span className={styles.lessonIcon} aria-hidden="true">▤</span>
               <h2>{dashboard.nextStudy.title}</h2>
               <p>{dashboard.nextStudy.detail}</p>

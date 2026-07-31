@@ -45,6 +45,13 @@ desempenho em dispositivo real; essa inspeção permanece pendente.
 - cursos possuem carrossel horizontal com `scroll-snap` e navegação nativa;
 - Lumi usa recorte PNG transparente no hero; flutuação e aura são desativadas
   pela preferência de movimento reduzido;
+- nome do cabeçalho vem de `profiles.display_name`, com fallback seguro para
+  metadados e email; data e relógio são atualizados no cliente;
+- busca do dashboard e menu suspenso de perfil possuem navegação por links;
+- avatar aceita somente JPG, PNG ou WebP até 2 MB, usa caminho por utilizador e
+  expõe na comunidade apenas nome e URL pública através de view mínima;
+- indicador de progresso anima na entrada e mantém estado estático em movimento
+  reduzido;
 - nenhuma alegação de conteúdo publicado ou endosso denominacional.
 
 ## Inspeção humana pendente

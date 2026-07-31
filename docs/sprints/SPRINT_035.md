@@ -41,6 +41,14 @@ fundação e não declara login, Bíblia, comunidade ou mobile já redesenhados.
   progressiva no scroll, sempre com alternativa sem movimento.
 - a Lumi possui recorte transparente autoral no lado direito do hero, com
   flutuação e aura luminosa que substituem o círculo abstrato anterior.
+- o cabeçalho apresenta saudação por horário, primeiro nome atualizado,
+  data, relógio com segundos, pesquisa contextual e menu suspenso de perfil;
+- fotografia pessoal é armazenada em bucket dedicado e reutilizada no
+  dashboard e nos cartões públicos mínimos da comunidade;
+- a comunidade ganhou hero editorial, resumo, círculos visuais, compositor
+  com avatar e feed de publicações com identidade e ações modernas;
+- o indicador circular de progresso possui entrada e órbita animadas, com
+  alternativa estática para movimento reduzido.
 
 ## Uso responsável das animações
 
