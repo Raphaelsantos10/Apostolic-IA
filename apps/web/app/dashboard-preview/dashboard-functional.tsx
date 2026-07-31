@@ -402,7 +402,7 @@ export function DashboardFunctional({
   profilePanel?: ReactNode;
 }>) {
   const [mode, setMode] = useState<LearningMode>("adventure");
-  const [now, setNow] = useState(() => new Date());
+  const [now, setNow] = useState<Date | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [profileOpen, setProfileOpen] = useState(false);
   const [dashboard, setDashboard] = useState<DashboardData>(
@@ -429,6 +429,7 @@ export function DashboardFunctional({
   }, []);
 
   useEffect(() => {
+    setNow(new Date());
     const timer = window.setInterval(() => setNow(new Date()), 1000);
     return () => window.clearInterval(timer);
   }, []);
@@ -550,21 +551,27 @@ export function DashboardFunctional({
     .map((part) => part[0]?.toUpperCase())
     .join("");
   const firstName = dashboard.name.trim().split(/\s+/)[0] || "Estudante";
-  const greeting = now.getHours() < 12
-    ? "Bom dia"
-    : now.getHours() < 18
-      ? "Boa tarde"
-      : "Boa noite";
-  const formattedDate = new Intl.DateTimeFormat("pt-PT", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long"
-  }).format(now);
-  const formattedTime = new Intl.DateTimeFormat("pt-PT", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit"
-  }).format(now);
+  const greeting = now
+    ? now.getHours() < 12
+      ? "Bom dia"
+      : now.getHours() < 18
+        ? "Boa tarde"
+        : "Boa noite"
+    : "Olá";
+  const formattedDate = now
+    ? new Intl.DateTimeFormat("pt-PT", {
+        weekday: "long",
+        day: "2-digit",
+        month: "long"
+      }).format(now)
+    : "A preparar o seu dia…";
+  const formattedTime = now
+    ? new Intl.DateTimeFormat("pt-PT", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      }).format(now)
+    : "--:--:--";
   const searchResults = searchQuery.trim()
     ? searchDestinations.filter((item) =>
         `${item.label} ${item.detail}`.toLocaleLowerCase("pt")
@@ -681,7 +688,11 @@ export function DashboardFunctional({
                 Acadêmico
               </button>
             </div>
-            <time className={styles.liveClock} dateTime={now.toISOString()}>
+            <time
+              className={styles.liveClock}
+              dateTime={now?.toISOString()}
+              aria-live="off"
+            >
               {formattedTime}
             </time>
             <div className={styles.profileMenu}>
