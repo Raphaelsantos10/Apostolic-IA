@@ -39,6 +39,8 @@ fundação e não declara login, Bíblia, comunidade ou mobile já redesenhados.
 - o dashboard inicial recebeu hero editorial com imagem, faixa contínua de
   recursos, carrossel horizontal de cursos, profundidade nos cards e revelação
   progressiva no scroll, sempre com alternativa sem movimento.
+- a Lumi possui recorte transparente autoral no lado direito do hero, com
+  flutuação e aura luminosa que substituem o círculo abstrato anterior.
 
 ## Uso responsável das animações
 

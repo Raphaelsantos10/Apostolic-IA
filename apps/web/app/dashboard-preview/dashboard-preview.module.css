@@ -221,16 +221,28 @@
   line-height: 0.98;
 }
 .heroContent p:not(.cardLabel) { margin-bottom: 1.25rem; color: #d7dfeb; }
-.heroGlow {
+.heroLumi {
   position: absolute;
   z-index: -1;
-  right: 10%;
-  bottom: 7%;
-  width: 9rem;
-  aspect-ratio: 1;
-  border: 1px solid rgb(244 198 102 / 32%);
+  right: clamp(1rem, 8vw, 8rem);
+  bottom: -7%;
+  width: clamp(14rem, 28vw, 26rem);
+  pointer-events: none;
+  filter: drop-shadow(0 1.6rem 2.4rem rgb(0 0 0 / 42%));
+}
+.heroLumi img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.lumiAura {
+  position: absolute;
+  inset: 27% 5% 12%;
   border-radius: 50%;
-  box-shadow: 0 0 4rem rgb(244 198 102 / 22%), inset 0 0 3rem rgb(244 198 102 / 14%);
+  background: radial-gradient(circle, rgb(244 198 102 / 38%), rgb(45 106 171 / 12%) 46%, transparent 72%);
+  filter: blur(1rem);
 }
 .progressCard { display: flex; align-items: center; gap: 1.1rem; }
 .progressCard h2, .nextCard h2, .streakCard h2 { margin: 0.3rem 0; font-size: 1rem; }
@@ -432,7 +444,8 @@
   .profile { display: none; }
   .stats { grid-template-columns: 1fr; }
   .nextCard { min-height: 25rem; }
-  .heroContent { max-width: 92%; }
+  .heroContent { position: relative; z-index: 2; max-width: 72%; }
+  .heroLumi { right: -3rem; width: min(21rem, 48vw); opacity: 0.82; }
   .courseGrid { grid-auto-columns: minmax(16rem, 86%); }
   .progressCard { align-items: flex-start; }
   .mission { align-items: flex-start; flex-direction: column; }
@@ -472,6 +485,8 @@
   .progressCard { display: grid; grid-template-columns: auto 1fr; }
   .progressRing { width: 5rem; height: 5rem; }
   .progressRing::before { width: 3.65rem; height: 3.65rem; }
+  .heroContent { max-width: 88%; }
+  .heroLumi { right: -6rem; width: 18rem; opacity: 0.42; }
 }
 
 @supports (animation-timeline: view()) {
@@ -489,7 +504,8 @@
   .discoveryRail:hover .discoveryTrack,
   .discoveryRail:focus-within .discoveryTrack { animation-play-state: paused; }
   .nextCard::before { animation: hero-drift 10s ease-in-out infinite alternate; }
-  .heroGlow { animation: hero-orbit 7s ease-in-out infinite; }
+  .heroLumi { animation: lumi-float 5.8s ease-in-out infinite; }
+  .lumiAura { animation: lumi-aura 3.8s ease-in-out infinite alternate; }
   .stats article,
   .courseCard,
   .activityList li,
@@ -523,9 +539,13 @@
   from { transform: translate3d(-1%, -1%, 0) scale(1); }
   to { transform: translate3d(2%, 1%, 0) scale(1.04); }
 }
-@keyframes hero-orbit {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.72; }
-  50% { transform: translateY(-0.8rem) scale(1.08); opacity: 1; }
+@keyframes lumi-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1deg); }
+  50% { transform: translate3d(0, -0.9rem, 0) rotate(1deg); }
+}
+@keyframes lumi-aura {
+  from { opacity: 0.58; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1.08); }
 }
 
 @media (prefers-reduced-motion: reduce) {

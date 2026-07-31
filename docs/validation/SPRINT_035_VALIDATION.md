@@ -43,6 +43,8 @@ desempenho em dispositivo real; essa inspeção permanece pendente.
 - movimento do dashboard usa CSS progressivo, pausa com hover ou foco e é
   desativado por `prefers-reduced-motion`;
 - cursos possuem carrossel horizontal com `scroll-snap` e navegação nativa;
+- Lumi usa recorte PNG transparente no hero; flutuação e aura são desativadas
+  pela preferência de movimento reduzido;
 - nenhuma alegação de conteúdo publicado ou endosso denominacional.
 
 ## Inspeção humana pendente

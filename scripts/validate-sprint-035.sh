@@ -33,6 +33,9 @@ grep -Fq 'LUMI_ARTBOARD = "Lumi"' apps/web/components/rive-study-flame.tsx
 grep -Fq 'LUMI_STATE_MACHINE = "lumi-ui"' apps/web/components/rive-study-flame.tsx
 grep -Fq "NEXT_PUBLIC_RIVE_LUMI_URL" apps/web/components/study-motion.tsx
 test -f apps/web/public/characters/lumi/poster.webp
+test -f apps/web/public/characters/lumi/hero-cutout.png
+grep -Fq 'src="/characters/lumi/hero-cutout.png"' apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -Fq "lumi-float" apps/web/app/dashboard-preview/dashboard-preview.module.css
 grep -Fq 'activeSection === "study" && visualExperience' apps/web/app/dashboard-preview/dashboard-functional.tsx
 grep -Fq '{ icon: "▤", label: "Estudos", section: "study" }' apps/web/app/dashboard-preview/dashboard-functional.tsx
 grep -Fq '/dashboard-preview?section=' apps/web/app/dashboard-preview/dashboard-functional.tsx

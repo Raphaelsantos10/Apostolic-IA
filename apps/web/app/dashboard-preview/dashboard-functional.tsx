@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState, type ReactNode } from "react";
 import { AppViewContent } from "../../components/app-shell";
 import {
@@ -615,7 +616,16 @@ export function DashboardFunctional({
           <>
         <section className={styles.stats} aria-label="Resumo do progresso">
           <article className={styles.nextCard}>
-            <div className={styles.heroGlow} aria-hidden="true" />
+            <div className={styles.heroLumi} aria-hidden="true">
+              <span className={styles.lumiAura} />
+              <Image
+                alt=""
+                height={615}
+                priority
+                src="/characters/lumi/hero-cutout.png"
+                width={410}
+              />
+            </div>
             <div className={styles.heroContent}>
               <p className={styles.cardLabel}>Sua jornada continua</p>
               <span className={styles.lessonIcon} aria-hidden="true">▤</span>
