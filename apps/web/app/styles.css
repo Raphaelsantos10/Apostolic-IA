@@ -537,6 +537,28 @@ h2 { line-height: 1.2; }
   border-radius: 1rem;
   background: var(--panel);
 }
+.module-review-state {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 1rem 0 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--panel);
+}
+.module-review-state > span {
+  display: grid;
+  width: 2.25rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--focus);
+  border-radius: 50%;
+  color: var(--focus);
+  font-weight: 800;
+}
+.module-review-state p { margin: 0.2rem 0 0; color: var(--secondary); }
 .module-review-cover {
   min-height: 18rem;
   display: flex;
@@ -664,6 +686,8 @@ h2 { line-height: 1.2; }
   .module-review-lessons { grid-template-columns: 1fr; }
   .module-review-navigation { flex-direction: column; }
   .module-review-navigation .button { width: 100%; }
+  .module-review-state { grid-template-columns: auto 1fr; }
+  .module-review-state .button { grid-column: 1 / -1; width: 100%; }
 }
 .daily-goal { display: grid; grid-template-columns: 1fr auto auto; gap: 1rem; align-items: end; margin: 1.5rem 0; padding: 1.2rem; border: 1px solid var(--border); border-radius: 0.8rem; background: var(--panel); }
 .daily-goal h2, .daily-goal p { margin: 0.2rem 0; }

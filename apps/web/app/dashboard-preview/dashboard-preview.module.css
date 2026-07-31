@@ -173,7 +173,7 @@
 
 .stats {
   display: grid;
-  grid-template-columns: 1.35fr 1.1fr 1fr;
+  grid-template-columns: minmax(0, 2fr) minmax(15rem, 0.72fr) minmax(15rem, 0.72fr);
   gap: 1rem;
 }
 
@@ -191,6 +191,47 @@
 .nextCard,
 .verseCard,
 .streakCard { padding: 1.2rem; }
+.nextCard {
+  position: relative;
+  grid-column: 1 / -1;
+  min-height: clamp(18rem, 35vw, 28rem);
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+  background:
+    linear-gradient(90deg, rgb(3 18 34 / 94%) 0%, rgb(3 18 34 / 72%) 46%, rgb(3 18 34 / 14%) 100%),
+    url("/course-covers/modulo-01-fundamentos-da-fe.webp") center 44% / cover;
+}
+.nextCard::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -10%;
+  background:
+    radial-gradient(circle at 78% 34%, rgb(244 198 102 / 28%), transparent 16rem),
+    linear-gradient(120deg, transparent 50%, rgb(36 92 151 / 20%));
+}
+.heroContent { max-width: min(38rem, 72%); }
+.heroContent h2 {
+  max-width: 16ch;
+  margin: 0.35rem 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 0.98;
+}
+.heroContent p:not(.cardLabel) { margin-bottom: 1.25rem; color: #d7dfeb; }
+.heroGlow {
+  position: absolute;
+  z-index: -1;
+  right: 10%;
+  bottom: 7%;
+  width: 9rem;
+  aspect-ratio: 1;
+  border: 1px solid rgb(244 198 102 / 32%);
+  border-radius: 50%;
+  box-shadow: 0 0 4rem rgb(244 198 102 / 22%), inset 0 0 3rem rgb(244 198 102 / 14%);
+}
 .progressCard { display: flex; align-items: center; gap: 1.1rem; }
 .progressCard h2, .nextCard h2, .streakCard h2 { margin: 0.3rem 0; font-size: 1rem; }
 .progressCard p, .nextCard p, .streakCard p { color: var(--muted); font-size: 0.8rem; line-height: 1.45; }
@@ -241,6 +282,37 @@
 .streakCard { grid-column: 1 / -1; display: flex; align-items: center; gap: 1rem; }
 .flame { font-size: 2.6rem; filter: drop-shadow(0 0 12px rgb(244 138 42 / 40%)); }
 
+.discoveryRail {
+  width: 100%;
+  margin-top: 1rem;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.discoveryTrack {
+  display: flex;
+  width: max-content;
+  gap: 0.75rem;
+  padding: 0.2rem 0;
+}
+.discoveryCard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  width: clamp(15rem, 24vw, 21rem);
+  padding: 0.9rem 1rem;
+  border: 1px solid rgb(169 182 201 / 18%);
+  border-radius: 0.85rem;
+  color: var(--text);
+  background: linear-gradient(135deg, rgb(21 40 68 / 96%), rgb(11 24 41 / 94%));
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 14%);
+}
+.discoveryCard > span:first-child { color: var(--gold-bright); font-size: 1.45rem; }
+.discoveryCard strong,
+.discoveryCard small { display: block; }
+.discoveryCard small { margin-top: 0.18rem; color: var(--muted); font-size: 0.68rem; }
+
 .contentGrid {
   display: grid;
   grid-template-columns: minmax(0, 2.2fr) minmax(280px, 0.8fr);
@@ -252,9 +324,19 @@
 .activityPanel { padding: 1.2rem; }
 .sectionHeading h2 { margin: 0.2rem 0 1rem; font-size: 1.2rem; }
 .textButton { color: var(--gold-bright); background: transparent; }
-.courseGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
+.courseGrid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(15rem, 31%);
+  gap: 0.9rem;
+  overflow-x: auto;
+  padding: 0.25rem 0.1rem 0.8rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--gold) #263954;
+}
 
 .courseCard {
+  scroll-snap-align: start;
   overflow: hidden;
   border: 1px solid rgb(169 182 201 / 15%);
   border-radius: 0.85rem;
@@ -348,7 +430,10 @@
   .header { align-items: flex-start; }
   .headerActions { flex-direction: column-reverse; align-items: flex-end; }
   .profile { display: none; }
-  .stats, .courseGrid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
+  .nextCard { min-height: 25rem; }
+  .heroContent { max-width: 92%; }
+  .courseGrid { grid-auto-columns: minmax(16rem, 86%); }
   .progressCard { align-items: flex-start; }
   .mission { align-items: flex-start; flex-direction: column; }
   .missionProgress { width: 100%; }
@@ -387,6 +472,60 @@
   .progressCard { display: grid; grid-template-columns: auto 1fr; }
   .progressRing { width: 5rem; height: 5rem; }
   .progressRing::before { width: 3.65rem; height: 3.65rem; }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scrollReveal {
+      animation: dashboard-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 28%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .discoveryTrack { animation: discovery-marquee 34s linear infinite; }
+  .discoveryRail:hover .discoveryTrack,
+  .discoveryRail:focus-within .discoveryTrack { animation-play-state: paused; }
+  .nextCard::before { animation: hero-drift 10s ease-in-out infinite alternate; }
+  .heroGlow { animation: hero-orbit 7s ease-in-out infinite; }
+  .stats article,
+  .courseCard,
+  .activityList li,
+  .discoveryCard {
+    transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 240ms ease, box-shadow 240ms ease;
+  }
+  .stats article:hover,
+  .courseCard:hover,
+  .discoveryCard:hover {
+    transform: translateY(-0.45rem) perspective(900px) rotateX(1.4deg);
+    border-color: rgb(244 198 102 / 42%);
+    box-shadow: 0 24px 54px rgb(0 0 0 / 28%);
+  }
+  .activityList li:hover { transform: translateX(0.35rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .discoveryTrack { overflow-x: auto; }
+  .discoveryCard[aria-hidden="true"] { display: none; }
+}
+
+@keyframes discovery-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 0.375rem)); }
+}
+@keyframes dashboard-reveal {
+  from { opacity: 0; transform: translateY(2.5rem) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes hero-drift {
+  from { transform: translate3d(-1%, -1%, 0) scale(1); }
+  to { transform: translate3d(2%, 1%, 0) scale(1.04); }
+}
+@keyframes hero-orbit {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.72; }
+  50% { transform: translateY(-0.8rem) scale(1.08); opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

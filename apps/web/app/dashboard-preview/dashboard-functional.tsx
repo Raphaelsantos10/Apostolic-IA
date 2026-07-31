@@ -171,6 +171,14 @@ const emptyData: DashboardData = {
   mission: null
 };
 
+const discoveryCards = [
+  { icon: "▥", label: "Bíblia guiada", detail: "Leia cada passagem no contexto" },
+  { icon: "✦", label: "Professor IA", detail: "Pergunte com fontes verificáveis" },
+  { icon: "◇", label: "Desafio diário", detail: "Revise o que realmente aprendeu" },
+  { icon: "◌", label: "Comunidade", detail: "Compartilhe dúvidas com segurança" },
+  { icon: "◔", label: "Seu progresso", detail: "Retome exatamente de onde parou" }
+] as const;
+
 const navigation = [
   { icon: "⌂", label: "Dashboard", section: "dashboard" },
   { icon: "▤", label: "Estudos", section: "study" },
@@ -606,6 +614,22 @@ export function DashboardFunctional({
         {activeSection === "dashboard" ? (
           <>
         <section className={styles.stats} aria-label="Resumo do progresso">
+          <article className={styles.nextCard}>
+            <div className={styles.heroGlow} aria-hidden="true" />
+            <div className={styles.heroContent}>
+              <p className={styles.cardLabel}>Sua jornada continua</p>
+              <span className={styles.lessonIcon} aria-hidden="true">▤</span>
+              <h2>{dashboard.nextStudy.title}</h2>
+              <p>{dashboard.nextStudy.detail}</p>
+              <Link
+                className={styles.primaryButton}
+                href={sectionHref("study")}
+              >
+                Continuar estudando
+              </Link>
+            </div>
+          </article>
+
           <article className={styles.progressCard}>
             <div
               className={styles.progressRing}
@@ -634,19 +658,6 @@ export function DashboardFunctional({
             </div>
           </article>
 
-          <article className={styles.nextCard}>
-            <p className={styles.cardLabel}>Próximo estudo</p>
-            <span className={styles.lessonIcon} aria-hidden="true">▤</span>
-            <h2>{dashboard.nextStudy.title}</h2>
-            <p>{dashboard.nextStudy.detail}</p>
-            <Link
-              className={styles.primaryButton}
-              href={sectionHref("study")}
-            >
-              Continuar estudando
-            </Link>
-          </article>
-
           <article className={styles.verseCard}>
             <p className={styles.cardLabel}>Versículo do dia</p>
             <blockquote>
@@ -667,7 +678,34 @@ export function DashboardFunctional({
           )}
         </section>
 
-        <div className={styles.contentGrid}>
+        <section
+          className={styles.discoveryRail}
+          aria-label="Descubra recursos da sua jornada"
+        >
+          <div className={styles.discoveryTrack}>
+            {[...discoveryCards, ...discoveryCards].map((item, index) => (
+              <Link
+                className={styles.discoveryCard}
+                href={sectionHref(
+                  (["bible", "teacher", "games", "community", "progress"] as const)[
+                    index % discoveryCards.length
+                  ] ?? "dashboard"
+                )}
+                key={`${item.label}-${index}`}
+                aria-hidden={index >= discoveryCards.length || undefined}
+                tabIndex={index >= discoveryCards.length ? -1 : undefined}
+              >
+                <span aria-hidden="true">{item.icon}</span>
+                <span>
+                  <strong>{item.label}</strong>
+                  <small>{item.detail}</small>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <div className={`${styles.contentGrid} ${styles.scrollReveal}`}>
           <section
             className={styles.coursesPanel}
             aria-labelledby="courses-heading"
@@ -764,7 +802,10 @@ export function DashboardFunctional({
         </div>
 
         {adventure && dashboard.mission && (
-          <section className={styles.mission} aria-labelledby="mission-heading">
+          <section
+            className={`${styles.mission} ${styles.scrollReveal}`}
+            aria-labelledby="mission-heading"
+          >
             <div>
               <p className={styles.eyebrow}>Missão de aprendizagem</p>
               <h2 id="mission-heading">{dashboard.mission.title}</h2>

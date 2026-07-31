@@ -31,6 +31,14 @@ fundação e não declara login, Bíblia, comunidade ou mobile já redesenhados.
   fica dentro de `Cursos`, em vez de substituir a página inicial;
 - a prévia permite revisar as duas camadas por
   `/dashboard-preview` e `/dashboard-preview?section=courses`.
+- a Área de Estudos integra o pacote interno das oito aulas e quizzes do
+  Módulo 1 somente no modo de revisão local, preservando o bloqueio de
+  publicação e os pareceres humanos obrigatórios.
+- a integração apresenta estados explícitos de carregamento, revisão local
+  desativada, falha e offline, com nova tentativa sem expor o rascunho.
+- o dashboard inicial recebeu hero editorial com imagem, faixa contínua de
+  recursos, carrossel horizontal de cursos, profundidade nos cards e revelação
+  progressiva no scroll, sempre com alternativa sem movimento.
 
 ## Uso responsável das animações
 
@@ -51,8 +59,6 @@ Nenhuma animação:
 - redesenhar e aprovar o ficheiro Rive autoral da personagem `Lumi`;
 - realizar inspeção visual humana em desktop, 320 px e zoom de 200%;
 - testar teclado, leitor de ecrã e movimento reduzido em navegador real;
-- medir o custo dos chunks Rive e dotLottie;
-- conectar a área central às oito aulas e quizzes da revisão local;
 - criar as 24 capas autorais, uma por módulo, com aprovação editorial.
 
 O Módulo 1 permanece em revisão. Este incremento não altera os gates humanos,

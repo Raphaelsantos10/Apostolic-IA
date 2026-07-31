@@ -5,6 +5,7 @@ import { useState } from "react";
 import { dashboardSectionHref } from "../lib/app-navigation.mjs";
 import styles from "../app/dashboard-preview/study-experience.module.css";
 import { AchievementCelebration, StudyFlame } from "./study-motion";
+import { ModuleReviewPlayer } from "./module-review-player";
 
 const steps = [
   {
@@ -205,6 +206,23 @@ export function StudyExperience({
               Continuar estudo <span aria-hidden="true">›</span>
             </Link>
           </footer>
+
+          <section
+            className={styles.reviewIntegration}
+            aria-labelledby="module-review-integration-title"
+          >
+            <header>
+              <p className={styles.kicker}>Pacote interno de revisão</p>
+              <h3 id="module-review-integration-title">
+                Oito aulas e quizzes do Módulo 1
+              </h3>
+              <p>
+                Disponível somente quando o modo de revisão local está ativo.
+                O conteúdo continua em rascunho e exige aprovação humana.
+              </p>
+            </header>
+            <ModuleReviewPlayer />
+          </section>
         </div>
 
         <aside className={styles.rightRail}>

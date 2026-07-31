@@ -7,16 +7,17 @@ alinhado à visão cristã apostólica, batista e pentecostal.
 ## Estado atual do projeto
 
 - **Última sprint concluída após merge:** Sprint 033 - Player de estudo guiado.
-- **Sprint atual:** Sprint 034 - Primeiro módulo teológico completo.
-- **Branch atual:** `sprint/034-modulo-piloto-completo`.
-- **Pull Request:** PR nº 46, em rascunho.
+- **Sprint atual:** Sprint 035 - Experiência visual de estudos.
+- **Branch atual:** `sprint/035-experiencia-visual`.
+- **Pull Request:** PR nº 47, em rascunho.
 - **Estado:** matriz de 24 matérias e meta acadêmica de 432 horas formalizadas;
-  primeiro módulo em produção, ainda não publicado.
+  primeiro módulo com oito aulas e quizzes em revisão, ainda não publicado;
+  fundação visual da área de estudos em implementação e inspeção.
 - **Aplicação executável:** web/PWA com autenticação, aprendizagem, Bíblia,
   gamificação saudável e dashboard aprovado promovido para `/dashboard`; Alpha
   integral, beta, piloto pedagógico, Release Candidate e paridade mobile ainda
   não foram aprovados.
-- **Última atualização:** 28 de julho de 2026.
+- **Última atualização:** 31 de julho de 2026.
 
 ## Regra permanente de continuidade
 
@@ -75,7 +76,8 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 | 031 | ✅ Concluída após merge | Resiliência, desempenho e acessibilidade | [Relatório](docs/sprints/SPRINT_031.md) |
 | 032 | ✅ Incremento incorporado | Integração Alpha técnica, sem lançamento público | [Relatório](docs/sprints/SPRINT_032.md) |
 | 033 | ✅ Concluída após merge | Player guiado para um módulo piloto publicado | [Relatório](docs/sprints/SPRINT_033.md) |
-| 034 | ⬜ Planejada | Primeiro módulo completo, Bíblia guiada e multimédia | [Roadmap](ROADMAP.md) |
+| 034 | 🟡 Em revisão | Primeiro módulo completo, Bíblia guiada e multimédia | [Relatório](docs/sprints/SPRINT_034.md) |
+| 035 | 🟡 Em andamento | Experiência visual de estudos, Lumi e movimento responsável | [Relatório](docs/sprints/SPRINT_035.md) |
 
 ## Última entrega concluída
 
@@ -91,21 +93,25 @@ Trabalho parcial deve permanecer marcado como **em andamento**.
 
 ## Próximo passo exato
 
-Iniciar a Sprint 034 para produzir e aprovar o primeiro módulo piloto completo,
-com 6 a 8 aulas autorais, Bíblia guiada e recursos multimédia acessíveis. A
-expansão para os demais módulos depende da validação desse primeiro percurso.
+Continuar a Sprint 035 no PR nº 47: inspecionar a experiência visual em
+desktop, tablet, 320 px, zoom de 200%, teclado e movimento reduzido; conectar a
+área central às oito aulas e quizzes do Módulo 1 em revisão; completar os
+estados vazio, carregamento, erro e offline. A Sprint 034 continua dependente de
+revisão humana e o conteúdo não está autorizado para publicação.
 
 ## Como continuar em outro chat
 
 Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 
 > Continue o Apostolic IA a partir do estado registrado no README. Leia também
-> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_033.md,
-> docs/validation/SPRINT_033_VALIDATION.md,
+> ROADMAP.md, docs/SPRINT_DELIVERY_POLICY.md, docs/sprints/SPRINT_034.md,
+> docs/sprints/SPRINT_035.md, docs/validation/SPRINT_035_VALIDATION.md,
+> docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md,
 > docs/doctrine/CONSTITUICAO_DOUTRINARIA.md e
 > docs/product/INTERACTIVE_STUDY_SYSTEM.md.
-> Preserve o dashboard e a visão doutrinária aprovados. Não declare o catálogo
-> completo antes da produção e aprovação humana de cada curso.
+> Preserve o dashboard, separe Cursos da Área de Estudos e mantenha a visão
+> doutrinária aprovada. Não declare o catálogo completo antes da produção e
+> aprovação humana de cada curso.
 
 ## Princípios
 
@@ -179,6 +185,9 @@ Forneça o repositório `https://github.com/Raphaelsantos10/Apostolic-IA` e use:
 - [Validação da Sprint 032](docs/validation/SPRINT_032_VALIDATION.md)
 - [Relatório da Sprint 033](docs/sprints/SPRINT_033.md)
 - [Validação da Sprint 033](docs/validation/SPRINT_033_VALIDATION.md)
+- [Relatório da Sprint 034](docs/sprints/SPRINT_034.md)
+- [Relatório da Sprint 035](docs/sprints/SPRINT_035.md)
+- [Validação da Sprint 035](docs/validation/SPRINT_035_VALIDATION.md)
 - [Validação da Sprint 019](docs/validation/SPRINT_019_VALIDATION.md)
 - [Validação da Sprint 020](docs/validation/SPRINT_020_VALIDATION.md)
 - [Validação da Sprint 021](docs/validation/SPRINT_021_VALIDATION.md)

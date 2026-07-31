@@ -239,6 +239,25 @@
   font-weight: 850;
   text-decoration: none;
 }
+.reviewIntegration {
+  margin-top: 1rem;
+  padding: clamp(0.8rem, 2vw, 1.2rem);
+  border: 1px solid rgb(239 180 71 / 24%);
+  border-radius: 0.8rem;
+  color: #17243a;
+  background: #f7f3e9;
+}
+.reviewIntegration > header { margin-bottom: 1rem; }
+.reviewIntegration > header h3 {
+  margin: 0.3rem 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+}
+.reviewIntegration > header p:last-child {
+  margin: 0;
+  color: #536075;
+  line-height: 1.55;
+}
 
 .rightRail { display: grid; align-content: start; gap: 0.75rem; }
 .rightRail > section {
