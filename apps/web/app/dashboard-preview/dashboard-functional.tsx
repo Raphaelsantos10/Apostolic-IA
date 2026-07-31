@@ -588,7 +588,10 @@ export function DashboardFunctional({
           : "Dados de demonstração. Entre na sua conta para ver o progresso real.";
 
   return (
-    <div className={styles.page}>
+    <div
+      className={`${styles.page} ${adventure ? "" : styles.academicMode}`}
+      data-learning-mode={mode}
+    >
       <a className={styles.skipLink} href="#dashboard-content">
         Saltar para o conteúdo
       </a>
@@ -670,23 +673,25 @@ export function DashboardFunctional({
                 </div>
               )}
             </div>
-            <div className={styles.modeSwitch} aria-label="Modo de aprendizagem">
+            <div className={styles.modeControl}>
+              <span className={styles.modeLabel}>Modo</span>
               <button
-                className={adventure ? styles.selectedMode : ""}
+                className={styles.modeSwitch}
                 type="button"
-                aria-pressed={adventure}
-                onClick={() => selectMode("adventure")}
+                role="switch"
+                aria-checked={adventure}
+                aria-label={`Modo ${adventure ? "Aventura" : "Acadêmico"}. Alterar para ${adventure ? "Acadêmico" : "Aventura"}`}
+                onClick={() => selectMode(adventure ? "academic" : "adventure")}
               >
-                Aventura
+                <span className={styles.modeOption} aria-hidden="true">▤</span>
+                <span className={styles.modeTrack} aria-hidden="true">
+                  <span className={styles.modeThumb}>{adventure ? "✦" : "▤"}</span>
+                </span>
+                <span className={styles.modeOption} aria-hidden="true">✦</span>
               </button>
-              <button
-                className={!adventure ? styles.selectedMode : ""}
-                type="button"
-                aria-pressed={!adventure}
-                onClick={() => selectMode("academic")}
-              >
-                Acadêmico
-              </button>
+              <strong className={styles.modeName} aria-live="polite">
+                {adventure ? "Aventura" : "Acadêmico"}
+              </strong>
             </div>
             <time
               className={styles.liveClock}
@@ -751,14 +756,21 @@ export function DashboardFunctional({
               <p className={styles.cardLabel}>
                 {adventure ? "Sua jornada continua" : "Plano acadêmico"}
               </p>
+              <span className={styles.modeExperienceBadge}>
+                {adventure ? "✦ Exploração guiada" : "▤ Estudo estruturado"}
+              </span>
               <span className={styles.lessonIcon} aria-hidden="true">▤</span>
               <h2>{dashboard.nextStudy.title}</h2>
-              <p>{dashboard.nextStudy.detail}</p>
+              <p>
+                {adventure
+                  ? `${dashboard.nextStudy.detail} · avance por missões e descobertas.`
+                  : `${dashboard.nextStudy.detail} · siga o plano curricular no seu ritmo.`}
+              </p>
               <Link
                 className={styles.primaryButton}
                 href={sectionHref("study")}
               >
-                Continuar estudando
+                {adventure ? "Entrar na aventura" : "Abrir plano de estudo"}
               </Link>
             </div>
           </article>
@@ -813,7 +825,9 @@ export function DashboardFunctional({
 
         <section
           className={styles.discoveryRail}
-          aria-label="Descubra recursos da sua jornada"
+          aria-label={adventure
+            ? "Descubra recursos da sua jornada"
+            : "Atalhos do plano acadêmico"}
         >
           <div className={styles.discoveryTrack}>
             {[...discoveryCards, ...discoveryCards].map((item, index) => (
@@ -871,7 +885,9 @@ export function DashboardFunctional({
                       ].join(" ")}
                     >
                       <span aria-hidden="true">▣</span>
-                      <small>FORMAÇÃO TEOLÓGICA</small>
+                      <small>
+                        {adventure ? "TRILHA DE APRENDIZAGEM" : "PLANO CURRICULAR"}
+                      </small>
                     </div>
                     <div className={styles.courseBody}>
                       <h3>{course.title}</h3>

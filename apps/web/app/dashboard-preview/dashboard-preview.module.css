@@ -15,6 +15,15 @@
   display: grid;
   grid-template-columns: 248px minmax(0, 1fr);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  transition: background 420ms ease, color 240ms ease;
+}
+
+.academicMode {
+  --gold: #8bb9df;
+  --gold-bright: #b9d8f1;
+  background:
+    radial-gradient(circle at 72% 8%, rgb(65 112 158 / 20%), transparent 34rem),
+    #071421;
 }
 
 .skipLink {
@@ -137,27 +146,50 @@
   text-transform: uppercase;
 }
 
+.modeControl {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas: "label name" "switch switch";
+  align-items: center;
+  gap: 0.12rem 0.45rem;
+}
+.modeLabel { grid-area: label; color: var(--muted); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.09em; }
+.modeName { grid-area: name; color: var(--gold-bright); font-size: 0.72rem; }
 .modeSwitch {
-  padding: 0.25rem;
+  grid-area: switch;
+  display: grid;
+  grid-template-columns: auto 2.8rem auto;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2rem;
+  padding: 0.18rem 0.42rem;
   border: 1px solid rgb(169 182 201 / 25%);
-  border-radius: 0.75rem;
-  background: var(--navy-900);
-}
-
-.modeSwitch button {
-  border: 0;
-  padding: 0.65rem 0.85rem;
-  border-radius: 0.55rem;
+  border-radius: 999px;
   color: var(--muted);
-  background: transparent;
+  background: rgb(11 24 41 / 88%);
   cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 2%);
 }
-
-.modeSwitch .selectedMode {
+.modeSwitch:hover,
+.modeSwitch:focus-visible { border-color: var(--gold-bright); outline: none; }
+.modeOption { font-size: 0.68rem; font-weight: 900; }
+.modeTrack { position: relative; width: 2.8rem; height: 1.3rem; border-radius: 999px; background: rgb(169 182 201 / 22%); }
+.modeThumb {
+  position: absolute;
+  top: 0.14rem;
+  left: 0.14rem;
+  width: 1.02rem;
+  height: 1.02rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
   color: #07111f;
   background: var(--gold-bright);
-  font-weight: 800;
+  font-size: 0.58rem;
+  transform: translateX(1.5rem);
+  transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1), background 240ms ease;
 }
+.academicMode .modeThumb { transform: translateX(0); }
 
 .profile {
   width: 2.8rem;
@@ -222,19 +254,31 @@
   display: flex;
   align-items: end;
   background:
-    linear-gradient(90deg, rgb(3 18 34 / 94%) 0%, rgb(3 18 34 / 72%) 46%, rgb(3 18 34 / 14%) 100%),
-    url("/course-covers/modulo-01-fundamentos-da-fe.webp") center 44% / cover;
+    linear-gradient(90deg, rgb(3 18 34 / 97%) 0%, rgb(3 18 34 / 78%) 42%, rgb(3 18 34 / 18%) 76%, rgb(3 18 34 / 48%) 100%),
+    url("/dashboard-hero-journey.webp") center 46% / cover;
+  transition: background-position 700ms ease, border-color 300ms ease;
 }
 .nextCard::before {
   content: "";
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: -10%;
   background:
     radial-gradient(circle at 78% 34%, rgb(244 198 102 / 28%), transparent 16rem),
     linear-gradient(120deg, transparent 50%, rgb(36 92 151 / 20%));
 }
-.heroContent { max-width: min(38rem, 72%); }
+.academicMode .nextCard {
+  background:
+    linear-gradient(90deg, rgb(4 19 32 / 98%) 0%, rgb(8 27 44 / 86%) 48%, rgb(8 27 44 / 40%) 76%, rgb(4 19 32 / 64%) 100%),
+    url("/dashboard-hero-journey.webp") 72% 50% / cover;
+  border-color: rgb(139 185 223 / 32%);
+}
+.academicMode .nextCard::before {
+  background:
+    linear-gradient(110deg, transparent 50%, rgb(137 185 223 / 14%)),
+    repeating-linear-gradient(90deg, transparent 0 5rem, rgb(185 216 241 / 2%) 5rem calc(5rem + 1px));
+}
+.heroContent { position: relative; z-index: 2; max-width: min(38rem, 72%); }
 .heroContent h2 {
   max-width: 16ch;
   margin: 0.35rem 0;
@@ -245,7 +289,7 @@
 .heroContent p:not(.cardLabel) { margin-bottom: 1.25rem; color: #d7dfeb; }
 .heroLumi {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   top: 50%;
   right: clamp(1rem, 7vw, 7rem);
   bottom: auto;
@@ -253,7 +297,9 @@
   transform: translateY(-50%);
   pointer-events: none;
   filter: drop-shadow(0 1.6rem 2.4rem rgb(0 0 0 / 42%));
+  transition: right 600ms ease, filter 350ms ease;
 }
+.academicMode .heroLumi { right: clamp(1.5rem, 9vw, 9rem); filter: drop-shadow(0 1.6rem 2.4rem rgb(0 0 0 / 48%)) saturate(0.86); }
 .heroLumi img {
   position: relative;
   z-index: 1;
@@ -268,6 +314,19 @@
   background: radial-gradient(circle, rgb(244 198 102 / 38%), rgb(45 106 171 / 12%) 46%, transparent 72%);
   filter: blur(1rem);
 }
+.modeExperienceBadge {
+  display: inline-flex;
+  margin: 0.5rem 0 0.2rem;
+  padding: 0.32rem 0.58rem;
+  border: 1px solid rgb(244 198 102 / 34%);
+  border-radius: 999px;
+  color: var(--gold-bright);
+  background: rgb(3 18 34 / 54%);
+  font-size: 0.68rem;
+  font-weight: 800;
+  backdrop-filter: blur(8px);
+}
+.academicMode .modeExperienceBadge { border-radius: 0.35rem; }
 .progressCard { display: flex; align-items: center; gap: 1.1rem; }
 .progressCard h2, .nextCard h2, .streakCard h2 { margin: 0.3rem 0; font-size: 1rem; }
 .progressCard p, .nextCard p, .streakCard p { color: var(--muted); font-size: 0.8rem; line-height: 1.45; }
@@ -331,6 +390,8 @@
   gap: 0.75rem;
   padding: 0.2rem 0;
 }
+.academicMode .discoveryTrack { animation-play-state: paused; }
+.academicMode .discoveryCard { border-radius: 0.45rem; background: linear-gradient(135deg, rgb(18 42 63 / 96%), rgb(8 25 41 / 96%)); }
 .discoveryCard {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -508,7 +569,7 @@
 @media (max-width: 480px) {
   .header { display: block; }
   .headerActions { margin-top: 1rem; align-items: stretch; }
-  .modeSwitch { display: grid; grid-template-columns: 1fr 1fr; }
+  .modeControl { justify-content: end; }
   .progressCard { display: grid; grid-template-columns: auto 1fr; }
   .progressRing { width: 5rem; height: 5rem; }
   .progressRing::before { width: 3.65rem; height: 3.65rem; }
