@@ -11,6 +11,7 @@ export const APP_VIEWS = Object.freeze([
 
 export const DASHBOARD_SECTIONS = Object.freeze([
   "dashboard",
+  "study",
   "courses",
   "bible",
   "teacher",

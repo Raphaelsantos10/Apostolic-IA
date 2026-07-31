@@ -173,14 +173,30 @@ const emptyData: DashboardData = {
 
 const navigation = [
   { icon: "⌂", label: "Dashboard", section: "dashboard" },
-  { icon: "▤", label: "Estudos", section: null },
+  { icon: "▤", label: "Estudos", section: "study" },
   { icon: "▣", label: "Cursos", section: "courses" },
   { icon: "▥", label: "Bíblia", section: "bible" },
   { icon: "✦", label: "Professor IA", section: "teacher" },
   { icon: "◇", label: "Jogos", section: "games" },
   { icon: "◌", label: "Comunidade", section: "community" },
   { icon: "◔", label: "Progresso", section: "progress" }
-] as const;
+] satisfies ReadonlyArray<{
+  icon: string;
+  label: string;
+  section: DashboardSection;
+}>;
+
+const mobileNavigation = [
+  { icon: "⌂", label: "Dashboard", section: "dashboard" },
+  { icon: "▤", label: "Estudos", section: "study" },
+  { icon: "▣", label: "Cursos", section: "courses" },
+  { icon: "◌", label: "Comunidade", section: "community" },
+  { icon: "◎", label: "Perfil", section: "profile" }
+] satisfies ReadonlyArray<{
+  icon: string;
+  label: string;
+  section: DashboardSection;
+}>;
 
 const tones = ["blue", "gold", "violet"] as const;
 
@@ -625,7 +641,7 @@ export function DashboardFunctional({
             <p>{dashboard.nextStudy.detail}</p>
             <Link
               className={styles.primaryButton}
-              href={sectionHref("courses")}
+              href={sectionHref("study")}
             >
               Continuar estudando
             </Link>
@@ -694,7 +710,7 @@ export function DashboardFunctional({
                       </div>
                       <div className={styles.courseMeta}>
                         <span>{course.progress}% concluído</span>
-                        <Link href={sectionHref("courses")}>
+                        <Link href={sectionHref("study")}>
                           Continuar
                         </Link>
                       </div>
@@ -785,7 +801,7 @@ export function DashboardFunctional({
             className={styles.sectionView}
             aria-label="Área funcional do dashboard"
           >
-            {activeSection === "courses" && visualExperience ? (
+            {activeSection === "study" && visualExperience ? (
               <StudyExperience
                 progress={dashboard.overallProgress}
                 streak={dashboard.currentStreak}
@@ -802,15 +818,12 @@ export function DashboardFunctional({
       </main>
 
       <nav className={styles.mobileNav} aria-label="Navegação móvel">
-        {navigation
-          .filter(({ section }) => Boolean(section))
-          .slice(0, 5)
-          .map(({ icon, label, section }) => (
+        {mobileNavigation.map(({ icon, label, section }) => (
             <Link
               className={
                 activeSection === section ? styles.mobileActive : ""
               }
-              href={sectionHref(section ?? "dashboard")}
+              href={sectionHref(section)}
               key={label}
               aria-current={
                 activeSection === section ? "page" : undefined

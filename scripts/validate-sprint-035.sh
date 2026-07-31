@@ -25,7 +25,8 @@ grep -Fq 'LUMI_ARTBOARD = "Lumi"' apps/web/components/rive-study-flame.tsx
 grep -Fq 'LUMI_STATE_MACHINE = "lumi-ui"' apps/web/components/rive-study-flame.tsx
 grep -Fq "NEXT_PUBLIC_RIVE_LUMI_URL" apps/web/components/study-motion.tsx
 test -f apps/web/public/characters/lumi/poster.webp
-grep -Fq 'activeSection === "courses" && visualExperience' apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -Fq 'activeSection === "study" && visualExperience' apps/web/app/dashboard-preview/dashboard-functional.tsx
+grep -Fq '{ icon: "▤", label: "Estudos", section: "study" }' apps/web/app/dashboard-preview/dashboard-functional.tsx
 grep -Fq '/dashboard-preview?section=' apps/web/app/dashboard-preview/dashboard-functional.tsx
 grep -Fq "O dashboard é sempre a página inicial autenticada" docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md
 grep -Fq "A chama mede somente constância de estudo" docs/design/APOSTOLIC_PRODUCT_VISUAL_ARCHITECTURE.md

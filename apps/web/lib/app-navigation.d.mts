@@ -10,6 +10,7 @@ export type AppView =
 
 export type DashboardSection =
   | "dashboard"
+  | "study"
   | "courses"
   | "bible"
   | "teacher"
