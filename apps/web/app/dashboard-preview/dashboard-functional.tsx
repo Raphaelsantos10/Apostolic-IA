@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+  type RefObject
+} from "react";
 import { AppViewContent } from "../../components/app-shell";
 import {
   dashboardSectionHref,
@@ -182,6 +188,87 @@ const discoveryCards = [
   { icon: "◌", label: "Comunidade", detail: "Compartilhe dúvidas com segurança" },
   { icon: "◔", label: "Seu progresso", detail: "Retome exatamente de onde parou" }
 ] as const;
+
+const dailyDevotionals = [
+  {
+    verse: "A tua palavra é lâmpada para os meus pés e luz para o meu caminho.",
+    reference: "Salmos 119:105",
+    title: "Um passo de cada vez",
+    reflection: "Deus nem sempre mostra o percurso inteiro. A Palavra oferece luz suficiente para o próximo passo fiel.",
+    prayer: "Senhor, ilumina as minhas decisões de hoje e ensina-me a caminhar contigo. Amém."
+  },
+  {
+    verse: "Confia no Senhor de todo o teu coração e não te apoies apenas no teu entendimento.",
+    reference: "Provérbios 3:5",
+    title: "Confiança antes da certeza",
+    reflection: "A fé não ignora as perguntas; ela escolhe entregar a Deus aquilo que ainda não consegue compreender.",
+    prayer: "Pai, ajuda-me a confiar no teu caráter quando eu ainda não vejo todas as respostas. Amém."
+  },
+  {
+    verse: "Tudo posso naquele que me fortalece.",
+    reference: "Filipenses 4:13",
+    title: "Força para permanecer",
+    reflection: "A força de Cristo não alimenta orgulho. Ela sustenta a obediência, a perseverança e o serviço nos dias difíceis.",
+    prayer: "Jesus, fortalece-me para cumprir com amor aquilo que colocaste diante de mim. Amém."
+  },
+  {
+    verse: "Entrega o teu caminho ao Senhor; confia nele, e ele agirá.",
+    reference: "Salmos 37:5",
+    title: "Entregar também é avançar",
+    reflection: "Entregar não significa desistir da responsabilidade, mas agir sem carregar sozinho o peso do resultado.",
+    prayer: "Senhor, recebe os meus planos e orienta cada atitude segundo a tua vontade. Amém."
+  },
+  {
+    verse: "Sede fortes e corajosos; não temais, porque o Senhor vai convosco.",
+    reference: "Deuteronómio 31:6",
+    title: "Coragem acompanhada",
+    reflection: "A coragem bíblica nasce da presença de Deus, não da ausência de medo.",
+    prayer: "Deus, lembra-me hoje de que não caminho sozinho e dá-me coragem para fazer o que é certo. Amém."
+  },
+  {
+    verse: "O fruto do Espírito é amor, alegria, paz, paciência, bondade, fidelidade, mansidão e domínio próprio.",
+    reference: "Gálatas 5:22–23",
+    title: "O caráter que cresce",
+    reflection: "Maturidade espiritual aparece nas atitudes quotidianas, especialmente na forma como tratamos as pessoas.",
+    prayer: "Espírito Santo, forma em mim um caráter que revele Jesus nas pequenas escolhas. Amém."
+  },
+  {
+    verse: "Buscai primeiro o Reino de Deus e a sua justiça.",
+    reference: "Mateus 6:33",
+    title: "A prioridade que organiza",
+    reflection: "Quando o Reino ocupa o primeiro lugar, as outras áreas encontram uma ordem mais saudável.",
+    prayer: "Pai, reorganiza as minhas prioridades e faz do teu Reino o centro deste dia. Amém."
+  },
+  {
+    verse: "Alegrai-vos na esperança, sede pacientes na tribulação e perseverai na oração.",
+    reference: "Romanos 12:12",
+    title: "Esperança que persevera",
+    reflection: "Esperança, paciência e oração trabalham juntas para manter o coração firme durante a espera.",
+    prayer: "Senhor, renova a minha esperança e ensina-me a perseverar sem perder a ternura. Amém."
+  },
+  {
+    verse: "Se alguém necessita de sabedoria, peça-a a Deus, que a todos dá generosamente.",
+    reference: "Tiago 1:5",
+    title: "Sabedoria para hoje",
+    reflection: "Antes de reagir depressa, podemos parar e pedir a perspectiva de Deus para a situação.",
+    prayer: "Deus generoso, concede-me sabedoria para falar, decidir e servir bem hoje. Amém."
+  },
+  {
+    verse: "Levai as cargas uns dos outros e assim cumprireis a lei de Cristo.",
+    reference: "Gálatas 6:2",
+    title: "Fé que partilha o peso",
+    reflection: "A comunidade cristã torna o amor visível quando percebe, escuta e ajuda a carregar dificuldades reais.",
+    prayer: "Jesus, abre os meus olhos para reconhecer quem precisa de cuidado e torna-me disponível. Amém."
+  }
+] as const;
+
+function devotionalForDate(date: Date | null) {
+  if (!date) return dailyDevotionals[0];
+  const dayNumber = Math.floor(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86_400_000
+  );
+  return dailyDevotionals[dayNumber % dailyDevotionals.length] ?? dailyDevotionals[0];
+}
 
 const navigation = [
   { icon: "⌂", label: "Dashboard", section: "dashboard" },
@@ -405,6 +492,9 @@ export function DashboardFunctional({
   const [now, setNow] = useState<Date | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [profileOpen, setProfileOpen] = useState(false);
+  const [devotionalOpen, setDevotionalOpen] = useState(false);
+  const discoveryCarousel = useRef<HTMLDivElement>(null);
+  const coursesCarousel = useRef<HTMLDivElement>(null);
   const [dashboard, setDashboard] = useState<DashboardData>(
     preview ? demoData : emptyData
   );
@@ -545,6 +635,17 @@ export function DashboardFunctional({
     setMode(nextMode);
     window.localStorage.setItem("apostolic-learning-mode", nextMode);
   };
+  const moveCarousel = (
+    carousel: RefObject<HTMLDivElement | null>,
+    direction: -1 | 1
+  ) => {
+    const element = carousel.current;
+    if (!element) return;
+    element.scrollBy({
+      left: direction * Math.max(280, element.clientWidth * 0.82),
+      behavior: "smooth"
+    });
+  };
   const initials = dashboard.name
     .split(/\s+/)
     .slice(0, 2)
@@ -572,6 +673,7 @@ export function DashboardFunctional({
         second: "2-digit"
       }).format(now)
     : "--:--:--";
+  const dailyDevotional = devotionalForDate(now);
   const searchResults = searchQuery.trim()
     ? searchDestinations.filter((item) =>
         `${item.label} ${item.detail}`.toLocaleLowerCase("pt")
@@ -805,10 +907,29 @@ export function DashboardFunctional({
 
           <article className={styles.verseCard}>
             <p className={styles.cardLabel}>Versículo do dia</p>
-            <blockquote>
-              “Lâmpada para os meus pés é tua palavra e luz, para o meu caminho.”
-            </blockquote>
-            <cite>Salmos 119:105</cite>
+            <blockquote>“{dailyDevotional.verse}”</blockquote>
+            <cite>{dailyDevotional.reference}</cite>
+            <small className={styles.dailyStatus}>Atualizado diariamente</small>
+          </article>
+
+          <article className={styles.devotionalCard}>
+            <p className={styles.cardLabel}>Devocional diário</p>
+            <h2>{dailyDevotional.title}</h2>
+            <p>{dailyDevotional.reflection}</p>
+            <button
+              className={styles.devotionalButton}
+              type="button"
+              aria-expanded={devotionalOpen}
+              onClick={() => setDevotionalOpen((open) => !open)}
+            >
+              {devotionalOpen ? "Fechar oração" : "Refletir e orar"}
+            </button>
+            {devotionalOpen && (
+              <div className={styles.devotionalPrayer}>
+                <strong>Oração</strong>
+                <p>{dailyDevotional.prayer}</p>
+              </div>
+            )}
           </article>
 
           {adventure && (
@@ -829,18 +950,26 @@ export function DashboardFunctional({
             ? "Descubra recursos da sua jornada"
             : "Atalhos do plano acadêmico"}
         >
-          <div className={styles.discoveryTrack}>
-            {[...discoveryCards, ...discoveryCards].map((item, index) => (
+          <div className={styles.carouselHeader}>
+            <div>
+              <p className={styles.eyebrow}>{adventure ? "Explore" : "Acesso rápido"}</p>
+              <h2>{adventure ? "Descobertas da jornada" : "Ferramentas de estudo"}</h2>
+            </div>
+            <div className={styles.carouselControls} aria-label="Controlos das descobertas">
+              <button type="button" aria-label="Ver descobertas anteriores" onClick={() => moveCarousel(discoveryCarousel, -1)}>‹</button>
+              <button type="button" aria-label="Ver próximas descobertas" onClick={() => moveCarousel(discoveryCarousel, 1)}>›</button>
+            </div>
+          </div>
+          <div className={styles.discoveryTrack} ref={discoveryCarousel}>
+            {discoveryCards.map((item, index) => (
               <Link
                 className={styles.discoveryCard}
                 href={sectionHref(
                   (["bible", "teacher", "games", "community", "progress"] as const)[
-                    index % discoveryCards.length
+                    index
                   ] ?? "dashboard"
                 )}
-                key={`${item.label}-${index}`}
-                aria-hidden={index >= discoveryCards.length || undefined}
-                tabIndex={index >= discoveryCards.length ? -1 : undefined}
+                key={item.label}
               >
                 <span aria-hidden="true">{item.icon}</span>
                 <span>
@@ -868,6 +997,10 @@ export function DashboardFunctional({
               >
                 Ver todos
               </Link>
+              <div className={styles.carouselControls} aria-label="Controlos dos cursos">
+                <button type="button" aria-label="Ver cursos anteriores" onClick={() => moveCarousel(coursesCarousel, -1)}>‹</button>
+                <button type="button" aria-label="Ver próximos cursos" onClick={() => moveCarousel(coursesCarousel, 1)}>›</button>
+              </div>
             </div>
 
             {dashboard.courses.length === 0 ? (
@@ -875,7 +1008,7 @@ export function DashboardFunctional({
                 <p>Nenhum curso publicado está disponível neste momento.</p>
               </div>
             ) : (
-              <div className={styles.courseGrid}>
+              <div className={styles.courseGrid} ref={coursesCarousel}>
                 {dashboard.courses.map((course) => (
                   <article className={styles.courseCard} key={course.title}>
                     <div

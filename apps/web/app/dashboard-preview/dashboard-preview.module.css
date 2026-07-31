@@ -3,14 +3,17 @@
   --navy-900: #0b1829;
   --navy-850: #102038;
   --navy-800: #152844;
-  --gold: #e7ae43;
-  --gold-bright: #f4c666;
+  --gold: #8a6cff;
+  --gold-bright: #ffd166;
+  --adventure-cyan: #43d9d0;
+  --adventure-coral: #ff718d;
   --text: #f7f9fc;
   --muted: #a9b6c9;
   min-height: 100vh;
   color: var(--text);
   background:
-    radial-gradient(circle at 72% 8%, rgb(44 88 142 / 28%), transparent 34rem),
+    radial-gradient(circle at 75% 4%, rgb(67 217 208 / 20%), transparent 30rem),
+    radial-gradient(circle at 42% 22%, rgb(138 108 255 / 15%), transparent 32rem),
     var(--navy-950);
   display: grid;
   grid-template-columns: 248px minmax(0, 1fr);
@@ -24,6 +27,16 @@
   background:
     radial-gradient(circle at 72% 8%, rgb(65 112 158 / 20%), transparent 34rem),
     #071421;
+}
+
+.page:not(.academicMode) .activeNav {
+  color: #fff;
+  background: linear-gradient(90deg, rgb(138 108 255 / 34%), rgb(67 217 208 / 12%));
+  box-shadow: inset 3px 0 var(--adventure-cyan);
+}
+.page:not(.academicMode) .offline {
+  border-color: rgb(67 217 208 / 38%);
+  background: linear-gradient(90deg, rgb(67 217 208 / 10%), rgb(138 108 255 / 7%));
 }
 
 .skipLink {
@@ -255,7 +268,7 @@
   align-items: end;
   background:
     linear-gradient(90deg, rgb(3 18 34 / 97%) 0%, rgb(3 18 34 / 78%) 42%, rgb(3 18 34 / 18%) 76%, rgb(3 18 34 / 48%) 100%),
-    url("/dashboard-hero-journey.webp") center 46% / cover;
+    url("/dashboard-hero-adventure.webp") center 48% / cover;
   transition: background-position 700ms ease, border-color 300ms ease;
 }
 .nextCard::before {
@@ -264,8 +277,8 @@
   z-index: 0;
   inset: -10%;
   background:
-    radial-gradient(circle at 78% 34%, rgb(244 198 102 / 28%), transparent 16rem),
-    linear-gradient(120deg, transparent 50%, rgb(36 92 151 / 20%));
+    radial-gradient(circle at 65% 52%, rgb(255 209 102 / 24%), transparent 15rem),
+    linear-gradient(120deg, transparent 44%, rgb(138 108 255 / 16%));
 }
 .academicMode .nextCard {
   background:
@@ -291,15 +304,15 @@
   position: absolute;
   z-index: 1;
   top: 50%;
-  right: clamp(1rem, 7vw, 7rem);
+  right: clamp(9rem, 25vw, 25rem);
   bottom: auto;
-  width: clamp(12rem, 24vw, 22rem);
+  width: clamp(11rem, 20vw, 18rem);
   transform: translateY(-50%);
   pointer-events: none;
   filter: drop-shadow(0 1.6rem 2.4rem rgb(0 0 0 / 42%));
   transition: right 600ms ease, filter 350ms ease;
 }
-.academicMode .heroLumi { right: clamp(1.5rem, 9vw, 9rem); filter: drop-shadow(0 1.6rem 2.4rem rgb(0 0 0 / 48%)) saturate(0.86); }
+.academicMode .heroLumi { right: clamp(1.5rem, 9vw, 9rem); width: clamp(12rem, 24vw, 22rem); filter: drop-shadow(0 1.6rem 2.4rem rgb(0 0 0 / 48%)) saturate(0.86); }
 .heroLumi img {
   position: relative;
   z-index: 1;
@@ -375,6 +388,21 @@
 .lessonIcon { float: right; color: var(--gold-bright); font-size: 2rem; }
 .verseCard blockquote { margin: 1rem 0 0.8rem; line-height: 1.6; font-size: 0.95rem; }
 .verseCard cite { color: var(--gold-bright); font-style: normal; font-size: 0.78rem; }
+.dailyStatus { display: block; margin-top: 0.7rem; color: var(--muted); font-size: 0.65rem; }
+.devotionalCard { padding: 1.2rem; }
+.devotionalCard h2 { margin: 0.35rem 0; font-size: 1rem; }
+.devotionalCard > p:not(.cardLabel) { color: var(--muted); font-size: 0.78rem; line-height: 1.5; }
+.devotionalButton {
+  padding: 0;
+  border: 0;
+  color: var(--gold-bright);
+  background: transparent;
+  font-weight: 800;
+  cursor: pointer;
+}
+.devotionalPrayer { margin-top: 0.8rem; padding: 0.75rem; border-left: 3px solid var(--gold); border-radius: 0.35rem; background: rgb(255 255 255 / 5%); }
+.devotionalPrayer strong { color: var(--text); font-size: 0.75rem; }
+.devotionalPrayer p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.72rem; line-height: 1.45; }
 .streakCard { grid-column: 1 / -1; display: flex; align-items: center; gap: 1rem; }
 .flame { font-size: 2.6rem; filter: drop-shadow(0 0 12px rgb(244 138 42 / 40%)); }
 
@@ -382,17 +410,37 @@
   width: 100%;
   margin-top: 1rem;
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
+.carouselHeader { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 0.65rem; }
+.carouselHeader h2 { margin: 0.15rem 0 0; font-size: 1.05rem; }
+.carouselControls { display: flex; align-items: center; gap: 0.35rem; margin-left: auto; }
+.carouselControls button {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgb(169 182 201 / 24%);
+  border-radius: 50%;
+  color: var(--text);
+  background: rgb(17 38 63 / 92%);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.carouselControls button:hover,
+.carouselControls button:focus-visible { border-color: var(--gold-bright); color: var(--gold-bright); outline: none; transform: translateY(-1px); }
 .discoveryTrack {
   display: flex;
-  width: max-content;
+  width: 100%;
   gap: 0.75rem;
-  padding: 0.2rem 0;
+  padding: 0.2rem 0 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--gold) #263954;
+  overscroll-behavior-inline: contain;
 }
-.academicMode .discoveryTrack { animation-play-state: paused; }
 .academicMode .discoveryCard { border-radius: 0.45rem; background: linear-gradient(135deg, rgb(18 42 63 / 96%), rgb(8 25 41 / 96%)); }
 .discoveryCard {
+  flex: 0 0 clamp(15rem, 24vw, 21rem);
+  scroll-snap-align: start;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.75rem;
@@ -425,12 +473,13 @@
 .courseGrid {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(15rem, 31%);
+  grid-auto-columns: minmax(15rem, 42%);
   gap: 0.9rem;
   overflow-x: auto;
   padding: 0.25rem 0.1rem 0.8rem;
   scroll-snap-type: x mandatory;
   scrollbar-color: var(--gold) #263954;
+  overscroll-behavior-inline: contain;
 }
 
 .courseCard {
@@ -588,9 +637,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .discoveryTrack { animation: discovery-marquee 34s linear infinite; }
-  .discoveryRail:hover .discoveryTrack,
-  .discoveryRail:focus-within .discoveryTrack { animation-play-state: paused; }
   .nextCard::before { animation: hero-drift 10s ease-in-out infinite alternate; }
   .heroLumi { animation: lumi-float 5.8s ease-in-out infinite; }
   .lumiAura { animation: lumi-aura 3.8s ease-in-out infinite alternate; }
@@ -613,13 +659,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .discoveryTrack { overflow-x: auto; }
-  .discoveryCard[aria-hidden="true"] { display: none; }
-}
-
-@keyframes discovery-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(-50% - 0.375rem)); }
+  .discoveryTrack { scroll-behavior: auto; }
 }
 @keyframes dashboard-reveal {
   from { opacity: 0; transform: translateY(2.5rem) scale(0.985); }
