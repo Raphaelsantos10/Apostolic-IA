@@ -6,7 +6,7 @@ import { createClient } from "../lib/supabase/client";
 import { BiblePlatform } from "./bible-platform";
 import { HealthyGamificationPanel } from "./healthy-gamification";
 import { CommunityPanel } from "./community-panel";
-import { BibleGame } from "./bible-game";
+import { GamesHub } from "./games-hub";
 import { BibleTeacher } from "./bible-teacher";
 import { GuidedStudyPlayer } from "./guided-study-player";
 import { DailyGoalPanel, LessonLearningTools } from "./learning-tools";
@@ -139,7 +139,7 @@ export function AppViewContent({
   if (view === "courses") return <CoursesView />;
   if (view === "bible") return <BibleView />;
   if (view === "teacher") return <BibleTeacher />;
-  if (view === "games") return <BibleGame />;
+  if (view === "games") return <GamesHub />;
   if (view === "community") return <CommunityPanel />;
   if (view === "progress") return <ProgressView />;
   return <MoreView />;
