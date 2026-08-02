@@ -6,18 +6,18 @@ import styles from "./apostolic-arena-phaser.module.css";
 
 type Lane = "left" | "right";
 type Side = "player" | "enemy";
-type Card = { id: string; name: string; cost: number; life: number; damage: number; speed: number; range: number; color: number; symbol: string };
+type Card = { id: string; name: string; cost: number; life: number; damage: number; speed: number; range: number; color: number; symbol: string; asset?: string };
 type Hud = { playerTemple: number; enemyTemple: number; faith: number; seconds: number; state: "playing" | "won" | "lost" | "draw" };
 type ArenaApi = { deploy: (card: Card, lane: Lane, side?: Side) => boolean; restart: () => void; fullscreen: () => void };
 type Fighter = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; speed: number; range: number; attackAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
 
 const deck: Card[] = [
-  { id: "guardiao", name: "Guardião", cost: 3, life: 72, damage: 12, speed: 30, range: 42, color: 0x2d78c9, symbol: "G" },
-  { id: "mensageira", name: "Mensageira", cost: 3, life: 48, damage: 15, speed: 40, range: 125, color: 0x9a5bd1, symbol: "M" },
+  { id: "guardiao", name: "Guardião", cost: 3, life: 72, damage: 12, speed: 30, range: 42, color: 0x2d78c9, symbol: "G", asset: "/games/apostolic-arena/units/guardiao-v1.png" },
+  { id: "mensageira", name: "Mensageira", cost: 3, life: 48, damage: 15, speed: 40, range: 125, color: 0x9a5bd1, symbol: "M", asset: "/games/apostolic-arena/units/mensageira-v1.png" },
   { id: "servo", name: "Servo", cost: 2, life: 42, damage: 9, speed: 52, range: 38, color: 0xd49832, symbol: "S" },
-  { id: "sentinela", name: "Sentinela", cost: 4, life: 105, damage: 10, speed: 23, range: 42, color: 0x238b7b, symbol: "T" },
+  { id: "sentinela", name: "Sentinela", cost: 4, life: 105, damage: 10, speed: 23, range: 42, color: 0x238b7b, symbol: "T", asset: "/games/apostolic-arena/units/sentinela-v1.png" },
   { id: "unidade", name: "Unidade", cost: 5, life: 92, damage: 18, speed: 34, range: 44, color: 0xc0527b, symbol: "U" },
-  { id: "peregrino", name: "Peregrino", cost: 2, life: 38, damage: 8, speed: 62, range: 36, color: 0xd86831, symbol: "P" },
+  { id: "peregrino", name: "Peregrino", cost: 2, life: 38, damage: 8, speed: 62, range: 36, color: 0xd86831, symbol: "P", asset: "/games/apostolic-arena/units/peregrino-v1.png" },
   { id: "arqueira", name: "Arqueira", cost: 4, life: 53, damage: 17, speed: 36, range: 145, color: 0x3d9fc3, symbol: "A" },
   { id: "porta-voz", name: "Porta-voz", cost: 5, life: 66, damage: 22, speed: 31, range: 115, color: 0x5965cb, symbol: "V" }
 ];
@@ -56,7 +56,10 @@ export function ApostolicArenaPhaser() {
         effects!: GameObjects.Graphics;
 
         constructor() { super("apostolic-arena"); }
-        preload() { this.load.image("arena-bg", "/games/apostolic-arena/valley-of-beginning-v1.png"); }
+        preload() {
+          this.load.image("arena-bg", "/games/apostolic-arena/valley-of-beginning-v1.png");
+          for (const card of deck) if (card.asset) this.load.image(`unit-${card.id}`, card.asset);
+        }
         create() {
           const background = this.add.image(360, 640, "arena-bg");
           background.setDisplaySize(720, 1280);
@@ -78,11 +81,17 @@ export function ApostolicArenaPhaser() {
           const x = chosenLane === "left" ? 268 : 458;
           const y = side === "player" ? 1080 : 190;
           const direction = side === "player" ? -1 : 1;
-          const cape = this.add.triangle(-9, 7, -13, -13, -23, 24, 2, 21, side === "player" ? 0x174c85 : 0x742f55);
-          const body = this.add.rectangle(0, 8, 25, 35, card.color).setStrokeStyle(3, 0xf7dfa0);
-          const head = this.add.circle(0, -17, 12, 0xe8b477).setStrokeStyle(2, 0x40291d);
-          const badge = this.add.text(0, 8, card.symbol, { fontFamily: "Georgia", fontSize: "14px", fontStyle: "bold", color: "#ffffff" }).setOrigin(.5);
-          const container = this.add.container(x, y, [cape, body, head, badge]).setDepth(10).setScale(side === "player" ? 1 : .96);
+          const shadow = this.add.ellipse(0, 25, 48, 17, 0x000000, .34);
+          const teamRing = this.add.circle(0, 18, 28).setStrokeStyle(4, side === "player" ? 0x52c7ff : 0xed6f9b, .9);
+          let actor: GameObjects.GameObject;
+          if (card.asset) actor = this.add.image(0, -8, `unit-${card.id}`).setDisplaySize(88, 88).setFlipX(side === "enemy");
+          else {
+            const body = this.add.rectangle(0, 5, 28, 39, card.color).setStrokeStyle(3, 0xf7dfa0);
+            const head = this.add.circle(0, -19, 13, 0xe8b477).setStrokeStyle(2, 0x40291d);
+            const badge = this.add.text(0, 5, card.symbol, { fontFamily: "Georgia", fontSize: "14px", fontStyle: "bold", color: "#ffffff" }).setOrigin(.5);
+            actor = this.add.container(0, 0, [body, head, badge]);
+          }
+          const container = this.add.container(x, y, [shadow, teamRing, actor]).setDepth(10).setScale(side === "player" ? 1 : .96);
           const bar = this.add.graphics().setDepth(12);
           const fighter: Fighter = { side, lane: chosenLane, life: card.life, maxLife: card.life, damage: card.damage, speed: card.speed, range: card.range, attackAt: 0, body: container, bar, alive: true };
           this.fighters.push(fighter);
@@ -192,7 +201,7 @@ export function ApostolicArenaPhaser() {
       <div className={styles.stage}><div ref={hostRef} className={styles.canvas} />{hud.state !== "playing" && <div className={styles.result}><h2>{hud.state === "won" ? "Vitória!" : hud.state === "lost" ? "Continue a treinar" : "Empate"}</h2><p>Templo da Luz {hud.playerTemple} × {hud.enemyTemple} Templo de treino</p><button className="button button-primary" onClick={() => apiRef.current?.restart()}>Jogar novamente</button></div>}</div>
       <div className={styles.hud}><span>Templo <b>{hud.playerTemple}</b></span><div><i style={{ width: `${hud.faith * 10}%` }} /></div><span>Fé <b>{hud.faith}/10</b></span><span>Rival <b>{hud.enemyTemple}</b></span></div>
       <div className={styles.lanes}><button className={lane === "left" ? styles.active : ""} onClick={() => setLane("left")}>Ponte do Vale</button><button className={lane === "right" ? styles.active : ""} onClick={() => setLane("right")}>Ponte das Muralhas</button></div>
-      <div className={styles.deck}>{cards.map((card) => <button key={card.id} className={selected.id === card.id ? styles.selected : ""} onClick={() => setSelected(card)}><span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span><strong>{card.name}</strong><small>{card.cost} Fé · {card.damage} poder</small></button>)}</div>
+      <div className={styles.deck}>{cards.map((card) => <button key={card.id} className={selected.id === card.id ? styles.selected : ""} onClick={() => setSelected(card)}>{card.asset ? <img src={card.asset} alt="" width={54} height={54} style={{ width: "3.3rem", height: "3.3rem", objectFit: "contain", filter: "drop-shadow(0 4px 4px #0008)" }} /> : <span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span>}<strong>{card.name}</strong><small>{card.cost} Fé · {card.damage} poder</small></button>)}</div>
       <button className={`button button-primary ${styles.deploy}`} type="button" onClick={deploy}>Invocar {selected.name}</button>
     </section>
   );
