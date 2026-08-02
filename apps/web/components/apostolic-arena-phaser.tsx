@@ -2,6 +2,7 @@
 
 import type { GameObjects, Input } from "phaser";
 import { useEffect, useMemo, useRef, useState, type DragEvent } from "react";
+import { ARENA_MATCH_RULES, faithRegenerationMs } from "../lib/apostolic-arena-rules";
 import styles from "./apostolic-arena-phaser.module.css";
 
 type Lane = "left" | "right";
@@ -9,7 +10,7 @@ type Side = "player" | "enemy";
 type Card = { id: string; name: string; cost: number; life: number; damage: number; speed: number; range: number; color: number; symbol: string; asset?: string };
 type Hud = { playerTemple: number; enemyTemple: number; faith: number; seconds: number; state: "playing" | "won" | "lost" | "draw" };
 type ArenaApi = { deploy: (card: Card, lane: Lane, side?: Side) => boolean; restart: () => void; fullscreen: () => void };
-type Fighter = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; speed: number; range: number; attackAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
+type Fighter = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; speed: number; range: number; attackAt: number; activeAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
 type Tower = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; range: number; attackAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
 
 const deck: Card[] = [
@@ -23,7 +24,7 @@ const deck: Card[] = [
   { id: "porta-voz", name: "Porta-voz", cost: 5, life: 66, damage: 22, speed: 31, range: 115, color: 0x5965cb, symbol: "V", asset: "/games/apostolic-arena/units/porta-voz-v1.png" }
 ];
 
-const initialHud: Hud = { playerTemple: 100, enemyTemple: 100, faith: 6, seconds: 180, state: "playing" };
+const initialHud: Hud = { playerTemple: 100, enemyTemple: 100, faith: ARENA_MATCH_RULES.startingFaith, seconds: ARENA_MATCH_RULES.normalSeconds, state: "playing" };
 
 export function ApostolicArenaPhaser() {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -62,9 +63,10 @@ export function ApostolicArenaPhaser() {
         towers: Tower[] = [];
         playerTemple = 100;
         enemyTemple = 100;
-        faith = 6;
-        enemyFaith = 6;
-        seconds = 180;
+        faith: number = ARENA_MATCH_RULES.startingFaith;
+        enemyFaith: number = ARENA_MATCH_RULES.startingFaith;
+        seconds: number = ARENA_MATCH_RULES.normalSeconds;
+        overtime = false;
         finished = false;
         lastSecond = 0;
         lastFaith = 0;
@@ -141,7 +143,7 @@ export function ApostolicArenaPhaser() {
           }
           const container = this.add.container(x, y, [shadow, teamRing, actor]).setDepth(10).setScale(side === "player" ? 1 : .96);
           const bar = this.add.graphics().setDepth(12);
-          const fighter: Fighter = { side, lane: chosenLane, life: card.life, maxLife: card.life, damage: card.damage, speed: card.speed, range: card.range, attackAt: 0, body: container, bar, alive: true };
+          const fighter: Fighter = { side, lane: chosenLane, life: card.life, maxLife: card.life, damage: card.damage, speed: card.speed, range: card.range, attackAt: 0, activeAt: this.time.now + ARENA_MATCH_RULES.defaultDeployMs, body: container, bar, alive: true };
           this.fighters.push(fighter);
           this.tweens.add({ targets: container, scaleY: container.scaleY * .9, yoyo: true, repeat: -1, duration: 280, ease: "Sine.inOut" });
           this.burst(x, y, side === "player" ? 0xffd969 : 0xb77ae8);
@@ -188,6 +190,7 @@ export function ApostolicArenaPhaser() {
           if (tower.life <= 0) {
             tower.alive = false; tower.bar.destroy(); this.burst(tower.body.x, tower.body.y, 0xffd766);
             this.tweens.add({ targets: tower.body, alpha: .22, scale: .7, angle: 8, duration: 420 });
+            if (this.overtime) this.end(tower.side === "enemy" ? "won" : "lost");
           }
         }
         removeFighter(fighter: Fighter) {
@@ -219,8 +222,26 @@ export function ApostolicArenaPhaser() {
         }
         override update(time: number, delta: number) {
           if (this.finished) return;
-          if (time - this.lastSecond >= 1000) { this.lastSecond = time; this.seconds = Math.max(0, this.seconds - 1); this.publish(); if (!this.seconds) this.end(); }
-          if (time - this.lastFaith >= 1150) { this.lastFaith = time; this.faith = Math.min(10, this.faith + 1); this.enemyFaith = Math.min(10, this.enemyFaith + 1); this.publish(); }
+          if (time - this.lastSecond >= 1000) {
+            this.lastSecond = time;
+            this.seconds = Math.max(0, this.seconds - 1);
+            if (!this.seconds) {
+              const playerScore = this.towers.filter((tower) => tower.side === "enemy" && !tower.alive).length;
+              const enemyScore = this.towers.filter((tower) => tower.side === "player" && !tower.alive).length;
+              if (!this.overtime && playerScore === enemyScore) {
+                this.overtime = true;
+                this.seconds = ARENA_MATCH_RULES.overtimeSeconds;
+                setMessage("Morte súbita: a primeira torre destruída decide a partida.");
+              } else this.end(playerScore === enemyScore ? "draw" : playerScore > enemyScore ? "won" : "lost");
+            }
+            this.publish();
+          }
+          if (time - this.lastFaith >= faithRegenerationMs(this.seconds, this.overtime)) {
+            this.lastFaith = time;
+            this.faith = Math.min(ARENA_MATCH_RULES.maximumFaith, this.faith + 1);
+            this.enemyFaith = Math.min(ARENA_MATCH_RULES.maximumFaith, this.enemyFaith + 1);
+            this.publish();
+          }
           if (time - this.lastEnemyMove >= 2350) {
             this.lastEnemyMove = time;
             const affordable = deck.filter((card) => card.cost <= this.enemyFaith);
@@ -236,6 +257,7 @@ export function ApostolicArenaPhaser() {
           }
           for (const fighter of this.fighters.filter((unit) => unit.alive)) {
             this.drawBar(fighter);
+            if (time < fighter.activeAt) continue;
             const enemies = this.fighters.filter((unit) => unit.alive && unit.side !== fighter.side && unit.lane === fighter.lane);
             const target = enemies.sort((a, b) => Math.abs(a.body.y - fighter.body.y) - Math.abs(b.body.y - fighter.body.y))[0];
             const distance = target ? Math.abs(target.body.y - fighter.body.y) : Infinity;
@@ -251,9 +273,9 @@ export function ApostolicArenaPhaser() {
           }
           this.fighters = this.fighters.filter((unit) => unit.alive);
         }
-        end() {
+        end(forcedState?: Hud["state"]) {
           this.finished = true;
-          const state: Hud["state"] = this.playerTemple === this.enemyTemple ? "draw" : this.playerTemple > this.enemyTemple ? "won" : "lost";
+          const state: Hud["state"] = forcedState ?? (this.playerTemple === this.enemyTemple ? "draw" : this.playerTemple > this.enemyTemple ? "won" : "lost");
           setHud((current) => ({ ...current, state, playerTemple: this.playerTemple, enemyTemple: this.enemyTemple, seconds: this.seconds }));
         }
         publish() { setHud({ playerTemple: this.playerTemple, enemyTemple: this.enemyTemple, faith: this.faith, seconds: this.seconds, state: this.finished ? "draw" : "playing" }); }
