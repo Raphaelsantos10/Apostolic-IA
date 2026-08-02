@@ -1,7 +1,7 @@
 "use client";
 
 import type { GameObjects, Input } from "phaser";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type DragEvent } from "react";
 import styles from "./apostolic-arena-phaser.module.css";
 
 type Lane = "left" | "right";
@@ -31,9 +31,22 @@ export function ApostolicArenaPhaser() {
   const [hud, setHud] = useState(initialHud);
   const [selected, setSelected] = useState<Card>(deck[0] as Card);
   const [lane, setLane] = useState<Lane>("left");
+  const [handOffset, setHandOffset] = useState(0);
   const [message, setMessage] = useState("Escolha uma unidade e envie-a por uma das pontes.");
   const cards = useMemo(() => deck, []);
   const selectedCardRef = useRef(selected);
+  const hand = Array.from({ length: 4 }, (_, index) => cards[(handOffset + index) % cards.length] as Card);
+  const nextCard = cards[(handOffset + 4) % cards.length] as Card;
+
+  const advanceHand = () => {
+    setHandOffset((current) => {
+      const next = (current + 1) % cards.length;
+      const nextSelection = cards[next] as Card;
+      setSelected(nextSelection);
+      selectedCardRef.current = nextSelection;
+      return next;
+    });
+  };
 
   useEffect(() => { selectedCardRef.current = selected; }, [selected]);
 
@@ -91,6 +104,7 @@ export function ApostolicArenaPhaser() {
             const deployed = this.deploy(card, chosenLane, "player");
             setLane(chosenLane);
             setMessage(deployed ? `${card.name} entrou diretamente pela ${chosenLane === "left" ? "Ponte do Vale" : "Ponte das Muralhas"}.` : "Ainda não há Fé suficiente para esta unidade.");
+            if (deployed) advanceHand();
           });
           this.publish();
         }
@@ -259,6 +273,19 @@ export function ApostolicArenaPhaser() {
   const deploy = () => {
     const worked = apiRef.current?.deploy(selected, lane) ?? false;
     setMessage(worked ? `${selected.name} avançou pela ${lane === "left" ? "Rota do Vale" : "Rota das Muralhas"}.` : "Aguarde a Fé recarregar para usar esta carta.");
+    if (worked) advanceHand();
+  };
+  const dropOnArena = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const id = event.dataTransfer.getData("application/x-apostolic-card");
+    const card = cards.find((item) => item.id === id);
+    if (!card) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const chosenLane: Lane = event.clientX - bounds.left < bounds.width / 2 ? "left" : "right";
+    const worked = apiRef.current?.deploy(card, chosenLane) ?? false;
+    setLane(chosenLane);
+    setMessage(worked ? `${card.name} foi solto na ${chosenLane === "left" ? "Ponte do Vale" : "Ponte das Muralhas"}.` : "A carta voltou à mão: falta Fé para invocá-la.");
+    if (worked) advanceHand();
   };
   const time = `${Math.floor(hud.seconds / 60)}:${String(hud.seconds % 60).padStart(2, "0")}`;
 
@@ -266,10 +293,16 @@ export function ApostolicArenaPhaser() {
     <section className={styles.shell} aria-label="Apostolic Arena em tempo real">
       <div className={styles.toolbar}><div><p className="eyebrow">Vertical slice Phaser</p><h2>Vale do Começo</h2></div><strong className={styles.clock}>{time}</strong><button type="button" onClick={() => apiRef.current?.fullscreen()}>⛶ Tela cheia</button></div>
       <div className={styles.guide}><span className={styles.barnabas}>B</span><p><strong>Barnabé:</strong> {message} Toque na metade inferior da arena para invocar diretamente.</p></div>
-      <div className={styles.stage}><div ref={hostRef} className={styles.canvas} />{hud.state !== "playing" && <div className={styles.result}><h2>{hud.state === "won" ? "Vitória!" : hud.state === "lost" ? "Continue a treinar" : "Empate"}</h2><p>Templo da Luz {hud.playerTemple} × {hud.enemyTemple} Templo de treino</p><button className="button button-primary" onClick={() => apiRef.current?.restart()}>Jogar novamente</button></div>}</div>
-      <div className={styles.hud}><span>Templo <b>{hud.playerTemple}</b></span><div><i style={{ width: `${hud.faith * 10}%` }} /></div><span>Fé <b>{hud.faith}/10</b></span><span>Rival <b>{hud.enemyTemple}</b></span></div>
+      <div className={styles.stage} onDragOver={(event) => event.preventDefault()} onDrop={dropOnArena}>
+        <div ref={hostRef} className={styles.canvas} />
+        <div className={styles.hud} style={{ position: "absolute", zIndex: 28, inset: ".45rem .45rem auto", padding: ".45rem .6rem", borderRadius: ".7rem", background: "#06131ddd", backdropFilter: "blur(6px)" }}><span>Templo <b>{hud.playerTemple}</b></span><div><i style={{ width: `${hud.faith * 10}%` }} /></div><span>Fé <b>{hud.faith}/10</b></span><span>Rival <b>{hud.enemyTemple}</b></span></div>
+        <div style={{ position: "absolute", zIndex: 30, inset: "auto .35rem .35rem", padding: ".4rem", border: "1px solid #e8c56a88", borderRadius: ".75rem", background: "#071522e8", backdropFilter: "blur(7px)" }}>
+          <small style={{ display: "block", marginBottom: ".3rem", color: "#d8e5ef" }}>Próxima: {nextCard.name} · Arraste uma carta para a rota</small>
+          <div className={styles.deck}>{hand.map((card) => <button draggable key={`${card.id}-${handOffset}`} className={selected.id === card.id ? styles.selected : ""} onDragStart={(event) => { event.dataTransfer.setData("application/x-apostolic-card", card.id); event.dataTransfer.effectAllowed = "move"; setSelected(card); }} onClick={() => setSelected(card)}>{card.asset ? <img src={card.asset} alt="" width={54} height={54} style={{ width: "3.3rem", height: "3.3rem", objectFit: "contain", filter: "drop-shadow(0 4px 4px #0008)" }} /> : <span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span>}<strong>{card.name}</strong><small>{card.cost} Fé · {card.damage} poder</small></button>)}</div>
+        </div>
+        {hud.state !== "playing" && <div className={styles.result}><h2>{hud.state === "won" ? "Vitória!" : hud.state === "lost" ? "Continue a treinar" : "Empate"}</h2><p>Templo da Luz {hud.playerTemple} × {hud.enemyTemple} Templo de treino</p><button className="button button-primary" onClick={() => apiRef.current?.restart()}>Jogar novamente</button></div>}
+      </div>
       <div className={styles.lanes}><button className={lane === "left" ? styles.active : ""} onClick={() => setLane("left")}>Ponte do Vale</button><button className={lane === "right" ? styles.active : ""} onClick={() => setLane("right")}>Ponte das Muralhas</button></div>
-      <div className={styles.deck}>{cards.map((card) => <button key={card.id} className={selected.id === card.id ? styles.selected : ""} onClick={() => setSelected(card)}>{card.asset ? <img src={card.asset} alt="" width={54} height={54} style={{ width: "3.3rem", height: "3.3rem", objectFit: "contain", filter: "drop-shadow(0 4px 4px #0008)" }} /> : <span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span>}<strong>{card.name}</strong><small>{card.cost} Fé · {card.damage} poder</small></button>)}</div>
       <button className={`button button-primary ${styles.deploy}`} type="button" onClick={deploy}>Invocar {selected.name}</button>
     </section>
   );
