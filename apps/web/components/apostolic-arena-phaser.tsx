@@ -14,12 +14,12 @@ type Fighter = { side: Side; lane: Lane; life: number; maxLife: number; damage: 
 const deck: Card[] = [
   { id: "guardiao", name: "Guardião", cost: 3, life: 72, damage: 12, speed: 30, range: 42, color: 0x2d78c9, symbol: "G", asset: "/games/apostolic-arena/units/guardiao-v1.png" },
   { id: "mensageira", name: "Mensageira", cost: 3, life: 48, damage: 15, speed: 40, range: 125, color: 0x9a5bd1, symbol: "M", asset: "/games/apostolic-arena/units/mensageira-v1.png" },
-  { id: "servo", name: "Servo", cost: 2, life: 42, damage: 9, speed: 52, range: 38, color: 0xd49832, symbol: "S" },
+  { id: "servo", name: "Servo", cost: 2, life: 42, damage: 9, speed: 52, range: 38, color: 0xd49832, symbol: "S", asset: "/games/apostolic-arena/units/servo-v1.png" },
   { id: "sentinela", name: "Sentinela", cost: 4, life: 105, damage: 10, speed: 23, range: 42, color: 0x238b7b, symbol: "T", asset: "/games/apostolic-arena/units/sentinela-v1.png" },
-  { id: "unidade", name: "Unidade", cost: 5, life: 92, damage: 18, speed: 34, range: 44, color: 0xc0527b, symbol: "U" },
+  { id: "unidade", name: "Unidade", cost: 5, life: 92, damage: 18, speed: 34, range: 44, color: 0xc0527b, symbol: "U", asset: "/games/apostolic-arena/units/unidade-v1.png" },
   { id: "peregrino", name: "Peregrino", cost: 2, life: 38, damage: 8, speed: 62, range: 36, color: 0xd86831, symbol: "P", asset: "/games/apostolic-arena/units/peregrino-v1.png" },
-  { id: "arqueira", name: "Arqueira", cost: 4, life: 53, damage: 17, speed: 36, range: 145, color: 0x3d9fc3, symbol: "A" },
-  { id: "porta-voz", name: "Porta-voz", cost: 5, life: 66, damage: 22, speed: 31, range: 115, color: 0x5965cb, symbol: "V" }
+  { id: "arqueira", name: "Arqueira", cost: 4, life: 53, damage: 17, speed: 36, range: 145, color: 0x3d9fc3, symbol: "A", asset: "/games/apostolic-arena/units/arqueira-v1.png" },
+  { id: "porta-voz", name: "Porta-voz", cost: 5, life: 66, damage: 22, speed: 31, range: 115, color: 0x5965cb, symbol: "V", asset: "/games/apostolic-arena/units/porta-voz-v1.png" }
 ];
 
 const initialHud: Hud = { playerTemple: 100, enemyTemple: 100, faith: 6, seconds: 180, state: "playing" };
