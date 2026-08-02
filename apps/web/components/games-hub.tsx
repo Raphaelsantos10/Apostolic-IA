@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ApostolicArena } from "./apostolic-arena";
+import { ApostolicArenaPhaser } from "./apostolic-arena-phaser";
 import { BibleGame } from "./bible-game";
 
 type GameView = "arena" | "challenge";
@@ -48,7 +48,7 @@ export function GamesHub() {
         </button>
       </nav>
 
-      {view === "arena" ? <ApostolicArena /> : <BibleGame />}
+      {view === "arena" ? <ApostolicArenaPhaser /> : <BibleGame />}
     </section>
   );
 }
