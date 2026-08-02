@@ -1,6 +1,6 @@
 "use client";
 
-import type { GameObjects } from "phaser";
+import type { GameObjects, Input } from "phaser";
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./apostolic-arena-phaser.module.css";
 
@@ -10,6 +10,7 @@ type Card = { id: string; name: string; cost: number; life: number; damage: numb
 type Hud = { playerTemple: number; enemyTemple: number; faith: number; seconds: number; state: "playing" | "won" | "lost" | "draw" };
 type ArenaApi = { deploy: (card: Card, lane: Lane, side?: Side) => boolean; restart: () => void; fullscreen: () => void };
 type Fighter = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; speed: number; range: number; attackAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
+type Tower = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; range: number; attackAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
 
 const deck: Card[] = [
   { id: "guardiao", name: "Guardião", cost: 3, life: 72, damage: 12, speed: 30, range: 42, color: 0x2d78c9, symbol: "G", asset: "/games/apostolic-arena/units/guardiao-v1.png" },
@@ -32,6 +33,9 @@ export function ApostolicArenaPhaser() {
   const [lane, setLane] = useState<Lane>("left");
   const [message, setMessage] = useState("Escolha uma unidade e envie-a por uma das pontes.");
   const cards = useMemo(() => deck, []);
+  const selectedCardRef = useRef(selected);
+
+  useEffect(() => { selectedCardRef.current = selected; }, [selected]);
 
   useEffect(() => {
     let disposed = false;
@@ -42,6 +46,7 @@ export function ApostolicArenaPhaser() {
 
       class ArenaScene extends Phaser.Scene {
         fighters: Fighter[] = [];
+        towers: Tower[] = [];
         playerTemple = 100;
         enemyTemple = 100;
         faith = 6;
@@ -54,6 +59,7 @@ export function ApostolicArenaPhaser() {
         playerCore!: GameObjects.Container;
         enemyCore!: GameObjects.Container;
         effects!: GameObjects.Graphics;
+        deployPreview!: GameObjects.Graphics;
 
         constructor() { super("apostolic-arena"); }
         preload() {
@@ -66,8 +72,26 @@ export function ApostolicArenaPhaser() {
           this.effects = this.add.graphics().setDepth(9);
           this.enemyCore = this.makeTemple(360, 105, 0x7050a4, "TREINO");
           this.playerCore = this.makeTemple(360, 1172, 0xd6a744, "LUZ");
+          this.towers = [this.makeTower("left", "enemy"), this.makeTower("right", "enemy"), this.makeTower("left", "player"), this.makeTower("right", "player")];
+          this.deployPreview = this.add.graphics().setDepth(20);
           this.add.text(18, 625, "VALE", { fontFamily: "system-ui", fontSize: "15px", fontStyle: "bold", color: "#f9edc0", backgroundColor: "#071521bb", padding: { x: 8, y: 4 } }).setDepth(8);
           this.add.text(626, 625, "MURALHA", { fontFamily: "system-ui", fontSize: "15px", fontStyle: "bold", color: "#f9edc0", backgroundColor: "#071521bb", padding: { x: 8, y: 4 } }).setOrigin(1, 0).setDepth(8);
+          this.input.on("pointermove", (pointer: Input.Pointer) => {
+            this.deployPreview.clear();
+            if (pointer.y < 650 || this.finished) return;
+            const x = pointer.x < 360 ? 268 : 458;
+            const y = Math.min(1050, Math.max(700, pointer.y));
+            this.deployPreview.fillStyle(0x61d8ff, .16).fillCircle(x, y, 38);
+            this.deployPreview.lineStyle(3, 0x7ce5ff, .85).strokeCircle(x, y, 38);
+          });
+          this.input.on("pointerdown", (pointer: Input.Pointer) => {
+            if (pointer.y < 650 || this.finished) return;
+            const chosenLane: Lane = pointer.x < 360 ? "left" : "right";
+            const card = selectedCardRef.current;
+            const deployed = this.deploy(card, chosenLane, "player");
+            setLane(chosenLane);
+            setMessage(deployed ? `${card.name} entrou diretamente pela ${chosenLane === "left" ? "Ponte do Vale" : "Ponte das Muralhas"}.` : "Ainda não há Fé suficiente para esta unidade.");
+          });
           this.publish();
         }
         makeTemple(x: number, y: number, color: number, label: string) {
@@ -76,6 +100,16 @@ export function ApostolicArenaPhaser() {
           const roof = this.add.triangle(0, -47, -55, 0, 0, -42, 55, 0, color).setStrokeStyle(4, 0xffdf78);
           const title = this.add.text(0, 2, label, { fontFamily: "system-ui", fontSize: "14px", fontStyle: "bold", color: "#ffffff" }).setOrigin(.5);
           return this.add.container(x, y, [shadow, base, roof, title]).setDepth(7);
+        }
+        makeTower(chosenLane: Lane, side: Side): Tower {
+          const x = chosenLane === "left" ? 268 : 458;
+          const y = side === "player" ? 962 : 307;
+          const shadow = this.add.ellipse(0, 24, 66, 24, 0x000000, .35);
+          const base = this.add.rectangle(0, 3, 51, 58, side === "player" ? 0x2868a5 : 0x864469).setStrokeStyle(4, 0xe8c56a);
+          const crown = this.add.triangle(0, -38, -32, 0, 0, -25, 32, 0, side === "player" ? 0x3e8bc3 : 0xaa5880).setStrokeStyle(3, 0xf2d77f);
+          const light = this.add.circle(0, -8, 8, 0xffdf6c).setStrokeStyle(2, 0xffffff);
+          const body = this.add.container(x, y, [shadow, base, crown, light]).setDepth(8);
+          return { side, lane: chosenLane, life: 140, maxLife: 140, damage: 8, range: 205, attackAt: 0, body, bar: this.add.graphics().setDepth(13), alive: true };
         }
         makeFighter(card: Card, chosenLane: Lane, side: Side) {
           const x = chosenLane === "left" ? 268 : 458;
@@ -124,6 +158,24 @@ export function ApostolicArenaPhaser() {
           this.cameras.main.shake(70, .002);
           if (target.life <= 0) this.removeFighter(target);
         }
+        towerStrike(tower: Tower, target: Fighter, time: number) {
+          if (!tower.alive || time < tower.attackAt) return;
+          tower.attackAt = time + 920;
+          const orb = this.add.circle(tower.body.x, tower.body.y - 18, 7, tower.side === "player" ? 0x69d9ff : 0xf281b0).setDepth(14);
+          this.tweens.add({ targets: orb, x: target.body.x, y: target.body.y, duration: 230, onComplete: () => orb.destroy() });
+          target.life -= tower.damage;
+          if (target.life <= 0) this.removeFighter(target);
+        }
+        hitTower(fighter: Fighter, tower: Tower, time: number) {
+          if (time < fighter.attackAt || !tower.alive) return;
+          fighter.attackAt = time + 760;
+          tower.life = Math.max(0, tower.life - fighter.damage);
+          this.tweens.add({ targets: tower.body, x: tower.body.x + (Math.random() > .5 ? 5 : -5), yoyo: true, duration: 90 });
+          if (tower.life <= 0) {
+            tower.alive = false; tower.bar.destroy(); this.burst(tower.body.x, tower.body.y, 0xffd766);
+            this.tweens.add({ targets: tower.body, alpha: .22, scale: .7, angle: 8, duration: 420 });
+          }
+        }
         removeFighter(fighter: Fighter) {
           fighter.alive = false;
           fighter.bar.destroy();
@@ -145,6 +197,12 @@ export function ApostolicArenaPhaser() {
           fighter.bar.fillStyle(0x07131d, .85).fillRoundedRect(fighter.body.x - 22, fighter.body.y - 43, 44, 6, 3);
           fighter.bar.fillStyle(fighter.side === "player" ? 0x45dc94 : 0xe66b91, 1).fillRoundedRect(fighter.body.x - 21, fighter.body.y - 42, 42 * Math.max(0, fighter.life / fighter.maxLife), 4, 2);
         }
+        drawTowerBar(tower: Tower) {
+          if (!tower.alive) return;
+          tower.bar.clear();
+          tower.bar.fillStyle(0x07131d, .9).fillRoundedRect(tower.body.x - 31, tower.body.y - 60, 62, 8, 3);
+          tower.bar.fillStyle(tower.side === "player" ? 0x55d5ff : 0xee79a3, 1).fillRoundedRect(tower.body.x - 30, tower.body.y - 59, 60 * (tower.life / tower.maxLife), 6, 2);
+        }
         override update(time: number, delta: number) {
           if (this.finished) return;
           if (time - this.lastSecond >= 1000) { this.lastSecond = time; this.seconds = Math.max(0, this.seconds - 1); this.publish(); if (!this.seconds) this.end(); }
@@ -155,6 +213,13 @@ export function ApostolicArenaPhaser() {
             const card = affordable[Math.floor(Math.random() * affordable.length)];
             if (card) this.deploy(card, Math.random() > .5 ? "left" : "right", "enemy");
           }
+          for (const tower of this.towers) {
+            this.drawTowerBar(tower);
+            if (!tower.alive) continue;
+            const targets = this.fighters.filter((unit) => unit.alive && unit.side !== tower.side && unit.lane === tower.lane && Math.abs(unit.body.y - tower.body.y) <= tower.range);
+            const target = targets.sort((a, b) => Math.abs(a.body.y - tower.body.y) - Math.abs(b.body.y - tower.body.y))[0];
+            if (target) this.towerStrike(tower, target, time);
+          }
           for (const fighter of this.fighters.filter((unit) => unit.alive)) {
             this.drawBar(fighter);
             const enemies = this.fighters.filter((unit) => unit.alive && unit.side !== fighter.side && unit.lane === fighter.lane);
@@ -162,8 +227,11 @@ export function ApostolicArenaPhaser() {
             const distance = target ? Math.abs(target.body.y - fighter.body.y) : Infinity;
             if (target && distance <= fighter.range) this.strike(fighter, target, time);
             else {
+              const tower = this.towers.find((item) => item.alive && item.side !== fighter.side && item.lane === fighter.lane);
+              const towerDistance = tower ? Math.abs(fighter.body.y - tower.body.y) : Infinity;
               const templeY = fighter.side === "player" ? 105 : 1172;
-              if (Math.abs(fighter.body.y - templeY) < 82) this.hitTemple(fighter, time);
+              if (tower && towerDistance <= fighter.range + 34) this.hitTower(fighter, tower, time);
+              else if (!tower && Math.abs(fighter.body.y - templeY) < 82) this.hitTemple(fighter, time);
               else fighter.body.y += (fighter.side === "player" ? -1 : 1) * fighter.speed * (delta / 1000);
             }
           }
@@ -197,7 +265,7 @@ export function ApostolicArenaPhaser() {
   return (
     <section className={styles.shell} aria-label="Apostolic Arena em tempo real">
       <div className={styles.toolbar}><div><p className="eyebrow">Vertical slice Phaser</p><h2>Vale do Começo</h2></div><strong className={styles.clock}>{time}</strong><button type="button" onClick={() => apiRef.current?.fullscreen()}>⛶ Tela cheia</button></div>
-      <div className={styles.guide}><span className={styles.barnabas}>B</span><p><strong>Barnabé:</strong> {message}</p></div>
+      <div className={styles.guide}><span className={styles.barnabas}>B</span><p><strong>Barnabé:</strong> {message} Toque na metade inferior da arena para invocar diretamente.</p></div>
       <div className={styles.stage}><div ref={hostRef} className={styles.canvas} />{hud.state !== "playing" && <div className={styles.result}><h2>{hud.state === "won" ? "Vitória!" : hud.state === "lost" ? "Continue a treinar" : "Empate"}</h2><p>Templo da Luz {hud.playerTemple} × {hud.enemyTemple} Templo de treino</p><button className="button button-primary" onClick={() => apiRef.current?.restart()}>Jogar novamente</button></div>}</div>
       <div className={styles.hud}><span>Templo <b>{hud.playerTemple}</b></span><div><i style={{ width: `${hud.faith * 10}%` }} /></div><span>Fé <b>{hud.faith}/10</b></span><span>Rival <b>{hud.enemyTemple}</b></span></div>
       <div className={styles.lanes}><button className={lane === "left" ? styles.active : ""} onClick={() => setLane("left")}>Ponte do Vale</button><button className={lane === "right" ? styles.active : ""} onClick={() => setLane("right")}>Ponte das Muralhas</button></div>
