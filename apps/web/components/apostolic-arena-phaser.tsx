@@ -14,6 +14,18 @@ type ArenaApi = { deploy: (card: Card, lane: Lane, side?: Side) => boolean; rest
 type Fighter = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; speed: number; range: number; attackAt: number; activeAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
 type Tower = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; range: number; attackAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
 
+const ARENA_GRID = {
+  tile: 40,
+  laneX: { left: 140, right: 580 },
+  towerX: { left: 100, right: 620 },
+  riverTop: 600,
+  riverBottom: 680,
+  enemyTowerY: 340,
+  playerTowerY: 940,
+  enemyTempleY: 160,
+  playerTempleY: 1120
+} as const;
+
 const deck: Card[] = [
   { id: "guardiao", name: "Guardião", cost: 3, life: 72, damage: 12, speed: 30, range: 42, color: 0x2d78c9, symbol: "G", asset: "/games/apostolic-arena/units/guardiao-v1.png" },
   { id: "mensageira", name: "Mensageira", cost: 3, life: 48, damage: 15, speed: 40, range: 125, color: 0x9a5bd1, symbol: "M", asset: "/games/apostolic-arena/units/mensageira-v1.png" },
@@ -93,9 +105,14 @@ export function ApostolicArenaPhaser() {
         create() {
           const background = this.add.image(360, 640, "arena-bg");
           background.setDisplaySize(720, 1280);
+          if (new URLSearchParams(window.location.search).has("arenaGrid")) {
+            const grid = this.add.graphics().setDepth(2).lineStyle(1, 0xffffff, .12);
+            for (let x = 0; x <= 720; x += ARENA_GRID.tile) grid.lineBetween(x, 0, x, 1280);
+            for (let y = 0; y <= 1280; y += ARENA_GRID.tile) grid.lineBetween(0, y, 720, y);
+          }
           this.effects = this.add.graphics().setDepth(9);
-          this.enemyCore = this.makeTemple(360, 110, 0xe96b96, "TEMPLO RIVAL", true);
-          this.playerCore = this.makeTemple(360, 900, 0x62d7ff, "TEMPLO DA LUZ");
+          this.enemyCore = this.makeTemple(360, ARENA_GRID.enemyTempleY, 0xe96b96, "TEMPLO RIVAL", true);
+          this.playerCore = this.makeTemple(360, ARENA_GRID.playerTempleY, 0x62d7ff, "TEMPLO DA LUZ");
           this.enemyCoreBar = this.add.graphics().setDepth(13);
           this.playerCoreBar = this.add.graphics().setDepth(13);
           this.towers = [this.makeTower("left", "enemy"), this.makeTower("right", "enemy"), this.makeTower("left", "player"), this.makeTower("right", "player")];
@@ -104,14 +121,14 @@ export function ApostolicArenaPhaser() {
           this.add.text(626, 625, "MURALHA", { fontFamily: "system-ui", fontSize: "15px", fontStyle: "bold", color: "#f9edc0", backgroundColor: "#071521bb", padding: { x: 8, y: 4 } }).setOrigin(1, 0).setDepth(8);
           this.input.on("pointermove", (pointer: Input.Pointer) => {
             this.deployPreview.clear();
-            if (pointer.y < 650 || pointer.y > 850 || this.finished) return;
-            const x = pointer.x < 360 ? 268 : 458;
-            const y = Math.min(825, Math.max(680, pointer.y));
+            if (pointer.y < ARENA_GRID.riverBottom || pointer.y > 1080 || this.finished) return;
+            const x = pointer.x < 360 ? ARENA_GRID.laneX.left : ARENA_GRID.laneX.right;
+            const y = Math.min(1060, Math.max(ARENA_GRID.riverBottom + ARENA_GRID.tile, pointer.y));
             this.deployPreview.fillStyle(0x61d8ff, .16).fillCircle(x, y, 38);
             this.deployPreview.lineStyle(3, 0x7ce5ff, .85).strokeCircle(x, y, 38);
           });
           this.input.on("pointerdown", (pointer: Input.Pointer) => {
-            if (pointer.y < 650 || pointer.y > 850 || this.finished) return;
+            if (pointer.y < ARENA_GRID.riverBottom || pointer.y > 1080 || this.finished) return;
             const chosenLane: Lane = pointer.x < 360 ? "left" : "right";
             const card = selectedCardRef.current;
             const deployed = this.deploy(card, chosenLane, "player");
@@ -123,24 +140,24 @@ export function ApostolicArenaPhaser() {
         }
         makeTemple(x: number, y: number, color: number, label: string, enemy = false) {
           const aura = this.add.ellipse(0, 32, 148, 58, color, .24).setStrokeStyle(3, color, .72);
-          const tower = this.add.image(0, -8, "temple-light").setDisplaySize(142, 178);
+          const tower = this.add.image(0, -8, "temple-light").setDisplaySize(160, 200);
           if (enemy) tower.setTint(0xff9ab6);
           const title = this.add.text(0, 58, label, { fontFamily: "system-ui", fontSize: "12px", fontStyle: "bold", color: "#ffffff", backgroundColor: "#06131dcc", padding: { x: 6, y: 3 } }).setOrigin(.5);
           return this.add.container(x, y, [aura, tower, title]).setDepth(7);
         }
         makeTower(chosenLane: Lane, side: Side): Tower {
-          const x = chosenLane === "left" ? 268 : 458;
-          const y = side === "player" ? 750 : 270;
+          const x = ARENA_GRID.towerX[chosenLane];
+          const y = side === "player" ? ARENA_GRID.playerTowerY : ARENA_GRID.enemyTowerY;
           const auraColor = side === "player" ? 0x50cfff : 0xef6f9f;
           const aura = this.add.ellipse(0, 28, 94, 35, auraColor, .25).setStrokeStyle(2, auraColor, .75);
-          const tower = this.add.image(0, -7, "guardian-tower").setDisplaySize(98, 122);
+          const tower = this.add.image(0, -7, "guardian-tower").setDisplaySize(120, 140);
           if (side === "enemy") tower.setTint(0xff91ad);
           const body = this.add.container(x, y, [aura, tower]).setDepth(8);
           return { side, lane: chosenLane, life: 140, maxLife: 140, damage: 8, range: 205, attackAt: 0, body, bar: this.add.graphics().setDepth(13), alive: true };
         }
         makeFighter(card: Card, chosenLane: Lane, side: Side) {
-          const x = chosenLane === "left" ? 268 : 458;
-          const y = side === "player" ? 830 : 185;
+          const x = ARENA_GRID.laneX[chosenLane];
+          const y = side === "player" ? 1030 : 250;
           const direction = side === "player" ? -1 : 1;
           const shadow = this.add.ellipse(0, 25, 48, 17, 0x000000, .34);
           const teamRing = this.add.circle(0, 18, 28).setStrokeStyle(4, side === "player" ? 0x52c7ff : 0xed6f9b, .9);
@@ -303,7 +320,7 @@ export function ApostolicArenaPhaser() {
             else {
               const tower = this.towers.find((item) => item.alive && item.side !== fighter.side && item.lane === fighter.lane);
               const towerDistance = tower ? Math.abs(fighter.body.y - tower.body.y) : Infinity;
-              const templeY = fighter.side === "player" ? 110 : 900;
+              const templeY = fighter.side === "player" ? ARENA_GRID.enemyTempleY : ARENA_GRID.playerTempleY;
               if (tower && towerDistance <= fighter.range + 34) this.hitTower(fighter, tower, time);
               else if (!tower && Math.abs(fighter.body.y - templeY) < 82) this.hitTemple(fighter, time);
               else fighter.body.y += (fighter.side === "player" ? -1 : 1) * fighter.speed * (delta / 1000);
@@ -366,16 +383,16 @@ export function ApostolicArenaPhaser() {
         <div className={hudStyles.matchHud}><span className={hudStyles.score}><b>{hud.playerLights}</b> ✦ <small>Você</small></span><strong className={styles.clock}>{time}</strong><span className={`${hudStyles.score} ${hudStyles.enemyScore}`}><small>Rival</small> ✦ <b>{hud.enemyLights}</b></span><button type="button" className={hudStyles.emoteButton} onClick={() => setEmotesOpen((open) => !open)} aria-label="Abrir reações">🙂</button></div>
         {emotesOpen && <div className={hudStyles.emotes}>{["Boa sorte!", "Boa jogada!", "🙌", "👏"].map((item) => <button type="button" key={item} onClick={() => sendReaction(item)}>{item}</button>)}</div>}
         {reaction && <div className={hudStyles.reaction}>{reaction}</div>}
-        <div className={hudStyles.controlPanel}>
-          {hud.overtime && <strong className={hudStyles.faithBoost}>FÉ TRIPLA · MORTE SÚBITA</strong>}
-          {!hud.overtime && hud.seconds <= 60 && <strong className={hudStyles.faithBoost}>FÉ DUPLA!</strong>}
-          <div className={hudStyles.handRow}>
-            <div className={hudStyles.nextSlot}><small>A CAMINHO</small>{nextCard.asset && <img src={nextCard.asset} alt="" />}<b>{nextCard.cost}</b></div>
-            <div className={`${styles.deck} ${hudStyles.deck}`}>{hand.map((card) => { const locked = hud.faith < card.cost; return <button draggable={!locked} disabled={locked} key={`${card.id}-${handOffset}`} className={selected.id === card.id ? styles.selected : ""} onDragStart={(event) => { event.dataTransfer.setData("application/x-apostolic-card", card.id); event.dataTransfer.effectAllowed = "move"; setSelected(card); }} onClick={() => setSelected(card)}><b className={hudStyles.cost}>{card.cost}</b>{card.asset ? <img src={card.asset} alt="" /> : <span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span>}<strong>{card.name}</strong></button>; })}</div>
-          </div>
-          <div className={hudStyles.faithMeter}><div><i style={{ width: `${hud.faith * 10}%` }} /></div><b>{hud.faith.toFixed(1)} / 10 Fé</b></div>
-        </div>
         {hud.state !== "playing" && <div className={styles.result}><h2>{hud.state === "won" ? "Vitória!" : hud.state === "lost" ? "Continue a treinar" : "Empate"}</h2><p>Templo da Luz {hud.playerTemple} × {hud.enemyTemple} Templo de treino</p><button className="button button-primary" onClick={() => apiRef.current?.restart()}>Jogar novamente</button></div>}
+      </div>
+      <div className={hudStyles.controlPanel}>
+        {hud.overtime && <strong className={hudStyles.faithBoost}>FÉ TRIPLA · MORTE SÚBITA</strong>}
+        {!hud.overtime && hud.seconds <= 60 && <strong className={hudStyles.faithBoost}>FÉ DUPLA!</strong>}
+        <div className={hudStyles.handRow}>
+          <div className={hudStyles.nextSlot}><small>A CAMINHO</small>{nextCard.asset && <img src={nextCard.asset} alt="" />}<b>{nextCard.cost}</b></div>
+          <div className={`${styles.deck} ${hudStyles.deck}`}>{hand.map((card) => { const locked = hud.faith < card.cost; return <button draggable={!locked} disabled={locked} key={`${card.id}-${handOffset}`} className={selected.id === card.id ? styles.selected : ""} onDragStart={(event) => { event.dataTransfer.setData("application/x-apostolic-card", card.id); event.dataTransfer.effectAllowed = "move"; setSelected(card); }} onClick={() => setSelected(card)}><b className={hudStyles.cost}>{card.cost}</b>{card.asset ? <img src={card.asset} alt="" /> : <span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span>}<strong>{card.name}</strong></button>; })}</div>
+        </div>
+        <div className={hudStyles.faithMeter}><div><i style={{ width: `${hud.faith * 10}%` }} /></div><b>{hud.faith.toFixed(1)} / 10 Fé</b></div>
       </div>
       <div className={`${styles.lanes} ${hudStyles.fullscreenChrome}`}><button className={lane === "left" ? styles.active : ""} onClick={() => setLane("left")}>Ponte do Vale</button><button className={lane === "right" ? styles.active : ""} onClick={() => setLane("right")}>Ponte das Muralhas</button></div>
       <button className={`button button-primary ${styles.deploy} ${hudStyles.fullscreenChrome}`} type="button" onClick={deploy}>Invocar {selected.name}</button>
