@@ -86,14 +86,16 @@ export function ApostolicArenaPhaser() {
         constructor() { super("apostolic-arena"); }
         preload() {
           this.load.image("arena-bg", "/games/apostolic-arena/valley-of-beginning-v1.png");
+          this.load.image("temple-light", "/games/apostolic-arena/towers/temple-of-light-v1.png");
+          this.load.image("guardian-tower", "/games/apostolic-arena/towers/guardian-tower-v1.png");
           for (const card of deck) if (card.asset) this.load.image(`unit-${card.id}`, card.asset);
         }
         create() {
           const background = this.add.image(360, 640, "arena-bg");
           background.setDisplaySize(720, 1280);
           this.effects = this.add.graphics().setDepth(9);
-          this.enemyCore = this.makeTemple(360, 105, 0x7050a4, "TREINO");
-          this.playerCore = this.makeTemple(360, 1172, 0xd6a744, "LUZ");
+          this.enemyCore = this.makeTemple(360, 110, 0xe96b96, "TEMPLO RIVAL", true);
+          this.playerCore = this.makeTemple(360, 900, 0x62d7ff, "TEMPLO DA LUZ");
           this.enemyCoreBar = this.add.graphics().setDepth(13);
           this.playerCoreBar = this.add.graphics().setDepth(13);
           this.towers = [this.makeTower("left", "enemy"), this.makeTower("right", "enemy"), this.makeTower("left", "player"), this.makeTower("right", "player")];
@@ -102,14 +104,14 @@ export function ApostolicArenaPhaser() {
           this.add.text(626, 625, "MURALHA", { fontFamily: "system-ui", fontSize: "15px", fontStyle: "bold", color: "#f9edc0", backgroundColor: "#071521bb", padding: { x: 8, y: 4 } }).setOrigin(1, 0).setDepth(8);
           this.input.on("pointermove", (pointer: Input.Pointer) => {
             this.deployPreview.clear();
-            if (pointer.y < 650 || this.finished) return;
+            if (pointer.y < 650 || pointer.y > 850 || this.finished) return;
             const x = pointer.x < 360 ? 268 : 458;
-            const y = Math.min(1050, Math.max(700, pointer.y));
+            const y = Math.min(825, Math.max(680, pointer.y));
             this.deployPreview.fillStyle(0x61d8ff, .16).fillCircle(x, y, 38);
             this.deployPreview.lineStyle(3, 0x7ce5ff, .85).strokeCircle(x, y, 38);
           });
           this.input.on("pointerdown", (pointer: Input.Pointer) => {
-            if (pointer.y < 650 || this.finished) return;
+            if (pointer.y < 650 || pointer.y > 850 || this.finished) return;
             const chosenLane: Lane = pointer.x < 360 ? "left" : "right";
             const card = selectedCardRef.current;
             const deployed = this.deploy(card, chosenLane, "player");
@@ -119,26 +121,26 @@ export function ApostolicArenaPhaser() {
           });
           this.publish();
         }
-        makeTemple(x: number, y: number, color: number, label: string) {
-          const shadow = this.add.ellipse(0, 22, 106, 35, 0x000000, .3);
-          const base = this.add.rectangle(0, 0, 92, 62, color).setStrokeStyle(4, 0xffdf78);
-          const roof = this.add.triangle(0, -47, -55, 0, 0, -42, 55, 0, color).setStrokeStyle(4, 0xffdf78);
-          const title = this.add.text(0, 2, label, { fontFamily: "system-ui", fontSize: "14px", fontStyle: "bold", color: "#ffffff" }).setOrigin(.5);
-          return this.add.container(x, y, [shadow, base, roof, title]).setDepth(7);
+        makeTemple(x: number, y: number, color: number, label: string, enemy = false) {
+          const aura = this.add.ellipse(0, 32, 148, 58, color, .24).setStrokeStyle(3, color, .72);
+          const tower = this.add.image(0, -8, "temple-light").setDisplaySize(142, 178);
+          if (enemy) tower.setTint(0xff9ab6);
+          const title = this.add.text(0, 58, label, { fontFamily: "system-ui", fontSize: "12px", fontStyle: "bold", color: "#ffffff", backgroundColor: "#06131dcc", padding: { x: 6, y: 3 } }).setOrigin(.5);
+          return this.add.container(x, y, [aura, tower, title]).setDepth(7);
         }
         makeTower(chosenLane: Lane, side: Side): Tower {
           const x = chosenLane === "left" ? 268 : 458;
-          const y = side === "player" ? 962 : 307;
-          const shadow = this.add.ellipse(0, 24, 66, 24, 0x000000, .35);
-          const base = this.add.rectangle(0, 3, 51, 58, side === "player" ? 0x2868a5 : 0x864469).setStrokeStyle(4, 0xe8c56a);
-          const crown = this.add.triangle(0, -38, -32, 0, 0, -25, 32, 0, side === "player" ? 0x3e8bc3 : 0xaa5880).setStrokeStyle(3, 0xf2d77f);
-          const light = this.add.circle(0, -8, 8, 0xffdf6c).setStrokeStyle(2, 0xffffff);
-          const body = this.add.container(x, y, [shadow, base, crown, light]).setDepth(8);
+          const y = side === "player" ? 750 : 270;
+          const auraColor = side === "player" ? 0x50cfff : 0xef6f9f;
+          const aura = this.add.ellipse(0, 28, 94, 35, auraColor, .25).setStrokeStyle(2, auraColor, .75);
+          const tower = this.add.image(0, -7, "guardian-tower").setDisplaySize(98, 122);
+          if (side === "enemy") tower.setTint(0xff91ad);
+          const body = this.add.container(x, y, [aura, tower]).setDepth(8);
           return { side, lane: chosenLane, life: 140, maxLife: 140, damage: 8, range: 205, attackAt: 0, body, bar: this.add.graphics().setDepth(13), alive: true };
         }
         makeFighter(card: Card, chosenLane: Lane, side: Side) {
           const x = chosenLane === "left" ? 268 : 458;
-          const y = side === "player" ? 1080 : 190;
+          const y = side === "player" ? 830 : 185;
           const direction = side === "player" ? -1 : 1;
           const shadow = this.add.ellipse(0, 25, 48, 17, 0x000000, .34);
           const teamRing = this.add.circle(0, 18, 28).setStrokeStyle(4, side === "player" ? 0x52c7ff : 0xed6f9b, .9);
@@ -301,7 +303,7 @@ export function ApostolicArenaPhaser() {
             else {
               const tower = this.towers.find((item) => item.alive && item.side !== fighter.side && item.lane === fighter.lane);
               const towerDistance = tower ? Math.abs(fighter.body.y - tower.body.y) : Infinity;
-              const templeY = fighter.side === "player" ? 105 : 1172;
+              const templeY = fighter.side === "player" ? 110 : 900;
               if (tower && towerDistance <= fighter.range + 34) this.hitTower(fighter, tower, time);
               else if (!tower && Math.abs(fighter.body.y - templeY) < 82) this.hitTemple(fighter, time);
               else fighter.body.y += (fighter.side === "player" ? -1 : 1) * fighter.speed * (delta / 1000);
@@ -322,11 +324,11 @@ export function ApostolicArenaPhaser() {
       }
 
       const scene = new ArenaScene();
-      game = new Phaser.Game({ type: Phaser.AUTO, parent: hostRef.current, width: 720, height: 1280, backgroundColor: "#091725", scene, scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH }, render: { antialias: true, pixelArt: false } });
+      game = new Phaser.Game({ type: Phaser.AUTO, parent: hostRef.current, width: 720, height: 1280, backgroundColor: "#091725", scene, scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH }, render: { antialias: true, pixelArt: false, roundPixels: true } });
       apiRef.current = {
         deploy: (card, chosenLane, side = "player") => scene.deploy(card, chosenLane, side),
         restart: () => { scene.scene.restart(); setHud(initialHud); },
-        fullscreen: () => { if (document.fullscreenElement) void document.exitFullscreen(); else void hostRef.current?.parentElement?.requestFullscreen(); }
+        fullscreen: () => { if (document.fullscreenElement) void document.exitFullscreen(); else void hostRef.current?.closest("section")?.requestFullscreen(); }
       };
     });
     return () => { disposed = true; apiRef.current = null; game?.destroy(true); };
@@ -356,10 +358,10 @@ export function ApostolicArenaPhaser() {
   };
 
   return (
-    <section className={styles.shell} aria-label="Apostolic Arena em tempo real">
-      <div className={styles.toolbar}><div><p className="eyebrow">Apostolic Arena</p><h2>Vale do Começo</h2></div><button type="button" onClick={() => apiRef.current?.fullscreen()}>⛶ Tela cheia</button></div>
-      <div className={styles.guide}><span className={styles.barnabas}>B</span><p><strong>Barnabé:</strong> {message} Toque na metade inferior da arena para invocar diretamente.</p></div>
-      <div className={styles.stage} onDragOver={(event) => event.preventDefault()} onDrop={dropOnArena}>
+    <section className={`${styles.shell} ${hudStyles.fullscreenShell}`} aria-label="Apostolic Arena em tempo real">
+      <div className={`${styles.toolbar} ${hudStyles.fullscreenChrome}`}><div><p className="eyebrow">Apostolic Arena</p><h2>Vale do Começo</h2></div><button type="button" onClick={() => apiRef.current?.fullscreen()}>⛶ Tela cheia</button></div>
+      <div className={`${styles.guide} ${hudStyles.fullscreenChrome}`}><span className={styles.barnabas}>B</span><p><strong>Barnabé:</strong> {message} Toque na metade inferior da arena para invocar diretamente.</p></div>
+      <div className={`${styles.stage} ${hudStyles.fullscreenStage}`} onDragOver={(event) => event.preventDefault()} onDrop={dropOnArena}>
         <div ref={hostRef} className={styles.canvas} />
         <div className={hudStyles.matchHud}><span className={hudStyles.score}><b>{hud.playerLights}</b> ✦ <small>Você</small></span><strong className={styles.clock}>{time}</strong><span className={`${hudStyles.score} ${hudStyles.enemyScore}`}><small>Rival</small> ✦ <b>{hud.enemyLights}</b></span><button type="button" className={hudStyles.emoteButton} onClick={() => setEmotesOpen((open) => !open)} aria-label="Abrir reações">🙂</button></div>
         {emotesOpen && <div className={hudStyles.emotes}>{["Boa sorte!", "Boa jogada!", "🙌", "👏"].map((item) => <button type="button" key={item} onClick={() => sendReaction(item)}>{item}</button>)}</div>}
@@ -375,8 +377,8 @@ export function ApostolicArenaPhaser() {
         </div>
         {hud.state !== "playing" && <div className={styles.result}><h2>{hud.state === "won" ? "Vitória!" : hud.state === "lost" ? "Continue a treinar" : "Empate"}</h2><p>Templo da Luz {hud.playerTemple} × {hud.enemyTemple} Templo de treino</p><button className="button button-primary" onClick={() => apiRef.current?.restart()}>Jogar novamente</button></div>}
       </div>
-      <div className={styles.lanes}><button className={lane === "left" ? styles.active : ""} onClick={() => setLane("left")}>Ponte do Vale</button><button className={lane === "right" ? styles.active : ""} onClick={() => setLane("right")}>Ponte das Muralhas</button></div>
-      <button className={`button button-primary ${styles.deploy}`} type="button" onClick={deploy}>Invocar {selected.name}</button>
+      <div className={`${styles.lanes} ${hudStyles.fullscreenChrome}`}><button className={lane === "left" ? styles.active : ""} onClick={() => setLane("left")}>Ponte do Vale</button><button className={lane === "right" ? styles.active : ""} onClick={() => setLane("right")}>Ponte das Muralhas</button></div>
+      <button className={`button button-primary ${styles.deploy} ${hudStyles.fullscreenChrome}`} type="button" onClick={deploy}>Invocar {selected.name}</button>
     </section>
   );
 }
