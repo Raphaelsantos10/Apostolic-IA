@@ -16,7 +16,7 @@
     "validate": "pnpm typecheck && pnpm build"
   },
   "devDependencies": {
-    "turbo": "2.10.6",
+    "turbo": "2.10.7",
     "typescript": "6.0.3"
   }
 }
