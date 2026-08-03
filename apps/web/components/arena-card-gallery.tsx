@@ -41,7 +41,7 @@ export function ArenaCardGallery() {
   };
 
   return <section className={styles.shell} aria-labelledby="collection-title">
-    <header><div><p className="eyebrow">Coleção Apostolic Arena</p><h2 id="collection-title">As primeiras cartas bíblicas</h2></div><strong>10 / 125</strong></header>
+    <header><div><p className="eyebrow">Coleção Apostolic Arena</p><h2 id="collection-title">As primeiras cartas bíblicas</h2></div><strong>{ARENA_CARD_CATALOG.length} / 125</strong></header>
     <section className={styles.deckBuilder} aria-labelledby="deck-title">
       <header><div><p className="eyebrow">Baralho ativo</p><h3 id="deck-title">{deck.length} / 8 cartas</h3></div><strong>Custo médio: {averageFaith} Fé</strong></header>
       <div className={styles.deckSlots}>{Array.from({ length: 8 }, (_, index) => { const card = deck[index]; return card ? <button type="button" key={card.id} onClick={() => { setSelectedId(card.id); saveDeck(deckIds.filter((id) => id !== card.id)); setMessage(`${card.name} foi removida do baralho.`); }} title={`Remover ${card.name}`}><img src={card.portrait} alt={card.name}/><b>{card.faith}</b></button> : <span key={`empty-${index}`} aria-label="Espaço vazio">+</span>; })}</div>
