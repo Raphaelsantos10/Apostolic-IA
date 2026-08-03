@@ -4,11 +4,12 @@ import type { GameObjects, Input } from "phaser";
 import { useEffect, useMemo, useRef, useState, type DragEvent } from "react";
 import { ARENA_MATCH_RULES, faithRegenerationMs } from "../lib/apostolic-arena-rules";
 import styles from "./apostolic-arena-phaser.module.css";
+import hudStyles from "./apostolic-arena-match-hud.module.css";
 
 type Lane = "left" | "right";
 type Side = "player" | "enemy";
 type Card = { id: string; name: string; cost: number; life: number; damage: number; speed: number; range: number; color: number; symbol: string; asset?: string };
-type Hud = { playerTemple: number; enemyTemple: number; faith: number; seconds: number; state: "playing" | "won" | "lost" | "draw" };
+type Hud = { playerTemple: number; enemyTemple: number; faith: number; seconds: number; playerLights: number; enemyLights: number; overtime: boolean; state: "playing" | "won" | "lost" | "draw" };
 type ArenaApi = { deploy: (card: Card, lane: Lane, side?: Side) => boolean; restart: () => void; fullscreen: () => void };
 type Fighter = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; speed: number; range: number; attackAt: number; activeAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
 type Tower = { side: Side; lane: Lane; life: number; maxLife: number; damage: number; range: number; attackAt: number; body: GameObjects.Container; bar: GameObjects.Graphics; alive: boolean };
@@ -24,7 +25,7 @@ const deck: Card[] = [
   { id: "porta-voz", name: "Porta-voz", cost: 5, life: 66, damage: 22, speed: 31, range: 115, color: 0x5965cb, symbol: "V", asset: "/games/apostolic-arena/units/porta-voz-v1.png" }
 ];
 
-const initialHud: Hud = { playerTemple: 100, enemyTemple: 100, faith: ARENA_MATCH_RULES.startingFaith, seconds: ARENA_MATCH_RULES.normalSeconds, state: "playing" };
+const initialHud: Hud = { playerTemple: 100, enemyTemple: 100, faith: ARENA_MATCH_RULES.startingFaith, seconds: ARENA_MATCH_RULES.normalSeconds, playerLights: 0, enemyLights: 0, overtime: false, state: "playing" };
 
 export function ApostolicArenaPhaser() {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -34,6 +35,8 @@ export function ApostolicArenaPhaser() {
   const [lane, setLane] = useState<Lane>("left");
   const [handOffset, setHandOffset] = useState(0);
   const [message, setMessage] = useState("Escolha uma unidade e envie-a por uma das pontes.");
+  const [emotesOpen, setEmotesOpen] = useState(false);
+  const [reaction, setReaction] = useState<string | null>(null);
   const cards = useMemo(() => deck, []);
   const selectedCardRef = useRef(selected);
   const hand = Array.from({ length: 4 }, (_, index) => cards[(handOffset + index) % cards.length] as Card);
@@ -69,10 +72,14 @@ export function ApostolicArenaPhaser() {
         overtime = false;
         finished = false;
         lastSecond = 0;
-        lastFaith = 0;
+        lastPublish = 0;
         lastEnemyMove = 0;
         playerCore!: GameObjects.Container;
         enemyCore!: GameObjects.Container;
+        playerCoreBar!: GameObjects.Graphics;
+        enemyCoreBar!: GameObjects.Graphics;
+        playerCoreAttackAt = 0;
+        enemyCoreAttackAt = 0;
         effects!: GameObjects.Graphics;
         deployPreview!: GameObjects.Graphics;
 
@@ -87,6 +94,8 @@ export function ApostolicArenaPhaser() {
           this.effects = this.add.graphics().setDepth(9);
           this.enemyCore = this.makeTemple(360, 105, 0x7050a4, "TREINO");
           this.playerCore = this.makeTemple(360, 1172, 0xd6a744, "LUZ");
+          this.enemyCoreBar = this.add.graphics().setDepth(13);
+          this.playerCoreBar = this.add.graphics().setDepth(13);
           this.towers = [this.makeTower("left", "enemy"), this.makeTower("right", "enemy"), this.makeTower("left", "player"), this.makeTower("right", "player")];
           this.deployPreview = this.add.graphics().setDepth(20);
           this.add.text(18, 625, "VALE", { fontFamily: "system-ui", fontSize: "15px", fontStyle: "bold", color: "#f9edc0", backgroundColor: "#071521bb", padding: { x: 8, y: 4 } }).setDepth(8);
@@ -141,10 +150,12 @@ export function ApostolicArenaPhaser() {
             const badge = this.add.text(0, 5, card.symbol, { fontFamily: "Georgia", fontSize: "14px", fontStyle: "bold", color: "#ffffff" }).setOrigin(.5);
             actor = this.add.container(0, 0, [body, head, badge]);
           }
-          const container = this.add.container(x, y, [shadow, teamRing, actor]).setDepth(10).setScale(side === "player" ? 1 : .96);
+          const deployClock = this.add.text(0, -53, "◷ 1s", { fontFamily: "system-ui", fontSize: "13px", fontStyle: "bold", color: "#fff3ad", backgroundColor: "#07131ddd", padding: { x: 5, y: 2 } }).setOrigin(.5);
+          const container = this.add.container(x, y, [shadow, teamRing, actor, deployClock]).setDepth(10).setScale(side === "player" ? 1 : .96);
           const bar = this.add.graphics().setDepth(12);
           const fighter: Fighter = { side, lane: chosenLane, life: card.life, maxLife: card.life, damage: card.damage, speed: card.speed, range: card.range, attackAt: 0, activeAt: this.time.now + ARENA_MATCH_RULES.defaultDeployMs, body: container, bar, alive: true };
           this.fighters.push(fighter);
+          this.tweens.add({ targets: deployClock, alpha: 0, y: deployClock.y - 8, delay: 650, duration: 350, onComplete: () => deployClock.destroy() });
           this.tweens.add({ targets: container, scaleY: container.scaleY * .9, yoyo: true, repeat: -1, duration: 280, ease: "Sine.inOut" });
           this.burst(x, y, side === "player" ? 0xffd969 : 0xb77ae8);
         }
@@ -180,6 +191,16 @@ export function ApostolicArenaPhaser() {
           const orb = this.add.circle(tower.body.x, tower.body.y - 18, 7, tower.side === "player" ? 0x69d9ff : 0xf281b0).setDepth(14);
           this.tweens.add({ targets: orb, x: target.body.x, y: target.body.y, duration: 230, onComplete: () => orb.destroy() });
           target.life -= tower.damage;
+          if (target.life <= 0) this.removeFighter(target);
+        }
+        coreStrike(side: Side, target: Fighter, time: number) {
+          const attackAt = side === "player" ? this.playerCoreAttackAt : this.enemyCoreAttackAt;
+          if (time < attackAt) return;
+          if (side === "player") this.playerCoreAttackAt = time + 1050; else this.enemyCoreAttackAt = time + 1050;
+          const core = side === "player" ? this.playerCore : this.enemyCore;
+          const orb = this.add.circle(core.x, core.y - 22, 9, side === "player" ? 0xffdc62 : 0xd988ff).setDepth(14);
+          this.tweens.add({ targets: orb, x: target.body.x, y: target.body.y, duration: 260, onComplete: () => orb.destroy() });
+          target.life -= 12;
           if (target.life <= 0) this.removeFighter(target);
         }
         hitTower(fighter: Fighter, tower: Tower, time: number) {
@@ -220,6 +241,15 @@ export function ApostolicArenaPhaser() {
           tower.bar.fillStyle(0x07131d, .9).fillRoundedRect(tower.body.x - 31, tower.body.y - 60, 62, 8, 3);
           tower.bar.fillStyle(tower.side === "player" ? 0x55d5ff : 0xee79a3, 1).fillRoundedRect(tower.body.x - 30, tower.body.y - 59, 60 * (tower.life / tower.maxLife), 6, 2);
         }
+        drawCoreBars() {
+          const draw = (bar: GameObjects.Graphics, core: GameObjects.Container, life: number, color: number) => {
+            bar.clear();
+            bar.fillStyle(0x07131d, .92).fillRoundedRect(core.x - 43, core.y - 77, 86, 9, 4);
+            bar.fillStyle(color, 1).fillRoundedRect(core.x - 42, core.y - 76, 84 * Math.max(0, life / 100), 7, 3);
+          };
+          draw(this.playerCoreBar, this.playerCore, this.playerTemple, 0x55d5ff);
+          draw(this.enemyCoreBar, this.enemyCore, this.enemyTemple, 0xee79a3);
+        }
         override update(time: number, delta: number) {
           if (this.finished) return;
           if (time - this.lastSecond >= 1000) {
@@ -236,12 +266,10 @@ export function ApostolicArenaPhaser() {
             }
             this.publish();
           }
-          if (time - this.lastFaith >= faithRegenerationMs(this.seconds, this.overtime)) {
-            this.lastFaith = time;
-            this.faith = Math.min(ARENA_MATCH_RULES.maximumFaith, this.faith + 1);
-            this.enemyFaith = Math.min(ARENA_MATCH_RULES.maximumFaith, this.enemyFaith + 1);
-            this.publish();
-          }
+          const regeneration = faithRegenerationMs(this.seconds, this.overtime);
+          this.faith = Math.min(ARENA_MATCH_RULES.maximumFaith, this.faith + delta / regeneration);
+          this.enemyFaith = Math.min(ARENA_MATCH_RULES.maximumFaith, this.enemyFaith + delta / regeneration);
+          if (time - this.lastPublish >= 100) { this.lastPublish = time; this.publish(); }
           if (time - this.lastEnemyMove >= 2350) {
             this.lastEnemyMove = time;
             const affordable = deck.filter((card) => card.cost <= this.enemyFaith);
@@ -254,6 +282,14 @@ export function ApostolicArenaPhaser() {
             const targets = this.fighters.filter((unit) => unit.alive && unit.side !== tower.side && unit.lane === tower.lane && Math.abs(unit.body.y - tower.body.y) <= tower.range);
             const target = targets.sort((a, b) => Math.abs(a.body.y - tower.body.y) - Math.abs(b.body.y - tower.body.y))[0];
             if (target) this.towerStrike(tower, target, time);
+          }
+          this.drawCoreBars();
+          for (const side of ["player", "enemy"] as Side[]) {
+            const activated = (side === "player" ? this.playerTemple < 100 : this.enemyTemple < 100) || this.towers.some((tower) => tower.side === side && !tower.alive);
+            if (!activated) continue;
+            const core = side === "player" ? this.playerCore : this.enemyCore;
+            const target = this.fighters.filter((unit) => unit.alive && unit.side !== side && Math.abs(unit.body.y - core.y) < 245).sort((a, b) => Math.abs(a.body.y - core.y) - Math.abs(b.body.y - core.y))[0];
+            if (target) this.coreStrike(side, target, time);
           }
           for (const fighter of this.fighters.filter((unit) => unit.alive)) {
             this.drawBar(fighter);
@@ -278,7 +314,11 @@ export function ApostolicArenaPhaser() {
           const state: Hud["state"] = forcedState ?? (this.playerTemple === this.enemyTemple ? "draw" : this.playerTemple > this.enemyTemple ? "won" : "lost");
           setHud((current) => ({ ...current, state, playerTemple: this.playerTemple, enemyTemple: this.enemyTemple, seconds: this.seconds }));
         }
-        publish() { setHud({ playerTemple: this.playerTemple, enemyTemple: this.enemyTemple, faith: this.faith, seconds: this.seconds, state: this.finished ? "draw" : "playing" }); }
+        publish() {
+          const playerLights = this.towers.filter((tower) => tower.side === "enemy" && !tower.alive).length + (this.enemyTemple <= 0 ? 1 : 0);
+          const enemyLights = this.towers.filter((tower) => tower.side === "player" && !tower.alive).length + (this.playerTemple <= 0 ? 1 : 0);
+          setHud({ playerTemple: this.playerTemple, enemyTemple: this.enemyTemple, faith: this.faith, seconds: this.seconds, playerLights, enemyLights, overtime: this.overtime, state: this.finished ? "draw" : "playing" });
+        }
       }
 
       const scene = new ArenaScene();
@@ -310,17 +350,28 @@ export function ApostolicArenaPhaser() {
     if (worked) advanceHand();
   };
   const time = `${Math.floor(hud.seconds / 60)}:${String(hud.seconds % 60).padStart(2, "0")}`;
+  const sendReaction = (value: string) => {
+    setReaction(value); setEmotesOpen(false); setMessage(`Você enviou: ${value}`);
+    window.setTimeout(() => setReaction(null), 2200);
+  };
 
   return (
     <section className={styles.shell} aria-label="Apostolic Arena em tempo real">
-      <div className={styles.toolbar}><div><p className="eyebrow">Vertical slice Phaser</p><h2>Vale do Começo</h2></div><strong className={styles.clock}>{time}</strong><button type="button" onClick={() => apiRef.current?.fullscreen()}>⛶ Tela cheia</button></div>
+      <div className={styles.toolbar}><div><p className="eyebrow">Apostolic Arena</p><h2>Vale do Começo</h2></div><button type="button" onClick={() => apiRef.current?.fullscreen()}>⛶ Tela cheia</button></div>
       <div className={styles.guide}><span className={styles.barnabas}>B</span><p><strong>Barnabé:</strong> {message} Toque na metade inferior da arena para invocar diretamente.</p></div>
       <div className={styles.stage} onDragOver={(event) => event.preventDefault()} onDrop={dropOnArena}>
         <div ref={hostRef} className={styles.canvas} />
-        <div className={styles.hud} style={{ position: "absolute", zIndex: 28, inset: ".45rem .45rem auto", padding: ".45rem .6rem", borderRadius: ".7rem", background: "#06131ddd", backdropFilter: "blur(6px)" }}><span>Templo <b>{hud.playerTemple}</b></span><div><i style={{ width: `${hud.faith * 10}%` }} /></div><span>Fé <b>{hud.faith}/10</b></span><span>Rival <b>{hud.enemyTemple}</b></span></div>
-        <div style={{ position: "absolute", zIndex: 30, inset: "auto .35rem .35rem", padding: ".4rem", border: "1px solid #e8c56a88", borderRadius: ".75rem", background: "#071522e8", backdropFilter: "blur(7px)" }}>
-          <small style={{ display: "block", marginBottom: ".3rem", color: "#d8e5ef" }}>Próxima: {nextCard.name} · Arraste uma carta para a rota</small>
-          <div className={styles.deck}>{hand.map((card) => <button draggable key={`${card.id}-${handOffset}`} className={selected.id === card.id ? styles.selected : ""} onDragStart={(event) => { event.dataTransfer.setData("application/x-apostolic-card", card.id); event.dataTransfer.effectAllowed = "move"; setSelected(card); }} onClick={() => setSelected(card)}>{card.asset ? <img src={card.asset} alt="" width={54} height={54} style={{ width: "3.3rem", height: "3.3rem", objectFit: "contain", filter: "drop-shadow(0 4px 4px #0008)" }} /> : <span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span>}<strong>{card.name}</strong><small>{card.cost} Fé · {card.damage} poder</small></button>)}</div>
+        <div className={hudStyles.matchHud}><span className={hudStyles.score}><b>{hud.playerLights}</b> ✦ <small>Você</small></span><strong className={styles.clock}>{time}</strong><span className={`${hudStyles.score} ${hudStyles.enemyScore}`}><small>Rival</small> ✦ <b>{hud.enemyLights}</b></span><button type="button" className={hudStyles.emoteButton} onClick={() => setEmotesOpen((open) => !open)} aria-label="Abrir reações">🙂</button></div>
+        {emotesOpen && <div className={hudStyles.emotes}>{["Boa sorte!", "Boa jogada!", "🙌", "👏"].map((item) => <button type="button" key={item} onClick={() => sendReaction(item)}>{item}</button>)}</div>}
+        {reaction && <div className={hudStyles.reaction}>{reaction}</div>}
+        <div className={hudStyles.controlPanel}>
+          {hud.overtime && <strong className={hudStyles.faithBoost}>FÉ TRIPLA · MORTE SÚBITA</strong>}
+          {!hud.overtime && hud.seconds <= 60 && <strong className={hudStyles.faithBoost}>FÉ DUPLA!</strong>}
+          <div className={hudStyles.handRow}>
+            <div className={hudStyles.nextSlot}><small>A CAMINHO</small>{nextCard.asset && <img src={nextCard.asset} alt="" />}<b>{nextCard.cost}</b></div>
+            <div className={`${styles.deck} ${hudStyles.deck}`}>{hand.map((card) => { const locked = hud.faith < card.cost; return <button draggable={!locked} disabled={locked} key={`${card.id}-${handOffset}`} className={selected.id === card.id ? styles.selected : ""} onDragStart={(event) => { event.dataTransfer.setData("application/x-apostolic-card", card.id); event.dataTransfer.effectAllowed = "move"; setSelected(card); }} onClick={() => setSelected(card)}><b className={hudStyles.cost}>{card.cost}</b>{card.asset ? <img src={card.asset} alt="" /> : <span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span>}<strong>{card.name}</strong></button>; })}</div>
+          </div>
+          <div className={hudStyles.faithMeter}><div><i style={{ width: `${hud.faith * 10}%` }} /></div><b>{hud.faith.toFixed(1)} / 10 Fé</b></div>
         </div>
         {hud.state !== "playing" && <div className={styles.result}><h2>{hud.state === "won" ? "Vitória!" : hud.state === "lost" ? "Continue a treinar" : "Empate"}</h2><p>Templo da Luz {hud.playerTemple} × {hud.enemyTemple} Templo de treino</p><button className="button button-primary" onClick={() => apiRef.current?.restart()}>Jogar novamente</button></div>}
       </div>
