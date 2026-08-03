@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { ApostolicArenaPhaser } from "./apostolic-arena-phaser";
 import { ArenaCardGallery } from "./arena-card-gallery";
+import { ArenaWorldRoadmap } from "./arena-world-roadmap";
 import { BibleGame } from "./bible-game";
 
-type GameView = "arena" | "cards" | "challenge";
+type GameView = "arena" | "cards" | "world" | "challenge";
 
 export function GamesHub() {
   const [view, setView] = useState<GameView>("arena");
@@ -35,6 +36,9 @@ export function GamesHub() {
         <button type="button" className={view === "cards" ? "is-active" : ""} aria-pressed={view === "cards"} onClick={() => setView("cards")}>
           <span aria-hidden="true">▦</span><strong>Minhas cartas</strong><small>Coleção e baralhos</small>
         </button>
+        <button type="button" className={view === "world" ? "is-active" : ""} aria-pressed={view === "world"} onClick={() => setView("world")}>
+          <span aria-hidden="true">♜</span><strong>Arenas e Raids</strong><small>Progressão e bosses</small>
+        </button>
         <button
           type="button"
           className={view === "challenge" ? "is-active" : ""}
@@ -52,7 +56,7 @@ export function GamesHub() {
         </button>
       </nav>
 
-      {view === "arena" ? <ApostolicArenaPhaser /> : view === "cards" ? <ArenaCardGallery /> : <BibleGame />}
+      {view === "arena" ? <ApostolicArenaPhaser /> : view === "cards" ? <ArenaCardGallery /> : view === "world" ? <ArenaWorldRoadmap /> : <BibleGame />}
     </section>
   );
 }
