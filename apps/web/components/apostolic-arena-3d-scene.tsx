@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { TransformNode } from "@babylonjs/core";
+import type { AbstractMesh, StandardMaterial, TransformNode } from "@babylonjs/core";
 
 type SceneMode = "loading" | "menu";
 
@@ -13,38 +13,50 @@ export type ArenaSceneChampion = {
   type: string;
 };
 
-type ChampionArchetype = "ranged" | "guardian" | "support" | "scout";
+export type ArenaPowerSignal = {
+  championId: number;
+  nonce: number;
+};
+
+type PowerKind = "waters" | "harp" | "frenzy" | "shield" | "generic";
+type FeaturedVisual = { image: string; power: PowerKind; height: number };
 
 type AnimatedActor = {
   root: TransformNode;
   action: TransformNode;
+  effects: TransformNode;
+  effectMeshes: AbstractMesh[];
   baseY: number;
-  archetype: ChampionArchetype;
-  wings: TransformNode[];
+  championId: number;
+  powerKind: PowerKind;
+  powerStartedAt: number;
+};
+
+const FEATURED_VISUALS: Record<number, FeaturedVisual> = {
+  117: { image: "/games/apostolic-arena/characters/dashboard/117-moises-o-libertador-v1.png", power: "waters", height: 5.25 },
+  119: { image: "/games/apostolic-arena/characters/dashboard/119-davi-o-rei-campeao-v1.png", power: "harp", height: 5.05 },
+  121: { image: "/games/apostolic-arena/characters/dashboard/121-sansao-o-inabalavel-v1.png", power: "frenzy", height: 5.15 },
+  125: { image: "/games/apostolic-arena/characters/dashboard/125-debora-a-juiza-campea-v1.png", power: "shield", height: 5.1 }
 };
 
 const DEFAULT_CHAMPIONS: ArenaSceneChampion[] = [
-  { id: 1, name: "Davi e a Funda", rarity: "common", faith: 2, type: "Tropa terrestre" },
-  { id: 2, name: "Soldados de Israel", rarity: "common", faith: 3, type: "Horda" },
-  { id: 5, name: "Arqueiros de Judá", rarity: "rare", faith: 3, type: "Tropa de distância" },
-  { id: 11, name: "Sacerdote Levita", rarity: "epic", faith: 3, type: "Suporte terrestre" }
+  { id: 117, name: "Moisés, o Libertador", rarity: "champion", faith: 5, type: "Campeão líder" },
+  { id: 119, name: "Davi, o Rei Campeão", rarity: "champion", faith: 5, type: "Campeão monarca" },
+  { id: 121, name: "Sansão, o Inabalável", rarity: "champion", faith: 6, type: "Campeão tanque" },
+  { id: 125, name: "Débora, a Juíza Campeã", rarity: "champion", faith: 4, type: "Campeã inspiradora" }
 ];
 
-function championArchetype(champion: ArenaSceneChampion): ChampionArchetype {
-  const descriptor = `${champion.name} ${champion.type}`.toLocaleLowerCase("pt");
-  if (/aérea|pomba|codorn|ave|águia|animal/.test(descriptor)) return "scout";
-  if (/suporte|cura|sacerd|profeta|oração|sabedoria|levita/.test(descriptor)) return "support";
-  if (/distância|arqueir|funda|fundib|atirador|vigia|lança/.test(descriptor)) return "ranged";
-  return "guardian";
-}
-
-export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, onProgress, onReady }: {
+export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, powerSignal, onProgress, onReady }: {
   mode: SceneMode;
   champions?: ArenaSceneChampion[];
+  powerSignal?: ArenaPowerSignal | null;
   onProgress?: (progress: number, label: string) => void;
   onReady?: () => void;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const powerSignalRef = useRef(powerSignal);
+
+  useEffect(() => { powerSignalRef.current = powerSignal; }, [powerSignal]);
 
   useEffect(() => {
     let disposed = false;
@@ -54,7 +66,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, onP
 
     void import("@babylonjs/core").then((BABYLON) => {
       if (disposed || !canvasRef.current) return;
-      onProgress?.(42, "Reunindo os quatro heróis do baralho");
+      onProgress?.(42, "Materializando os quatro heróis");
 
       const canvas = canvasRef.current;
       const engine = new BABYLON.Engine(canvas, true, {
@@ -63,226 +75,261 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, onP
         stencil: true,
         powerPreference: "high-performance"
       });
-      engine.setHardwareScalingLevel(window.devicePixelRatio > 1.5 ? 1.35 : 1);
+      engine.setHardwareScalingLevel(window.devicePixelRatio > 1.5 ? 1.3 : 1);
       const scene = new BABYLON.Scene(engine);
-      scene.clearColor = new BABYLON.Color4(0.015, 0.035, 0.07, 1);
-      scene.fogMode = BABYLON.Scene.FOGMODE_EXP2;
-      scene.fogDensity = 0.008;
-      scene.fogColor = new BABYLON.Color3(0.04, 0.09, 0.16);
+      scene.clearColor = new BABYLON.Color4(0.012, 0.024, 0.045, 1);
+      scene.imageProcessingConfiguration.contrast = 1.14;
+      scene.imageProcessingConfiguration.exposure = 1.04;
 
       const camera = new BABYLON.ArcRotateCamera(
-        "arena-menu-camera",
+        "champion-hall-camera",
         -Math.PI / 2,
-        1.08,
-        mode === "loading" ? 23 : 20.5,
-        new BABYLON.Vector3(0, 2.3, 0),
+        1.14,
+        mode === "loading" ? 21.5 : 18.4,
+        new BABYLON.Vector3(0, 2.25, 0),
         scene
       );
-      camera.lowerRadiusLimit = 16;
-      camera.upperRadiusLimit = 26;
-      camera.lowerBetaLimit = 0.82;
-      camera.upperBetaLimit = 1.25;
-      camera.wheelPrecision = 80;
+      camera.lowerRadiusLimit = 17;
+      camera.upperRadiusLimit = 21.5;
+      camera.lowerBetaLimit = 1.04;
+      camera.upperBetaLimit = 1.23;
+      camera.lowerAlphaLimit = -1.68;
+      camera.upperAlphaLimit = -1.46;
+      camera.wheelPrecision = 120;
       camera.panningSensibility = 0;
       camera.attachControl(canvas, true);
 
       const sky = new BABYLON.HemisphericLight("sky", new BABYLON.Vector3(0, 1, 0), scene);
-      sky.intensity = 0.9;
-      sky.diffuse = new BABYLON.Color3(0.54, 0.7, 1);
-      sky.groundColor = new BABYLON.Color3(0.16, 0.08, 0.035);
-      const sun = new BABYLON.DirectionalLight("sun", new BABYLON.Vector3(-0.35, -1, 0.55), scene);
-      sun.intensity = 2.2;
-      sun.diffuse = new BABYLON.Color3(1, 0.68, 0.32);
+      sky.intensity = 1.05;
+      sky.diffuse = new BABYLON.Color3(0.58, 0.72, 1);
+      sky.groundColor = new BABYLON.Color3(0.2, 0.11, 0.045);
+      const sunrise = new BABYLON.DirectionalLight("sunrise", new BABYLON.Vector3(-0.45, -1, 0.5), scene);
+      sunrise.intensity = 2.1;
+      sunrise.diffuse = new BABYLON.Color3(1, 0.67, 0.34);
 
-      const material = (name: string, diffuse: [number, number, number], emissive?: [number, number, number]) => {
+      const standardMaterial = (name: string, color: [number, number, number], emissive?: [number, number, number], alpha = 1) => {
         const value = new BABYLON.StandardMaterial(name, scene);
-        value.diffuseColor = new BABYLON.Color3(...diffuse);
-        value.specularColor = new BABYLON.Color3(0.25, 0.22, 0.16);
+        value.diffuseColor = new BABYLON.Color3(...color);
+        value.specularColor = new BABYLON.Color3(0.32, 0.27, 0.18);
+        value.alpha = alpha;
         if (emissive) value.emissiveColor = new BABYLON.Color3(...emissive);
         return value;
       };
-      const sandstone = material("sandstone", [0.39, 0.25, 0.12]);
-      const darkStone = material("dark-stone", [0.075, 0.1, 0.15]);
-      const bronze = material("bronze", [0.43, 0.24, 0.08], [0.08, 0.035, 0.005]);
-      const portalMaterial = material("portal", [0.02, 0.22, 0.55], [0.08, 0.62, 1]);
-      const gold = material("gold", [0.75, 0.43, 0.08], [0.24, 0.11, 0.01]);
-      const skin = material("skin", [0.52, 0.28, 0.14]);
-      const rarityMaterials = {
-        common: material("rarity-common", [0.03, 0.28, 0.62], [0.04, 0.28, 0.75]),
-        rare: material("rarity-rare", [0.04, 0.42, 0.2], [0.03, 0.25, 0.1]),
-        epic: material("rarity-epic", [0.35, 0.08, 0.56], [0.2, 0.04, 0.38]),
-        legendary: material("rarity-legendary", [0.58, 0.04, 0.07], [0.34, 0.02, 0.03]),
-        champion: material("rarity-champion", [0.78, 0.45, 0.06], [0.38, 0.19, 0.01])
-      };
 
-      const floor = BABYLON.MeshBuilder.CreateCylinder("champion-hall", { diameter: 22, height: 0.65, tessellation: 48 }, scene);
-      floor.position.y = -0.35;
-      floor.material = sandstone;
-      const innerFloor = BABYLON.MeshBuilder.CreateCylinder("light-platform", { diameter: 12.5, height: 0.24, tessellation: 48 }, scene);
-      innerFloor.position.y = 0.08;
-      innerFloor.material = darkStone;
+      const backdropMaterial = new BABYLON.StandardMaterial("real-champion-hall-material", scene);
+      const backdropTexture = new BABYLON.Texture("/games/apostolic-arena/scenes/champion-hall-real-v1.webp", scene, true, false);
+      backdropMaterial.diffuseTexture = backdropTexture;
+      backdropMaterial.emissiveTexture = backdropTexture;
+      backdropMaterial.emissiveColor = new BABYLON.Color3(0.62, 0.62, 0.62);
+      backdropMaterial.disableLighting = true;
+      backdropMaterial.backFaceCulling = false;
+      const backdrop = BABYLON.MeshBuilder.CreatePlane("real-champion-hall", { width: 32.5, height: 18.28 }, scene);
+      backdrop.position = new BABYLON.Vector3(0, 5.2, 6.5);
+      backdrop.material = backdropMaterial;
+      backdrop.applyFog = false;
 
-      const ring = BABYLON.MeshBuilder.CreateTorus("platform-ring", { diameter: 11.3, thickness: 0.14, tessellation: 72 }, scene);
-      ring.rotation.x = Math.PI / 2;
-      ring.position.y = 0.24;
-      ring.material = gold;
+      const darkStone = standardMaterial("dark-stone", [0.035, 0.05, 0.08]);
+      const gold = standardMaterial("gold", [0.74, 0.39, 0.055], [0.2, 0.08, 0.004]);
+      const blue = standardMaterial("portal-blue", [0.015, 0.24, 0.62], [0.04, 0.5, 1]);
+      const aqua = standardMaterial("water-power", [0.02, 0.44, 0.78], [0.02, 0.42, 0.88], 0.72);
+      const warmGold = standardMaterial("harp-power", [0.88, 0.55, 0.08], [0.55, 0.24, 0.015], 0.78);
+      const frenzy = standardMaterial("frenzy-power", [0.88, 0.12, 0.03], [0.65, 0.06, 0.01], 0.76);
+      const shield = standardMaterial("shield-power", [0.04, 0.7, 0.72], [0.04, 0.45, 0.72], 0.28);
+      shield.backFaceCulling = false;
 
-      const portal = BABYLON.MeshBuilder.CreateTorus("portal", { diameter: 8.2, thickness: 0.48, tessellation: 72 }, scene);
-      portal.position = new BABYLON.Vector3(0, 4.5, 3.4);
-      portal.material = portalMaterial;
-      const portalInner = BABYLON.MeshBuilder.CreateDisc("portal-light", { radius: 3.75, tessellation: 72 }, scene);
-      portalInner.position = new BABYLON.Vector3(0, 4.5, 3.44);
-      portalInner.material = rarityMaterials.common;
-      portalInner.visibility = 0.7;
-
-      for (let index = 0; index < 8; index += 1) {
-        const angle = (Math.PI * 2 * index) / 8;
-        const column = BABYLON.MeshBuilder.CreateCylinder(`column-${index}`, { diameter: 1, height: 5.8, tessellation: 10 }, scene);
-        column.position = new BABYLON.Vector3(Math.cos(angle) * 9.2, 2.55, Math.sin(angle) * 9.2);
-        column.material = sandstone;
-        const cap = BABYLON.MeshBuilder.CreateCylinder(`cap-${index}`, { diameter: 1.35, height: 0.35, tessellation: 10 }, scene);
-        cap.position = column.position.add(new BABYLON.Vector3(0, 3.02, 0));
-        cap.material = bronze;
-        if (index % 2 === 0) {
-          const gem = BABYLON.MeshBuilder.CreatePolyhedron(`crystal-${index}`, { type: 1, size: 0.62 }, scene);
-          gem.position = column.position.add(new BABYLON.Vector3(0, 3.85, 0));
-          gem.material = rarityMaterials.common;
-        }
-      }
+      const foreground = BABYLON.MeshBuilder.CreateCylinder("foreground-depth", { diameter: 15.8, height: 0.18, tessellation: 72 }, scene);
+      foreground.position = new BABYLON.Vector3(0, -0.16, -0.2);
+      foreground.scaling.z = 0.5;
+      foreground.material = darkStone;
+      const floorRing = BABYLON.MeshBuilder.CreateTorus("foreground-ring", { diameter: 13.8, thickness: 0.07, tessellation: 96 }, scene);
+      floorRing.rotation.x = Math.PI / 2;
+      floorRing.position.y = -0.04;
+      floorRing.scaling.z = 0.52;
+      floorRing.material = gold;
 
       const actors: AnimatedActor[] = [];
-      const makeChampion = (champion: ArenaSceneChampion, index: number) => {
-        const archetype = championArchetype(champion);
-        const root = new BABYLON.TransformNode(`deck-champion-${champion.id}`, scene);
-        const positions = [-4.65, -1.55, 1.55, 4.65];
-        root.position = new BABYLON.Vector3(positions[index] ?? 0, 0.28, index % 2 === 0 ? -0.35 : 0.15);
-        root.scaling.setAll(index === 1 || index === 2 ? 1.04 : 0.94);
-        const accent = rarityMaterials[champion.rarity];
+      const positions = [-5.1, -1.72, 1.72, 5.1];
 
-        const pedestal = BABYLON.MeshBuilder.CreateCylinder(`pedestal-${champion.id}`, { diameter: 2.25, height: 0.22, tessellation: 40 }, scene);
-        pedestal.parent = root;
-        pedestal.position.y = -0.1;
-        pedestal.material = accent;
-        const action = new BABYLON.TransformNode(`action-${champion.id}`, scene);
-        action.parent = root;
-        const wings: TransformNode[] = [];
-
-        if (archetype === "scout") {
-          root.position.y = 1.05;
-          const body = BABYLON.MeshBuilder.CreateSphere(`scout-body-${champion.id}`, { diameter: 1.15, segments: 16 }, scene);
-          body.parent = root;
-          body.position.y = 1.55;
-          body.scaling = new BABYLON.Vector3(1, 0.72, 1.35);
-          body.material = accent;
-          const head = BABYLON.MeshBuilder.CreateSphere(`scout-head-${champion.id}`, { diameter: 0.62, segments: 12 }, scene);
-          head.parent = root;
-          head.position = new BABYLON.Vector3(0, 1.72, -0.72);
-          head.material = accent;
-          for (const side of [-1, 1]) {
-            const wingRoot = new BABYLON.TransformNode(`wing-${champion.id}-${side}`, scene);
-            wingRoot.parent = root;
-            wingRoot.position = new BABYLON.Vector3(side * 0.48, 1.62, 0);
-            const wing = BABYLON.MeshBuilder.CreateSphere(`wing-mesh-${champion.id}-${side}`, { diameter: 1.1, segments: 12 }, scene);
-            wing.parent = wingRoot;
-            wing.scaling = new BABYLON.Vector3(1.4, 0.18, 0.55);
-            wing.position.x = side * 0.45;
-            wing.material = gold;
-            wings.push(wingRoot);
-          }
-        } else {
-          const robe = BABYLON.MeshBuilder.CreateCylinder(`robe-${champion.id}`, { diameterTop: 1.05, diameterBottom: 1.72, height: 2.25, tessellation: 12 }, scene);
-          robe.parent = root;
-          robe.position.y = 1.3;
-          robe.material = accent;
-          const torso = BABYLON.MeshBuilder.CreateCapsule(`torso-${champion.id}`, { radius: 0.58, height: 1.7 }, scene);
-          torso.parent = root;
-          torso.position.y = 2.38;
-          torso.material = sandstone;
-          const head = BABYLON.MeshBuilder.CreateSphere(`head-${champion.id}`, { diameter: 0.9, segments: 16 }, scene);
-          head.parent = root;
-          head.position.y = 3.48;
-          head.material = skin;
-
-          if (archetype === "guardian") {
-            const shield = BABYLON.MeshBuilder.CreateCylinder(`shield-${champion.id}`, { diameter: 1.72, height: 0.2, tessellation: 30 }, scene);
-            shield.parent = action;
-            shield.position = new BABYLON.Vector3(0.72, 2.05, -0.18);
-            shield.rotation.z = Math.PI / 2;
-            shield.material = bronze;
-            const spear = BABYLON.MeshBuilder.CreateCylinder(`spear-${champion.id}`, { diameter: 0.09, height: 3.7, tessellation: 8 }, scene);
-            spear.parent = root;
-            spear.position = new BABYLON.Vector3(-0.72, 2.1, 0);
-            spear.material = gold;
-          } else if (archetype === "support") {
-            const staff = BABYLON.MeshBuilder.CreateCylinder(`staff-${champion.id}`, { diameter: 0.11, height: 3.6, tessellation: 8 }, scene);
-            staff.parent = action;
-            staff.position = new BABYLON.Vector3(-0.72, 2.05, 0);
-            staff.material = gold;
-            const orb = BABYLON.MeshBuilder.CreateSphere(`orb-${champion.id}`, { diameter: 0.5, segments: 16 }, scene);
-            orb.parent = action;
-            orb.position = new BABYLON.Vector3(-0.72, 3.9, 0);
-            orb.material = accent;
-          } else {
-            const sling = BABYLON.MeshBuilder.CreateTorus(`sling-${champion.id}`, { diameter: 0.7, thickness: 0.07, tessellation: 24 }, scene);
-            sling.parent = action;
-            sling.position = new BABYLON.Vector3(-0.78, 2.55, -0.05);
-            sling.rotation.x = Math.PI / 2;
-            sling.material = gold;
-            const stone = BABYLON.MeshBuilder.CreateSphere(`stone-${champion.id}`, { diameter: 0.25, segments: 10 }, scene);
-            stone.parent = action;
-            stone.position = new BABYLON.Vector3(-0.78, 2.55, -0.05);
-            stone.material = bronze;
-          }
+      const addRingEffects = (effects: TransformNode, championId: number, material: StandardMaterial, vertical = false) => {
+        const meshes: AbstractMesh[] = [];
+        for (let index = 0; index < 3; index += 1) {
+          const ring = BABYLON.MeshBuilder.CreateTorus(`power-ring-${championId}-${index}`, { diameter: 2.1 + index * 0.55, thickness: 0.075, tessellation: 48 }, scene);
+          ring.parent = effects;
+          ring.position.y = 0.65 + index * 0.68;
+          ring.rotation.x = vertical ? 0 : Math.PI / 2;
+          ring.material = material;
+          meshes.push(ring);
         }
+        return meshes;
+      };
 
-        actors.push({ root, action, baseY: root.position.y, archetype, wings });
+      const makeFeaturedChampion = (champion: ArenaSceneChampion, index: number, visual: FeaturedVisual) => {
+        const root = new BABYLON.TransformNode(`real-champion-${champion.id}`, scene);
+        root.position = new BABYLON.Vector3(positions[index] ?? 0, 0.08, index % 2 === 0 ? -0.08 : 0.04);
+        const action = new BABYLON.TransformNode(`real-action-${champion.id}`, scene);
+        action.parent = root;
+        const effects = new BABYLON.TransformNode(`real-effects-${champion.id}`, scene);
+        effects.parent = root;
+
+        const pedestal = BABYLON.MeshBuilder.CreateCylinder(`hero-pedestal-${champion.id}`, { diameter: 2.42, height: 0.18, tessellation: 48 }, scene);
+        pedestal.parent = root;
+        pedestal.position.y = -0.02;
+        pedestal.material = blue;
+        const pedestalRing = BABYLON.MeshBuilder.CreateTorus(`hero-ring-${champion.id}`, { diameter: 2.18, thickness: 0.075, tessellation: 64 }, scene);
+        pedestalRing.parent = root;
+        pedestalRing.rotation.x = Math.PI / 2;
+        pedestalRing.position.y = 0.08;
+        pedestalRing.material = gold;
+
+        const heroTexture = new BABYLON.Texture(visual.image, scene, true, false);
+        heroTexture.hasAlpha = true;
+        const heroMaterial = new BABYLON.StandardMaterial(`hero-material-${champion.id}`, scene);
+        heroMaterial.diffuseTexture = heroTexture;
+        heroMaterial.opacityTexture = heroTexture;
+        heroMaterial.useAlphaFromDiffuseTexture = true;
+        heroMaterial.emissiveColor = new BABYLON.Color3(0.17, 0.17, 0.17);
+        heroMaterial.specularColor = BABYLON.Color3.Black();
+        heroMaterial.backFaceCulling = false;
+        heroMaterial.transparencyMode = BABYLON.Material.MATERIAL_ALPHATESTANDBLEND;
+
+        const hero = BABYLON.MeshBuilder.CreatePlane(`hero-figure-${champion.id}`, { width: visual.height * 0.75, height: visual.height, sideOrientation: BABYLON.Mesh.DOUBLESIDE }, scene);
+        hero.parent = action;
+        hero.position.y = visual.height / 2 + 0.13;
+        hero.position.z = -0.04;
+        hero.material = heroMaterial;
+        hero.billboardMode = BABYLON.Mesh.BILLBOARDMODE_Y;
+
+        const shadowMaterial = new BABYLON.StandardMaterial(`hero-shadow-${champion.id}`, scene);
+        shadowMaterial.diffuseColor = BABYLON.Color3.Black();
+        shadowMaterial.emissiveColor = BABYLON.Color3.Black();
+        shadowMaterial.alpha = 0.42;
+        const groundShadow = BABYLON.MeshBuilder.CreateDisc(`ground-shadow-${champion.id}`, { radius: 1.15, tessellation: 48 }, scene);
+        groundShadow.parent = root;
+        groundShadow.rotation.x = Math.PI / 2;
+        groundShadow.scaling.y = 0.42;
+        groundShadow.position.y = 0.1;
+        groundShadow.material = shadowMaterial;
+
+        let effectMeshes: AbstractMesh[] = [];
+        if (visual.power === "waters") {
+          for (const side of [-1, 1]) {
+            const wave = BABYLON.MeshBuilder.CreateSphere(`water-wall-${champion.id}-${side}`, { diameter: 2.15, segments: 24 }, scene);
+            wave.parent = effects;
+            wave.position = new BABYLON.Vector3(side * 1.05, 1.45, 0.25);
+            wave.scaling = new BABYLON.Vector3(0.36, 1.4, 0.26);
+            wave.material = aqua;
+            effectMeshes.push(wave);
+          }
+        } else if (visual.power === "harp") {
+          effectMeshes = addRingEffects(effects, champion.id, warmGold, true);
+        } else if (visual.power === "frenzy") {
+          for (let streakIndex = 0; streakIndex < 7; streakIndex += 1) {
+            const streak = BABYLON.MeshBuilder.CreateCylinder(`frenzy-streak-${champion.id}-${streakIndex}`, { diameter: 0.065, height: 2.9, tessellation: 8 }, scene);
+            streak.parent = effects;
+            const angle = (Math.PI * 2 * streakIndex) / 7;
+            streak.position = new BABYLON.Vector3(Math.cos(angle) * 1.02, 1.55, Math.sin(angle) * 0.42);
+            streak.rotation.z = Math.sin(angle) * 0.22;
+            streak.material = frenzy;
+            effectMeshes.push(streak);
+          }
+        } else if (visual.power === "shield") {
+          const dome = BABYLON.MeshBuilder.CreateSphere(`shield-dome-${champion.id}`, { diameter: 4.15, segments: 32, slice: 0.72 }, scene);
+          dome.parent = effects;
+          dome.position.y = 1.95;
+          dome.scaling.z = 0.55;
+          dome.material = shield;
+          effectMeshes.push(dome);
+          effectMeshes.push(...addRingEffects(effects, champion.id, aqua));
+        }
+        effects.setEnabled(false);
+        actors.push({ root, action, effects, effectMeshes, baseY: root.position.y, championId: champion.id, powerKind: visual.power, powerStartedAt: -100 });
+      };
+
+      const makeFallbackChampion = (champion: ArenaSceneChampion, index: number) => {
+        const root = new BABYLON.TransformNode(`fallback-champion-${champion.id}`, scene);
+        root.position = new BABYLON.Vector3(positions[index] ?? 0, 0.08, 0);
+        const action = new BABYLON.TransformNode(`fallback-action-${champion.id}`, scene);
+        action.parent = root;
+        const effects = new BABYLON.TransformNode(`fallback-effects-${champion.id}`, scene);
+        effects.parent = root;
+        const robe = BABYLON.MeshBuilder.CreateCylinder(`fallback-robe-${champion.id}`, { diameterTop: 1.05, diameterBottom: 1.65, height: 2.35, tessellation: 16 }, scene);
+        robe.parent = root;
+        robe.position.y = 1.3;
+        robe.material = blue;
+        const torso = BABYLON.MeshBuilder.CreateCapsule(`fallback-torso-${champion.id}`, { radius: 0.55, height: 1.75 }, scene);
+        torso.parent = action;
+        torso.position.y = 2.45;
+        torso.material = gold;
+        const head = BABYLON.MeshBuilder.CreateSphere(`fallback-head-${champion.id}`, { diameter: 0.82, segments: 18 }, scene);
+        head.parent = action;
+        head.position.y = 3.5;
+        head.material = warmGold;
+        effects.setEnabled(false);
+        actors.push({ root, action, effects, effectMeshes: [], baseY: root.position.y, championId: champion.id, powerKind: "generic", powerStartedAt: -100 });
       };
 
       if (mode === "menu") {
         const roster = champions.length ? champions.slice(0, 4) : DEFAULT_CHAMPIONS;
-        roster.forEach(makeChampion);
+        roster.forEach((champion, index) => {
+          const visual = FEATURED_VISUALS[champion.id];
+          if (visual) makeFeaturedChampion(champion, index, visual);
+          else makeFallbackChampion(champion, index);
+        });
       }
 
-      const glow = new BABYLON.GlowLayer("arena-glow", scene, { blurKernelSize: 32 });
-      glow.intensity = 0.72;
+      const glow = new BABYLON.GlowLayer("arena-glow", scene, { blurKernelSize: 48 });
+      glow.intensity = 0.74;
 
       let clock = 0;
+      let lastPowerNonce = -1;
+      let nextAutomaticPower = 2.2;
+      let automaticIndex = 0;
       scene.onBeforeRenderObservable.add(() => {
         const delta = engine.getDeltaTime() / 1000;
         clock += delta;
-        portal.rotation.z += delta * (mode === "loading" ? 0.5 : 0.18);
-        portalInner.rotation.z -= delta * 0.09;
-        ring.scaling.setAll(1 + Math.sin(clock * 1.6) * 0.018);
-        for (const mesh of scene.meshes) {
-          if (mesh.name.startsWith("crystal-")) {
-            mesh.rotation.y += delta * 0.65;
-            mesh.position.y += Math.sin(clock * 1.8 + mesh.uniqueId) * 0.0008;
-          }
+        floorRing.rotation.z += delta * 0.045;
+
+        const signal = powerSignalRef.current;
+        if (signal && signal.nonce !== lastPowerNonce) {
+          lastPowerNonce = signal.nonce;
+          const actor = actors.find((entry) => entry.championId === signal.championId);
+          if (actor) actor.powerStartedAt = clock;
         }
+        if (mode === "menu" && actors.length && clock >= nextAutomaticPower) {
+          actors[automaticIndex % actors.length]!.powerStartedAt = clock;
+          automaticIndex += 1;
+          nextAutomaticPower = clock + 5.2;
+        }
+
         actors.forEach((actor, index) => {
-          const idle = Math.sin(clock * 1.65 + index * 0.8);
-          const actionWave = Math.max(0, Math.sin(clock * 1.18 - index * 0.72));
-          actor.root.position.y = actor.baseY + idle * (actor.archetype === "scout" ? 0.16 : 0.025);
-          actor.root.rotation.y = idle * 0.045;
-          actor.action.rotation.set(0, 0, 0);
-          if (actor.archetype === "ranged") actor.action.rotation.z = actionWave * 0.65;
-          if (actor.archetype === "guardian") actor.action.rotation.y = -actionWave * 0.5;
-          if (actor.archetype === "support") {
-            actor.action.position.y = actionWave * 0.25;
-            actor.action.rotation.z = -actionWave * 0.12;
-          }
-          if (actor.archetype === "scout") {
-            actor.wings.forEach((wing, wingIndex) => {
-              wing.rotation.z = (wingIndex === 0 ? -1 : 1) * (0.35 + Math.sin(clock * 7.5) * 0.5);
-            });
-          }
+          const idle = Math.sin(clock * 1.55 + index * 0.72);
+          actor.root.position.y = actor.baseY + idle * 0.035;
+          actor.action.rotation.z = idle * 0.012;
+          actor.action.scaling.y = 1 + Math.sin(clock * 1.8 + index) * 0.006;
+
+          const elapsed = clock - actor.powerStartedAt;
+          const active = elapsed >= 0 && elapsed < 4;
+          actor.effects.setEnabled(active);
+          if (!active) return;
+          const pulse = 1 + Math.sin(elapsed * 7.2) * 0.08;
+          actor.effects.scaling.setAll(pulse);
+          actor.effects.rotation.y += delta * (actor.powerKind === "frenzy" ? 2.5 : 0.85);
+          actor.effectMeshes.forEach((mesh, effectIndex) => {
+            mesh.visibility = Math.min(1, elapsed * 3.4) * Math.min(1, (4 - elapsed) * 2.5);
+            if (actor.powerKind === "harp" || actor.powerKind === "shield") {
+              const spread = 1 + elapsed * (0.18 + effectIndex * 0.025);
+              mesh.scaling.x = spread;
+              mesh.scaling.z = spread;
+            }
+            if (actor.powerKind === "waters") mesh.position.x += Math.sign(mesh.position.x) * delta * 0.08;
+          });
         });
       });
 
       const resize = () => engine.resize();
       window.addEventListener("resize", resize);
       engine.runRenderLoop(() => scene.render());
-      onProgress?.(86, "Preparando cartas e recompensas");
+      onProgress?.(86, "Preparando poderes e cartas");
       scene.executeWhenReady(() => {
         if (disposed) return;
         onProgress?.(100, "Tudo pronto");
@@ -305,5 +352,5 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, onP
     };
   }, [champions, mode, onProgress, onReady]);
 
-  return <canvas ref={canvasRef} aria-label={mode === "loading" ? "Portal 3D de carregamento" : "Quatro personagens do baralho no Salão dos Campeões"} />;
+  return <canvas ref={canvasRef} aria-label={mode === "loading" ? "Portal realista de carregamento" : "Quatro personagens humanos no Salão dos Campeões"} />;
 }

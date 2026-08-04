@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ARENA_CARD_CATALOG } from "../lib/apostolic-arena-card-catalog";
 import { arenaForTrophies, dailyEventFor } from "../lib/apostolic-arena-world";
-import { ApostolicArena3DScene, type ArenaSceneChampion } from "./apostolic-arena-3d-scene";
+import { ApostolicArena3DScene, type ArenaPowerSignal, type ArenaSceneChampion } from "./apostolic-arena-3d-scene";
 import { ApostolicArenaPhaser } from "./apostolic-arena-phaser";
 import { ArenaCardGallery } from "./arena-card-gallery";
 import { ArenaWorldRoadmap } from "./arena-world-roadmap";
@@ -14,6 +14,13 @@ import squadStyles from "./apostolic-arena-squad-v3.module.css";
 type ExperiencePhase = "loading" | "menu" | "battle" | "cards" | "world" | "rewards";
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
 const LAST_LOADING_SCENE_KEY = "apostolic-arena-last-loading-scene";
+const FEATURED_DASHBOARD_IDS = [117, 119, 121, 125] as const;
+const POWER_COPY: Record<number, { name: string; description: string }> = {
+  117: { name: "Abrir as Águas", description: "Imunidade à paralisia por 4s" },
+  119: { name: "Harpa Real", description: "Impede ataques inimigos por 3s" },
+  121: { name: "Frenesi", description: "Dobra a velocidade de ataque por 4s" },
+  125: { name: "Escudo da Juíza", description: "Protege os aliados com 200 HP" }
+};
 
 const LOADING_SCENES = [
   {
@@ -68,6 +75,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
   const [loadingTipIndex, setLoadingTipIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [deckIds, setDeckIds] = useState<number[]>([]);
+  const [powerSignal, setPowerSignal] = useState<ArenaPowerSignal | null>(null);
   const trophies = 5280;
   const arena = arenaForTrophies(trophies);
   const dailyName = useMemo(() => dailyEventFor(new Date())?.name ?? "Missão da Aliança", []);
@@ -76,13 +84,17 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
     const selected = deckIds.map((id) => ARENA_CARD_CATALOG.find((card) => card.id === id)).filter(Boolean);
     return (selected.length ? selected : ARENA_CARD_CATALOG.slice(0, 4)).slice(0, 4);
   }, [deckIds]);
-  const menuChampions = useMemo<ArenaSceneChampion[]>(() => deck.flatMap((card) => card ? [{
+  const featuredDashboardCards = useMemo(() => FEATURED_DASHBOARD_IDS.flatMap((id) => {
+    const card = ARENA_CARD_CATALOG.find((entry) => entry.id === id);
+    return card ? [card] : [];
+  }), []);
+  const menuChampions = useMemo<ArenaSceneChampion[]>(() => featuredDashboardCards.flatMap((card) => card ? [{
     id: card.id,
     name: card.name,
     rarity: card.rarity,
     faith: card.faith,
     type: card.type
-  }] : []), [deck]);
+  }] : []), [featuredDashboardCards]);
 
   useEffect(() => {
     try {
@@ -131,6 +143,10 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
     onExit();
   };
 
+  const activatePower = (championId: number) => {
+    setPowerSignal({ championId, nonce: Date.now() });
+  };
+
   return <section ref={shellRef} className={styles.experience} aria-label="Apostolic Arena 3D">
     {phase === "loading" ? <section className={`${styles.loading} ${loadingStyles.loading}`} aria-live="polite">
       <img className={loadingStyles.loadingArtwork} src={loadingScene.image} alt="" aria-hidden="true" />
@@ -146,7 +162,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         <aside className={loadingStyles.loadingTip}><b>DICA DE BATALHA</b><span>{LOADING_TIPS[loadingTipIndex]}</span></aside>
       </div>
     </section> : phase === "menu" ? <section className={styles.menu}>
-      <div className={styles.scene}><ApostolicArena3DScene mode="menu" champions={menuChampions} /></div>
+      <div className={styles.scene}><ApostolicArena3DScene mode="menu" champions={menuChampions} powerSignal={powerSignal} /></div>
       <header className={styles.topbar}>
         <div className={styles.profile}><span>R</span><div><b>Raphael</b><small>Nível 14 · Guardião da Luz</small></div></div>
         <div className={styles.resources}><span>◉ 25.430</span><span>◆ 3.280</span></div>
@@ -167,6 +183,8 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {menuChampions.map((champion) => <article key={champion.id} data-rarity={champion.rarity}>
           <small>◆ {champion.faith} FÉ</small>
           <b>{champion.name}</b>
+          <span>{POWER_COPY[champion.id]?.description}</span>
+          <button type="button" onClick={() => activatePower(champion.id)}>{POWER_COPY[champion.id]?.name ?? "Ativar poder"}</button>
         </article>)}
       </section>
 
