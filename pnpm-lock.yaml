@@ -89,6 +89,9 @@ importers:
       '@apostolic-ia/domain':
         specifier: workspace:*
         version: link:../../packages/domain
+      '@babylonjs/core':
+        specifier: ^9.19.0
+        version: 9.19.0
       '@lottiefiles/dotlottie-react':
         specifier: 0.19.12
         version: 0.19.12(react@19.2.8)
@@ -536,6 +539,9 @@ packages:
   '@babel/types@7.29.7':
     resolution: {integrity: sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==}
     engines: {node: '>=6.9.0'}
+
+  '@babylonjs/core@9.19.0':
+    resolution: {integrity: sha512-8bQfSnXnFVEUolPBl5Y3S1WDmQKpPKfguOQvGdCxjTIHlLku8Crc0DdvlFbmqeGpS/bQ3NzwtApB84GScm9v8w==}
 
   '@egjs/hammerjs@2.0.17':
     resolution: {integrity: sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==}
@@ -3709,6 +3715,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
+
+  '@babylonjs/core@9.19.0': {}
 
   '@egjs/hammerjs@2.0.17':
     dependencies:
