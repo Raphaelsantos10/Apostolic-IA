@@ -1,0 +1,70 @@
+.squadRoster {
+  position: absolute;
+  z-index: 4;
+  top: 59%;
+  right: 17%;
+  left: 17%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(.3rem, 1.2vw, .8rem);
+  pointer-events: none;
+}
+
+.squadRoster article {
+  min-width: 0;
+  padding: .42rem .55rem;
+  border: 1px solid #4da9f099;
+  border-radius: .7rem;
+  background: linear-gradient(180deg, #07182dd6, #030912e8);
+  box-shadow: 0 8px 18px #0009, inset 0 0 18px #2989db1e;
+  text-align: center;
+  backdrop-filter: blur(9px);
+}
+
+.squadRoster article[data-rarity="rare"] { border-color: #58df8eaa; }
+.squadRoster article[data-rarity="epic"] { border-color: #bd78ffaa; }
+.squadRoster article[data-rarity="legendary"] { border-color: #ff6570bb; }
+.squadRoster article[data-rarity="champion"] { border-color: #ffd468cc; }
+
+.squadRoster small,
+.squadRoster b {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.squadRoster small {
+  color: #79dfff;
+  font-size: clamp(.48rem, .8vw, .62rem);
+  letter-spacing: .05em;
+}
+
+.squadRoster b {
+  margin-top: .12rem;
+  color: #fff1c3;
+  font: 800 clamp(.55rem, 1vw, .78rem) Georgia;
+}
+
+@media (max-width: 48rem) {
+  .squadRoster {
+    top: 56%;
+    right: 4%;
+    left: 4%;
+    gap: .22rem;
+  }
+
+  .squadRoster article {
+    padding: .3rem .24rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .squadRoster {
+    top: 54%;
+  }
+
+  .squadRoster small {
+    display: none;
+  }
+}

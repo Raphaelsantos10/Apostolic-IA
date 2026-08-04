@@ -3,12 +3,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ARENA_CARD_CATALOG } from "../lib/apostolic-arena-card-catalog";
 import { arenaForTrophies, dailyEventFor } from "../lib/apostolic-arena-world";
-import { ApostolicArena3DScene } from "./apostolic-arena-3d-scene";
+import { ApostolicArena3DScene, type ArenaSceneChampion } from "./apostolic-arena-3d-scene";
 import { ApostolicArenaPhaser } from "./apostolic-arena-phaser";
 import { ArenaCardGallery } from "./arena-card-gallery";
 import { ArenaWorldRoadmap } from "./arena-world-roadmap";
 import styles from "./apostolic-arena-3d-experience.module.css";
 import loadingStyles from "./apostolic-arena-loading-v2.module.css";
+import squadStyles from "./apostolic-arena-squad-v3.module.css";
 
 type ExperiencePhase = "loading" | "menu" | "battle" | "cards" | "world" | "rewards";
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
@@ -75,6 +76,13 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
     const selected = deckIds.map((id) => ARENA_CARD_CATALOG.find((card) => card.id === id)).filter(Boolean);
     return (selected.length ? selected : ARENA_CARD_CATALOG.slice(0, 4)).slice(0, 4);
   }, [deckIds]);
+  const menuChampions = useMemo<ArenaSceneChampion[]>(() => deck.flatMap((card) => card ? [{
+    id: card.id,
+    name: card.name,
+    rarity: card.rarity,
+    faith: card.faith,
+    type: card.type
+  }] : []), [deck]);
 
   useEffect(() => {
     try {
@@ -138,7 +146,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         <aside className={loadingStyles.loadingTip}><b>DICA DE BATALHA</b><span>{LOADING_TIPS[loadingTipIndex]}</span></aside>
       </div>
     </section> : phase === "menu" ? <section className={styles.menu}>
-      <div className={styles.scene}><ApostolicArena3DScene mode="menu" /></div>
+      <div className={styles.scene}><ApostolicArena3DScene mode="menu" champions={menuChampions} /></div>
       <header className={styles.topbar}>
         <div className={styles.profile}><span>R</span><div><b>Raphael</b><small>Nível 14 · Guardião da Luz</small></div></div>
         <div className={styles.resources}><span>◉ 25.430</span><span>◆ 3.280</span></div>
@@ -153,6 +161,13 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
 
       <section className={styles.league}>
         <span>◆</span><div><small>LIGA ATUAL</small><b>{arena?.name ?? "Vale do Carvalho"}</b><em>🏆 {trophies} / 6000</em></div>
+      </section>
+
+      <section className={squadStyles.squadRoster} aria-label="Quatro personagens principais do baralho">
+        {menuChampions.map((champion) => <article key={champion.id} data-rarity={champion.rarity}>
+          <small>◆ {champion.faith} FÉ</small>
+          <b>{champion.name}</b>
+        </article>)}
       </section>
 
       <section className={styles.deckPreview} aria-label="Baralho ativo">
