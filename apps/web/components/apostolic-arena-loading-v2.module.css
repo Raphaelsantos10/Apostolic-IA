@@ -1,0 +1,122 @@
+.loading {
+  place-items: end center;
+  background: #020710;
+}
+
+.loadingArtwork {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: loading-art-reveal 1.2s ease both;
+}
+
+.loadingEngine {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading::after {
+  background:
+    linear-gradient(180deg, #0206117a, #02061118 32%, #02061168 58%, #020611f2),
+    radial-gradient(circle at 50% 42%, transparent 0, #02061166 66%, #020611d9 100%);
+}
+
+.loadingPanel {
+  width: min(40rem, calc(100vw - 2rem));
+  margin-top: auto;
+  padding: clamp(1rem, 3vh, 2rem) 1.5rem max(1rem, env(safe-area-inset-bottom));
+  border-top: 1px solid #9edfff2c;
+  background: linear-gradient(180deg, transparent, #0207129c 18%, #020712e8);
+}
+
+.loadingPanel p {
+  margin: .65rem 0 .15rem;
+  text-transform: uppercase;
+}
+
+.loadingPanel h2 {
+  margin: .2rem 0 .35rem;
+}
+
+.loadingPanel strong {
+  margin-top: .5rem;
+}
+
+.loadingPanel small {
+  margin-top: .1rem;
+}
+
+.lightMark {
+  width: clamp(3.4rem, 7vh, 4.5rem);
+}
+
+.loadingDescription {
+  max-width: 34rem;
+  margin-bottom: .9rem;
+  color: #d5e7f0;
+  font-size: clamp(.78rem, 1.5vw, 1rem);
+  line-height: 1.45;
+}
+
+.loadingTip {
+  display: grid;
+  gap: .18rem;
+  max-width: 36rem;
+  margin-top: .75rem;
+  padding: .6rem .9rem;
+  border: 1px solid #66d8ff3d;
+  border-radius: .75rem;
+  background: #031020c7;
+  box-shadow: 0 8px 24px #0006;
+  backdrop-filter: blur(10px);
+}
+
+.loadingTip b {
+  color: #72dcff;
+  font-size: .62rem;
+  letter-spacing: .14em;
+}
+
+.loadingTip span {
+  color: #eef8ff;
+  font-size: clamp(.7rem, 1.25vw, .85rem);
+  line-height: 1.35;
+}
+
+@keyframes loading-art-reveal {
+  from { opacity: 0; transform: scale(1.035); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-height: 43rem) {
+  .loadingPanel {
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+  }
+
+  .lightMark {
+    width: 3rem;
+    border-radius: .85rem;
+    font-size: 1.5rem;
+  }
+
+  .loadingPanel p {
+    margin: .35rem 0 .1rem;
+    font-size: .72rem;
+  }
+
+  .loadingDescription {
+    margin-bottom: .55rem;
+  }
+
+  .loadingTip {
+    margin-top: .45rem;
+    padding: .4rem .7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loadingArtwork { animation: none; }
+}
