@@ -18,8 +18,10 @@
   display: grid;
   grid-template-columns: 248px minmax(0, 1fr);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  transition: background 420ms ease, color 240ms ease;
+  transition: background 420ms ease, color 240ms ease, grid-template-columns 240ms ease;
 }
+
+.sidebarCollapsed { grid-template-columns: 84px minmax(0, 1fr); }
 
 .academicMode {
   --gold: #8bb9df;
@@ -62,6 +64,38 @@
   backdrop-filter: blur(18px);
   display: flex;
   flex-direction: column;
+  transition: padding 240ms ease;
+}
+
+.sidebarToggle {
+  position: absolute;
+  z-index: 2;
+  top: 1.55rem;
+  right: -0.9rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgb(169 182 201 / 35%);
+  border-radius: 50%;
+  color: var(--text);
+  background: var(--navy-850);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 28%);
+  cursor: pointer;
+}
+.sidebarToggle:hover,
+.sidebarToggle:focus-visible { color: var(--gold-bright); border-color: var(--gold-bright); outline: none; }
+.sidebar[data-collapsed="true"] { padding-inline: 0.8rem; }
+.sidebar[data-collapsed="true"] .brand { justify-content: center; padding-inline: 0; }
+.sidebar[data-collapsed="true"] .brandCopy,
+.sidebar[data-collapsed="true"] .navLabel,
+.sidebar[data-collapsed="true"] .sideNote { display: none; }
+.sidebar[data-collapsed="true"] .navButton,
+.sidebar[data-collapsed="true"] .activeNav,
+.sidebar[data-collapsed="true"] .disabledNav {
+  justify-content: center;
+  padding-inline: 0.7rem;
+  font-size: 1.12rem;
 }
 
 .brand {

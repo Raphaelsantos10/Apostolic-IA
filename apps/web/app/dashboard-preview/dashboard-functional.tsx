@@ -479,6 +479,60 @@ function buildDashboardData(
   };
 }
 
+function useAutoCarousel(
+  carousel: RefObject<HTMLDivElement | null>,
+  itemCount: number,
+  intervalMs = 4500
+) {
+  useEffect(() => {
+    const element = carousel.current;
+    if (!element || itemCount < 2) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let paused = false;
+    let resumeTimer: number | undefined;
+
+    const advance = () => {
+      if (paused || document.hidden || reducedMotion.matches) return;
+
+      const maxScrollLeft = element.scrollWidth - element.clientWidth;
+      const reachedEnd = element.scrollLeft >= maxScrollLeft - 8;
+
+      element.scrollTo({
+        left: reachedEnd
+          ? 0
+          : element.scrollLeft + Math.max(280, element.clientWidth * 0.82),
+        behavior: "smooth"
+      });
+    };
+
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+    const pauseForTouch = () => {
+      paused = true;
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(resume, intervalMs);
+    };
+
+    const timer = window.setInterval(advance, intervalMs);
+    element.addEventListener("mouseenter", pause);
+    element.addEventListener("mouseleave", resume);
+    element.addEventListener("focusin", pause);
+    element.addEventListener("focusout", resume);
+    element.addEventListener("touchstart", pauseForTouch, { passive: true });
+
+    return () => {
+      window.clearInterval(timer);
+      window.clearTimeout(resumeTimer);
+      element.removeEventListener("mouseenter", pause);
+      element.removeEventListener("mouseleave", resume);
+      element.removeEventListener("focusin", pause);
+      element.removeEventListener("focusout", resume);
+      element.removeEventListener("touchstart", pauseForTouch);
+    };
+  }, [carousel, intervalMs, itemCount]);
+}
+
 export function DashboardFunctional({
   preview = false,
   initialSection = "dashboard",
@@ -494,6 +548,7 @@ export function DashboardFunctional({
   const [profileOpen, setProfileOpen] = useState(false);
   const [devotionalOpen, setDevotionalOpen] = useState(false);
   const [lumiMessageOpen, setLumiMessageOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const discoveryCarousel = useRef<HTMLDivElement>(null);
   const coursesCarousel = useRef<HTMLDivElement>(null);
   const [dashboard, setDashboard] = useState<DashboardData>(
@@ -504,6 +559,8 @@ export function DashboardFunctional({
   const visualExperience =
     preview ||
     process.env.NEXT_PUBLIC_STUDY_EXPERIENCE_V2 === "enabled";
+  useAutoCarousel(discoveryCarousel, discoveryCards.length);
+  useAutoCarousel(coursesCarousel, dashboard.courses.length, 5200);
   const activeSection: DashboardSection = initialSection;
   const sectionHref = (section: DashboardSection) => {
     if (!preview) return dashboardSectionHref(section);
@@ -517,6 +574,9 @@ export function DashboardFunctional({
     if (storedMode === "academic" || storedMode === "adventure") {
       setMode(storedMode);
     }
+    setSidebarCollapsed(
+      window.localStorage.getItem("apostolic-sidebar-collapsed") === "true"
+    );
   }, []);
 
   useEffect(() => {
@@ -636,6 +696,13 @@ export function DashboardFunctional({
     setMode(nextMode);
     window.localStorage.setItem("apostolic-learning-mode", nextMode);
   };
+  const toggleSidebar = () => {
+    setSidebarCollapsed((collapsed) => {
+      const next = !collapsed;
+      window.localStorage.setItem("apostolic-sidebar-collapsed", String(next));
+      return next;
+    });
+  };
   const moveCarousel = (
     carousel: RefObject<HTMLDivElement | null>,
     direction: -1 | 1
@@ -692,17 +759,27 @@ export function DashboardFunctional({
 
   return (
     <div
-      className={`${styles.page} ${adventure ? "" : styles.academicMode}`}
+      className={`${styles.page} ${adventure ? "" : styles.academicMode} ${sidebarCollapsed ? styles.sidebarCollapsed : ""}`}
       data-learning-mode={mode}
     >
       <a className={styles.skipLink} href="#dashboard-content">
         Saltar para o conteúdo
       </a>
 
-      <aside className={styles.sidebar}>
+      <aside className={styles.sidebar} data-collapsed={sidebarCollapsed}>
+        <button
+          className={styles.sidebarToggle}
+          type="button"
+          aria-label={sidebarCollapsed ? "Abrir menu lateral" : "Recolher menu lateral e alargar a tela"}
+          aria-expanded={!sidebarCollapsed}
+          onClick={toggleSidebar}
+          title={sidebarCollapsed ? "Abrir menu" : "Alargar a tela"}
+        >
+          <span aria-hidden="true">{sidebarCollapsed ? "›" : "‹"}</span>
+        </button>
         <div className={styles.brand}>
           <span className={styles.brandMark} aria-hidden="true">A</span>
-          <span>
+          <span className={styles.brandCopy}>
             <strong>Apostolic IA</strong>
             <small>Aprender para servir</small>
           </span>
@@ -719,12 +796,14 @@ export function DashboardFunctional({
                         : styles.navButton
                     }
                     href={sectionHref(section)}
+                    aria-label={label}
+                    title={sidebarCollapsed ? label : undefined}
                     aria-current={
                       activeSection === section ? "page" : undefined
                     }
                   >
                     <span aria-hidden="true">{icon}</span>
-                    {label}
+                    <span className={styles.navLabel}>{label}</span>
                   </Link>
                 ) : (
                   <button
@@ -735,7 +814,7 @@ export function DashboardFunctional({
                     type="button"
                   >
                     <span aria-hidden="true">{icon}</span>
-                    {label}
+                    <span className={styles.navLabel}>{label}</span>
                   </button>
                 )}
               </li>

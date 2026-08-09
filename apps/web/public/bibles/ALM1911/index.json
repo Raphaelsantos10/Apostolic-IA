@@ -1,0 +1,538 @@
+{
+  "version": {
+    "code": "ALM1911",
+    "name": "Almeida 1911",
+    "license": "public-domain",
+    "source": "damarals/biblias"
+  },
+  "books": [
+    {
+      "id": 1,
+      "code": "GEN",
+      "name": "Gênesis",
+      "abbrev": "Gn",
+      "chapter_count": 50,
+      "file": "GEN.json"
+    },
+    {
+      "id": 2,
+      "code": "EXO",
+      "name": "Êxodo",
+      "abbrev": "Êx",
+      "chapter_count": 40,
+      "file": "EXO.json"
+    },
+    {
+      "id": 3,
+      "code": "LEV",
+      "name": "Levítico",
+      "abbrev": "Lv",
+      "chapter_count": 27,
+      "file": "LEV.json"
+    },
+    {
+      "id": 4,
+      "code": "NUM",
+      "name": "Números",
+      "abbrev": "Nm",
+      "chapter_count": 36,
+      "file": "NUM.json"
+    },
+    {
+      "id": 5,
+      "code": "DEU",
+      "name": "Deuteronômio",
+      "abbrev": "Dt",
+      "chapter_count": 34,
+      "file": "DEU.json"
+    },
+    {
+      "id": 6,
+      "code": "JOS",
+      "name": "Josué",
+      "abbrev": "Js",
+      "chapter_count": 24,
+      "file": "JOS.json"
+    },
+    {
+      "id": 7,
+      "code": "JDG",
+      "name": "Juízes",
+      "abbrev": "Jz",
+      "chapter_count": 21,
+      "file": "JDG.json"
+    },
+    {
+      "id": 8,
+      "code": "RUT",
+      "name": "Rute",
+      "abbrev": "Rt",
+      "chapter_count": 4,
+      "file": "RUT.json"
+    },
+    {
+      "id": 9,
+      "code": "1SA",
+      "name": "1 Samuel",
+      "abbrev": "1Sm",
+      "chapter_count": 31,
+      "file": "1SA.json"
+    },
+    {
+      "id": 10,
+      "code": "2SA",
+      "name": "2 Samuel",
+      "abbrev": "2Sm",
+      "chapter_count": 24,
+      "file": "2SA.json"
+    },
+    {
+      "id": 11,
+      "code": "1KI",
+      "name": "1 Reis",
+      "abbrev": "1Rs",
+      "chapter_count": 22,
+      "file": "1KI.json"
+    },
+    {
+      "id": 12,
+      "code": "2KI",
+      "name": "2 Reis",
+      "abbrev": "2Rs",
+      "chapter_count": 25,
+      "file": "2KI.json"
+    },
+    {
+      "id": 13,
+      "code": "1CH",
+      "name": "1 Crônicas",
+      "abbrev": "1Cr",
+      "chapter_count": 29,
+      "file": "1CH.json"
+    },
+    {
+      "id": 14,
+      "code": "2CH",
+      "name": "2 Crônicas",
+      "abbrev": "2Cr",
+      "chapter_count": 36,
+      "file": "2CH.json"
+    },
+    {
+      "id": 15,
+      "code": "EZR",
+      "name": "Esdras",
+      "abbrev": "Ed",
+      "chapter_count": 10,
+      "file": "EZR.json"
+    },
+    {
+      "id": 16,
+      "code": "NEH",
+      "name": "Neemias",
+      "abbrev": "Ne",
+      "chapter_count": 13,
+      "file": "NEH.json"
+    },
+    {
+      "id": 17,
+      "code": "EST",
+      "name": "Ester",
+      "abbrev": "Et",
+      "chapter_count": 10,
+      "file": "EST.json"
+    },
+    {
+      "id": 18,
+      "code": "JOB",
+      "name": "Jó",
+      "abbrev": "Jó",
+      "chapter_count": 42,
+      "file": "JOB.json"
+    },
+    {
+      "id": 19,
+      "code": "PSA",
+      "name": "Salmos",
+      "abbrev": "Sl",
+      "chapter_count": 150,
+      "file": "PSA.json"
+    },
+    {
+      "id": 20,
+      "code": "PRO",
+      "name": "Provérbios",
+      "abbrev": "Pv",
+      "chapter_count": 31,
+      "file": "PRO.json"
+    },
+    {
+      "id": 21,
+      "code": "ECC",
+      "name": "Eclesiastes",
+      "abbrev": "Ec",
+      "chapter_count": 12,
+      "file": "ECC.json"
+    },
+    {
+      "id": 22,
+      "code": "SNG",
+      "name": "Cânticos",
+      "abbrev": "Ct",
+      "chapter_count": 8,
+      "file": "SNG.json"
+    },
+    {
+      "id": 23,
+      "code": "ISA",
+      "name": "Isaías",
+      "abbrev": "Is",
+      "chapter_count": 66,
+      "file": "ISA.json"
+    },
+    {
+      "id": 24,
+      "code": "JER",
+      "name": "Jeremias",
+      "abbrev": "Jr",
+      "chapter_count": 52,
+      "file": "JER.json"
+    },
+    {
+      "id": 25,
+      "code": "LAM",
+      "name": "Lamentações de Jeremias",
+      "abbrev": "Lm",
+      "chapter_count": 5,
+      "file": "LAM.json"
+    },
+    {
+      "id": 26,
+      "code": "EZK",
+      "name": "Ezequiel",
+      "abbrev": "Ez",
+      "chapter_count": 48,
+      "file": "EZK.json"
+    },
+    {
+      "id": 27,
+      "code": "DAN",
+      "name": "Daniel",
+      "abbrev": "Dn",
+      "chapter_count": 12,
+      "file": "DAN.json"
+    },
+    {
+      "id": 28,
+      "code": "HOS",
+      "name": "Oséias",
+      "abbrev": "Os",
+      "chapter_count": 14,
+      "file": "HOS.json"
+    },
+    {
+      "id": 29,
+      "code": "JOL",
+      "name": "Joel",
+      "abbrev": "Jl",
+      "chapter_count": 3,
+      "file": "JOL.json"
+    },
+    {
+      "id": 30,
+      "code": "AMO",
+      "name": "Amós",
+      "abbrev": "Am",
+      "chapter_count": 9,
+      "file": "AMO.json"
+    },
+    {
+      "id": 31,
+      "code": "OBA",
+      "name": "Obadias",
+      "abbrev": "Ob",
+      "chapter_count": 1,
+      "file": "OBA.json"
+    },
+    {
+      "id": 32,
+      "code": "JON",
+      "name": "Jonas",
+      "abbrev": "Jn",
+      "chapter_count": 4,
+      "file": "JON.json"
+    },
+    {
+      "id": 33,
+      "code": "MIC",
+      "name": "Miquéias",
+      "abbrev": "Mq",
+      "chapter_count": 7,
+      "file": "MIC.json"
+    },
+    {
+      "id": 34,
+      "code": "NAM",
+      "name": "Naum",
+      "abbrev": "Na",
+      "chapter_count": 3,
+      "file": "NAM.json"
+    },
+    {
+      "id": 35,
+      "code": "HAB",
+      "name": "Habacuque",
+      "abbrev": "Hc",
+      "chapter_count": 3,
+      "file": "HAB.json"
+    },
+    {
+      "id": 36,
+      "code": "ZEP",
+      "name": "Sofonias",
+      "abbrev": "Sf",
+      "chapter_count": 3,
+      "file": "ZEP.json"
+    },
+    {
+      "id": 37,
+      "code": "HAG",
+      "name": "Ageu",
+      "abbrev": "Ag",
+      "chapter_count": 2,
+      "file": "HAG.json"
+    },
+    {
+      "id": 38,
+      "code": "ZEC",
+      "name": "Zacarias",
+      "abbrev": "Zc",
+      "chapter_count": 14,
+      "file": "ZEC.json"
+    },
+    {
+      "id": 39,
+      "code": "MAL",
+      "name": "Malaquias",
+      "abbrev": "Ml",
+      "chapter_count": 4,
+      "file": "MAL.json"
+    },
+    {
+      "id": 40,
+      "code": "MAT",
+      "name": "Mateus",
+      "abbrev": "Mt",
+      "chapter_count": 28,
+      "file": "MAT.json"
+    },
+    {
+      "id": 41,
+      "code": "MRK",
+      "name": "Marcos",
+      "abbrev": "Mc",
+      "chapter_count": 16,
+      "file": "MRK.json"
+    },
+    {
+      "id": 42,
+      "code": "LUK",
+      "name": "Lucas",
+      "abbrev": "Lc",
+      "chapter_count": 24,
+      "file": "LUK.json"
+    },
+    {
+      "id": 43,
+      "code": "JHN",
+      "name": "João",
+      "abbrev": "Jo",
+      "chapter_count": 21,
+      "file": "JHN.json"
+    },
+    {
+      "id": 44,
+      "code": "ACT",
+      "name": "Atos",
+      "abbrev": "At",
+      "chapter_count": 28,
+      "file": "ACT.json"
+    },
+    {
+      "id": 45,
+      "code": "ROM",
+      "name": "Romanos",
+      "abbrev": "Rm",
+      "chapter_count": 16,
+      "file": "ROM.json"
+    },
+    {
+      "id": 46,
+      "code": "1CO",
+      "name": "1 Coríntios",
+      "abbrev": "1Co",
+      "chapter_count": 16,
+      "file": "1CO.json"
+    },
+    {
+      "id": 47,
+      "code": "2CO",
+      "name": "2 Coríntios",
+      "abbrev": "2Co",
+      "chapter_count": 13,
+      "file": "2CO.json"
+    },
+    {
+      "id": 48,
+      "code": "GAL",
+      "name": "Gálatas",
+      "abbrev": "Gl",
+      "chapter_count": 6,
+      "file": "GAL.json"
+    },
+    {
+      "id": 49,
+      "code": "EPH",
+      "name": "Efésios",
+      "abbrev": "Ef",
+      "chapter_count": 6,
+      "file": "EPH.json"
+    },
+    {
+      "id": 50,
+      "code": "PHP",
+      "name": "Filipenses",
+      "abbrev": "Fp",
+      "chapter_count": 4,
+      "file": "PHP.json"
+    },
+    {
+      "id": 51,
+      "code": "COL",
+      "name": "Colossenses",
+      "abbrev": "Cl",
+      "chapter_count": 4,
+      "file": "COL.json"
+    },
+    {
+      "id": 52,
+      "code": "1TH",
+      "name": "1 Tessalonicenses",
+      "abbrev": "1Ts",
+      "chapter_count": 5,
+      "file": "1TH.json"
+    },
+    {
+      "id": 53,
+      "code": "2TH",
+      "name": "2 Tessalonicenses",
+      "abbrev": "2Ts",
+      "chapter_count": 3,
+      "file": "2TH.json"
+    },
+    {
+      "id": 54,
+      "code": "1TI",
+      "name": "1 Timóteo",
+      "abbrev": "1Tm",
+      "chapter_count": 6,
+      "file": "1TI.json"
+    },
+    {
+      "id": 55,
+      "code": "2TI",
+      "name": "2 Timóteo",
+      "abbrev": "2Tm",
+      "chapter_count": 4,
+      "file": "2TI.json"
+    },
+    {
+      "id": 56,
+      "code": "TIT",
+      "name": "Tito",
+      "abbrev": "Tt",
+      "chapter_count": 3,
+      "file": "TIT.json"
+    },
+    {
+      "id": 57,
+      "code": "PHM",
+      "name": "Filemom",
+      "abbrev": "Fm",
+      "chapter_count": 1,
+      "file": "PHM.json"
+    },
+    {
+      "id": 58,
+      "code": "HEB",
+      "name": "Hebreus",
+      "abbrev": "Hb",
+      "chapter_count": 13,
+      "file": "HEB.json"
+    },
+    {
+      "id": 59,
+      "code": "JAS",
+      "name": "Tiago",
+      "abbrev": "Tg",
+      "chapter_count": 5,
+      "file": "JAS.json"
+    },
+    {
+      "id": 60,
+      "code": "1PE",
+      "name": "1 Pedro",
+      "abbrev": "1Pe",
+      "chapter_count": 5,
+      "file": "1PE.json"
+    },
+    {
+      "id": 61,
+      "code": "2PE",
+      "name": "2 Pedro",
+      "abbrev": "2Pe",
+      "chapter_count": 3,
+      "file": "2PE.json"
+    },
+    {
+      "id": 62,
+      "code": "1JN",
+      "name": "1 João",
+      "abbrev": "1Jo",
+      "chapter_count": 5,
+      "file": "1JN.json"
+    },
+    {
+      "id": 63,
+      "code": "2JN",
+      "name": "2 João",
+      "abbrev": "2Jo",
+      "chapter_count": 1,
+      "file": "2JN.json"
+    },
+    {
+      "id": 64,
+      "code": "3JN",
+      "name": "3 João",
+      "abbrev": "3Jo",
+      "chapter_count": 1,
+      "file": "3JN.json"
+    },
+    {
+      "id": 65,
+      "code": "JUD",
+      "name": "Judas",
+      "abbrev": "Jd",
+      "chapter_count": 1,
+      "file": "JUD.json"
+    },
+    {
+      "id": 66,
+      "code": "REV",
+      "name": "Apocalipse",
+      "abbrev": "Ap",
+      "chapter_count": 22,
+      "file": "REV.json"
+    }
+  ]
+}

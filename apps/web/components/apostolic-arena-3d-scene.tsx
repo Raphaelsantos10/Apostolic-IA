@@ -33,10 +33,10 @@ type AnimatedActor = {
 };
 
 const FEATURED_VISUALS: Record<number, FeaturedVisual> = {
-  117: { image: "/games/apostolic-arena/characters/dashboard/117-moises-o-libertador-v1.png", power: "waters", height: 5.25 },
-  119: { image: "/games/apostolic-arena/characters/dashboard/119-davi-o-rei-campeao-v1.png", power: "harp", height: 5.05 },
-  121: { image: "/games/apostolic-arena/characters/dashboard/121-sansao-o-inabalavel-v1.png", power: "frenzy", height: 5.15 },
-  125: { image: "/games/apostolic-arena/characters/dashboard/125-debora-a-juiza-campea-v1.png", power: "shield", height: 5.1 }
+  117: { image: "/games/apostolic-arena/characters/menu-v7/117-moises-menu-v7.png", power: "waters", height: 6.2 },
+  119: { image: "/games/apostolic-arena/characters/menu-v7/119-davi-menu-v7.png", power: "harp", height: 6.15 },
+  121: { image: "/games/apostolic-arena/characters/menu-v7/121-sansao-menu-v7.png", power: "frenzy", height: 6.1 },
+  125: { image: "/games/apostolic-arena/characters/menu-v7/125-debora-menu-v7.png", power: "shield", height: 6.15 }
 };
 
 const DEFAULT_CHAMPIONS: ArenaSceneChampion[] = [
@@ -117,7 +117,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       };
 
       const backdropMaterial = new BABYLON.StandardMaterial("real-champion-hall-material", scene);
-      const backdropTexture = new BABYLON.Texture("/games/apostolic-arena/scenes/champion-hall-real-v1.webp", scene, true, false);
+      const backdropTexture = new BABYLON.Texture("/games/apostolic-arena/scenes/champion-hall-clean-v7.png", scene, true, true);
       backdropMaterial.diffuseTexture = backdropTexture;
       backdropMaterial.emissiveTexture = backdropTexture;
       backdropMaterial.emissiveColor = new BABYLON.Color3(0.62, 0.62, 0.62);
@@ -148,7 +148,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       floorRing.material = gold;
 
       const actors: AnimatedActor[] = [];
-      const positions = [-5.1, -1.72, 1.72, 5.1];
+      const positions = champions.length === 1 ? [0] : [-5.1, -1.72, 1.72, 5.1];
 
       const addRingEffects = (effects: TransformNode, championId: number, material: StandardMaterial, vertical = false) => {
         const meshes: AbstractMesh[] = [];
@@ -181,7 +181,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         pedestalRing.position.y = 0.08;
         pedestalRing.material = gold;
 
-        const heroTexture = new BABYLON.Texture(visual.image, scene, true, false);
+        const heroTexture = new BABYLON.Texture(visual.image, scene, true, true);
         heroTexture.hasAlpha = true;
         const heroMaterial = new BABYLON.StandardMaterial(`hero-material-${champion.id}`, scene);
         heroMaterial.diffuseTexture = heroTexture;
@@ -288,6 +288,12 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         const delta = engine.getDeltaTime() / 1000;
         clock += delta;
         floorRing.rotation.z += delta * 0.045;
+        if (mode === "menu") {
+          camera.alpha = -Math.PI / 2 + Math.sin(clock * 0.16) * 0.014;
+          backdrop.scaling.setAll(1 + Math.sin(clock * 0.22) * 0.0025);
+          const glowLevel = 0.6 + Math.sin(clock * 1.05) * 0.035;
+          backdropMaterial.emissiveColor.set(glowLevel, glowLevel, glowLevel);
+        }
 
         const signal = powerSignalRef.current;
         if (signal && signal.nonce !== lastPowerNonce) {

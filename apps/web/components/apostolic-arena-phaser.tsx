@@ -1,10 +1,12 @@
 "use client";
 
 import type { GameObjects, Input } from "phaser";
-import { useEffect, useMemo, useRef, useState, type DragEvent } from "react";
+import { useEffect, useRef, useState, type DragEvent } from "react";
 import { ARENA_MATCH_RULES, faithRegenerationMs } from "../lib/apostolic-arena-rules";
+import { ARENA_CARD_CATALOG, type ArenaCatalogCard } from "../lib/apostolic-arena-card-catalog";
 import styles from "./apostolic-arena-phaser.module.css";
 import hudStyles from "./apostolic-arena-match-hud.module.css";
+import v44Styles from "./apostolic-arena-v44.module.css";
 
 type Lane = "left" | "right";
 type Side = "player" | "enemy";
@@ -26,16 +28,18 @@ const ARENA_GRID = {
   playerTempleY: 1120
 } as const;
 
-const deck: Card[] = [
-  { id: "guardiao", name: "Guardião", cost: 3, life: 72, damage: 12, speed: 30, range: 42, color: 0x2d78c9, symbol: "G", asset: "/games/apostolic-arena/units/guardiao-v1.png" },
-  { id: "mensageira", name: "Mensageira", cost: 3, life: 48, damage: 15, speed: 40, range: 125, color: 0x9a5bd1, symbol: "M", asset: "/games/apostolic-arena/units/mensageira-v1.png" },
-  { id: "servo", name: "Servo", cost: 2, life: 42, damage: 9, speed: 52, range: 38, color: 0xd49832, symbol: "S", asset: "/games/apostolic-arena/units/servo-v1.png" },
-  { id: "sentinela", name: "Sentinela", cost: 4, life: 105, damage: 10, speed: 23, range: 42, color: 0x238b7b, symbol: "T", asset: "/games/apostolic-arena/units/sentinela-v1.png" },
-  { id: "unidade", name: "Unidade", cost: 5, life: 92, damage: 18, speed: 34, range: 44, color: 0xc0527b, symbol: "U", asset: "/games/apostolic-arena/units/unidade-v1.png" },
-  { id: "peregrino", name: "Peregrino", cost: 2, life: 38, damage: 8, speed: 62, range: 36, color: 0xd86831, symbol: "P", asset: "/games/apostolic-arena/units/peregrino-v1.png" },
-  { id: "arqueira", name: "Arqueira", cost: 4, life: 53, damage: 17, speed: 36, range: 145, color: 0x3d9fc3, symbol: "A", asset: "/games/apostolic-arena/units/arqueira-v1.png" },
-  { id: "porta-voz", name: "Porta-voz", cost: 5, life: 66, damage: 22, speed: 31, range: 115, color: 0x5965cb, symbol: "V", asset: "/games/apostolic-arena/units/porta-voz-v1.png" }
-];
+const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
+const numberFrom = (value: string, fallback: number) => Number(value.match(/[\d,.]+/)?.[0].replace(",", ".")) || fallback;
+const speedFrom = (value: string) => value === "Extrema" ? 70 : value.includes("Muito") ? 62 : value.includes("Rápida") ? 52 : value.includes("Lenta") ? 25 : 38;
+const catalogToBattleCard = (card: ArenaCatalogCard): Card => ({
+  id: String(card.id), name: card.name, cost: card.faith,
+  life: Math.max(36, Math.round(numberFrom(card.hp, 180) / 3.2)),
+  damage: Math.max(0, Math.round(numberFrom(card.damage, 45) / 7)),
+  speed: speedFrom(card.speed),
+  range: card.range.includes("Corpo") || card.range.includes("Não") ? 42 : numberFrom(card.range, 3) * 25,
+  color: 0x2d78c9, symbol: card.name.slice(0, 1), asset: card.portrait
+});
+const defaultBattleDeck = ARENA_CARD_CATALOG.slice(0, ARENA_MATCH_RULES.deckSize).map(catalogToBattleCard);
 
 const initialHud: Hud = { playerTemple: 100, enemyTemple: 100, faith: ARENA_MATCH_RULES.startingFaith, seconds: ARENA_MATCH_RULES.normalSeconds, playerLights: 0, enemyLights: 0, overtime: false, state: "playing" };
 
@@ -43,28 +47,39 @@ export function ApostolicArenaPhaser() {
   const hostRef = useRef<HTMLDivElement>(null);
   const apiRef = useRef<ArenaApi | null>(null);
   const [hud, setHud] = useState(initialHud);
-  const [selected, setSelected] = useState<Card>(deck[0] as Card);
+  const [cards, setCards] = useState<Card[]>(defaultBattleDeck);
+  const [cycle, setCycle] = useState<Card[]>(defaultBattleDeck);
+  const [selected, setSelected] = useState<Card>(defaultBattleDeck[0] as Card);
   const [lane, setLane] = useState<Lane>("left");
-  const [handOffset, setHandOffset] = useState(0);
   const [message, setMessage] = useState("Escolha uma unidade e envie-a por uma das pontes.");
   const [emotesOpen, setEmotesOpen] = useState(false);
   const [reaction, setReaction] = useState<string | null>(null);
-  const cards = useMemo(() => deck, []);
   const selectedCardRef = useRef(selected);
-  const hand = Array.from({ length: 4 }, (_, index) => cards[(handOffset + index) % cards.length] as Card);
-  const nextCard = cards[(handOffset + 4) % cards.length] as Card;
+  const cardsRef = useRef(cards);
+  const hand = cycle.slice(0, ARENA_MATCH_RULES.handSize);
+  const nextCard = cycle[ARENA_MATCH_RULES.handSize] ?? cycle[0];
 
-  const advanceHand = () => {
-    setHandOffset((current) => {
-      const next = (current + 1) % cards.length;
-      const nextSelection = cards[next] as Card;
-      setSelected(nextSelection);
-      selectedCardRef.current = nextSelection;
-      return next;
+  const advanceHand = (playedId: string) => {
+    setCycle((current) => {
+      const played = current.find((card) => card.id === playedId);
+      if (!played) return current;
+      const nextCycle = [...current.filter((card) => card.id !== playedId), played];
+      const nextSelection = nextCycle[0] as Card;
+      setSelected(nextSelection); selectedCardRef.current = nextSelection;
+      return nextCycle;
     });
   };
 
   useEffect(() => { selectedCardRef.current = selected; }, [selected]);
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(window.localStorage.getItem(DECK_STORAGE_KEY) ?? "[]") as number[];
+      const chosen = saved.map((id) => ARENA_CARD_CATALOG.find((card) => card.id === id)).filter((card): card is ArenaCatalogCard => Boolean(card));
+      const completed = [...chosen, ...ARENA_CARD_CATALOG.filter((card) => !saved.includes(card.id))].slice(0, ARENA_MATCH_RULES.deckSize).map(catalogToBattleCard);
+      setCards(completed); setCycle(completed); setSelected(completed[0] as Card);
+      cardsRef.current = completed; selectedCardRef.current = completed[0] as Card;
+    } catch { cardsRef.current = defaultBattleDeck; }
+  }, []);
 
   useEffect(() => {
     let disposed = false;
@@ -100,7 +115,7 @@ export function ApostolicArenaPhaser() {
           this.load.image("arena-bg", "/games/apostolic-arena/valley-of-beginning-v1.png");
           this.load.image("temple-light", "/games/apostolic-arena/towers/temple-of-light-v1.png");
           this.load.image("guardian-tower", "/games/apostolic-arena/towers/guardian-tower-v1.png");
-          for (const card of deck) if (card.asset) this.load.image(`unit-${card.id}`, card.asset);
+          for (const card of cardsRef.current) if (card.asset) this.load.image(`unit-${card.id}`, card.asset);
         }
         create() {
           const background = this.add.image(360, 640, "arena-bg");
@@ -134,7 +149,7 @@ export function ApostolicArenaPhaser() {
             const deployed = this.deploy(card, chosenLane, "player");
             setLane(chosenLane);
             setMessage(deployed ? `${card.name} entrou diretamente pela ${chosenLane === "left" ? "Ponte do Vale" : "Ponte das Muralhas"}.` : "Ainda não há Fé suficiente para esta unidade.");
-            if (deployed) advanceHand();
+            if (deployed) advanceHand(card.id);
           });
           this.publish();
         }
@@ -291,7 +306,7 @@ export function ApostolicArenaPhaser() {
           if (time - this.lastPublish >= 100) { this.lastPublish = time; this.publish(); }
           if (time - this.lastEnemyMove >= 2350) {
             this.lastEnemyMove = time;
-            const affordable = deck.filter((card) => card.cost <= this.enemyFaith);
+            const affordable = cardsRef.current.filter((card) => card.cost <= this.enemyFaith);
             const card = affordable[Math.floor(Math.random() * affordable.length)];
             if (card) this.deploy(card, Math.random() > .5 ? "left" : "right", "enemy");
           }
@@ -354,7 +369,7 @@ export function ApostolicArenaPhaser() {
   const deploy = () => {
     const worked = apiRef.current?.deploy(selected, lane) ?? false;
     setMessage(worked ? `${selected.name} avançou pela ${lane === "left" ? "Rota do Vale" : "Rota das Muralhas"}.` : "Aguarde a Fé recarregar para usar esta carta.");
-    if (worked) advanceHand();
+    if (worked) advanceHand(selected.id);
   };
   const dropOnArena = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -366,7 +381,7 @@ export function ApostolicArenaPhaser() {
     const worked = apiRef.current?.deploy(card, chosenLane) ?? false;
     setLane(chosenLane);
     setMessage(worked ? `${card.name} foi solto na ${chosenLane === "left" ? "Ponte do Vale" : "Ponte das Muralhas"}.` : "A carta voltou à mão: falta Fé para invocá-la.");
-    if (worked) advanceHand();
+    if (worked) advanceHand(card.id);
   };
   const time = `${Math.floor(hud.seconds / 60)}:${String(hud.seconds % 60).padStart(2, "0")}`;
   const sendReaction = (value: string) => {
@@ -375,27 +390,27 @@ export function ApostolicArenaPhaser() {
   };
 
   return (
-    <section className={`${styles.shell} ${hudStyles.fullscreenShell}`} aria-label="Apostolic Arena em tempo real">
-      <div className={`${styles.toolbar} ${hudStyles.fullscreenChrome}`}><div><p className="eyebrow">Apostolic Arena</p><h2>Vale do Começo</h2></div><button type="button" onClick={() => apiRef.current?.fullscreen()}>⛶ Tela cheia</button></div>
-      <div className={`${styles.guide} ${hudStyles.fullscreenChrome}`}><span className={styles.barnabas}>B</span><p><strong>Barnabé:</strong> {message} Toque na metade inferior da arena para invocar diretamente.</p></div>
-      <div className={`${styles.stage} ${hudStyles.fullscreenStage}`} onDragOver={(event) => event.preventDefault()} onDrop={dropOnArena}>
-        <div ref={hostRef} className={styles.canvas} />
-        <div className={hudStyles.matchHud}><span className={hudStyles.score}><b>{hud.playerLights}</b> ✦ <small>Você</small></span><strong className={styles.clock}>{time}</strong><span className={`${hudStyles.score} ${hudStyles.enemyScore}`}><small>Rival</small> ✦ <b>{hud.enemyLights}</b></span><button type="button" className={hudStyles.emoteButton} onClick={() => setEmotesOpen((open) => !open)} aria-label="Abrir reações">🙂</button></div>
-        {emotesOpen && <div className={hudStyles.emotes}>{["Boa sorte!", "Boa jogada!", "🙌", "👏"].map((item) => <button type="button" key={item} onClick={() => sendReaction(item)}>{item}</button>)}</div>}
-        {reaction && <div className={hudStyles.reaction}>{reaction}</div>}
-        {hud.state !== "playing" && <div className={styles.result}><h2>{hud.state === "won" ? "Vitória!" : hud.state === "lost" ? "Continue a treinar" : "Empate"}</h2><p>Templo da Luz {hud.playerTemple} × {hud.enemyTemple} Templo de treino</p><button className="button button-primary" onClick={() => apiRef.current?.restart()}>Jogar novamente</button></div>}
-      </div>
-      <div className={hudStyles.controlPanel}>
-        {hud.overtime && <strong className={hudStyles.faithBoost}>FÉ TRIPLA · MORTE SÚBITA</strong>}
-        {!hud.overtime && hud.seconds <= 60 && <strong className={hudStyles.faithBoost}>FÉ DUPLA!</strong>}
-        <div className={hudStyles.handRow}>
-          <div className={hudStyles.nextSlot}><small>A CAMINHO</small>{nextCard.asset && <img src={nextCard.asset} alt="" />}<b>{nextCard.cost}</b></div>
-          <div className={`${styles.deck} ${hudStyles.deck}`}>{hand.map((card) => { const locked = hud.faith < card.cost; return <button draggable={!locked} disabled={locked} key={`${card.id}-${handOffset}`} className={selected.id === card.id ? styles.selected : ""} onDragStart={(event) => { event.dataTransfer.setData("application/x-apostolic-card", card.id); event.dataTransfer.effectAllowed = "move"; setSelected(card); }} onClick={() => setSelected(card)}><b className={hudStyles.cost}>{card.cost}</b>{card.asset ? <img src={card.asset} alt="" /> : <span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span>}<strong>{card.name}</strong></button>; })}</div>
+    <section className={`${styles.shell} ${v44Styles.shell}`} aria-label="Apostolic Arena em tempo real">
+      <div className={v44Styles.battleFrame}>
+        <div className={`${styles.stage} ${v44Styles.stage}`} onDragOver={(event) => event.preventDefault()} onDrop={dropOnArena}>
+          <div ref={hostRef} className={styles.canvas} />
+          <div className={hudStyles.matchHud}><span className={hudStyles.score}><b>{hud.playerLights}</b> ✦ <small>Você</small></span><strong className={styles.clock}>{time}</strong><span className={`${hudStyles.score} ${hudStyles.enemyScore}`}><small>Rival</small> ✦ <b>{hud.enemyLights}</b></span><button type="button" className={hudStyles.emoteButton} onClick={() => setEmotesOpen((open) => !open)} aria-label="Abrir reações">🙂</button><button type="button" className={hudStyles.fullscreenButton} onClick={() => apiRef.current?.fullscreen()} aria-label="Alternar tela cheia">⛶</button></div>
+          <div className={hudStyles.coachMessage}><span className={styles.barnabas}>B</span><p><strong>Barnabé:</strong> {message}</p></div>
+          {emotesOpen && <div className={hudStyles.emotes}>{["Boa sorte!", "Boa jogada!", "🙌", "👏"].map((item) => <button type="button" key={item} onClick={() => sendReaction(item)}>{item}</button>)}</div>}
+          {reaction && <div className={hudStyles.reaction}>{reaction}</div>}
+          {hud.state !== "playing" && <div className={styles.result}><h2>{hud.state === "won" ? "Vitória!" : hud.state === "lost" ? "Continue a treinar" : "Empate"}</h2><p>Templo da Luz {hud.playerTemple} × {hud.enemyTemple} Templo de treino</p><button className="button button-primary" onClick={() => apiRef.current?.restart()}>Jogar novamente</button></div>}
         </div>
-        <div className={hudStyles.faithMeter}><div><i style={{ width: `${hud.faith * 10}%` }} /></div><b>{hud.faith.toFixed(1)} / 10 Fé</b></div>
+        <div className={hudStyles.controlPanel}>
+          {hud.overtime && <strong className={hudStyles.faithBoost}>FÉ TRIPLA · MORTE SÚBITA</strong>}
+          {!hud.overtime && hud.seconds <= 60 && <strong className={hudStyles.faithBoost}>FÉ DUPLA!</strong>}
+          <div className={hudStyles.handRow}>
+            <div className={hudStyles.nextSlot}><small>A CAMINHO</small>{nextCard?.asset && <img src={nextCard.asset} alt="" />}<b>{nextCard?.cost}</b></div>
+            <div className={`${styles.deck} ${hudStyles.deck}`}>{hand.map((card) => { const locked = hud.faith < card.cost; return <button draggable={!locked} disabled={locked} key={card.id} className={selected.id === card.id ? styles.selected : ""} onDragStart={(event) => { event.dataTransfer.setData("application/x-apostolic-card", card.id); event.dataTransfer.effectAllowed = "move"; setSelected(card); }} onClick={() => setSelected(card)}><b className={hudStyles.cost}>{card.cost}</b>{card.asset ? <img src={card.asset} alt="" /> : <span style={{ backgroundColor: `#${card.color.toString(16).padStart(6, "0")}` }}>{card.symbol}</span>}<strong>{card.name}</strong></button>; })}</div>
+          </div>
+          <div className={hudStyles.faithMeter}><div><i style={{ width: `${hud.faith * 10}%` }} /></div><b>{hud.faith.toFixed(1)} / 10 Fé</b></div>
+          <div className={hudStyles.quickDeploy}><span>Toque na carta e depois no seu lado do campo</span><button type="button" onClick={deploy}>Invocar em {lane === "left" ? "Vale" : "Muralhas"}</button></div>
+        </div>
       </div>
-      <div className={`${styles.lanes} ${hudStyles.fullscreenChrome}`}><button className={lane === "left" ? styles.active : ""} onClick={() => setLane("left")}>Ponte do Vale</button><button className={lane === "right" ? styles.active : ""} onClick={() => setLane("right")}>Ponte das Muralhas</button></div>
-      <button className={`button button-primary ${styles.deploy} ${hudStyles.fullscreenChrome}`} type="button" onClick={deploy}>Invocar {selected.name}</button>
     </section>
   );
 }

@@ -1,13 +1,77 @@
 .squadRoster {
   position: absolute;
   z-index: 4;
-  top: 61%;
-  right: 13%;
-  left: 13%;
+  top: 59%;
+  right: 39%;
+  left: 39%;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(.3rem, 1.2vw, .8rem);
   pointer-events: none;
+}
+
+.squadRoster {
+  top: auto;
+  right: 38%;
+  bottom: 25.5%;
+  left: 38%;
+}
+
+.squadRoster article {
+  padding: .34rem .55rem;
+}
+
+.squadRoster article span {
+  display: none;
+}
+
+.championSelector {
+  position: absolute;
+  z-index: 6;
+  top: 18%;
+  left: clamp(.7rem, 2vw, 1.6rem);
+  display: grid;
+  gap: .48rem;
+  width: clamp(4.25rem, 7vw, 6rem);
+}
+
+.championSelector button {
+  position: relative;
+  aspect-ratio: .82;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid #806a40;
+  border-radius: .75rem;
+  background: #07111e;
+  box-shadow: 0 7px 18px #000a;
+  cursor: pointer;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.championSelector button[data-active="true"] {
+  transform: translateX(.45rem) scale(1.06);
+  border-color: #ffe29a;
+  box-shadow: 0 0 0 2px #8c5b12, 0 0 24px #ffc84a80;
+}
+
+.championSelector img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.championSelector span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  padding: .25rem .15rem;
+  color: #fff2c6;
+  background: linear-gradient(transparent, #02050bea 35%);
+  font: 800 clamp(.38rem, .6vw, .52rem) Georgia, serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .squadRoster article {
@@ -85,10 +149,16 @@
 
 @media (max-width: 48rem) {
   .squadRoster {
-    top: 56%;
-    right: 4%;
-    left: 4%;
+    top: auto;
+    right: 32%;
+    bottom: 29%;
+    left: 32%;
     gap: .22rem;
+  }
+
+  .championSelector {
+    top: 22%;
+    width: 3.7rem;
   }
 
   .squadRoster article {
@@ -102,7 +172,18 @@
 
 @media (max-width: 30rem) {
   .squadRoster {
-    top: 54%;
+    top: auto;
+    right: 25%;
+    bottom: 31%;
+    left: 25%;
+  }
+
+
+  .championSelector {
+    top: 24%;
+    left: .35rem;
+    gap: .25rem;
+    width: 3.1rem;
   }
 
   .squadRoster small {

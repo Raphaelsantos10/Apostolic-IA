@@ -24,5 +24,6 @@ web-build/
 supabase/.temp/
 supabase/.branches/
 *.tsbuildinfo
+apps/web/public/bibles-local/
 
 sprint-*-test-output.txt

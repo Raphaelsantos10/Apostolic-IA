@@ -1,0 +1,31 @@
+.game {
+  height: clamp(40rem, calc(100dvh - 7rem), 56rem);
+  min-height: 0;
+}
+
+.chest {
+  position: relative;
+  min-width: 0;
+  padding: .3rem .2rem .5rem;
+  overflow: hidden;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.chest:hover { transform: translateY(-3px); filter: brightness(1.08); }
+.chest img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: .52rem; }
+.chest em { position: absolute; right: .3rem; top: .3rem; z-index: 2; }
+
+.rewardCard { color: #fff; cursor: pointer; }
+.rewardCard img { display: block; width: min(100%, 11rem); height: auto; aspect-ratio: 1; object-fit: cover; margin: auto; border-radius: .7rem; }
+
+.dialog { display: grid; justify-items: center; max-height: calc(100dvh - 2rem); overflow: auto; }
+.dialogArt { width: min(48%, 10rem) !important; margin: .2rem auto; }
+.dialogArt img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.dialogButton { position: sticky; bottom: .2rem; z-index: 4; }
+.bottomNav button { min-width: 0; }
+
+@media (max-width: 34rem) {
+  .game { height: calc(100dvh - 5rem); }
+  .dialog { width: min(94vw, 28rem); padding: 1rem; }
+  .dialogArt { width: min(42%, 8rem) !important; }
+}

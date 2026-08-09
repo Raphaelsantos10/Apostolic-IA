@@ -1,0 +1,11 @@
+.shell { container-type: inline-size; }
+.grid { align-items: start; }
+.card { display: grid !important; grid-template-rows: auto auto minmax(2.35rem, auto) auto; height: auto !important; min-height: 0 !important; overflow: hidden; }
+.cardArt { display: block; width: 100% !important; height: auto !important; aspect-ratio: 4 / 5 !important; object-fit: cover !important; max-width: none !important; max-height: none !important; }
+.card:hover { transform: translateY(-4px); }
+.detailsArt { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.deckArt { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+@container (max-width: 48rem) {
+  .card { grid-template-rows: auto auto minmax(2.1rem, auto) auto; }
+}
