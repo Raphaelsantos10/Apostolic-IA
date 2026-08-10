@@ -8,7 +8,6 @@ import styles from "./arena-collection-v17.module.css";
 
 const ACTIVE_DECK_KEY = "apostolic-arena-active-deck";
 const SAVED_DECKS_KEY = "apostolic-arena-decks-v16";
-const CHAMPIONS = [117, 119, 121, 125] as const;
 const POWER_LABELS: Record<Arena25DPowerKind, string> = {
   warrior: "Combatente", ranged: "Distância", guardian: "Guardião", healer: "Curador", swarm: "Enxame", burst: "Impacto", champion: "Campeão"
 };
@@ -29,13 +28,11 @@ export function ArenaCollectionV17({ initialDeck, onDeckChange, onBattleTest }: 
   onDeckChange: (ids: number[]) => void;
   onBattleTest: () => void;
 }) {
-  const initialChampion = initialDeck.find((id) => CHAMPIONS.includes(id as typeof CHAMPIONS[number])) ?? 117;
-  const [championId, setChampionId] = useState(initialChampion);
   const [savedDecks, setSavedDecks] = useState<SavedDecks>(() => readSavedDecks());
   const [deckIds, setDeckIds] = useState<number[]>(() => initialDeck.length === 8 ? initialDeck : []);
   const [progression, setProgression] = useState(() => loadArenaProgression());
   const [detailCardId, setDetailCardId] = useState<number | null>(null);
-  const [deckName, setDeckName] = useState(() => savedDecks[String(initialChampion)]?.name ?? `Deck de ${ARENA_CARD_CATALOG.find((card) => card.id === initialChampion)?.name ?? "Campeão"}`);
+  const [deckName, setDeckName] = useState(() => savedDecks.active?.name ?? "Meu baralho");
   const [search, setSearch] = useState("");
   const [rarity, setRarity] = useState("all");
   const [power, setPower] = useState("all");
@@ -93,20 +90,16 @@ export function ArenaCollectionV17({ initialDeck, onDeckChange, onBattleTest }: 
     setMessage(`${card.name} evoluiu para o nível ${progress.level + 1}`);
   };
 
-  const persist = (ids = deckIds, name = deckName, selectedChampion = championId) => {
+  const persist = (ids = deckIds, name = deckName) => {
     if (ids.length !== 8) {
       setMessage(`Faltam ${8 - ids.length} cartas`);
-      return false;
-    }
-    if (!ids.includes(selectedChampion)) {
-      setMessage("Escolha manualmente o Campeão deste deck");
       return false;
     }
     if (ids.some((id) => !isCardUnlocked(progression, id))) {
       setMessage("O deck contém uma carta ainda bloqueada");
       return false;
     }
-    const nextSaved = { ...savedDecks, [String(selectedChampion)]: { name: name.trim() || `Deck ${selectedChampion}`, ids } };
+    const nextSaved = { ...savedDecks, active: { name: name.trim() || "Meu baralho", ids } };
     setSavedDecks(nextSaved);
     window.localStorage.setItem(SAVED_DECKS_KEY, JSON.stringify(nextSaved));
     window.localStorage.setItem(ACTIVE_DECK_KEY, JSON.stringify(ids));
@@ -115,22 +108,7 @@ export function ArenaCollectionV17({ initialDeck, onDeckChange, onBattleTest }: 
     return true;
   };
 
-  const switchChampion = (nextChampion: number) => {
-    const currentSaved = deckIds.length === 8 ? { ...savedDecks, [String(championId)]: { name: deckName, ids: deckIds } } : savedDecks;
-    const selected = currentSaved[String(nextChampion)];
-    const nextIds = selected?.ids.length === 8 ? selected.ids : [];
-    setSavedDecks(currentSaved);
-    setChampionId(nextChampion);
-    setDeckIds(nextIds);
-    setDeckName(selected?.name ?? `Deck de ${ARENA_CARD_CATALOG.find((card) => card.id === nextChampion)?.name ?? "Campeão"}`);
-    setMessage("Edite e salve este deck");
-  };
-
   const toggleCard = (cardId: number) => {
-    if (CHAMPIONS.includes(cardId as typeof CHAMPIONS[number]) && cardId !== championId) {
-      setMessage("Cada deck utiliza somente o Campeão selecionado");
-      return;
-    }
     if (!isCardUnlocked(progression, cardId)) { setMessage("Esta carta ainda não foi conquistada"); return; }
     setDeckIds((current) => {
       if (selectedSlot !== null) {
@@ -180,13 +158,6 @@ export function ArenaCollectionV17({ initialDeck, onDeckChange, onBattleTest }: 
       <label>Nome do deck<input value={deckName} maxLength={32} onChange={(event) => setDeckName(event.target.value)} /></label>
     </header>
 
-    <nav className={styles.champions} aria-label="Decks dos Campeões">
-      {CHAMPIONS.map((id) => {
-        const champion = ARENA_CARD_CATALOG.find((card) => card.id === id);
-        return champion && <button type="button" key={id} data-active={id === championId} onClick={() => switchChampion(id)}><img src={champion.portrait} alt="" /><span>{champion.name}</span></button>;
-      })}
-    </nav>
-
     <section className={styles.deckPanel}>
       <div className={styles.deckSummary}><b>{deckIds.length}/8</b><span>Fé média {averageFaith.toFixed(1)}</span><em>{message}</em></div>
       <div className={styles.slots}>
@@ -207,13 +178,12 @@ export function ArenaCollectionV17({ initialDeck, onDeckChange, onBattleTest }: 
       <div className={styles.grid} data-view={viewMode}>{filteredCards.map((card) => {
         const profile = arena25DPowerFor(card);
         const selected = deckIds.includes(card.id);
-        const blockedChampion = CHAMPIONS.includes(card.id as typeof CHAMPIONS[number]) && card.id !== championId;
         const unlocked = isCardUnlocked(progression, card.id);
         const cardProgress = progression.cards[String(card.id)] ?? { level: 1, copies: 0 };
         const requirement = arenaRequirementForCard(card.id);
         return <article key={card.id} data-selected={selected} data-rarity={card.rarity} data-locked={!unlocked}>
           <button type="button" className={styles.cardOpen} onClick={() => setDetailCardId(card.id)}><img src={card.portrait} alt={card.name} /><b>{card.faith}</b><span>{unlocked ? card.name : "Carta bloqueada"}</span><small>{profile.label}</small><i>{unlocked ? `NÍVEL ${cardProgress.level} · ${cardProgress.copies}/${copiesRequiredForLevel(cardProgress.level, card.rarity)}` : `🔒 ${requirement.name}`}</i>{unlocked && <meter min="0" max={copiesRequiredForLevel(cardProgress.level, card.rarity)} value={cardProgress.copies} aria-label="Progresso de cópias" />}</button>
-          <button type="button" className={styles.cardAction} disabled={!unlocked || blockedChampion} onClick={() => toggleCard(card.id)}>{selected ? "REMOVER" : "+ DECK"}</button>
+          <button type="button" className={styles.cardAction} disabled={!unlocked} onClick={() => toggleCard(card.id)}>{selected ? "REMOVER" : "+ DECK"}</button>
         </article>;
       })}</div>
     </section>

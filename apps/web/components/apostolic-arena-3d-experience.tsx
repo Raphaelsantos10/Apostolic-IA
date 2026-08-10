@@ -2,13 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ARENA_CARD_CATALOG } from "../lib/apostolic-arena-card-catalog";
-import { arenaForTrophies, dailyEventFor } from "../lib/apostolic-arena-world";
+import { dailyEventFor } from "../lib/apostolic-arena-world";
 import { ApostolicArena3DScene, type ArenaPowerSignal, type ArenaSceneChampion } from "./apostolic-arena-3d-scene";
 import { ApostolicArenaBattle3D } from "./apostolic-arena-battle-3d";
 import { ArenaCollectionV17 } from "./arena-collection-v17";
 import { ArenaChestsV18 } from "./arena-chests-v18";
 import { CHEST_DEFINITIONS, grantBattleProgress, loadArenaChests, type ArenaChestState } from "../lib/apostolic-arena-chests-v18";
-import { BIBLICAL_ARENAS, loadArenaProgression, type ArenaPlayerProgression } from "../lib/apostolic-arena-progression-v17";
+import { loadArenaProgression, type ArenaPlayerProgression } from "../lib/apostolic-arena-progression-v17";
 import { ArenaWorldRoadmap } from "./arena-world-roadmap";
 import { ArenaMatchIntroV203 } from "./arena-match-intro-v20-3";
 import { ArenaTutorialV206, ARENA_TUTORIAL_COMPLETE_KEY_V206 } from "./arena-tutorial-v20-6";
@@ -16,13 +16,13 @@ import { arenaThemeForProgression } from "../lib/apostolic-arena-themes-v20";
 import { chooseRandomFieldV203, SELECTED_FIELD_STORAGE_KEY_V203 } from "../lib/apostolic-arena-presentations-v20-3";
 import styles from "./apostolic-arena-3d-experience.module.css";
 import loadingStyles from "./apostolic-arena-loading-v2.module.css";
-import squadStyles from "./apostolic-arena-squad-v3.module.css";
 
 type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards";
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
 const LAST_LOADING_SCENE_KEY = "apostolic-arena-last-loading-scene";
-const FEATURED_DASHBOARD_IDS = [117, 119, 121, 125] as const;
 const POWER_COPY: Record<number, { name: string; description: string }> = {
+  1: { name: "Disparo de Funda", description: "Ataque preciso à distância" },
+  11: { name: "Oração Restauradora", description: "Restaura a vida de aliados próximos" },
   117: { name: "Abrir as Águas", description: "Imunidade à paralisia por 4s" },
   119: { name: "Harpa Real", description: "Impede ataques inimigos por 3s" },
   121: { name: "Frenesi", description: "Dobra a velocidade de ataque por 4s" },
@@ -83,31 +83,38 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [deckIds, setDeckIds] = useState<number[]>([]);
   const [powerSignal, setPowerSignal] = useState<ArenaPowerSignal | null>(null);
-  const [selectedChampionId, setSelectedChampionId] = useState<number>(117);
+  const [gateSignal, setGateSignal] = useState(0);
+  const [activeHeroId, setActiveHeroId] = useState<number | null>(null);
+  const [isEnteringBattle, setIsEnteringBattle] = useState(false);
   const [chestState, setChestState] = useState<ArenaChestState>(() => loadArenaChests());
   const [chestNotice, setChestNotice] = useState<string | null>(null);
   const [playerProgression, setPlayerProgression] = useState<ArenaPlayerProgression>(() => loadArenaProgression());
-  const trophies = playerProgression.trophies;
-  const currentArenaIndex = BIBLICAL_ARENAS.reduce((latest, entry, index) => trophies >= entry.trophies && playerProgression.playerLevel >= entry.level ? index : latest, 0);
   const currentArenaTheme = arenaThemeForProgression(playerProgression).theme;
-  const arena = arenaForTrophies(trophies);
   const dailyName = useMemo(() => dailyEventFor(new Date())?.name ?? "Missão da Aliança", []);
   const loadingScene = LOADING_SCENES[loadingSceneIndex] ?? LOADING_SCENES[0]!;
   const deck = useMemo(() => {
     const selected = deckIds.map((id) => ARENA_CARD_CATALOG.find((card) => card.id === id)).filter(Boolean);
     return selected.slice(0, 4);
   }, [deckIds]);
-  const featuredDashboardCards = useMemo(() => FEATURED_DASHBOARD_IDS.flatMap((id) => {
-    const card = ARENA_CARD_CATALOG.find((entry) => entry.id === id);
-    return card ? [card] : [];
-  }), []);
-  const menuChampions = useMemo<ArenaSceneChampion[]>(() => featuredDashboardCards.filter((card) => card.id === selectedChampionId).flatMap((card) => card ? [{
+  const menuCards = useMemo(() => {
+    const unlocked = new Set(playerProgression.unlockedCardIds);
+    const isCharacter = (type: string) => !/^(Feitiço|Construção|Utilidade|Tática|Superescudo)/i.test(type);
+    const selected = deckIds.flatMap((id) => {
+      const card = ARENA_CARD_CATALOG.find((entry) => entry.id === id);
+      return card && unlocked.has(card.id) && isCharacter(card.type) ? [card] : [];
+    });
+    const starters = ARENA_CARD_CATALOG.filter((card) => unlocked.has(card.id) && isCharacter(card.type) && !selected.some((entry) => entry.id === card.id));
+    return [...selected, ...starters].slice(0, 4);
+  }, [deckIds, playerProgression.unlockedCardIds]);
+  const menuChampions = useMemo<ArenaSceneChampion[]>(() => menuCards.map((card) => ({
     id: card.id,
     name: card.name,
     rarity: card.rarity,
     faith: card.faith,
-    type: card.type
-  }] : []), [featuredDashboardCards, selectedChampionId]);
+    type: card.type,
+    portrait: card.portrait
+  })), [menuCards]);
+  const hasReadyChest = chestState.slots.some((chest) => Boolean(chest?.readyAt && chest.readyAt <= Date.now()));
 
   useEffect(() => {
     try {
@@ -115,8 +122,6 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
       if (Array.isArray(saved) && saved.length) {
         const savedDeck = saved.slice(0, 8);
         setDeckIds(savedDeck);
-        const champion = savedDeck.find((id) => FEATURED_DASHBOARD_IDS.includes(id as typeof FEATURED_DASHBOARD_IDS[number]));
-        if (champion) setSelectedChampionId(champion);
       } else {
         setDeckIds([]);
       }
@@ -181,10 +186,19 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
 
   const activatePower = (championId: number) => {
     setPowerSignal({ championId, nonce: Date.now() });
+    setActiveHeroId(championId);
+    window.setTimeout(() => setActiveHeroId((current) => current === championId ? null : current), 1350);
   };
 
-  const selectChampion = (championId: number) => {
-    setSelectedChampionId(championId);
+
+  const beginBattle = () => {
+    if (deckIds.length !== 8 || isEnteringBattle) return;
+    setIsEnteringBattle(true);
+    setGateSignal(Date.now());
+    window.setTimeout(() => {
+      setIsEnteringBattle(false);
+      setPhase("arenaPreview");
+    }, 2300);
   };
 
   const recordBattleResult = useCallback((result: "victory" | "defeat" | "draw") => {
@@ -215,45 +229,56 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         <small>{loadingLabel}</small>
         <aside className={loadingStyles.loadingTip}><b>DICA DE BATALHA</b><span>{LOADING_TIPS[loadingTipIndex]}</span></aside>
       </div>
-    </section> : phase === "tutorial" ? <ArenaTutorialV206 onComplete={() => setPhase("menu")} /> : phase === "menu" ? <section className={styles.menu}>
-      <div className={styles.scene}><ApostolicArena3DScene mode="menu" champions={menuChampions} powerSignal={powerSignal} /></div>
+    </section> : phase === "tutorial" ? <ArenaTutorialV206 onComplete={() => setPhase("menu")} /> : phase === "menu" ? <section className={styles.menu} data-entering={isEnteringBattle}>
+      <div className={styles.scene}><ApostolicArena3DScene mode="menu" champions={menuChampions} powerSignal={powerSignal} gateSignal={gateSignal} chestReady={hasReadyChest} /></div>
+      <div className={styles.ambientEffects} aria-hidden="true">
+        <i className={styles.cloudVeil} />
+        <i className={styles.cloudVeilFar} />
+        <i className={styles.windStreaks} />
+        <i className={styles.dustMotes} />
+        <i className={`${styles.realFire} ${styles.fireLeft}`} />
+        <i className={`${styles.realFire} ${styles.fireRight}`} />
+        <i className={styles.embers} />
+      </div>
+      <button type="button" className={styles.exactProfileHit} onClick={() => setPhase("cards")} aria-label="Abrir perfil e heróis" />
+      <nav className={styles.exactResourceHits} aria-label="Recursos e atalhos">
+        <button type="button" onClick={() => setPhase("rewards")} aria-label="Comprar moedas" />
+        <button type="button" onClick={() => setPhase("rewards")} aria-label="Comprar diamantes" />
+        <button type="button" onClick={() => setPhase("world")} aria-label="Mensagens" />
+        <button type="button" onClick={() => setPhase("cards")} aria-label="Amigos" />
+        <button type="button" onClick={leave} aria-label="Configurações e saída" />
+      </nav>
       <header className={styles.topbar}>
         <div className={styles.profile}><span>R</span><div><b>Raphael</b><small>Nível {playerProgression.playerLevel} · Guardião da Luz</small></div></div>
-        <div className={styles.resources}><span>◉ {playerProgression.gold.toLocaleString("pt-PT")}</span><span>◆ 3.280</span></div>
+        <div className={styles.resources}><span><i className={styles.coinIcon}>✦</i>{playerProgression.gold.toLocaleString("pt-PT")}<b>+</b></span><span><i className={styles.gemIcon}>◆</i>3.280<b>+</b></span></div>
         <div className={styles.windowActions}>
           {!isFullscreen && <button type="button" onClick={requestFullscreen} aria-label="Ativar tela cheia">⛶</button>}
           <button type="button" onClick={leave} aria-label="Sair do Apostolic Arena">×</button>
         </div>
       </header>
 
-      <aside className={`${styles.banner} ${styles.eventBanner}`}><b>EVENTO</b><small>{dailyName}</small></aside>
-      <aside className={`${styles.banner} ${styles.missionBanner}`}><b>MISSÕES</b><small>2 de 3 batalhas</small><i><em /></i></aside>
+      <nav className={styles.sideRail} aria-label="Menu principal da Arena">
+        <button type="button" className={styles.active}><span>✦</span><b>INÍCIO</b></button>
+        <button type="button" onClick={() => setPhase("cards")}><span>♜</span><b>HERÓIS</b></button>
+        <button type="button" onClick={() => setPhase("world")}><span>◆</span><b>EVENTOS</b></button>
+        <button type="button" onClick={() => setPhase("rewards")}><span>▣</span><b>LOJA</b></button>
+        <button type="button" onClick={() => setPhase("world")}><span>♛</span><b>RANKING</b></button>
+      </nav>
 
-      <section className={styles.league}>
-        <span>◆</span><div><small>ARENA ATUAL</small><b>{BIBLICAL_ARENAS[currentArenaIndex]?.name ?? arena?.name ?? "Primeiro Chamado"}</b><em>🏆 {trophies} / {BIBLICAL_ARENAS[currentArenaIndex + 1]?.trophies ?? 6000}</em></div>
+      <aside className={styles.eventPlaque}><b>EVENTO</b><small>{dailyName}</small></aside>
+
+      <aside className={styles.missionPanel} aria-label="Missões" onClick={() => setPhase("world")}>
+        <h2>MISSÕES</h2>
+        <div><span>⚔</span><p>Vença 5 batalhas na Arena<i><em style={{ width: "60%" }} /></i></p><b>500</b></div>
+        <div><span>✦</span><p>Aprimore 2 heróis<i><em style={{ width: "50%" }} /></i></p><b>30</b></div>
+        <div><span>♜</span><p>Alcance a Liga Ouro<i><em style={{ width: "14%" }} /></i></p><b>1.000</b></div>
+      </aside>
+
+      <section className={styles.heroHotspots} aria-label="Poderes dos quatro campeões">
+        {menuChampions.map((champion) => <button key={champion.id} type="button" data-active={activeHeroId === champion.id} onClick={() => activatePower(champion.id)} aria-label={`${champion.name}: ${POWER_COPY[champion.id]?.name ?? "Ativar poder"}`} />)}
       </section>
 
-      <section className={squadStyles.squadRoster} aria-label="Quatro personagens principais do baralho">
-        {menuChampions.map((champion) => <article key={champion.id} data-rarity={champion.rarity}>
-          <small>◆ {champion.faith} FÉ</small>
-          <b>{champion.name}</b>
-          <span>{POWER_COPY[champion.id]?.description}</span>
-          <button type="button" onClick={() => activatePower(champion.id)}>{POWER_COPY[champion.id]?.name ?? "Ativar poder"}</button>
-        </article>)}
-      </section>
-
-      <section className={squadStyles.championSelector} aria-label="Selecionar Campeão principal">
-        {featuredDashboardCards.map((champion) => <button
-          type="button"
-          key={champion.id}
-          data-active={champion.id === selectedChampionId}
-          aria-pressed={champion.id === selectedChampionId}
-          onClick={() => selectChampion(champion.id)}
-        >
-          <img src={champion.portrait} alt="" aria-hidden="true" />
-          <span>{champion.name}</span>
-        </button>)}
-      </section>
+      <button type="button" className={styles.exactChest} onClick={() => { setChestNotice(null); setPhase("rewards"); }} aria-label="Abrir baú de recompensas" />
 
       <section className={styles.deckPreview} aria-label="Baralho ativo">
         {deck.map((card) => card && <button type="button" key={card.id} onClick={() => setPhase("cards")}>
@@ -262,24 +287,15 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         </button>)}
       </section>
 
-      <section className={styles.chests} aria-label="Baús">
-        {chestState.slots.map((chest, index) => {
-          const ready = Boolean(chest?.readyAt && chest.readyAt <= Date.now());
-          const definition = chest ? CHEST_DEFINITIONS[chest.kind] : null;
-          return <button type="button" key={chest?.id ?? index} data-kind={chest?.kind ?? "empty"} data-ready={ready} onClick={() => { setChestNotice(null); setPhase("rewards"); }} className={ready ? styles.ready : ""}><span>✦</span><b>{definition?.name.replace("Baú de ", "").replace("Baú da ", "") ?? "Vazio"}</b><small>{ready ? "PRONTO" : chest?.readyAt ? "ABRINDO" : chest ? `${definition?.hours}h` : "GANHE"}</small></button>;
-        })}
-      </section>
-
       {chestNotice && <button type="button" className={styles.chestNotice} onClick={() => { setChestNotice(null); setPhase("rewards"); }}>{chestNotice}<span>VER BAÚS →</span></button>}
 
-      <button type="button" className={styles.battleButton} disabled={deckIds.length !== 8} onClick={() => setPhase("arenaPreview")}><span>⚔</span>{deckIds.length === 8 ? "BATALHAR" : `ESCOLHA 8 CARTAS (${deckIds.length}/8)`}</button>
+      <button type="button" className={styles.battleButton} disabled={deckIds.length !== 8 || isEnteringBattle} onClick={beginBattle}><span>⚔</span>{isEnteringBattle ? "ABRINDO O PORTÃO…" : deckIds.length === 8 ? "BATALHAR" : `ESCOLHA 8 CARTAS (${deckIds.length}/8)`}</button>
 
       <nav className={styles.bottomNav} aria-label="Navegação do Apostolic Arena">
-        <button type="button" className={styles.active}><span>⌂</span><b>INÍCIO</b></button>
-        <button type="button" onClick={() => setPhase("cards")}><span>▣</span><b>CARTAS</b></button>
-        <button type="button" onClick={() => setPhase("world")}><span>✦</span><b>JORNADA</b></button>
-        <button type="button" onClick={() => setPhase("rewards")}><span>◇</span><b>BAÚS</b></button>
-        <button type="button" onClick={leave}><span>↩</span><b>SAIR</b></button>
+        <button type="button" onClick={() => setPhase("world")}><span>▤</span><b>DIÁRIO</b></button>
+        <button type="button" onClick={() => setPhase("world")}><span>♜</span><b>ALIANÇA</b></button>
+        <button type="button" onClick={() => setPhase("cards")}><span>♟</span><b>AMIGOS</b></button>
+        <button type="button" onClick={() => setPhase("rewards")}><span>▰</span><b>INVENTÁRIO</b></button>
       </nav>
     </section> : phase === "arenaPreview" ? <ArenaMatchIntroV203 arenaId={currentArenaTheme.id} onEnter={enterRandomField} onCancel={() => setPhase("menu")} /> : <section className={styles.module}>
       <header className={styles.moduleHeader}>
@@ -291,8 +307,6 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {phase === "battle" && <ApostolicArenaBattle3D onResult={recordBattleResult} />}
         {phase === "cards" && <ArenaCollectionV17 initialDeck={deckIds} onDeckChange={(ids) => {
           setDeckIds(ids);
-          const champion = ids.find((id) => FEATURED_DASHBOARD_IDS.includes(id as typeof FEATURED_DASHBOARD_IDS[number]));
-          if (champion) setSelectedChampionId(champion);
         }} onBattleTest={() => setPhase("arenaPreview")} />}
         {phase === "world" && <ArenaWorldRoadmap onProgressionChange={setPlayerProgression} onBattle={() => setPhase("arenaPreview")} onTraining={() => setPhase("tutorial")} />}
         {phase === "rewards" && <ArenaChestsV18 onStateChange={setChestState} />}

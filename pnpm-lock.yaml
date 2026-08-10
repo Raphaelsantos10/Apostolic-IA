@@ -92,6 +92,9 @@ importers:
       '@babylonjs/core':
         specifier: ^9.19.0
         version: 9.19.0
+      '@babylonjs/loaders':
+        specifier: ^9.19.0
+        version: 9.20.0(@babylonjs/core@9.19.0)(babylonjs-gltf2interface@9.20.0)
       '@lottiefiles/dotlottie-react':
         specifier: 0.19.12
         version: 0.19.12(react@19.2.8)
@@ -542,6 +545,12 @@ packages:
 
   '@babylonjs/core@9.19.0':
     resolution: {integrity: sha512-8bQfSnXnFVEUolPBl5Y3S1WDmQKpPKfguOQvGdCxjTIHlLku8Crc0DdvlFbmqeGpS/bQ3NzwtApB84GScm9v8w==}
+
+  '@babylonjs/loaders@9.20.0':
+    resolution: {integrity: sha512-zGu6SRvN4uzk5KF0exoSjBZbBcvkEz6iteSvgCn4EP4nQD60W2D4WCtF8m2usZ/yALUOQE5EQON6Tuq1I4LWXg==}
+    peerDependencies:
+      '@babylonjs/core': ^9.0.0
+      babylonjs-gltf2interface: ^9.0.0
 
   '@egjs/hammerjs@2.0.17':
     resolution: {integrity: sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==}
@@ -1556,6 +1565,9 @@ packages:
         optional: true
       expo-widgets:
         optional: true
+
+  babylonjs-gltf2interface@9.20.0:
+    resolution: {integrity: sha512-BxqokOP3obVy32CZ9ZV8VQqrVvodiBvk6e3T0Eg9PHM2i6rFXtpXeSEX3isNyPVotonLdBkpeTk2RvRqYIQMEg==}
 
   balanced-match@4.0.4:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
@@ -3718,6 +3730,11 @@ snapshots:
 
   '@babylonjs/core@9.19.0': {}
 
+  '@babylonjs/loaders@9.20.0(@babylonjs/core@9.19.0)(babylonjs-gltf2interface@9.20.0)':
+    dependencies:
+      '@babylonjs/core': 9.19.0
+      babylonjs-gltf2interface: 9.20.0
+
   '@egjs/hammerjs@2.0.17':
     dependencies:
       '@types/hammerjs': 2.0.46
@@ -4924,6 +4941,8 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
+
+  babylonjs-gltf2interface@9.20.0: {}
 
   balanced-match@4.0.4: {}
 

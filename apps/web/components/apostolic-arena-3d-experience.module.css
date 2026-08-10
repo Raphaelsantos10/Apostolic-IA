@@ -149,7 +149,7 @@
 
 /* V7 - composicao reconstruida, sem sobreposicoes */
 .menu .scene {
-  animation: arenaCameraDrift 12s ease-in-out infinite alternate;
+  animation: none;
 }
 
 .league {
@@ -229,4 +229,86 @@
 
 /* V20.7 - estado dos baús no menu */
 .ready{border-color:#78eaff!important;box-shadow:0 0 26px #4fdcff66!important}
+
+/* V21 - HUD cinematografico inspirado no mockup aprovado */
+.menu::after{background:linear-gradient(180deg,#10090470 0,transparent 19%,transparent 70%,#090502d9 100%),linear-gradient(90deg,#080402bd 0,transparent 17% 78%,#080402bf 100%)}
+.menu::before{background:radial-gradient(circle at 50% 42%,transparent 0 34%,#09040122 62%,#0502009c 100%)}
+.topbar{right:1.25rem;left:1.25rem;grid-template-columns:1fr auto auto}
+.profile>span{width:4.15rem;border-color:#dbad55;background:radial-gradient(circle,#286e9f,#0a1722 70%);box-shadow:0 0 0 3px #15100a,0 0 0 5px #c39038,0 8px 22px #000d}
+.profile div{min-width:13.5rem;border-radius:.2rem;background:linear-gradient(180deg,#191713f5,#050606f5)}
+.profile b{color:#f6dfaa;font:900 1.05rem Georgia}.profile small{color:#d0b476}
+.resources span{border-radius:.2rem;color:#f7e3b2;background:linear-gradient(180deg,#1d1a15f3,#060606f5)}
+.windowActions button{border-radius:.15rem}
+.sideRail{position:absolute;z-index:8;top:20%;bottom:14%;left:.9rem;display:flex;flex-direction:column;justify-content:space-between;width:5.8rem}
+.sideRail button{display:grid;justify-items:center;gap:.24rem;padding:.34rem;border:0;background:transparent;color:#d7bd80;text-shadow:0 2px 8px #000;cursor:pointer}
+.sideRail button span{display:grid;place-items:center;width:3.55rem;aspect-ratio:1;border:1px solid #a9782f;background:linear-gradient(145deg,#292017f5,#090806f5);box-shadow:inset 0 0 0 3px #0c0b09,0 5px 14px #000c;color:#f0c463;font-size:1.65rem;clip-path:polygon(50% 0,90% 18%,100% 62%,72% 100%,28% 100%,0 62%,10% 18%)}
+.sideRail button b{font:900 .72rem Georgia;letter-spacing:.06em}.sideRail button.active span{box-shadow:inset 0 0 0 3px #271808,0 0 22px #efae3566;color:#ffe293}
+.eventPlaque{position:absolute;z-index:7;top:28%;left:7rem;display:grid;width:9rem;padding:.85rem;border:1px solid #c08d3c;background:linear-gradient(135deg,#21190ff0,#090908ed);box-shadow:inset 0 0 0 2px #080706,0 10px 24px #000b}.eventPlaque b{color:#efc66e;font:900 .85rem Georgia}.eventPlaque small{margin-top:.25rem;color:#e8ddc3;font-size:.65rem}
+.missionPanel{position:absolute;z-index:7;top:27%;right:1rem;width:min(16.5rem,19vw);border:1px solid #a97831;background:linear-gradient(155deg,#17130ef2,#050607f5);box-shadow:inset 0 0 0 3px #090806,0 12px 30px #000d}
+.missionPanel h2{margin:0;padding:.8rem;border-bottom:1px solid #8c642d;color:#e9c778;font:900 1rem Georgia;text-align:center}.missionPanel>div{display:grid;grid-template-columns:2.2rem 1fr auto;gap:.45rem;align-items:center;padding:.72rem .65rem;border-bottom:1px solid #7c57296b}.missionPanel>div:last-child{border-bottom:0}.missionPanel span{color:#e7bd65;font-size:1.25rem;text-align:center}.missionPanel p{display:grid;gap:.35rem;margin:0;color:#eee4cd;font-size:.62rem}.missionPanel p i{display:block;height:.3rem;overflow:hidden;border:1px solid #5d431e;background:#080705}.missionPanel p em{display:block;height:100%;background:linear-gradient(90deg,#c27b08,#f7c346)}.missionPanel>div>b{color:#f1d49c;font-size:.7rem}
+.heroHotspots{position:absolute;z-index:5;right:17%;bottom:26%;left:17%;display:grid;grid-template-columns:repeat(4,1fr);gap:2.2%;height:42%;pointer-events:none}.heroHotspots button{border:0;background:transparent;cursor:pointer;pointer-events:auto}.heroHotspots button:focus-visible{outline:2px solid #ffd77d;outline-offset:-4px;border-radius:45%}
+.deckPreview{right:auto;bottom:1.45rem;left:1.45rem;z-index:10;align-items:center;width:23rem;height:5.3rem;padding:1.45rem .75rem .45rem;border:1px solid #aa7934;background:linear-gradient(180deg,#16120cf2,#050505f5);box-shadow:inset 0 0 0 3px #080706,0 8px 22px #000c}
+.deckPreview::before{content:"DECK";position:absolute;top:.35rem;left:50%;transform:translateX(-50%);color:#e8c477;font:900 .82rem Georgia;letter-spacing:.08em}.deckPreview button{width:3.35rem;height:3.4rem;aspect-ratio:auto;margin:0 .22rem;border:1px solid #9f7438;border-radius:.12rem;box-shadow:inset 0 0 0 2px #080706}.deckPreview button:nth-child(n+5){display:none}
+.battleButton{bottom:1.15rem;min-width:min(29rem,36vw);min-height:5rem;z-index:12;border-radius:.1rem;background:linear-gradient(180deg,#b63228 0,#7e1516 60%,#48090d 100%);border-color:#efce83;box-shadow:inset 0 0 0 4px #4e170f,inset 0 3px #e56d4e,0 7px 0 #2b0b08,0 0 28px #f18b2b4f;color:#f6d792;text-shadow:0 2px #2a0905}.battleButton:hover{background:linear-gradient(180deg,#d54532,#92191a 60%,#550b0e)}
+.bottomNav{right:1.4rem;bottom:1.45rem;left:auto;display:grid;grid-template-columns:repeat(4,5.4rem);padding:0;border:1px solid #a97831;background:linear-gradient(180deg,#18130df3,#050505f5);box-shadow:inset 0 0 0 3px #080706,0 8px 22px #000c}.bottomNav button{min-height:5.25rem;border-right:1px solid #765127;border-radius:0;color:#d8b96f}.bottomNav button span{font-size:1.55rem}.bottomNav button b{font:800 .58rem Georgia}.chestNotice{bottom:8rem}
+@media(max-width:70rem){.eventPlaque{display:none}.missionPanel{width:13rem}.sideRail{width:4.7rem}.sideRail button span{width:2.9rem}.deckPreview{width:18rem}.bottomNav{grid-template-columns:repeat(4,4.25rem)}.heroHotspots{right:14%;left:14%}}
+@media(max-width:48rem){.topbar{right:.5rem;left:.5rem}.profile>span{width:3rem}.profile div{min-width:0}.sideRail{top:19%;bottom:19%;left:.25rem;width:3.5rem}.sideRail button span{width:2.35rem;font-size:1rem}.sideRail button b{font-size:.48rem}.missionPanel{top:21%;right:.35rem;width:8.5rem}.missionPanel h2{padding:.45rem;font-size:.72rem}.missionPanel>div{grid-template-columns:1.25rem 1fr;padding:.42rem .35rem}.missionPanel>div>b{display:none}.missionPanel span{font-size:.85rem}.missionPanel p{font-size:.48rem}.heroHotspots{right:9%;bottom:25%;left:9%}.deckPreview{bottom:.45rem;left:.35rem;width:12rem;height:3.75rem;padding:1.1rem .35rem .25rem}.deckPreview button{width:2.5rem;height:2.35rem;margin:0 .08rem}.battleButton{bottom:.45rem;min-width:38vw;min-height:3.7rem;font-size:1rem}.bottomNav{right:.35rem;bottom:.45rem;grid-template-columns:repeat(4,3rem)}.bottomNav button{min-height:3.7rem}.bottomNav button b{display:none}.bottomNav button span{font-size:1rem}}
 .chests button{position:relative;overflow:hidden;isolation:isolate}.chests button::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(circle at 50% 35%,#4ad5ff26,transparent 58%)}.chests button[data-kind="silver"]{border-color:#b9d5e2}.chests button[data-kind="gold"]{border-color:#ffd45e;box-shadow:0 0 20px #ffc23a3d}.chests button[data-kind="covenant"]{border-color:#d9a1ff;box-shadow:0 0 24px #a84dff4a}.chests button[data-kind="empty"]{filter:saturate(.35);opacity:.62}.chests button[data-ready="true"] span{animation:menuChestReady .75s ease-in-out infinite alternate}.chestNotice{position:absolute;z-index:24;left:50%;bottom:28%;display:flex;align-items:center;gap:.75rem;max-width:min(88%,42rem);transform:translateX(-50%);padding:.65rem .9rem;border:1px solid #ffe095;border-radius:.6rem;background:#071827ed;color:#ffe5a6;font:800 .62rem system-ui;box-shadow:0 12px 28px #000b}.chestNotice span{color:#68e0ff;white-space:nowrap}@keyframes menuChestReady{to{transform:translateY(-4px) scale(1.12);filter:drop-shadow(0 0 8px #72e9ff)}}@media(max-width:39rem){.chestNotice{bottom:27%;font-size:.52rem}.chestNotice span{display:none}}@media(prefers-reduced-motion:reduce){.chests button[data-ready="true"] span{animation:none}}
+
+/* V21.1 - escala final do cenario */
+.sideRail{bottom:18%}
+.chestNotice{bottom:7.5rem}
+@media(max-width:48rem){.sideRail{bottom:20%}.chestNotice{bottom:5rem}}
+
+/* V21.2 - evita o ranking sob o deck */
+.sideRail{bottom:22%}
+@media(max-width:48rem){.sideRail{bottom:23%}}
+
+/* V22 - composicao visual identica ao dashboard aprovado */
+.exactDashboard{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:fill;user-select:none;pointer-events:none;transition:filter .45s ease,transform 2.2s ease}
+.menu::before{display:none}.menu::after{z-index:2;background:radial-gradient(circle at 50% 52%,transparent 0 56%,#00000020 100%);opacity:0;transition:opacity .35s ease}
+.menu[data-entering="true"]::after{opacity:1;background:radial-gradient(circle at 50% 47%,#ffd66a88 0,#ff9d2426 17%,#0007 72%)}
+.menu[data-entering="true"] .exactDashboard{filter:brightness(1.28) saturate(1.12);transform:scale(1.035)}
+.menu .topbar,.menu .sideRail,.menu .eventPlaque,.menu .missionPanel,.menu .deckPreview,.menu .bottomNav,.menu .battleButton{opacity:0}
+.menu .topbar,.menu .sideRail,.menu .deckPreview,.menu .bottomNav,.menu .battleButton{pointer-events:auto}
+.menu .eventPlaque,.menu .missionPanel{pointer-events:none}
+.menu .sideRail{top:20%;bottom:18%;left:1.2%;width:5.3%}
+.menu .deckPreview{right:auto;bottom:3.2%;left:2.2%;width:23.2%;height:10.8%;padding:0}
+.menu .battleButton{bottom:2.7%;width:25%;min-width:0;min-height:10%;height:10%;border:0}
+.menu .bottomNav{right:2.1%;bottom:3.2%;grid-template-columns:repeat(4,1fr);width:24.3%;height:10.2%;border:0}
+.menu .bottomNav button{min-height:100%}
+.menu .heroHotspots{right:17.2%;bottom:21%;left:15.5%;height:50%;gap:2%}
+.exactChest{position:absolute;z-index:8;bottom:15.5%;left:44.2%;width:11.8%;height:18%;border:0;background:transparent;cursor:pointer}
+.menu .windowActions{position:fixed;top:2.4%;right:2%;width:8.5%;height:6%;justify-content:flex-end}.menu .windowActions button{width:48%;height:100%}
+.menu .chestNotice{bottom:13%;opacity:1}
+@media(max-width:48rem){.menu .sideRail{top:20%;bottom:18%;left:1.2%;width:5.3%}.menu .deckPreview{bottom:3.2%;left:2.2%;width:23.2%;height:10.8%}.menu .battleButton{bottom:2.7%;width:25%;height:10%;min-height:0}.menu .bottomNav{right:2.1%;bottom:3.2%;width:24.3%;height:10.2%}.exactChest{bottom:15.5%;left:44.2%;width:11.8%;height:18%}}
+
+/* V23 - camada funcional e efeitos ambientais */
+.ambientEffects{position:absolute;z-index:1;inset:0;overflow:hidden;pointer-events:none}.cloudVeil{position:absolute;top:-7%;left:-18%;width:75%;height:29%;opacity:.2;filter:blur(16px);background:radial-gradient(ellipse at 22% 62%,#fff8ddc9 0 7%,transparent 25%),radial-gradient(ellipse at 54% 45%,#fff4d2ae 0 9%,transparent 29%),radial-gradient(ellipse at 82% 65%,#fff8e4a6 0 7%,transparent 26%);animation:arenaCloudDrift 24s ease-in-out infinite alternate}.realFire{position:absolute;width:2.7%;height:11%;transform-origin:50% 100%;filter:drop-shadow(0 0 9px #ff7b18) drop-shadow(0 0 22px #ffb62f88);background:radial-gradient(ellipse at 50% 82%,#fff8b8 0 10%,#ffd148 18%,#ff721d 42%,#b91b0b 63%,transparent 70%);clip-path:polygon(50% 0,66% 29%,82% 17%,76% 55%,100% 72%,69% 100%,31% 100%,0 72%,24% 50%,22% 20%,42% 36%);animation:arenaFireDance .34s ease-in-out infinite alternate}.realFire::before{content:"";position:absolute;inset:28% 25% 3%;background:linear-gradient(180deg,#fffbd6,#ffd22f 34%,#ff5b12 74%,transparent);clip-path:polygon(48% 0,71% 44%,59% 39%,83% 100%,19% 100%,38% 49%);animation:arenaFireCore .24s ease-in-out infinite alternate}.fireLeft{left:1.8%;bottom:14.7%}.fireRight{right:1.8%;bottom:14.7%}.fireGateLeft,.fireGateRight{width:1.15%;height:5.2%;bottom:43.2%;opacity:.9}.fireGateLeft{left:45.9%}.fireGateRight{right:45.9%}.embers{position:absolute;right:2.8%;bottom:20%;width:3px;height:3px;border-radius:50%;background:#ffd66b;box-shadow:-6px -8px #ff9b2b,7px -15px #ffd66b,-2px -26px #ff7020,10px -34px #ffe7a0,-9px -41px #ff9c35;animation:arenaEmberRise 1.55s linear infinite}
+.exactProfileHit{position:absolute;z-index:12;top:1.4%;left:.7%;width:19.2%;height:10%;border:0;background:transparent;cursor:pointer}.exactResourceHits{position:absolute;z-index:12;top:1.5%;right:1.6%;display:grid;grid-template-columns:1.35fr 1.35fr .56fr .56fr .56fr;gap:.35%;width:35%;height:7%}.exactResourceHits button{border:0;background:transparent;cursor:pointer}.exactProfileHit:hover,.exactProfileHit:focus-visible,.exactResourceHits button:hover,.exactResourceHits button:focus-visible,.exactChest:hover,.exactChest:focus-visible{outline:2px solid #ffe19a;outline-offset:-3px;box-shadow:inset 0 0 18px #ffd55a5c,0 0 16px #ffbd3f6b}
+.menu .missionPanel{cursor:pointer}.menu .heroHotspots button{position:relative}.menu .heroHotspots button:hover,.menu .heroHotspots button:focus-visible{background:radial-gradient(ellipse at 50% 63%,#ffd45a26,transparent 55%);box-shadow:inset 0 -5px 25px #ffc24424}.menu .heroHotspots button[data-active="true"]{background:radial-gradient(ellipse at 50% 58%,#fff5a988 0,#ffc42f38 28%,transparent 63%);filter:drop-shadow(0 0 16px #ffd44c);animation:arenaHeroPower 1.25s ease-out}.menu .sideRail button:hover,.menu .bottomNav button:hover,.menu .deckPreview button:hover{opacity:1;background:#ffd66a1f;box-shadow:inset 0 0 0 2px #ffe19a,0 0 18px #ffbd3f66}.menu .battleButton:hover{opacity:.18;background:#fff5c9;box-shadow:0 0 32px #ffd55e}.menu .battleButton:disabled{cursor:not-allowed}
+@keyframes arenaCloudDrift{to{transform:translate3d(48%,3%,0) scale(1.08);opacity:.3}}@keyframes arenaFireDance{to{transform:scaleX(.82) scaleY(1.09) rotate(2deg);filter:drop-shadow(0 0 12px #ff8a17) drop-shadow(0 0 30px #ffb42faa)}}@keyframes arenaFireCore{to{transform:translateX(8%) scaleY(1.12);opacity:.82}}@keyframes arenaEmberRise{to{transform:translate3d(-7px,-54px,0) scale(.35);opacity:0}}@keyframes arenaHeroPower{0%{transform:scale(.98);opacity:.25}35%{transform:scale(1.025);opacity:1}100%{transform:scale(1);opacity:.15}}
+@media(prefers-reduced-motion:reduce){.cloudVeil,.realFire,.realFire::before,.embers,.menu .heroHotspots button[data-active="true"]{animation:none}}
+
+/* V24 - cena Tripo real com HUD funcional */
+.exactDashboard,.exactProfileHit,.exactResourceHits{display:none}
+.menu{background:#170b04}
+.menu .scene{z-index:0;opacity:1}
+.menu .topbar,.menu .sideRail,.menu .eventPlaque,.menu .missionPanel,.menu .deckPreview,.menu .bottomNav,.menu .battleButton{opacity:1}
+.menu .topbar{z-index:14}.menu .sideRail{z-index:12}.menu .eventPlaque,.menu .missionPanel{z-index:11}.menu .deckPreview,.menu .bottomNav,.menu .battleButton{z-index:13}
+.menu .missionPanel{pointer-events:auto}.menu .battleButton:disabled{filter:grayscale(.3) brightness(.72)}
+.menu[data-entering="true"] .scene{filter:brightness(1.16) saturate(1.08)}
+.menu[data-entering="true"] .battleButton{filter:brightness(1.18)}
+.ambientEffects{z-index:3}.heroHotspots,.exactChest{z-index:9}
+
+/* V26 - acabamento após teste real */
+.fireLeft,.fireRight,.embers{display:none}
+.menu .resources{margin-right:7.5rem}
+.menu .heroHotspots button[data-active="true"]{animation-duration:.95s}
+@media(max-width:48rem){.menu .resources{margin-right:4.5rem}}
+
+/* V31 - atmosfera cinematografica e HUD vivo */
+.cloudVeilFar{position:absolute;top:8%;right:-25%;width:88%;height:24%;opacity:.14;filter:blur(22px);background:radial-gradient(ellipse at 18% 48%,#fff4d9b5 0 8%,transparent 27%),radial-gradient(ellipse at 50% 62%,#fff9e7a8 0 10%,transparent 31%),radial-gradient(ellipse at 82% 44%,#fff2cf9b 0 8%,transparent 28%);animation:arenaCloudDriftFar 37s linear infinite alternate}.windStreaks{position:absolute;inset:15% -20% 30%;opacity:.2;filter:blur(.6px);background:repeating-linear-gradient(167deg,transparent 0 74px,#fff1c863 76px 77px,transparent 79px 146px);transform:skewX(-12deg);animation:arenaWindSweep 9s linear infinite}.dustMotes{position:absolute;left:8%;bottom:20%;width:4px;height:4px;border-radius:50%;background:#ffe7a0;box-shadow:9vw -5vh #ffd77b,18vw -14vh #fff0bd,29vw -4vh #eab85f,39vw -18vh #ffe6a1,51vw -9vh #ffd477,62vw -22vh #fff2c8,73vw -12vh #eebf6b,84vw -25vh #ffe4a0;opacity:.5;animation:arenaDustFloat 8s ease-in-out infinite alternate}.resources span{gap:.42rem!important;padding:.42rem .5rem!important}.resources span>i{display:grid;place-items:center;width:1.45rem;aspect-ratio:1;border-radius:50%;font-style:normal}.coinIcon{border:1px solid #ffe494;background:radial-gradient(circle at 35% 30%,#fff9ba,#ffc029 42%,#8d4b05);color:#7b4304;text-shadow:0 1px #fff4a6}.gemIcon{border-radius:.35rem!important;background:linear-gradient(135deg,#9bf4ff,#138de8 48%,#063875);color:#d9fbff;transform:rotate(45deg)}.gemIcon::first-letter{transform:rotate(-45deg)}.resources span>b{display:grid;place-items:center;width:1.3rem;aspect-ratio:1;border-left:1px solid #d7a74855;color:#ffe197;font-size:1rem}.battleButton::before,.battleButton::after{content:"";position:absolute;top:50%;width:2rem;aspect-ratio:1;transform:translateY(-50%) rotate(45deg);border:2px solid #ffe092;background:linear-gradient(135deg,#c98b2b,#5a2508);box-shadow:0 0 16px #ffbf4570}.battleButton::before{left:-1rem}.battleButton::after{right:-1rem}@keyframes arenaCloudDriftFar{to{transform:translate3d(-52%,4%,0) scale(1.12);opacity:.22}}@keyframes arenaWindSweep{to{transform:translate3d(-18%,4%,0) skewX(-12deg)}}@keyframes arenaDustFloat{to{transform:translate3d(2vw,-5vh,0) scale(.65);opacity:.16}}@media(prefers-reduced-motion:reduce){.cloudVeilFar,.windStreaks,.dustMotes{animation:none}}
+
+/* V27 - retorno instantaneo enquanto o GLB recarrega */
+.menu .scene{background:#251208 url('/games/apostolic-arena/dashboard/golden-mountains-sky-v24.webp') center/cover no-repeat}

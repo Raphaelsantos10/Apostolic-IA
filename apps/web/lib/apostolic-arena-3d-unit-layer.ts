@@ -85,6 +85,7 @@ export class ApostolicArena3DUnitLayer {
     instance.root.position.set((unit.x - .5) * 18, .28, (unit.y - .5) * 32);
     instance.root.scaling.setAll(definition.scale);
     instance.root.rotationQuaternion = null;
+    instance.root.rotation.x = definition.rotationX ?? 0;
     instance.root.rotation.y = definition.rotationY + (unit.team === "blue" ? Math.PI : 0);
   }
 
@@ -95,7 +96,7 @@ export class ApostolicArena3DUnitLayer {
     instance.animations.forEach((animation) => animation.stop());
     const aliases = definition.animations[state];
     const selected = instance.animations.find((animation) => aliases.some((alias) => animation.name.toLowerCase().includes(alias.toLowerCase())));
-    selected?.start(state === "walk", 1, selected.from, selected.to, false);
+    selected?.start(state === "walk" || selected.name.toLowerCase().includes("idle") || selected.name.toLowerCase().includes("mixamo"), 1, selected.from, selected.to, false);
     instance.state = state;
   }
 

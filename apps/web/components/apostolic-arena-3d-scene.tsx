@@ -11,6 +11,7 @@ export type ArenaSceneChampion = {
   rarity: "common" | "rare" | "epic" | "legendary" | "champion";
   faith: number;
   type: string;
+  portrait?: string;
 };
 
 export type ArenaPowerSignal = {
@@ -20,6 +21,9 @@ export type ArenaPowerSignal = {
 
 type PowerKind = "waters" | "harp" | "frenzy" | "shield" | "generic";
 type FeaturedVisual = { image: string; power: PowerKind; height: number };
+
+const DASHBOARD_MODEL_ROOT = "/models/apostolic-arena/dashboard/";
+const DAVI_MODEL_ROOT = "/models/apostolic-arena/characters/";
 
 type AnimatedActor = {
   root: TransformNode;
@@ -33,10 +37,10 @@ type AnimatedActor = {
 };
 
 const FEATURED_VISUALS: Record<number, FeaturedVisual> = {
-  117: { image: "/games/apostolic-arena/characters/menu-v7/117-moises-menu-v7.png", power: "waters", height: 6.2 },
-  119: { image: "/games/apostolic-arena/characters/menu-v7/119-davi-menu-v7.png", power: "harp", height: 6.15 },
-  121: { image: "/games/apostolic-arena/characters/menu-v7/121-sansao-menu-v7.png", power: "frenzy", height: 6.1 },
-  125: { image: "/games/apostolic-arena/characters/menu-v7/125-debora-menu-v7.png", power: "shield", height: 6.15 }
+  117: { image: "/games/apostolic-arena/characters/menu-v7/117-moises-menu-v7.png", power: "waters", height: 4.2 },
+  119: { image: "/games/apostolic-arena/characters/menu-v7/119-davi-menu-v7.png", power: "harp", height: 4.1 },
+  121: { image: "/games/apostolic-arena/characters/menu-v7/121-sansao-menu-v7.png", power: "frenzy", height: 4.15 },
+  125: { image: "/games/apostolic-arena/characters/menu-v7/125-debora-menu-v7.png", power: "shield", height: 4.1 }
 };
 
 const DEFAULT_CHAMPIONS: ArenaSceneChampion[] = [
@@ -46,17 +50,23 @@ const DEFAULT_CHAMPIONS: ArenaSceneChampion[] = [
   { id: 125, name: "Débora, a Juíza Campeã", rarity: "champion", faith: 4, type: "Campeã inspiradora" }
 ];
 
-export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, powerSignal, onProgress, onReady }: {
+export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, powerSignal, gateSignal = 0, chestReady = false, onProgress, onReady }: {
   mode: SceneMode;
   champions?: ArenaSceneChampion[];
   powerSignal?: ArenaPowerSignal | null;
+  gateSignal?: number;
+  chestReady?: boolean;
   onProgress?: (progress: number, label: string) => void;
   onReady?: () => void;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const powerSignalRef = useRef(powerSignal);
+  const gateSignalRef = useRef(gateSignal);
+  const chestReadyRef = useRef(chestReady);
 
   useEffect(() => { powerSignalRef.current = powerSignal; }, [powerSignal]);
+  useEffect(() => { gateSignalRef.current = gateSignal; }, [gateSignal]);
+  useEffect(() => { chestReadyRef.current = chestReady; }, [chestReady]);
 
   useEffect(() => {
     let disposed = false;
@@ -64,7 +74,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
 
     onProgress?.(12, "Abrindo o Salão dos Campeões");
 
-    void import("@babylonjs/core").then((BABYLON) => {
+    void Promise.all([import("@babylonjs/core"), import("@babylonjs/loaders/glTF")]).then(async ([BABYLON]) => {
       if (disposed || !canvasRef.current) return;
       onProgress?.(42, "Materializando os quatro heróis");
 
@@ -78,21 +88,22 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       engine.setHardwareScalingLevel(window.devicePixelRatio > 1.5 ? 1.3 : 1);
       const scene = new BABYLON.Scene(engine);
       scene.clearColor = new BABYLON.Color4(0.012, 0.024, 0.045, 1);
-      scene.imageProcessingConfiguration.contrast = 1.14;
-      scene.imageProcessingConfiguration.exposure = 1.04;
+      scene.imageProcessingConfiguration.contrast = 1.06;
+      scene.imageProcessingConfiguration.exposure = 0.96;
+      scene.imageProcessingConfiguration.toneMappingEnabled = true;
 
       const camera = new BABYLON.ArcRotateCamera(
         "champion-hall-camera",
         -Math.PI / 2,
-        1.14,
-        mode === "loading" ? 21.5 : 18.4,
-        new BABYLON.Vector3(0, 2.25, 0),
+        mode === "loading" ? 1.14 : 1.25,
+        mode === "loading" ? 21.5 : 19.2,
+        new BABYLON.Vector3(0, mode === "loading" ? 2.05 : 2.65, 0.6),
         scene
       );
-      camera.lowerRadiusLimit = 17;
-      camera.upperRadiusLimit = 21.5;
-      camera.lowerBetaLimit = 1.04;
-      camera.upperBetaLimit = 1.23;
+      camera.lowerRadiusLimit = 17.5;
+      camera.upperRadiusLimit = 23;
+      camera.lowerBetaLimit = mode === "loading" ? 1.04 : 1.2;
+      camera.upperBetaLimit = mode === "loading" ? 1.23 : 1.3;
       camera.lowerAlphaLimit = -1.68;
       camera.upperAlphaLimit = -1.46;
       camera.wheelPrecision = 120;
@@ -100,12 +111,15 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       camera.attachControl(canvas, true);
 
       const sky = new BABYLON.HemisphericLight("sky", new BABYLON.Vector3(0, 1, 0), scene);
-      sky.intensity = 1.05;
+      sky.intensity = 0.52;
       sky.diffuse = new BABYLON.Color3(0.58, 0.72, 1);
       sky.groundColor = new BABYLON.Color3(0.2, 0.11, 0.045);
       const sunrise = new BABYLON.DirectionalLight("sunrise", new BABYLON.Vector3(-0.45, -1, 0.5), scene);
-      sunrise.intensity = 2.1;
+      sunrise.intensity = 0.88;
       sunrise.diffuse = new BABYLON.Color3(1, 0.67, 0.34);
+      const heroKey = new BABYLON.DirectionalLight("hero-camera-key", new BABYLON.Vector3(0.08, -0.28, 1), scene);
+      heroKey.intensity = mode === "menu" ? 1.35 : 0.75;
+      heroKey.diffuse = new BABYLON.Color3(1, 0.86, 0.69);
 
       const standardMaterial = (name: string, color: [number, number, number], emissive?: [number, number, number], alpha = 1) => {
         const value = new BABYLON.StandardMaterial(name, scene);
@@ -117,16 +131,29 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       };
 
       const backdropMaterial = new BABYLON.StandardMaterial("real-champion-hall-material", scene);
-      const backdropTexture = new BABYLON.Texture("/games/apostolic-arena/scenes/champion-hall-clean-v7.png", scene, true, true);
+      const backdropPath = mode === "menu" ? "/games/apostolic-arena/dashboard/golden-mountains-sky-v24.webp" : "/games/apostolic-arena/scenes/champion-hall-clean-v7.png";
+      const backdropTexture = new BABYLON.Texture(backdropPath, scene, true, true);
       backdropMaterial.diffuseTexture = backdropTexture;
       backdropMaterial.emissiveTexture = backdropTexture;
       backdropMaterial.emissiveColor = new BABYLON.Color3(0.62, 0.62, 0.62);
       backdropMaterial.disableLighting = true;
       backdropMaterial.backFaceCulling = false;
-      const backdrop = BABYLON.MeshBuilder.CreatePlane("real-champion-hall", { width: 32.5, height: 18.28 }, scene);
-      backdrop.position = new BABYLON.Vector3(0, 5.2, 6.5);
+      const backdrop = BABYLON.MeshBuilder.CreatePlane("real-champion-hall", { width: 42, height: 23.63 }, scene);
+      backdrop.position = new BABYLON.Vector3(0, 5.35, 8.8);
       backdrop.material = backdropMaterial;
       backdrop.applyFog = false;
+      if (mode === "menu") {
+        backdrop.setEnabled(true);
+      }
+
+      const resize = () => engine.resize();
+      window.addEventListener("resize", resize);
+      engine.runRenderLoop(() => scene.render());
+      cleanup = () => {
+        window.removeEventListener("resize", resize);
+        scene.dispose();
+        engine.dispose();
+      };
 
       const darkStone = standardMaterial("dark-stone", [0.035, 0.05, 0.08]);
       const gold = standardMaterial("gold", [0.74, 0.39, 0.055], [0.2, 0.08, 0.004]);
@@ -137,18 +164,138 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       const shield = standardMaterial("shield-power", [0.04, 0.7, 0.72], [0.04, 0.45, 0.72], 0.28);
       shield.backFaceCulling = false;
 
+      let gateLeft: TransformNode | null = null;
+      let gateRight: TransformNode | null = null;
+      let gateLeftClosedX = 0;
+      let gateRightClosedX = 0;
+      let portalGlow: AbstractMesh | null = null;
+      let portalGlowMaterial: StandardMaterial | null = null;
+      let portalLight: { intensity: number } | null = null;
+      let chestLid: TransformNode | null = null;
+      const characterModels = new Map<number, TransformNode>();
+      const stagePositions = champions.length === 1
+        ? [new BABYLON.Vector3(0, 0.34, -1.6)]
+        : [
+            new BABYLON.Vector3(-5.9, 0.34, -1.85),
+            new BABYLON.Vector3(-2.35, 0.34, -0.5),
+            new BABYLON.Vector3(2.4, 0.34, -0.62),
+            new BABYLON.Vector3(5.95, 0.34, -1.85)
+          ];
+      const fireLights: Array<{ light: { intensity: number }; phase: number }> = [];
+
+      if (mode === "menu") {
+        onProgress?.(48, "Carregando a cidadela unificada");
+        const result = await BABYLON.SceneLoader.ImportMeshAsync(null, DASHBOARD_MODEL_ROOT, "apostolic-dashboard-final-v24.glb", scene);
+        result.meshes.forEach((mesh) => {
+          mesh.receiveShadows = true;
+          mesh.alwaysSelectAsActiveMesh = false;
+        });
+        gateLeft = scene.getNodeByName("Gate_Door_L") as TransformNode | null;
+        gateRight = scene.getNodeByName("Gate_Door_R") as TransformNode | null;
+        gateLeftClosedX = gateLeft?.position.x ?? 0;
+        gateRightClosedX = gateRight?.position.x ?? 0;
+        portalGlowMaterial = standardMaterial("portal-seam-light", [1, 0.58, 0.08], [1, 0.42, 0.025], 0.72);
+        portalGlowMaterial.disableLighting = true;
+        portalGlowMaterial.backFaceCulling = false;
+        portalGlow = BABYLON.MeshBuilder.CreatePlane("portal-seam", { width: 0.1, height: 5.5 }, scene);
+        portalGlow.position = new BABYLON.Vector3(0, 2.6, 3.68);
+        portalGlow.material = portalGlowMaterial;
+        const gateLight = new BABYLON.PointLight("portal-golden-light", new BABYLON.Vector3(0, 2.6, 3.25), scene);
+        gateLight.diffuse = new BABYLON.Color3(1, 0.52, 0.08);
+        gateLight.range = 10;
+        gateLight.intensity = 0.58;
+        portalLight = gateLight;
+        chestLid = scene.getNodeByName("Chest_Lid") as TransformNode | null;
+        const chest = scene.getNodeByName("Chest_Placement") as TransformNode | null;
+        if (chest) {
+          chest.position.y = -0.08;
+          chest.position.z = -4.15;
+        }
+        stagePositions.forEach((position, index) => {
+          const pedestal = scene.getNodeByName(`Pedestal_${index + 1}_Placement`) as TransformNode | null;
+          if (pedestal) {
+            pedestal.position.x = position.x;
+            pedestal.position.z = position.z;
+          }
+        });
+        const towerRed = scene.getNodeByName("Tower_Red_Placement") as TransformNode | null;
+        const towerBlue = scene.getNodeByName("Tower_Blue_Placement") as TransformNode | null;
+        if (towerRed && towerBlue) {
+          const redX = towerRed.position.x;
+          towerRed.position.x = towerBlue.position.x;
+          towerBlue.position.x = redX;
+        }
+        const characterAssets = [
+          { id: 1, file: "119-davi-idle-v28.glb" },
+          { id: 11, file: "11-sacerdote-levita-idle-v30.glb" }
+        ];
+        for (const asset of characterAssets) {
+          try {
+            const imported = await BABYLON.SceneLoader.ImportMeshAsync(null, DAVI_MODEL_ROOT, asset.file, scene);
+            const model = imported.meshes[0] as TransformNode | null;
+            if (model) {
+              model.setEnabled(false);
+              characterModels.set(asset.id, model);
+            }
+            imported.meshes.forEach((mesh) => {
+              mesh.receiveShadows = true;
+              mesh.alwaysSelectAsActiveMesh = true;
+              const material = mesh.material;
+              if (material instanceof BABYLON.PBRMaterial) {
+                material.environmentIntensity = 1.45;
+                material.metallic = Math.min(material.metallic ?? 0.16, 0.16);
+                material.roughness = Math.max(material.roughness ?? 0.52, 0.52);
+              }
+            });
+            imported.animationGroups[0]?.start(true, 1);
+          } catch {
+            characterModels.delete(asset.id);
+          }
+        }
+        onProgress?.(72, "Acendendo braseiros e guardiões");
+        for (const x of [-8.3, 8.3]) {
+          const fire = new BABYLON.ParticleSystem(`brazier-fire-${x}`, 420, scene);
+          fire.particleTexture = new BABYLON.Texture("/games/apostolic-arena/dashboard/flame-particle-v24.png", scene, true, false);
+          fire.emitter = new BABYLON.Vector3(x, 0.72, 0.45);
+          fire.minEmitBox = new BABYLON.Vector3(-0.17, 0, -0.17);
+          fire.maxEmitBox = new BABYLON.Vector3(0.17, 0.1, 0.17);
+          fire.color1 = new BABYLON.Color4(1, 0.82, 0.24, 1);
+          fire.color2 = new BABYLON.Color4(1, 0.22, 0.025, 0.95);
+          fire.colorDead = new BABYLON.Color4(0.17, 0.025, 0.005, 0);
+          fire.minSize = 0.08;
+          fire.maxSize = 0.31;
+          fire.minLifeTime = 0.28;
+          fire.maxLifeTime = 0.78;
+          fire.emitRate = 105;
+          fire.blendMode = BABYLON.ParticleSystem.BLENDMODE_ADD;
+          fire.direction1 = new BABYLON.Vector3(-0.13, 1.35, -0.08);
+          fire.direction2 = new BABYLON.Vector3(0.13, 2.15, 0.08);
+          fire.minEmitPower = 0.72;
+          fire.maxEmitPower = 1.35;
+          fire.updateSpeed = 0.012;
+          fire.gravity = new BABYLON.Vector3(0, 0.24, 0);
+          fire.start();
+          const flameLight = new BABYLON.PointLight(`brazier-light-${x}`, new BABYLON.Vector3(x, 1.18, 0.45), scene);
+          flameLight.diffuse = new BABYLON.Color3(1, 0.32, 0.045);
+          flameLight.range = 4.8;
+          flameLight.intensity = 1.25;
+          fireLights.push({ light: flameLight, phase: x < 0 ? 0 : Math.PI * 0.67 });
+        }
+      }
+
       const foreground = BABYLON.MeshBuilder.CreateCylinder("foreground-depth", { diameter: 15.8, height: 0.18, tessellation: 72 }, scene);
       foreground.position = new BABYLON.Vector3(0, -0.16, -0.2);
       foreground.scaling.z = 0.5;
       foreground.material = darkStone;
+      foreground.setEnabled(mode !== "menu");
       const floorRing = BABYLON.MeshBuilder.CreateTorus("foreground-ring", { diameter: 13.8, thickness: 0.07, tessellation: 96 }, scene);
       floorRing.rotation.x = Math.PI / 2;
       floorRing.position.y = -0.04;
       floorRing.scaling.z = 0.52;
       floorRing.material = gold;
+      floorRing.setEnabled(mode !== "menu");
 
       const actors: AnimatedActor[] = [];
-      const positions = champions.length === 1 ? [0] : [-5.1, -1.72, 1.72, 5.1];
 
       const addRingEffects = (effects: TransformNode, championId: number, material: StandardMaterial, vertical = false) => {
         const meshes: AbstractMesh[] = [];
@@ -165,7 +312,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
 
       const makeFeaturedChampion = (champion: ArenaSceneChampion, index: number, visual: FeaturedVisual) => {
         const root = new BABYLON.TransformNode(`real-champion-${champion.id}`, scene);
-        root.position = new BABYLON.Vector3(positions[index] ?? 0, 0.08, index % 2 === 0 ? -0.08 : 0.04);
+        root.position.copyFrom(stagePositions[index] ?? BABYLON.Vector3.Zero());
         const action = new BABYLON.TransformNode(`real-action-${champion.id}`, scene);
         action.parent = root;
         const effects = new BABYLON.TransformNode(`real-effects-${champion.id}`, scene);
@@ -175,29 +322,65 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         pedestal.parent = root;
         pedestal.position.y = -0.02;
         pedestal.material = blue;
+        pedestal.setEnabled(mode !== "menu");
         const pedestalRing = BABYLON.MeshBuilder.CreateTorus(`hero-ring-${champion.id}`, { diameter: 2.18, thickness: 0.075, tessellation: 64 }, scene);
         pedestalRing.parent = root;
         pedestalRing.rotation.x = Math.PI / 2;
-        pedestalRing.position.y = 0.08;
+        pedestalRing.position.y = 0.05;
         pedestalRing.material = gold;
+        const altarColors = [new BABYLON.Color3(0.12, 0.55, 1), new BABYLON.Color3(1, 0.63, 0.12), new BABYLON.Color3(1, 0.2, 0.08), new BABYLON.Color3(0.28, 0.9, 0.48)];
+        const altarColor = altarColors[index] ?? altarColors[1]!;
+        const altarMaterial = new BABYLON.StandardMaterial(`altar-light-${champion.id}`, scene);
+        altarMaterial.diffuseColor = altarColor;
+        altarMaterial.emissiveColor = altarColor.scale(0.9);
+        altarMaterial.alpha = 0.22;
+        altarMaterial.disableLighting = true;
+        const altarAura = BABYLON.MeshBuilder.CreateDisc(`altar-aura-${champion.id}`, { radius: 1.25, tessellation: 64 }, scene);
+        altarAura.parent = root;
+        altarAura.rotation.x = Math.PI / 2;
+        altarAura.position.y = 0.08;
+        altarAura.material = altarMaterial;
+        const altarLight = new BABYLON.PointLight(`altar-point-${champion.id}`, new BABYLON.Vector3(0, 0.55, -0.25), scene);
+        altarLight.parent = root;
+        altarLight.diffuse = altarColor;
+        altarLight.intensity = 1.15;
+        altarLight.range = 5.5;
 
-        const heroTexture = new BABYLON.Texture(visual.image, scene, true, true);
-        heroTexture.hasAlpha = true;
-        const heroMaterial = new BABYLON.StandardMaterial(`hero-material-${champion.id}`, scene);
-        heroMaterial.diffuseTexture = heroTexture;
-        heroMaterial.opacityTexture = heroTexture;
-        heroMaterial.useAlphaFromDiffuseTexture = true;
-        heroMaterial.emissiveColor = new BABYLON.Color3(0.17, 0.17, 0.17);
-        heroMaterial.specularColor = BABYLON.Color3.Black();
-        heroMaterial.backFaceCulling = false;
-        heroMaterial.transparencyMode = BABYLON.Material.MATERIAL_ALPHATESTANDBLEND;
+        const characterModel = characterModels.get(champion.id);
+        if (characterModel) {
+          characterModel.setEnabled(true);
+          characterModel.parent = action;
+          characterModel.position.set(0, 0.12, 0);
+          characterModel.scaling.setAll(champion.id === 11 ? 4.25 : 4.1);
+          characterModel.rotationQuaternion = null;
+          characterModel.rotation.x = 0;
+          characterModel.rotation.y = Math.PI;
+          const characterFill = new BABYLON.PointLight(`character-soft-fill-${champion.id}`, new BABYLON.Vector3(0, 2.4, -3.2), scene);
+          characterFill.parent = root;
+          characterFill.diffuse = new BABYLON.Color3(1, 0.84, 0.65);
+          characterFill.intensity = 0.82;
+          characterFill.range = 8;
+        } else {
+          const heroTexture = new BABYLON.Texture(visual.image, scene, true, true);
+          heroTexture.hasAlpha = true;
+          const heroMaterial = new BABYLON.StandardMaterial(`hero-material-${champion.id}`, scene);
+          heroMaterial.diffuseTexture = heroTexture;
+          heroMaterial.emissiveTexture = heroTexture;
+          heroMaterial.opacityTexture = heroTexture;
+          heroMaterial.useAlphaFromDiffuseTexture = true;
+          heroMaterial.emissiveColor = new BABYLON.Color3(0.72, 0.72, 0.72);
+          heroMaterial.disableLighting = true;
+          heroMaterial.specularColor = BABYLON.Color3.Black();
+          heroMaterial.backFaceCulling = false;
+          heroMaterial.transparencyMode = BABYLON.Material.MATERIAL_ALPHATESTANDBLEND;
 
-        const hero = BABYLON.MeshBuilder.CreatePlane(`hero-figure-${champion.id}`, { width: visual.height * 0.75, height: visual.height, sideOrientation: BABYLON.Mesh.DOUBLESIDE }, scene);
-        hero.parent = action;
-        hero.position.y = visual.height / 2 + 0.13;
-        hero.position.z = -0.04;
-        hero.material = heroMaterial;
-        hero.billboardMode = BABYLON.Mesh.BILLBOARDMODE_Y;
+          const hero = BABYLON.MeshBuilder.CreatePlane(`hero-figure-${champion.id}`, { width: visual.height * 0.75, height: visual.height, sideOrientation: BABYLON.Mesh.DOUBLESIDE }, scene);
+          hero.parent = action;
+          hero.position.y = visual.height / 2 + 0.13;
+          hero.position.z = -0.04;
+          hero.material = heroMaterial;
+          hero.billboardMode = BABYLON.Mesh.BILLBOARDMODE_Y;
+        }
 
         const shadowMaterial = new BABYLON.StandardMaterial(`hero-shadow-${champion.id}`, scene);
         shadowMaterial.diffuseColor = BABYLON.Color3.Black();
@@ -247,7 +430,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
 
       const makeFallbackChampion = (champion: ArenaSceneChampion, index: number) => {
         const root = new BABYLON.TransformNode(`fallback-champion-${champion.id}`, scene);
-        root.position = new BABYLON.Vector3(positions[index] ?? 0, 0.08, 0);
+        root.position.copyFrom(stagePositions[index] ?? BABYLON.Vector3.Zero());
         const action = new BABYLON.TransformNode(`fallback-action-${champion.id}`, scene);
         action.parent = root;
         const effects = new BABYLON.TransformNode(`fallback-effects-${champion.id}`, scene);
@@ -271,26 +454,53 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       if (mode === "menu") {
         const roster = champions.length ? champions.slice(0, 4) : DEFAULT_CHAMPIONS;
         roster.forEach((champion, index) => {
-          const visual = FEATURED_VISUALS[champion.id];
+          const visual = FEATURED_VISUALS[champion.id] ?? (champion.portrait ? { image: champion.portrait, power: "generic" as const, height: 4.05 } : undefined);
           if (visual) makeFeaturedChampion(champion, index, visual);
           else makeFallbackChampion(champion, index);
         });
       }
 
       const glow = new BABYLON.GlowLayer("arena-glow", scene, { blurKernelSize: 48 });
-      glow.intensity = 0.74;
+      glow.intensity = 0.42;
 
       let clock = 0;
       let lastPowerNonce = -1;
-      let nextAutomaticPower = 2.2;
-      let automaticIndex = 0;
+      let lastGateSignal = gateSignalRef.current;
+      let gateStartedAt = -100;
       scene.onBeforeRenderObservable.add(() => {
         const delta = engine.getDeltaTime() / 1000;
         clock += delta;
         floorRing.rotation.z += delta * 0.045;
+        if (gateSignalRef.current !== lastGateSignal) {
+          lastGateSignal = gateSignalRef.current;
+          gateStartedAt = clock;
+        }
+        const gateElapsed = gateStartedAt >= 0 ? clock - gateStartedAt : -1;
+        const gateProgress = gateElapsed >= 0 ? Math.min(1, gateElapsed / 2.15) : 0;
+        const easedGate = 1 - Math.pow(1 - gateProgress, 3);
+        if (gateLeft) gateLeft.rotation.y = -easedGate * 1.48;
+        if (gateRight) gateRight.rotation.y = easedGate * 1.48;
+        if (gateLeft) gateLeft.position.x = gateLeftClosedX - easedGate * 0.38;
+        if (gateRight) gateRight.position.x = gateRightClosedX + easedGate * 0.38;
+        if (portalGlow) portalGlow.scaling.x = 1 + easedGate * 38;
+        if (portalGlowMaterial) portalGlowMaterial.alpha = 0.68 + easedGate * 0.24 + Math.sin(clock * 2.4) * 0.04;
+        if (portalLight) portalLight.intensity = 0.52 + easedGate * 2.15 + Math.sin(clock * 2.1) * 0.08;
+        if (gateElapsed >= 0 && gateElapsed < 2.4) {
+          camera.radius = Math.max(15.8, (mode === "loading" ? 21.5 : 19.2) - easedGate * 3.4);
+          camera.target.z = easedGate * 1.45;
+        }
+        if (chestLid) {
+          const chestTarget = chestReadyRef.current ? -0.42 - Math.sin(clock * 1.7) * 0.045 : 0;
+          chestLid.rotation.x += (chestTarget - chestLid.rotation.x) * Math.min(1, delta * 4.2);
+        }
+        fireLights.forEach(({ light, phase }) => {
+          light.intensity = 1.08 + Math.sin(clock * 8.3 + phase) * 0.2 + Math.sin(clock * 13.7 + phase) * 0.1;
+        });
         if (mode === "menu") {
-          camera.alpha = -Math.PI / 2 + Math.sin(clock * 0.16) * 0.014;
-          backdrop.scaling.setAll(1 + Math.sin(clock * 0.22) * 0.0025);
+          camera.alpha = -Math.PI / 2 + Math.sin(clock * 0.13) * 0.027;
+          camera.beta = 1.245 + Math.sin(clock * 0.1) * 0.008;
+          backdrop.scaling.setAll(1.012 + Math.sin(clock * 0.18) * 0.006);
+          backdropTexture.uOffset = Math.sin(clock * 0.035) * 0.006;
           const glowLevel = 0.6 + Math.sin(clock * 1.05) * 0.035;
           backdropMaterial.emissiveColor.set(glowLevel, glowLevel, glowLevel);
         }
@@ -301,12 +511,6 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
           const actor = actors.find((entry) => entry.championId === signal.championId);
           if (actor) actor.powerStartedAt = clock;
         }
-        if (mode === "menu" && actors.length && clock >= nextAutomaticPower) {
-          actors[automaticIndex % actors.length]!.powerStartedAt = clock;
-          automaticIndex += 1;
-          nextAutomaticPower = clock + 5.2;
-        }
-
         actors.forEach((actor, index) => {
           const idle = Math.sin(clock * 1.55 + index * 0.72);
           actor.root.position.y = actor.baseY + idle * 0.035;
@@ -332,9 +536,6 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         });
       });
 
-      const resize = () => engine.resize();
-      window.addEventListener("resize", resize);
-      engine.runRenderLoop(() => scene.render());
       onProgress?.(86, "Preparando poderes e cartas");
       scene.executeWhenReady(() => {
         if (disposed) return;
@@ -342,11 +543,6 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         onReady?.();
       });
 
-      cleanup = () => {
-        window.removeEventListener("resize", resize);
-        scene.dispose();
-        engine.dispose();
-      };
     }).catch(() => {
       onProgress?.(100, "Modo compatível preparado");
       onReady?.();
