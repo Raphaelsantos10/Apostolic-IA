@@ -89,7 +89,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       const scene = new BABYLON.Scene(engine);
       scene.clearColor = new BABYLON.Color4(0.012, 0.024, 0.045, 1);
       scene.imageProcessingConfiguration.contrast = 1.06;
-      scene.imageProcessingConfiguration.exposure = 0.96;
+      scene.imageProcessingConfiguration.exposure = 1.08;
       scene.imageProcessingConfiguration.toneMappingEnabled = true;
 
       const camera = new BABYLON.ArcRotateCamera(
@@ -118,7 +118,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       sunrise.intensity = 0.88;
       sunrise.diffuse = new BABYLON.Color3(1, 0.67, 0.34);
       const heroKey = new BABYLON.DirectionalLight("hero-camera-key", new BABYLON.Vector3(0.08, -0.28, 1), scene);
-      heroKey.intensity = mode === "menu" ? 1.35 : 0.75;
+      heroKey.intensity = mode === "menu" ? 2.05 : 0.85;
       heroKey.diffuse = new BABYLON.Color3(1, 0.86, 0.69);
 
       const standardMaterial = (name: string, color: [number, number, number], emissive?: [number, number, number], alpha = 1) => {
@@ -194,11 +194,27 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         gateRight = scene.getNodeByName("Gate_Door_R") as TransformNode | null;
         gateLeftClosedX = gateLeft?.position.x ?? 0;
         gateRightClosedX = gateRight?.position.x ?? 0;
-        portalGlowMaterial = standardMaterial("portal-seam-light", [1, 0.58, 0.08], [1, 0.42, 0.025], 0.72);
+        const portalTexture = new BABYLON.DynamicTexture("portal-soft-texture", { width: 256, height: 512 }, scene, false);
+        const portalContext = portalTexture.getContext();
+        const portalGradient = portalContext.createRadialGradient(128, 256, 4, 128, 256, 128);
+        portalGradient.addColorStop(0, "rgba(255,255,230,1)");
+        portalGradient.addColorStop(0.16, "rgba(255,210,80,.92)");
+        portalGradient.addColorStop(0.48, "rgba(255,118,15,.42)");
+        portalGradient.addColorStop(1, "rgba(255,80,0,0)");
+        portalContext.fillStyle = portalGradient;
+        portalContext.fillRect(0, 0, 256, 512);
+        portalTexture.hasAlpha = true;
+        portalTexture.update();
+        portalGlowMaterial = standardMaterial("portal-seam-light", [1, 0.72, 0.22], [1, 0.58, 0.08], 0.5);
+        portalGlowMaterial.diffuseTexture = portalTexture;
+        portalGlowMaterial.emissiveTexture = portalTexture;
+        portalGlowMaterial.opacityTexture = portalTexture;
+        portalGlowMaterial.useAlphaFromDiffuseTexture = true;
         portalGlowMaterial.disableLighting = true;
         portalGlowMaterial.backFaceCulling = false;
-        portalGlow = BABYLON.MeshBuilder.CreatePlane("portal-seam", { width: 0.1, height: 5.5 }, scene);
+        portalGlow = BABYLON.MeshBuilder.CreatePlane("portal-seam", { width: 4.2, height: 6.2 }, scene);
         portalGlow.position = new BABYLON.Vector3(0, 2.6, 3.68);
+        portalGlow.scaling.x = 0.08;
         portalGlow.material = portalGlowMaterial;
         const gateLight = new BABYLON.PointLight("portal-golden-light", new BABYLON.Vector3(0, 2.6, 3.25), scene);
         gateLight.diffuse = new BABYLON.Color3(1, 0.52, 0.08);
@@ -210,6 +226,10 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         if (chest) {
           chest.position.y = -0.08;
           chest.position.z = -4.15;
+          const chestGlow = new BABYLON.PointLight("chest-reward-glow", new BABYLON.Vector3(0, 0.75, -4.1), scene);
+          chestGlow.diffuse = new BABYLON.Color3(1, 0.62, 0.1);
+          chestGlow.intensity = 1.15;
+          chestGlow.range = 5.5;
         }
         stagePositions.forEach((position, index) => {
           const pedestal = scene.getNodeByName(`Pedestal_${index + 1}_Placement`) as TransformNode | null;
@@ -242,9 +262,10 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
               mesh.alwaysSelectAsActiveMesh = true;
               const material = mesh.material;
               if (material instanceof BABYLON.PBRMaterial) {
-                material.environmentIntensity = 1.45;
+                material.environmentIntensity = 2.1;
                 material.metallic = Math.min(material.metallic ?? 0.16, 0.16);
                 material.roughness = Math.max(material.roughness ?? 0.52, 0.52);
+                material.emissiveColor = material.albedoColor.scale(0.1);
               }
             });
             imported.animationGroups[0]?.start(true, 1);
@@ -280,6 +301,23 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
           flameLight.range = 4.8;
           flameLight.intensity = 1.25;
           fireLights.push({ light: flameLight, phase: x < 0 ? 0 : Math.PI * 0.67 });
+        }
+        for (const tower of [{ x: -7.05, color: "red" as const }, { x: 7.05, color: "blue" as const }]) {
+          const flame = new BABYLON.ParticleSystem(`tower-${tower.color}-flame`, 520, scene);
+          flame.particleTexture = new BABYLON.Texture("/games/apostolic-arena/dashboard/flame-particle-v24.png", scene, true, false);
+          flame.emitter = new BABYLON.Vector3(tower.x, 7.15, 4.1);
+          flame.minEmitBox = new BABYLON.Vector3(-0.28, 0, -0.28);
+          flame.maxEmitBox = new BABYLON.Vector3(0.28, 0.12, 0.28);
+          flame.color1 = tower.color === "red" ? new BABYLON.Color4(1, 0.12, 0.02, 1) : new BABYLON.Color4(0.08, 0.55, 1, 1);
+          flame.color2 = tower.color === "red" ? new BABYLON.Color4(1, 0.62, 0.08, 0.95) : new BABYLON.Color4(0.25, 0.9, 1, 0.95);
+          flame.colorDead = new BABYLON.Color4(0.02, 0.02, 0.08, 0);
+          flame.minSize = 0.22; flame.maxSize = 0.65; flame.minLifeTime = 0.35; flame.maxLifeTime = 0.95;
+          flame.emitRate = 145; flame.blendMode = BABYLON.ParticleSystem.BLENDMODE_ADD;
+          flame.direction1 = new BABYLON.Vector3(-0.18, 1.3, -0.12); flame.direction2 = new BABYLON.Vector3(0.18, 2.4, 0.12);
+          flame.minEmitPower = 0.8; flame.maxEmitPower = 1.55; flame.updateSpeed = 0.012; flame.start();
+          const towerLight = new BABYLON.PointLight(`tower-${tower.color}-light`, new BABYLON.Vector3(tower.x, 7.25, 4.1), scene);
+          towerLight.diffuse = tower.color === "red" ? new BABYLON.Color3(1, 0.08, 0.02) : new BABYLON.Color3(0.02, 0.48, 1);
+          towerLight.intensity = 2.25; towerLight.range = 8;
         }
       }
 
@@ -328,6 +366,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         pedestalRing.rotation.x = Math.PI / 2;
         pedestalRing.position.y = 0.05;
         pedestalRing.material = gold;
+        pedestalRing.setEnabled(false);
         const altarColors = [new BABYLON.Color3(0.12, 0.55, 1), new BABYLON.Color3(1, 0.63, 0.12), new BABYLON.Color3(1, 0.2, 0.08), new BABYLON.Color3(0.28, 0.9, 0.48)];
         const altarColor = altarColors[index] ?? altarColors[1]!;
         const altarMaterial = new BABYLON.StandardMaterial(`altar-light-${champion.id}`, scene);
@@ -340,6 +379,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         altarAura.rotation.x = Math.PI / 2;
         altarAura.position.y = 0.08;
         altarAura.material = altarMaterial;
+        altarAura.setEnabled(false);
         const altarLight = new BABYLON.PointLight(`altar-point-${champion.id}`, new BABYLON.Vector3(0, 0.55, -0.25), scene);
         altarLight.parent = root;
         altarLight.diffuse = altarColor;
@@ -482,15 +522,15 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         if (gateRight) gateRight.rotation.y = easedGate * 1.48;
         if (gateLeft) gateLeft.position.x = gateLeftClosedX - easedGate * 0.38;
         if (gateRight) gateRight.position.x = gateRightClosedX + easedGate * 0.38;
-        if (portalGlow) portalGlow.scaling.x = 1 + easedGate * 38;
-        if (portalGlowMaterial) portalGlowMaterial.alpha = 0.68 + easedGate * 0.24 + Math.sin(clock * 2.4) * 0.04;
+        if (portalGlow) portalGlow.scaling.x = 0.08 + easedGate * 0.92;
+        if (portalGlowMaterial) portalGlowMaterial.alpha = 0.46 + easedGate * 0.42 + Math.sin(clock * 2.4) * 0.04;
         if (portalLight) portalLight.intensity = 0.52 + easedGate * 2.15 + Math.sin(clock * 2.1) * 0.08;
         if (gateElapsed >= 0 && gateElapsed < 2.4) {
           camera.radius = Math.max(15.8, (mode === "loading" ? 21.5 : 19.2) - easedGate * 3.4);
           camera.target.z = easedGate * 1.45;
         }
         if (chestLid) {
-          const chestTarget = chestReadyRef.current ? -0.42 - Math.sin(clock * 1.7) * 0.045 : 0;
+          const chestTarget = chestReadyRef.current ? -0.62 - Math.sin(clock * 1.7) * 0.045 : -0.12;
           chestLid.rotation.x += (chestTarget - chestLid.rotation.x) * Math.min(1, delta * 4.2);
         }
         fireLights.forEach(({ light, phase }) => {

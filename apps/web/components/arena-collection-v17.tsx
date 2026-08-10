@@ -8,6 +8,7 @@ import styles from "./arena-collection-v17.module.css";
 
 const ACTIVE_DECK_KEY = "apostolic-arena-active-deck";
 const SAVED_DECKS_KEY = "apostolic-arena-decks-v16";
+const ACTIVE_DECK_SLOT_KEY = "apostolic-arena-active-deck-slot-v32";
 const POWER_LABELS: Record<Arena25DPowerKind, string> = {
   warrior: "Combatente", ranged: "Distância", guardian: "Guardião", healer: "Curador", swarm: "Enxame", burst: "Impacto", champion: "Campeão"
 };
@@ -23,16 +24,18 @@ const readSavedDecks = (): SavedDecks => {
   } catch { return {}; }
 };
 
-export function ArenaCollectionV17({ initialDeck, onDeckChange, onBattleTest }: {
+export function ArenaCollectionV17({ initialDeck, initialDeckSlot = 1, onDeckChange, onBattleTest }: {
   initialDeck: number[];
-  onDeckChange: (ids: number[]) => void;
+  initialDeckSlot?: number;
+  onDeckChange: (ids: number[], slot: number) => void;
   onBattleTest: () => void;
 }) {
   const [savedDecks, setSavedDecks] = useState<SavedDecks>(() => readSavedDecks());
+  const [activeDeckSlot, setActiveDeckSlot] = useState(initialDeckSlot);
   const [deckIds, setDeckIds] = useState<number[]>(() => initialDeck.length === 8 ? initialDeck : []);
   const [progression, setProgression] = useState(() => loadArenaProgression());
   const [detailCardId, setDetailCardId] = useState<number | null>(null);
-  const [deckName, setDeckName] = useState(() => savedDecks.active?.name ?? "Meu baralho");
+  const [deckName, setDeckName] = useState(() => savedDecks[String(initialDeckSlot)]?.name ?? (initialDeckSlot === 1 ? "Personagens iniciais" : `Meu baralho ${initialDeckSlot}`));
   const [search, setSearch] = useState("");
   const [rarity, setRarity] = useState("all");
   const [power, setPower] = useState("all");
@@ -99,13 +102,22 @@ export function ArenaCollectionV17({ initialDeck, onDeckChange, onBattleTest }: 
       setMessage("O deck contém uma carta ainda bloqueada");
       return false;
     }
-    const nextSaved = { ...savedDecks, active: { name: name.trim() || "Meu baralho", ids } };
+    const nextSaved = { ...savedDecks, [String(activeDeckSlot)]: { name: name.trim() || `Meu baralho ${activeDeckSlot}`, ids } };
     setSavedDecks(nextSaved);
     window.localStorage.setItem(SAVED_DECKS_KEY, JSON.stringify(nextSaved));
     window.localStorage.setItem(ACTIVE_DECK_KEY, JSON.stringify(ids));
-    onDeckChange(ids);
+    window.localStorage.setItem(ACTIVE_DECK_SLOT_KEY, String(activeDeckSlot));
+    onDeckChange(ids, activeDeckSlot);
     setMessage("Baralho salvo e ligado à batalha");
     return true;
+  };
+
+  const switchDeckSlot = (slot: number) => {
+    const selected = savedDecks[String(slot)];
+    setActiveDeckSlot(slot);
+    setDeckIds(selected?.ids?.slice(0, 8) ?? []);
+    setDeckName(selected?.name ?? (slot === 1 ? "Personagens iniciais" : `Meu baralho ${slot}`));
+    setMessage(selected ? `Deck ${slot} carregado` : `Monte o deck ${slot}`);
   };
 
   const toggleCard = (cardId: number) => {
@@ -157,6 +169,10 @@ export function ArenaCollectionV17({ initialDeck, onDeckChange, onBattleTest }: 
       <div className={styles.playerProgress}><b>NÍVEL {progression.playerLevel}</b><span>✦ {progression.xp} XP</span><span>🏆 {progression.trophies}</span><span>◉ {progression.gold}</span><small>ARENA {currentArena + 1}</small></div>
       <label>Nome do deck<input value={deckName} maxLength={32} onChange={(event) => setDeckName(event.target.value)} /></label>
     </header>
+
+    <nav className={styles.champions} aria-label="Seis espaços de baralho">
+      {Array.from({ length: 6 }, (_, index) => <button type="button" key={index + 1} data-active={activeDeckSlot === index + 1} onClick={() => switchDeckSlot(index + 1)}><span>DECK {index + 1}</span></button>)}
+    </nav>
 
     <section className={styles.deckPanel}>
       <div className={styles.deckSummary}><b>{deckIds.length}/8</b><span>Fé média {averageFaith.toFixed(1)}</span><em>{message}</em></div>

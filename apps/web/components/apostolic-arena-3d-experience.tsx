@@ -19,6 +19,8 @@ import loadingStyles from "./apostolic-arena-loading-v2.module.css";
 
 type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards";
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
+const SAVED_DECKS_KEY = "apostolic-arena-decks-v16";
+const ACTIVE_DECK_SLOT_KEY = "apostolic-arena-active-deck-slot-v32";
 const LAST_LOADING_SCENE_KEY = "apostolic-arena-last-loading-scene";
 const POWER_COPY: Record<number, { name: string; description: string }> = {
   1: { name: "Disparo de Funda", description: "Ataque preciso à distância" },
@@ -82,20 +84,18 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
   const [loadingTipIndex, setLoadingTipIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [deckIds, setDeckIds] = useState<number[]>([]);
+  const [activeDeckSlot, setActiveDeckSlot] = useState(1);
   const [powerSignal, setPowerSignal] = useState<ArenaPowerSignal | null>(null);
   const [gateSignal, setGateSignal] = useState(0);
   const [activeHeroId, setActiveHeroId] = useState<number | null>(null);
   const [isEnteringBattle, setIsEnteringBattle] = useState(false);
   const [chestState, setChestState] = useState<ArenaChestState>(() => loadArenaChests());
   const [chestNotice, setChestNotice] = useState<string | null>(null);
+  const [chestOpening, setChestOpening] = useState(false);
   const [playerProgression, setPlayerProgression] = useState<ArenaPlayerProgression>(() => loadArenaProgression());
   const currentArenaTheme = arenaThemeForProgression(playerProgression).theme;
   const dailyName = useMemo(() => dailyEventFor(new Date())?.name ?? "Missão da Aliança", []);
   const loadingScene = LOADING_SCENES[loadingSceneIndex] ?? LOADING_SCENES[0]!;
-  const deck = useMemo(() => {
-    const selected = deckIds.map((id) => ARENA_CARD_CATALOG.find((card) => card.id === id)).filter(Boolean);
-    return selected.slice(0, 4);
-  }, [deckIds]);
   const menuCards = useMemo(() => {
     const unlocked = new Set(playerProgression.unlockedCardIds);
     const isCharacter = (type: string) => !/^(Feitiço|Construção|Utilidade|Tática|Superescudo)/i.test(type);
@@ -118,15 +118,42 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
 
   useEffect(() => {
     try {
+      const storedSlot = window.localStorage.getItem(ACTIVE_DECK_SLOT_KEY);
+      let slot = Math.min(6, Math.max(1, Number(storedSlot ?? "1")));
+      const savedDecks = JSON.parse(window.localStorage.getItem(SAVED_DECKS_KEY) ?? "{}") as Record<string, { name: string; ids: number[] }>;
       const saved = JSON.parse(window.localStorage.getItem(DECK_STORAGE_KEY) ?? "[]") as number[];
-      if (Array.isArray(saved) && saved.length) {
-        const savedDeck = saved.slice(0, 8);
-        setDeckIds(savedDeck);
-      } else {
-        setDeckIds([]);
+      const starters = ARENA_CARD_CATALOG.filter((card) => !/^(Feitiço|Construção|Utilidade|Tática|Superescudo)/i.test(card.type)).slice(0, 8).map((card) => card.id);
+      if (savedDecks["1"]?.ids?.length !== 8) savedDecks["1"] = { name: "Personagens iniciais", ids: starters };
+
+      const legacyDeck = Array.isArray(saved) ? saved.slice(0, 8) : [];
+      const isDifferentFromStarters = legacyDeck.length === 8 && legacyDeck.some((id, index) => id !== starters[index]);
+      if (isDifferentFromStarters && savedDecks["2"]?.ids?.length !== 8) {
+        savedDecks["2"] = { name: "Meu baralho 2", ids: legacyDeck };
+        if (!storedSlot) slot = 2;
       }
+
+      const activeIds = savedDecks[String(slot)]?.ids?.length === 8 ? savedDecks[String(slot)]!.ids : savedDecks["1"]!.ids;
+      if (activeIds === savedDecks["1"]!.ids) slot = 1;
+      setActiveDeckSlot(slot);
+      setDeckIds(activeIds);
+      window.localStorage.setItem(SAVED_DECKS_KEY, JSON.stringify(savedDecks));
+      window.localStorage.setItem(ACTIVE_DECK_SLOT_KEY, String(slot));
+      window.localStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(activeIds));
     } catch { setDeckIds([]); }
   }, []);
+
+  const selectDeckSlot = (slot: number) => {
+    try {
+      const savedDecks = JSON.parse(window.localStorage.getItem(SAVED_DECKS_KEY) ?? "{}") as Record<string, { name: string; ids: number[] }>;
+      const selected = savedDecks[String(slot)]?.ids ?? [];
+      setActiveDeckSlot(slot);
+      window.localStorage.setItem(ACTIVE_DECK_SLOT_KEY, String(slot));
+      if (selected.length === 8) {
+        setDeckIds(selected);
+        window.localStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(selected));
+      } else setPhase("cards");
+    } catch { setPhase("cards"); }
+  };
 
   useEffect(() => {
     let previous = -1;
@@ -230,7 +257,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         <aside className={loadingStyles.loadingTip}><b>DICA DE BATALHA</b><span>{LOADING_TIPS[loadingTipIndex]}</span></aside>
       </div>
     </section> : phase === "tutorial" ? <ArenaTutorialV206 onComplete={() => setPhase("menu")} /> : phase === "menu" ? <section className={styles.menu} data-entering={isEnteringBattle}>
-      <div className={styles.scene}><ApostolicArena3DScene mode="menu" champions={menuChampions} powerSignal={powerSignal} gateSignal={gateSignal} chestReady={hasReadyChest} /></div>
+      <div className={styles.scene}><ApostolicArena3DScene mode="menu" champions={menuChampions} powerSignal={powerSignal} gateSignal={gateSignal} chestReady={hasReadyChest || chestOpening} /></div>
       <div className={styles.ambientEffects} aria-hidden="true">
         <i className={styles.cloudVeil} />
         <i className={styles.cloudVeilFar} />
@@ -278,13 +305,10 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {menuChampions.map((champion) => <button key={champion.id} type="button" data-active={activeHeroId === champion.id} onClick={() => activatePower(champion.id)} aria-label={`${champion.name}: ${POWER_COPY[champion.id]?.name ?? "Ativar poder"}`} />)}
       </section>
 
-      <button type="button" className={styles.exactChest} onClick={() => { setChestNotice(null); setPhase("rewards"); }} aria-label="Abrir baú de recompensas" />
+      <button type="button" className={styles.exactChest} onClick={() => { setChestNotice(null); setChestOpening(true); window.setTimeout(() => { setChestOpening(false); setPhase("rewards"); }, 900); }} aria-label="Abrir baú de recompensas" />
 
       <section className={styles.deckPreview} aria-label="Baralho ativo">
-        {deck.map((card) => card && <button type="button" key={card.id} onClick={() => setPhase("cards")}>
-          <img src={card.portrait} alt={card.name} />
-          <b>{card.faith}</b>
-        </button>)}
+        {Array.from({ length: 6 }, (_, index) => <button className={styles.deckSlot} data-active={activeDeckSlot === index + 1} type="button" key={index + 1} onClick={() => selectDeckSlot(index + 1)} aria-label={`Selecionar deck ${index + 1}`}>{index + 1}</button>)}
       </section>
 
       {chestNotice && <button type="button" className={styles.chestNotice} onClick={() => { setChestNotice(null); setPhase("rewards"); }}>{chestNotice}<span>VER BAÚS →</span></button>}
@@ -305,8 +329,9 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
       </header>
       <main className={styles.moduleContent}>
         {phase === "battle" && <ApostolicArenaBattle3D onResult={recordBattleResult} />}
-        {phase === "cards" && <ArenaCollectionV17 initialDeck={deckIds} onDeckChange={(ids) => {
+        {phase === "cards" && <ArenaCollectionV17 initialDeck={deckIds} initialDeckSlot={activeDeckSlot} onDeckChange={(ids, slot) => {
           setDeckIds(ids);
+          setActiveDeckSlot(slot);
         }} onBattleTest={() => setPhase("arenaPreview")} />}
         {phase === "world" && <ArenaWorldRoadmap onProgressionChange={setPlayerProgression} onBattle={() => setPhase("arenaPreview")} onTraining={() => setPhase("tutorial")} />}
         {phase === "rewards" && <ArenaChestsV18 onStateChange={setChestState} />}
