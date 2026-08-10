@@ -118,7 +118,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       sunrise.intensity = 0.88;
       sunrise.diffuse = new BABYLON.Color3(1, 0.67, 0.34);
       const heroKey = new BABYLON.DirectionalLight("hero-camera-key", new BABYLON.Vector3(0.08, -0.28, 1), scene);
-      heroKey.intensity = mode === "menu" ? 2.05 : 0.85;
+      heroKey.intensity = mode === "menu" ? 1.35 : 0.85;
       heroKey.diffuse = new BABYLON.Color3(1, 0.86, 0.69);
 
       const standardMaterial = (name: string, color: [number, number, number], emissive?: [number, number, number], alpha = 1) => {
@@ -138,8 +138,8 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       backdropMaterial.emissiveColor = new BABYLON.Color3(0.62, 0.62, 0.62);
       backdropMaterial.disableLighting = true;
       backdropMaterial.backFaceCulling = false;
-      const backdrop = BABYLON.MeshBuilder.CreatePlane("real-champion-hall", { width: 42, height: 23.63 }, scene);
-      backdrop.position = new BABYLON.Vector3(0, 5.35, 8.8);
+      const backdrop = BABYLON.MeshBuilder.CreatePlane("real-champion-hall", { width: 54, height: 30.38 }, scene);
+      backdrop.position = new BABYLON.Vector3(0, 5.5, 9.8);
       backdrop.material = backdropMaterial;
       backdrop.applyFog = false;
       if (mode === "menu") {
@@ -172,6 +172,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       let portalGlowMaterial: StandardMaterial | null = null;
       let portalLight: { intensity: number } | null = null;
       let chestLid: TransformNode | null = null;
+      let chestInnerMaterial: StandardMaterial | null = null;
       const characterModels = new Map<number, TransformNode>();
       const stagePositions = champions.length === 1
         ? [new BABYLON.Vector3(0, 0.34, -1.6)]
@@ -226,10 +227,12 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         if (chest) {
           chest.position.y = -0.08;
           chest.position.z = -4.15;
-          const chestGlow = new BABYLON.PointLight("chest-reward-glow", new BABYLON.Vector3(0, 0.75, -4.1), scene);
-          chestGlow.diffuse = new BABYLON.Color3(1, 0.62, 0.1);
-          chestGlow.intensity = 1.15;
-          chestGlow.range = 5.5;
+          chestInnerMaterial = standardMaterial("chest-inner-gold", [1, 0.68, 0.12], [1, 0.5, 0.025], 0.84);
+          chestInnerMaterial.disableLighting = true;
+          const chestInnerGlow = BABYLON.MeshBuilder.CreateBox("chest-inner-glow", { width: 1.28, height: 0.18, depth: 0.58 }, scene);
+          chestInnerGlow.parent = chest;
+          chestInnerGlow.position = new BABYLON.Vector3(0, 0.72, -0.02);
+          chestInnerGlow.material = chestInnerMaterial;
         }
         stagePositions.forEach((position, index) => {
           const pedestal = scene.getNodeByName(`Pedestal_${index + 1}_Placement`) as TransformNode | null;
@@ -262,10 +265,10 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
               mesh.alwaysSelectAsActiveMesh = true;
               const material = mesh.material;
               if (material instanceof BABYLON.PBRMaterial) {
-                material.environmentIntensity = 2.1;
+                material.environmentIntensity = asset.id === 1 ? 1.22 : 1.65;
                 material.metallic = Math.min(material.metallic ?? 0.16, 0.16);
                 material.roughness = Math.max(material.roughness ?? 0.52, 0.52);
-                material.emissiveColor = material.albedoColor.scale(0.1);
+                material.emissiveColor = material.albedoColor.scale(asset.id === 1 ? 0.025 : 0.065);
               }
             });
             imported.animationGroups[0]?.start(true, 1);
@@ -398,7 +401,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
           const characterFill = new BABYLON.PointLight(`character-soft-fill-${champion.id}`, new BABYLON.Vector3(0, 2.4, -3.2), scene);
           characterFill.parent = root;
           characterFill.diffuse = new BABYLON.Color3(1, 0.84, 0.65);
-          characterFill.intensity = 0.82;
+          characterFill.intensity = champion.id === 1 ? 0.42 : 0.55;
           characterFill.range = 8;
         } else {
           const heroTexture = new BABYLON.Texture(visual.image, scene, true, true);
@@ -495,7 +498,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         const roster = champions.length ? champions.slice(0, 4) : DEFAULT_CHAMPIONS;
         roster.forEach((champion, index) => {
           const visual = FEATURED_VISUALS[champion.id] ?? (champion.portrait ? { image: champion.portrait, power: "generic" as const, height: 4.05 } : undefined);
-          if (visual) makeFeaturedChampion(champion, index, visual);
+          if (visual && characterModels.has(champion.id)) makeFeaturedChampion(champion, index, visual);
           else makeFallbackChampion(champion, index);
         });
       }
@@ -530,8 +533,13 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
           camera.target.z = easedGate * 1.45;
         }
         if (chestLid) {
-          const chestTarget = chestReadyRef.current ? -0.62 - Math.sin(clock * 1.7) * 0.045 : -0.12;
+          const chestTarget = chestReadyRef.current ? -0.82 - Math.sin(clock * 1.7) * 0.035 : -0.32;
           chestLid.rotation.x += (chestTarget - chestLid.rotation.x) * Math.min(1, delta * 4.2);
+        }
+        if (chestInnerMaterial) {
+          const pulse = (chestReadyRef.current ? 0.98 : 0.76) + Math.sin(clock * 2.25) * 0.08;
+          chestInnerMaterial.alpha = pulse;
+          chestInnerMaterial.emissiveColor.set(1 * pulse, 0.5 * pulse, 0.025);
         }
         fireLights.forEach(({ light, phase }) => {
           light.intensity = 1.08 + Math.sin(clock * 8.3 + phase) * 0.2 + Math.sin(clock * 13.7 + phase) * 0.1;

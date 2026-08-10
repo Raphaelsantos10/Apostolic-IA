@@ -92,6 +92,9 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
   const [chestState, setChestState] = useState<ArenaChestState>(() => loadArenaChests());
   const [chestNotice, setChestNotice] = useState<string | null>(null);
   const [chestOpening, setChestOpening] = useState(false);
+  const [menuSceneReady, setMenuSceneReady] = useState(false);
+  const [soundEnabled, setSoundEnabled] = useState(false);
+  const ambienceRef = useRef<HTMLAudioElement | null>(null);
   const [playerProgression, setPlayerProgression] = useState<ArenaPlayerProgression>(() => loadArenaProgression());
   const currentArenaTheme = arenaThemeForProgression(playerProgression).theme;
   const dailyName = useMemo(() => dailyEventFor(new Date())?.name ?? "Missão da Aliança", []);
@@ -177,6 +180,32 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
   }, []);
 
   useEffect(() => {
+    const audio = ambienceRef.current ?? new Audio();
+    ambienceRef.current = audio;
+    audio.loop = true;
+    audio.volume = phase === "loading" ? 0.2 : 0.14;
+    const nextSource = phase === "loading"
+      ? "/games/apostolic-arena/audio/loading-celestial-v34.ogg"
+      : phase === "menu"
+        ? "/games/apostolic-arena/audio/cidadela-viva-v34.ogg"
+        : "";
+    if (!soundEnabled || !nextSource) {
+      audio.pause();
+      return;
+    }
+    if (!audio.src.endsWith(nextSource)) {
+      audio.src = nextSource;
+      audio.load();
+    }
+    void audio.play().catch(() => setSoundEnabled(false));
+  }, [phase, soundEnabled]);
+
+  useEffect(() => () => {
+    ambienceRef.current?.pause();
+    ambienceRef.current = null;
+  }, []);
+
+  useEffect(() => {
     if (phase !== "loading") return;
     const recoveryTimer = window.setTimeout(() => {
       setProgress(100);
@@ -188,6 +217,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
 
   useEffect(() => {
     if (phase !== "menu") return;
+    setMenuSceneReady(false);
     setPlayerProgression(loadArenaProgression());
     setChestState(loadArenaChests());
   }, [phase]);
@@ -200,6 +230,8 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
   const loadingReady = useCallback(() => {
     window.setTimeout(() => setPhase(window.localStorage.getItem(ARENA_TUTORIAL_COMPLETE_KEY_V206) === "1" ? "menu" : "tutorial"), 550);
   }, []);
+
+  const menuReady = useCallback(() => setMenuSceneReady(true), []);
 
   const requestFullscreen = async () => {
     if (document.fullscreenElement) return;
@@ -256,8 +288,9 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         <small>{loadingLabel}</small>
         <aside className={loadingStyles.loadingTip}><b>DICA DE BATALHA</b><span>{LOADING_TIPS[loadingTipIndex]}</span></aside>
       </div>
-    </section> : phase === "tutorial" ? <ArenaTutorialV206 onComplete={() => setPhase("menu")} /> : phase === "menu" ? <section className={styles.menu} data-entering={isEnteringBattle}>
-      <div className={styles.scene}><ApostolicArena3DScene mode="menu" champions={menuChampions} powerSignal={powerSignal} gateSignal={gateSignal} chestReady={hasReadyChest || chestOpening} /></div>
+    </section> : phase === "tutorial" ? <ArenaTutorialV206 onComplete={() => setPhase("menu")} /> : phase === "menu" ? <section className={styles.menu} data-entering={isEnteringBattle} data-scene-ready={menuSceneReady}>
+      <div className={styles.scene}><ApostolicArena3DScene mode="menu" champions={menuChampions} powerSignal={powerSignal} gateSignal={gateSignal} chestReady={hasReadyChest || chestOpening} onReady={menuReady} /></div>
+      {!menuSceneReady && <div className={styles.menuSceneLoading} role="status"><i /><b>PREPARANDO A CIDADELA</b><small>Cenário e heróis estão sendo posicionados…</small></div>}
       <div className={styles.ambientEffects} aria-hidden="true">
         <i className={styles.cloudVeil} />
         <i className={styles.cloudVeilFar} />
@@ -337,5 +370,6 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {phase === "rewards" && <ArenaChestsV18 onStateChange={setChestState} />}
       </main>
     </section>}
+    {(phase === "loading" || phase === "menu") && <button type="button" className={styles.soundControl} data-enabled={soundEnabled} onClick={() => setSoundEnabled((current) => !current)} aria-label={soundEnabled ? "Desativar som ambiente" : "Ativar som ambiente"}>{soundEnabled ? "🔊 SOM" : "🔇 ATIVAR SOM"}</button>}
   </section>;
 }
