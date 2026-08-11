@@ -9,6 +9,7 @@ import styles from "./arena-shop-v38.module.css";
 import "./arena-shop-v42.css";
 import { ArenaPassV46 } from "./arena-pass-v46";
 import { ArenaEconomyAdminV48 } from "./arena-economy-admin-v48";
+import Link from "next/link";
 
 const CATEGORIES: { id: ArenaShopCategory; label: string }[] = [
   { id: "featured", label: "Destaques" }, { id: "chests", label: "Baús" }, { id: "skins", label: "Skins" },
@@ -34,6 +35,7 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
   const [claimingGift, setClaimingGift] = useState(false);
   const [freeGems, setFreeGems] = useState<FreeGemStatus | null>(null);
   const [loadout, setLoadout] = useState<CosmeticLoadout>({});
+  const [legalAccepted, setLegalAccepted] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -58,6 +60,11 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
     return () => { active = false; };
   }, [onWalletChange]);
   useEffect(() => { void createClient().rpc("arena_track_event", { p_event_name: category === "pass" ? "pass_view" : "shop_view", p_product_id: null, p_properties: { category } }); }, [category]);
+  useEffect(() => {
+    const payment = new URLSearchParams(window.location.search).get("arenaPayment");
+    if (payment === "success") setMessage("Pagamento recebido. A confirmação segura pode levar alguns segundos; atualize a carteira se necessário.");
+    if (payment === "cancel") setMessage("Pagamento cancelado. Nenhum valor foi creditado.");
+  }, []);
 
   const products = useMemo(() => category === "featured" ? ARENA_SHOP_CATALOG.filter((item) => item.featured) : ARENA_SHOP_CATALOG.filter((item) => item.category === category), [category]);
 
@@ -137,17 +144,18 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
         <div className={styles.art}><img src={product.image} alt="" /><i>{product.rarity === "premium" ? "PASSE" : product.rarity.toUpperCase()}</i></div>
         <div className={styles.cardBody}><h3>{product.name}</h3><p>{product.subtitle}</p>
           <strong className={styles.price}>{money ? `€${(product.price / 100).toFixed(2).replace(".", ",")}` : <><img src="/games/apostolic-arena/ui/currency/gema-celestial-v1.png" alt="" />{product.price}</>}</strong>
-          <button type="button" data-equipped={isEquipped} disabled={isEquipped || product.available === false || busy} onClick={() => { void createClient().rpc("arena_track_event",{p_event_name:"product_view",p_product_id:product.id,p_properties:{category:product.category}}); isOwned && slot ? void equipCosmetic(product) : setSelected(product); }}>{isEquipped ? "EQUIPADO" : isOwned && slot ? "EQUIPAR" : isOwned ? "ADQUIRIDO" : product.available === false ? "EM BREVE" : "VER DETALHES"}</button>
+          <button type="button" data-equipped={isEquipped} disabled={isEquipped || product.available === false || busy} onClick={() => { void createClient().rpc("arena_track_event",{p_event_name:"product_view",p_product_id:product.id,p_properties:{category:product.category}}); if (isOwned && slot) void equipCosmetic(product); else { setLegalAccepted(false); setSelected(product); } }}>{isEquipped ? "EQUIPADO" : isOwned && slot ? "EQUIPAR" : isOwned ? "ADQUIRIDO" : product.available === false ? "EM BREVE" : "VER DETALHES"}</button>
         </div>
       </article>;
     })}</div>
     {selected && <div className={styles.dialogBackdrop} role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelected(null); }}>
       <section className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="arena-purchase-title">
         <img src={selected.image} alt="" /><small>{selected.currency === "money" ? "PAGAMENTO SEGURO · STRIPE" : "COMPRA COSMÉTICA SEGURA"}</small><h3 id="arena-purchase-title">{selected.name}</h3><p>{selected.subtitle}. Não concede vantagem competitiva.</p>
-        {selected.currency === "money" ? <dl><div><dt>Produto</dt><dd>{selected.name}</dd></div><div><dt>Preço total</dt><dd>€{(selected.price/100).toFixed(2).replace(".",",")}</dd></div><div><dt>Entrega</dt><dd>Após confirmação</dd></div></dl> : <dl><div><dt>Você possui</dt><dd>{wallet.gems.toLocaleString("pt-PT")} gemas</dd></div><div><dt>Preço</dt><dd>{selected.price.toLocaleString("pt-PT")} gemas</dd></div><div><dt>Saldo depois</dt><dd>{Math.max(0, wallet.gems - selected.price).toLocaleString("pt-PT")} gemas</dd></div></dl>}
-        <footer><button type="button" onClick={() => setSelected(null)}>CANCELAR</button><button type="button" disabled={busy || (selected.currency === "gems" && wallet.gems < selected.price)} onClick={confirmPurchase}>{busy ? "PROCESSANDO…" : selected.currency === "gems" && wallet.gems < selected.price ? "SALDO INSUFICIENTE" : selected.currency === "money" ? "CONTINUAR PARA PAGAMENTO" : "COMPRAR"}</button></footer>
+        {selected.currency === "money" ? <><dl><div><dt>Produto</dt><dd>{selected.name}</dd></div><div><dt>Preço total</dt><dd>€{(selected.price/100).toFixed(2).replace(".",",")}</dd></div><div><dt>Entrega</dt><dd>Após confirmação</dd></div></dl><label className={styles.legalConsent}><input type="checkbox" checked={legalAccepted} onChange={(event)=>setLegalAccepted(event.target.checked)} /><span>Li e aceito os <Link href="/legal/termos" target="_blank">Termos</Link>, a <Link href="/legal/privacidade" target="_blank">Privacidade</Link> e a <Link href="/legal/reembolsos" target="_blank">Política de Reembolso</Link>.</span></label></> : <dl><div><dt>Você possui</dt><dd>{wallet.gems.toLocaleString("pt-PT")} gemas</dd></div><div><dt>Preço</dt><dd>{selected.price.toLocaleString("pt-PT")} gemas</dd></div><div><dt>Saldo depois</dt><dd>{Math.max(0, wallet.gems - selected.price).toLocaleString("pt-PT")} gemas</dd></div></dl>}
+        <footer><button type="button" onClick={() => setSelected(null)}>CANCELAR</button><button type="button" disabled={busy || (selected.currency === "money" && !legalAccepted) || (selected.currency === "gems" && wallet.gems < selected.price)} onClick={confirmPurchase}>{busy ? "PROCESSANDO…" : selected.currency === "gems" && wallet.gems < selected.price ? "SALDO INSUFICIENTE" : selected.currency === "money" ? "CONTINUAR PARA PAGAMENTO" : "COMPRAR"}</button></footer>
       </section>
     </div>}
     <ArenaEconomyAdminV48 />
+    <footer className={styles.legalFooter}><span>Apostolic IA · Pré-lançamento comercial em Portugal</span><nav><Link href="/legal/termos">Termos</Link><Link href="/legal/privacidade">Privacidade</Link><Link href="/legal/reembolsos">Reembolsos</Link></nav></footer>
   </section>;
 }
