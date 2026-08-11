@@ -7,6 +7,7 @@ import { ApostolicArena3DScene, type ArenaPowerSignal, type ArenaSceneChampion }
 import { ApostolicArenaBattle3D } from "./apostolic-arena-battle-3d";
 import { ArenaCollectionV17 } from "./arena-collection-v17";
 import { ArenaChestsV18 } from "./arena-chests-v18";
+import { ArenaShopV38 } from "./arena-shop-v38";
 import { CHEST_DEFINITIONS, grantBattleProgress, loadArenaChests, type ArenaChestState } from "../lib/apostolic-arena-chests-v18";
 import { loadArenaProgression, type ArenaPlayerProgression } from "../lib/apostolic-arena-progression-v17";
 import { ArenaWorldRoadmap } from "./arena-world-roadmap";
@@ -16,8 +17,9 @@ import { arenaThemeForProgression } from "../lib/apostolic-arena-themes-v20";
 import { chooseRandomFieldV203, SELECTED_FIELD_STORAGE_KEY_V203 } from "../lib/apostolic-arena-presentations-v20-3";
 import styles from "./apostolic-arena-3d-experience.module.css";
 import loadingStyles from "./apostolic-arena-loading-v2.module.css";
+import { useArenaMotionStage } from "../lib/use-arena-motion-stage";
 
-type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards";
+type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards" | "shop";
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
 const SAVED_DECKS_KEY = "apostolic-arena-decks-v16";
 const ACTIVE_DECK_SLOT_KEY = "apostolic-arena-active-deck-slot-v32";
@@ -77,6 +79,7 @@ const LOADING_TIPS = [
 
 export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
   const shellRef = useRef<HTMLElement>(null);
+  useArenaMotionStage(shellRef);
   const [phase, setPhase] = useState<ExperiencePhase>("loading");
   const [progress, setProgress] = useState(8);
   const [loadingLabel, setLoadingLabel] = useState("Iniciando jornada");
@@ -96,6 +99,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const ambienceRef = useRef<HTMLAudioElement | null>(null);
   const [playerProgression, setPlayerProgression] = useState<ArenaPlayerProgression>(() => loadArenaProgression());
+  const [arenaWallet, setArenaWallet] = useState(() => ({ coins: playerProgression.gold, gems: 100 }));
   const currentArenaTheme = arenaThemeForProgression(playerProgression).theme;
   const dailyName = useMemo(() => dailyEventFor(new Date())?.name ?? "Missão da Aliança", []);
   const loadingScene = LOADING_SCENES[loadingSceneIndex] ?? LOADING_SCENES[0]!;
@@ -302,8 +306,8 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
       </div>
       <button type="button" className={styles.exactProfileHit} onClick={() => setPhase("cards")} aria-label="Abrir perfil e heróis" />
       <nav className={styles.exactResourceHits} aria-label="Recursos e atalhos">
-        <button type="button" onClick={() => setPhase("rewards")} aria-label="Comprar moedas" />
-        <button type="button" onClick={() => setPhase("rewards")} aria-label="Comprar diamantes" />
+        <button type="button" onClick={() => setPhase("shop")} aria-label="Abrir loja de moedas" />
+        <button type="button" onClick={() => setPhase("shop")} aria-label="Abrir loja de gemas" />
         <button type="button" onClick={() => setPhase("world")} aria-label="Mensagens" />
         <button type="button" onClick={() => setPhase("cards")} aria-label="Amigos" />
         <button type="button" onClick={leave} aria-label="Configurações e saída" />
@@ -311,8 +315,8 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
       <header className={styles.topbar}>
         <div className={styles.profile}><span>R</span><div><b>Raphael</b><small>Nível {playerProgression.playerLevel} · Guardião da Luz</small></div></div>
         <div className={styles.resources}>
-          <span><i className={styles.coinIcon}><img src="/games/apostolic-arena/ui/currency/moedas-celestiais-v1.webp" alt="" /></i><em>MOEDAS<strong>{playerProgression.gold.toLocaleString("pt-PT")}</strong></em><b aria-hidden="true">+</b></span>
-          <span><i className={styles.gemIcon}><img src="/games/apostolic-arena/ui/currency/gema-celestial-v1.png" alt="" /></i><em>GEMAS<strong>3.280</strong></em><b aria-hidden="true">+</b></span>
+          <span data-arena-motion role="button" tabIndex={0} onClick={() => setPhase("shop")} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") setPhase("shop"); }}><i className={styles.coinIcon}><img src="/games/apostolic-arena/ui/currency/moedas-celestiais-v1.webp" alt="" /></i><em>MOEDAS<strong>{arenaWallet.coins.toLocaleString("pt-PT")}</strong></em><b aria-hidden="true">+</b></span>
+          <span data-arena-motion role="button" tabIndex={0} onClick={() => setPhase("shop")} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") setPhase("shop"); }}><i className={styles.gemIcon}><img src="/games/apostolic-arena/ui/currency/gema-celestial-v1.png" alt="" /></i><em>GEMAS<strong>{arenaWallet.gems.toLocaleString("pt-PT")}</strong></em><b aria-hidden="true">+</b></span>
         </div>
         <div className={styles.windowActions}>
           {!isFullscreen && <button type="button" onClick={requestFullscreen} aria-label="Ativar tela cheia">⛶</button>}
@@ -321,11 +325,11 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
       </header>
 
       <nav className={styles.sideRail} aria-label="Menu principal da Arena">
-        <button type="button" className={styles.active}><span><img src="/games/apostolic-arena/ui/emblems/inicio-v1.png" alt="" /></span><b>INÍCIO</b></button>
-        <button type="button" onClick={() => setPhase("cards")}><span><img src="/games/apostolic-arena/ui/emblems/herois-v1.png" alt="" /></span><b>HERÓIS</b></button>
-        <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/eventos-v1.png" alt="" /></span><b>EVENTOS</b></button>
-        <button type="button" onClick={() => setPhase("rewards")}><span><img src="/games/apostolic-arena/ui/emblems/loja-v1.png" alt="" /></span><b>LOJA</b></button>
-        <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/ranking-v1.png" alt="" /></span><b>RANKING</b></button>
+        <button data-arena-motion type="button" className={styles.active}><span><img src="/games/apostolic-arena/ui/emblems/inicio-v1.png" alt="" /></span><b>INÍCIO</b></button>
+        <button data-arena-motion type="button" onClick={() => setPhase("cards")}><span><img src="/games/apostolic-arena/ui/emblems/herois-v1.png" alt="" /></span><b>HERÓIS</b></button>
+        <button data-arena-motion type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/eventos-v1.png" alt="" /></span><b>EVENTOS</b></button>
+        <button data-arena-motion type="button" onClick={() => setPhase("shop")}><span><img src="/games/apostolic-arena/ui/emblems/loja-v1.png" alt="" /></span><b>LOJA</b></button>
+        <button data-arena-motion type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/ranking-v1.png" alt="" /></span><b>RANKING</b></button>
       </nav>
 
       <aside className={styles.eventPlaque}><b>EVENTO</b><small>{dailyName}</small></aside>
@@ -349,7 +353,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
 
       {chestNotice && <button type="button" className={styles.chestNotice} onClick={() => { setChestNotice(null); setPhase("rewards"); }}>{chestNotice}<span>VER BAÚS →</span></button>}
 
-      <button type="button" className={styles.battleButton} disabled={deckIds.length !== 8 || isEnteringBattle} onClick={beginBattle}>
+      <button data-arena-motion type="button" className={styles.battleButton} disabled={deckIds.length !== 8 || isEnteringBattle} onClick={beginBattle}>
         <img className={styles.battleArtwork} src="/games/apostolic-arena/ui/actions/batalhar-celestial-v1.webp" alt="" />
         <span className={styles.battleLabel}>{isEnteringBattle ? "ABRINDO O PORTÃO…" : deckIds.length === 8 ? "BATALHAR" : `ESCOLHA 8 CARTAS (${deckIds.length}/8)`}</span>
       </button>
@@ -363,7 +367,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
     </section> : phase === "arenaPreview" ? <ArenaMatchIntroV203 arenaId={currentArenaTheme.id} onEnter={enterRandomField} onCancel={() => setPhase("menu")} /> : <section className={styles.module}>
       <header className={styles.moduleHeader}>
         <button type="button" onClick={() => setPhase("menu")}>← Menu 3D</button>
-        <strong>{phase === "battle" ? "Batalha" : phase === "cards" ? "Cartas e baralho" : phase === "world" ? "Jornada" : "Baús e recompensas"}</strong>
+        <strong>{phase === "battle" ? "Batalha" : phase === "cards" ? "Cartas e baralho" : phase === "world" ? "Jornada" : phase === "shop" ? "Loja da Aliança" : "Baús e recompensas"}</strong>
         <div><button type="button" onClick={requestFullscreen} aria-label="Ativar tela cheia">⛶</button><button type="button" onClick={leave} aria-label="Sair">×</button></div>
       </header>
       <main className={styles.moduleContent}>
@@ -374,6 +378,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         }} onBattleTest={() => setPhase("arenaPreview")} />}
         {phase === "world" && <ArenaWorldRoadmap onProgressionChange={setPlayerProgression} onBattle={() => setPhase("arenaPreview")} onTraining={() => setPhase("tutorial")} />}
         {phase === "rewards" && <ArenaChestsV18 onStateChange={setChestState} />}
+        {phase === "shop" && <ArenaShopV38 fallbackWallet={arenaWallet} onWalletChange={setArenaWallet} />}
       </main>
     </section>}
     {(phase === "loading" || phase === "menu") && <button type="button" className={styles.soundControl} data-enabled={soundEnabled} onClick={() => setSoundEnabled((current) => !current)} aria-label={soundEnabled ? "Desativar som ambiente" : "Ativar som ambiente"}>{soundEnabled ? "🔊" : "🔇"}<span>{soundEnabled ? "SOM" : "ATIVAR SOM"}</span></button>}

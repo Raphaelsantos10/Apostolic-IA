@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState, type CSSProperties } from "react";
 import { arena25DPowerFor, type Arena25DPowerKind } from "../lib/apostolic-arena-25d-power-system";
 import { ARENA_CARD_CATALOG } from "../lib/apostolic-arena-card-catalog";
 import { arenaRequirementForCard, copiesRequiredForLevel, goldRequiredForLevel, isCardUnlocked, loadArenaProgression, saveArenaProgression } from "../lib/apostolic-arena-progression-v17";
 import styles from "./arena-collection-v17.module.css";
+import { useArenaMotionStage } from "../lib/use-arena-motion-stage";
 
 const ACTIVE_DECK_KEY = "apostolic-arena-active-deck";
 const SAVED_DECKS_KEY = "apostolic-arena-decks-v16";
@@ -30,6 +31,8 @@ export function ArenaCollectionV17({ initialDeck, initialDeckSlot = 1, onDeckCha
   onDeckChange: (ids: number[], slot: number) => void;
   onBattleTest: () => void;
 }) {
+  const collectionRef = useRef<HTMLElement>(null);
+  useArenaMotionStage(collectionRef);
   const [savedDecks, setSavedDecks] = useState<SavedDecks>(() => readSavedDecks());
   const [activeDeckSlot, setActiveDeckSlot] = useState(initialDeckSlot);
   const [deckIds, setDeckIds] = useState<number[]>(() => initialDeck.length === 8 ? initialDeck : []);
@@ -163,7 +166,7 @@ export function ArenaCollectionV17({ initialDeck, initialDeckSlot = 1, onDeckCha
     });
   };
 
-  return <section className={styles.builder}>
+  return <section ref={collectionRef} className={styles.builder}>
     <header className={styles.header}>
       <div><span>V17.2 · ARQUIVO CELESTIAL</span><h2>Coleção da Aliança</h2><p>Monte livremente os oito espaços. A ordem abaixo será o ciclo usado na batalha.</p></div>
       <div className={styles.playerProgress}><b>NÍVEL {progression.playerLevel}</b><span>✦ {progression.xp} XP</span><span>🏆 {progression.trophies}</span><span>◉ {progression.gold}</span><small>ARENA {currentArena + 1}</small></div>
@@ -191,13 +194,13 @@ export function ArenaCollectionV17({ initialDeck, initialDeckSlot = 1, onDeckCha
     <section className={styles.collection}>
       <div className={styles.collectionTitle}><div><small>ARQUIVO DE CARTAS</small><h3>Todas as cartas</h3><p>{filteredCards.length} cartas encontradas · clique numa carta para ampliar e ver os atributos</p></div><div className={styles.viewToggle} aria-label="Tamanho das cartas"><button type="button" data-active={viewMode === "comfortable"} onClick={() => setViewMode("comfortable")}>▦ Confortável</button><button type="button" data-active={viewMode === "compact"} onClick={() => setViewMode("compact")}>▦ Compacta</button></div></div>
       <header><input type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Buscar entre 125 cartas..." /><select value={availability} onChange={(event) => setAvailability(event.target.value)}><option value="all">Toda a coleção</option><option value="unlocked">Conquistadas</option><option value="locked">Bloqueadas</option></select><select value={rarity} onChange={(event) => setRarity(event.target.value)}><option value="all">Todas as raridades</option><option value="common">Comum</option><option value="rare">Rara</option><option value="epic">Épica</option><option value="legendary">Lendária</option><option value="champion">Campeão</option></select><select value={power} onChange={(event) => setPower(event.target.value)}><option value="all">Todas as funções</option>{Object.entries(POWER_LABELS).map(([value,label]) => <option key={value} value={value}>{label}</option>)}</select><select value={sortBy} onChange={(event) => setSortBy(event.target.value)}><option value="arena">Ordem por Arena</option><option value="faith">Menor custo de Fé</option><option value="level">Maior nível</option><option value="name">Nome A–Z</option></select></header>
-      <div className={styles.grid} data-view={viewMode}>{filteredCards.map((card) => {
+      <div className={styles.grid} data-view={viewMode}>{filteredCards.map((card, index) => {
         const profile = arena25DPowerFor(card);
         const selected = deckIds.includes(card.id);
         const unlocked = isCardUnlocked(progression, card.id);
         const cardProgress = progression.cards[String(card.id)] ?? { level: 1, copies: 0 };
         const requirement = arenaRequirementForCard(card.id);
-        return <article key={card.id} data-selected={selected} data-rarity={card.rarity} data-locked={!unlocked}>
+        return <article key={card.id} data-arena-motion data-selected={selected} data-rarity={card.rarity} data-locked={!unlocked} style={{ "--arena-order": index } as CSSProperties}>
           <button type="button" className={styles.cardOpen} onClick={() => setDetailCardId(card.id)}><img src={card.portrait} alt={card.name} /><b>{card.faith}</b><span>{unlocked ? card.name : "Carta bloqueada"}</span><small>{profile.label}</small><i>{unlocked ? `NÍVEL ${cardProgress.level} · ${cardProgress.copies}/${copiesRequiredForLevel(cardProgress.level, card.rarity)}` : `🔒 ${requirement.name}`}</i>{unlocked && <meter min="0" max={copiesRequiredForLevel(cardProgress.level, card.rarity)} value={cardProgress.copies} aria-label="Progresso de cópias" />}</button>
           <button type="button" className={styles.cardAction} disabled={!unlocked} onClick={() => toggleCard(card.id)}>{selected ? "REMOVER" : "+ DECK"}</button>
         </article>;
