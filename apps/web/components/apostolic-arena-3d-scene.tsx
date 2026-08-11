@@ -89,7 +89,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       const scene = new BABYLON.Scene(engine);
       scene.clearColor = new BABYLON.Color4(0.012, 0.024, 0.045, 1);
       scene.imageProcessingConfiguration.contrast = 1.06;
-      scene.imageProcessingConfiguration.exposure = 1.08;
+      scene.imageProcessingConfiguration.exposure = 1.04;
       scene.imageProcessingConfiguration.toneMappingEnabled = true;
 
       const camera = new BABYLON.ArcRotateCamera(
@@ -119,7 +119,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
       sunrise.diffuse = new BABYLON.Color3(1, 0.67, 0.34);
       const heroKey = new BABYLON.DirectionalLight("hero-camera-key", new BABYLON.Vector3(0.08, -0.28, 1), scene);
       heroKey.intensity = mode === "menu" ? 1.35 : 0.85;
-      heroKey.diffuse = new BABYLON.Color3(1, 0.86, 0.69);
+      heroKey.diffuse = new BABYLON.Color3(1, 0.96, 0.9);
 
       const standardMaterial = (name: string, color: [number, number, number], emissive?: [number, number, number], alpha = 1) => {
         const value = new BABYLON.StandardMaterial(name, scene);
@@ -227,11 +227,12 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         if (chest) {
           chest.position.y = -0.08;
           chest.position.z = -4.15;
-          chestInnerMaterial = standardMaterial("chest-inner-gold", [1, 0.68, 0.12], [1, 0.5, 0.025], 0.84);
+          chestInnerMaterial = standardMaterial("chest-inner-gold", [1, 0.82, 0.34], [1, 0.64, 0.08], 0.72);
           chestInnerMaterial.disableLighting = true;
-          const chestInnerGlow = BABYLON.MeshBuilder.CreateBox("chest-inner-glow", { width: 1.28, height: 0.18, depth: 0.58 }, scene);
+          chestInnerMaterial.backFaceCulling = false;
+          const chestInnerGlow = BABYLON.MeshBuilder.CreatePlane("chest-inner-glow", { width: 0.34, height: 0.055, sideOrientation: BABYLON.Mesh.DOUBLESIDE }, scene);
           chestInnerGlow.parent = chest;
-          chestInnerGlow.position = new BABYLON.Vector3(0, 0.72, -0.02);
+          chestInnerGlow.position = new BABYLON.Vector3(0, 0.34, -0.275);
           chestInnerGlow.material = chestInnerMaterial;
         }
         stagePositions.forEach((position, index) => {
@@ -265,10 +266,7 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
               mesh.alwaysSelectAsActiveMesh = true;
               const material = mesh.material;
               if (material instanceof BABYLON.PBRMaterial) {
-                material.environmentIntensity = asset.id === 1 ? 1.22 : 1.65;
-                material.metallic = Math.min(material.metallic ?? 0.16, 0.16);
-                material.roughness = Math.max(material.roughness ?? 0.52, 0.52);
-                material.emissiveColor = material.albedoColor.scale(asset.id === 1 ? 0.025 : 0.065);
+                material.environmentIntensity = 1;
               }
             });
             imported.animationGroups[0]?.start(true, 1);
@@ -314,13 +312,13 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
           flame.color1 = tower.color === "red" ? new BABYLON.Color4(1, 0.12, 0.02, 1) : new BABYLON.Color4(0.08, 0.55, 1, 1);
           flame.color2 = tower.color === "red" ? new BABYLON.Color4(1, 0.62, 0.08, 0.95) : new BABYLON.Color4(0.25, 0.9, 1, 0.95);
           flame.colorDead = new BABYLON.Color4(0.02, 0.02, 0.08, 0);
-          flame.minSize = 0.22; flame.maxSize = 0.65; flame.minLifeTime = 0.35; flame.maxLifeTime = 0.95;
-          flame.emitRate = 145; flame.blendMode = BABYLON.ParticleSystem.BLENDMODE_ADD;
+          flame.minSize = 0.38; flame.maxSize = 0.92; flame.minLifeTime = 0.42; flame.maxLifeTime = 1.12;
+          flame.emitRate = 220; flame.blendMode = BABYLON.ParticleSystem.BLENDMODE_ADD;
           flame.direction1 = new BABYLON.Vector3(-0.18, 1.3, -0.12); flame.direction2 = new BABYLON.Vector3(0.18, 2.4, 0.12);
           flame.minEmitPower = 0.8; flame.maxEmitPower = 1.55; flame.updateSpeed = 0.012; flame.start();
           const towerLight = new BABYLON.PointLight(`tower-${tower.color}-light`, new BABYLON.Vector3(tower.x, 7.25, 4.1), scene);
           towerLight.diffuse = tower.color === "red" ? new BABYLON.Color3(1, 0.08, 0.02) : new BABYLON.Color3(0.02, 0.48, 1);
-          towerLight.intensity = 2.25; towerLight.range = 8;
+          towerLight.intensity = 3.15; towerLight.range = 10;
         }
       }
 
@@ -400,8 +398,8 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
           characterModel.rotation.y = Math.PI;
           const characterFill = new BABYLON.PointLight(`character-soft-fill-${champion.id}`, new BABYLON.Vector3(0, 2.4, -3.2), scene);
           characterFill.parent = root;
-          characterFill.diffuse = new BABYLON.Color3(1, 0.84, 0.65);
-          characterFill.intensity = champion.id === 1 ? 0.42 : 0.55;
+          characterFill.diffuse = new BABYLON.Color3(1, 0.96, 0.9);
+          characterFill.intensity = 0.58;
           characterFill.range = 8;
         } else {
           const heroTexture = new BABYLON.Texture(visual.image, scene, true, true);
@@ -471,35 +469,11 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
         actors.push({ root, action, effects, effectMeshes, baseY: root.position.y, championId: champion.id, powerKind: visual.power, powerStartedAt: -100 });
       };
 
-      const makeFallbackChampion = (champion: ArenaSceneChampion, index: number) => {
-        const root = new BABYLON.TransformNode(`fallback-champion-${champion.id}`, scene);
-        root.position.copyFrom(stagePositions[index] ?? BABYLON.Vector3.Zero());
-        const action = new BABYLON.TransformNode(`fallback-action-${champion.id}`, scene);
-        action.parent = root;
-        const effects = new BABYLON.TransformNode(`fallback-effects-${champion.id}`, scene);
-        effects.parent = root;
-        const robe = BABYLON.MeshBuilder.CreateCylinder(`fallback-robe-${champion.id}`, { diameterTop: 1.05, diameterBottom: 1.65, height: 2.35, tessellation: 16 }, scene);
-        robe.parent = root;
-        robe.position.y = 1.3;
-        robe.material = blue;
-        const torso = BABYLON.MeshBuilder.CreateCapsule(`fallback-torso-${champion.id}`, { radius: 0.55, height: 1.75 }, scene);
-        torso.parent = action;
-        torso.position.y = 2.45;
-        torso.material = gold;
-        const head = BABYLON.MeshBuilder.CreateSphere(`fallback-head-${champion.id}`, { diameter: 0.82, segments: 18 }, scene);
-        head.parent = action;
-        head.position.y = 3.5;
-        head.material = warmGold;
-        effects.setEnabled(false);
-        actors.push({ root, action, effects, effectMeshes: [], baseY: root.position.y, championId: champion.id, powerKind: "generic", powerStartedAt: -100 });
-      };
-
       if (mode === "menu") {
         const roster = champions.length ? champions.slice(0, 4) : DEFAULT_CHAMPIONS;
         roster.forEach((champion, index) => {
           const visual = FEATURED_VISUALS[champion.id] ?? (champion.portrait ? { image: champion.portrait, power: "generic" as const, height: 4.05 } : undefined);
           if (visual && characterModels.has(champion.id)) makeFeaturedChampion(champion, index, visual);
-          else makeFallbackChampion(champion, index);
         });
       }
 
@@ -533,11 +507,11 @@ export function ApostolicArena3DScene({ mode, champions = DEFAULT_CHAMPIONS, pow
           camera.target.z = easedGate * 1.45;
         }
         if (chestLid) {
-          const chestTarget = chestReadyRef.current ? -0.82 - Math.sin(clock * 1.7) * 0.035 : -0.32;
+          const chestTarget = chestReadyRef.current ? -0.9 - Math.sin(clock * 1.7) * 0.03 : -0.46;
           chestLid.rotation.x += (chestTarget - chestLid.rotation.x) * Math.min(1, delta * 4.2);
         }
         if (chestInnerMaterial) {
-          const pulse = (chestReadyRef.current ? 0.98 : 0.76) + Math.sin(clock * 2.25) * 0.08;
+          const pulse = (chestReadyRef.current ? 0.92 : 0.66) + Math.sin(clock * 2.25) * 0.07;
           chestInnerMaterial.alpha = pulse;
           chestInnerMaterial.emissiveColor.set(1 * pulse, 0.5 * pulse, 0.025);
         }

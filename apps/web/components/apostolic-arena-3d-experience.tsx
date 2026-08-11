@@ -183,7 +183,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
     const audio = ambienceRef.current ?? new Audio();
     ambienceRef.current = audio;
     audio.loop = true;
-    audio.volume = phase === "loading" ? 0.2 : 0.14;
+    audio.volume = phase === "loading" ? 0.58 : 0.46;
     const nextSource = phase === "loading"
       ? "/games/apostolic-arena/audio/loading-celestial-v34.ogg"
       : phase === "menu"
@@ -310,7 +310,10 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
       </nav>
       <header className={styles.topbar}>
         <div className={styles.profile}><span>R</span><div><b>Raphael</b><small>Nível {playerProgression.playerLevel} · Guardião da Luz</small></div></div>
-        <div className={styles.resources}><span><i className={styles.coinIcon}>✦</i>{playerProgression.gold.toLocaleString("pt-PT")}<b>+</b></span><span><i className={styles.gemIcon}>◆</i>3.280<b>+</b></span></div>
+        <div className={styles.resources}>
+          <span><i className={styles.coinIcon}><img src="/games/apostolic-arena/ui/currency/moedas-celestiais-v1.webp" alt="" /></i><em>MOEDAS<strong>{playerProgression.gold.toLocaleString("pt-PT")}</strong></em><b aria-hidden="true">+</b></span>
+          <span><i className={styles.gemIcon}><img src="/games/apostolic-arena/ui/currency/gema-celestial-v1.png" alt="" /></i><em>GEMAS<strong>3.280</strong></em><b aria-hidden="true">+</b></span>
+        </div>
         <div className={styles.windowActions}>
           {!isFullscreen && <button type="button" onClick={requestFullscreen} aria-label="Ativar tela cheia">⛶</button>}
           <button type="button" onClick={leave} aria-label="Sair do Apostolic Arena">×</button>
@@ -318,11 +321,11 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
       </header>
 
       <nav className={styles.sideRail} aria-label="Menu principal da Arena">
-        <button type="button" className={styles.active}><span>✦</span><b>INÍCIO</b></button>
-        <button type="button" onClick={() => setPhase("cards")}><span>♜</span><b>HERÓIS</b></button>
-        <button type="button" onClick={() => setPhase("world")}><span>◆</span><b>EVENTOS</b></button>
-        <button type="button" onClick={() => setPhase("rewards")}><span>▣</span><b>LOJA</b></button>
-        <button type="button" onClick={() => setPhase("world")}><span>♛</span><b>RANKING</b></button>
+        <button type="button" className={styles.active}><span><img src="/games/apostolic-arena/ui/emblems/inicio-v1.png" alt="" /></span><b>INÍCIO</b></button>
+        <button type="button" onClick={() => setPhase("cards")}><span><img src="/games/apostolic-arena/ui/emblems/herois-v1.png" alt="" /></span><b>HERÓIS</b></button>
+        <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/eventos-v1.png" alt="" /></span><b>EVENTOS</b></button>
+        <button type="button" onClick={() => setPhase("rewards")}><span><img src="/games/apostolic-arena/ui/emblems/loja-v1.png" alt="" /></span><b>LOJA</b></button>
+        <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/ranking-v1.png" alt="" /></span><b>RANKING</b></button>
       </nav>
 
       <aside className={styles.eventPlaque}><b>EVENTO</b><small>{dailyName}</small></aside>
@@ -346,13 +349,16 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
 
       {chestNotice && <button type="button" className={styles.chestNotice} onClick={() => { setChestNotice(null); setPhase("rewards"); }}>{chestNotice}<span>VER BAÚS →</span></button>}
 
-      <button type="button" className={styles.battleButton} disabled={deckIds.length !== 8 || isEnteringBattle} onClick={beginBattle}><span>⚔</span>{isEnteringBattle ? "ABRINDO O PORTÃO…" : deckIds.length === 8 ? "BATALHAR" : `ESCOLHA 8 CARTAS (${deckIds.length}/8)`}</button>
+      <button type="button" className={styles.battleButton} disabled={deckIds.length !== 8 || isEnteringBattle} onClick={beginBattle}>
+        <img className={styles.battleArtwork} src="/games/apostolic-arena/ui/actions/batalhar-celestial-v1.webp" alt="" />
+        <span className={styles.battleLabel}>{isEnteringBattle ? "ABRINDO O PORTÃO…" : deckIds.length === 8 ? "BATALHAR" : `ESCOLHA 8 CARTAS (${deckIds.length}/8)`}</span>
+      </button>
 
       <nav className={styles.bottomNav} aria-label="Navegação do Apostolic Arena">
-        <button type="button" onClick={() => setPhase("world")}><span>▤</span><b>DIÁRIO</b></button>
-        <button type="button" onClick={() => setPhase("world")}><span>♜</span><b>ALIANÇA</b></button>
-        <button type="button" onClick={() => setPhase("cards")}><span>♟</span><b>AMIGOS</b></button>
-        <button type="button" onClick={() => setPhase("rewards")}><span>▰</span><b>INVENTÁRIO</b></button>
+        <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/diario-v1.png" alt="" /></span><b>DIÁRIO</b></button>
+        <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/alianca-v1.png" alt="" /></span><b>ALIANÇA</b></button>
+        <button type="button" onClick={() => setPhase("cards")}><span><img src="/games/apostolic-arena/ui/emblems/amigos-v1.png" alt="" /></span><b>AMIGOS</b></button>
+        <button type="button" onClick={() => setPhase("rewards")}><span><img src="/games/apostolic-arena/ui/emblems/inventario-v1.png" alt="" /></span><b>INVENTÁRIO</b></button>
       </nav>
     </section> : phase === "arenaPreview" ? <ArenaMatchIntroV203 arenaId={currentArenaTheme.id} onEnter={enterRandomField} onCancel={() => setPhase("menu")} /> : <section className={styles.module}>
       <header className={styles.moduleHeader}>
@@ -370,6 +376,6 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {phase === "rewards" && <ArenaChestsV18 onStateChange={setChestState} />}
       </main>
     </section>}
-    {(phase === "loading" || phase === "menu") && <button type="button" className={styles.soundControl} data-enabled={soundEnabled} onClick={() => setSoundEnabled((current) => !current)} aria-label={soundEnabled ? "Desativar som ambiente" : "Ativar som ambiente"}>{soundEnabled ? "🔊 SOM" : "🔇 ATIVAR SOM"}</button>}
+    {(phase === "loading" || phase === "menu") && <button type="button" className={styles.soundControl} data-enabled={soundEnabled} onClick={() => setSoundEnabled((current) => !current)} aria-label={soundEnabled ? "Desativar som ambiente" : "Ativar som ambiente"}>{soundEnabled ? "🔊" : "🔇"}<span>{soundEnabled ? "SOM" : "ATIVAR SOM"}</span></button>}
   </section>;
 }
