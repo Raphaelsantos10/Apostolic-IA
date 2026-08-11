@@ -16,6 +16,8 @@ const CATEGORIES: { id: ArenaShopCategory; label: string }[] = [
 type PurchaseResult = { coins?: number; gems?: number; product_id?: string };
 type DailyGift = { can_claim: boolean; streak_day: number; next_day: number; reward_currency: "coins" | "gems"; reward_amount: number };
 type FreeGemStatus = { period_key: string; earned: number; target: number; hard_cap: number; remaining: number };
+type CosmeticLoadout = Partial<Record<"skin" | "emote" | "entrance_effect" | "victory_effect", string>>;
+const cosmeticSlot = (id: string) => id.startsWith("skin-") ? "skin" : id.startsWith("emote-") ? "emote" : id === "effect-fogo-celestial" ? "entrance_effect" : id.startsWith("effect-") ? "victory_effect" : null;
 
 export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWallet: ArenaWallet; onWalletChange: (wallet: ArenaWallet) => void }) {
   const shopRef = useRef<HTMLElement>(null);
@@ -29,13 +31,14 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
   const [gift, setGift] = useState<DailyGift | null>(null);
   const [claimingGift, setClaimingGift] = useState(false);
   const [freeGems, setFreeGems] = useState<FreeGemStatus | null>(null);
+  const [loadout, setLoadout] = useState<CosmeticLoadout>({});
 
   useEffect(() => {
     let active = true;
     const load = async () => {
       const supabase = createClient();
-      const [{ data: auth }, walletResponse, inventoryResponse, giftResponse, freeGemResponse] = await Promise.all([
-        supabase.auth.getUser(), supabase.rpc("arena_get_wallet"), supabase.from("arena_player_inventory").select("product_id"), supabase.rpc("arena_daily_gift_status"), supabase.rpc("arena_free_gem_status")
+      const [{ data: auth }, walletResponse, inventoryResponse, giftResponse, freeGemResponse, loadoutResponse] = await Promise.all([
+        supabase.auth.getUser(), supabase.rpc("arena_get_wallet"), supabase.from("arena_player_inventory").select("product_id"), supabase.rpc("arena_daily_gift_status"), supabase.rpc("arena_free_gem_status"), supabase.rpc("arena_get_cosmetic_loadout")
       ]);
       if (!active) return;
       if (!auth.user) { setMessage("Entre na sua conta para sincronizar compras e recompensas."); return; }
@@ -47,6 +50,7 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
       if (!inventoryResponse.error) setOwned(new Set((inventoryResponse.data ?? []).map((item) => String(item.product_id))));
       if (!giftResponse.error && giftResponse.data) setGift(giftResponse.data as DailyGift);
       if (!freeGemResponse.error && freeGemResponse.data) setFreeGems(freeGemResponse.data as FreeGemStatus);
+      if (!loadoutResponse.error && loadoutResponse.data) setLoadout(loadoutResponse.data as CosmeticLoadout);
     };
     void load();
     return () => { active = false; };
@@ -78,6 +82,16 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
     setMessage(`${selected.name} foi adicionado ao seu inventário.`); setSelected(null); setBusy(false);
   };
 
+  const equipCosmetic = async (product: ArenaShopProduct) => {
+    const slot = cosmeticSlot(product.id);
+    if (!slot || busy) return;
+    setBusy(true);
+    const { data, error } = await createClient().rpc("arena_equip_cosmetic", { p_product_id: product.id });
+    if (error) setMessage("Não foi possível equipar este cosmético.");
+    else { setLoadout((data ?? {}) as CosmeticLoadout); setMessage(`${product.name} equipado sem alterar o poder de combate.`); }
+    setBusy(false);
+  };
+
   return <section ref={shopRef} className={styles.shop} aria-label="Loja da Aliança">
     <header className={styles.header}>
       <div><small>ECONOMIA JUSTA · SEM PAY-TO-WIN</small><h2>LOJA DA ALIANÇA</h2><p>Personalização, coleção e conveniência. Nenhum item aumenta dano, vida ou velocidade.</p></div>
@@ -105,11 +119,12 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
     <div className={styles.status} role="status">{message}</div>
     <div className={styles.grid}>{products.map((product, index) => {
       const isOwned = owned.has(product.id); const money = product.currency === "money";
+      const slot = cosmeticSlot(product.id); const isEquipped = Boolean(slot && loadout[slot] === product.id);
       return <article className={styles.card} data-arena-motion data-rarity={product.rarity} key={product.id} style={{ "--arena-order": index } as CSSProperties}>
         <div className={styles.art}><img src={product.image} alt="" /><i>{product.rarity === "premium" ? "PASSE" : product.rarity.toUpperCase()}</i></div>
         <div className={styles.cardBody}><h3>{product.name}</h3><p>{product.subtitle}</p>
           <strong className={styles.price}>{money ? `€${(product.price / 100).toFixed(2).replace(".", ",")}` : <><img src="/games/apostolic-arena/ui/currency/gema-celestial-v1.png" alt="" />{product.price}</>}</strong>
-          <button type="button" disabled={isOwned || product.available === false} onClick={() => setSelected(product)}>{isOwned ? "ADQUIRIDO" : product.available === false ? "EM BREVE" : "VER DETALHES"}</button>
+          <button type="button" data-equipped={isEquipped} disabled={isEquipped || product.available === false || busy} onClick={() => isOwned && slot ? void equipCosmetic(product) : setSelected(product)}>{isEquipped ? "EQUIPADO" : isOwned && slot ? "EQUIPAR" : isOwned ? "ADQUIRIDO" : product.available === false ? "EM BREVE" : "VER DETALHES"}</button>
         </div>
       </article>;
     })}</div>

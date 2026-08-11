@@ -22,3 +22,12 @@
 @keyframes arena-hud-danger{to{filter:brightness(1.18)}}
 @media(max-width:48rem){[data-apostolic-arena] [class*="apostolic-arena-battle-3d_cards"] button>span{display:none}[data-apostolic-arena] [class*="apostolic-arena-battle-3d_hand"]::before{display:none}}
 @media(prefers-reduced-motion:reduce){[data-apostolic-arena] [class*="apostolic-arena-battle-3d_scoreboard"]{animation:none}[data-apostolic-arena] [class*="apostolic-arena-battle-3d_cards"] button::after{display:none}}
+
+/* V45 · cosméticos equipados, estritamente visuais */
+[data-apostolic-arena] [class*="apostolic-arena-battle-3d_battleShell"][data-equipped-skin] [class*="apostolic-arena-battle-3d_championAbility"]{border-color:#e0bd6b;box-shadow:0 8px 24px #000b,0 0 22px #d8aa4342}
+[data-apostolic-arena] [class*="apostolic-arena-battle-3d_equippedEntrance"]{position:absolute;z-index:4;inset:15% 8% 20%;display:grid;place-items:center;pointer-events:none}
+[data-apostolic-arena] [class*="apostolic-arena-battle-3d_equippedEntrance"] i{width:55%;aspect-ratio:1;border:2px solid #ffc65f88;border-radius:50%;background:radial-gradient(circle,#ffb72c2f,transparent 62%);box-shadow:inset 0 0 70px #ff8b293b,0 0 45px #ffc84f29;animation:arena-cosmetic-entrance 1.8s ease-out forwards}
+[data-apostolic-arena] [class*="apostolic-arena-battle-3d_equippedEntrance"] em{position:absolute;width:2px;height:48%;background:linear-gradient(transparent,#fff1ac,#ff8b2b,transparent);box-shadow:-3rem 0 12px #ffb23b,3rem 0 12px #ffb23b;animation:arena-cosmetic-flame 1.1s ease-in-out infinite alternate}
+[data-apostolic-arena] [class*="apostolic-arena-battle-3d_battleShell"][data-victory-effect="effect-trombetas-jerico"] [class*="apostolic-arena-battle-3d_matchResult"]::after{content:"♫  ✦  ♫";position:absolute;top:.7rem;color:#f2cf75;font:800 1rem var(--arena-font-display);letter-spacing:.4em;text-shadow:0 0 20px #e1b84d;animation:arena-victory-notes 1.4s ease-in-out infinite alternate}
+@keyframes arena-cosmetic-entrance{from{transform:scale(.25);opacity:0}35%{opacity:1}to{transform:scale(1.25);opacity:0}}@keyframes arena-cosmetic-flame{to{transform:scaleY(1.15);filter:brightness(1.35)}}@keyframes arena-victory-notes{to{transform:translateY(.2rem);filter:brightness(1.3)}}
+@media(prefers-reduced-motion:reduce){[data-apostolic-arena] [class*="apostolic-arena-battle-3d_equippedEntrance"] i,[data-apostolic-arena] [class*="apostolic-arena-battle-3d_equippedEntrance"] em,[data-apostolic-arena] [class*="apostolic-arena-battle-3d_matchResult"]::after{animation:none}}

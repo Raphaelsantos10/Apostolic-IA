@@ -1,0 +1,10 @@
+begin;
+select plan(6);
+select has_table('public','arena_player_cosmetic_loadouts','cosmetic loadout exists');
+select col_is_pk('public','arena_player_cosmetic_loadouts',array['user_id','slot'],'one cosmetic per slot');
+select policies_are('public','arena_player_cosmetic_loadouts',array['arena_cosmetic_loadout_select_own'],'loadout has own-row RLS');
+select function_returns('public','arena_get_cosmetic_loadout',array[]::text[],'jsonb','loadout read RPC exists');
+select function_returns('public','arena_equip_cosmetic',array['text'],'jsonb','equip RPC exists');
+select results_eq($$select public.arena_cosmetic_slot('effect-fogo-celestial')$$,$$values('entrance_effect'::text)$$,'entrance effect slot is deterministic');
+select * from finish();
+rollback;

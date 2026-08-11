@@ -8,6 +8,7 @@ import { arenaUnitModelFor } from "../lib/apostolic-arena-3d-unit-registry";
 import { loadArenaProgression } from "../lib/apostolic-arena-progression-v17";
 import { ARENA_COMPETITIVE_FIELDS_V201, arenaThemeForProgression } from "../lib/apostolic-arena-themes-v20";
 import { SELECTED_FIELD_STORAGE_KEY_V203 } from "../lib/apostolic-arena-presentations-v20-3";
+import { createClient } from "../lib/supabase/client";
 import { arenaFieldCalibrationV202 } from "../lib/apostolic-arena-field-calibration-v20-2";
 import { ApostolicArenaPhaser } from "./apostolic-arena-phaser";
 import styles from "./apostolic-arena-battle-3d.module.css";
@@ -24,6 +25,7 @@ type CombatState = { units: CombatUnit[]; towers: TowerState[]; projectiles: Tow
 type MatchStatus = "waiting" | "running" | "finished";
 type MatchResult = { title: string; detail: string } | null;
 type ChampionEffect = { championId: number; until: number } | null;
+type BattleCosmetics = { skin?: string; entrance_effect?: string; victory_effect?: string; emote?: string };
 type QualityTier = "low" | "medium" | "high";
 export type ArenaTutorialEventV206 = "card-selected" | "unit-deployed" | "bridge-crossed" | "tower-damaged" | "match-finished";
 
@@ -62,6 +64,7 @@ const makeUnit = (cardId: number, team: Team, x: number, y: number): CombatUnit 
 };
 
 export function ApostolicArenaBattle3D({ onResult, trainingMode = false, tutorialPaused = false, onTutorialEvent }: { onResult?: (result: "victory" | "defeat" | "draw") => void; trainingMode?: boolean; tutorialPaused?: boolean; onTutorialEvent?: (event: ArenaTutorialEventV206) => void } = {}) {
+  const [cosmetics, setCosmetics] = useState<BattleCosmetics>({});
   const shellRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const unitLayerRef = useRef<ApostolicArena3DUnitLayer | null>(null);
@@ -103,6 +106,13 @@ export function ApostolicArenaBattle3D({ onResult, trainingMode = false, tutoria
       setCompetitiveFieldIndex(matchingIndex >= 0 ? matchingIndex : Math.random() < .5 ? 0 : 1);
     } catch { setCompetitiveFieldIndex(Math.random() < .5 ? 0 : 1); }
   }, [arenaTheme.theme.id]);
+  useEffect(() => {
+    let active = true;
+    void createClient().rpc("arena_get_cosmetic_loadout").then(({ data, error }) => {
+      if (active && !error && data) setCosmetics(data as BattleCosmetics);
+    });
+    return () => { active = false; };
+  }, []);
   useEffect(() => {
     const { towers } = fieldCalibration;
     const calibrated = INITIAL_TOWERS.map((tower) => {
@@ -713,7 +723,8 @@ export function ApostolicArenaBattle3D({ onResult, trainingMode = false, tutoria
   const abilityCooldown = Math.max(0, Math.ceil((abilityReadyAt - Date.now()) / 1000));
   const effectActive = Boolean(championEffect && championEffect.until > Date.now());
 
-  return <section ref={shellRef} className={styles.battleShell} data-quality={quality} data-field={competitiveField.id} data-champion-effect={effectActive ? activeChampionId : undefined} aria-label="Arena de batalha 3D">
+  return <section ref={shellRef} className={styles.battleShell} data-quality={quality} data-field={competitiveField.id} data-equipped-skin={cosmetics.skin} data-entrance-effect={cosmetics.entrance_effect} data-victory-effect={matchResult?.title === "VITÓRIA" ? cosmetics.victory_effect : undefined} data-champion-effect={effectActive ? activeChampionId : undefined} aria-label="Arena de batalha 3D">
+    {cosmetics.entrance_effect && matchStatus === "waiting" && <span className={styles.equippedEntrance} aria-hidden="true"><i /><em /></span>}
     <img className={styles.arenaBackdrop} src={competitiveField.image} alt="" aria-hidden="true" />
     <canvas
       ref={canvasRef}
