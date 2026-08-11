@@ -1,0 +1,1 @@
+begin;select plan(4);select has_table('public','arena_alliance_shop_products');select has_table('public','arena_alliance_shop_purchases');select function_returns('public','arena_get_alliance_shop',array[]::text[],'jsonb');select function_returns('public','arena_purchase_alliance_shop_product',array['text','text'],'jsonb');select*from finish();rollback;

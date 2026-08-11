@@ -1,0 +1,150 @@
+.shell {
+  min-height: 100%;
+  padding: clamp(0.7rem, 2vw, 1.4rem);
+  background:
+    radial-gradient(circle at 50% 0, #6d4b1b30, transparent 32%),
+    linear-gradient(145deg, #101316, #030405 72%);
+  color: #eee;
+}
+.shell > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid #a98249;
+  background: linear-gradient(120deg, #241a0eeb, #080a0ded);
+}
+.shell h2 {
+  margin: 0.2rem 0;
+  color: #f6dfaa;
+  font: 800 clamp(1.8rem, 5vw, 3.5rem) / 0.95 var(--arena-font-display);
+}
+.shell p {
+  margin: 0.2rem 0;
+  color: #aaa;
+}
+.shell small {
+  color: #c39e58;
+  letter-spacing: 0.1em;
+}
+.shell button {
+  padding: 0.65rem;
+  border: 1px solid #c29b57;
+  background: #2b1b0c;
+  color: #efd08b;
+  font: 700 0.5rem var(--arena-font-display);
+}
+.shell button:disabled {
+  opacity: 0.45;
+}
+.shell > aside {
+  margin: 0.7rem 0;
+  padding: 0.6rem;
+  border: 1px solid #835e37;
+  color: #efcb84;
+}
+.tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+.tools form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  padding: 0.7rem;
+  border: 1px solid #494032;
+  background: #090c0f;
+}
+.tools input,
+.modal input,
+.modal textarea,
+.modal select {
+  padding: 0.65rem;
+  border: 1px solid #514630;
+  background: #050709;
+  color: #eee;
+}
+.list {
+  display: grid;
+  gap: 0.6rem;
+  padding: 1rem;
+  border: 1px solid #453d31;
+  background: #090b0d;
+}
+.list h3 {
+  color: #c8a65e;
+  font: 0.7rem var(--arena-font-display);
+}
+.list article {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem;
+  border: 1px solid #37332c;
+  background: #101316;
+}
+.list article img {
+  width: 3.6rem;
+  height: 3.6rem;
+  object-fit: contain;
+  border: 1px solid #b58b48;
+  background: #17110a;
+}
+.list article div {
+  display: grid;
+}
+.list article em {
+  color: #8e8a82;
+  font-size: 0.48rem;
+  font-style: normal;
+  text-align: right;
+}
+.modal {
+  position: fixed;
+  z-index: 35000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: #010204e8;
+  backdrop-filter: blur(14px);
+}
+.modal form {
+  display: grid;
+  gap: 0.7rem;
+  width: min(32rem, 96vw);
+  padding: 1.2rem;
+  border: 1px solid #c29b56;
+  background: #0b0d0f;
+}
+.modal textarea {
+  min-height: 7rem;
+}
+.modal footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+@media (max-width: 48rem) {
+  .tools {
+    grid-template-columns: 1fr;
+  }
+  .list article {
+    grid-template-columns: auto 1fr;
+  }
+  .list article em {
+    display: none;
+  }
+  .list article button {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 30rem) {
+  .tools form {
+    grid-template-columns: 1fr;
+  }
+}

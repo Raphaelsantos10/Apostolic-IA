@@ -1,0 +1,69 @@
+.settings {
+  margin-top: 0.8rem;
+  padding: 0.9rem;
+  border: 1px solid #5a4930;
+  background: linear-gradient(145deg, #13100b, #080b0e);
+}
+.settings header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.settings h4 {
+  margin: 0.2rem 0;
+  color: #f0cf86;
+}
+.settings header > b {
+  color: #9e8b65;
+  font-size: 0.5rem;
+}
+.settings > aside {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid #70552f;
+  color: #e7c474;
+}
+.settings form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  align-items: end;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+}
+.settings label {
+  display: grid;
+  gap: 0.25rem;
+  color: #b99b64;
+  font-size: 0.48rem;
+}
+.settings textarea,
+.settings select,
+.settings input {
+  min-height: 2.7rem;
+  padding: 0.55rem;
+  border: 1px solid #4e4434;
+  background: #06080a;
+  color: #eee;
+}
+.settings textarea {
+  resize: vertical;
+}
+.settings button {
+  min-height: 2.7rem;
+}
+@media (max-width: 55rem) {
+  .settings form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .settings form label:first-child {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 30rem) {
+  .settings form {
+    grid-template-columns: 1fr;
+  }
+  .settings form label:first-child {
+    grid-column: auto;
+  }
+}

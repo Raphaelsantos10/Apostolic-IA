@@ -1,0 +1,166 @@
+.treasury {
+  margin-top: 0.7rem;
+  color: #eee;
+}
+.treasury > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #705b37;
+  background: linear-gradient(145deg, #22170a, #080b0e);
+}
+.treasury h3 {
+  margin: 0.2rem 0;
+  color: #6ee6ff;
+  font: 800 1.7rem var(--arena-font-display);
+}
+.treasury > header aside {
+  display: flex;
+  gap: 0.5rem;
+}
+.treasury > header span {
+  display: grid;
+  padding: 0.6rem;
+  border: 1px solid #4b4235;
+  color: #999;
+  font-size: 0.48rem;
+}
+.treasury > header b {
+  color: #e7c675;
+  font-size: 1rem;
+}
+.notice {
+  margin: 0.6rem 0;
+  padding: 0.6rem;
+  border: 1px solid #795d37;
+  color: #efc77c;
+}
+.donate {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  align-items: end;
+  gap: 0.6rem;
+  margin: 0.7rem 0;
+  padding: 0.8rem;
+  border: 1px solid #42403c;
+  background: #090c0f;
+}
+.donate label {
+  display: grid;
+  gap: 0.25rem;
+  color: #b99b64;
+  font-size: 0.48rem;
+}
+.donate input,
+.donate select,
+.modal input,
+.modal textarea {
+  padding: 0.6rem;
+  border: 1px solid #4c4438;
+  background: #050709;
+  color: #eee;
+}
+.treasury button {
+  padding: 0.6rem;
+  border: 1px solid #b28b4b;
+  background: #2c1d0d;
+  color: #edca83;
+  font: 700 0.48rem var(--arena-font-display);
+}
+.treasury main {
+  display: grid;
+  grid-template-columns: 1fr 22rem;
+  gap: 0.7rem;
+}
+.goals,
+.ledger {
+  padding: 0.8rem;
+  border: 1px solid #454038;
+  background: #090c0f;
+}
+.goals > header {
+  display: flex;
+  justify-content: space-between;
+}
+.goals article {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem;
+  padding: 0.7rem;
+  border-bottom: 1px solid #292721;
+}
+.goals article div {
+  display: grid;
+  gap: 0.25rem;
+}
+.goals p {
+  margin: 0;
+  color: #999;
+  font-size: 0.58rem;
+}
+.goals i {
+  height: 0.5rem;
+  overflow: hidden;
+  background: #030405;
+}
+.goals i em {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #2389a3, #74e6ff);
+}
+.ledger p {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #292721;
+}
+.ledger span {
+  grid-row: 1/3;
+  color: #6fe3ff;
+}
+.ledger small {
+  color: #777;
+}
+.modal {
+  position: fixed;
+  z-index: 35000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #010204e8;
+}
+.modal form {
+  display: grid;
+  gap: 0.6rem;
+  width: min(32rem, 94vw);
+  padding: 1rem;
+  border: 1px solid #a98249;
+  background: #090c0f;
+}
+.modal textarea {
+  min-height: 6rem;
+}
+.modal footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+@media (max-width: 55rem) {
+  .treasury main {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 36rem) {
+  .treasury > header {
+    display: grid;
+  }
+  .donate {
+    grid-template-columns: 1fr;
+  }
+  .treasury > header aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

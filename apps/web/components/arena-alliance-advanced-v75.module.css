@@ -1,0 +1,120 @@
+.shell {
+  margin-top: 0.7rem;
+  color: #eee;
+}
+.shell > nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.3rem;
+  padding: 0.5rem;
+  border: 1px solid #423a2f;
+  background: #080b0e;
+}
+.shell button {
+  padding: 0.6rem;
+  border: 1px solid #665238;
+  background: #17110a;
+  color: #d8b66f;
+  font: 700 0.48rem var(--arena-font-display);
+}
+.shell > nav button[data-active="true"] {
+  border-color: #e1b65c;
+  background: #3a260f;
+}
+.shell section {
+  margin-top: 0.6rem;
+  padding: 1rem;
+  border: 1px solid #4a4032;
+  background: #090c0f;
+}
+.shell h3 {
+  margin: 0.2rem 0;
+  color: #efd08a;
+}
+.shell aside {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid #795b34;
+  color: #edc479;
+}
+.pro > div,
+.pass > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.5rem;
+  margin: 0.7rem 0;
+}
+.pro article,
+.pass article {
+  padding: 0.7rem;
+  border: 1px solid #403b32;
+  background: #101418;
+}
+.pass article {
+  display: grid;
+  gap: 0.35rem;
+}
+.pass article[data-premium="true"] {
+  border-color: #8650aa;
+  background: #1d1225;
+}
+.cards form,
+.chat form {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.4rem;
+  margin: 0.7rem 0;
+}
+.shell input,
+.shell select {
+  padding: 0.6rem;
+  border: 1px solid #4b4337;
+  background: #050709;
+  color: #eee;
+}
+.cards > article,
+.moderation > article {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, auto);
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem;
+  border-bottom: 1px solid #29261f;
+}
+.chat > div {
+  display: grid;
+  gap: 0.35rem;
+  max-height: 30rem;
+  overflow: auto;
+}
+.chat > div p {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0;
+  padding: 0.5rem;
+  background: #101418;
+}
+.chat > div button {
+  padding: 0.3rem;
+  font-size: 0.4rem;
+}
+.chat small {
+  color: #777;
+}
+@media (max-width: 42rem) {
+  .shell > nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cards form,
+  .chat form {
+    grid-template-columns: 1fr;
+  }
+  .chat > div p {
+    grid-template-columns: 1fr;
+  }
+  .moderation > article {
+    grid-template-columns: 1fr 1fr;
+  }
+}

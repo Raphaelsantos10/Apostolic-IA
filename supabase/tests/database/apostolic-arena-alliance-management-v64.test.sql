@@ -1,0 +1,16 @@
+begin;
+select plan(12);
+select has_table('public','arena_alliance_join_requests','V64 stores moderated join requests');
+select has_table('public','arena_alliance_invites','V64 stores limited invitations');
+select has_table('public','arena_alliance_moderation_log','V64 audits management actions');
+select function_returns('public','arena_apply_to_alliance',array['uuid','text'],'jsonb','V64 accepts approval requests');
+select function_returns('public','arena_create_alliance_invite',array['integer','integer'],'jsonb','V64 creates limited invites');
+select function_returns('public','arena_accept_alliance_invite',array['text'],'jsonb','V64 accepts invite codes');
+select function_returns('public','arena_get_alliance_management',array[]::text[],'jsonb','V64 exposes protected management data');
+select function_returns('public','arena_review_alliance_request',array['uuid','text'],'jsonb','V64 reviews candidates atomically');
+select function_returns('public','arena_set_alliance_member_role',array['uuid','text'],'jsonb','V64 protects role changes');
+select function_returns('public','arena_remove_alliance_member',array['uuid','text'],'jsonb','V64 removes members through audited RPC');
+select function_returns('public','arena_leave_alliance',array[]::text[],'jsonb','V64 supports safe voluntary exit');
+select function_returns('public','arena_transfer_alliance_leadership',array['uuid'],'jsonb','V64 transfers founder authority safely');
+select*from finish();
+rollback;

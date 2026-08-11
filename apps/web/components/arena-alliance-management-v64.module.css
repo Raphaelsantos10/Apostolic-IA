@@ -1,0 +1,232 @@
+.loading {
+  display: grid;
+  place-items: center;
+  min-height: 20rem;
+  border: 1px solid #40392e;
+  background: #080b0ddd;
+  color: #c9a968;
+}
+.management {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.7rem;
+}
+.management > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #7e6339;
+  background: linear-gradient(120deg, #1d160ddf, #070a0de8);
+  backdrop-filter: blur(14px);
+}
+.management h3 {
+  margin: 0.15rem 0;
+  color: #f2d593;
+  font: 800 clamp(1.35rem, 3vw, 2.2rem) var(--arena-font-display);
+}
+.management h4 {
+  margin: 0;
+  color: #d1ae65;
+  font: 0.65rem var(--arena-font-display);
+  letter-spacing: 0.08em;
+}
+.management header > span {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #6d5a38;
+  color: #d6b671;
+  font: 0.55rem var(--arena-font-display);
+}
+.management header > span[data-manager="true"] {
+  border-color: #c29a50;
+  box-shadow: 0 0 1rem #ae782a30;
+}
+.management > aside {
+  padding: 0.6rem;
+  border: 1px solid #8d6738;
+  background: #25170dde;
+  color: #edc47a;
+  font-size: 0.6rem;
+}
+.invites,
+.requests,
+.roster {
+  padding: 0.85rem;
+  border: 1px solid #403a31;
+  background: #080b0de8;
+  backdrop-filter: blur(12px);
+}
+.invites {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem;
+  align-items: center;
+}
+.invites p,
+.requests > p {
+  color: #85817a;
+  font-size: 0.56rem;
+}
+.invites article {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem;
+  border: 1px solid #34332f;
+  background: #111519;
+}
+.invites article b {
+  color: #f1ce7b;
+  letter-spacing: 0.16em;
+}
+.invites article span,
+.invites article small {
+  color: #8c8982;
+  font-size: 0.5rem;
+}
+.requests,
+.roster {
+  display: grid;
+  gap: 0.45rem;
+}
+.requests h4,
+.roster h4 {
+  margin-bottom: 0.35rem;
+}
+.requests h4 b,
+.roster h4 b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.4rem;
+  margin-left: 0.3rem;
+  padding: 0.15rem;
+  border-radius: 99px;
+  background: #5d411e;
+  color: #f3cf81;
+}
+.requests article,
+.roster article {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem;
+  border-bottom: 1px solid #2c2b28;
+}
+.requests article > img,
+.requests article > span,
+.roster article > img,
+.roster article > span {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #74501f, #17110b);
+  color: #f3d18b;
+  font: 0.55rem var(--arena-font-display);
+}
+.requests article div,
+.roster article div {
+  display: grid;
+}
+.requests article p {
+  font-size: 0.54rem;
+}
+.requests article small,
+.roster article small {
+  color: #777;
+  font-size: 0.45rem;
+}
+.requests article button:last-child {
+  border-color: #5d874e;
+  background: #162313;
+  color: #a9d795;
+}
+.roster article {
+  grid-template-columns: auto 1fr auto auto auto;
+}
+.roster article strong {
+  color: #c9a65e;
+  font-size: 0.5rem;
+}
+.roster select {
+  padding: 0.5rem;
+  border: 1px solid #57472e;
+  background: #0d1114;
+  color: #d7bd85;
+  font-size: 0.5rem;
+}
+.roster em {
+  color: #b99a5e;
+  font: 0.5rem var(--arena-font-display);
+  font-style: normal;
+}
+.roster article > button {
+  border-color: #75413c;
+  background: #24100f;
+  color: #dd938c;
+}
+.management > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #3c3730;
+  background: #090b0de8;
+}
+.management > footer p {
+  font-size: 0.52rem;
+}
+.management > footer button {
+  border-color: #70423c;
+  background: #26110f;
+  color: #dda09a;
+}
+@media (max-width: 44rem) {
+  .invites article {
+    grid-template-columns: 1fr 1fr;
+  }
+  .requests article {
+    grid-template-columns: auto 1fr;
+  }
+  .requests article button {
+    width: 100%;
+  }
+  .roster article {
+    grid-template-columns: auto 1fr auto;
+  }
+  .roster article strong {
+    grid-column: 2;
+  }
+  .roster select,
+  .roster article > button {
+    grid-column: auto;
+  }
+  .management > footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+@media (max-width: 28rem) {
+  .invites {
+    grid-template-columns: 1fr;
+  }
+  .invites article {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+  .roster article {
+    grid-template-columns: auto 1fr;
+  }
+  .roster article strong,
+  .roster select,
+  .roster article > button {
+    grid-column: 2;
+  }
+}
