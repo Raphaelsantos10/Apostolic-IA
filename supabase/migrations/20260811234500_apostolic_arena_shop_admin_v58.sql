@@ -1,0 +1,7 @@
+begin;
+insert into storage.buckets(id,name,public,file_size_limit,allowed_mime_types) values('arena-shop','arena-shop',true,4194304,array['image/webp','image/png','image/jpeg']) on conflict(id) do update set public=true,file_size_limit=4194304,allowed_mime_types=excluded.allowed_mime_types;
+create policy "arena_shop_assets_admin_insert" on storage.objects for insert to authenticated with check(bucket_id='arena-shop' and exists(select 1 from public.arena_admins where user_id=(select auth.uid())));
+create policy "arena_shop_assets_admin_update" on storage.objects for update to authenticated using(bucket_id='arena-shop' and exists(select 1 from public.arena_admins where user_id=(select auth.uid()))) with check(bucket_id='arena-shop' and exists(select 1 from public.arena_admins where user_id=(select auth.uid())));
+create or replace function public.arena_admin_list_shop_products() returns jsonb language plpgsql security definer set search_path='' as $$ declare v_user uuid:=(select auth.uid());v_result jsonb;begin if v_user is null or not exists(select 1 from public.arena_admins where user_id=v_user) then raise exception 'administrator required';end if;select coalesce(jsonb_agg(to_jsonb(product) order by product.sort_order,product.name),'[]'::jsonb) into v_result from public.arena_shop_products product;return v_result;end;$$;
+revoke all on function public.arena_admin_list_shop_products() from public;grant execute on function public.arena_admin_list_shop_products() to authenticated;
+commit;

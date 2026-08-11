@@ -1,5 +1,5 @@
 /* V50 · loja cinematográfica, cards centralizados e passe organizado */
-[data-apostolic-arena] [class*="arena-shop-v38_shop"]{position:relative;isolation:isolate;overflow-x:hidden;background:linear-gradient(#050608d9,#050608f2),url('/games/apostolic-arena/dashboard/golden-mountains-sky-v24.webp') center top/cover fixed;color:#f2e7cf}
+[data-apostolic-arena] [class*="arena-shop-v38_shop"]{position:relative;isolation:isolate;overflow-x:hidden;background:linear-gradient(#050608c7,#050608ef),url('/games/apostolic-arena/ui/backgrounds/loja-cidadela-celestial-v50.webp') center top/cover fixed;color:#f2e7cf}
 [data-apostolic-arena] [class*="arena-shop-v38_shop"]::before{content:"";position:fixed;z-index:-1;inset:0;background:radial-gradient(circle at 50% 12%,transparent 0 14%,#0203046e 52%,#020304e8 100%);pointer-events:none}
 [data-apostolic-arena] [class*="arena-shop-v38_header"]{width:min(92rem,100%);margin-inline:auto;border-color:#c6a45d80;background:linear-gradient(105deg,#15140ff2,#08090cf0);backdrop-filter:blur(14px)}
 [data-apostolic-arena] [class*="arena-shop-v38_tabs"],[data-apostolic-arena] [class*="arena-shop-v38_dailyGift"],[data-apostolic-arena] [class*="arena-shop-v38_status"],[data-apostolic-arena] [class*="arena-shop-v38_gemBudget"]{width:min(92rem,100%);margin-inline:auto}

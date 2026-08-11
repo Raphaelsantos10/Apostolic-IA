@@ -1,0 +1,18 @@
+/* V51 · loja cinematográfica com seletores estáveis no Turbopack */
+[data-arena-shop="root"]{position:relative;isolation:isolate;overflow-x:hidden;background:radial-gradient(circle at 50% 0,#2d241a99,transparent 35%),linear-gradient(145deg,#08090b,#020304 72%);color:#f2e7cf}
+[data-arena-shop="root"]::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(#03040542,#030405e8 34rem),url('/games/apostolic-arena/ui/backgrounds/loja-cidadela-celestial-v50.webp') center top/100% auto no-repeat;pointer-events:none}
+[data-arena-shop="hero"]{position:relative;isolation:isolate;width:min(92rem,100%);min-height:clamp(19rem,36vw,31rem);margin-inline:auto;overflow:hidden;padding:clamp(1rem,3vw,2.2rem);border:1px solid #d6b56b73!important;border-radius:1.35rem;background:#08090b!important;box-shadow:0 32px 90px #000d,inset 0 1px #fff2cf33}
+[data-arena-shop="hero"]::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#030405fa 0 24%,#030405b8 48%,#03040526 76%),linear-gradient(0deg,#060709ed 0,transparent 52%)}
+[data-arena-shop="tabs"]{position:sticky;z-index:12;top:.45rem;width:min(92rem,100%);margin:.9rem auto!important;border-radius:999px;background:#090b0dc7!important;box-shadow:0 16px 38px #0009;backdrop-filter:blur(22px) saturate(1.35)}
+[data-arena-shop="tabs"] button{border-radius:999px;transition:background .25s,box-shadow .25s,transform .25s}
+[data-arena-shop="tabs"] button[data-active="true"]{transform:translateY(-1px);box-shadow:inset 0 1px #ffe8ba66,0 8px 22px #b35a2840}
+[data-arena-shop="grid"]{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),18rem))!important;justify-content:center;align-items:stretch;width:min(92rem,100%);gap:1.1rem;padding:.6rem .7rem 2rem;overflow:visible}
+[data-arena-shop="card"]{display:grid;grid-template-rows:auto 1fr;width:100%;min-width:0;height:100%;overflow:hidden;border-radius:1.1rem!important;clip-path:none!important;border-color:#8b734b;background:linear-gradient(155deg,#171613f5,#08090bf8);box-shadow:0 24px 65px #000b,inset 0 1px #fff2c52b!important}
+[data-arena-shop="card"]::after{content:"";position:absolute;z-index:3;inset:auto 8% 0;height:1px;background:linear-gradient(90deg,transparent,#edca7d99,transparent)}
+[data-arena-shop="card"]:hover{box-shadow:0 30px 72px #000e,0 0 28px #c89c3b32!important}
+[data-arena-shop="card"] [class*="art"]{height:auto;aspect-ratio:16/11;background:#090a0c}
+[data-arena-shop="card"] [class*="art"]>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+[data-arena-shop="root"] [class*="dailyGift"],[data-arena-shop="root"] [class*="status"],[data-arena-shop="root"] [class*="gemBudget"]{width:min(92rem,100%);margin-inline:auto}
+[data-arena-shop="root"] [class*="passShowcase"]{display:none}
+@media(max-width:46rem){[data-arena-shop="root"]::before{background-size:auto 31rem}[data-arena-shop="hero"]{min-height:27rem;align-items:flex-end!important;border-radius:.85rem}[data-arena-shop="hero"]::after{background:linear-gradient(0deg,#030405fa 0 38%,#0304057f 72%,transparent)}[data-arena-shop="tabs"]{top:.25rem;border-radius:.8rem}[data-arena-shop="grid"]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.55rem;padding-inline:0}[data-arena-shop="card"] [class*="art"]{aspect-ratio:1}}
+@media(max-width:22rem){[data-arena-shop="grid"]{grid-template-columns:1fr!important}}

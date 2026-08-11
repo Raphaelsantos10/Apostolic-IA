@@ -8,6 +8,7 @@ import { ApostolicArenaBattle3D } from "./apostolic-arena-battle-3d";
 import { ArenaCollectionV17 } from "./arena-collection-v17";
 import { ArenaChestsV18 } from "./arena-chests-v18";
 import { ArenaShopV38 } from "./arena-shop-v38";
+import { ArenaAllianceV61 } from "./arena-alliance-v61";
 import { CHEST_DEFINITIONS, grantBattleProgress, loadArenaChests, type ArenaChestState } from "../lib/apostolic-arena-chests-v18";
 import { loadArenaProgression, type ArenaPlayerProgression } from "../lib/apostolic-arena-progression-v17";
 import { ArenaWorldRoadmap } from "./arena-world-roadmap";
@@ -19,7 +20,7 @@ import styles from "./apostolic-arena-3d-experience.module.css";
 import loadingStyles from "./apostolic-arena-loading-v2.module.css";
 import { useArenaMotionStage } from "../lib/use-arena-motion-stage";
 
-type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards" | "shop";
+type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards" | "shop" | "alliance";
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
 const SAVED_DECKS_KEY = "apostolic-arena-decks-v16";
 const ACTIVE_DECK_SLOT_KEY = "apostolic-arena-active-deck-slot-v32";
@@ -360,14 +361,14 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
 
       <nav className={styles.bottomNav} aria-label="Navegação do Apostolic Arena">
         <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/diario-v1.png" alt="" /></span><b>DIÁRIO</b></button>
-        <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/alianca-v1.png" alt="" /></span><b>ALIANÇA</b></button>
+        <button type="button" onClick={() => setPhase("alliance")}><span><img src="/games/apostolic-arena/ui/emblems/alianca-v1.png" alt="" /></span><b>ALIANÇA</b></button>
         <button type="button" onClick={() => setPhase("cards")}><span><img src="/games/apostolic-arena/ui/emblems/amigos-v1.png" alt="" /></span><b>AMIGOS</b></button>
         <button type="button" onClick={() => setPhase("rewards")}><span><img src="/games/apostolic-arena/ui/emblems/inventario-v1.png" alt="" /></span><b>INVENTÁRIO</b></button>
       </nav>
     </section> : phase === "arenaPreview" ? <ArenaMatchIntroV203 arenaId={currentArenaTheme.id} onEnter={enterRandomField} onCancel={() => setPhase("menu")} /> : <section className={styles.module}>
       <header className={styles.moduleHeader}>
         <button type="button" onClick={() => setPhase("menu")}>← Menu 3D</button>
-        <strong>{phase === "battle" ? "Batalha" : phase === "cards" ? "Cartas e baralho" : phase === "world" ? "Jornada" : phase === "shop" ? "Loja da Aliança" : "Baús e recompensas"}</strong>
+        <strong>{phase === "battle" ? "Batalha" : phase === "cards" ? "Cartas e baralho" : phase === "world" ? "Jornada" : phase === "shop" ? "Loja da Aliança" : phase === "alliance" ? "Sede da Aliança" : "Baús e recompensas"}</strong>
         <div><button type="button" onClick={requestFullscreen} aria-label="Ativar tela cheia">⛶</button><button type="button" onClick={leave} aria-label="Sair">×</button></div>
       </header>
       <main className={styles.moduleContent}>
@@ -379,6 +380,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {phase === "world" && <ArenaWorldRoadmap onProgressionChange={setPlayerProgression} onBattle={() => setPhase("arenaPreview")} onTraining={() => setPhase("tutorial")} />}
         {phase === "rewards" && <ArenaChestsV18 onStateChange={setChestState} />}
         {phase === "shop" && <ArenaShopV38 fallbackWallet={arenaWallet} onWalletChange={setArenaWallet} />}
+        {phase === "alliance" && <ArenaAllianceV61 />}
       </main>
     </section>}
     {(phase === "loading" || phase === "menu") && <button type="button" className={styles.soundControl} data-enabled={soundEnabled} onClick={() => setSoundEnabled((current) => !current)} aria-label={soundEnabled ? "Desativar som ambiente" : "Ativar som ambiente"}>{soundEnabled ? "🔊" : "🔇"}<span>{soundEnabled ? "SOM" : "ATIVAR SOM"}</span></button>}

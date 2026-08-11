@@ -1,0 +1,14 @@
+/* V56 · coleções visuais exclusivas e cards com profundidade material */
+[data-arena-shop="card"] .arena-v56-collection{position:absolute;z-index:4;left:.65rem;bottom:.55rem;padding:.28rem .44rem;border:1px solid #e0bd7161;border-radius:999px;background:#050607c7;color:#ead49f;font:750 .43rem var(--arena-font-ui);letter-spacing:.11em;box-shadow:0 8px 20px #0009;backdrop-filter:blur(10px)}
+[data-arena-shop="card"] [class*="art"]{isolation:isolate;background:radial-gradient(circle at 50% 42%,#6c552a4d,transparent 48%),linear-gradient(145deg,#11141a,#050608)}
+[data-arena-shop="card"] [class*="art"]::before{content:"";position:absolute;z-index:2;inset:0;background:linear-gradient(115deg,transparent 18%,#fff7d614 44%,transparent 62%);translate:-115% 0;transition:translate .7s ease;pointer-events:none}
+[data-arena-shop="card"]:hover [class*="art"]::before{translate:115% 0}
+[data-arena-shop="card"] [class*="art"]>img{transition:transform .55s cubic-bezier(.2,.75,.2,1),filter .4s;filter:saturate(1.04) contrast(1.04)}
+[data-arena-shop="card"]:hover [class*="art"]>img{transform:scale(1.055);filter:saturate(1.15) contrast(1.06)}
+[data-arena-shop="card"][data-collection="gems"]{border-color:#4ebdd190;box-shadow:0 24px 65px #000b,inset 0 1px #9cf5ff3b!important}
+[data-arena-shop="card"][data-collection="gems"] [class*="art"]{background:radial-gradient(circle at 50% 45%,#00b9db38,transparent 52%),#05080b}
+[data-arena-shop="card"][data-collection="skins"]{border-color:#c8a05f8c}
+[data-arena-shop="card"][data-collection="effects"]{border-color:#8064b18c}
+[data-arena-shop="card"][data-rarity="premium"]{box-shadow:0 25px 70px #000d,0 0 32px #52cfe52c,inset 0 1px #ffdf8c55!important}
+@media(max-width:46rem){[data-arena-shop="card"] .arena-v56-collection{left:.35rem;bottom:.35rem;max-width:calc(100% - .7rem);overflow:hidden;font-size:.34rem;text-overflow:ellipsis;white-space:nowrap}}
+@media(prefers-reduced-motion:reduce){[data-arena-shop="card"] [class*="art"]::before,[data-arena-shop="card"] [class*="art"]>img{transition:none}}

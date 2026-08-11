@@ -1,0 +1,10 @@
+begin;
+select plan(6);
+select function_returns('public','arena_rotating_offer_price',array['text'],'integer','server computes rotating offer price');
+select function_returns('public','arena_get_rotating_shop_offers',array[]::text[],'jsonb','rotating offers RPC exists');
+select function_returns('public','arena_purchase_product',array['text','text'],'jsonb','purchase RPC uses the current offer');
+select jsonb_array_length(public.arena_get_rotating_shop_offers())=2,'daily and weekly offer slots exist';
+select (public.arena_get_rotating_shop_offers()->0->>'discount_percent')::integer=20,'daily offer grants twenty percent discount';
+select (public.arena_get_rotating_shop_offers()->1->>'discount_percent')::integer=15,'weekly offer grants fifteen percent discount';
+select * from finish();
+rollback;

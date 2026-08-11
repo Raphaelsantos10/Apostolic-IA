@@ -19,4 +19,9 @@ export type ArenaShopProduct = {
   rarity: "rare" | "epic" | "legendary" | "premium";
   featured?: boolean;
   available?: boolean;
+  compareAtPrice?: number;
+  sortOrder?: number;
+  purchaseLimit?: number;
+  endsAt?: string;
+  stackable?: boolean;
 };

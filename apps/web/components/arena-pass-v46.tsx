@@ -5,6 +5,7 @@ import { createClient } from "../lib/supabase/client";
 import type { ArenaWallet } from "../lib/apostolic-arena-economy-config";
 import styles from "./arena-pass-v46.module.css";
 import { ARENA_SHOP_CATALOG } from "../lib/apostolic-arena-shop-catalog";
+import Link from "next/link";
 
 type Reward = { currency?: "coins" | "gems"; amount?: number; product_id?: string };
 type Level = { level: number; xp_required: number; free_reward: Reward | null; premium_reward: Reward | null; free_claimed: boolean; premium_claimed: boolean };
@@ -16,12 +17,14 @@ export function ArenaPassV46({ onWalletChange }: { onWalletChange: (wallet: Aren
   const [status,setStatus] = useState<PassStatus | null>(null);
   const [busy,setBusy] = useState("");
   const [message,setMessage] = useState("A carregar temporada…");
+  const [legalAccepted,setLegalAccepted]=useState(false);
+  const [checkoutBusy,setCheckoutBusy]=useState(false);
   const load = async () => {
     const { data,error } = await createClient().rpc("arena_get_pass_status");
     if (error) { setMessage("Aplique a migração V46 para ativar o Passe."); return; }
     setStatus((data ?? { active:false }) as PassStatus); setMessage("");
   };
-  useEffect(() => { void load(); }, []);
+  useEffect(() => { void load(); const payment=new URLSearchParams(window.location.search).get("arenaPayment");if(payment==="success"){setMessage("Pagamento confirmado pelo Stripe. A ativar o Passe Premium…");let attempts=0;const timer=window.setInterval(()=>{attempts+=1;void load();if(attempts>=6)window.clearInterval(timer)},2000);return()=>window.clearInterval(timer)}if(payment==="cancel")setMessage("Pagamento cancelado. O Passe Premium não foi ativado."); }, []);
   const claim = async (level: number,track: "free"|"premium") => {
     const key=`${level}:${track}`; setBusy(key);
     const { data,error }=await createClient().rpc("arena_claim_pass_reward",{p_level:level,p_track:track});
@@ -29,14 +32,22 @@ export function ArenaPassV46({ onWalletChange }: { onWalletChange: (wallet: Aren
     else { const result=data as {coins?:number;gems?:number}; if(typeof result.coins==="number"&&typeof result.gems==="number") onWalletChange({coins:result.coins,gems:result.gems}); setMessage("Recompensa adicionada ao inventário."); await load(); }
     setBusy("");
   };
+  const claimAll=async()=>{setBusy("all");const {data,error}=await createClient().rpc("arena_claim_available_pass_rewards");if(error)setMessage("Não foi possível resgatar todas as recompensas agora.");else{const result=data as {claimed_count?:number;status?:PassStatus};setMessage(`${result.claimed_count??0} recompensas adicionadas ao inventário.`);if(result.status)setStatus(result.status);else await load()}setBusy("")};
+  const buyPremium=async()=>{if(!legalAccepted||checkoutBusy)return;setCheckoutBusy(true);const response=await fetch("/api/arena/checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({productId:"pass-alianca-s1"})});const result=await response.json().catch(()=>({})) as {url?:string;error?:string};if(!response.ok||!result.url){setMessage(result.error??"Não foi possível iniciar o pagamento seguro.");setCheckoutBusy(false);return}window.location.assign(result.url)};
   if (!status?.active) return <section className={styles.empty}><b>PASSE DA ALIANÇA</b><span>{message || "Nenhuma temporada ativa."}</span></section>;
   const xp=status.xp ?? 0; const levels=status.levels ?? []; const next=levels.find(item=>item.xp_required>xp); const progress=next ? Math.min(100,xp/Math.max(1,next.xp_required)*100) : 100;
   return <section className={styles.pass}>
-    <div className={styles.hero}><img src="/games/apostolic-arena/loading/arena-loading-heroes-da-alianca-v1.webp" alt="Heróis da Temporada da Aliança" /><span><small>TEMPORADA CELESTIAL · 10 MARCOS</small><h3>{status.name}</h3><p>Avance pela jornada, desbloqueie recompensas e preserve uma Arena sem vantagens pagas.</p><strong data-premium={status.premium}>{status.premium ? "PASSE PREMIUM ATIVO" : "TRILHA GRATUITA ATIVA"}</strong></span></div>
+    <div className={styles.hero}><img src="/games/apostolic-arena/ui/backgrounds/passe-jornada-celestial-v50.webp" alt="Jornada dourada da Temporada da Aliança" /><span><small>TEMPORADA CELESTIAL · 10 MARCOS</small><h3>{status.name}</h3><p>Avance pela jornada, desbloqueie recompensas e preserve uma Arena sem vantagens pagas.</p><strong data-premium={status.premium}>{status.premium ? "PASSE PREMIUM ATIVO" : "TRILHA GRATUITA ATIVA"}</strong></span></div>
     <header><div><small>PROGRESSO DA TEMPORADA</small><h3>{xp} XP CONQUISTADOS</h3><p>{levels.filter(item=>xp>=item.xp_required).length} de {levels.length} níveis alcançados</p></div><strong>TERMINA EM {status.ends_at ? new Date(status.ends_at).toLocaleDateString("pt-PT") : "BREVE"}</strong></header>
     <div className={styles.progress}><span><b>{xp} XP</b><em>{next ? `Próximo nível: ${next.xp_required} XP` : "Trilha concluída"}</em></span><i><em style={{width:`${progress}%`}} /></i></div>
+    {!status.premium&&<section className={styles.premiumOffer}><div><small>DESBLOQUEIO PREMIUM · PAGAMENTO ÚNICO</small><h3>Ative toda a trilha da temporada</h3><p>Receba os prémios premium já alcançados e continue desbloqueando recompensas cosméticas. Nenhum benefício aumenta o poder de combate.</p><ul><li>10 recompensas premium</li><li>Skins e efeitos exclusivos</li><li>Resgate retroativo dos níveis alcançados</li></ul></div><aside><span><del>€6,99</del><b>€5,99</b><em>POR TEMPORADA</em></span><label><input type="checkbox" checked={legalAccepted} onChange={event=>setLegalAccepted(event.target.checked)}/><span>Li e aceito os <Link href="/legal/termos" target="_blank">Termos</Link>, a <Link href="/legal/privacidade" target="_blank">Privacidade</Link> e os <Link href="/legal/reembolsos" target="_blank">Reembolsos</Link>.</span></label><button type="button" disabled={!legalAccepted||checkoutBusy} onClick={()=>void buyPremium()}>{checkoutBusy?"ABRINDO STRIPE…":"ATIVAR PASSE PREMIUM"}</button><small>Pagamento seguro processado pelo Stripe</small></aside></section>}
+    {status.premium&&<section className={styles.premiumActive}><span><small>PASSE PREMIUM ATIVO</small><b>Todos os níveis premium desta temporada estão disponíveis.</b></span><button type="button" disabled={busy!==""} onClick={()=>void claimAll()}>{busy==="all"?"RESGATANDO…":"RESGATAR TUDO DISPONÍVEL"}</button></section>}
     {message && <p className={styles.message} role="status">{message}</p>}
-    <div className={styles.trackLegend}><span>TRILHA GRATUITA</span><span>TRILHA PREMIUM</span></div>
-    <div className={styles.levels}>{levels.map(item=>{const unlocked=xp>=item.xp_required;const freeImage=rewardImage(item.free_reward);const premiumImage=rewardImage(item.premium_reward);return <article key={item.level} data-unlocked={unlocked}><b>{item.level}</b><small>{item.xp_required} XP</small><div>{freeImage&&<img src={freeImage} alt="" />}<span>LIVRE</span><em>{rewardLabel(item.free_reward)}</em><button type="button" disabled={!unlocked||item.free_claimed||busy!==""} onClick={()=>void claim(item.level,"free")}>{item.free_claimed?"RECEBIDO":"RESGATAR"}</button></div><div data-premium>{premiumImage&&<img src={premiumImage} alt="" />}<span>PREMIUM</span><em>{rewardLabel(item.premium_reward)}</em><button type="button" disabled={!unlocked||!status.premium||item.premium_claimed||busy!==""} onClick={()=>void claim(item.level,"premium")}>{item.premium_claimed?"RECEBIDO":status.premium?"RESGATAR":"BLOQUEADO"}</button></div></article>})}</div>
+    <div className={styles.trackLegend}><span><i />TRILHA GRATUITA</span><span><i />TRILHA PREMIUM</span></div>
+    <div className={styles.levels}>{levels.map(item=>{const unlocked=xp>=item.xp_required;const freeImage=rewardImage(item.free_reward);const premiumImage=rewardImage(item.premium_reward);return <article className={styles.milestone} key={item.level} data-unlocked={unlocked}>
+      <header className={styles.levelHeader}><span>NÍVEL</span><b>{String(item.level).padStart(2,"0")}</b><small>{item.xp_required} XP</small><i aria-hidden="true" /></header>
+      <div className={styles.rewardCard} data-track="free" data-claimed={item.free_claimed}>{freeImage&&<img src={freeImage} alt={rewardLabel(item.free_reward)} />}<span>LIVRE</span><em>{rewardLabel(item.free_reward)}</em><button type="button" disabled={!unlocked||item.free_claimed||busy!==""} onClick={()=>void claim(item.level,"free")}>{item.free_claimed?"RECEBIDO":unlocked?"RESGATAR":"BLOQUEADO"}</button></div>
+      <div className={styles.rewardCard} data-track="premium" data-claimed={item.premium_claimed}>{premiumImage&&<img src={premiumImage} alt={rewardLabel(item.premium_reward)} />}<span>PREMIUM</span><em>{rewardLabel(item.premium_reward)}</em><button type="button" disabled={!unlocked||!status.premium||item.premium_claimed||busy!==""} onClick={()=>void claim(item.level,"premium")}>{item.premium_claimed?"RECEBIDO":status.premium&&unlocked?"RESGATAR":"BLOQUEADO"}</button></div>
+    </article>})}</div>
   </section>;
 }

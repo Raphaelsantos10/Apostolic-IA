@@ -1,0 +1,11 @@
+begin;
+select plan(7);
+select has_column('public','arena_shop_products','compare_at_price','catalog stores comparison price');
+select has_column('public','arena_shop_products','sort_order','catalog stores display order');
+select has_column('public','arena_shop_products','purchase_limit','catalog stores purchase limit');
+select has_column('public','arena_shop_products','updated_at','catalog stores update timestamp');
+select function_returns('public','arena_admin_upsert_shop_product',array['jsonb'],'jsonb','admin catalog RPC exists');
+select policies_are('public','arena_shop_products',array['arena_products_read_active'],'only active scheduled products are publicly readable');
+select results_eq($$select count(*)::bigint from public.arena_shop_products where metadata ? 'image'$$,array[(select count(*)::bigint from public.arena_shop_products)],'every seeded product has an image');
+select * from finish();
+rollback;

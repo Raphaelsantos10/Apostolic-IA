@@ -8,6 +8,7 @@
     "dev": "next dev",
     "start": "next start",
     "test": "node --test lib/*.test.mjs",
+    "test:arena-e2e": "node scripts/arena-store-e2e-v60.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

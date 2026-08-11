@@ -1,0 +1,10 @@
+begin;
+select plan(6);
+select function_returns('public','arena_purchase_product',array['text','text'],'jsonb','secure purchase RPC remains available');
+select function_returns('public','arena_prepare_money_purchase',array['text'],'jsonb','money purchase preparation remains available');
+select function_returns('public','arena_get_purchase_history',array['integer'],'jsonb','purchase history RPC exists');
+select results_eq($$select count(*)::bigint from public.arena_shop_products where category='chests' and metadata->>'stackable'='true'$$,$$select count(*)::bigint from public.arena_shop_products where category='chests'$$,'all chests are stackable');
+select results_eq($$select count(*)::bigint from public.arena_shop_products where category in ('skins','effects','pass') and purchase_limit=1$$,$$select count(*)::bigint from public.arena_shop_products where category in ('skins','effects','pass')$$,'unique products have a purchase limit');
+select policies_are('public','arena_purchase_receipts',array['arena_receipts_read_own'],'players only read their own receipts');
+select * from finish();
+rollback;
