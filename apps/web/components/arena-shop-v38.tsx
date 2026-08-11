@@ -73,7 +73,15 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
   };
 
   const confirmPurchase = async () => {
-    if (!selected || selected.currency !== "gems" || selected.available === false || busy) return;
+    if (!selected || selected.available === false || busy) return;
+    if (selected.currency === "money") {
+      setBusy(true);
+      const response = await fetch("/api/arena/checkout", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({productId:selected.id}) });
+      const result = await response.json().catch(() => ({})) as {url?:string;error?:string};
+      if (!response.ok || !result.url) { setMessage(result.error ?? "Pagamento temporariamente indisponível."); setBusy(false); setSelected(null); return; }
+      window.location.assign(result.url); return;
+    }
+    if (selected.currency !== "gems") return;
     setBusy(true);
     const { data, error } = await createClient().rpc("arena_purchase_product", { p_product_id: selected.id, p_idempotency_key: crypto.randomUUID() });
     if (error) { setMessage(error.message.includes("insufficient") ? "Gemas insuficientes para esta compra." : "Não foi possível concluir a compra segura."); setBusy(false); return; }
@@ -132,9 +140,9 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
     })}</div>
     {selected && <div className={styles.dialogBackdrop} role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelected(null); }}>
       <section className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="arena-purchase-title">
-        <img src={selected.image} alt="" /><small>COMPRA COSMÉTICA SEGURA</small><h3 id="arena-purchase-title">{selected.name}</h3><p>{selected.subtitle}. Não concede vantagem competitiva.</p>
-        <dl><div><dt>Você possui</dt><dd>{wallet.gems.toLocaleString("pt-PT")} gemas</dd></div><div><dt>Preço</dt><dd>{selected.price.toLocaleString("pt-PT")} gemas</dd></div><div><dt>Saldo depois</dt><dd>{Math.max(0, wallet.gems - selected.price).toLocaleString("pt-PT")} gemas</dd></div></dl>
-        <footer><button type="button" onClick={() => setSelected(null)}>CANCELAR</button><button type="button" disabled={busy || wallet.gems < selected.price} onClick={confirmPurchase}>{busy ? "PROCESSANDO…" : wallet.gems < selected.price ? "SALDO INSUFICIENTE" : "COMPRAR"}</button></footer>
+        <img src={selected.image} alt="" /><small>{selected.currency === "money" ? "PAGAMENTO SEGURO · STRIPE" : "COMPRA COSMÉTICA SEGURA"}</small><h3 id="arena-purchase-title">{selected.name}</h3><p>{selected.subtitle}. Não concede vantagem competitiva.</p>
+        {selected.currency === "money" ? <dl><div><dt>Produto</dt><dd>{selected.name}</dd></div><div><dt>Preço total</dt><dd>€{(selected.price/100).toFixed(2).replace(".",",")}</dd></div><div><dt>Entrega</dt><dd>Após confirmação</dd></div></dl> : <dl><div><dt>Você possui</dt><dd>{wallet.gems.toLocaleString("pt-PT")} gemas</dd></div><div><dt>Preço</dt><dd>{selected.price.toLocaleString("pt-PT")} gemas</dd></div><div><dt>Saldo depois</dt><dd>{Math.max(0, wallet.gems - selected.price).toLocaleString("pt-PT")} gemas</dd></div></dl>}
+        <footer><button type="button" onClick={() => setSelected(null)}>CANCELAR</button><button type="button" disabled={busy || (selected.currency === "gems" && wallet.gems < selected.price)} onClick={confirmPurchase}>{busy ? "PROCESSANDO…" : selected.currency === "gems" && wallet.gems < selected.price ? "SALDO INSUFICIENTE" : selected.currency === "money" ? "CONTINUAR PARA PAGAMENTO" : "COMPRAR"}</button></footer>
       </section>
     </div>}
   </section>;

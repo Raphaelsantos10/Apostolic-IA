@@ -27,6 +27,20 @@ export async function POST(request:Request){
   if(eventError?.code==="23505")return NextResponse.json({received:true,duplicate:true});
   if(eventError)return NextResponse.json({error:"Evento não registado."},{status:500});
 
+  const object=event.data?.object??{};
+  if(["checkout.session.completed","checkout.session.async_payment_succeeded"].includes(event.type)&&object.metadata?.kind==="apostolic_arena"){
+    if(object.payment_status!=="paid")return NextResponse.json({received:true,pending:true});
+    const {error:fulfillError}=await admin.rpc("arena_fulfill_money_purchase",{
+      p_receipt_id:object.metadata.receipt_id,p_checkout_session_id:String(object.id),p_payment_intent_id:String(object.payment_intent),p_amount_minor:Number(object.amount_total),p_currency:String(object.currency)
+    });
+    if(fulfillError){await admin.from("billing_webhook_events").delete().eq("provider","stripe").eq("event_id",event.id);return NextResponse.json({error:"Compra da Arena não reconciliada."},{status:500});}
+  }
+  const fullRefund=event.type==="charge.refunded"&&Number(object.amount_refunded)>=Number(object.amount);
+  if((fullRefund||event.type==="charge.dispute.created")&&object.payment_intent){
+    const {error:reverseError}=await admin.rpc("arena_reverse_money_purchase",{p_payment_intent_id:String(object.payment_intent),p_reason:event.type==="charge.dispute.created"?"dispute":"refund"});
+    if(reverseError){await admin.from("billing_webhook_events").delete().eq("provider","stripe").eq("event_id",event.id);return NextResponse.json({error:"Reversão da Arena não reconciliada."},{status:500});}
+  }
+
   if(["customer.subscription.created","customer.subscription.updated","customer.subscription.deleted"].includes(event.type)){
     const subscription=event.data.object;
     const userId=subscription.metadata?.user_id;

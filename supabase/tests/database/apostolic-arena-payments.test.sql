@@ -1,0 +1,11 @@
+begin;
+select plan(7);
+select has_table('public','arena_purchase_receipts','purchase receipts exist');
+select col_is_unique('public','arena_purchase_receipts','provider_checkout_session_id','checkout session is unique');
+select col_is_unique('public','arena_purchase_receipts','provider_payment_intent_id','payment intent is unique');
+select policies_are('public','arena_purchase_receipts',array['arena_receipts_read_own'],'receipts use own-row RLS');
+select function_returns('public','arena_prepare_money_purchase',array['text'],'jsonb','prepare purchase RPC exists');
+select function_returns('public','arena_fulfill_money_purchase',array['uuid','text','text','integer','text'],'jsonb','fulfillment RPC exists');
+select function_returns('public','arena_reverse_money_purchase',array['text','text'],'jsonb','reversal RPC exists');
+select * from finish();
+rollback;

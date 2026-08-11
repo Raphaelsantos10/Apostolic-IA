@@ -10,7 +10,10 @@ export const ARENA_SHOP_CATALOG: readonly ArenaShopProduct[] = [
   { id: "effect-trombetas-jerico", category: "effects", name: "Trombetas de Jericó", subtitle: "Efeito de vitória", currency: "gems", price: 220, image: "/games/apostolic-arena/cards/art/epic/077-trombetas-de-jerico-v1.webp", rarity: "epic" },
   { id: "effect-fogo-celestial", category: "effects", name: "Fogo Celestial", subtitle: "Efeito de entrada", currency: "gems", price: 280, image: "/games/apostolic-arena/cards/art/epic/091-coluna-de-fogo-v1.webp", rarity: "legendary", featured: true },
   { id: "emote-noe-pomba", category: "effects", name: "Noé e a Pomba", subtitle: "Emote da Aliança", currency: "gems", price: 80, image: "/games/apostolic-arena/cards/art/epic/088-noe-o-patriarca-v1.webp", rarity: "rare" },
-  { id: "pass-alianca-s1", category: "pass", name: "Passe da Aliança", subtitle: "Trilha premium · sem poder de combate", currency: "money", price: 599, image: "/games/apostolic-arena/ui/emblems/alianca-v1.png", rarity: "premium", available: false },
-  { id: "gems-small", category: "gems", name: "100 Gemas", subtitle: "Pacote Pequeno", currency: "money", price: 99, image: "/games/apostolic-arena/ui/currency/gema-celestial-v1.png", rarity: "rare", available: false },
-  { id: "gems-warrior", category: "gems", name: "550 Gemas", subtitle: "Pacote Guerreiro", currency: "money", price: 499, image: "/games/apostolic-arena/ui/currency/gema-celestial-v1.png", rarity: "epic", available: false }
+  { id: "pass-alianca-s1", category: "pass", name: "Passe da Aliança", subtitle: "Trilha premium · sem poder de combate", currency: "money", price: 599, image: "/games/apostolic-arena/ui/emblems/alianca-v1.png", rarity: "premium" },
+  { id: "gems-small", category: "gems", name: "100 Gemas", subtitle: "Pacote Pequeno", currency: "money", price: 99, image: "/games/apostolic-arena/ui/currency/gema-celestial-v1.png", rarity: "rare" },
+  { id: "gems-warrior", category: "gems", name: "550 Gemas", subtitle: "Pacote Guerreiro", currency: "money", price: 499, image: "/games/apostolic-arena/ui/currency/gema-celestial-v1.png", rarity: "epic" },
+  { id: "gems-king", category: "gems", name: "1.200 Gemas", subtitle: "Pacote Rei", currency: "money", price: 999, image: "/games/apostolic-arena/ui/currency/gema-celestial-v1.png", rarity: "epic" },
+  { id: "gems-prophet", category: "gems", name: "2.600 Gemas", subtitle: "Pacote Profeta", currency: "money", price: 1999, image: "/games/apostolic-arena/ui/currency/gema-celestial-v1.png", rarity: "legendary" },
+  { id: "gems-covenant", category: "gems", name: "7.000 Gemas", subtitle: "Pacote Aliança", currency: "money", price: 4999, image: "/games/apostolic-arena/ui/currency/gema-celestial-v1.png", rarity: "premium" }
 ] as const;
