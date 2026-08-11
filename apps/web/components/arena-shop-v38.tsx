@@ -7,6 +7,7 @@ import { ARENA_SHOP_CATALOG } from "../lib/apostolic-arena-shop-catalog";
 import { useArenaMotionStage } from "../lib/use-arena-motion-stage";
 import styles from "./arena-shop-v38.module.css";
 import "./arena-shop-v42.css";
+import { ArenaPassV46 } from "./arena-pass-v46";
 
 const CATEGORIES: { id: ArenaShopCategory; label: string }[] = [
   { id: "featured", label: "Destaques" }, { id: "chests", label: "Baús" }, { id: "skins", label: "Skins" },
@@ -111,6 +112,7 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
       <ol><li data-track="free"><span>TRILHA LIVRE</span><b>Recompensas para todos</b></li><li data-track="premium"><span>TRILHA PREMIUM</span><b>Visuais e efeitos exclusivos</b></li><li><span>COMPROMISSO</span><b>Sem pay-to-win</b></li></ol>
       <strong>EM PREPARAÇÃO</strong>
     </section>}
+    {category === "pass" && <ArenaPassV46 onWalletChange={(next) => { setWallet(next); onWalletChange(next); }} />}
     {gift && <section className={styles.dailyGift} data-ready={gift.can_claim} aria-label="Presente diário">
       <div><img src={gift.reward_currency === "gems" ? "/games/apostolic-arena/ui/currency/gema-celestial-v1.png" : "/games/apostolic-arena/ui/currency/moedas-celestiais-v1.webp"} alt="" /><span><small>SEQUÊNCIA DA ALIANÇA · DIA {gift.streak_day}/7</small><b>{gift.can_claim ? "Seu presente diário está pronto" : "Presente diário recebido"}</b><em>{gift.reward_amount} {gift.reward_currency === "gems" ? "gemas" : "moedas"}</em></span></div>
       <ol aria-label="Progresso semanal">{Array.from({ length: 7 }, (_, index) => <li key={index + 1} data-complete={index + 1 <= gift.streak_day && !gift.can_claim} data-current={index + 1 === gift.streak_day}>{index === 6 ? "💎" : index + 1}</li>)}</ol>

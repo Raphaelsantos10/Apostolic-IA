@@ -1,0 +1,12 @@
+begin;
+select plan(8);
+select has_table('public','arena_seasons','seasons exist');
+select has_table('public','arena_pass_levels','pass levels exist');
+select has_table('public','arena_player_passes','player pass progress exists');
+select has_table('public','arena_pass_claims','pass claims exist');
+select function_returns('public','arena_get_pass_status',array[]::text[],'jsonb','pass status RPC exists');
+select function_returns('public','arena_claim_pass_reward',array['smallint','text'],'jsonb','claim RPC exists');
+select results_eq($$select count(*)::integer from public.arena_pass_levels where season_id='alianca-s1'$$,$$values(10)$$,'first season has ten levels');
+select col_is_pk('public','arena_pass_claims',array['user_id','season_id','level','track'],'duplicate claims blocked');
+select * from finish();
+rollback;
