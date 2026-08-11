@@ -12,6 +12,7 @@ import { arenaFieldCalibrationV202 } from "../lib/apostolic-arena-field-calibrat
 import { ApostolicArenaPhaser } from "./apostolic-arena-phaser";
 import styles from "./apostolic-arena-battle-3d.module.css";
 import "./apostolic-arena-battle-results-v42.css";
+import "./apostolic-arena-battle-hud-v43.css";
 
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
 type DraggingCard = { cardId: number; clientX: number; clientY: number };
@@ -803,7 +804,7 @@ export function ApostolicArenaBattle3D({ onResult, trainingMode = false, tutoria
       return card ? <span className={styles.dragGhost} style={{ left: dragging.clientX, top: dragging.clientY }}><img src={card.portrait} alt="" /></span> : null;
     })()}
 
-    <header className={styles.scoreboard}>
+    <header className={styles.scoreboard} data-overtime={overtime}>
       <span className={styles.blueScore}>{Array.from({ length: blueTowersAlive }, () => "◆").join(" ") || "—"}</span>
       <strong>{overtime ? "MORTE SÚBITA " : ""}{matchClock}</strong>
       <span className={styles.redScore}>{Array.from({ length: redTowersAlive }, () => "◆").join(" ") || "—"}</span>
@@ -855,11 +856,12 @@ export function ApostolicArenaBattle3D({ onResult, trainingMode = false, tutoria
     </section>}
 
     <footer className={styles.hand}>
-      <div className={styles.faith}><b>{faith}</b><span>FÉ</span></div>
+      <div className={styles.faith} style={{ "--faith-level": `${faith * 10}%` } as CSSProperties}><b>{faith}</b><span>FÉ</span></div>
       <div className={styles.cards}>
         {hand.map((card) => <button
           type="button"
           key={card.id}
+          data-affordable={faith >= card.faith}
           data-selected={card.id === selectedCardId}
           disabled={faith < card.faith || matchStatus !== "running"}
           aria-pressed={card.id === selectedCardId}
@@ -878,6 +880,7 @@ export function ApostolicArenaBattle3D({ onResult, trainingMode = false, tutoria
           }}
         >
           <img src={card.portrait} alt={card.name} />
+          <span>{card.name}</span>
           <b>{card.faith}</b>
         </button>)}
       </div>
