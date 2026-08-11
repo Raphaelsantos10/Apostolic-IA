@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client";
 import type { ArenaWallet } from "../lib/apostolic-arena-economy-config";
 import styles from "./arena-pass-v46.module.css";
+import { ARENA_SHOP_CATALOG } from "../lib/apostolic-arena-shop-catalog";
 
 type Reward = { currency?: "coins" | "gems"; amount?: number; product_id?: string };
 type Level = { level: number; xp_required: number; free_reward: Reward | null; premium_reward: Reward | null; free_claimed: boolean; premium_claimed: boolean };
 type PassStatus = { active: boolean; season_id?: string; name?: string; ends_at?: string; xp?: number; premium?: boolean; levels?: Level[] };
 const rewardLabel = (reward: Reward | null) => !reward ? "—" : reward.product_id ? reward.product_id.replaceAll("-"," ") : `${reward.amount ?? 0} ${reward.currency === "gems" ? "gemas" : "moedas"}`;
+const rewardImage = (reward: Reward | null) => reward?.product_id ? ARENA_SHOP_CATALOG.find(item=>item.id===reward.product_id)?.image : reward?.currency === "gems" ? "/games/apostolic-arena/ui/currency/gema-celestial-v1.png" : "/games/apostolic-arena/ui/currency/moedas-celestiais-v1.webp";
 
 export function ArenaPassV46({ onWalletChange }: { onWalletChange: (wallet: ArenaWallet) => void }) {
   const [status,setStatus] = useState<PassStatus | null>(null);
@@ -30,9 +32,11 @@ export function ArenaPassV46({ onWalletChange }: { onWalletChange: (wallet: Aren
   if (!status?.active) return <section className={styles.empty}><b>PASSE DA ALIANÇA</b><span>{message || "Nenhuma temporada ativa."}</span></section>;
   const xp=status.xp ?? 0; const levels=status.levels ?? []; const next=levels.find(item=>item.xp_required>xp); const progress=next ? Math.min(100,xp/Math.max(1,next.xp_required)*100) : 100;
   return <section className={styles.pass}>
-    <header><div><small>TEMPORADA ATIVA</small><h3>{status.name}</h3><p>Progresso cosmético e recompensas. Nenhum nível aumenta o poder de combate.</p></div><strong data-premium={status.premium}>{status.premium ? "PASSE PREMIUM ATIVO" : "TRILHA GRATUITA"}</strong></header>
+    <div className={styles.hero}><img src="/games/apostolic-arena/loading/arena-loading-heroes-da-alianca-v1.webp" alt="Heróis da Temporada da Aliança" /><span><small>TEMPORADA CELESTIAL · 10 MARCOS</small><h3>{status.name}</h3><p>Avance pela jornada, desbloqueie recompensas e preserve uma Arena sem vantagens pagas.</p><strong data-premium={status.premium}>{status.premium ? "PASSE PREMIUM ATIVO" : "TRILHA GRATUITA ATIVA"}</strong></span></div>
+    <header><div><small>PROGRESSO DA TEMPORADA</small><h3>{xp} XP CONQUISTADOS</h3><p>{levels.filter(item=>xp>=item.xp_required).length} de {levels.length} níveis alcançados</p></div><strong>TERMINA EM {status.ends_at ? new Date(status.ends_at).toLocaleDateString("pt-PT") : "BREVE"}</strong></header>
     <div className={styles.progress}><span><b>{xp} XP</b><em>{next ? `Próximo nível: ${next.xp_required} XP` : "Trilha concluída"}</em></span><i><em style={{width:`${progress}%`}} /></i></div>
     {message && <p className={styles.message} role="status">{message}</p>}
-    <div className={styles.levels}>{levels.map(item=>{const unlocked=xp>=item.xp_required;return <article key={item.level} data-unlocked={unlocked}><b>{item.level}</b><small>{item.xp_required} XP</small><div><span>LIVRE</span><em>{rewardLabel(item.free_reward)}</em><button type="button" disabled={!unlocked||item.free_claimed||busy!==""} onClick={()=>void claim(item.level,"free")}>{item.free_claimed?"RECEBIDO":"RESGATAR"}</button></div><div data-premium><span>PREMIUM</span><em>{rewardLabel(item.premium_reward)}</em><button type="button" disabled={!unlocked||!status.premium||item.premium_claimed||busy!==""} onClick={()=>void claim(item.level,"premium")}>{item.premium_claimed?"RECEBIDO":status.premium?"RESGATAR":"BLOQUEADO"}</button></div></article>})}</div>
+    <div className={styles.trackLegend}><span>TRILHA GRATUITA</span><span>TRILHA PREMIUM</span></div>
+    <div className={styles.levels}>{levels.map(item=>{const unlocked=xp>=item.xp_required;const freeImage=rewardImage(item.free_reward);const premiumImage=rewardImage(item.premium_reward);return <article key={item.level} data-unlocked={unlocked}><b>{item.level}</b><small>{item.xp_required} XP</small><div>{freeImage&&<img src={freeImage} alt="" />}<span>LIVRE</span><em>{rewardLabel(item.free_reward)}</em><button type="button" disabled={!unlocked||item.free_claimed||busy!==""} onClick={()=>void claim(item.level,"free")}>{item.free_claimed?"RECEBIDO":"RESGATAR"}</button></div><div data-premium>{premiumImage&&<img src={premiumImage} alt="" />}<span>PREMIUM</span><em>{rewardLabel(item.premium_reward)}</em><button type="button" disabled={!unlocked||!status.premium||item.premium_claimed||busy!==""} onClick={()=>void claim(item.level,"premium")}>{item.premium_claimed?"RECEBIDO":status.premium?"RESGATAR":"BLOQUEADO"}</button></div></article>})}</div>
   </section>;
 }

@@ -10,6 +10,7 @@ import "./arena-shop-v42.css";
 import { ArenaPassV46 } from "./arena-pass-v46";
 import { ArenaEconomyAdminV48 } from "./arena-economy-admin-v48";
 import Link from "next/link";
+import "./arena-shop-v50.css";
 
 const CATEGORIES: { id: ArenaShopCategory; label: string }[] = [
   { id: "featured", label: "Destaques" }, { id: "chests", label: "Baús" }, { id: "skins", label: "Skins" },
