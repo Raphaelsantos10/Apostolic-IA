@@ -1,0 +1,13 @@
+begin;
+select plan(9);
+select has_table('public','arena_alliance_emblem_catalog','V63 stores the emblem catalog');
+select has_table('public','arena_alliance_emblem_unlocks','V63 stores permanent emblem unlocks');
+select has_column('public','arena_alliances','emblem_id','V63 persists the selected emblem');
+select function_returns('public','arena_get_alliance_emblems',array[]::text[],'jsonb','V63 exposes emblem entitlements');
+select function_returns('public','arena_purchase_alliance_emblem',array['text','text'],'jsonb','V63 purchases emblems atomically');
+select function_returns('public','arena_select_alliance_emblem',array['text'],'jsonb','V63 selects an entitled emblem');
+select results_eq('select count(*)::bigint from public.arena_alliance_emblem_catalog',array[12::bigint],'V63 ships twelve emblems');
+select results_eq($$select count(*)::bigint from public.arena_alliance_emblem_catalog where tier='free'$$,array[4::bigint],'V63 has four free emblems');
+select results_eq($$select count(*)::bigint from public.arena_alliance_emblem_catalog where tier='pro'$$,array[4::bigint],'V63 reserves four emblems for PRO');
+select*from finish();
+rollback;
