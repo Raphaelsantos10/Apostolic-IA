@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { ARENA_CARD_CATALOG } from "../lib/apostolic-arena-card-catalog";
 import { addVictoryChest, CHEST_DEFINITIONS, claimChest, loadArenaChests, saveArenaChests, startOpeningChest, type ArenaChestReward, type ArenaChestState } from "../lib/apostolic-arena-chests-v18";
 import styles from "./arena-chests-v18.module.css";
+import "./arena-chests-v42.css";
+import { useArenaMotionStage } from "../lib/use-arena-motion-stage";
 
 const remaining = (readyAt: number | undefined, now: number) => {
   if (!readyAt) return "FECHADO";
@@ -16,6 +18,8 @@ const remaining = (readyAt: number | undefined, now: number) => {
 };
 
 export function ArenaChestsV18({ onStateChange }: { onStateChange?: (state: ArenaChestState) => void }) {
+  const vaultRef = useRef<HTMLElement>(null);
+  useArenaMotionStage(vaultRef);
   const [state, setState] = useState(() => loadArenaChests());
   const [now, setNow] = useState(Date.now());
   const [reward, setReward] = useState<ArenaChestReward | null>(null);
@@ -52,15 +56,15 @@ export function ArenaChestsV18({ onStateChange }: { onStateChange?: (state: Aren
     setMessage("Baú rápido criado para validação");
   };
 
-  return <section className={styles.vault}>
-    <header><div><span>V20.7 · TESOUROS DA ALIANÇA</span><h2>Baús e Recompensas</h2><p>Abra um baú por vez. Ouro, desbloqueios e cópias entram imediatamente na sua coleção.</p></div>{debugTools && <button type="button" onClick={devChest}>+ BAÚ RÁPIDO DE TESTE</button>}</header>
+  return <section ref={vaultRef} className={styles.vault}>
+    <header><div><span>COFRE DA ALIANÇA · 4 ESPAÇOS</span><h2>Cofre Celestial</h2><p>Seu inventário de tesouros conquistados. Ouro, desbloqueios e cópias entram imediatamente na coleção.</p></div>{debugTools && <button type="button" onClick={devChest}>+ BAÚ RÁPIDO DE TESTE</button>}</header>
     <aside className={styles.message}>{message}</aside>
     <div className={styles.slots}>{state.slots.map((chest, index) => {
-      if (!chest) return <article key={index} className={styles.empty}><i>{index + 1}</i><b>ESPAÇO VAZIO</b><span>Ganhe uma batalha</span></article>;
+      if (!chest) return <article key={index} className={styles.empty} data-arena-motion style={{ "--arena-order": index } as CSSProperties}><i>{index + 1}</i><b>ESPAÇO VAZIO</b><span>Ganhe uma batalha</span></article>;
       const definition = CHEST_DEFINITIONS[chest.kind];
       const isReady = Boolean(chest.readyAt && chest.readyAt <= now);
       const isOpening = Boolean(chest.readyAt && !isReady);
-      return <article key={chest.id} data-kind={chest.kind} data-ready={isReady}>
+      return <article key={chest.id} data-arena-motion data-kind={chest.kind} data-ready={isReady} style={{ "--arena-order": index } as CSSProperties}>
         <i>{index + 1}</i><div className={styles.chest} aria-hidden="true"><span /><b>✦</b><em /></div><small>{chest.kind.toUpperCase()}</small><h3>{definition.name}</h3><strong>{remaining(chest.readyAt, now)}</strong>
         {!chest.readyAt ? <button type="button" onClick={() => start(index)}>ABRIR · {definition.hours}H</button> : isReady ? <button type="button" onClick={() => collect(index)}>COLETAR</button> : <button type="button" disabled>{isOpening ? "ABRINDO" : "AGUARDE"}</button>}
       </article>;
@@ -70,9 +74,9 @@ export function ArenaChestsV18({ onStateChange }: { onStateChange?: (state: Aren
       const totalReveals = reward.cards.length + 1;
       const allVisible = revealIndex >= totalReveals;
       return <div className={styles.rewardBackdrop} role="presentation"><section className={styles.reward} role="dialog" aria-modal="true" data-kind={reward.chestKind}>
-        <span>{CHEST_DEFINITIONS[reward.chestKind].name.toUpperCase()}</span><h2>{allVisible ? "Recompensas recebidas" : "Toque para revelar"}</h2>
+        <i className={styles.rewardHalo} aria-hidden="true" /><span>ABERTURA CELESTIAL · {CHEST_DEFINITIONS[reward.chestKind].name.toUpperCase()}</span><h2>{allVisible ? "Tesouros guardados" : "Revele sua conquista"}</h2>
         <strong data-visible={revealIndex >= 1}>◉ {reward.gold} OURO</strong>
-        <div>{reward.cards.map((item, index) => { const card = ARENA_CARD_CATALOG.find((entry) => entry.id === item.cardId); return card && <article key={item.cardId} data-new={item.newlyUnlocked} data-visible={revealIndex >= index + 2}><img src={card.portrait} alt={card.name} /><b>{card.name}</b><span>+{item.copies} cópias</span>{item.newlyUnlocked && <em>NOVA CARTA</em>}<i>?</i></article>; })}</div>
+        <div>{reward.cards.map((item, index) => { const card = ARENA_CARD_CATALOG.find((entry) => entry.id === item.cardId); return card && <article key={item.cardId} data-arena-motion data-new={item.newlyUnlocked} data-visible={revealIndex >= index + 2}><img src={card.portrait} alt={card.name} /><b>{card.name}</b><span>+{item.copies} cópias</span>{item.newlyUnlocked && <em>NOVA CARTA</em>}<i>?</i></article>; })}</div>
         {!allVisible ? <button type="button" onClick={() => setRevealIndex((current) => Math.min(totalReveals, current + 1))}>{revealIndex === 0 ? "REVELAR OURO" : "REVELAR PRÓXIMA CARTA"}</button> : <button type="button" onClick={() => setReward(null)}>GUARDAR RECOMPENSAS</button>}
       </section></div>;
     })()}

@@ -11,6 +11,7 @@ import { SELECTED_FIELD_STORAGE_KEY_V203 } from "../lib/apostolic-arena-presenta
 import { arenaFieldCalibrationV202 } from "../lib/apostolic-arena-field-calibration-v20-2";
 import { ApostolicArenaPhaser } from "./apostolic-arena-phaser";
 import styles from "./apostolic-arena-battle-3d.module.css";
+import "./apostolic-arena-battle-results-v42.css";
 
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
 type DraggingCard = { cardId: number; clientX: number; clientY: number };
@@ -827,11 +828,11 @@ export function ApostolicArenaBattle3D({ onResult, trainingMode = false, tutoria
       <span><small>{activeChampion?.name ?? "Campeão"}</small><b>{abilityCooldown > 0 ? `${abilityCooldown}s` : activeAbility.name}</b></span>
     </button>
 
-    {matchResult && <section className={styles.matchResult} role="dialog" aria-modal="true" aria-label="Resultado da batalha">
-      <small>APOSTOLIC ARENA</small>
+    {matchResult && <section className={styles.matchResult} data-result={matchResult.title === "VITÓRIA" ? "victory" : matchResult.title === "DERROTA" ? "defeat" : "draw"} role="dialog" aria-modal="true" aria-label="Resultado da batalha">
+      <i className={styles.resultSeal} aria-hidden="true">✦</i><small>CRÔNICA DA BATALHA</small>
       <h2>{matchResult.title}</h2>
       <p>{matchResult.detail}</p>
-      <strong className={styles.matchReward}>{matchResult.title === "VITÓRIA" ? "+75 OURO · +25 TROFÉUS" : "+15 OURO"}</strong>
+      <strong className={styles.matchReward}><span>{matchResult.title === "VITÓRIA" ? "RECOMPENSA DA VITÓRIA" : "RECOMPENSA DE BATALHA"}</span>{matchResult.title === "VITÓRIA" ? "+75 OURO · +25 TROFÉUS" : "+15 OURO"}</strong>
       <button type="button" onClick={() => {
         const nextFieldIndex = Math.random() < .5 ? 0 : 1;
         const nextField = competitiveFields[nextFieldIndex] ?? competitiveFields[0];

@@ -6,6 +6,7 @@ import type { ArenaShopCategory, ArenaShopProduct, ArenaWallet } from "../lib/ap
 import { ARENA_SHOP_CATALOG } from "../lib/apostolic-arena-shop-catalog";
 import { useArenaMotionStage } from "../lib/use-arena-motion-stage";
 import styles from "./arena-shop-v38.module.css";
+import "./arena-shop-v42.css";
 
 const CATEGORIES: { id: ArenaShopCategory; label: string }[] = [
   { id: "featured", label: "Destaques" }, { id: "chests", label: "Baús" }, { id: "skins", label: "Skins" },
@@ -83,6 +84,11 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
       </div>
     </header>
     <nav className={styles.tabs} aria-label="Categorias da loja">{CATEGORIES.map((item) => <button key={item.id} type="button" data-active={category === item.id} onClick={() => setCategory(item.id)}>{item.label}</button>)}</nav>
+    {category === "pass" && <section className={styles.passShowcase} data-arena-motion aria-label="Passe da Aliança">
+      <div><small>TEMPORADA CELESTIAL</small><h3>Passe da Aliança</h3><p>Uma jornada visual de recompensas cosméticas, sem vantagens de poder.</p></div>
+      <ol><li data-track="free"><span>TRILHA LIVRE</span><b>Recompensas para todos</b></li><li data-track="premium"><span>TRILHA PREMIUM</span><b>Visuais e efeitos exclusivos</b></li><li><span>COMPROMISSO</span><b>Sem pay-to-win</b></li></ol>
+      <strong>EM PREPARAÇÃO</strong>
+    </section>}
     {gift && <section className={styles.dailyGift} data-ready={gift.can_claim} aria-label="Presente diário">
       <div><img src={gift.reward_currency === "gems" ? "/games/apostolic-arena/ui/currency/gema-celestial-v1.png" : "/games/apostolic-arena/ui/currency/moedas-celestiais-v1.webp"} alt="" /><span><small>SEQUÊNCIA DA ALIANÇA · DIA {gift.streak_day}/7</small><b>{gift.can_claim ? "Seu presente diário está pronto" : "Presente diário recebido"}</b><em>{gift.reward_amount} {gift.reward_currency === "gems" ? "gemas" : "moedas"}</em></span></div>
       <ol aria-label="Progresso semanal">{Array.from({ length: 7 }, (_, index) => <li key={index + 1} data-complete={index + 1 <= gift.streak_day && !gift.can_claim} data-current={index + 1 === gift.streak_day}>{index === 6 ? "💎" : index + 1}</li>)}</ol>
