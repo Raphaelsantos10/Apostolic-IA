@@ -8,6 +8,7 @@ import { useArenaMotionStage } from "../lib/use-arena-motion-stage";
 import styles from "./arena-shop-v38.module.css";
 import "./arena-shop-v42.css";
 import { ArenaPassV46 } from "./arena-pass-v46";
+import { ArenaEconomyAdminV48 } from "./arena-economy-admin-v48";
 
 const CATEGORIES: { id: ArenaShopCategory; label: string }[] = [
   { id: "featured", label: "Destaques" }, { id: "chests", label: "Baús" }, { id: "skins", label: "Skins" },
@@ -56,6 +57,7 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
     void load();
     return () => { active = false; };
   }, [onWalletChange]);
+  useEffect(() => { void createClient().rpc("arena_track_event", { p_event_name: category === "pass" ? "pass_view" : "shop_view", p_product_id: null, p_properties: { category } }); }, [category]);
 
   const products = useMemo(() => category === "featured" ? ARENA_SHOP_CATALOG.filter((item) => item.featured) : ARENA_SHOP_CATALOG.filter((item) => item.category === category), [category]);
 
@@ -76,6 +78,7 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
     if (!selected || selected.available === false || busy) return;
     if (selected.currency === "money") {
       setBusy(true);
+      void createClient().rpc("arena_track_event", { p_event_name:"checkout_started", p_product_id:selected.id, p_properties:{} });
       const response = await fetch("/api/arena/checkout", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({productId:selected.id}) });
       const result = await response.json().catch(() => ({})) as {url?:string;error?:string};
       if (!response.ok || !result.url) { setMessage(result.error ?? "Pagamento temporariamente indisponível."); setBusy(false); setSelected(null); return; }
@@ -134,7 +137,7 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
         <div className={styles.art}><img src={product.image} alt="" /><i>{product.rarity === "premium" ? "PASSE" : product.rarity.toUpperCase()}</i></div>
         <div className={styles.cardBody}><h3>{product.name}</h3><p>{product.subtitle}</p>
           <strong className={styles.price}>{money ? `€${(product.price / 100).toFixed(2).replace(".", ",")}` : <><img src="/games/apostolic-arena/ui/currency/gema-celestial-v1.png" alt="" />{product.price}</>}</strong>
-          <button type="button" data-equipped={isEquipped} disabled={isEquipped || product.available === false || busy} onClick={() => isOwned && slot ? void equipCosmetic(product) : setSelected(product)}>{isEquipped ? "EQUIPADO" : isOwned && slot ? "EQUIPAR" : isOwned ? "ADQUIRIDO" : product.available === false ? "EM BREVE" : "VER DETALHES"}</button>
+          <button type="button" data-equipped={isEquipped} disabled={isEquipped || product.available === false || busy} onClick={() => { void createClient().rpc("arena_track_event",{p_event_name:"product_view",p_product_id:product.id,p_properties:{category:product.category}}); isOwned && slot ? void equipCosmetic(product) : setSelected(product); }}>{isEquipped ? "EQUIPADO" : isOwned && slot ? "EQUIPAR" : isOwned ? "ADQUIRIDO" : product.available === false ? "EM BREVE" : "VER DETALHES"}</button>
         </div>
       </article>;
     })}</div>
@@ -145,5 +148,6 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
         <footer><button type="button" onClick={() => setSelected(null)}>CANCELAR</button><button type="button" disabled={busy || (selected.currency === "gems" && wallet.gems < selected.price)} onClick={confirmPurchase}>{busy ? "PROCESSANDO…" : selected.currency === "gems" && wallet.gems < selected.price ? "SALDO INSUFICIENTE" : selected.currency === "money" ? "CONTINUAR PARA PAGAMENTO" : "COMPRAR"}</button></footer>
       </section>
     </div>}
+    <ArenaEconomyAdminV48 />
   </section>;
 }

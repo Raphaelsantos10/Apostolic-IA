@@ -1,0 +1,11 @@
+begin;
+select plan(7);
+select has_table('public','arena_admins','arena admins exist');
+select has_table('public','arena_analytics_events','analytics events exist');
+select has_index('public','arena_analytics_events','arena_analytics_events_period_idx','period index exists');
+select policies_are('public','arena_admins',array['arena_admin_read_self'],'admin list is private');
+select policies_are('public','arena_analytics_events',array['arena_analytics_read_own'],'players see only own events');
+select function_returns('public','arena_track_event',array['text','text','jsonb'],'void','event RPC exists');
+select function_returns('public','arena_get_economy_analytics',array['integer'],'jsonb','admin report RPC exists');
+select * from finish();
+rollback;
