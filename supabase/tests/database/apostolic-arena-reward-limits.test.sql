@@ -1,0 +1,12 @@
+begin;
+select plan(8);
+select has_table('public','arena_reward_definitions','reward catalog exists');
+select has_function('public','arena_period_key',array['text','timestamp with time zone'],'period helper exists');
+select function_returns('public','arena_free_gem_status',array[]::text[],'jsonb','free gem status exists');
+select function_returns('public','arena_grant_configured_reward',array['uuid','text','text','text'],'jsonb','server reward grant exists');
+select policies_are('public','arena_reward_definitions',array['arena_reward_definitions_read_active'],'reward definitions expose only active rows');
+select has_column('public','arena_player_reward_counters','period_key','period counter key exists');
+select results_eq($$select value::integer from public.arena_economy_limits where key='free-gems-monthly-hard-cap'$$,$$values(120)$$,'monthly cap is 120');
+select results_eq($$select count(*)::integer from public.arena_reward_definitions where currency='gems'$$,$$values(6)$$,'controlled gem rewards seeded');
+select * from finish();
+rollback;

@@ -15,6 +15,7 @@ const CATEGORIES: { id: ArenaShopCategory; label: string }[] = [
 
 type PurchaseResult = { coins?: number; gems?: number; product_id?: string };
 type DailyGift = { can_claim: boolean; streak_day: number; next_day: number; reward_currency: "coins" | "gems"; reward_amount: number };
+type FreeGemStatus = { period_key: string; earned: number; target: number; hard_cap: number; remaining: number };
 
 export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWallet: ArenaWallet; onWalletChange: (wallet: ArenaWallet) => void }) {
   const shopRef = useRef<HTMLElement>(null);
@@ -27,13 +28,14 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
   const [busy, setBusy] = useState(false);
   const [gift, setGift] = useState<DailyGift | null>(null);
   const [claimingGift, setClaimingGift] = useState(false);
+  const [freeGems, setFreeGems] = useState<FreeGemStatus | null>(null);
 
   useEffect(() => {
     let active = true;
     const load = async () => {
       const supabase = createClient();
-      const [{ data: auth }, walletResponse, inventoryResponse, giftResponse] = await Promise.all([
-        supabase.auth.getUser(), supabase.rpc("arena_get_wallet"), supabase.from("arena_player_inventory").select("product_id"), supabase.rpc("arena_daily_gift_status")
+      const [{ data: auth }, walletResponse, inventoryResponse, giftResponse, freeGemResponse] = await Promise.all([
+        supabase.auth.getUser(), supabase.rpc("arena_get_wallet"), supabase.from("arena_player_inventory").select("product_id"), supabase.rpc("arena_daily_gift_status"), supabase.rpc("arena_free_gem_status")
       ]);
       if (!active) return;
       if (!auth.user) { setMessage("Entre na sua conta para sincronizar compras e recompensas."); return; }
@@ -44,6 +46,7 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
       } else setMessage("Aplique a migração V38 para ativar a carteira segura.");
       if (!inventoryResponse.error) setOwned(new Set((inventoryResponse.data ?? []).map((item) => String(item.product_id))));
       if (!giftResponse.error && giftResponse.data) setGift(giftResponse.data as DailyGift);
+      if (!freeGemResponse.error && freeGemResponse.data) setFreeGems(freeGemResponse.data as FreeGemStatus);
     };
     void load();
     return () => { active = false; };
@@ -84,6 +87,11 @@ export function ArenaShopV38({ fallbackWallet, onWalletChange }: { fallbackWalle
       </div>
     </header>
     <nav className={styles.tabs} aria-label="Categorias da loja">{CATEGORIES.map((item) => <button key={item.id} type="button" data-active={category === item.id} onClick={() => setCategory(item.id)}>{item.label}</button>)}</nav>
+    {freeGems && <section className={styles.gemBudget} aria-label="Limite mensal de gemas gratuitas">
+      <div><small>GEMAS GRATUITAS · {freeGems.period_key}</small><b>{freeGems.earned} de {freeGems.hard_cap}</b><span>{freeGems.remaining} ainda disponíveis neste mês</span></div>
+      <i aria-hidden="true"><em style={{ width: `${Math.min(100, freeGems.earned / Math.max(1, freeGems.hard_cap) * 100)}%` }} /></i>
+      <strong>Meta saudável: {freeGems.target}</strong>
+    </section>}
     {category === "pass" && <section className={styles.passShowcase} data-arena-motion aria-label="Passe da Aliança">
       <div><small>TEMPORADA CELESTIAL</small><h3>Passe da Aliança</h3><p>Uma jornada visual de recompensas cosméticas, sem vantagens de poder.</p></div>
       <ol><li data-track="free"><span>TRILHA LIVRE</span><b>Recompensas para todos</b></li><li data-track="premium"><span>TRILHA PREMIUM</span><b>Visuais e efeitos exclusivos</b></li><li><span>COMPROMISSO</span><b>Sem pay-to-win</b></li></ol>
