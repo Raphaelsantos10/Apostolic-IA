@@ -168,7 +168,7 @@ export function ArenaCollectionV17({ initialDeck, initialDeckSlot = 1, onDeckCha
 
   return <section ref={collectionRef} className={styles.builder}>
     <header className={styles.header}>
-      <div><span>V17.2 · ARQUIVO CELESTIAL</span><h2>Coleção da Aliança</h2><p>Monte livremente os oito espaços. A ordem abaixo será o ciclo usado na batalha.</p></div>
+      <div><span>ARQUIVO CELESTIAL · 125 CARTAS</span><h2>Coleção da Aliança</h2><p>Escolha oito heróis e poderes. A ordem define o ciclo usado na batalha.</p></div>
       <div className={styles.playerProgress}><b>NÍVEL {progression.playerLevel}</b><span>✦ {progression.xp} XP</span><span>🏆 {progression.trophies}</span><span>◉ {progression.gold}</span><small>ARENA {currentArena + 1}</small></div>
       <label>Nome do deck<input value={deckName} maxLength={32} onChange={(event) => setDeckName(event.target.value)} /></label>
     </header>

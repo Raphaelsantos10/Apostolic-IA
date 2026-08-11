@@ -278,7 +278,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
     setPhase("battle");
   }, [currentArenaTheme.id]);
 
-  return <section ref={shellRef} className={styles.experience} aria-label="Apostolic Arena 3D">
+  return <section ref={shellRef} className={styles.experience} data-apostolic-arena data-arena-theme="celestial-premium" aria-label="Apostolic Arena 3D">
     {phase === "loading" ? <section className={`${styles.loading} ${loadingStyles.loading}`} aria-live="polite">
       <img className={loadingStyles.loadingArtwork} src={loadingScene.image} alt="" aria-hidden="true" />
       <div className={`${styles.scene} ${loadingStyles.loadingEngine}`}><ApostolicArena3DScene mode="loading" onProgress={updateProgress} onReady={loadingReady} /></div>

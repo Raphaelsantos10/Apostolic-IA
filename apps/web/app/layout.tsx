@@ -1,8 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import "@fontsource-variable/cinzel/wght.css";
+import "@fontsource-variable/manrope/wght.css";
+import "@fontsource-variable/cormorant-garamond/wght.css";
+import "@fontsource-variable/cormorant-garamond/wght-italic.css";
 import { resolveMotionMode } from "../lib/visual-motion.mjs";
 import { PwaRegister } from "./pwa-register";
 import "./styles.css";
+import "./apostolic-arena-theme-v41.css";
 
 export const metadata: Metadata = {
   title: {
