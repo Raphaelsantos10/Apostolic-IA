@@ -15,6 +15,7 @@ import { ApostolicCommerceCenterV115 } from "./apostolic-commerce-center-v115";
 import { ApostolicProvinceMapV120 } from "./apostolic-province-map-v120";
 import { ApostolicCityDefenseV125 } from "./apostolic-city-defense-v125";
 import { ApostolicArmyMarchesV130 } from "./apostolic-army-marches-v130";
+import { ApostolicSpyCenterV135 } from "./apostolic-spy-center-v135";
 import { CHEST_DEFINITIONS, grantBattleProgress, loadArenaChests, type ArenaChestState } from "../lib/apostolic-arena-chests-v18";
 import { loadArenaProgression, type ArenaPlayerProgression } from "../lib/apostolic-arena-progression-v17";
 import { ArenaWorldRoadmap } from "./arena-world-roadmap";
@@ -26,7 +27,7 @@ import styles from "./apostolic-arena-3d-experience.module.css";
 import loadingStyles from "./apostolic-arena-loading-v2.module.css";
 import { useArenaMotionStage } from "../lib/use-arena-motion-stage";
 
-type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards" | "shop" | "alliance" | "nations" | "research" | "commerce" | "province" | "defense" | "armies";
+type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards" | "shop" | "alliance" | "nations" | "research" | "commerce" | "province" | "defense" | "armies" | "spies";
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
 const SAVED_DECKS_KEY = "apostolic-arena-decks-v16";
 const ACTIVE_DECK_SLOT_KEY = "apostolic-arena-active-deck-slot-v32";
@@ -372,6 +373,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         <button type="button" onClick={() => setPhase("province")}><span>🗺️</span><b>PROVÍNCIA</b></button>
         <button type="button" onClick={() => setPhase("defense")}><span>🛡️</span><b>DEFESA</b></button>
         <button type="button" onClick={() => setPhase("armies")}><span>⚔️</span><b>EXÉRCITOS</b></button>
+        <button type="button" onClick={() => setPhase("spies")}><span>👁️</span><b>ESPIÕES</b></button>
         <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/diario-v1.png" alt="" /></span><b>DIÁRIO</b></button>
         <button type="button" onClick={() => setPhase("alliance")}><span><img src="/games/apostolic-arena/ui/emblems/alianca-v1.png" alt="" /></span><b>ALIANÇA</b></button>
         <button type="button" onClick={() => setPhase("cards")}><span><img src="/games/apostolic-arena/ui/emblems/amigos-v1.png" alt="" /></span><b>AMIGOS</b></button>
@@ -399,6 +401,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {phase === "province" && <ApostolicProvinceMapV120 />}
         {phase === "defense" && <ApostolicCityDefenseV125 />}
         {phase === "armies" && <ApostolicArmyMarchesV130 />}
+        {phase === "spies" && <ApostolicSpyCenterV135 />}
       </main>
     </section>}
     {(phase === "loading" || phase === "menu") && <button type="button" className={styles.soundControl} data-enabled={soundEnabled} onClick={() => setSoundEnabled((current) => !current)} aria-label={soundEnabled ? "Desativar som ambiente" : "Ativar som ambiente"}>{soundEnabled ? "🔊" : "🔇"}<span>{soundEnabled ? "SOM" : "ATIVAR SOM"}</span></button>}
