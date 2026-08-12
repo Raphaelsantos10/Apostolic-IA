@@ -1,0 +1,10 @@
+begin;select plan(9);
+select has_table('public','apostolic_building_catalog');select has_table('public','apostolic_construction_queue');
+select is((select count(*)::integer from public.apostolic_building_catalog),7,'seven initial building types');
+select is((select count(*)::integer from public.apostolic_building_catalog where base_costs?'gems'),0,'gems never pay construction');
+select has_index('public','apostolic_construction_queue','apostolic_construction_one_active_idx');
+select function_returns('public','apostolic_start_building_upgrade',array['text','uuid'],'jsonb');
+select function_returns('public','apostolic_finish_city_construction',array[]::text[],'jsonb');
+select function_returns('public','apostolic_get_construction_center',array[]::text[],'jsonb');
+select is((select max(max_level)::integer from public.apostolic_building_catalog),20,'beta buildings stop at level twenty');
+select*from finish();rollback;
