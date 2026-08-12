@@ -22,6 +22,8 @@ import { ArenaAllianceMissionsV68 } from "./arena-alliance-missions-v68";
 import { ArenaAllianceTreasuryV69 } from "./arena-alliance-treasury-v69";
 import { ArenaAllianceShopV70 } from "./arena-alliance-shop-v70";
 import { ArenaAllianceAdvancedV75 } from "./arena-alliance-advanced-v75";
+import { ArenaAllianceCompetitiveV80 } from "./arena-alliance-competitive-v80";
+import { ArenaAllianceCommandV85 } from "./arena-alliance-command-v85";
 import styles from "./arena-alliance-v61.module.css";
 
 type Alliance = {
@@ -745,7 +747,11 @@ export function ArenaAllianceV61() {
       ) : activeTab === "shop" ? (
         <ArenaAllianceShopV70 />
       ) : activeTab === "advanced" ? (
-        <ArenaAllianceAdvancedV75 />
+        <>
+          <ArenaAllianceAdvancedV75 />
+          <ArenaAllianceCompetitiveV80 />
+          <ArenaAllianceCommandV85 />
+        </>
       ) : activeTab === "members" ? (
         <ArenaAllianceManagementV64 onLeave={() => void load()} />
       ) : (
