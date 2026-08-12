@@ -25,6 +25,7 @@ import { ArenaAllianceAdvancedV75 } from "./arena-alliance-advanced-v75";
 import { ArenaAllianceCompetitiveV80 } from "./arena-alliance-competitive-v80";
 import { ArenaAllianceCommandV85 } from "./arena-alliance-command-v85";
 import { ArenaAllianceWarCenterV90 } from "./arena-alliance-war-center-v90";
+import { ArenaAllianceAdminV95, ArenaAllianceFinishV95 } from "./arena-alliance-finish-v95";
 import styles from "./arena-alliance-v61.module.css";
 
 type Alliance = {
@@ -753,6 +754,8 @@ export function ArenaAllianceV61() {
           <ArenaAllianceCompetitiveV80 />
           <ArenaAllianceCommandV85 />
           <ArenaAllianceWarCenterV90 />
+          <ArenaAllianceFinishV95 />
+          <ArenaAllianceAdminV95 />
         </>
       ) : activeTab === "members" ? (
         <ArenaAllianceManagementV64 onLeave={() => void load()} />
