@@ -368,22 +368,17 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
 
       {chestNotice && <button type="button" className={styles.chestNotice} onClick={() => { setChestNotice(null); setPhase("rewards"); }}>{chestNotice}<span>VER BAÚS →</span></button>}
 
+      <aside className={styles.nationsSpotlight} aria-label="Destaque da Jornada das Nações">
+        <img src="/games/apostolic-journey/world/region-map-v160.png" alt="Mapa de ilhas da Jornada das Nações" />
+        <div><small>MODO ESTRATÉGICO</small><h2>Jornada das Nações</h2><p>Construa sua cidade, explore ilhas e lidere exércitos.</p><button type="button" onClick={() => setPhase("nations")}>ENTRAR NAS NAÇÕES</button></div>
+      </aside>
+
       <button data-arena-motion type="button" className={styles.battleButton} disabled={deckIds.length !== 8 || isEnteringBattle} onClick={beginBattle}>
         <img className={styles.battleArtwork} src="/games/apostolic-arena/ui/actions/batalhar-celestial-v1.webp" alt="" />
         <span className={styles.battleLabel}>{isEnteringBattle ? "ABRINDO O PORTÃO…" : deckIds.length === 8 ? "BATALHAR" : `ESCOLHA 8 CARTAS (${deckIds.length}/8)`}</span>
       </button>
 
       <nav className={styles.bottomNav} aria-label="Navegação do Apostolic Arena">
-        <button type="button" onClick={() => setPhase("nations")}><span>🏛️</span><b>NAÇÕES</b></button>
-        <button type="button" onClick={() => setPhase("research")}><span>📜</span><b>ACADEMIA</b></button>
-        <button type="button" onClick={() => setPhase("commerce")}><span>🐪</span><b>MERCADO</b></button>
-        <button type="button" onClick={() => setPhase("province")}><span>🗺️</span><b>PROVÍNCIA</b></button>
-        <button type="button" onClick={() => setPhase("defense")}><span>🛡️</span><b>DEFESA</b></button>
-        <button type="button" onClick={() => setPhase("armies")}><span>⚔️</span><b>EXÉRCITOS</b></button>
-        <button type="button" onClick={() => setPhase("spies")}><span>👁️</span><b>ESPIÕES</b></button>
-        <button type="button" onClick={() => setPhase("attacks")}><span>🔥</span><b>ATAQUES</b></button>
-        <button type="button" onClick={() => setPhase("sieges")}><span>🏰</span><b>CERCOS</b></button>
-        <button type="button" onClick={() => setPhase("results")}><span>📜</span><b>RESULTADOS</b></button>
         <button type="button" onClick={() => setPhase("world")}><span><img src="/games/apostolic-arena/ui/emblems/diario-v1.png" alt="" /></span><b>DIÁRIO</b></button>
         <button type="button" onClick={() => setPhase("alliance")}><span><img src="/games/apostolic-arena/ui/emblems/alianca-v1.png" alt="" /></span><b>ALIANÇA</b></button>
         <button type="button" onClick={() => setPhase("cards")}><span><img src="/games/apostolic-arena/ui/emblems/amigos-v1.png" alt="" /></span><b>AMIGOS</b></button>
@@ -408,7 +403,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {phase === "nations" && <ApostolicJourneyNationsV100 />}
         {phase === "research" && <ApostolicResearchCenterV110 />}
         {phase === "commerce" && <ApostolicCommerceCenterV115 />}
-        {phase === "province" && <ApostolicProvinceMapV120 />}
+        {phase === "province" && <ApostolicProvinceMapV120 onOpenCity={()=>setPhase("defense")} onOpenArmies={()=>setPhase("armies")} onOpenAttack={()=>setPhase("attacks")}/>}
         {phase === "defense" && <ApostolicCityDefenseV125 />}
         {phase === "armies" && <ApostolicArmyMarchesV130 />}
         {phase === "spies" && <ApostolicSpyCenterV135 />}
