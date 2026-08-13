@@ -19,6 +19,7 @@ import { ApostolicSpyCenterV135 } from "./apostolic-spy-center-v135";
 import { ApostolicCityAttacksV140 } from "./apostolic-city-attacks-v140";
 import { ApostolicSiegeCenterV145 } from "./apostolic-siege-center-v145";
 import { ApostolicBattleResultsV150 } from "./apostolic-battle-results-v150";
+import { ApostolicInfirmaryV155 } from "./apostolic-infirmary-v155";
 import { createClient } from "../lib/supabase/client";
 import { CHEST_DEFINITIONS, grantBattleProgress, loadArenaChests, type ArenaChestState } from "../lib/apostolic-arena-chests-v18";
 import { loadArenaProgression, type ArenaPlayerProgression } from "../lib/apostolic-arena-progression-v17";
@@ -413,7 +414,7 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {phase === "spies" && <ApostolicSpyCenterV135 />}
         {phase === "attacks" && <ApostolicCityAttacksV140 onLaunch={(id,token)=>{window.sessionStorage.setItem(STRATEGIC_ATTACK_KEY,JSON.stringify({id,token}));setPhase("battle")}}/>}
         {phase === "sieges" && <ApostolicSiegeCenterV145 />}
-        {phase === "results" && <ApostolicBattleResultsV150 />}
+        {phase === "results" && <><ApostolicBattleResultsV150 /><ApostolicInfirmaryV155 /></>}
       </main>
     </section>}
     {(phase === "loading" || phase === "menu") && <button type="button" className={styles.soundControl} data-enabled={soundEnabled} onClick={() => setSoundEnabled((current) => !current)} aria-label={soundEnabled ? "Desativar som ambiente" : "Ativar som ambiente"}>{soundEnabled ? "🔊" : "🔇"}<span>{soundEnabled ? "SOM" : "ATIVAR SOM"}</span></button>}

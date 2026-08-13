@@ -1,0 +1,16 @@
+begin;
+select plan(12);
+select has_table('public','apostolic_infirmary_queue','infirmary queue exists');
+select col_is_pk('public','apostolic_infirmary_queue','id','infirmary queue primary key');
+select col_is_unique('public','apostolic_infirmary_queue',array['city_id','idempotency_key'],'idempotent treatments');
+select has_index('public','apostolic_infirmary_queue','apostolic_infirmary_one_active_idx','one active treatment per city');
+select has_index('public','apostolic_infirmary_queue','apostolic_infirmary_outcome_idx','wound lookup index');
+select has_column('public','apostolic_battle_outcomes','recovered_wounded','recovery progress recorded');
+select function_returns('public','apostolic_get_infirmary_center',array[]::text[],'jsonb');
+select function_returns('public','apostolic_start_infirmary_treatment',array['uuid','integer','uuid'],'jsonb');
+select function_returns('public','apostolic_finish_infirmary_treatment',array[]::text[],'jsonb');
+select is((select count(*)::integer from pg_policies where schemaname='public' and tablename='apostolic_infirmary_queue'),1,'queue protected by RLS');
+select is((select count(*)::integer from information_schema.table_privileges where table_schema='public' and table_name='apostolic_infirmary_queue' and grantee='authenticated' and privilege_type='SELECT'),1,'authenticated receives read only');
+select is((select count(*)::integer from information_schema.table_privileges where table_schema='public' and table_name='apostolic_infirmary_queue' and grantee='anon'),0,'anonymous receives no access');
+select * from finish();
+rollback;
