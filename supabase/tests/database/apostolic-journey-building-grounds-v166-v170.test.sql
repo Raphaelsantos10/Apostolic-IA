@@ -1,0 +1,15 @@
+begin;select plan(13);
+select has_column('public','apostolic_building_catalog','terrain','catalog has terrain restriction');
+select has_column('public','apostolic_building_catalog','required_town_hall_level','catalog has town hall requirement');
+select has_column('public','apostolic_construction_queue','slot_no','queue records construction slot');
+select is((select count(*)::integer from public.apostolic_building_catalog where building in('tavern','museum','barracks','shipyard','embassy','hideout')),6,'six specialized buildings');
+select is((select terrain from public.apostolic_building_catalog where building='shipyard'),'coast','shipyard is coastal');
+select is((select required_town_hall_level::integer from public.apostolic_building_catalog where building='tavern'),1,'tavern available at level one');
+select is((select count(*)::integer from public.apostolic_building_catalog where base_costs?'gems'),0,'gems never pay construction');
+select function_returns('public','apostolic_start_slot_construction',array['integer','text','uuid'],'jsonb');
+select function_returns('public','apostolic_finish_city_construction',array[]::text[],'jsonb');
+select function_returns('public','apostolic_get_city_management',array[]::text[],'jsonb');
+select is((select count(*)::integer from information_schema.routine_privileges where routine_schema='public'and routine_name='apostolic_start_slot_construction'and grantee='anon'),0,'anonymous cannot start construction');
+select is((select count(*)::integer from public.apostolic_city_slot_catalog where unlock_town_hall_level=1 and terrain='land'),3,'three land grounds at level one');
+select is((select count(*)::integer from public.apostolic_city_slot_catalog where unlock_town_hall_level=1 and terrain='coast'),1,'one coastal ground at level one');
+select*from finish();rollback;
