@@ -1,0 +1,17 @@
+begin;select plan(15);
+select has_index('public','apostolic_construction_queue','apostolic_construction_due_idx','due queue is indexed');
+select function_returns('public','apostolic_sync_city_state',array[]::text[],'jsonb');
+select function_returns('public','apostolic_get_city_management',array[]::text[],'jsonb');
+select is((select prosecdef from pg_proc where oid='public.apostolic_sync_city_state()'::regprocedure),true,'sync is server controlled');
+select is((select proconfig@>array['search_path=""']from pg_proc where oid='public.apostolic_sync_city_state()'::regprocedure),true,'sync has empty search path');
+select is((select count(*)::integer from information_schema.routine_privileges where routine_schema='public'and routine_name='apostolic_sync_city_state'and grantee='anon'),0,'anonymous cannot sync city');
+select is((select count(*)::integer from information_schema.routine_privileges where routine_schema='public'and routine_name='apostolic_sync_city_state'and grantee='authenticated'),1,'authenticated player can sync city');
+select is((select count(*)::integer from information_schema.routine_privileges where routine_schema='public'and routine_name='apostolic_get_city_management'and grantee='anon'),0,'anonymous cannot read management RPC');
+select is((select position('server_now' in pg_get_functiondef('public.apostolic_get_city_management()'::regprocedure))>0),true,'management returns server clock');
+select is((select position('resources' in pg_get_functiondef('public.apostolic_get_city_management()'::regprocedure))>0),true,'management returns all resources');
+select is((select position('next_costs' in pg_get_functiondef('public.apostolic_get_city_management()'::regprocedure))>0),true,'management returns next costs');
+select is((select position('next_duration_seconds' in pg_get_functiondef('public.apostolic_get_city_management()'::regprocedure))>0),true,'management returns next duration');
+select is((select position('for update' in lower(pg_get_functiondef('public.apostolic_sync_city_state()'::regprocedure)))>0),true,'sync locks mutable rows');
+select is((select position('last_collected_at' in pg_get_functiondef('public.apostolic_sync_city_state()'::regprocedure))>0),true,'sync performs lazy production');
+select is((select position($needle$status='completed'$needle$ in pg_get_functiondef('public.apostolic_sync_city_state()'::regprocedure))>0),true,'sync settles completed construction');
+select*from finish();rollback;
