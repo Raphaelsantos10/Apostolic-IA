@@ -1,0 +1,31 @@
+begin;
+create extension if not exists pgtap with schema extensions;
+select plan(24);
+
+select has_table('public','apostolic_building_action_catalog','building purposes catalog exists');
+select has_table('public','apostolic_city_ministries','city ministry metrics exist');
+select has_table('public','apostolic_building_action_queue','timed building activities exist');
+select has_pk('public','apostolic_building_action_catalog','purpose catalog has a primary key');
+select has_pk('public','apostolic_city_ministries','city metrics have a primary key');
+select has_pk('public','apostolic_building_action_queue','activity queue has a primary key');
+select has_index('public','apostolic_building_action_queue','apostolic_building_action_one_active_idx','only one activity can be active');
+select has_index('public','apostolic_building_action_queue','apostolic_building_action_due_idx','due activities are indexed');
+select has_trigger('public','apostolic_cities','apostolic_city_ministry_state','new cities receive ministry metrics');
+select is((select count(*)::integer from public.apostolic_building_action_catalog),16,'all current buildings have an objective');
+select is((select count(*)::integer from public.apostolic_building_action_catalog where building='museum'and action='welcome_families'),1,'house of prayer cares for families');
+select is((select count(*)::integer from public.apostolic_building_action_catalog where building='embassy'and metric='mission'),1,'mission base advances mission work');
+select is((select count(*)::integer from public.apostolic_building_action_catalog where building='academy'and metric='wisdom'),1,'academy advances knowledge');
+select is((select count(*)::integer from public.apostolic_building_action_catalog where cost_resource not in('wheat','cedar','stone','oil','gold')),0,'activities never use premium currency');
+select function_returns('public','apostolic_get_building_purposes',array[]::text[],'jsonb');
+select function_returns('public','apostolic_sync_building_purposes',array[]::text[],'jsonb');
+select function_returns('public','apostolic_start_building_purpose',array['text','text','uuid'],'jsonb');
+select is((select prosecdef from pg_proc where oid='public.apostolic_get_building_purposes()'::regprocedure),true,'purpose panel is server controlled');
+select is((select prosecdef from pg_proc where oid='public.apostolic_start_building_purpose(text,text,uuid)'::regprocedure),true,'purpose action is server controlled');
+select is((select proconfig@>array['search_path=""']from pg_proc where oid='public.apostolic_start_building_purpose(text,text,uuid)'::regprocedure),true,'purpose action has empty search path');
+select is((select count(*)::integer from information_schema.routine_privileges where routine_schema='public'and routine_name='apostolic_start_building_purpose'and grantee='anon'),0,'anonymous cannot start purposes');
+select is((select count(*)::integer from information_schema.routine_privileges where routine_schema='public'and routine_name='apostolic_start_building_purpose'and grantee='authenticated'),1,'authenticated player can start purposes');
+select is((select relrowsecurity and relforcerowsecurity from pg_class where oid='public.apostolic_building_action_queue'::regclass),true,'activity queue forces RLS');
+select is((select position('idempotency key required'in pg_get_functiondef('public.apostolic_start_building_purpose(text,text,uuid)'::regprocedure))>0),true,'activity start is idempotent');
+
+select*from finish();
+rollback;
