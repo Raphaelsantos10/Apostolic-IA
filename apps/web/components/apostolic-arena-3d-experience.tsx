@@ -23,6 +23,7 @@ import { ApostolicInfirmaryV155 } from "./apostolic-infirmary-v155";
 import { ApostolicCityV165 } from "./apostolic-city-v165";
 import { ApostolicFleetCenterV200 } from "./apostolic-fleet-center-v200";
 import { ApostolicMaritimeRoutesV205 } from "./apostolic-maritime-routes-v205";
+import { ApostolicColonizationCenterV210 } from "./apostolic-colonization-center-v210";
 import { createClient } from "../lib/supabase/client";
 import { CHEST_DEFINITIONS, grantBattleProgress, loadArenaChests, type ArenaChestState } from "../lib/apostolic-arena-chests-v18";
 import { loadArenaProgression, type ArenaPlayerProgression } from "../lib/apostolic-arena-progression-v17";
@@ -35,7 +36,7 @@ import styles from "./apostolic-arena-3d-experience.module.css";
 import loadingStyles from "./apostolic-arena-loading-v2.module.css";
 import { useArenaMotionStage } from "../lib/use-arena-motion-stage";
 
-type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards" | "shop" | "alliance" | "nations" | "city" | "research" | "commerce" | "fleet" | "maritime" | "province" | "defense" | "armies" | "spies" | "attacks" | "sieges" | "results";
+type ExperiencePhase = "loading" | "tutorial" | "menu" | "arenaPreview" | "battle" | "cards" | "world" | "rewards" | "shop" | "alliance" | "nations" | "city" | "research" | "commerce" | "fleet" | "maritime" | "colonization" | "province" | "defense" | "armies" | "spies" | "attacks" | "sieges" | "results";
 const STRATEGIC_ATTACK_KEY = "apostolic-strategic-attack-v140";
 const DECK_STORAGE_KEY = "apostolic-arena-active-deck";
 const SAVED_DECKS_KEY = "apostolic-arena-decks-v16";
@@ -403,12 +404,13 @@ export function ApostolicArena3DExperience({ onExit }: { onExit: () => void }) {
         {phase === "rewards" && <ArenaChestsV18 onStateChange={setChestState} />}
         {phase === "shop" && <ArenaShopV38 fallbackWallet={arenaWallet} onWalletChange={setArenaWallet} />}
         {phase === "alliance" && <ArenaAllianceV61 />}
-        {phase === "nations" && <><div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:12}}><button type="button" onClick={()=>setPhase("city")}>ENTRAR NA CIDADE</button><button type="button" onClick={()=>setPhase("province")}>MAPA DA PROVÍNCIA</button><button type="button" onClick={()=>setPhase("research")}>CASA DA SABEDORIA</button><button type="button" onClick={()=>setPhase("commerce")}>COMÉRCIO</button><button type="button" onClick={()=>setPhase("fleet")}>PORTO E FROTA</button><button type="button" onClick={()=>setPhase("maritime")}>ROTAS MARÍTIMAS</button><button type="button" onClick={()=>setPhase("defense")}>DEFESA</button></div><ApostolicJourneyNationsV100 /></>}
+        {phase === "nations" && <><div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:12}}><button type="button" onClick={()=>setPhase("city")}>ENTRAR NA CIDADE</button><button type="button" onClick={()=>setPhase("province")}>MAPA DA PROVÍNCIA</button><button type="button" onClick={()=>setPhase("research")}>CASA DA SABEDORIA</button><button type="button" onClick={()=>setPhase("commerce")}>COMÉRCIO</button><button type="button" onClick={()=>setPhase("fleet")}>PORTO E FROTA</button><button type="button" onClick={()=>setPhase("maritime")}>ROTAS MARÍTIMAS</button><button type="button" onClick={()=>setPhase("colonization")}>EXPLORAR ILHAS</button><button type="button" onClick={()=>setPhase("defense")}>DEFESA</button></div><ApostolicJourneyNationsV100 /></>}
         {phase === "city" && <ApostolicCityV165 onOpenProvince={()=>setPhase("province")}/>}
         {phase === "research" && <ApostolicResearchCenterV110 />}
         {phase === "commerce" && <ApostolicCommerceCenterV115 />}
         {phase === "fleet" && <ApostolicFleetCenterV200 />}
         {phase === "maritime" && <ApostolicMaritimeRoutesV205 />}
+        {phase === "colonization" && <ApostolicColonizationCenterV210 />}
         {phase === "province" && <ApostolicProvinceMapV120 onOpenCity={()=>setPhase("city")} onOpenArmies={()=>setPhase("armies")} onOpenAttack={()=>setPhase("attacks")}/>}
         {phase === "defense" && <ApostolicCityDefenseV125 />}
         {phase === "armies" && <ApostolicArmyMarchesV130 />}
